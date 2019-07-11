@@ -1,5 +1,6 @@
-import { arrayFindClosestIndex } from '../array/arrayFindClosestIndex';
+import { arrayGetFromToIndex } from '../array/arrayGetFromToIndex';
 
+import { xyCheck } from './xyCheck';
 /**
  * Generate a X / Y of the integral
  * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
@@ -8,32 +9,15 @@ import { arrayFindClosestIndex } from '../array/arrayFindClosestIndex';
  * @param {number} [options.fromIndex=0] - First point for integration
  * @param {number} [options.to] - Last value for integration in the X scale
  * @param {number} [options.toIndex=x.length-1] - Last point for integration
- * @return {object}
+ * @return {{x:[],y:[]}} A object with the integration function
  */
 
 export function xyIntegral(points = {}, options = {}) {
+  xyCheck(points);
   const { x, y } = points;
-  if (x.length < 2) return { integration: 0 };
-  if (x.length !== y.length) {
-    throw new Error('The X and Y arrays mush have the same length');
-  }
+  if (x.length < 2) return 0;
 
-  let { fromIndex, toIndex, from, to } = options;
-
-  if (fromIndex === undefined) {
-    if (from !== undefined) {
-      fromIndex = arrayFindClosestIndex(x, from);
-    } else {
-      fromIndex = 0;
-    }
-  }
-  if (toIndex === undefined) {
-    if (to !== undefined) {
-      toIndex = arrayFindClosestIndex(x, to);
-    } else {
-      toIndex = x.length - 1;
-    }
-  }
+  const { fromIndex, toIndex } = arrayGetFromToIndex(x, options);
 
   let integral = { x: [x[fromIndex]], y: [0] };
   let integration = 0;
