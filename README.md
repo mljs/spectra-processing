@@ -5,47 +5,45 @@
 [![Test coverage][codecov-image]][codecov-url]
 [![npm download][download-image]][download-url]
 
-Various method to process spectra.
+Various method to process spectra. There are sorted in 3 categories:
+
+* array : functions that apply on a 1D array
+* xy : functions that apply on an object `{x: [], y:[]}`
+* xreim: functions that apply on an object `{x: [], re:[], im:[]}`
+* reim: functions that apply on an object `{re: [], im:[]}`
 
 ## Installation
 
 `$ npm i ml-spectra-processing`
 
-## Installation of the package not published on npm
-
-Because we would like to add incrementally small function and directly reuse them we can directly add a dependency by adding adding directly a commit UUID.
-
-To retrieve the commit UUID : `git log`
-
-To add the dependency:
-
-`npm i mljs/spectra-processing#ed33f5cc8e0f5f6e8e9210bd915c6393846dbd17`
-
-You can then add a specific function:
-
-```js
-const closest = require('ml-spectra-processing').arrayFindClosestIndex;
-````
-
-or
-
-import {arrayFindClosestIndex} from
 
 
+## Build the project and publish it on npm
 
-## Build the project and put to github
-
-` npm install --global cheminfo-build`
-`cheminfo build`
+`npm install --global cheminfo-build`
+`cheminfo-publish`
 
 ## Usage
 
-```js
-import library from 'ml-spectra-processing';
 
-const result = library(args);
-// result is ...
+```js
+const closest = require('ml-spectra-processing').arrayFindClosestIndex;
+
+// or
+
+const {arrayFindClosestIndex} = require('ml-spectra-processing');
 ```
+or using ES6 modules
+
+```js
+import {arrayFindClosestIndex} from 'ml-spectra-processing';
+
+// you can also extract only one fucntion
+
+import {arrayFindClosestIndex} from 'ml-spectra-processing/src/array/arrayFindClosestIndex';
+```
+
+
 
 ## [API Documentation](https://cheminfo.github.io/spectra-processing/)
 
