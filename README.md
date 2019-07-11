@@ -45,7 +45,7 @@ import {arrayFindClosestIndex} from 'ml-spectra-processing/src/array/arrayFindCl
 
 
 
-## [API Documentation](https://cheminfo.github.io/spectra-processing/)
+## [API Documentation](https://mljs.github.io/spectra-processing/)
 
 ## License
 
@@ -53,9 +53,9 @@ import {arrayFindClosestIndex} from 'ml-spectra-processing/src/array/arrayFindCl
 
 [npm-image]: https://img.shields.io/npm/v/spectra-processing.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/spectra-processing
-[travis-image]: https://img.shields.io/com/travis/cheminfo/spectra-processing/master.svg?style=flat-square
-[travis-url]: https://travis-ci.com/cheminfo/spectra-processing
-[codecov-image]: https://img.shields.io/codecov/c/github/cheminfo/spectra-processing.svg?style=flat-square
-[codecov-url]: https://codecov.io/gh/cheminfo/spectra-processing
+[travis-image]: https://img.shields.io/com/travis/mljs/spectra-processing/master.svg?style=flat-square
+[travis-url]: https://travis-ci.com/mljs/spectra-processing
+[codecov-image]: https://img.shields.io/codecov/c/github/mljs/spectra-processing.svg?style=flat-square
+[codecov-url]: https://codecov.io/gh/mljs/spectra-processing
 [download-image]: https://img.shields.io/npm/dm/spectra-processing.svg?style=flat-square
 [download-url]: https://www.npmjs.com/package/spectra-processing
