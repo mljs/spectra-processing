@@ -11,6 +11,22 @@ Various method to process spectra.
 
 `$ npm i ml-spectra-processing`
 
+## Installation of the package not published on npm
+
+Because we would like to add incrementally small function and directly reuse them we can directly add a dependency by adding adding directly a commit UUID.
+
+To retrieve the commit UUID : `git log`
+
+To add the dependency:
+
+`npm i mljs/spectra-processing#ed33f5cc8e0f5f6e8e9210bd915c6393846dbd17`
+
+
+## To build the project
+
+` npm install --global cheminfo-build`
+`cheminfo build`
+
 ## Usage
 
 ```js
