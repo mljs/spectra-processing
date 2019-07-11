@@ -1,0 +1,51 @@
+{
+  "name": "ml-spectra-processing",
+  "version": "0.0.0",
+  "description": "Various method to process spectra",
+  "main": "lib/index.js",
+  "module": "src/index.js",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "eslint": "eslint src",
+    "eslint-fix": "npm run eslint -- --fix",
+    "prepublishOnly": "rollup -c",
+    "test": "npm run test-coverage && npm run eslint",
+    "test-coverage": "jest --coverage",
+    "test-only": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheminfo/spectra-processing.git"
+  },
+  "keywords": [],
+  "author": "Luc Patiny",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cheminfo/spectra-processing/issues"
+  },
+  "homepage": "https://github.com/cheminfo/spectra-processing#readme",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
+    "eslint": "^6.0.1",
+    "eslint-config-cheminfo": "^1.20.1",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jest": "^22.7.2",
+    "esm": "^3.2.25",
+    "jest": "^24.8.0",
+    "rollup": "^1.16.7"
+  },
+  "dependencies": {}
+}
