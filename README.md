@@ -21,8 +21,19 @@ To add the dependency:
 
 `npm i mljs/spectra-processing#ed33f5cc8e0f5f6e8e9210bd915c6393846dbd17`
 
+You can then add a specific function:
 
-## To build the project
+```js
+const closest = require('ml-spectra-processing').arrayFindClosestIndex;
+````
+
+or
+
+import {arrayFindClosestIndex} from
+
+
+
+## Build the project and put to github
 
 ` npm install --global cheminfo-build`
 `cheminfo build`
