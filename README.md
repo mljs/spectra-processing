@@ -5,12 +5,14 @@
 [![Test coverage][codecov-image]][codecov-url]
 [![npm download][download-image]][download-url]
 
-Various method to process spectra. There are sorted in 3 categories:
+Various method to process spectra. There are sorted in 4 categories:
 
 * array : functions that apply on a 1D array
 * xy : functions that apply on an object `{x: [], y:[]}`
 * xreim: functions that apply on an object `{x: [], re:[], im:[]}`
 * reim: functions that apply on an object `{re: [], im:[]}`
+
+There will be probably more categories related to 2D spectra
 
 ## Installation
 
@@ -38,7 +40,7 @@ or using ES6 modules
 ```js
 import {arrayFindClosestIndex} from 'ml-spectra-processing';
 
-// you can also extract only one fucntion
+// you can also extract only one function
 
 import {arrayFindClosestIndex} from 'ml-spectra-processing/src/array/arrayFindClosestIndex';
 ```
