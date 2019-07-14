@@ -6,3 +6,4 @@ export * from './xy/xyIntegral';
 export * from './xy/xyCheck';
 export * from './xy/xyMaxY';
 export * from './xy/xyMaxYPoint';
+export * from './xy/xyReduce';
