@@ -1,6 +1,6 @@
-import { arrayGetFromToIndex } from '../array/arrayGetFromToIndex';
+import { getFromToIndex } from '../array/getFromToIndex';
 
-import { xyCheck } from './xyCheck';
+import { check } from './check';
 /**
  * Finds the max y value in a range and return a {x,y} point
  * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
@@ -12,12 +12,12 @@ import { xyCheck } from './xyCheck';
  * @return {object}
  */
 
-export function xyMaxYPoint(points = {}, options = {}) {
-  xyCheck(points);
+export function maxYPoint(points = {}, options = {}) {
+  check(points);
   const { x, y } = points;
   if (x.length < 2) return 0;
 
-  const { fromIndex, toIndex } = arrayGetFromToIndex(x, options);
+  const { fromIndex, toIndex } = getFromToIndex(x, options);
 
   let current = { x: x[fromIndex], y: y[fromIndex] };
   for (let i = fromIndex; i <= toIndex; i++) {

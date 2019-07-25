@@ -1,9 +1,22 @@
-export * from './array/arrayFindClosestIndex';
-export * from './array/arrayGetFromToIndex';
+export const Array = {
+  findClosestIndex: require('./array/findClosestIndex').findClosestIndex,
+  rotate: require('./array/rotate').rotate
+};
 
-export * from './xy/xyIntegration';
-export * from './xy/xyIntegral';
-export * from './xy/xyCheck';
-export * from './xy/xyMaxY';
-export * from './xy/xyMaxYPoint';
-export * from './xy/xyReduce';
+export const XReIm = {
+  zeroFilling: require('./xreim/zeroFilling').zeroFilling
+};
+
+export const ReIm = {
+  absolute: require('./reim/absolute').absolute,
+  phaseCorrection: require('./reim/phaseCorrection').phaseCorrection,
+};
+
+export const XY = {
+  check: require('./xy/check').check,
+  integral: require('./xy/integral').integral,
+  integration: require('./xy/integration').integration,
+  maxY: require('./xy/maxY').maxY,
+  maxYPoint: require('./xy/maxYPoint').maxYPoint,
+  reduce: require('./xy/reduce').reduce,
+};

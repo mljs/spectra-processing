@@ -2,11 +2,11 @@ import * as SpectraProcessing from '..';
 
 describe('test existence of functions', () => {
   it('array', () => {
-    expect(SpectraProcessing.arrayFindClosestIndex).toBeInstanceOf(Function);
+    expect(SpectraProcessing.Array.findClosestIndex).toBeInstanceOf(Function);
   });
 
   it('xy', () => {
-    expect(SpectraProcessing.xyIntegral).toBeInstanceOf(Function);
-    expect(SpectraProcessing.xyIntegration).toBeInstanceOf(Function);
+    expect(SpectraProcessing.XY.integral).toBeInstanceOf(Function);
+    expect(SpectraProcessing.XY.integration).toBeInstanceOf(Function);
   });
 });

@@ -1,4 +1,4 @@
-import { arrayFindClosestIndex } from '../array/arrayFindClosestIndex';
+import { findClosestIndex } from '../array/findClosestIndex';
 
 /**
  * Reduce the number of points while keeping the same noise. Practical to
@@ -11,11 +11,11 @@ import { arrayFindClosestIndex } from '../array/arrayFindClosestIndex';
  * @param {number} [nbPoints=4001] Number of points
  */
 
-export function xyReduce(x, y, options = {}) {
+export function reduce(x, y, options = {}) {
   let { from = x[0], to = x[x.length - 1], nbPoints = 4000 } = options;
 
-  let fromIndex = arrayFindClosestIndex(x, from);
-  let toIndex = arrayFindClosestIndex(x, to);
+  let fromIndex = findClosestIndex(x, from);
+  let toIndex = findClosestIndex(x, to);
 
   if (fromIndex > 0 && x[fromIndex] > from) fromIndex--;
   if (toIndex < x.length - 1 && x[toIndex] < to) toIndex++;

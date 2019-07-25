@@ -5,7 +5,7 @@
  * @param {number} [phi1 = 0] - value
  * @return {object} returns a new object {re:[], im:[]}
  */
-export function reimPhaseCorrection(data, phi0, phi1) {
+export function phaseCorrection(data, phi0, phi1) {
   phi0 = Number.isFinite(phi0) ? phi0 : 0;
   phi1 = Number.isFinite(phi1) ? phi1 : 0;
 

@@ -1,4 +1,4 @@
-import { arrayFindClosestIndex } from './arrayFindClosestIndex';
+import { findClosestIndex } from './findClosestIndex';
 
 /**
  * Returns an object with {fromIndex, toIndex} for a specific from / to
@@ -10,19 +10,19 @@ import { arrayFindClosestIndex } from './arrayFindClosestIndex';
  * @param {number} [options.toIndex=x.length-1] - Last point for integration
  */
 
-export function arrayGetFromToIndex(x, options = {}) {
+export function getFromToIndex(x, options = {}) {
   let { fromIndex, toIndex, from, to } = options;
 
   if (fromIndex === undefined) {
     if (from !== undefined) {
-      fromIndex = arrayFindClosestIndex(x, from);
+      fromIndex = findClosestIndex(x, from);
     } else {
       fromIndex = 0;
     }
   }
   if (toIndex === undefined) {
     if (to !== undefined) {
-      toIndex = arrayFindClosestIndex(x, to);
+      toIndex = findClosestIndex(x, to);
     } else {
       toIndex = x.length - 1;
     }

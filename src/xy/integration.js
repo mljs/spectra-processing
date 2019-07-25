@@ -1,6 +1,6 @@
-import { arrayGetFromToIndex } from '../array/arrayGetFromToIndex';
+import { getFromToIndex } from '../array/getFromToIndex';
 
-import { xyCheck } from './xyCheck';
+import { check } from './check';
 
 /**
  * In place modification of the 2 arrays to make X unique and sum the Y if X has the same value
@@ -13,11 +13,11 @@ import { xyCheck } from './xyCheck';
  * @return {number} Integration value on the specified range
  */
 
-export function xyIntegration(points = {}, options = {}) {
-  xyCheck(points);
+export function integration(points = {}, options = {}) {
+  check(points);
   const { x, y } = points;
   if (x.length < 2) return 0;
-  const { fromIndex, toIndex } = arrayGetFromToIndex(x, options);
+  const { fromIndex, toIndex } = getFromToIndex(x, options);
   let integration = 0;
   for (let i = fromIndex; i < toIndex; i++) {
     integration += ((x[i + 1] - x[i]) * (y[i + 1] + y[i])) / 2;

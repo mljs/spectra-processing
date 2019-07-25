@@ -3,7 +3,7 @@
  * @param {object} reim - An object of kind {re:[], im:[]}
  * @return {Float64Array}
  */
-export function reimAbsolute(data) {
+export function absolute(data) {
   const length = data.re.length;
   const re = data.re;
   const im = data.im;

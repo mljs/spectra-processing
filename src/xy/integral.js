@@ -1,6 +1,6 @@
-import { arrayGetFromToIndex } from '../array/arrayGetFromToIndex';
+import { getFromToIndex } from '../array/getFromToIndex';
 
-import { xyCheck } from './xyCheck';
+import { check } from './check';
 /**
  * Generate a X / Y of the integral
  * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
@@ -12,12 +12,12 @@ import { xyCheck } from './xyCheck';
  * @return {{x:[],y:[]}} A object with the integration function
  */
 
-export function xyIntegral(points = {}, options = {}) {
-  xyCheck(points);
+export function integral(points = {}, options = {}) {
+  check(points);
   const { x, y } = points;
   if (x.length < 2) return 0;
 
-  const { fromIndex, toIndex } = arrayGetFromToIndex(x, options);
+  const { fromIndex, toIndex } = getFromToIndex(x, options);
 
   let integral = { x: [x[fromIndex]], y: [0] };
   let integration = 0;

@@ -4,7 +4,7 @@
  * @param {number} target
  */
 
-export function arrayFindClosestIndex(array, target) {
+export function findClosestIndex(array, target) {
   let low = 0;
   let high = array.length - 1;
   let middle = 0;

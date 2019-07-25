@@ -7,7 +7,7 @@
  * @param {number} shift
  * @return {Array}
  */
-export function arrayRotate(array, shift) {
+export function rotate(array, shift) {
   shift = shift % array.length;
   if (shift < 0) shift += array.length;
   return array.slice(array.length - shift).concat(array.slice(0, array.length - shift));
