@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8'>
-  <title>ml-spectra-processing 0.0.3 | Documentation</title>
+  <title>ml-spectra-processing 0.1.0 | Documentation</title>
   <meta name='description' content='Various method to process spectra'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>ml-spectra-processing</h3>
-          <div class='mb1'><code>0.0.3</code></div>
+          <div class='mb1'><code>0.1.0</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -26,9 +26,9 @@
               
                 
                 <li><a
-                  href='#arrayfindclosestindex'
+                  href='#absolute'
                   class="">
-                  arrayFindClosestIndex
+                  absolute
                   
                 </a>
                 
@@ -36,9 +36,9 @@
               
                 
                 <li><a
-                  href='#arraygetfromtoindex'
+                  href='#check'
                   class="">
-                  arrayGetFromToIndex
+                  check
                   
                 </a>
                 
@@ -46,9 +46,9 @@
               
                 
                 <li><a
-                  href='#xycheck'
+                  href='#findclosestindex'
                   class="">
-                  xyCheck
+                  findClosestIndex
                   
                 </a>
                 
@@ -56,9 +56,9 @@
               
                 
                 <li><a
-                  href='#xyintegral'
+                  href='#getfromtoindex'
                   class="">
-                  xyIntegral
+                  getFromToIndex
                   
                 </a>
                 
@@ -66,9 +66,9 @@
               
                 
                 <li><a
-                  href='#xyintegration'
+                  href='#integral'
                   class="">
-                  xyIntegration
+                  integral
                   
                 </a>
                 
@@ -76,9 +76,9 @@
               
                 
                 <li><a
-                  href='#xymaxy'
+                  href='#integration'
                   class="">
-                  xyMaxY
+                  integration
                   
                 </a>
                 
@@ -86,9 +86,9 @@
               
                 
                 <li><a
-                  href='#xymaxypoint'
+                  href='#maxy'
                   class="">
-                  xyMaxYPoint
+                  maxY
                   
                 </a>
                 
@@ -96,9 +96,49 @@
               
                 
                 <li><a
-                  href='#xyreduce'
+                  href='#maxypoint'
                   class="">
-                  xyReduce
+                  maxYPoint
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#phasecorrection'
+                  class="">
+                  phaseCorrection
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#reduce'
+                  class="">
+                  reduce
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rotate'
+                  class="">
+                  rotate
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#zerofilling'
+                  class="">
+                  zeroFilling
                   
                 </a>
                 
@@ -119,13 +159,161 @@
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='arrayfindclosestindex'>
-      arrayFindClosestIndex
+    <h3 class='fl m0' id='absolute'>
+      absolute
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/0d8b93d7aaf489039b9235b3971f2b81a5e677dc/src/array/arrayFindClosestIndex.js#L7-L31'>
-      <span>src/array/arrayFindClosestIndex.js</span>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/6b7fbb98731c41f847db11b0f860621d7ba9ee9e/src/reim/absolute.js#L6-L16'>
+      <span>src/reim/absolute.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Calculate absolute value of a spectrum</p>
+
+    <div class='pre p1 fill-light mt0'>absolute(data: any, reim: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Float64Array">Float64Array</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>data</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>reim</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    An object of kind {re:[], im:[]}
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Float64Array">Float64Array</a></code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='check'>
+      check
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/6b7fbb98731c41f847db11b0f860621d7ba9ee9e/src/xy/check.js#L7-L14'>
+      <span>src/xy/check.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Throw an error in no an object of x,y arrays</p>
+
+    <div class='pre p1 fill-light mt0'>check(points: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>points</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
+            = <code>{}</code>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findclosestindex'>
+      findClosestIndex
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/6b7fbb98731c41f847db11b0f860621d7ba9ee9e/src/array/findClosestIndex.js#L7-L31'>
+      <span>src/array/findClosestIndex.js</span>
       </a>
     
   </div>
@@ -133,7 +321,7 @@
 
   <p>Returns the closest index of a <code>target</code> in an ordered array</p>
 
-    <div class='pre p1 fill-light mt0'>arrayFindClosestIndex(array: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, target: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</div>
+    <div class='pre p1 fill-light mt0'>findClosestIndex(array: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, target: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</div>
   
   
 
@@ -192,13 +380,13 @@
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='arraygetfromtoindex'>
-      arrayGetFromToIndex
+    <h3 class='fl m0' id='getfromtoindex'>
+      getFromToIndex
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/0d8b93d7aaf489039b9235b3971f2b81a5e677dc/src/array/arrayGetFromToIndex.js#L13-L31'>
-      <span>src/array/arrayGetFromToIndex.js</span>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/6b7fbb98731c41f847db11b0f860621d7ba9ee9e/src/array/getFromToIndex.js#L13-L31'>
+      <span>src/array/getFromToIndex.js</span>
       </a>
     
   </div>
@@ -206,7 +394,7 @@
 
   <p>Returns an object with {fromIndex, toIndex} for a specific from / to</p>
 
-    <div class='pre p1 fill-light mt0'>arrayGetFromToIndex(x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+    <div class='pre p1 fill-light mt0'>getFromToIndex(x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
   
   
 
@@ -322,79 +510,13 @@
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='xycheck'>
-      xyCheck
+    <h3 class='fl m0' id='integral'>
+      integral
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/0d8b93d7aaf489039b9235b3971f2b81a5e677dc/src/xy/xyCheck.js#L7-L14'>
-      <span>src/xy/xyCheck.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Throw an error in no an object of x,y arrays</p>
-
-    <div class='pre p1 fill-light mt0'>xyCheck(points: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>points</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
-            = <code>{}</code>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='xyintegral'>
-      xyIntegral
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/0d8b93d7aaf489039b9235b3971f2b81a5e677dc/src/xy/xyIntegral.js#L15-L31'>
-      <span>src/xy/xyIntegral.js</span>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/6b7fbb98731c41f847db11b0f860621d7ba9ee9e/src/xy/integral.js#L15-L31'>
+      <span>src/xy/integral.js</span>
       </a>
     
   </div>
@@ -402,7 +524,7 @@
 
   <p>Generate a X / Y of the integral</p>
 
-    <div class='pre p1 fill-light mt0'>xyIntegral(points: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): {x: [], y: []}</div>
+    <div class='pre p1 fill-light mt0'>integral(points: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): {x: [], y: []}</div>
   
   
 
@@ -528,13 +650,13 @@
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='xyintegration'>
-      xyIntegration
+    <h3 class='fl m0' id='integration'>
+      integration
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/0d8b93d7aaf489039b9235b3971f2b81a5e677dc/src/xy/xyIntegration.js#L16-L27'>
-      <span>src/xy/xyIntegration.js</span>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/6b7fbb98731c41f847db11b0f860621d7ba9ee9e/src/xy/integration.js#L16-L27'>
+      <span>src/xy/integration.js</span>
       </a>
     
   </div>
@@ -542,7 +664,7 @@
 
   <p>In place modification of the 2 arrays to make X unique and sum the Y if X has the same value</p>
 
-    <div class='pre p1 fill-light mt0'>xyIntegration(points: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+    <div class='pre p1 fill-light mt0'>integration(points: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
   
   
 
@@ -668,13 +790,13 @@
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='xymaxy'>
-      xyMaxY
+    <h3 class='fl m0' id='maxy'>
+      maxY
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/0d8b93d7aaf489039b9235b3971f2b81a5e677dc/src/xy/xyMaxY.js#L15-L28'>
-      <span>src/xy/xyMaxY.js</span>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/6b7fbb98731c41f847db11b0f860621d7ba9ee9e/src/xy/maxY.js#L15-L28'>
+      <span>src/xy/maxY.js</span>
       </a>
     
   </div>
@@ -682,7 +804,7 @@
 
   <p>Finds the max value in a zone</p>
 
-    <div class='pre p1 fill-light mt0'>xyMaxY(points: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+    <div class='pre p1 fill-light mt0'>maxY(points: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
   
   
 
@@ -808,13 +930,13 @@
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='xymaxypoint'>
-      xyMaxYPoint
+    <h3 class='fl m0' id='maxypoint'>
+      maxYPoint
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/0d8b93d7aaf489039b9235b3971f2b81a5e677dc/src/xy/xyMaxYPoint.js#L15-L28'>
-      <span>src/xy/xyMaxYPoint.js</span>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/6b7fbb98731c41f847db11b0f860621d7ba9ee9e/src/xy/maxYPoint.js#L15-L28'>
+      <span>src/xy/maxYPoint.js</span>
       </a>
     
   </div>
@@ -822,7 +944,7 @@
 
   <p>Finds the max y value in a range and return a {x,y} point</p>
 
-    <div class='pre p1 fill-light mt0'>xyMaxYPoint(points: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+    <div class='pre p1 fill-light mt0'>maxYPoint(points: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
   
   
 
@@ -948,13 +1070,115 @@
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='xyreduce'>
-      xyReduce
+    <h3 class='fl m0' id='phasecorrection'>
+      phaseCorrection
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/0d8b93d7aaf489039b9235b3971f2b81a5e677dc/src/xy/xyReduce.js#L14-L67'>
-      <span>src/xy/xyReduce.js</span>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/6b7fbb98731c41f847db11b0f860621d7ba9ee9e/src/reim/phaseCorrection.js#L8-L33'>
+      <span>src/reim/phaseCorrection.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Phase correction filter</p>
+
+    <div class='pre p1 fill-light mt0'>phaseCorrection(data: any, phi0: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, phi1: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, reim: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>data</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>phi0</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+            = <code>0</code>)</code>
+	    value
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>phi1</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+            = <code>0</code>)</code>
+	    value
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>reim</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    An object of kind {re:[], im:[]}
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        returns a new object {re:[], im:[]}
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='reduce'>
+      reduce
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/6b7fbb98731c41f847db11b0f860621d7ba9ee9e/src/xy/reduce.js#L14-L67'>
+      <span>src/xy/reduce.js</span>
       </a>
     
   </div>
@@ -963,7 +1187,7 @@
   <p>Reduce the number of points while keeping the same noise. Practical to
 display many spectra as SVG</p>
 
-    <div class='pre p1 fill-light mt0'>xyReduce(x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, y: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, from: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, to: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, nbPoints: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</div>
+    <div class='pre p1 fill-light mt0'>reduce(x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, y: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, from: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, to: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, nbPoints: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</div>
   
   
 
@@ -1036,6 +1260,181 @@ display many spectra as SVG</p>
 
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='rotate'>
+      rotate
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/6b7fbb98731c41f847db11b0f860621d7ba9ee9e/src/array/rotate.js#L10-L14'>
+      <span>src/array/rotate.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>This function performs a circular shift to a new array
+Positive values of shifts will shift to the right and negative values will do to the left</p>
+
+    <div class='pre p1 fill-light mt0'>rotate(array: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>, shift: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>array</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
+	    the array that will be rotated
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>shift</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>:
+        
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>rotate([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>],<span class="hljs-number">1</span>) -&gt; [<span class="hljs-number">4</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]</pre>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>rotate([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>],<span class="hljs-number">-1</span>) -&gt; [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">1</span>]</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='zerofilling'>
+      zeroFilling
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://git@github.com/:mljs/spectra-processing/blob/6b7fbb98731c41f847db11b0f860621d7ba9ee9e/src/xreim/zeroFilling.js#L7-L42'>
+      <span>src/xreim/zeroFilling.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>This function make a zero filling to re and im part.</p>
+
+    <div class='pre p1 fill-light mt0'>zeroFilling(data: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, zeroFilling: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): SD</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>data</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    Object of kind {x:[], re:[], im:[]}.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>zeroFilling</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    final number of points
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>SD</code>:
+        
+
+      
+    
   
 
   
