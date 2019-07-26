@@ -1,4 +1,4 @@
-export { XY } from './xy';
-export { XReIm } from './xreim';
-export { ReIm } from './reim';
-export { Array } from './array';
+export { XY } from './xy/index.js';
+export { XReIm } from './xreim/index.js';
+export { ReIm } from './reim/index.js';
+export { Array } from './array/index.js';
