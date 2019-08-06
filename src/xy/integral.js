@@ -9,7 +9,7 @@ import { check } from './check';
  * @param {number} [options.fromIndex=0] - First point for integration
  * @param {number} [options.to] - Last value for integration in the X scale
  * @param {number} [options.toIndex=x.length-1] - Last point for integration
- * @param {boolean} [options.reverse=false] - Last point for integration
+ * @param {boolean} [options.reverse=false] - Integrate from the larger value to the smallest value
  * @return {{x:[],y:[]}} A object with the integration function
  */
 
