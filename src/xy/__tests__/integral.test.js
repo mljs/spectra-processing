@@ -15,10 +15,17 @@ describe('integral', function () {
     expect(result).toStrictEqual({ x: [1, 2], y: [0, 1] });
   });
 
-  it('no from to with integral too large', function () {
+  it('integral too large', function () {
     let x = [1, 2, 3, 4];
     let y = [10, 20, 30, 40];
     let result = integral({ x, y }, { from: 2, to: 6 });
     expect(result).toStrictEqual({ x: [2, 3, 4], y: [0, 25, 60] });
+  });
+
+  it('no from to and inverse', function () {
+    let x = [1, 2, 3, 4];
+    let y = [10, 20, 30, 40];
+    let result = integral({ x, y }, { reverse: true });
+    expect(result).toStrictEqual({ x: [1, 2, 3, 4], y: [75, 60, 35, 0] });
   });
 });
