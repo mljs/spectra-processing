@@ -5,7 +5,7 @@ import { add } from './add';
 import { multiply } from './multiply';
 import { divide } from './divide';
 
-export const Array = {
+export const X = {
   findClosestIndex,
   rotate,
   subtract,

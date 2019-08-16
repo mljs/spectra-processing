@@ -1,4 +1,4 @@
-import { findClosestIndex } from '../array/findClosestIndex';
+import { findClosestIndex } from '../x/findClosestIndex';
 
 /**
  * Reduce the number of points while keeping the same noise. Practical to

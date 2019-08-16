@@ -1,4 +1,4 @@
-import { getFromToIndex } from '../array/getFromToIndex';
+import { getFromToIndex } from '../x/getFromToIndex';
 
 import { check } from './check';
 /**
