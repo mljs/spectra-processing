@@ -1,9 +1,15 @@
 import { findClosestIndex } from './findClosestIndex';
 import { rotate } from './rotate';
-import { sub } from './sub';
+import { subtract } from './subtract';
+import { add } from './add';
+import { multiply } from './multiply';
+import { divide } from './divide';
 
 export const Array = {
   findClosestIndex,
   rotate,
-  sub,
+  subtract,
+  add,
+  multiply,
+  divide
 };
