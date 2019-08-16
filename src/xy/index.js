@@ -3,6 +3,7 @@ import { integration } from './integration';
 import { integral } from './integral';
 import { maxY } from './maxY';
 import { maxYPoint } from './maxYPoint';
+import { minYPoint } from './minYPoint';
 import { reduce } from './reduce';
 
 export const XY = {
@@ -11,5 +12,6 @@ export const XY = {
   integration,
   maxY,
   maxYPoint,
+  minYPoint,
   reduce,
 };
