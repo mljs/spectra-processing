@@ -8,6 +8,8 @@ import { reduce } from './reduce';
 import { sortX } from './sortX';
 import { minClosestYPoint } from './minClosestYPoint';
 import { maxClosestYPoint } from './maxClosestYPoint';
+import { realMinYPoint } from './realMinYPoint';
+import { realMaxYPoint } from './realMaxYPoint';
 
 export const XY = {
   check,
@@ -20,4 +22,6 @@ export const XY = {
   sortX,
   minClosestYPoint,
   maxClosestYPoint,
+  realMaxYPoint,
+  realMinYPoint,
 };
