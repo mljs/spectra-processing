@@ -10,7 +10,7 @@ import { check } from './check';
  * @param {number} [options.to] - Last value for integration in the X scale
  * @param {number} [options.toIndex=x.length-1] - Last point for integration
  * @param {boolean} [options.reverse=false] - Integrate from the larger value to the smallest value
- * @return {{x:[],y:[]}} A object with the integration function
+ * @return {{x:[],y:[]}} An object with the integration function
  */
 
 export function integral(points = {}, options = {}) {
