@@ -1,3 +1,14 @@
+# [0.3.0](https://github.com/cheminfo/spectra-processing/compare/v0.2.0...v0.3.0) (2019-08-30)
+
+
+### Features
+
+* **x:** add getTargetIndex ([389c3be](https://github.com/cheminfo/spectra-processing/commit/389c3be))
+* **xy:** add maxClosestYPoint and minClosestYPoint ([85e36fe](https://github.com/cheminfo/spectra-processing/commit/85e36fe))
+* **xy:** add realMinYPoint and realMaxYPoint ([0c628e3](https://github.com/cheminfo/spectra-processing/commit/0c628e3))
+
+
+
 # [0.2.0](https://github.com/cheminfo/spectra-processing/compare/v0.1.5...v0.2.0) (2019-08-17)
 
 
