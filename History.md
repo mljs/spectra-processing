@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/cheminfo/spectra-processing/compare/v0.3.0...v0.4.0) (2019-10-01)
+
+
+### Features
+
+* add X.boxPlot ([3a1f0ea](https://github.com/cheminfo/spectra-processing/commit/3a1f0ea))
+
+
+
 # [0.3.0](https://github.com/cheminfo/spectra-processing/compare/v0.2.0...v0.3.0) (2019-08-30)
 
 
