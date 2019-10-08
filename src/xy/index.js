@@ -10,12 +10,14 @@ import { minClosestYPoint } from './minClosestYPoint';
 import { maxClosestYPoint } from './maxClosestYPoint';
 import { realMinYPoint } from './realMinYPoint';
 import { realMaxYPoint } from './realMaxYPoint';
+import { maximaY } from './maximaY';
 
 export const XY = {
   check,
   integral,
   integration,
   maxY,
+  maximaY,
   maxYPoint,
   minYPoint,
   reduce,
