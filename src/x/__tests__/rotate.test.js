@@ -1,6 +1,6 @@
 import { rotate } from '../rotate.js';
 
-describe('rotate', function () {
+describe('rotate', function() {
   it('test rotate positive', () => {
     let array = [10, 11, 12, 13, 14];
     expect(rotate(array, 0)).toStrictEqual([10, 11, 12, 13, 14]);

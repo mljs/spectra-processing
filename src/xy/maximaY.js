@@ -1,4 +1,3 @@
-
 import { check } from './check';
 /**
  * Finds all the max value in a zone
@@ -14,19 +13,14 @@ export function maximaY(points = {}) {
   const { x, y } = points;
   if (x.length < 3) return [];
   let maxima = [];
-  let startToBeEqual = false;
-  let startIndex = -1;
+  let startEqualIndex = -1;
   for (let i = 1; i < x.length - 1; i++) {
     if (y[i - 1] < y[i] && y[i + 1] < y[i]) {
       maxima.push({ x: x[i], y: y[i], index: i });
-    }
-    if (y[i - 1] < y[i] && y[i + 1] === y[i]) {
-      startToBeEqual = true;
-      startIndex = i;
-    }
-    if (y[i - 1] === y[i] && y[i + 1] < y[i]) {
-      startToBeEqual = false;
-      let index = ((i + startIndex) / 2) >> 0;
+    } else if (y[i - 1] < y[i] && y[i + 1] === y[i]) {
+      startEqualIndex = i;
+    } else if (y[i - 1] === y[i] && y[i + 1] < y[i]) {
+      let index = ((i + startEqualIndex) / 2) >> 0;
       maxima.push({ x: x[index], y: y[index], index });
     }
   }

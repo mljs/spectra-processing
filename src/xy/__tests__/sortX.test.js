@@ -1,6 +1,6 @@
 import { sortX } from '../sortX.js';
 
-describe('sortX', function () {
+describe('sortX', function() {
   it('test sortX do nothing', () => {
     let x = [0, 1, 2, 3];
     let y = [0, 1, 2, 3];

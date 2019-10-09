@@ -10,7 +10,9 @@ export function multiply(array1, array2) {
   let isConstant = false;
   let constant;
   if (Array.isArray(array2)) {
-    if (array1.length !== array2.length) throw new Error('sub: size of array1 and array2 must be identical');
+    if (array1.length !== array2.length) {
+      throw new Error('sub: size of array1 and array2 must be identical');
+    }
   } else {
     isConstant = true;
     constant = Number(array2);
@@ -29,4 +31,3 @@ export function multiply(array1, array2) {
 
   return array3;
 }
-

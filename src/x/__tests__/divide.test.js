@@ -1,6 +1,6 @@
 import { divide } from '../divide.js';
 
-describe('divide', function () {
+describe('divide', function() {
   it('test divide of 2 vectors', () => {
     let array1 = [10, 15, 20, 25, 30];
     let array2 = [2, 3, 4, 5, 6];

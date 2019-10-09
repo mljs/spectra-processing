@@ -1,6 +1,6 @@
 import { zeroFilling } from '../zeroFilling.js';
 
-describe('zeroFilling', function () {
+describe('zeroFilling', function() {
   it('test zeroFilling over', () => {
     let x = [0, 0.1, 0.2, 0.3];
     let re = [0, 1, 2, 3];
@@ -14,7 +14,7 @@ describe('zeroFilling', function () {
     expect({ x: newX, re: newRe, im: newIm }).toStrictEqual({
       x: [0, 0.1, 0.2, 0.3, 0.4, 0.5],
       re: [0, 1, 2, 3, 0, 0],
-      im: [4, 5, 6, 7, 0, 0]
+      im: [4, 5, 6, 7, 0, 0],
     });
   });
 
@@ -30,7 +30,7 @@ describe('zeroFilling', function () {
     expect({ x: newX, re: newRe, im: newIm }).toStrictEqual({
       x: [0, 0.1, 0.2, 0.3],
       re: [0, 1, 2, 3],
-      im: [4, 5, 6, 7]
+      im: [4, 5, 6, 7],
     });
   });
 
@@ -46,7 +46,7 @@ describe('zeroFilling', function () {
     expect({ x: newX, re: newRe, im: newIm }).toStrictEqual({
       x: [0, 0.1],
       re: [0, 1],
-      im: [4, 5]
+      im: [4, 5],
     });
   });
 });

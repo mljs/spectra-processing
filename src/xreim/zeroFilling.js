@@ -12,7 +12,7 @@ export function zeroFilling(data, zeroFilling) {
     return {
       x: data.x.slice(0, zeroFilling),
       re: data.re.slice(0, zeroFilling),
-      im: data.im.slice(0, zeroFilling)
+      im: data.im.slice(0, zeroFilling),
     };
   }
 
@@ -37,7 +37,6 @@ export function zeroFilling(data, zeroFilling) {
   return {
     x: newX,
     re: newRE,
-    im: newIM
+    im: newIM,
   };
 }
-
