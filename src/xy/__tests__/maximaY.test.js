@@ -31,7 +31,7 @@ describe('maximaY', function() {
     let y = [1, 2, 3, 3, 3, 3, 3, 2, 1, 2, 2, 2, 2, 1];
     expect(maximaY({ x, y }, { from: 0, to: 1 })).toStrictEqual([
       { x: 5, y: 3, index: 4 },
-      { x: 5, y: 3, index: 4 },
+      { x: 11, y: 2, index: 10 },
     ]);
   });
 });

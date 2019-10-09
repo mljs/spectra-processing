@@ -11,6 +11,7 @@ import { maxClosestYPoint } from './maxClosestYPoint';
 import { realMinYPoint } from './realMinYPoint';
 import { realMaxYPoint } from './realMaxYPoint';
 import { maximaY } from './maximaY';
+import { minimaY } from './minimaY';
 
 export const XY = {
   check,
@@ -19,6 +20,7 @@ export const XY = {
   maxY,
   maximaY,
   maxYPoint,
+  minimaY,
   minYPoint,
   reduce,
   sortX,
