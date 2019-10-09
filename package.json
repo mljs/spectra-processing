@@ -9,7 +9,7 @@
     "src"
   ],
   "scripts": {
-    "build": "cheminfo-build --root SpectraProcessing",
+    "build": "rollup -c && cheminfo build --root SpectraProcessor --no-uglify",
     "eslint": "eslint src",
     "eslint-fix": "npm run eslint -- --fix",
     "compile": "rollup -c",
