@@ -6,6 +6,7 @@ import { getTargetIndex } from './getTargetIndex';
 import { multiply } from './multiply';
 import { rotate } from './rotate';
 import { subtract } from './subtract';
+import { correlation } from './correlation';
 
 export const X = {
   add,
@@ -16,4 +17,5 @@ export const X = {
   multiply,
   rotate,
   subtract,
+  correlation,
 };
