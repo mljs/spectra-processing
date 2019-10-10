@@ -12,6 +12,7 @@ import { realMinYPoint } from './realMinYPoint';
 import { realMaxYPoint } from './realMaxYPoint';
 import { maximaY } from './maximaY';
 import { minimaY } from './minimaY';
+import { peakInfo } from './peakInfo';
 
 export const XY = {
   check,
@@ -28,4 +29,5 @@ export const XY = {
   maxClosestYPoint,
   realMaxYPoint,
   realMinYPoint,
+  peakInfo,
 };

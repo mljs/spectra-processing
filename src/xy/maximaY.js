@@ -1,7 +1,8 @@
 import { check } from './check';
 /**
  * Finds all the max values
- * If the values are equal the middle will be the peak!
+ * If the values are equal the middle
+ * of the equal part will be the position of the signal!
  *
  * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
  * @return {Array} Array of points
