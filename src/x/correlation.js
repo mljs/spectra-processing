@@ -10,7 +10,6 @@
  */
 export function correlation(A, B) {
   let n = A.length;
-  let product = 0;
   let sumA = 0;
   let sumA2 = 0;
   let sumB = 0;
