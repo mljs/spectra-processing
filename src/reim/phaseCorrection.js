@@ -1,16 +1,16 @@
 /**
  * Phase correction filter
  * @param {object} reim - An object of kind {re:[], im:[]}
- * @param {number} [phi0 = 0] - value
- * @param {number} [phi1 = 0] - value
+ * @param {number} [phi0 = 0] - Angle in radians for zero order phase correction
+ * @param {number} [phi1 = 0] - Angle in radians for first order phase correction
  * @return {object} returns a new object {re:[], im:[]}
  */
 export function phaseCorrection(data, phi0, phi1) {
   phi0 = Number.isFinite(phi0) ? phi0 : 0;
   phi1 = Number.isFinite(phi1) ? phi1 : 0;
 
-  const re = data.re.slice(0);
-  const im = data.im.slice(0);
+  const re = data.re;
+  const im = data.im;
   const length = data.re.length;
 
   const delta = phi1 / length;
