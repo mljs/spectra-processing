@@ -11,6 +11,15 @@ describe('test reduce', () => {
     expect(reduce(x, y, { nbPoints: 20 })).toStrictEqual(result);
   });
 
+  it('Over sized', () => {
+    let x = [1, 2];
+    let y = [2, 3];
+    expect(reduce(x, y, { nbPoints: 10 })).toStrictEqual({
+      x: [1, 2],
+      y: [2, 3],
+    });
+  });
+
   it('Too large', () => {
     let result = {
       x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
