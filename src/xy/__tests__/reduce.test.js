@@ -12,9 +12,9 @@ describe('test reduce', () => {
   });
 
   it('Over sized', () => {
-    let x = [1, 2];
-    let y = [2, 3];
-    expect(reduce(x, y, { nbPoints: 10 })).toStrictEqual({
+    let x2 = [1, 2];
+    let y2 = [2, 3];
+    expect(reduce(x2, y2, { nbPoints: 10 })).toStrictEqual({
       x: [1, 2],
       y: [2, 3],
     });

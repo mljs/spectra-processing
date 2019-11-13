@@ -1,7 +1,7 @@
 import { peakInfo } from '../peakInfo.js';
 
-describe('peakInfo', function () {
-  it('positive peak', function () {
+describe('peakInfo', function() {
+  it('positive peak', function() {
     let x = [0, 1, 2, 3, 4, 5, 6];
     let y = [1, 2, 3, 5, 3, 2, 1];
     let result = peakInfo({ x, y }, { targetIndex: 3 });
@@ -14,7 +14,7 @@ describe('peakInfo', function () {
       width: 2,
     });
   });
-  it('negative peak', function () {
+  it('negative peak', function() {
     let x = [0, 1, 2, 3, 4, 5, 6];
     let y = [-1, -2, -3, -5, -3, -2, -1];
     let result = peakInfo({ x, y }, { targetIndex: 3 });

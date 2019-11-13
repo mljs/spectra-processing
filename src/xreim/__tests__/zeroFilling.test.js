@@ -1,6 +1,6 @@
 import { zeroFilling } from '../zeroFilling.js';
 
-describe('zeroFilling', function () {
+describe('zeroFilling', function() {
   it('test zeroFilling over', () => {
     let x = [0, 0.1, 0.2, 0.3];
     let re = [0, 1, 2, 3];

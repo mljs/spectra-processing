@@ -3,5 +3,5 @@ import { phaseCorrection } from './phaseCorrection';
 
 export const ReIm = {
   absolute,
-  phaseCorrection
+  phaseCorrection,
 };

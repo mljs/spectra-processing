@@ -1,6 +1,6 @@
 import { boxPlot } from '../boxPlot.js';
 
-describe('boxPlot', function () {
+describe('boxPlot', function() {
   it('test boxPlot even', () => {
     let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     expect(boxPlot(array)).toStrictEqual({

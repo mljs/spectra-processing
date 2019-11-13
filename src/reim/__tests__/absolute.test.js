@@ -1,6 +1,6 @@
 import { absolute } from '../absolute.js';
 
-describe('absolute', function () {
+describe('absolute', function() {
   it('test absolute', () => {
     let re = [0, 3, 6];
     let im = [0, 4, 8];

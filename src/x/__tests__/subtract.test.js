@@ -1,6 +1,6 @@
 import { subtract } from '../subtract.js';
 
-describe('subtract', function () {
+describe('subtract', function() {
   it('test subtract of 2 vectors', () => {
     let array1 = [10, 11, 12, 13, 14];
     let array2 = [5, 4, 3, 2, 1];

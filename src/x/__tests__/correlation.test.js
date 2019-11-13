@@ -1,8 +1,8 @@
 import { correlation } from '../correlation.js';
 
-describe('correlation', function () {
+describe('correlation', function() {
   // wolfram alpha: correlation([1,2,3],[4,5,6])
-  it(' 2 correlated vectors', () => {
+  it('2 correlated vectors', () => {
     let array1 = [1, 2, 3];
     let array2 = [4, 5, 6];
     expect(correlation(array1, array2)).toBeCloseTo(1, 6);
