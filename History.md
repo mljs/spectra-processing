@@ -1,3 +1,12 @@
+## [0.6.1](https://github.com/cheminfo/spectra-processing/compare/v0.6.0...v0.6.1) (2019-11-13)
+
+
+### Features
+
+* add index in minYPiont and maxYPoint ([0b5e135](https://github.com/cheminfo/spectra-processing/commit/0b5e1350229d259489ff652acd0176168d664b90))
+
+
+
 # [0.6.0](https://github.com/cheminfo/spectra-processing/compare/v0.4.0...v0.6.0) (2019-11-13)
 
 
