@@ -1,3 +1,16 @@
+# [0.6.0](https://github.com/cheminfo/spectra-processing/compare/v0.4.0...v0.6.0) (2019-11-13)
+
+
+### Features
+
+* add correlation ([dd6569c](https://github.com/cheminfo/spectra-processing/commit/dd6569c973efc17d437b31f338219c3ecb1da0f8))
+* add maximaY ([e2cfa9b](https://github.com/cheminfo/spectra-processing/commit/e2cfa9b9c05f1a62975a322613b15d032f09a481))
+* add peakInfo ([c76bfe6](https://github.com/cheminfo/spectra-processing/commit/c76bfe6a526e26cc0231d0eddcf378a65b7c9c7e))
+* add XY minimaY and maximaY ([a2cff7f](https://github.com/cheminfo/spectra-processing/commit/a2cff7f30e42e33e38c658758c78eb87d4fdcaf7))
+* invert from / to if required ([d99ef8e](https://github.com/cheminfo/spectra-processing/commit/d99ef8e0dbc044eae46ee302007d8d497e0589c9))
+
+
+
 # [0.4.0](https://github.com/cheminfo/spectra-processing/compare/v0.3.0...v0.4.0) (2019-10-01)
 
 
