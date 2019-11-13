@@ -15,4 +15,13 @@ describe('minYPoint', function () {
       y: 1,
     });
   });
+
+  it('with from to inverted', function () {
+    let x = [0, 1, 2, 3];
+    let y = [2, 2, 1, 3];
+    expect(minYPoint({ x, y }, { from: 3, to: 0 })).toStrictEqual({
+      x: 2,
+      y: 1,
+    });
+  });
 });

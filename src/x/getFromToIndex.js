@@ -27,5 +27,6 @@ export function getFromToIndex(x, options = {}) {
       toIndex = x.length - 1;
     }
   }
+  if (fromIndex > toIndex) [fromIndex, toIndex] = [toIndex, fromIndex];
   return { fromIndex, toIndex };
 }
