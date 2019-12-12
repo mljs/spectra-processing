@@ -5,7 +5,7 @@ import { maxY } from './maxY';
 import { maxYPoint } from './maxYPoint';
 import { minYPoint } from './minYPoint';
 import { reduce } from './reduce';
-import { sortX } from './sortX';
+import { growingX } from './growingX';
 import { minClosestYPoint } from './minClosestYPoint';
 import { maxClosestYPoint } from './maxClosestYPoint';
 import { realMinYPoint } from './realMinYPoint';
@@ -24,7 +24,7 @@ export const XY = {
   minimaY,
   minYPoint,
   reduce,
-  sortX,
+  growingX,
   minClosestYPoint,
   maxClosestYPoint,
   realMaxYPoint,
