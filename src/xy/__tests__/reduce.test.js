@@ -116,4 +116,25 @@ describe('test reduce', () => {
       20,
     ]);
   });
+
+  it('Check optimization', () => {
+    let x = [];
+    let y = [];
+    for (let i = 0; i < 11; i++) {
+      x.push(i);
+      y.push(i);
+    }
+    let result = reduce(x, y, { nbPoints: 5, optimize: true });
+    expect(result.x).toStrictEqual([0, 5, 10]);
+    expect(result.y).toStrictEqual([0, 5, 10]);
+  });
+
+  it('Part rounded far 2 with optimization', () => {
+    let result = reduce(x, y, { nbPoints: 5, optimize: true });
+
+    expect(result).toStrictEqual({
+      x: [0, 5, 10],
+      y: [0, 5, 0],
+    });
+  });
 });

@@ -1,18 +1,24 @@
 import { findClosestIndex } from '../x/findClosestIndex';
 
 /**
- * Reduce the number of points while keeping the same noise. Practical to
+ * Reduce the number of points while keeping visually the same noise. Practical to
  * display many spectra as SVG
  * @param {array} x
  * @param {array} y
  * @param {object} [options={}]
- * @param {number} [from=x[0]]
- * @param {number} [to=x[x.length-1]]
- * @param {number} [nbPoints=4001] Number of points
+ * @param {number} [options.from=x[0]]
+ * @param {number} [options.to=x[x.length-1]]
+ * @param {number} [options.nbPoints=4001] Number of points
+ * @param {number} [options.optimize=false] If optimize we may have less than nbPoints at the end
  */
 
 export function reduce(x, y, options = {}) {
-  let { from = x[0], to = x[x.length - 1], nbPoints = 4000 } = options;
+  let {
+    from = x[0],
+    to = x[x.length - 1],
+    nbPoints = 4001,
+    optimize = false,
+  } = options;
 
   let fromIndex = findClosestIndex(x, from);
   let toIndex = findClosestIndex(x, to);
@@ -49,12 +55,25 @@ export function reduce(x, y, options = {}) {
       if (y[i] < minY) minY = y[i];
       if (y[i] > maxY) maxY = y[i];
     }
-
     if (x[i] >= currentX || i === toIndex) {
-      newX.push(currentX - slot / 2);
-      newY.push(minY);
+      if (optimize) {
+        if (minY > newY[newX.length - 1]) {
+          // we can skip the intermediate value
+        } else if (maxY < newY[newX.length - 1]) {
+          // we can skip the intermediate value
+          maxY = minY;
+        } else {
+          newX.push(currentX - slot / 2);
+          newY.push(minY);
+        }
+      } else {
+        newX.push(currentX - slot / 2);
+        newY.push(minY);
+      }
+
       newX.push(currentX);
       newY.push(maxY);
+
       currentX += slot;
       first = true;
     }
