@@ -1,10 +1,10 @@
-import { sortX } from '../sortX.js';
+import { growingX } from '../growingX.js';
 
-describe('sortX', function() {
-  it('test sortX do nothing', () => {
+describe('growingX', function() {
+  it('test growingX do nothing', () => {
     let x = [0, 1, 2, 3];
     let y = [0, 1, 2, 3];
-    let result = sortX({ x, y });
+    let result = growingX({ x, y });
 
     expect(result).toStrictEqual({
       x: [0, 1, 2, 3],
@@ -12,10 +12,10 @@ describe('sortX', function() {
     });
   });
 
-  it('test sortX reverse', () => {
+  it('test growingX reverse', () => {
     let x = [3, 2, 1, 0];
     let y = [0, 1, 2, 3];
-    let result = sortX({ x, y });
+    let result = growingX({ x, y });
 
     expect(result).toStrictEqual({
       x: [0, 1, 2, 3],

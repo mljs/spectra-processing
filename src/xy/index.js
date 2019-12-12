@@ -13,6 +13,7 @@ import { realMaxYPoint } from './realMaxYPoint';
 import { maximaY } from './maximaY';
 import { minimaY } from './minimaY';
 import { peakInfo } from './peakInfo';
+import { toXYObject } from './toXYObject';
 
 export const XY = {
   check,
@@ -30,4 +31,5 @@ export const XY = {
   realMaxYPoint,
   realMinYPoint,
   peakInfo,
+  toXYObject,
 };
