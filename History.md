@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/cheminfo/spectra-processing/compare/v1.1.0...v1.2.0) (2019-12-13)
+
+
+### Features
+
+* add XYObject.slotX ([deb03c1](https://github.com/cheminfo/spectra-processing/commit/deb03c1e8099342b0358c2231531de2f290967ce))
+
+
+
 # [1.1.0](https://github.com/cheminfo/spectra-processing/compare/v0.6.1...v1.1.0) (2019-12-13)
 
 
