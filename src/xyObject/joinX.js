@@ -2,10 +2,10 @@
  *
  * @param {array} [data] array of growing points {x,y}
  * @param {object} [options={}]
- * @param {object} [threshold=Number.EPSILON] limit to join the data
+ * @param {object} [xError=Number.EPSILON] limit to join the data
  */
 export function joinX(data, options = {}) {
-  const { threshold = Number.EPSILON } = options;
+  const { xError = Number.EPSILON } = options;
 
   // when we join we will use the center of mass
   let result = [];
@@ -14,7 +14,7 @@ export function joinX(data, options = {}) {
     y: 0,
   };
   for (let item of data) {
-    if (item.x - current.x <= threshold) {
+    if (item.x - current.x <= xError) {
       // weighted sum
       current.x =
         (item.y / (current.y + item.y)) * (item.x - current.x) + current.x;
