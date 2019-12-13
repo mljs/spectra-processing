@@ -1,6 +1,6 @@
 import { add } from './add';
 import { boxPlot } from './boxPlot';
-import { correlation } from './boxPlcorrelationot';
+import { correlation } from './correlation';
 import { divide } from './divide';
 import { findClosestIndex } from './findClosestIndex';
 import { getFromToIndex } from './getFromToIndex';
