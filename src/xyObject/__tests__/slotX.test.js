@@ -1,6 +1,7 @@
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
 import { slotX } from '../slotX';
+
 expect.extend({ toMatchCloseTo });
 
 test('slotX', () => {
