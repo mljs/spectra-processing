@@ -1,3 +1,19 @@
+# [1.1.0](https://github.com/cheminfo/spectra-processing/compare/v0.6.1...v1.1.0) (2019-12-13)
+
+
+### Bug Fixes
+
+* export X.getFromToIndex ([39e16c3](https://github.com/cheminfo/spectra-processing/commit/39e16c346031524676b2ef76f94df96ffd2c601a))
+
+
+### Features
+
+* add optimize in reduce ([b00a6ce](https://github.com/cheminfo/spectra-processing/commit/b00a6cea4d6f263b431f319b405d52bf37ac02df))
+* add xyObject ([dcd8c44](https://github.com/cheminfo/spectra-processing/commit/dcd8c445a2909300204e5b1b61d6fcdc6ab0e876))
+* export X.findClosestIndex ([f5321b3](https://github.com/cheminfo/spectra-processing/commit/f5321b30652003eb97ac72d38cbaf4d9814ce168))
+
+
+
 ## [0.6.1](https://github.com/cheminfo/spectra-processing/compare/v0.6.0...v0.6.1) (2019-11-13)
 
 
