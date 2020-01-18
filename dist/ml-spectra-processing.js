@@ -1,6 +1,6 @@
 /**
  * ml-spectra-processing - Various method to process spectra
- * @version v0.5.0
+ * @version v1.2.1
  * @link https://github.com/cheminfo/spectra-processing#readme
  * @license MIT
  */
@@ -8,7 +8,7 @@
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
 	(global = global || self, factory(global.SpectraProcessing = {}));
-}(this, function (exports) { 'use strict';
+}(this, (function (exports) { 'use strict';
 
 	function unwrapExports (x) {
 		return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -117,6 +117,7 @@
 	      }
 	    }
 
+	    if (fromIndex > toIndex) [fromIndex, toIndex] = [toIndex, fromIndex];
 	    return {
 	      fromIndex,
 	      toIndex
@@ -276,13 +277,15 @@
 	    } = getFromToIndex(x, options);
 	    let current = {
 	      x: x[fromIndex],
-	      y: y[fromIndex]
+	      y: y[fromIndex],
+	      index: fromIndex
 	    };
 
 	    for (let i = fromIndex; i <= toIndex; i++) {
 	      if (y[i] > current.y) current = {
 	        x: x[i],
-	        y: y[i]
+	        y: y[i],
+	        index: i
 	      };
 	    }
 
@@ -315,27 +318,30 @@
 	    } = getFromToIndex(x, options);
 	    let current = {
 	      x: x[fromIndex],
-	      y: y[fromIndex]
+	      y: y[fromIndex],
+	      index: fromIndex
 	    };
 
 	    for (let i = fromIndex; i <= toIndex; i++) {
 	      if (y[i] < current.y) current = {
 	        x: x[i],
-	        y: y[i]
+	        y: y[i],
+	        index: i
 	      };
 	    }
 
 	    return current;
 	  }
 	  /**
-	   * Reduce the number of points while keeping the same noise. Practical to
+	   * Reduce the number of points while keeping visually the same noise. Practical to
 	   * display many spectra as SVG
 	   * @param {array} x
 	   * @param {array} y
 	   * @param {object} [options={}]
-	   * @param {number} [from=x[0]]
-	   * @param {number} [to=x[x.length-1]]
-	   * @param {number} [nbPoints=4001] Number of points
+	   * @param {number} [options.from=x[0]]
+	   * @param {number} [options.to=x[x.length-1]]
+	   * @param {number} [options.nbPoints=4001] Number of points
+	   * @param {number} [options.optimize=false] If optimize we may have less than nbPoints at the end
 	   */
 
 
@@ -344,7 +350,8 @@
 	    let {
 	      from = x[0],
 	      to = x[x.length - 1],
-	      nbPoints = 4000
+	      nbPoints = 4001,
+	      optimize = false
 	    } = options;
 	    let fromIndex = findClosestIndex(x, from);
 	    let toIndex = findClosestIndex(x, to);
@@ -384,8 +391,19 @@
 	      }
 
 	      if (x[i] >= currentX || i === toIndex) {
-	        newX.push(currentX - slot / 2);
-	        newY.push(minY);
+	        if (optimize) {
+	          if (minY > newY[newX.length - 1]) ;else if (maxY < newY[newX.length - 1]) {
+	            // we can skip the intermediate value
+	            maxY = minY;
+	          } else {
+	            newX.push(currentX - slot / 2);
+	            newY.push(minY);
+	          }
+	        } else {
+	          newX.push(currentX - slot / 2);
+	          newY.push(minY);
+	        }
+
 	        newX.push(currentX);
 	        newY.push(maxY);
 	        currentX += slot;
@@ -401,13 +419,14 @@
 	    };
 	  }
 	  /**
-	   * Sort object of array, x has to be monotone.
-	   * @param {object} data Object of kind {x:[], re:[], im:[]}.
+	   * Order object of array, x has to be monotone.
+	   * Ensure x is growing
+	   * @param {object} data Object of kind {x:[], y:[]}.
 	   * @return {SD}
 	   */
 
 
-	  function sortX(data) {
+	  function growingX(data) {
 	    const {
 	      x,
 	      y
@@ -788,6 +807,29 @@
 	      width: Math.abs(before.x - after.x)
 	    };
 	  }
+	  /**
+	   *
+	   * @param {array} [data] array of points {x,y}
+	   */
+
+
+	  function toXYObject(points) {
+	    check(points);
+	    const {
+	      x,
+	      y
+	    } = points;
+	    let data = [];
+
+	    for (let i = 0; i < x.length; i++) {
+	      data.push({
+	        x: x[i],
+	        y: y[i]
+	      });
+	    }
+
+	    return data;
+	  }
 
 	  const XY = {
 	    check,
@@ -799,12 +841,13 @@
 	    minimaY,
 	    minYPoint,
 	    reduce,
-	    sortX,
+	    growingX,
 	    minClosestYPoint,
 	    maxClosestYPoint,
 	    realMaxYPoint,
 	    realMinYPoint,
-	    peakInfo
+	    peakInfo,
+	    toXYObject
 	  };
 	  /**
 	   * This function make a zero filling to re and im part.
@@ -857,7 +900,7 @@
 	   */
 
 
-	  function sortX$1(data) {
+	  function sortX(data) {
 	    const {
 	      x,
 	      re,
@@ -878,7 +921,7 @@
 
 	  const XReIm = {
 	    zeroFilling,
-	    sortX: sortX$1
+	    sortX
 	  };
 	  /**
 	   * Calculate absolute value of a spectrum
@@ -901,8 +944,8 @@
 	  /**
 	   * Phase correction filter
 	   * @param {object} reim - An object of kind {re:[], im:[]}
-	   * @param {number} [phi0 = 0] - value
-	   * @param {number} [phi1 = 0] - value
+	   * @param {number} [phi0 = 0] - Angle in radians for zero order phase correction
+	   * @param {number} [phi1 = 0] - Angle in radians for first order phase correction
 	   * @return {object} returns a new object {re:[], im:[]}
 	   */
 
@@ -910,8 +953,8 @@
 	  function phaseCorrection(data, phi0, phi1) {
 	    phi0 = Number.isFinite(phi0) ? phi0 : 0;
 	    phi1 = Number.isFinite(phi1) ? phi1 : 0;
-	    const re = data.re.slice(0);
-	    const im = data.im.slice(0);
+	    const re = data.re;
+	    const im = data.im;
 	    const length = data.re.length;
 	    const delta = phi1 / length;
 	    const alpha = 2 * Math.pow(Math.sin(delta / 2), 2);
@@ -1021,6 +1064,38 @@
 	    }
 
 	    return info;
+	  }
+	  /**
+	  
+	  /**
+	   * Calculates the correlation between 2 vectors
+	   * https://en.wikipedia.org/wiki/Correlation_and_dependence
+	   *
+	   * @param {Array} [A] - the array that will be rotated
+	   * @param {Array} [B]
+	   * @return {Array}
+	   */
+
+
+	  function correlation(A, B) {
+	    let n = A.length;
+	    let sumA = 0;
+	    let sumA2 = 0;
+	    let sumB = 0;
+	    let sumB2 = 0;
+	    let sumAB = 0;
+
+	    for (let i = 0; i < n; i++) {
+	      let a = A[i];
+	      let b = B[i];
+	      sumA += a;
+	      sumA2 += a ** 2;
+	      sumB += b;
+	      sumB2 += b ** 2;
+	      sumAB += a * b;
+	    }
+
+	    return (n * sumAB - sumA * sumB) / (Math.sqrt(n * sumA2 - sumA ** 2) * Math.sqrt(n * sumB2 - sumB ** 2));
 	  }
 	  /**
 	  
@@ -1147,68 +1222,140 @@
 
 	    return array3;
 	  }
-	  /**
-	  
-	  /**
-	   * Calculates the correlation between 2 vectors
-	   * https://en.wikipedia.org/wiki/Correlation_and_dependence
-	   *
-	   * @param {Array} [A] - the array that will be rotated
-	   * @param {Array} [B]
-	   * @return {Array}
-	   */
-
-
-	  function correlation(A, B) {
-	    let n = A.length;
-	    let sumA = 0;
-	    let sumA2 = 0;
-	    let sumB = 0;
-	    let sumB2 = 0;
-	    let sumAB = 0;
-
-	    for (let i = 0; i < n; i++) {
-	      let a = A[i];
-	      let b = B[i];
-	      sumA += a;
-	      sumA2 += a ** 2;
-	      sumB += b;
-	      sumB2 += b ** 2;
-	      sumAB += a * b;
-	    }
-
-	    return (n * sumAB - sumA * sumB) / (Math.sqrt(n * sumA2 - sumA ** 2) * Math.sqrt(n * sumB2 - sumB ** 2));
-	  }
 
 	  const X = {
 	    add,
 	    boxPlot,
+	    correlation,
 	    divide,
 	    findClosestIndex,
+	    getFromToIndex,
 	    getTargetIndex,
 	    multiply,
 	    rotate,
-	    subtract,
-	    correlation
+	    subtract
+	  };
+	  /**
+	   *
+	   * @param {array} [data] array of growing points {x,y}
+	   * @param {object} [options={}]
+	   * @param {object} [xError=Number.EPSILON] limit to join the data
+	   */
+
+	  function joinX(data) {
+	    let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	    const {
+	      xError = Number.EPSILON
+	    } = options; // when we join we will use the center of mass
+
+	    let result = [];
+	    let current = {
+	      x: Number.MIN_SAFE_INTEGER,
+	      y: 0
+	    };
+
+	    for (let item of data) {
+	      if (item.x - current.x <= xError) {
+	        // weighted sum
+	        current.x = item.y / (current.y + item.y) * (item.x - current.x) + current.x;
+	        current.y += item.y;
+	      } else {
+	        current = {
+	          x: item.x,
+	          y: item.y
+	        };
+	        result.push(current);
+	      }
+	    }
+
+	    return result;
+	  }
+	  /**
+	   *
+	   * @param {array} [data] array of growing points {x,y}
+	   * @param {object} [options={}]
+	   * @param {object} [slotWidth=1] limit to join the data
+	   */
+
+
+	  function slotX(data) {
+	    let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	    const {
+	      slotWidth = 1
+	    } = options;
+	    const halfSlot = slotWidth / 2; // when we join we will use the center of mass
+
+	    let result = [];
+	    let current = {
+	      x: Number.MIN_VALUE,
+	      y: 0
+	    };
+
+	    for (let item of data) {
+	      let slot = item.x - (item.x + halfSlot) % slotWidth + halfSlot;
+
+	      if (Math.abs(current.x - slot) > Number.EPSILON) {
+	        current = {
+	          x: slot,
+	          y: 0
+	        };
+	        result.push(current);
+	      }
+
+	      current.y += item.y;
+	    }
+
+	    return result;
+	  }
+	  /**
+	   * Sorts an array of points
+	   * @param {array} [data] array of points {x,y}
+	   */
+
+
+	  function sortX$1(data) {
+	    return data.sort((a, b) => a.x - b.x);
+	  }
+	  /**
+	   *
+	   * @param {array} [data] array of points {x,y}
+	   */
+
+
+	  function toXY(data) {
+	    return {
+	      x: data.map(entry => entry.x),
+	      y: data.map(entry => entry.y)
+	    };
+	  }
+
+	  const XYObject = {
+	    joinX,
+	    slotX,
+	    sortX: sortX$1,
+	    toXY
 	  };
 	  exports.ReIm = ReIm;
 	  exports.X = X;
 	  exports.XReIm = XReIm;
 	  exports.XY = XY;
+	  exports.XYObject = XYObject;
 	});
 	var index = unwrapExports(lib);
 	var lib_1 = lib.ReIm;
 	var lib_2 = lib.X;
 	var lib_3 = lib.XReIm;
 	var lib_4 = lib.XY;
+	var lib_5 = lib.XYObject;
 
 	exports.ReIm = lib_1;
 	exports.X = lib_2;
 	exports.XReIm = lib_3;
 	exports.XY = lib_4;
+	exports.XYObject = lib_5;
 	exports.default = index;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));
 //# sourceMappingURL=ml-spectra-processing.js.map
