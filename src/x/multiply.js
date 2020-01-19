@@ -4,7 +4,7 @@
  * This function multiply the first array by the second array or a constant value to each element of the first array
  * @param {Array} array1 - the array that will be rotated
  * @param {Array|Number} array2
- * @return {Array}
+ * @return {Float64Array}
  */
 export function multiply(array1, array2) {
   let isConstant = false;
@@ -18,7 +18,7 @@ export function multiply(array1, array2) {
     constant = Number(array2);
   }
 
-  let array3 = new Array(array1.length);
+  let array3 = new Float64Array(array1.length);
   if (isConstant) {
     for (let i = 0; i < array1.length; i++) {
       array3[i] = array1[i] * constant;
