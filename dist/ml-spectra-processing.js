@@ -1,6 +1,6 @@
 /**
  * ml-spectra-processing - Various method to process spectra
- * @version v1.3.0
+ * @version v1.3.1
  * @link https://github.com/cheminfo/spectra-processing#readme
  * @license MIT
  */
@@ -1068,6 +1068,114 @@
 	  /**
 	  
 	  /**
+	   * This function multiply the first array by the second array or a constant value to each element of the first array
+	   * @param {Array} array1 - the array that will be rotated
+	   * @param {Array|Number} array2
+	   * @return {Float64Array}
+	   */
+
+
+	  function multiply(array1, array2) {
+	    let isConstant = false;
+	    let constant;
+
+	    if (Array.isArray(array2)) {
+	      if (array1.length !== array2.length) {
+	        throw new Error('sub: size of array1 and array2 must be identical');
+	      }
+	    } else {
+	      isConstant = true;
+	      constant = Number(array2);
+	    }
+
+	    let array3 = new Float64Array(array1.length);
+
+	    if (isConstant) {
+	      for (let i = 0; i < array1.length; i++) {
+	        array3[i] = array1[i] * constant;
+	      }
+	    } else {
+	      for (let i = 0; i < array1.length; i++) {
+	        array3[i] = array1[i] * array2[i];
+	      }
+	    }
+
+	    return array3;
+	  }
+
+	  function dotProduct(A, B) {
+	    let g = multiply(A, B);
+	    let result = 0;
+
+	    for (let i = 0; i < A.length; i++) {
+	      result += g[i];
+	    }
+
+	    return result;
+	  }
+	  /**
+	   * Calculates the cross-correlation between 2 vectors
+	   * @param {Array} [A] - the array that will be fixed
+	   * @param {Array} [B]
+	   * @param {object} [options={}]
+	   * @param {number} [options.tau = 1]
+	   * @param {number} [options.lag = A.length - 1]
+	   */
+
+
+	  function crossCorrelation(A, B) {
+	    let options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+	    let {
+	      tau = 1,
+	      lag = A.length - 1
+	    } = options;
+	    let result = new Float64Array(1 + 2 * lag / tau);
+
+	    if (A.length === B.length) {
+	      let n = B.length;
+	      let g = new Float64Array(2 * n);
+	      let q = new Float64Array(2 * n);
+
+	      for (let i = 0; i < n; i++) {
+	        q[n + i] = B[i];
+	      }
+
+	      for (let i = n * 2 - (tau - 1); i > 0; i -= tau) {
+	        let k = 0;
+
+	        for (let j = i; j < n * 2; j++) {
+	          g[k] = q[j];
+	          k++;
+	        }
+
+	        let w = [];
+
+	        for (let l = 0; l < n; l++) {
+	          w[l] = g[l];
+	        }
+
+	        result[(k - (n - lag)) / tau] = dotProduct(A, w);
+	      }
+	    }
+
+	    return result;
+	  }
+	  /**
+	   * Calculates the auto-correlation of a vector
+	   * @param {Array} [A] - the array that will be fixed
+	   * @param {object} [options={}]
+	   * @param {number} [options.tau = 1]
+	   * @param {number} [options.lag = A.length - 1]
+	   */
+
+
+	  function autoCorrelation(A) {
+	    let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	    return crossCorrelation(A, A, options);
+	  }
+	  /**
+	  
+	  /**
 	   * Calculates the correlation between 2 vectors
 	   * https://en.wikipedia.org/wiki/Correlation_and_dependence
 	   *
@@ -1135,43 +1243,6 @@
 	    return array3;
 	  }
 	  /**
-	  
-	  /**
-	   * This function multiply the first array by the second array or a constant value to each element of the first array
-	   * @param {Array} array1 - the array that will be rotated
-	   * @param {Array|Number} array2
-	   * @return {Array}
-	   */
-
-
-	  function multiply(array1, array2) {
-	    let isConstant = false;
-	    let constant;
-
-	    if (Array.isArray(array2)) {
-	      if (array1.length !== array2.length) {
-	        throw new Error('sub: size of array1 and array2 must be identical');
-	      }
-	    } else {
-	      isConstant = true;
-	      constant = Number(array2);
-	    }
-
-	    let array3 = new Array(array1.length);
-
-	    if (isConstant) {
-	      for (let i = 0; i < array1.length; i++) {
-	        array3[i] = array1[i] * constant;
-	      }
-	    } else {
-	      for (let i = 0; i < array1.length; i++) {
-	        array3[i] = array1[i] * array2[i];
-	      }
-	    }
-
-	    return array3;
-	  }
-	  /**
 	   * This function performs a circular shift to a new array
 	   * Positive values of shifts will shift to the right and negative values will do to the left
 	   * @example rotate([1,2,3,4],1) -> [4,1,2,3]
@@ -1225,8 +1296,10 @@
 
 	  const X = {
 	    add,
+	    autoCorrelation,
 	    boxPlot,
 	    correlation,
+	    crossCorrelation,
 	    divide,
 	    findClosestIndex,
 	    getFromToIndex,
