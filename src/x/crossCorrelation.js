@@ -1,32 +1,34 @@
-import { multiply } from './multiply';
+import { dotProduct } from './dotProduct';
 
 /**
  * Calculates the cross-correlation between 2 vectors
  * @param {Array} [A] - the array that will be fixed
  * @param {Array} [B]
- * @return {Array}
+ * @param {number} [options.tau = 1]
+ * @param {number} [options.lag = A.length - 1]
  */
 
 export function crossCorrelation(A, B, options = {}) {
-  if (!Object.keys(options).length !== 0) {
-    var { tau = 1, lag = A.length - 1 } = options;
-  }
-  let result = [];
+  let { tau = 1, lag = A.length - 1 } = options;
+  let result = new Float64Array(1 + (2 * lag) / tau);
   if (A.length === B.length) {
     let n = B.length;
-    let mlag = (n - lag - 1);
-    let g = new Array(2 * n).fill(0);
-    let q = new Array(n).fill(0).concat(B);
-    for (let i = n * 2 - 1 - mlag; i > mlag; i -= tau) {
+    let g = new Float64Array(2 * n);
+    let q = new Float64Array(2 * n);
+    for (let i = 0; i < n; i++) {
+      q[n + i] = B[i];
+    }
+    for (let i = n * 2 - (tau - 1); i > 0; i -= tau) {
       let k = 0;
       for (let j = i; j < n * 2; j++) {
         g[k] = q[j];
         k++;
       }
-      result.push(
-        multiply(A, g.slice(0, n))
-          .reduce((a, b) => a + b)
-      );
+      let w = [];
+      for (let l = 0; l < n; l++) {
+        w[l] = g[l];
+      }
+      result[(k - (n - lag)) / tau] = dotProduct(A, w);
     }
   }
   return result;

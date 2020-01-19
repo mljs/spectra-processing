@@ -1,15 +1,19 @@
 import { crossCorrelation } from '../crossCorrelation';
 
-describe('crossCorrelation', function () {
-  // Scilab: xcorr(linear, constant)
-  // Scilab: xcorr(constant, linear)
+describe('crossCorrelation', function() {
   it('cross-correlation linear and constant function', () => {
     let linear = [0, 1, 2, 3, 4];
     let constant = [5, 5, 5, 5, 5];
     let result1 = [0, 5, 15, 30, 50, 50, 45, 35, 20];
     let result2 = [20, 35, 45, 50, 50, 30, 15, 5, 0];
-    expect(crossCorrelation(linear, constant)).toStrictEqual(result1);
-    expect(crossCorrelation(constant, linear)).toStrictEqual(result2);
+    // Scilab: xcorr(linear, constant)
+    expect(
+      Array.prototype.slice.call(crossCorrelation(linear, constant)),
+    ).toStrictEqual(result1);
+    // Scilab: xcorr(constant, linear)
+    expect(
+      Array.prototype.slice.call(crossCorrelation(constant, linear)),
+    ).toStrictEqual(result2);
   });
   // Scilab: xcorr(constant, linear, maxlag = 3);
   it('lag and tau options', () => {
@@ -17,7 +21,21 @@ describe('crossCorrelation', function () {
     let constant = [5, 5, 5, 5, 5];
     let result1 = [0, 15, 50, 45, 20];
     let result2 = [35, 45, 50, 50, 30, 15, 5];
-    expect(crossCorrelation(linear, constant, { tau: 2 })).toStrictEqual(result1);
-    expect(crossCorrelation(constant, linear, { lag: 3 })).toStrictEqual(result2);
+    let result3 = [45, 50, 50, 30, 15];
+    expect(
+      Array.prototype.slice.call(
+        crossCorrelation(linear, constant, { tau: 2 }),
+      ),
+    ).toStrictEqual(result1);
+    expect(
+      Array.prototype.slice.call(
+        crossCorrelation(constant, linear, { lag: 3 }),
+      ),
+    ).toStrictEqual(result2);
+    expect(
+      Array.prototype.slice.call(
+        crossCorrelation(constant, linear, { lag: 2 }),
+      ),
+    ).toStrictEqual(result3);
   });
 });
