@@ -5,8 +5,8 @@ import { dotProduct } from './dotProduct';
  * @param {Array} [A] - the array that will be fixed
  * @param {Array} [B]
  * @param {object} [options={}]
- * @param {number} [options.tau = 1]
- * @param {number} [options.lag = A.length - 1]
+ * @param {number} [options.tau = 1] - displacement step size
+ * @param {number} [options.lag = A.length - 1] - scalar lag parameter
  */
 
 export function crossCorrelation(A, B, options = {}) {
