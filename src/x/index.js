@@ -1,5 +1,7 @@
 import { add } from './add';
 import { boxPlot } from './boxPlot';
+import { autoCorrelation } from './autoCorrelation';
+import { crossCorrelation } from './crossCorrelation';
 import { correlation } from './correlation';
 import { divide } from './divide';
 import { findClosestIndex } from './findClosestIndex';
@@ -11,8 +13,10 @@ import { subtract } from './subtract';
 
 export const X = {
   add,
+  autoCorrelation,
   boxPlot,
   correlation,
+  crossCorrelation,
   divide,
   findClosestIndex,
   getFromToIndex,
