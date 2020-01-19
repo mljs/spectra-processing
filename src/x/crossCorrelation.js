@@ -4,6 +4,7 @@ import { dotProduct } from './dotProduct';
  * Calculates the cross-correlation between 2 vectors
  * @param {Array} [A] - the array that will be fixed
  * @param {Array} [B]
+ * @param {object} [options={}]
  * @param {number} [options.tau = 1]
  * @param {number} [options.lag = A.length - 1]
  */
