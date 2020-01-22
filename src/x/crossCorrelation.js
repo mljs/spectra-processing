@@ -2,11 +2,11 @@ import { dotProduct } from './dotProduct';
 
 /**
  * Calculates the cross-correlation between 2 vectors
- * @param {Array} [A] - the array that will be fixed
- * @param {Array} [B]
+ * @param {Array} [A] - fixed array
+ * @param {Array} [B] - sweeping array
  * @param {object} [options={}]
- * @param {number} [options.tau = 1]
- * @param {number} [options.lag = A.length - 1]
+ * @param {number} [options.tau = 1] - sweep increment size (in number of points, min = 1, max = A.length)
+ * @param {number} [options.lag = A.length - 1] - scalar lag parameter
  */
 
 export function crossCorrelation(A, B, options = {}) {
