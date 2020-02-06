@@ -3,18 +3,33 @@
  * - ensure than from < to
  * - merge overlapping zones
  * @param {object} [zones=[]]
+ * @param {object} [options={}]
+ * @param {number} [options.from=Number.MIN_VALUE]
+ * @param {number} [options.to=Number.MAX_VALUE]
  */
 
-export function normalizeZones(zones = []) {
+export function normalizeZones(zones = [], options = {}) {
   if (zones.length === 0) return [];
   zones = JSON.parse(JSON.stringify(zones)).map((zone) =>
     zone.from > zone.to ? { from: zone.to, to: zone.from } : zone,
   );
+  let { from = Number.MIN_VALUE, to = Number.MAX_VALUE } = options;
+  if (from > to) {
+    [from, to] = [to, from];
+  }
 
   zones = zones.sort((a, b) => {
     if (a.from !== b.from) return a.from - b.from;
     return a.to - b.to;
   });
+
+  zones.map((zone) => {
+    if (from > zone.from) zone.from = from;
+    if (to < zone.to) zone.to = to;
+  });
+
+  zones = zones.filter((zone) => zone.from <= zone.to);
+  if (zones.length === 0) return [];
 
   let currentZone = zones[0];
   let result = [currentZone];
