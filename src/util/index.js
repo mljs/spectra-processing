@@ -1,4 +1,4 @@
-import { normalizeZones } from './cnormalizeZonesheck';
+import { normalizeZones } from './normalizeZones';
 
 export const Util = {
   normalizeZones,
