@@ -1,3 +1,21 @@
+# [2.0.0](https://github.com/cheminfo/spectra-processing/compare/v1.3.1...v2.0.0) (2020-02-08)
+
+
+### Bug Fixes
+
+* eslint ([af497eb](https://github.com/cheminfo/spectra-processing/commit/af497eb5fd8e20e2b9111a174b8259894f240617))
+* use Number.NEGATIVE_INFINITY and not Number.MIN_VALUE ([06827c1](https://github.com/cheminfo/spectra-processing/commit/06827c1b58f4fa75263e05a839c798130b430474))
+
+
+### Features
+
+* add XY.extract ([5dae851](https://github.com/cheminfo/spectra-processing/commit/5dae851b16653b97b072a7da5a871f9a0e8eb4c1))
+* add zones ([bbe4a2f](https://github.com/cheminfo/spectra-processing/commit/bbe4a2f473d758fc4dc001d318a01e162a4b40ea))
+* add zones in reduce ([9a2c573](https://github.com/cheminfo/spectra-processing/commit/9a2c573b5b3f7f10399e443b2cf9d2da442922c2))
+* normalizeZones allow from / to ([a7e0762](https://github.com/cheminfo/spectra-processing/commit/a7e0762731a6919dbe56009a5590e6e9d5049645))
+
+
+
 # [1.2.0](https://github.com/cheminfo/spectra-processing/compare/v1.1.0...v1.2.0) (2019-12-13)
 
 
