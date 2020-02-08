@@ -1,4 +1,5 @@
 import { check } from './check';
+import { extract } from './extract';
 import { integration } from './integration';
 import { integral } from './integral';
 import { maxY } from './maxY';
@@ -17,6 +18,7 @@ import { toXYObject } from './toXYObject';
 
 export const XY = {
   check,
+  extract,
   integral,
   integration,
   maxY,
