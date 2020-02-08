@@ -1,10 +1,10 @@
+import { check } from './check';
 import { findClosestIndex } from '../x/findClosestIndex';
 import { normalizeZones } from '../util/normalizeZones';
 /**
  * Reduce the number of points while keeping visually the same noise. Practical to
  * display many spectra as SVG
- * @param {array} x
- * @param {array} y
+ * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.from=x[0]]
  * @param {number} [options.to=x[x.length-1]]
@@ -13,7 +13,9 @@ import { normalizeZones } from '../util/normalizeZones';
  * @param {number} [options.optimize=false] If optimize we may have less than nbPoints at the end
  */
 
-export function reduce(x, y, options = {}) {
+export function reduce(points, options = {}) {
+  check(points);
+  const { x, y } = points;
   let {
     from = x[0],
     to = x[x.length - 1],
