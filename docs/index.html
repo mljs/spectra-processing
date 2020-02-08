@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset='utf-8'>
-  <title>ml-spectra-processing 1.2.0 | Documentation</title>
+  <title>ml-spectra-processing 2.0.0 | Documentation</title>
   <meta name='description' content='Various method to process spectra'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>ml-spectra-processing</h3>
-          <div class='mb1'><code>1.2.0</code></div>
+          <div class='mb1'><code>2.0.0</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -39,6 +39,16 @@
                   href='#add'
                   class="">
                   add
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#autocorrelation'
+                  class="">
+                  autoCorrelation
                   
                 </a>
                 
@@ -76,9 +86,29 @@
               
                 
                 <li><a
+                  href='#crosscorrelation'
+                  class="">
+                  crossCorrelation
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#divide'
                   class="">
                   divide
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#extract'
+                  class="">
+                  extract
                   
                 </a>
                 
@@ -236,6 +266,16 @@
               
                 
                 <li><a
+                  href='#normalizezones'
+                  class="">
+                  normalizeZones
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#peakinfo'
                   class="">
                   peakInfo
@@ -374,7 +414,7 @@
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/reim/absolute.js#L6-L16'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/reim/absolute.js#L6-L16'>
       <span>src/reim/absolute.js</span>
       </a>
     
@@ -456,7 +496,7 @@
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/x/add.js#L9-L33'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/x/add.js#L9-L33'>
       <span>src/x/add.js</span>
       </a>
     
@@ -534,12 +574,125 @@ This function add the first array by the second array or a constant value to eac
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='autocorrelation'>
+      autoCorrelation
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/x/autoCorrelation.js#L11-L13'>
+      <span>src/x/autoCorrelation.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Calculates the auto-correlation of a vector</p>
+
+    <div class='pre p1 fill-light mt0'>autoCorrelation(A: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>?, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>A</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>?)</code>
+	    the array that will be fixed
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
+            = <code>{}</code>)</code>
+	    
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.tau</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>
+  
+    (default <code>1</code>)
+  </td>
+  <td class='break-word'><span>sweep increment size (in number of points, min = 1, max = A.length)
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.lag</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>
+  
+    (default <code>A.length-1</code>)
+  </td>
+  <td class='break-word'><span>scalar lag parameter
+</span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='boxplot'>
       boxPlot
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/x/boxPlot.js#L6-L42'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/x/boxPlot.js#L6-L42'>
       <span>src/x/boxPlot.js</span>
       </a>
     
@@ -621,7 +774,7 @@ This function add the first array by the second array or a constant value to eac
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/check.js#L7-L14'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/check.js#L7-L14'>
       <span>src/xy/check.js</span>
       </a>
     
@@ -687,7 +840,7 @@ This function add the first array by the second array or a constant value to eac
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/x/correlation.js#L11-L31'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/x/correlation.js#L11-L31'>
       <span>src/x/correlation.js</span>
       </a>
     
@@ -766,12 +919,134 @@ Calculates the correlation between 2 vectors
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='crosscorrelation'>
+      crossCorrelation
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/x/crossCorrelation.js#L12-L36'>
+      <span>src/x/crossCorrelation.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Calculates the cross-correlation between 2 vectors</p>
+
+    <div class='pre p1 fill-light mt0'>crossCorrelation(A: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>?, B: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>?, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>A</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>?)</code>
+	    fixed array
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>B</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>?)</code>
+	    sweeping array
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
+            = <code>{}</code>)</code>
+	    
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.tau</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>
+  
+    (default <code>1</code>)
+  </td>
+  <td class='break-word'><span>sweep increment size (in number of points, min = 1, max = A.length)
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.lag</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>
+  
+    (default <code>A.length-1</code>)
+  </td>
+  <td class='break-word'><span>scalar lag parameter
+</span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='divide'>
       divide
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/x/divide.js#L9-L33'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/x/divide.js#L9-L33'>
       <span>src/x/divide.js</span>
       </a>
     
@@ -849,12 +1124,122 @@ This function divide the first array by the second array or a constant value to 
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='extract'>
+      extract
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/extract.js#L13-L42'>
+      <span>src/xy/extract.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Extract zones from a XY data</p>
+
+    <div class='pre p1 fill-light mt0'>extract(points: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>points</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
+            = <code>{}</code>)</code>
+	    Object of points contains property x (an ordered increasing array) and y (an array)
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
+            = <code>{}</code>)</code>
+	    
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.zones</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>
+  
+    (default <code>[]</code>)
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>:
+        Array of points
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='findclosestindex'>
       findClosestIndex
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/x/findClosestIndex.js#L7-L31'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/x/findClosestIndex.js#L7-L31'>
       <span>src/x/findClosestIndex.js</span>
       </a>
     
@@ -927,7 +1312,7 @@ This function divide the first array by the second array or a constant value to 
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/x/getFromToIndex.js#L13-L32'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/x/getFromToIndex.js#L13-L32'>
       <span>src/x/getFromToIndex.js</span>
       </a>
     
@@ -1057,7 +1442,7 @@ This function divide the first array by the second array or a constant value to 
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/x/getTargetIndex.js#L12-L22'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/x/getTargetIndex.js#L12-L22'>
       <span>src/x/getTargetIndex.js</span>
       </a>
     
@@ -1173,7 +1558,7 @@ This function divide the first array by the second array or a constant value to 
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/growingX.js#L8-L21'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/growingX.js#L8-L21'>
       <span>src/xy/growingX.js</span>
       </a>
     
@@ -1248,7 +1633,7 @@ Ensure x is growing</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/integral.js#L16-L45'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/integral.js#L16-L45'>
       <span>src/xy/integral.js</span>
       </a>
     
@@ -1399,7 +1784,7 @@ Ensure x is growing</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/integration.js#L16-L27'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/integration.js#L16-L27'>
       <span>src/xy/integration.js</span>
       </a>
     
@@ -1539,7 +1924,7 @@ Ensure x is growing</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xyObject/joinX.js#L7-L31'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xyObject/joinX.js#L7-L31'>
       <span>src/xyObject/joinX.js</span>
       </a>
     
@@ -1623,7 +2008,7 @@ Ensure x is growing</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/maxClosestYPoint.js#L14-L47'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/maxClosestYPoint.js#L14-L47'>
       <span>src/xy/maxClosestYPoint.js</span>
       </a>
     
@@ -1741,7 +2126,7 @@ Ensure x is growing</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/maximaY.js#L11-L28'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/maximaY.js#L11-L28'>
       <span>src/xy/maximaY.js</span>
       </a>
     
@@ -1818,7 +2203,7 @@ of the equal part will be the position of the signal!</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/maxY.js#L15-L28'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/maxY.js#L15-L28'>
       <span>src/xy/maxY.js</span>
       </a>
     
@@ -1958,7 +2343,7 @@ of the equal part will be the position of the signal!</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/maxYPoint.js#L15-L28'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/maxYPoint.js#L15-L28'>
       <span>src/xy/maxYPoint.js</span>
       </a>
     
@@ -2098,7 +2483,7 @@ of the equal part will be the position of the signal!</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/minClosestYPoint.js#L14-L47'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/minClosestYPoint.js#L14-L47'>
       <span>src/xy/minClosestYPoint.js</span>
       </a>
     
@@ -2216,7 +2601,7 @@ of the equal part will be the position of the signal!</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/minimaY.js#L11-L28'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/minimaY.js#L11-L28'>
       <span>src/xy/minimaY.js</span>
       </a>
     
@@ -2293,7 +2678,7 @@ of the equal part will be the position of the signal!</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/minYPoint.js#L15-L28'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/minYPoint.js#L15-L28'>
       <span>src/xy/minYPoint.js</span>
       </a>
     
@@ -2433,7 +2818,7 @@ of the equal part will be the position of the signal!</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/x/multiply.js#L9-L33'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/x/multiply.js#L9-L33'>
       <span>src/x/multiply.js</span>
       </a>
     
@@ -2443,7 +2828,7 @@ of the equal part will be the position of the signal!</p>
   <p>/**
 This function multiply the first array by the second array or a constant value to each element of the first array</p>
 
-    <div class='pre p1 fill-light mt0'>multiply(array1: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>, array2: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
+    <div class='pre p1 fill-light mt0'>multiply(array1: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>, array2: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Float64Array">Float64Array</a></div>
   
   
 
@@ -2483,11 +2868,126 @@ This function multiply the first array by the second array or a constant value t
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>:
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Float64Array">Float64Array</a></code>:
         
 
       
     
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='normalizezones'>
+      normalizeZones
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/util/normalizeZones.js#L11-L49'>
+      <span>src/util/normalizeZones.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Normalize an array of zones:</p>
+<ul>
+<li>ensure than from &#x3C; to</li>
+<li>merge overlapping zones</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>normalizeZones(zones: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>zones</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
+            = <code>[]</code>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
+            = <code>{}</code>)</code>
+	    
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.from</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>
+  
+    (default <code>Number.MIN_VALUE</code>)
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.to</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>
+  
+    (default <code>Number.MAX_VALUE</code>)
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
   
 
   
@@ -2516,7 +3016,7 @@ This function multiply the first array by the second array or a constant value t
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/peakInfo.js#L21-L69'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/peakInfo.js#L21-L69'>
       <span>src/xy/peakInfo.js</span>
       </a>
     
@@ -2637,7 +3137,7 @@ ML.ArrayXY.equallySpaced</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/reim/phaseCorrection.js#L8-L33'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/reim/phaseCorrection.js#L8-L33'>
       <span>src/reim/phaseCorrection.js</span>
       </a>
     
@@ -2739,7 +3239,7 @@ ML.ArrayXY.equallySpaced</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/realMaxYPoint.js#L13-L40'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/realMaxYPoint.js#L13-L40'>
       <span>src/xy/realMaxYPoint.js</span>
       </a>
     
@@ -2857,7 +3357,7 @@ ML.ArrayXY.equallySpaced</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/reduce.js#L15-L86'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/reduce.js#L17-L142'>
       <span>src/xy/reduce.js</span>
       </a>
     
@@ -2867,7 +3367,7 @@ ML.ArrayXY.equallySpaced</p>
   <p>Reduce the number of points while keeping visually the same noise. Practical to
 display many spectra as SVG</p>
 
-    <div class='pre p1 fill-light mt0'>reduce(x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, y: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+    <div class='pre p1 fill-light mt0'>reduce(points: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
   
   
 
@@ -2884,16 +3384,10 @@ display many spectra as SVG</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>x</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>y</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>)</code>
-	    
+            <span class='code bold'>points</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
+            = <code>{}</code>)</code>
+	    Object of points contains property x (an ordered increasing array) and y (an array)
+
           </div>
           
         </div>
@@ -2950,6 +3444,17 @@ display many spectra as SVG</p>
 
               
                 <tr>
+  <td class='break-word'><span class='code bold'>options.zones</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>
+  
+    (default <code>[]</code>)
+  </td>
+  <td class='break-word'><span>Array of zones to keep (from/to object)
+</span></td>
+</tr>
+
+
+              
+                <tr>
   <td class='break-word'><span class='code bold'>options.optimize</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>
   
     (default <code>false</code>)
@@ -2998,7 +3503,7 @@ display many spectra as SVG</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/x/rotate.js#L10-L16'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/x/rotate.js#L10-L16'>
       <span>src/x/rotate.js</span>
       </a>
     
@@ -3090,7 +3595,7 @@ Positive values of shifts will shift to the right and negative values will do to
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xyObject/slotX.js#L7-L29'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xyObject/slotX.js#L7-L29'>
       <span>src/xyObject/slotX.js</span>
       </a>
     
@@ -3174,7 +3679,7 @@ Positive values of shifts will shift to the right and negative values will do to
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xreim/sortX.js#L7-L21'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xreim/sortX.js#L7-L21'>
       <span>src/xreim/sortX.js</span>
       </a>
     
@@ -3248,7 +3753,7 @@ Positive values of shifts will shift to the right and negative values will do to
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xyObject/sortX.js#L6-L8'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xyObject/sortX.js#L6-L8'>
       <span>src/xyObject/sortX.js</span>
       </a>
     
@@ -3314,7 +3819,7 @@ Positive values of shifts will shift to the right and negative values will do to
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/x/subtract.js#L7-L31'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/x/subtract.js#L7-L31'>
       <span>src/x/subtract.js</span>
       </a>
     
@@ -3396,7 +3901,7 @@ Positive values of shifts will shift to the right and negative values will do to
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xyObject/toXY.js#L5-L10'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xyObject/toXY.js#L5-L10'>
       <span>src/xyObject/toXY.js</span>
       </a>
     
@@ -3461,7 +3966,7 @@ Positive values of shifts will shift to the right and negative values will do to
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xy/toXYObject.js#L7-L15'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xy/toXYObject.js#L7-L15'>
       <span>src/xy/toXYObject.js</span>
       </a>
     
@@ -3534,7 +4039,7 @@ Positive values of shifts will shift to the right and negative values will do to
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/2ffdd4770f9ea590ffcaa898514260dcf114a40e/src/xreim/zeroFilling.js#L7-L42'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/spectra-processing/blob/70b4f2789ba15d65acab4d57ab015b0366f14fe1/src/xreim/zeroFilling.js#L7-L42'>
       <span>src/xreim/zeroFilling.js</span>
       </a>
     
