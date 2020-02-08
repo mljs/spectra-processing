@@ -26,7 +26,7 @@ export function normalizeZones(zones = [], options = {}) {
     return a.to - b.to;
   });
 
-  zones.map((zone) => {
+  zones.forEach((zone) => {
     if (from > zone.from) zone.from = from;
     if (to < zone.to) zone.to = to;
   });

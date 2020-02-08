@@ -1,5 +1,6 @@
-import { check } from './check';
 import { normalizeZones } from '../util/normalizeZones';
+
+import { check } from './check';
 
 /**
  * Extract zones from a XY data

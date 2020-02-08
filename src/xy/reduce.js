@@ -1,6 +1,7 @@
-import { check } from './check';
 import { findClosestIndex } from '../x/findClosestIndex';
 import { normalizeZones } from '../util/normalizeZones';
+
+import { check } from './check';
 /**
  * Reduce the number of points while keeping visually the same noise. Practical to
  * display many spectra as SVG

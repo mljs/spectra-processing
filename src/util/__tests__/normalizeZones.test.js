@@ -11,7 +11,7 @@ describe('normalizeZones', function() {
     ];
 
     let result = normalizeZones(zones);
-    expect(result).toEqual([
+    expect(result).toStrictEqual([
       { from: 1, to: 4 },
       { from: 5, to: 7 },
     ]);
@@ -25,7 +25,7 @@ describe('normalizeZones', function() {
     ];
 
     let result = normalizeZones(zones);
-    expect(result).toEqual([
+    expect(result).toStrictEqual([
       { from: 1, to: 2 },
       { from: 3, to: 4 },
       { from: 6, to: 7 },
@@ -40,7 +40,7 @@ describe('normalizeZones', function() {
     ];
 
     let result = normalizeZones(zones, { from: 10, to: 5 });
-    expect(result).toEqual([{ from: 6, to: 7 }]);
+    expect(result).toStrictEqual([{ from: 6, to: 7 }]);
   });
 
   it('test normalizeZones from, to outside', () => {
@@ -51,10 +51,10 @@ describe('normalizeZones', function() {
     ];
 
     let result = normalizeZones(zones, { from: 10, to: 12 });
-    expect(result).toEqual([]);
+    expect(result).toStrictEqual([]);
   });
 
-  it('test normalizeZones from outside, to ', () => {
+  it('test normalizeZones from outside, to', () => {
     let zones = [
       { from: 1, to: 2 },
       { from: 3, to: 4 },
@@ -62,7 +62,7 @@ describe('normalizeZones', function() {
     ];
 
     let result = normalizeZones(zones, { from: -1, to: -5 });
-    expect(result).toEqual([]);
+    expect(result).toStrictEqual([]);
   });
 
   it('test normalizeZones from 1.5, to 6.5', () => {
@@ -73,7 +73,7 @@ describe('normalizeZones', function() {
     ];
 
     let result = normalizeZones(zones, { from: 1.5, to: 6.5 });
-    expect(result).toEqual([
+    expect(result).toStrictEqual([
       { from: 1.5, to: 2 },
       { from: 3, to: 4 },
       { from: 6, to: 6.5 },
