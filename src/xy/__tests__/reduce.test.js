@@ -4,17 +4,23 @@ describe('test reduce', () => {
   const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const y = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0];
   it('All', () => {
-    let result = {
+    let expected = {
       x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       y: [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0],
     };
-    expect(reduce(x, y, { nbPoints: 20 })).toStrictEqual(result);
+    let result = reduce(x, y, { nbPoints: 20 });
+    result.x = Array.from(result.x);
+    result.y = Array.from(result.y);
+    expect(result).toStrictEqual(expected);
   });
 
   it('Over sized', () => {
     let x2 = [1, 2];
     let y2 = [2, 3];
-    expect(reduce(x2, y2, { nbPoints: 10 })).toStrictEqual({
+    let result = reduce(x2, y2, { nbPoints: 10 });
+    result.x = Array.from(result.x);
+    result.y = Array.from(result.y);
+    expect(result).toStrictEqual({
       x: [1, 2],
       y: [2, 3],
     });
@@ -22,8 +28,8 @@ describe('test reduce', () => {
 
   it('Too large', () => {
     let result = {
-      x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      y: [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0],
+      x: new Float64Array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
+      y: new Float64Array([0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0]),
     };
     expect(reduce(x, y, { nbPoints: 20, from: -10, to: 20 })).toStrictEqual(
       result,
@@ -32,8 +38,8 @@ describe('test reduce', () => {
 
   it('Part exact', () => {
     let result = {
-      x: [3, 4, 5],
-      y: [3, 4, 5],
+      x: new Float64Array([3, 4, 5]),
+      y: new Float64Array([3, 4, 5]),
     };
     expect(reduce(x, y, { from: 3, to: 5, nbPoints: 20 })).toStrictEqual(
       result,
@@ -42,8 +48,8 @@ describe('test reduce', () => {
 
   it('Part rounded close', () => {
     let result = {
-      x: [3, 4, 5],
-      y: [3, 4, 5],
+      x: new Float64Array([3, 4, 5]),
+      y: new Float64Array([3, 4, 5]),
     };
     expect(reduce(x, y, { from: 3.1, to: 4.9, nbPoints: 20 })).toStrictEqual(
       result,
@@ -52,8 +58,8 @@ describe('test reduce', () => {
 
   it('Part rounded far', () => {
     let result = {
-      x: [3, 4, 5],
-      y: [3, 4, 5],
+      x: new Float64Array([3, 4, 5]),
+      y: new Float64Array([3, 4, 5]),
     };
     expect(reduce(x, y, { from: 3.6, to: 4.4, nbPoints: 20 })).toStrictEqual(
       result,
@@ -89,7 +95,7 @@ describe('test reduce', () => {
       y.push(i);
     }
     let result = reduce(x, y, { nbPoints: 4000, from: 10, to: 20 });
-    expect(result.x).toStrictEqual([
+    expect(Array.from(result.x)).toStrictEqual([
       10,
       11,
       12,
@@ -102,7 +108,7 @@ describe('test reduce', () => {
       19,
       20,
     ]);
-    expect(result.y).toStrictEqual([
+    expect(Array.from(result.y)).toStrictEqual([
       10,
       11,
       12,
@@ -135,6 +141,64 @@ describe('test reduce', () => {
     expect(result).toStrictEqual({
       x: [0, 5, 10],
       y: [0, 5, 0],
+    });
+  });
+
+  it('Reduce with zones enough points', () => {
+    let result = reduce(x, y, {
+      nbPoints: 5,
+      zones: [
+        { from: 0, to: 1 },
+        { from: 5, to: 7 },
+      ],
+    });
+
+    expect(result).toStrictEqual({
+      x: new Float64Array([0, 1, 5, 6, 7]),
+      y: new Float64Array([0, 1, 5, 4, 3]),
+    });
+  });
+
+  it('Reduce with zones not enough points edge cases', () => {
+    let result = reduce(x, y, {
+      nbPoints: 3,
+      zones: [
+        { from: 0, to: 1 },
+        { from: 5, to: 8 },
+      ],
+    });
+
+    expect(result).toStrictEqual({
+      x: [1, 5, 8],
+      y: [1, 5, 2],
+    });
+  });
+
+  it('Reduce with zones not enough points', () => {
+    let result = reduce(x, y, {
+      nbPoints: 4,
+      zones: [
+        { from: 0, to: 1 },
+        { from: 5, to: 8 },
+      ],
+    });
+    expect(result).toStrictEqual({
+      x: [1, 5, 6.5, 8],
+      y: [1, 5, 2, 4],
+    });
+  });
+
+  it('Reduce with one zone not enough points', () => {
+    let result = reduce(x, y, {
+      nbPoints: 4,
+      zones: [
+        { from: -1, to: -1 },
+        { from: 3, to: 8 },
+      ],
+    });
+    expect(result).toStrictEqual({
+      x: [3, 4.25, 5.5, 6.75, 8], // could be fixed with only 4 points
+      y: [3, 4, 5, 2, 3],
     });
   });
 });
