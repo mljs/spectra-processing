@@ -4,7 +4,9 @@ import { normalizeZones } from '../util/normalizeZones';
 import { check } from './check';
 /**
  * Reduce the number of points while keeping visually the same noise. Practical to
- * display many spectra as SVG
+ * display many spectra as SVG.
+ * SHOULD NOT BE USED FOR DATA PROCESSING !!!
+ * You should rather use ml-xy-equally-spaced to make further processing
  * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.from=x[0]]
