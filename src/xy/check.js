@@ -1,4 +1,4 @@
-const isAnyArray = require('is-any-array');
+import isAnyArray from 'is-any-array';
 
 /**
  * Throw an error in no an object of x,y arrays
