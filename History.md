@@ -1,3 +1,13 @@
+## [2.0.1](https://github.com/cheminfo/spectra-processing/compare/v2.0.0...v2.0.1) (2020-02-25)
+
+
+### Bug Fixes
+
+* correctly import is-any-array ([568b20b](https://github.com/cheminfo/spectra-processing/commit/568b20baaad30d9198ea005c9ea7484c88d9467b))
+* rollup.config ([f1f8943](https://github.com/cheminfo/spectra-processing/commit/f1f894320ad55727f84ad848ed37a8f4091b77fd))
+
+
+
 # [2.0.0](https://github.com/cheminfo/spectra-processing/compare/v1.3.1...v2.0.0) (2020-02-08)
 
 
