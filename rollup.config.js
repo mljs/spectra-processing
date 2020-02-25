@@ -1,6 +1,3 @@
-import resolve from 'rollup-plugin-node-resolve';
-import commonJS from 'rollup-plugin-commonjs';
-
 export default {
   input: 'src/index.js',
   output: {
@@ -8,10 +5,5 @@ export default {
     file: 'lib/index.js',
     exports: 'named',
   },
-  plugins: [
-    resolve(),
-    commonJS({
-      include: 'node_modules/**',
-    }),
-  ],
+  external: ['is-any-array'],
 };
