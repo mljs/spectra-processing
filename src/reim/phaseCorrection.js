@@ -25,8 +25,10 @@ export function phaseCorrection(data, phi0, phi1) {
     newRe[i] = re[i] * cosTheta - im[i] * sinTheta;
     newIm[i] = re[i] * sinTheta + im[i] * cosTheta;
     // calculate angles i+1 from i
-    cosTheta = cosTheta - (alpha * cosTheta + beta * sinTheta);
-    sinTheta = sinTheta - (alpha * sinTheta - beta * cosTheta);
+    let newCosTheta = cosTheta - (alpha * cosTheta + beta * sinTheta);
+    let newSinTheta = sinTheta - (alpha * sinTheta - beta * cosTheta);
+    cosTheta = newCosTheta;
+    sinTheta = newSinTheta;
   }
 
   return { re: newRe, im: newIm };
