@@ -1,6 +1,6 @@
 import { normalizeZones } from '../normalizeZones.js';
 
-describe('normalizeZones', function() {
+describe('normalizeZones', function () {
   it('test normalizeZones', () => {
     let zones = [
       { from: 1, to: 2 },

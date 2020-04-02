@@ -1,6 +1,6 @@
 import { growingX } from '../growingX.js';
 
-describe('growingX', function() {
+describe('growingX', function () {
   it('test growingX do nothing', () => {
     let x = [0, 1, 2, 3];
     let y = [0, 1, 2, 3];

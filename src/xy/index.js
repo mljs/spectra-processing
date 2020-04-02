@@ -1,19 +1,19 @@
 import { check } from './check';
 import { extract } from './extract';
-import { integration } from './integration';
+import { growingX } from './growingX';
 import { integral } from './integral';
+import { integration } from './integration';
+import { maxClosestYPoint } from './maxClosestYPoint';
 import { maxY } from './maxY';
 import { maxYPoint } from './maxYPoint';
-import { minYPoint } from './minYPoint';
-import { reduce } from './reduce';
-import { growingX } from './growingX';
-import { minClosestYPoint } from './minClosestYPoint';
-import { maxClosestYPoint } from './maxClosestYPoint';
-import { realMinYPoint } from './realMinYPoint';
-import { realMaxYPoint } from './realMaxYPoint';
 import { maximaY } from './maximaY';
+import { minClosestYPoint } from './minClosestYPoint';
+import { minYPoint } from './minYPoint';
 import { minimaY } from './minimaY';
 import { peakInfo } from './peakInfo';
+import { realMaxYPoint } from './realMaxYPoint';
+import { realMinYPoint } from './realMinYPoint';
+import { reduce } from './reduce';
 import { toXYObject } from './toXYObject';
 
 export const XY = {

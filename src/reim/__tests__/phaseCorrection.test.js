@@ -542,7 +542,7 @@ let data = {
     45004027,
   ],
 };
-describe('phaseCorrection', function() {
+describe('phaseCorrection', function () {
   it('test phaseCorrection even', () => {
     let re = [0, 1, 2, 3];
     let im = [0, 1, 2, 3];

@@ -1,6 +1,6 @@
 import { crossCorrelation } from '../crossCorrelation';
 
-describe('crossCorrelation', function() {
+describe('crossCorrelation', function () {
   it('cross-correlation linear and constant function', () => {
     let linear = [0, 1, 2, 3, 4];
     let constant = [5, 5, 5, 5, 5];

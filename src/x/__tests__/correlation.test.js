@@ -1,6 +1,6 @@
 import { correlation } from '../correlation.js';
 
-describe('correlation', function() {
+describe('correlation', function () {
   // wolfram alpha: correlation([1,2,3],[4,5,6])
   it('2 correlated vectors', () => {
     let array1 = [1, 2, 3];

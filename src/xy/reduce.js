@@ -1,5 +1,5 @@
-import { findClosestIndex } from '../x/findClosestIndex';
 import { normalizeZones } from '../util/normalizeZones';
+import { findClosestIndex } from '../x/findClosestIndex';
 
 import { check } from './check';
 /**
