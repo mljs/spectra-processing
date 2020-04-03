@@ -1,3 +1,4 @@
+import { align } from './align';
 import { check } from './check';
 import { extract } from './extract';
 import { growingX } from './growingX';
@@ -17,6 +18,7 @@ import { reduce } from './reduce';
 import { toXYObject } from './toXYObject';
 
 export const XY = {
+  align,
   check,
   extract,
   integral,
