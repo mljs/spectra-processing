@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/cheminfo/spectra-processing/compare/v2.0.2...v2.1.0) (2020-04-03)
+
+
+### Features
+
+* add the align method ([f490bf1](https://github.com/cheminfo/spectra-processing/commit/f490bf1c282a99e90725ee78bf20570c57f826b2))
+
+
+
 ## [2.0.2](https://github.com/cheminfo/spectra-processing/compare/v2.0.1...v2.0.2) (2020-03-27)
 
 
