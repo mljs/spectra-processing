@@ -8,9 +8,15 @@
  * @param {number} [options.delta = 1] The range in which the two x values of the spectra must be to be placed on the same line
  * @param {boolean} [options.common = true] If `true`, only the data considered as common to both spectra is kept. If `false`, the data y arrays are completed with zeroes where no common values are found
  * @param {string} [options.x = 'x1'] Defines what x values should be kept (`x1` : spectrum 1 x values, `x2` spectrum 2 x values, `weighted`: weighted average of both spectra x values)
+ * @param {function} [options.weightFunction = undefined] Function that allows to weight `delta` depending on the X values of the spectrum
  */
 export function align(spectrum1, spectrum2, options = {}) {
-  const { delta = 1, common = true, x = 'x1' } = options;
+  const {
+    delta = 1,
+    common = true,
+    x = 'x1',
+    weightFunction = undefined,
+  } = options;
 
   let result = {
     x: [],
@@ -25,9 +31,18 @@ export function align(spectrum1, spectrum2, options = {}) {
   let length2 = spectrum2.x.length;
 
   while (i < spectrum1.x.length && j < spectrum2.x.length) {
+    let maxDiff = 0;
+
+    if (typeof weightFunction === 'function') {
+      let mean = (spectrum1.x[i] + spectrum2.x[j]) / 2; // is this a good thing to do?
+      maxDiff = weightFunction(mean);
+    } else {
+      maxDiff = delta;
+    }
+
     let difference = spectrum1.x[i] - spectrum2.x[j];
 
-    if (Math.abs(difference) > delta) {
+    if (Math.abs(difference) > maxDiff) {
       if (difference > 0) {
         if (!common) {
           result.x.push(spectrum2.x[j]);

@@ -155,4 +155,26 @@ describe('aline', function () {
       y2: [1, 1],
     });
   });
+  it('test options.weightFunction', () => {
+    const weightFunction = (x) => x * 5e-6;
+    let spectrum1 = { x: [0, 3, 5, 7], y: [1, 1, 1, 1] };
+    let spectrum2 = { x: [2, 3], y: [1, 1] };
+    let result = align(spectrum1, spectrum2, { weightFunction });
+    expect(result).toStrictEqual({
+      x: [3],
+      y1: [1],
+      y2: [1],
+    });
+  });
+  it('test options.weightFunction: (x) => x', () => {
+    const weightFunction = (x) => x;
+    let spectrum1 = { x: [0, 1, 2, 3], y: [1, 1, 1, 1] };
+    let spectrum2 = { x: [2, 3, 5], y: [1, 1, 1] };
+    let result = align(spectrum1, spectrum2, { x: 'weighted', weightFunction });
+    expect(result).toStrictEqual({
+      x: [1.5, 2.5, 4],
+      y1: [1, 1, 1],
+      y2: [1, 1, 1],
+    });
+  });
 });
