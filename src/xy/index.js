@@ -1,6 +1,7 @@
 import { align } from './align';
 import { check } from './check';
 import { extract } from './extract';
+import { getNMaxY } from './getNMaxY';
 import { growingX } from './growingX';
 import { integral } from './integral';
 import { integration } from './integration';
@@ -21,6 +22,7 @@ export const XY = {
   align,
   check,
   extract,
+  getNMaxY,
   integral,
   integration,
   maxY,
