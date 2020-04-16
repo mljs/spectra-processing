@@ -1,4 +1,4 @@
-import getNMaxY from '../getNMaxY.js';
+import { getNMaxY } from '../getNMaxY.js';
 
 describe('getNMaxY', () => {
   it('number max peaks bigger than spectrum length', () => {
