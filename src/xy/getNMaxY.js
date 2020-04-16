@@ -28,6 +28,5 @@ export function getNMaxY(points, numberMaxPoints) {
         return { x: newX, y: newY };
       }
     }
-    throw new Error('This point should never be reached');
   }
 }
