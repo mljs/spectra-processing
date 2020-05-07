@@ -56,19 +56,19 @@ export function autoPhaseCorrection(data, options = {}) {
 
   // TODO: Still some corrections needed. In the paper they remove the outlayers interatively
   // until they can perform a regression witout bad points. Can someone help here?
-  let reg = weightedLinearRegression(
+  let [ph1, ph0] = weightedLinearRegression(
     res.map((r) => r.x0 / length),
     res.map((r) => r.ph0),
     res.map((r) => r.area / 1e11),
   );
 
-  let reImData = phaseCorrection(
+  let phased = phaseCorrection(
     { re, im },
-    (reg[1] * Math.PI) / 180,
-    (reg[0] * Math.PI) / 180,
+    (ph0 * Math.PI) / 180,
+    (ph1 * Math.PI) / 180,
   );
 
-  return reImData;
+  return { data: phased, ph0, ph1 };
 }
 
 function autoPhaseRegion(re, im, x0) {
