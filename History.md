@@ -1,3 +1,12 @@
+# [2.3.0](https://github.com/cheminfo/spectra-processing/compare/v2.2.0...v2.3.0) (2020-05-08)
+
+
+### Features
+
+* add automatic phase correction in ReIm ([#6](https://github.com/cheminfo/spectra-processing/issues/6)) ([cab2afa](https://github.com/cheminfo/spectra-processing/commit/cab2afaddb082448247675497df12f5dad08209e))
+
+
+
 # [2.2.0](https://github.com/cheminfo/spectra-processing/compare/v2.1.1...v2.2.0) (2020-04-16)
 
 
