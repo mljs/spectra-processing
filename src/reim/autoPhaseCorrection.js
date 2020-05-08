@@ -112,7 +112,7 @@ function autoPhaseRegion(re, im, x0) {
 }
 
 function holoborodko(s) {
-  let dk = new Array(s.length);
+  let dk = new Float64Array(s.length);
   for (let i = 5; i < s.length - 5; i++) {
     dk[i] =
       (42 * (s[i + 1] - s[i - 1]) +
