@@ -1,6 +1,6 @@
 import { absolute } from './absolute';
-import { phaseCorrection } from './phaseCorrection';
 import { autoPhaseCorrection } from './autoPhaseCorrection';
+import { phaseCorrection } from './phaseCorrection';
 
 export const ReIm = {
   absolute,

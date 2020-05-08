@@ -1,5 +1,5 @@
-import { phaseCorrection } from './phaseCorrection';
 import { absolute } from './absolute';
+import { phaseCorrection } from './phaseCorrection';
 /**
  * Implementation of the algorithm for automatic phase correction: A robust, general automatic phase
  * correction algorithm for high-resolution NMR data. 10.1002/mrc.4586
@@ -27,7 +27,7 @@ export function autoPhaseCorrection(data, options = {}) {
 
   // Once the regions are detected, we auto phase each of them separately.
   // TODO: This part can be put inside a function
-  let i = -1;console.log
+  let i = -1;
   let x0 = 0;
   let res = [];
   while (i < length) {
@@ -44,10 +44,10 @@ export function autoPhaseCorrection(data, options = {}) {
     while (finalPeaks[i] && i < length) {
       reTmp.push(re[i]);
       imTmp.push(im[i]);
-      i++
-    } 
+      i++;
+    }
     // for (; finalPeaks[i] && i < length; i++) {
-      
+
     // }
     if (reTmp.length > minRegSize) {
       res.push(autoPhaseRegion(reTmp, imTmp, x0));
@@ -82,7 +82,7 @@ function autoPhaseRegion(re, im, x0) {
     let minArea = Number.MAX_SAFE_INTEGER;
     bestAng = start;
     for (let i = start; i <= stop; i += dAng) {
-      let phased = phaseCorrection({re, im}, (Math.PI * i) / 180, 0);
+      let phased = phaseCorrection({ re, im }, (Math.PI * i) / 180, 0);
       let negArea = 0;
       for (let j = 0; j < re.length; j++) {
         if (phased.re[j] < 0) {
@@ -100,7 +100,7 @@ function autoPhaseRegion(re, im, x0) {
   }
 
   // Calculate the area for the best angle
-  let phased = phaseCorrection({re, im}, (Math.PI * bestAng) / 180, 0);
+  let phased = phaseCorrection({ re, im }, (Math.PI * bestAng) / 180, 0);
   let area = 0;
   let sumX = 0;
   for (let j = 0; j < re.length; j++) {
