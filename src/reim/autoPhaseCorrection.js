@@ -7,27 +7,23 @@ import { absolute } from './absolute';
  */
 export function autoPhaseCorrection(data, options = {}) {
   const { minRegSize } = options;
+
   const { re, im } = data;
   const length = re.length;
 
   let magnitudeData = absolute(data);
 
-  // TODO: It could be better to use the magnitud spectrum instead of the real data
-  // for determining the peak regions
-  //let magData = reData;//getMagnitudSpectrum(reData, imData);
-
   let ds = holoborodko(magnitudeData);
-  let peaksDs = robustBaseLineRegionsDetection(ds, minRegSize);
-  let peaksSp = robustBaseLineRegionsDetection(magnitudeData, minRegSize);
+  let peaksDs = robustBaseLineRegionsDetection(ds, options);
+  let peaksSp = robustBaseLineRegionsDetection(magnitudeData, options);
   let finalPeaks = new Array(length);
   for (let i = 0; i < length; i++) {
     finalPeaks[i] = peaksSp[i] & peaksDs[i];
   }
-  // API.createData('mask', xy);
 
   // Once the regions are detected, we auto phase each of them separately.
   // TODO: This part can be put inside a function
-  let i = -1;console.log
+  let i = -1;
   let x0 = 0;
   let res = [];
   while (i < length) {
@@ -36,19 +32,15 @@ export function autoPhaseCorrection(data, options = {}) {
     let imTmp = [];
 
     //Look for the first 1 in the array
-    while (!finalPeaks[++i] && i < length) {
-      x0 = i;
-    }
+    while (!finalPeaks[++i] && i < length) 
 
     //TODO: Add some extra points(0.1 ppm) at rigth and left sides of the region.
-    while (finalPeaks[i] && i < length) {
+    x0 = i;
+    for (;finalPeaks[i] && i < length; i++) {
       reTmp.push(re[i]);
       imTmp.push(im[i]);
-      i++
-    } 
-    // for (; finalPeaks[i] && i < length; i++) {
-      
-    // }
+    }
+
     if (reTmp.length > minRegSize) {
       res.push(autoPhaseRegion(reTmp, imTmp, x0));
     }
@@ -74,15 +66,15 @@ export function autoPhaseCorrection(data, options = {}) {
 function autoPhaseRegion(re, im, x0) {
   let start = -180;
   let stop = 180;
-  let nSteps = 20;
-  let maxSteps = 3;
+  let nSteps = 2;
+  let maxSteps = 13;
   let bestAng = 0;
   while (maxSteps > 0) {
     let dAng = (stop - start) / (nSteps + 1);
     let minArea = Number.MAX_SAFE_INTEGER;
     bestAng = start;
     for (let i = start; i <= stop; i += dAng) {
-      let phased = phaseCorrection({re, im}, (Math.PI * i) / 180, 0);
+      let phased = phaseCorrection({ re, im }, (Math.PI * i) / 180, 0);
       let negArea = 0;
       for (let j = 0; j < re.length; j++) {
         if (phased.re[j] < 0) {
@@ -100,7 +92,7 @@ function autoPhaseRegion(re, im, x0) {
   }
 
   // Calculate the area for the best angle
-  let phased = phaseCorrection({re, im}, (Math.PI * bestAng) / 180, 0);
+  let phased = phaseCorrection({ re, im }, (Math.PI * bestAng) / 180, 0);
   let area = 0;
   let sumX = 0;
   for (let j = 0; j < re.length; j++) {
@@ -132,7 +124,9 @@ function holoborodko(s) {
   return dk;
 }
 
-function robustBaseLineRegionsDetection(s, minRegSize) {
+function robustBaseLineRegionsDetection(s, options) {
+  const { factorStd, minRegSize } = options;
+
   let mask = new Array(s.length);
   for (let i = 0; i < s.length; i++) {
     mask[i] = false;
@@ -142,7 +136,7 @@ function robustBaseLineRegionsDetection(s, minRegSize) {
   let change = true;
   while (change) {
     let res = stats(s, mask);
-    let noiseLevel = 3 * res.std;
+    let noiseLevel = factorStd * res.std;
     let mean = res.mean;
     change = false;
     for (let i = 0; i < s.length; i++) {
@@ -156,12 +150,12 @@ function robustBaseLineRegionsDetection(s, minRegSize) {
   // Clean up mask by merging peaks blocks, separated by just a few points(4??).
   let count = 0;
   let prev = 0;
-  const SMALL = minRegSize;
+  const small = minRegSize;
   for (let i = 0; i < s.length; i++) {
     if (!mask[i]) {
       count++;
     } else {
-      if (count < SMALL) {
+      if (count < small) {
         for (let j = 0; j <= count; j++) {
           mask[prev + j] = true;
         }
