@@ -2,7 +2,7 @@ import median from 'ml-array-median';
 
 /**
  * This function calculates the median after taking the absolute values of the points
- * @param {Array} array - the array that will be rotated
+ * @param {Array<Number>} array - the array that will be rotated
  * @return {Number}
  */
 export function absoluteMedian(array) {

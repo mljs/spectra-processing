@@ -2,13 +2,13 @@ import isAnyArray from 'is-any-array';
 
 /**
  * Throw an error in no an object of x,y arrays
- * @param {object} [points={}]
+ * @param {DataXY} [data={}]
  */
-export function check(points = {}) {
-  if (!isAnyArray(points.x) || !isAnyArray(points.y)) {
+export function check(data = {}) {
+  if (!isAnyArray(data.x) || !isAnyArray(data.y)) {
     throw new Error('Points must be an object of x and y arrays');
   }
-  if (points.x.length !== points.y.length) {
+  if (data.x.length !== data.y.length) {
     throw new Error('The x and y arrays mush have the same length');
   }
 }

@@ -3,7 +3,7 @@ import { getFromToIndex } from '../x/getFromToIndex';
 import { check } from './check';
 /**
  * Finds the max value in a zone
- * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.from] - First value for integration in the X scale
  * @param {number} [options.fromIndex=0] - First point for integration
@@ -12,9 +12,9 @@ import { check } from './check';
  * @return {number} Max y on the specified range
  */
 
-export function maxY(points = {}, options = {}) {
-  check(points);
-  const { x, y } = points;
+export function maxY(data = {}, options = {}) {
+  check(data);
+  const { x, y } = data;
   if (x.length < 2) return 0;
 
   const { fromIndex, toIndex } = getFromToIndex(x, options);

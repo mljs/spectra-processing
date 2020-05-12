@@ -4,16 +4,16 @@ import { check } from './check';
 
 /**
  * Find the closest maximum going up hill
- * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.target]
  * @param {number} [options.targetIndex=0]
  * @return {{x,y,xIndex}} An object with the x/y value
  */
 
-export function maxClosestYPoint(points, options = {}) {
-  check(points);
-  const { x, y } = points;
+export function maxClosestYPoint(data, options = {}) {
+  check(data);
+  const { x, y } = data;
 
   let { target, targetIndex } = options;
 

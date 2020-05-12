@@ -2,9 +2,9 @@ import { getTargetIndex } from '../x/getTargetIndex';
 
 import { check } from './check';
 
-export function realMinYPoint(points, options = {}) {
-  check(points);
-  const { x, y } = points;
+export function realMinYPoint(data, options = {}) {
+  check(data);
+  const { x, y } = data;
 
   const targetIndex = getTargetIndex(x, options);
   // interpolation to a sin() function

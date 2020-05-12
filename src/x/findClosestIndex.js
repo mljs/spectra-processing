@@ -1,6 +1,6 @@
 /**
  * Returns the closest index of a `target` in an ordered array
- * @param {array} array
+ * @param {array<Number>} array
  * @param {number} target
  */
 

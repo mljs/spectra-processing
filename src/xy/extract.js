@@ -4,7 +4,7 @@ import { check } from './check';
 
 /**
  * Extract zones from a XY data
- * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXY} [points={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {Array} [options.zones=[]]
  * @return {Array} Array of points

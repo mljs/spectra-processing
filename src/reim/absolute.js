@@ -1,6 +1,6 @@
 /**
- * Calculate absolute value of a spectrum
- * @param {object} reim - An object of kind {re:[], im:[]}
+ * Calculates absolute value of a complex spectrum
+ * @param {object} [reim] - An object of kind {re:[], im:[]}.
  * @return {Float64Array}
  */
 export function absolute(data) {

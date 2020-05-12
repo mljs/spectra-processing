@@ -1,6 +1,6 @@
 /**
  * This function subtract the first array by the second array or a constant value from each element of the first array
- * @param {Array} array1 - the array that will be rotated
+ * @param {Array<Number>} array1 - the array that will be rotated
  * @return {object}
  */
 export function boxPlot(array) {

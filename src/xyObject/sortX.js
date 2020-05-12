@@ -1,6 +1,6 @@
 /**
  * Sorts an array of points
- * @param {array} [data] array of points {x,y}
+ * @param {ArrayPoints} [data] array of points {x,y}
  */
 
 export function sortX(data) {

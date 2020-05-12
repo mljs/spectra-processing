@@ -1,6 +1,6 @@
 /**
  *
- * @param {array} [data] array of growing points {x,y}
+ * @param {ArrayPoints} [data] array of growing points {x,y}
  * @param {object} [options={}]
  * @param {object} [slotWidth=1] limit to join the data
  */

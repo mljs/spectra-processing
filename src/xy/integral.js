@@ -3,7 +3,7 @@ import { getFromToIndex } from '../x/getFromToIndex';
 import { check } from './check';
 /**
  * Generate a X / Y of the integral
- * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.from] - First value for integration in the X scale
  * @param {number} [options.fromIndex=0] - First point for integration
@@ -13,10 +13,10 @@ import { check } from './check';
  * @return {{x:[],y:[]}} An object with the integration function
  */
 
-export function integral(points = {}, options = {}) {
+export function integral(data = {}, options = {}) {
   const { reverse = false } = options;
-  check(points);
-  const { x, y } = points;
+  check(data);
+  const { x, y } = data;
   if (x.length < 2) return 0;
 
   const { fromIndex, toIndex } = getFromToIndex(x, options);

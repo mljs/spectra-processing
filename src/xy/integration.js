@@ -4,7 +4,7 @@ import { check } from './check';
 
 /**
  * In place modification of the 2 arrays to make X unique and sum the Y if X has the same value
- * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.from] - First value for integration in the X scale
  * @param {number} [options.fromIndex=0] - First point for integration
@@ -13,9 +13,9 @@ import { check } from './check';
  * @return {number} Integration value on the specified range
  */
 
-export function integration(points = {}, options = {}) {
-  check(points);
-  const { x, y } = points;
+export function integration(data = {}, options = {}) {
+  check(data);
+  const { x, y } = data;
   if (x.length < 2) return 0;
   const { fromIndex, toIndex } = getFromToIndex(x, options);
   let currentIntegration = 0;

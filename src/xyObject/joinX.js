@@ -1,6 +1,6 @@
 /**
  *
- * @param {array} [data] array of growing points {x,y}
+ * @param {ArrayPoints} [data] array of growing points {x,y}
  * @param {object} [options={}]
  * @param {object} [xError=Number.EPSILON] limit to join the data
  */

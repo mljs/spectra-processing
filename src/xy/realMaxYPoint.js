@@ -3,7 +3,7 @@ import { getTargetIndex } from '../x/getTargetIndex';
 import { check } from './check';
 /**
  * Find the closest minimum going down hill
- * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
+ * @param {object} [points={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.target]
  * @param {number} [options.targetIndex=0]
