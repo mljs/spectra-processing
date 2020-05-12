@@ -1,3 +1,12 @@
+# [2.4.0](https://github.com/cheminfo/spectra-processing/compare/v2.3.0...v2.4.0) (2020-05-12)
+
+
+### Features
+
+* add X.absoluteMedian ([7732f39](https://github.com/cheminfo/spectra-processing/commit/7732f395aa5085ee17c82ca1912b9e2c0325f89f))
+
+
+
 # [2.3.0](https://github.com/cheminfo/spectra-processing/compare/v2.2.0...v2.3.0) (2020-05-08)
 
 
