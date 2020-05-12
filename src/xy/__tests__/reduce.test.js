@@ -76,25 +76,25 @@ describe('reduce', () => {
   });
 
   it('Part rounded big data', () => {
-    let x = [];
-    let y = [];
+    let x2 = [];
+    let y2 = [];
     for (let i = 0; i < 5000000; i++) {
-      x.push(i);
-      y.push(i);
+      x2.push(i);
+      y2.push(i);
     }
-    let result = reduce({ x, y }, { nbPoints: 4000 });
+    let result = reduce({ x: x2, y: y2 }, { nbPoints: 4000 });
     expect(result.x).toHaveLength(4001);
     expect(result.y).toHaveLength(4001);
   });
 
   it('Part rounded big data 2', () => {
-    let x = [];
-    let y = [];
+    let x2 = [];
+    let y2 = [];
     for (let i = 0; i < 5000000; i++) {
-      x.push(i);
-      y.push(i);
+      x2.push(i);
+      y2.push(i);
     }
-    let result = reduce({ x, y }, { nbPoints: 4000, from: 10, to: 20 });
+    let result = reduce({ x: x2, y: y2 }, { nbPoints: 4000, from: 10, to: 20 });
     expect(Array.from(result.x)).toStrictEqual([
       10,
       11,
@@ -124,13 +124,13 @@ describe('reduce', () => {
   });
 
   it('Check optimization', () => {
-    let x = [];
-    let y = [];
+    let x2 = [];
+    let y2 = [];
     for (let i = 0; i < 11; i++) {
-      x.push(i);
-      y.push(i);
+      x2.push(i);
+      y2.push(i);
     }
-    let result = reduce({ x, y }, { nbPoints: 5, optimize: true });
+    let result = reduce({ x: x2, y: y2 }, { nbPoints: 5, optimize: true });
     expect(result.x).toStrictEqual([0, 5, 10]);
     expect(result.y).toStrictEqual([0, 5, 10]);
   });

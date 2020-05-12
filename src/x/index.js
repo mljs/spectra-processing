@@ -1,3 +1,4 @@
+import { absoluteMedian } from './absoluteMedian';
 import { add } from './add';
 import { autoCorrelation } from './autoCorrelation';
 import { boxPlot } from './boxPlot';
@@ -10,9 +11,9 @@ import { getTargetIndex } from './getTargetIndex';
 import { multiply } from './multiply';
 import { rotate } from './rotate';
 import { subtract } from './subtract';
-import { absoluteMedian } from './absoluteMedian';
 
 export const X = {
+  absoluteMedian,
   add,
   autoCorrelation,
   boxPlot,
