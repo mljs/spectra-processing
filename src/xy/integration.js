@@ -18,10 +18,10 @@ export function integration(points = {}, options = {}) {
   const { x, y } = points;
   if (x.length < 2) return 0;
   const { fromIndex, toIndex } = getFromToIndex(x, options);
-  let integration = 0;
+  let currentIntegration = 0;
   for (let i = fromIndex; i < toIndex; i++) {
-    integration += ((x[i + 1] - x[i]) * (y[i + 1] + y[i])) / 2;
+    currentIntegration += ((x[i + 1] - x[i]) * (y[i + 1] + y[i])) / 2;
   }
 
-  return integration;
+  return currentIntegration;
 }

@@ -19,10 +19,10 @@ export function maxY(points = {}, options = {}) {
 
   const { fromIndex, toIndex } = getFromToIndex(x, options);
 
-  let maxY = y[fromIndex];
+  let currentMaxY = y[fromIndex];
   for (let i = fromIndex; i <= toIndex; i++) {
-    if (y[i] > maxY) maxY = y[i];
+    if (y[i] > currentMaxY) currentMaxY = y[i];
   }
 
-  return maxY;
+  return currentMaxY;
 }
