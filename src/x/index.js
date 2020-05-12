@@ -10,6 +10,7 @@ import { getTargetIndex } from './getTargetIndex';
 import { multiply } from './multiply';
 import { rotate } from './rotate';
 import { subtract } from './subtract';
+import { absoluteMedian } from './absoluteMedian';
 
 export const X = {
   add,
