@@ -35,11 +35,37 @@ export * from './x/xMultiply';
 export * from './x/xRotate';
 export * from './x/xSubtract';
 
-export { XY } from './xy/index.js';
-export { XReIm } from './xreim/index.js';
-export { ReIm } from './reim/index.js';
-export { X } from './x/index.js';
-export { XYObject } from './xyObject/index.js';
+export * from './reim/reimAbsolute';
+export * from './reim/reimAutoPhaseCorrection';
+export * from './reim/reimPhaseCorrection';
+
+export * from './xreim/xreimZeroFilling';
+export * from './xreim/xreimSortX';
+
+export * from './xy/xyAlign';
+export * from './xy/xyCheck';
+export * from './xy/xyExtract';
+export * from './xy/xyGetNMaxY';
+export * from './xy/xyGrowingX';
+export * from './xy/xyIntegral';
+export * from './xy/xyIntegration';
+export * from './xy/xyMaxClosestYPoint';
+export * from './xy/xyMaxY';
+export * from './xy/xyMaxYPoint';
+export * from './xy/xyMaximaY';
+export * from './xy/xyMinClosestYPoint';
+export * from './xy/xyMinYPoint';
+export * from './xy/xyMinimaY';
+export * from './xy/xyPeakInfo';
+export * from './xy/xyRealMaxYPoint';
+export * from './xy/xyRealMinYPoint';
+export * from './xy/xyReduce';
+export * from './xy/xyToXYObject';
+
+export * from './xyObject/xyObjectJoinX';
+export * from './xyObject/xyObjectSlotX';
+export * from './xyObject/xyObjectSortX';
+export * from './xyObject/xyObjectToXY';
 
 /*
  * ZONES
