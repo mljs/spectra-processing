@@ -2,14 +2,15 @@ import { xyCheck } from './xyCheck';
 
 /**
  *
- * @param {ArrayPoints} [data] array of points {x,y}
+ * @param {DataXY} [data] array of points {x,y}
+ * @returns {DataPoints}
  */
-export function xyToXYObject(points) {
-  xyCheck(points);
-  const { x, y } = points;
-  let data = [];
+export function xyToXYObject(data) {
+  xyCheck(data);
+  const { x, y } = data;
+  let objectArray = [];
   for (let i = 0; i < x.length; i++) {
-    data.push({ x: x[i], y: y[i] });
+    objectArray.push({ x: x[i], y: y[i] });
   }
-  return data;
+  return objectArray;
 }
