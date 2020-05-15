@@ -1,6 +1,6 @@
 {
   "name": "ml-spectra-processing",
-  "version": "2.4.0",
+  "version": "3.0.0",
   "description": "Various method to process spectra",
   "main": "lib/index.js",
   "types": "index.d.ts",

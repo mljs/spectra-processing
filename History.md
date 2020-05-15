@@ -1,3 +1,7 @@
+# [3.0.0](https://github.com/cheminfo/spectra-processing/compare/v2.4.0...v3.0.0) (2020-05-15)
+
+
+
 # [2.4.0](https://github.com/cheminfo/spectra-processing/compare/v2.3.0...v2.4.0) (2020-05-12)
 
 
