@@ -1,7 +1,7 @@
 import median from 'ml-array-median';
 
 /**
- * This function calculates the median after taking the absolute values of the points
+ * This function calculates the median after taking the reimAbsolute values of the points
  * @param {Array<Number>} array - the array that will be rotated
  * @return {Number}
  */
