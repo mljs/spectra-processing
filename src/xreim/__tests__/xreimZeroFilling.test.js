@@ -1,11 +1,11 @@
-import { zeroFilling } from '../zeroFilling.js';
+import { xreimZeroFilling } from '../xreimZeroFilling.js';
 
-describe('zeroFilling', function () {
-  it('test zeroFilling over', () => {
+describe('xreimZeroFilling', function () {
+  it('test xreimZeroFilling over', () => {
     let x = [0, 0.1, 0.2, 0.3];
     let re = [0, 1, 2, 3];
     let im = [4, 5, 6, 7];
-    let result = zeroFilling({ x, re, im }, 6);
+    let result = xreimZeroFilling({ x, re, im }, 6);
     let newX = Array.from(result.x).map((value) => Math.round(value * 10) / 10);
 
     let newRe = Array.from(result.re);
@@ -18,11 +18,11 @@ describe('zeroFilling', function () {
     });
   });
 
-  it('test zeroFilling equal', () => {
+  it('test xreimZeroFilling equal', () => {
     let x = [0, 0.1, 0.2, 0.3];
     let re = [0, 1, 2, 3];
     let im = [4, 5, 6, 7];
-    let result = zeroFilling({ x, re, im }, 4);
+    let result = xreimZeroFilling({ x, re, im }, 4);
     let newX = Array.from(result.x);
     let newRe = Array.from(result.re);
     let newIm = Array.from(result.im);
@@ -34,11 +34,11 @@ describe('zeroFilling', function () {
     });
   });
 
-  it('test zeroFilling under', () => {
+  it('test xreimZeroFilling under', () => {
     let x = [0, 0.1, 0.2, 0.3];
     let re = [0, 1, 2, 3];
     let im = [4, 5, 6, 7];
-    let result = zeroFilling({ x, re, im }, 2);
+    let result = xreimZeroFilling({ x, re, im }, 2);
     let newX = Array.from(result.x);
     let newRe = Array.from(result.re);
     let newIm = Array.from(result.im);

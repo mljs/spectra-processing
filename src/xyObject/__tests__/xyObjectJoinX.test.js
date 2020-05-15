@@ -1,6 +1,6 @@
-import { joinX } from '../joinX';
+import { xyObjectJoinX } from '../xyObjectJoinX';
 
-test('joinX', () => {
+test('xyObjectJoinX', () => {
   let arrayXY = [
     { x: 0, y: 1 },
     { x: 1, y: 1 },
@@ -8,7 +8,7 @@ test('joinX', () => {
     { x: 4, y: 2 },
   ];
 
-  expect(joinX(arrayXY, { xError: 1.1 })).toStrictEqual([
+  expect(xyObjectJoinX(arrayXY, { xError: 1.1 })).toStrictEqual([
     { x: 0.5, y: 2 },
     { x: 3.5, y: 4 },
   ]);

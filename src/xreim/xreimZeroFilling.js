@@ -4,7 +4,7 @@
  * @param {number} totalLength - final number of points
  * @return {SD}
  */
-export function zeroFilling(data, totalLength) {
+export function xreimZeroFilling(data, totalLength) {
   let length = data.x.length;
   if (totalLength === 0 || length === totalLength) return data;
 

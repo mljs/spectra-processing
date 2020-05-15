@@ -1,4 +1,4 @@
-import { phaseCorrection } from '../phaseCorrection.js';
+import { reimPhaseCorrection } from '../reimPhaseCorrection.js';
 
 let data = {
   x: [
@@ -542,18 +542,18 @@ let data = {
     45004027,
   ],
 };
-describe('phaseCorrection', function () {
-  it('test phaseCorrection even', () => {
+describe('reimPhaseCorrection', function () {
+  it('test reimPhaseCorrection even', () => {
     let re = [0, 1, 2, 3];
     let im = [0, 1, 2, 3];
-    let result = phaseCorrection({ re, im }, 0, 0);
+    let result = reimPhaseCorrection({ re, im }, 0, 0);
     let newRe = Array.from(result.re);
     let newIm = Array.from(result.im);
 
     expect({ re: newRe, im: newIm }).toStrictEqual({ re, im });
   });
   it('180 zero order phasing', () => {
-    let phased = phaseCorrection(data, Math.PI, 0);
+    let phased = reimPhaseCorrection(data, Math.PI, 0);
     let diff = data.re.map((e, i) => e + phased.re[i]);
     let index = Math.floor(Math.random() * data.x.length);
     expect(diff[index]).toBeCloseTo(0, 4);

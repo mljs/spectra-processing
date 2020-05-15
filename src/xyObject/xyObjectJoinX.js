@@ -4,7 +4,7 @@
  * @param {object} [options={}]
  * @param {object} [xError=Number.EPSILON] limit to join the data
  */
-export function joinX(data, options = {}) {
+export function xyObjectJoinX(data, options = {}) {
   const { xError = Number.EPSILON } = options;
 
   // when we join we will use the center of mass

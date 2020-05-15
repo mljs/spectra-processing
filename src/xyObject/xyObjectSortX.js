@@ -3,6 +3,6 @@
  * @param {ArrayPoints} [data] array of points {x,y}
  */
 
-export function sortX(data) {
+export function xyObjectSortX(data) {
   return data.sort((a, b) => a.x - b.x);
 }

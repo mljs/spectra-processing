@@ -4,7 +4,7 @@
  * @param {object} [options={}]
  * @param {object} [slotWidth=1] limit to join the data
  */
-export function slotX(data, options = {}) {
+export function xyObjectSlotX(data, options = {}) {
   const { slotWidth = 1 } = options;
   const halfSlot = slotWidth / 2;
 

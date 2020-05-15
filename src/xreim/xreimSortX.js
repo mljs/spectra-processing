@@ -4,11 +4,11 @@
  * @return {SD}
  */
 
-export function sortX(data) {
+export function xreimSortX(data) {
   const { x, re, im } = data;
 
   if (x.length !== re.length || x.length !== im.length) {
-    throw TypeError('sortX: length of x, re and im must be identical');
+    throw TypeError('xreimSortX: length of x, re and im must be identical');
   }
 
   if (x.length < 2 || x[0] < x[1]) return data;
