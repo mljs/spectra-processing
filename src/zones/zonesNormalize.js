@@ -8,7 +8,7 @@
  * @param {number} [options.to=Number.MAX_VALUE]
  */
 
-export function normalizeZones(zones = [], options = {}) {
+export function zonesNormalize(zones = [], options = {}) {
   if (zones.length === 0) return [];
   zones = JSON.parse(JSON.stringify(zones)).map((zone) =>
     zone.from > zone.to ? { from: zone.to, to: zone.from } : zone,

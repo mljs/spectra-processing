@@ -1,4 +1,4 @@
-import { normalizeZones } from '../util/normalizeZones';
+import { zonesNormalize } from '../zones/zonesNormalize';
 
 import { check } from './check';
 
@@ -15,7 +15,7 @@ export function extract(data = {}, options = {}) {
   const { x, y } = data;
   let { zones } = options;
 
-  zones = normalizeZones(zones);
+  zones = zonesNormalize(zones);
 
   if (!Array.isArray(zones) || zones.length === 0) return data;
 

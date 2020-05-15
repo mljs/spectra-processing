@@ -20,6 +20,8 @@
  * @property {Array<Number>} im Array of im values
  */
 
+export { zonesNormalize } from './zones/zonesNormalize';
+
 export { XY } from './xy/index.js';
 export { XReIm } from './xreim/index.js';
 export { ReIm } from './reim/index.js';

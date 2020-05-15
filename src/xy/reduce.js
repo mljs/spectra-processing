@@ -1,4 +1,4 @@
-import { normalizeZones } from '../util/normalizeZones';
+import { zonesNormalize } from '../zones/zonesNormalize';
 import { findClosestIndex } from '../x/findClosestIndex';
 
 import { check } from './check';
@@ -27,7 +27,7 @@ export function reduce(data, options = {}) {
     zones = [],
   } = options;
 
-  zones = normalizeZones(zones, { from, to });
+  zones = zonesNormalize(zones, { from, to });
   if (zones.length === 0) zones = [{ from, to }]; // we take everything
 
   // for each zone we should know the first index, the last index and the number of points
