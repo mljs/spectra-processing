@@ -1,29 +1,42 @@
+import { getNoiseLevel } from '../x/getNoiseLevel';
+
 import { absolute } from './absolute';
 import { phaseCorrection } from './phaseCorrection';
 /**
  * Implementation of the algorithm for automatic phase correction: A robust, general automatic phase
  * correction algorithm for high-resolution NMR data. 10.1002/mrc.4586
- * @param {object} spectraData
+ * @param {object} data - { re, im } real and imaginary data.
+ * @param {object} options -
+ * @param {Number} options.minRegSize - min number of points to auto phase a region.
+ * @param {Number} options.maxDistanceToJoin - max distance between regions (in number of points) to join two regions
+ * @param {boolean} options.magnitudeMode - if true it uses magnitude spectrum.boolean
+ * @param {Number} options.factorNoise - scale the cutoff like factorStd * noiseLevel.
  */
+
+const defaultOptions = {
+  minRegSize: 30,
+  maxDistanceToJoin: 256,
+  magnitudeMode: true,
+  factorNoise: 3,
+};
+
 export function autoPhaseCorrection(data, options = {}) {
-  const { minRegSize } = options;
   const { re, im } = data;
   const length = re.length;
 
-  let magnitudeData = absolute(data);
+  options = Object.assign(defaultOptions, options);
 
-  // TODO: It could be better to use the magnitud spectrum instead of the real data
-  // for determining the peak regions
-  //let magData = reData;//getMagnitudSpectrum(reData, imData);
+  const { magnitudeMode, minRegSize } = options;
+
+  let magnitudeData = magnitudeMode ? absolute(data) : re;
 
   let ds = holoborodko(magnitudeData);
-  let peaksDs = robustBaseLineRegionsDetection(ds, minRegSize);
-  let peaksSp = robustBaseLineRegionsDetection(magnitudeData, minRegSize);
+  let peaksDs = robustBaseLineRegionsDetection(ds, options);
+  let peaksSp = robustBaseLineRegionsDetection(magnitudeData, options);
   let finalPeaks = new Array(length);
   for (let i = 0; i < length; i++) {
     finalPeaks[i] = peaksSp[i] & peaksDs[i];
   }
-  // API.createData('mask', xy);
 
   // Once the regions are detected, we auto phase each of them separately.
   // TODO: This part can be put inside a function
@@ -37,23 +50,19 @@ export function autoPhaseCorrection(data, options = {}) {
 
     //Look for the first 1 in the array
     while (!finalPeaks[++i] && i < length) {
+      //TODO: Add some extra points(0.1 ppm) at rigth and left sides of the region.
       x0 = i;
     }
-
-    //TODO: Add some extra points(0.1 ppm) at rigth and left sides of the region.
-    while (finalPeaks[i] && i < length) {
+    for (; finalPeaks[i] && i < length; i++) {
       reTmp.push(re[i]);
       imTmp.push(im[i]);
       i++;
     }
-    // for (; finalPeaks[i] && i < length; i++) {
 
-    // }
     if (reTmp.length > minRegSize) {
       res.push(autoPhaseRegion(reTmp, imTmp, x0));
     }
   }
-
   // TODO: Still some corrections needed. In the paper they remove the outlayers interatively
   // until they can perform a regression witout bad points. Can someone help here?
   let [ph1, ph0] = weightedLinearRegression(
@@ -61,37 +70,29 @@ export function autoPhaseCorrection(data, options = {}) {
     res.map((r) => r.ph0),
     res.map((r) => r.area / 1e11),
   );
-
   let phased = phaseCorrection(
     { re, im },
     (ph0 * Math.PI) / 180,
     (ph1 * Math.PI) / 180,
   );
-
   return { data: phased, ph0, ph1 };
 }
 
 function autoPhaseRegion(re, im, x0) {
   let start = -180;
   let stop = 180;
-  let nSteps = 20;
-  let maxSteps = 3;
+  let nSteps = 6;
+  let maxSteps = 5;
+
   let bestAng = 0;
+  let minArea = Number.MAX_SAFE_INTEGER;
   while (maxSteps > 0) {
     let dAng = (stop - start) / (nSteps + 1);
-    let minArea = Number.MAX_SAFE_INTEGER;
-    bestAng = start;
     for (let i = start; i <= stop; i += dAng) {
-      let phased = phaseCorrection({ re, im }, (Math.PI * i) / 180, 0);
-      let negArea = 0;
-      for (let j = 0; j < re.length; j++) {
-        if (phased.re[j] < 0) {
-          negArea += -phased.re[j];
-        }
-      }
+      let phased = phaseCorrection({ re, im }, toRadians(i), 0);
+      let negArea = getNegArea(phased.re);
       if (negArea < minArea) {
-        minArea = negArea;
-        bestAng = i;
+        [minArea, bestAng] = [negArea, i];
       }
     }
     start = bestAng - dAng;
@@ -100,7 +101,7 @@ function autoPhaseRegion(re, im, x0) {
   }
 
   // Calculate the area for the best angle
-  let phased = phaseCorrection({ re, im }, (Math.PI * bestAng) / 180, 0);
+  let phased = phaseCorrection({ re, im }, toRadians(bestAng), 0);
   let area = 0;
   let sumX = 0;
   for (let j = 0; j < re.length; j++) {
@@ -132,36 +133,34 @@ function holoborodko(s) {
   return dk;
 }
 
-function robustBaseLineRegionsDetection(s, minRegSize) {
+function robustBaseLineRegionsDetection(s, options) {
+  const { maxDistanceToJoin, magnitudeMode, factorNoise } = options;
+
   let mask = new Array(s.length);
   for (let i = 0; i < s.length; i++) {
     mask[i] = false;
   }
 
-  //Recursivelly check for points greater than 3 times the sdt
   let change = true;
   while (change) {
-    let res = stats(s, mask);
-    let noiseLevel = 3 * res.std;
-    let mean = res.mean;
+    let noiseLevel = getNoiseLevel(s, { magnitudeMode });
+    let cutOff = factorNoise * noiseLevel.positive;
     change = false;
     for (let i = 0; i < s.length; i++) {
-      if (Math.abs(s[i] - mean) > noiseLevel && !mask[i]) {
+      if (Math.abs(s[i]) > cutOff && !mask[i]) {
         change = true;
         mask[i] = true;
       }
     }
   }
-
   // Clean up mask by merging peaks blocks, separated by just a few points(4??).
   let count = 0;
   let prev = 0;
-  const SMALL = minRegSize;
   for (let i = 0; i < s.length; i++) {
     if (!mask[i]) {
       count++;
     } else {
-      if (count < SMALL) {
+      if (count < maxDistanceToJoin) {
         for (let j = 0; j <= count; j++) {
           mask[prev + j] = true;
         }
@@ -207,24 +206,12 @@ function weightedLinearRegression(x, y, w) {
   ];
 }
 
-function stats(s, mask) {
-  let m = 0;
-  let count = 0;
-  for (let i = 0; i < s.length; i++) {
-    if (!mask[i]) {
-      m += s[i];
-      count++;
-    }
-  }
+const toRadians = (degree) => (degree * Math.PI) / 180;
 
-  m /= count;
-  let sum = 0;
-
-  for (let i = 0; i < s.length; i++) {
-    if (!mask[i]) {
-      sum += Math.pow(s[i] - m, 2);
-      count++;
-    }
+const getNegArea = (data) => {
+  let area = 0;
+  for (let i = 0; i < data.length; i++) {
+    if (data[i] < 0) area -= data[i];
   }
-  return { mean: m, std: Math.sqrt(sum / count) };
-}
+  return area;
+};
