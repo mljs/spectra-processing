@@ -2,8 +2,8 @@ import { dotProduct } from './dotProduct';
 
 /**
  * Calculates the cross-correlation between 2 vectors
- * @param {Array} [A] - fixed array
- * @param {Array} [B] - sweeping array
+ * @param {Array<Number>} [A] - fixed array
+ * @param {Array<Number>} [B] - sweeping array
  * @param {object} [options={}]
  * @param {number} [options.tau = 1] - sweep increment size (in number of points, min = 1, max = A.length)
  * @param {number} [options.lag = A.length - 1] - scalar lag parameter

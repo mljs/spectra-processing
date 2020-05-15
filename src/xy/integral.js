@@ -3,7 +3,7 @@ import { getFromToIndex } from '../x/getFromToIndex';
 import { check } from './check';
 /**
  * Generate a X / Y of the integral
- * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.from] - First value for integration in the X scale
  * @param {number} [options.fromIndex=0] - First point for integration
@@ -13,33 +13,33 @@ import { check } from './check';
  * @return {{x:[],y:[]}} An object with the integration function
  */
 
-export function integral(points = {}, options = {}) {
+export function integral(data = {}, options = {}) {
   const { reverse = false } = options;
-  check(points);
-  const { x, y } = points;
+  check(data);
+  const { x, y } = data;
   if (x.length < 2) return 0;
 
   const { fromIndex, toIndex } = getFromToIndex(x, options);
 
   let integration = 0;
-  let integral;
+  let currentIntegral;
   if (reverse) {
-    integral = { x: [x[toIndex]], y: [0] };
+    currentIntegral = { x: [x[toIndex]], y: [0] };
     for (let i = toIndex; i > fromIndex; i--) {
       integration += ((x[i] - x[i - 1]) * (y[i - 1] + y[i])) / 2;
-      integral.x.push(x[i - 1]);
-      integral.y.push(integration);
+      currentIntegral.x.push(x[i - 1]);
+      currentIntegral.y.push(integration);
     }
-    integral.x.reverse();
-    integral.y.reverse();
+    currentIntegral.x.reverse();
+    currentIntegral.y.reverse();
   } else {
-    integral = { x: [x[fromIndex]], y: [0] };
+    currentIntegral = { x: [x[fromIndex]], y: [0] };
     for (let i = fromIndex; i < toIndex; i++) {
       integration += ((x[i + 1] - x[i]) * (y[i + 1] + y[i])) / 2;
-      integral.x.push(x[i + 1]);
-      integral.y.push(integration);
+      currentIntegral.x.push(x[i + 1]);
+      currentIntegral.y.push(integration);
     }
   }
 
-  return integral;
+  return currentIntegral;
 }

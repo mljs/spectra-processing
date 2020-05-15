@@ -6,7 +6,7 @@ describe('zeroFilling', function () {
     let re = [0, 1, 2, 3];
     let im = [4, 5, 6, 7];
     let result = zeroFilling({ x, re, im }, 6);
-    let newX = Array.from(result.x).map((x) => Math.round(x * 10) / 10);
+    let newX = Array.from(result.x).map((value) => Math.round(value * 10) / 10);
 
     let newRe = Array.from(result.re);
     let newIm = Array.from(result.im);

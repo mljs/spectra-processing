@@ -1,7 +1,7 @@
 /**
  * Order object of array, x has to be monotone.
  * Ensure x is growing
- * @param {object} data Object of kind {x:[], y:[]}.
+ * @param {DataXY} data Object of kind {x:[], y:[]}.
  * @return {SD}
  */
 

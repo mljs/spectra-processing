@@ -2,8 +2,8 @@
  * Aligns data of two spectra by verifying wether x values are in a certain range (`delta`).
  * The two spectra should not have two consecutive x values which difference is
  * smaller than `delta` to achieve good results!
- * @param {object<array>} spectrum1 First spectrum data
- * @param {object<array>} spectrum2 Second spectrum data
+ * @param {DataXY} spectrum1 First spectrum data
+ * @param {DataXY} spectrum2 Second spectrum data
  * @param {object} options
  * @param {number} [options.delta = 1] The range in which the two x values of the spectra must be to be placed on the same line
  * @param {boolean} [options.common = true] If `true`, only the data considered as common to both spectra is kept. If `false`, the data y arrays are completed with zeroes where no common values are found

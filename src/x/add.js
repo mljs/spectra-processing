@@ -2,7 +2,7 @@
 
 /**
  * This function add the first array by the second array or a constant value to each element of the first array
- * @param {Array} array1 - the array that will be rotated
+ * @param {Array<Number>} array1 - the array that will be rotated
  * @param {Array|Number} array2
  * @return {Array}
  */

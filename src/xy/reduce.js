@@ -7,7 +7,7 @@ import { check } from './check';
  * display many spectra as SVG.
  * SHOULD NOT BE USED FOR DATA PROCESSING !!!
  * You should rather use ml-xy-equally-spaced to make further processing
- * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
+ * @param {object} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.from=x[0]]
  * @param {number} [options.to=x[x.length-1]]
@@ -16,9 +16,9 @@ import { check } from './check';
  * @param {number} [options.optimize=false] If optimize we may have less than nbPoints at the end
  */
 
-export function reduce(points, options = {}) {
-  check(points);
-  const { x, y } = points;
+export function reduce(data, options = {}) {
+  check(data);
+  const { x, y } = data;
   let {
     from = x[0],
     to = x[x.length - 1],

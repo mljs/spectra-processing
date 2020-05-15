@@ -4,20 +4,20 @@ import { check } from './check';
 
 /**
  * Extract zones from a XY data
- * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {Array} [options.zones=[]]
  * @return {Array} Array of points
  */
 
-export function extract(points = {}, options = {}) {
-  check(points);
-  const { x, y } = points;
+export function extract(data = {}, options = {}) {
+  check(data);
+  const { x, y } = data;
   let { zones } = options;
 
   zones = normalizeZones(zones);
 
-  if (!Array.isArray(zones) || zones.length === 0) return points;
+  if (!Array.isArray(zones) || zones.length === 0) return data;
 
   let newX = [];
   let newY = [];

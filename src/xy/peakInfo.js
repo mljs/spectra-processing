@@ -7,11 +7,11 @@ import { check } from './check';
  *
  * We expect ordered data and equidistant X axis
  * You can use the method helper if required:
- * ML.ArrayXY.uniqueX
- * ML.ArrayXY.sortX
- * ML.ArrayXY.equallySpaced
+ * ML.ArrayPoints.uniqueX
+ * ML.ArrayPoints.sortX
+ * ML.ArrayPoints.equallySpaced
  *
- * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
+ * @param {object} [points={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.target]
  * @param {number} [options.targetIndex]

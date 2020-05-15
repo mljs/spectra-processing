@@ -4,8 +4,8 @@
  * Calculates the correlation between 2 vectors
  * https://en.wikipedia.org/wiki/Correlation_and_dependence
  *
- * @param {Array} [A] - the array that will be rotated
- * @param {Array} [B]
+ * @param {Array<Number>} [A] - the array that will be rotated
+ * @param {Array<Number>} [B]
  * @return {Array}
  */
 export function correlation(A, B) {

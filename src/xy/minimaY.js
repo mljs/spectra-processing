@@ -4,13 +4,13 @@ import { check } from './check';
  * If the values are equal the middle
  * of the equal part will be the position of the signal!
  *
- * @param {object} [points={}] - Object of points contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @return {Array} Array of points
  */
 
-export function minimaY(points = {}) {
-  check(points);
-  const { x, y } = points;
+export function minimaY(data = {}) {
+  check(data);
+  const { x, y } = data;
   if (x.length < 3) return [];
   let maxima = [];
   let startEqualIndex = -1;
