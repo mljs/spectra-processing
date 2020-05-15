@@ -6,6 +6,7 @@ import { crossCorrelation } from './crossCorrelation';
 import { divide } from './divide';
 import { findClosestIndex } from './findClosestIndex';
 import { getFromToIndex } from './getFromToIndex';
+import { getNoiseLevel } from './getNoiseLevel';
 import { getTargetIndex } from './getTargetIndex';
 import { multiply } from './multiply';
 import { rotate } from './rotate';
@@ -21,6 +22,7 @@ export const X = {
   findClosestIndex,
   getFromToIndex,
   getTargetIndex,
+  getNoiseLevel,
   multiply,
   rotate,
   subtract,

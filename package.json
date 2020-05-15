@@ -55,6 +55,10 @@
     "rollup": "^2.3.2"
   },
   "dependencies": {
-    "is-any-array": "0.1.0"
+    "compute-erfcinv": "^3.0.1",
+    "distributions-normal-random": "0.0.1",
+    "distributions-rayleigh-pdf": "0.0.1",
+    "is-any-array": "0.1.0",
+    "spline-interpolator": "^1.0.0"
   }
 }
