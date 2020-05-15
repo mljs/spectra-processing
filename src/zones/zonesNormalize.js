@@ -36,8 +36,7 @@ export function zonesNormalize(zones = [], options = {}) {
 
   let currentZone = zones[0];
   let result = [currentZone];
-  for (let i = 1; i < zones.length; i++) {
-    let zone = zones[i];
+  for (let zone of zones) {
     if (zone.from <= currentZone.to) {
       currentZone.to = zone.to;
     } else {

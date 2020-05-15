@@ -1,10 +1,10 @@
 /**
  *
- * @param {ArrayPoints} [data] array of growing points {x,y}
+ * @param {ArrayPoints} [points] array of growing points {x,y}
  * @param {object} [options={}]
  * @param {object} [slotWidth=1] limit to join the data
  */
-export function xyObjectSlotX(data, options = {}) {
+export function xyObjectSlotX(points, options = {}) {
   const { slotWidth = 1 } = options;
   const halfSlot = slotWidth / 2;
 
@@ -14,8 +14,8 @@ export function xyObjectSlotX(data, options = {}) {
     x: Number.MIN_VALUE,
     y: 0,
   };
-  for (let item of data) {
-    let slot = item.x - ((item.x + halfSlot) % slotWidth) + halfSlot;
+  for (let point of points) {
+    let slot = point.x - ((point.x + halfSlot) % slotWidth) + halfSlot;
     if (Math.abs(current.x - slot) > Number.EPSILON) {
       current = {
         x: slot,
@@ -23,7 +23,7 @@ export function xyObjectSlotX(data, options = {}) {
       };
       result.push(current);
     }
-    current.y += item.y;
+    current.y += point.y;
   }
   return result;
 }

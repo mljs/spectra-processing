@@ -1,10 +1,10 @@
 /**
  *
- * @param {ArrayPoints} [data] array of points {x,y}
+ * @param {ArrayPoints} [points] array of points {x,y}
  */
-export function xyObjectToXY(data) {
+export function xyObjectToXY(points) {
   return {
-    x: data.map((entry) => entry.x),
-    y: data.map((entry) => entry.y),
+    x: points.map((entry) => entry.x),
+    y: points.map((entry) => entry.y),
   };
 }

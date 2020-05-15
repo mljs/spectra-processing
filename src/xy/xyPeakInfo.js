@@ -11,16 +11,16 @@ import { xyCheck } from './xyCheck';
  * ML.ArrayPoints.sortX
  * ML.ArrayPoints.equallySpaced
  *
- * @param {object} [points={}] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param {object} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.target]
  * @param {number} [options.targetIndex]
  * @return {object} Information about signal
  */
 
-export function xyPeakInfo(points = {}, options = {}) {
-  xyCheck(points);
-  const { x, y } = points;
+export function xyPeakInfo(data = {}, options = {}) {
+  xyCheck(data);
+  const { x, y } = data;
   if (x.length < 3) return undefined;
   let { targetIndex, target } = options;
   if (targetIndex === undefined) {
