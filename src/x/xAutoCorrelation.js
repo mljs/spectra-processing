@@ -8,6 +8,6 @@ import { crossCorrelation } from './crossCorrelation';
  * @param {number} [options.lag = A.length - 1] - scalar lag parameter
  */
 
-export function autoCorrelation(A, options = {}) {
+export function xAutoCorrelation(A, options = {}) {
   return crossCorrelation(A, A, options);
 }
