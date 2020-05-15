@@ -5,7 +5,7 @@ import median from 'ml-array-median';
  * @param {Array<Number>} array - the array that will be rotated
  * @return {Number}
  */
-export function absoluteMedian(array) {
+export function xAbsoluteMedian(array) {
   let tmpArray = array.slice();
   for (let i = 0; i < tmpArray.length; i++) {
     tmpArray[i] = Math.abs(tmpArray[i]);

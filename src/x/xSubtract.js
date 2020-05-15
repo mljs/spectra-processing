@@ -1,10 +1,10 @@
 /**
- * This function subtract the first array by the second array or a constant value from each element of the first array
+ * This function xSubtract the first array by the second array or a constant value from each element of the first array
  * @param {Array} array1 - the array that will be rotated
  * @param {Array|Number} array2
  * @return {Array}
  */
-export function subtract(array1, array2) {
+export function xSubtract(array1, array2) {
   let isConstant = false;
   let constant;
   if (Array.isArray(array2)) {

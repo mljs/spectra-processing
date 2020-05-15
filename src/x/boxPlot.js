@@ -1,5 +1,5 @@
 /**
- * This function subtract the first array by the second array or a constant value from each element of the first array
+ * This function xSubtract the first array by the second array or a constant value from each element of the first array
  * @param {Array<Number>} array1 - the array that will be rotated
  * @return {object}
  */

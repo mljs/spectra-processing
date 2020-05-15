@@ -1,12 +1,12 @@
 /**
 
 /**
- * This function multiply the first array by the second array or a constant value to each element of the first array
+ * This function xMultiply the first array by the second array or a constant value to each element of the first array
  * @param {Array} array1 - the array that will be rotated
  * @param {Array|Number} array2
  * @return {Float64Array}
  */
-export function multiply(array1, array2) {
+export function xMultiply(array1, array2) {
   let isConstant = false;
   let constant;
   if (Array.isArray(array2)) {

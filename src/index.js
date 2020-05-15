@@ -20,11 +20,29 @@
  * @property {Array<Number>} im Array of im values
  */
 
-export { zonesNormalize } from './zones/zonesNormalize';
+export * from './x/xAbsoluteMedian';
+export * from './x/xAdd';
+export * from './x/xAutoCorrelation';
+export * from './x/xBoxPlot';
+export * from './x/xCorrelation';
+export * from './x/xCrossCorrelation';
+export * from './x/xDivide';
+export * from './x/xFindClosestIndex';
+export * from './x/xGetFromToIndex';
+export * from './x/xGetNoiseLevel';
+export * from './x/xGetTargetIndex';
+export * from './x/xMultiply';
+export * from './x/xRotate';
+export * from './x/xSubtract';
 
 export { XY } from './xy/index.js';
 export { XReIm } from './xreim/index.js';
 export { ReIm } from './reim/index.js';
 export { X } from './x/index.js';
 export { XYObject } from './xyObject/index.js';
-export { Util } from './util/index.js';
+
+/*
+ * ZONES
+ */
+
+export * from './zones/zonesNormalize';

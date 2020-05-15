@@ -1,12 +1,12 @@
 /**
 
 /**
- * This function add the first array by the second array or a constant value to each element of the first array
+ * This function xAdd the first array by the second array or a constant value to each element of the first array
  * @param {Array<Number>} array1 - the array that will be rotated
  * @param {Array|Number} array2
  * @return {Array}
  */
-export function add(array1, array2) {
+export function xAdd(array1, array2) {
   let isConstant = false;
   let constant;
   if (Array.isArray(array2)) {

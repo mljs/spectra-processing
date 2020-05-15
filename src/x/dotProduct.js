@@ -1,7 +1,7 @@
-import { multiply } from './multiply';
+import { xMultiply } from './xMultiply';
 
 export function dotProduct(A, B) {
-  let g = multiply(A, B);
+  let g = xMultiply(A, B);
   let result = 0;
   for (let i = 0; i < A.length; i++) {
     result += g[i];
