@@ -5,20 +5,22 @@
 [![Test coverage][codecov-image]][codecov-url]
 [![npm download][download-image]][download-url]
 
-Various method to process spectra. There are sorted in 4 categories:
+Various functions to process spectra. Those are `pure` functions.
 
-* array : functions that apply on a 1D array
-* xy : functions that apply on an object `{x: [], y:[]}`
+They are sorted in various categories:
+
+* x: functions that apply on a 1D array
+* xy: functions that apply on an object `{x: [], y:[]}`
+* xyObject: functions that apply on an array of point `[{x,y}]`
 * xreim: functions that apply on an object `{x: [], re:[], im:[]}`
 * reim: functions that apply on an object `{re: [], im:[]}`
+* zones: functions that apply on an array of zone `[{from,to}]`
 
-There will be probably more categories related to 2D spectra
+The name of the functions starts with the first argument on which they apply.
 
 ## Installation
 
 `$ npm i ml-spectra-processing`
-
-
 
 ## Build the project and publish it on npm
 
@@ -27,25 +29,13 @@ There will be probably more categories related to 2D spectra
 
 ## Usage
 
-
 ```js
-const closest = require('ml-spectra-processing').arrayFindClosestIndex;
+import  { xAdd } from 'ml-spectra-processing';
 
-// or
-
-const {arrayFindClosestIndex} = require('ml-spectra-processing');
+let array = [1,2,3];
+let result = xAdd(array, 5);
+console.log(result);
 ```
-or using ES6 modules
-
-```js
-import {arrayFindClosestIndex} from 'ml-spectra-processing';
-
-// you can also extract only one function
-
-import {arrayFindClosestIndex} from 'ml-spectra-processing/src/array/arrayFindClosestIndex';
-```
-
-
 
 ## [API Documentation](https://mljs.github.io/spectra-processing/)
 
