@@ -3,7 +3,6 @@
   "version": "3.0.0",
   "description": "Various method to process spectra",
   "main": "lib/index.js",
-  "types": "index.d.ts",
   "module": "src/index.js",
   "files": [
     "lib",
