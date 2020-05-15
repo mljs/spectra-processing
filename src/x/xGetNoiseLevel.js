@@ -156,7 +156,7 @@ function determineCutOff(signPositive, options = {}) {
     let floor = i - delta;
     let top = i + delta;
     let elementsOfCutOff = cutOff.filter((e) => e[0] < top && e[0] > floor);
-    let averageValue = elementsOfCutOff.xyReduce(
+    let averageValue = elementsOfCutOff.reduce(
       (a, b) => a + Math.abs(b[1]),
       0,
     );
