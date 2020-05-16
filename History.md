@@ -1,3 +1,12 @@
+## [3.0.2](https://github.com/cheminfo/spectra-processing/compare/v3.0.1...v3.0.2) (2020-05-16)
+
+
+### Bug Fixes
+
+* wrong search and replace ([430934a](https://github.com/cheminfo/spectra-processing/commit/430934a4c99100af13912a97d342cea9ab727225))
+
+
+
 ## [3.0.1](https://github.com/cheminfo/spectra-processing/compare/v3.0.0...v3.0.1) (2020-05-15)
 
 
