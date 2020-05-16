@@ -156,10 +156,7 @@ function determineCutOff(signPositive, options = {}) {
     let floor = i - delta;
     let top = i + delta;
     let elementsOfCutOff = cutOff.filter((e) => e[0] < top && e[0] > floor);
-    let averageValue = elementsOfCutOff.reduce(
-      (a, b) => a + Math.abs(b[1]),
-      0,
-    );
+    let averageValue = elementsOfCutOff.reduce((a, b) => a + Math.abs(b[1]), 0);
     let kiSqrt = 0;
     for (let j = 0; j < elementsOfCutOff.length; j++) {
       kiSqrt += Math.pow(elementsOfCutOff[j][1] - averageValue, 2);
