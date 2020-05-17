@@ -1,5 +1,5 @@
 import erfcinv from 'compute-erfcinv';
-import rayleighPdf from 'distributions-rayleigh-pdf';
+import rayleighCdf from 'distributions-rayleigh-cdf';
 import SplineInterpolator from 'spline-interpolator';
 
 /**
@@ -185,11 +185,9 @@ function simpleNormInv(data, options = {}) {
   let yTraining = new Float64Array(xTraining.length);
   if (magnitudeMode) {
     let factor = 1;
-    let increment = 1e-3;
     for (let i = 0; i < yTraining.length; i++) {
       let finalInput = xTraining[i] * factor;
-      let inputValues = createArray(0, finalInput, increment);
-      yTraining[i] = 1 - increment * sum(rayleighPdf(inputValues));
+      yTraining[i] = 1 - rayleighCdf(finalInput);
     }
     let interp = new SplineInterpolator(xTraining, yTraining);
     for (let i = 0; i < result.length; i++) {
@@ -204,18 +202,10 @@ function simpleNormInv(data, options = {}) {
   return result.length === 1 ? result[0] : result;
 }
 
-function sum(arr) {
-  let result = 0;
-  for (let i = 0; i < arr.length; i++) {
-    result += arr[i];
-  }
-  return result;
-}
-
 function createArray(from, to, step) {
   let result = new Float32Array(Math.abs((from - to) / step + 1));
   for (let i = 0; i < result.length; i++) {
     result[i] = from + i * step;
   }
-  return Array.from(result);
+  return result;
 }
