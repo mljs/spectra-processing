@@ -38,6 +38,8 @@ export * from './x/xSubtract';
 export * from './reim/reimAbsolute';
 export * from './reim/reimAutoPhaseCorrection';
 export * from './reim/reimPhaseCorrection';
+export * from './reim/reimFFTShift';
+export * from './reim/reimFFT';
 
 export * from './xreim/xreimZeroFilling';
 export * from './xreim/xreimSortX';

@@ -207,5 +207,5 @@ function createArray(from, to, step) {
   for (let i = 0; i < result.length; i++) {
     result[i] = from + i * step;
   }
-  return result;
+  return Array.from(result);
 }
