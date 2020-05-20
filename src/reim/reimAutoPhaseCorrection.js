@@ -1,4 +1,4 @@
-import { xGetNoiseLevel } from '../x/xGetNoiseLevel';
+import { xNoiseSanPlot } from '../x/xNoiseSanPlot';
 
 import { reimAbsolute } from './reimAbsolute';
 import { reimPhaseCorrection } from './reimPhaseCorrection';
@@ -143,7 +143,7 @@ function robustBaseLineRegionsDetection(s, options) {
 
   let change = true;
   while (change) {
-    let noiseLevel = xGetNoiseLevel(s, { magnitudeMode });
+    let noiseLevel = xNoiseSanPlot(s, { magnitudeMode });
     let cutOff = factorNoise * noiseLevel.positive;
     change = false;
     for (let i = 0; i < s.length; i++) {

@@ -29,7 +29,7 @@ export * from './x/xCrossCorrelation';
 export * from './x/xDivide';
 export * from './x/xFindClosestIndex';
 export * from './x/xGetFromToIndex';
-export * from './x/xGetNoiseLevel';
+export * from './x/xNoiseSanPlot';
 export * from './x/xGetTargetIndex';
 export * from './x/xMultiply';
 export * from './x/xRotate';
@@ -38,6 +38,7 @@ export * from './x/xSubtract';
 export * from './reim/reimAbsolute';
 export * from './reim/reimAutoPhaseCorrection';
 export * from './reim/reimPhaseCorrection';
+export * from './reim/reimFFT';
 
 export * from './xreim/xreimZeroFilling';
 export * from './xreim/xreimSortX';

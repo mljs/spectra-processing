@@ -10,7 +10,8 @@
 export function xRotate(array, shift) {
   shift = shift % array.length;
   if (shift < 0) shift += array.length;
-  return array
-    .slice(array.length - shift)
-    .concat(array.slice(0, array.length - shift));
+  let result = new Float64Array(array.length);
+  result.set(array.slice(array.length - shift));
+  result.set(array.slice(0, array.length - shift), shift);
+  return result;
 }
