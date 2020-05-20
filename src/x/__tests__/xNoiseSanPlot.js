@@ -1,5 +1,5 @@
 import { reimAbsolute } from '../../reim/reimAbsolute';
-import { xGetNoiseLevel } from '../xGetNoiseLevel';
+import { xNoiseSanPlot } from '../xNoiseSanPlot';
 
 let data = {
   x: [
@@ -3085,13 +3085,13 @@ let data = {
   ],
 };
 
-describe('xGetNoiseLevel', function () {
+describe('xNoiseSanPlot', function () {
   it('get noise level', () => {
-    let noise = xGetNoiseLevel(data.re, { magnitudeMode: false });
-    let noiseFromMagnitude = xGetNoiseLevel(reimAbsolute(data), {
+    let noise = xNoiseSanPlot(data.re, { magnitudeMode: false });
+    let noiseFromMagnitude = xNoiseSanPlot(reimAbsolute(data), {
       magnitudeMode: true,
     });
-    expect(noise.snr).toBeCloseTo(56.84, 1);
-    expect(noiseFromMagnitude.snr).toBeCloseTo(46.48, 1);
+    expect(noise.snr).toBeCloseTo(56.8, 1);
+    expect(noiseFromMagnitude.snr).toBeCloseTo(46.4, 1);
   });
 });

@@ -8,7 +8,7 @@ import SplineInterpolator from 'spline-interpolator';
  * @param {*} options
  */
 
-export function xGetNoiseLevel(data, options = {}) {
+export function xNoiseSanPlot(data, options = {}) {
   const {
     mask,
     cutOff,
@@ -56,19 +56,17 @@ export function xGetNoiseLevel(data, options = {}) {
   );
   let signNegative = new Float64Array(input.slice(firstNegativeValueIndex));
 
-  let cutOffDist = cutOff
-    ? cutOff
-    : determineCutOff(signPositive, { magnitudeMode });
+  let cutOffDist = cutOff || determineCutOff(signPositive, { magnitudeMode });
 
-  let initialNoiseLevelPositive =
-    signPositive[Math.round(signPositive.length * cutOffDist)];
+  let pIndex = Math.floor(signPositive.length * cutOffDist);
+  let initialNoiseLevelPositive = signPositive[pIndex];
 
   let skyPoint = signPositive[0];
 
   let initialNoiseLevelNegative;
   if (signNegative.length > 0) {
-    initialNoiseLevelNegative =
-      -1 * signNegative[Math.round(signNegative.length * (1 - cutOffDist))];
+    let nIndex = Math.floor(signNegative.length * (1 - cutOffDist));
+    initialNoiseLevelNegative = -1 * signNegative[nIndex];
   } else {
     initialNoiseLevelNegative = 0;
   }
@@ -87,7 +85,7 @@ export function xGetNoiseLevel(data, options = {}) {
     if (cutOffSignalsIndexPlus > -1) {
       cloneSignPositive = signPositive.slice(cutOffSignalsIndexPlus);
       noiseLevelPositive =
-        cloneSignPositive[Math.round(cloneSignPositive.length * cutOffDist)];
+        cloneSignPositive[Math.floor(cloneSignPositive.length * cutOffDist)];
     }
 
     cutOffSignals = noiseLevelNegative * factorStd;
@@ -96,7 +94,7 @@ export function xGetNoiseLevel(data, options = {}) {
       cloneSignNegative = signNegative.slice(cutOffSignalsIndexNeg);
       noiseLevelNegative =
         cloneSignPositive[
-          Math.round(cloneSignNegative.length * (1 - cutOffDist))
+          Math.floor(cloneSignNegative.length * (1 - cutOffDist))
         ];
     }
   }
@@ -105,21 +103,24 @@ export function xGetNoiseLevel(data, options = {}) {
   initialNoiseLevelNegative = initialNoiseLevelNegative / correctionFactor;
 
   let effectiveCutOffDist, refinedCorrectionFactor;
-  if (refine) {
+  if (refine && cutOffSignalsIndexPlus > -1) {
     effectiveCutOffDist =
       (cutOffDist * cloneSignPositive.length + cutOffSignalsIndexPlus) /
       (cloneSignPositive.length + cutOffSignalsIndexPlus);
     refinedCorrectionFactor =
       -1 * simpleNormInv(effectiveCutOffDist / 2, { magnitudeMode });
+
     noiseLevelPositive /= refinedCorrectionFactor;
 
-    effectiveCutOffDist =
-      (cutOffDist * cloneSignNegative.length + cutOffSignalsIndexNeg) /
-      (cloneSignNegative.length + cutOffSignalsIndexNeg);
-    refinedCorrectionFactor =
-      -1 * simpleNormInv(effectiveCutOffDist / 2, { magnitudeMode });
-    if (noiseLevelNegative !== 0) {
-      noiseLevelNegative /= refinedCorrectionFactor;
+    if (cutOffSignalsIndexNeg > -1) {
+      effectiveCutOffDist =
+        (cutOffDist * cloneSignNegative.length + cutOffSignalsIndexNeg) /
+        (cloneSignNegative.length + cutOffSignalsIndexNeg);
+      refinedCorrectionFactor =
+        -1 * simpleNormInv(effectiveCutOffDist / 2, { magnitudeMode });
+      if (noiseLevelNegative !== 0) {
+        noiseLevelNegative /= refinedCorrectionFactor;
+      }
     }
   } else {
     noiseLevelPositive /= correctionFactor;
