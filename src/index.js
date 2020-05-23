@@ -6,8 +6,14 @@
 
 /**
  * @typedef {Object} Point
- * @property {Number} x Array of x values
- * @property {Number} y Array of y values
+ * @property {Number} x value of the x coordinate
+ * @property {Number} y value of the y coordinate
+ */
+
+/**
+ * @typedef {Object} Zone
+ * @property {Number} from first value defining the zone
+ * @property {Number} to last value defining the zone
  */
 
 /**
@@ -68,8 +74,6 @@ export * from './xyObject/xyObjectSlotX';
 export * from './xyObject/xyObjectSortX';
 export * from './xyObject/xyObjectToXY';
 
-/*
- * ZONES
- */
+export * from './zone/zoneToX';
 
 export * from './zones/zonesNormalize';
