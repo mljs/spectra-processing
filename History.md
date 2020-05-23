@@ -1,3 +1,12 @@
+# [4.1.0](https://github.com/cheminfo/spectra-processing/compare/v4.0.0...v4.1.0) (2020-05-23)
+
+
+### Features
+
+* add zoneToX ([9857200](https://github.com/cheminfo/spectra-processing/commit/9857200226d9e98bbccfc37f7fa2a2fd875c87e4))
+
+
+
 # [4.0.0](https://github.com/cheminfo/spectra-processing/compare/v3.0.2...v4.0.0) (2020-05-20)
 
 
