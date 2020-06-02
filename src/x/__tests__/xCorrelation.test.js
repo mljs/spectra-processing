@@ -14,6 +14,12 @@ describe('xCorrelation', function () {
     expect(xCorrelation(array1, array2)).toBeCloseTo(-1, 6);
   });
 
+  it('2 identical vector', () => {
+    let array1 = [1, 2, 3];
+    let array2 = [1, 2, 3];
+    expect(xCorrelation(array1, array2)).toBeCloseTo(1, 6);
+  });
+
   it('2 random vectors', () => {
     let array1 = [1, 2, 3];
     let array2 = [2, 1, 10];
