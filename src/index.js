@@ -35,9 +35,10 @@ export * from './x/xCrossCorrelation';
 export * from './x/xDivide';
 export * from './x/xFindClosestIndex';
 export * from './x/xGetFromToIndex';
-export * from './x/xNoiseSanPlot';
 export * from './x/xGetTargetIndex';
+export * from './x/xIsMonotone';
 export * from './x/xMultiply';
+export * from './x/xNoiseSanPlot';
 export * from './x/xRotate';
 export * from './x/xSubtract';
 
