@@ -1,3 +1,13 @@
+# [4.2.0](https://github.com/cheminfo/spectra-processing/compare/v4.1.1...v4.2.0) (2020-07-14)
+
+
+### Features
+
+* add matrixColumnsCorrelation ([892a429](https://github.com/cheminfo/spectra-processing/commit/892a429069ad93d9b0be20ab1dd9126d33c2ba7d))
+* add xIsMonotone ([3121f38](https://github.com/cheminfo/spectra-processing/commit/3121f380d4bfc58e3db486c3fd99d4c3a40b7597))
+
+
+
 # [4.1.0](https://github.com/cheminfo/spectra-processing/compare/v4.0.0...v4.1.0) (2020-05-23)
 
 
