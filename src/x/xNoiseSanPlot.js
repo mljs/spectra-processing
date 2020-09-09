@@ -1,6 +1,6 @@
-import erfcinv from 'compute-erfcinv';
 import SplineInterpolator from 'spline-interpolator';
 
+import erfcinv from './erfcinv';
 import rayleighCdf from './rayleighCdf';
 
 /**

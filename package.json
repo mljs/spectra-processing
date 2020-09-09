@@ -52,7 +52,6 @@
     "rollup": "^2.26.11"
   },
   "dependencies": {
-    "compute-erfcinv": "^3.0.1",
     "fft.js": "^4.0.3",
     "is-any-array": "0.1.0",
     "ml-array-median": "^1.1.3",

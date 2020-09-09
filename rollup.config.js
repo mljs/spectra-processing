@@ -7,7 +7,6 @@ export default {
   },
   external: [
     'is-any-array',
-    'compute-erfcinv',
     'spline-interpolator',
     'distributions-normal-random',
     'fft.js',
