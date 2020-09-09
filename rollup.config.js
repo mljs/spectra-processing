@@ -5,5 +5,11 @@ export default {
     file: 'lib/index.js',
     exports: 'named',
   },
-  external: ['is-any-array', 'compute-erfcinv', 'distributions-rayleigh-cdf', 'spline-interpolator', 'distributions-normal-random', 'fft.js'],
+  external: [
+    'is-any-array',
+    'compute-erfcinv',
+    'spline-interpolator',
+    'distributions-normal-random',
+    'fft.js',
+  ],
 };

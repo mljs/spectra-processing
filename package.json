@@ -53,8 +53,6 @@
   },
   "dependencies": {
     "compute-erfcinv": "^3.0.1",
-    "distributions-normal-random": "0.0.1",
-    "distributions-rayleigh-cdf": "0.0.1",
     "fft.js": "^4.0.3",
     "is-any-array": "0.1.0",
     "ml-array-median": "^1.1.3",

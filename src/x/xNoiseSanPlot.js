@@ -1,6 +1,7 @@
 import erfcinv from 'compute-erfcinv';
-import rayleighCdf from 'distributions-rayleigh-cdf';
 import SplineInterpolator from 'spline-interpolator';
+
+import rayleighCdf from './rayleighCdf';
 
 /**
  * Determine noise level by san plot metodology (https://doi.org/10.1002/mrc.4882)
