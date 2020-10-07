@@ -1,3 +1,6 @@
+import { xyObjectMinXPoint } from './xyObjectMinXPoint';
+import { xyObjectMaxXPoint } from './xyObjectMaxXPoint';
+
 /**
  * Filter the array by taking the higher points (max y value) and only
  * keep one per slot.
@@ -16,14 +19,8 @@
 
 export function xyObjectBestPoints(points, options = {}) {
   const {
-    from = points.reduce(
-      (previous, point) => Math.min(point.x, previous),
-      Number.MAX_SAFE_INTEGER,
-    ),
-    to = points.reduce(
-      (previous, point) => Math.max(point.x, previous),
-      Number.MIN_SAFE_INTEGER,
-    ),
+    from = xyObjectMinXPoint(points).x,
+    to = xyObjectMaxXPoint(points).x,
     limit = 20,
     threshold = 0.01,
     numberCloseSlots = 50,
