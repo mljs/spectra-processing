@@ -1,18 +1,11 @@
-import isArray from 'is-any-array';
-
+import xCheck from './xCheck';
 /**
  * Computes the index of the maximum of the given values
  * @param {Array<number>} input
  * @return {number}
  */
-export default function xArgMax(input) {
-  if (!isArray(input)) {
-    throw new TypeError('input must be an array');
-  }
-
-  if (input.length === 0) {
-    throw new TypeError('input must not be empty');
-  }
+export function xMaxIndex(input) {
+  xCheck(input);
 
   let maxIndex = 0;
 
