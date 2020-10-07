@@ -1,8 +1,7 @@
-import { xGetFromToIndex } from '../x/xGetFromToIndex';
-
 import { xyObjectCheck } from './xyObjectCheck';
+
 /**
- * Finds the max y value in a range and return a {x,y} point
+ * Finds the min y value and return a {x,y,index} point
  * @param {DataXY} [points=[]] - Object that contains property x (an ordered increasing array) and y (an array)
  * @return {object}
  */

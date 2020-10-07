@@ -72,6 +72,8 @@ export * from './xy/xyToXYObject';
 
 export * from './xyObject/xyObjectBestPoints';
 export * from './xyObject/xyObjectJoinX';
+export * from './xyObject/xyObjectMaxXPoint';
+export * from './xyObject/xyObjectMinXPoint';
 export * from './xyObject/xyObjectMaxYPoint';
 export * from './xyObject/xyObjectMinYPoint';
 export * from './xyObject/xyObjectSlotX';

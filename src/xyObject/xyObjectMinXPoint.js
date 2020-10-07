@@ -1,11 +1,12 @@
 import { xyObjectCheck } from './xyObjectCheck';
+
 /**
- * Finds the max y value and return a {x,y,index} point
+ * Finds the min x value and return a {x,y,index} point
  * @param {DataXY} [points=[]] - Object that contains property x (an ordered increasing array) and y (an array)
  * @return {object}
  */
 
-export function xyObjectMaxYPoint(points = []) {
+export function xyObjectMinXPoint(points = []) {
   xyObjectCheck(points);
 
   if (points.length < 1) return {};
@@ -17,7 +18,7 @@ export function xyObjectMaxYPoint(points = []) {
   };
 
   for (let i = 1; i < points.length; i++) {
-    if (points[i].y > current.y) {
+    if (points[i].x < current.x) {
       current = {
         x: points[i].x,
         y: points[i].y,
