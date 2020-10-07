@@ -70,6 +70,7 @@ export * from './xy/xyRealMinYPoint';
 export * from './xy/xyReduce';
 export * from './xy/xyToXYObject';
 
+export * from './xyObject/xyObjectBestPoints';
 export * from './xyObject/xyObjectJoinX';
 export * from './xyObject/xyObjectSlotX';
 export * from './xyObject/xyObjectSortX';
