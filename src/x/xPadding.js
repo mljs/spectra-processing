@@ -1,5 +1,7 @@
+import xCheck from './xCheck';
+
 /**
- * This function pads an array 
+ * This function pads an array
  * @param {Array} array - the array that will be padded
  * @param {object} [options={}]
  * @param {string} [options.algorithm='value'] none, value, circular, duplicate
