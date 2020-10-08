@@ -1,3 +1,5 @@
+/* eslint-disable no-loss-of-precision */
+
 /*
 Adapted from: https://github.com/compute-io/erfcinv/blob/aa116e23883839359e310ad41a7c42f72815fc1e/lib/number.js
 
