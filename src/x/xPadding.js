@@ -1,5 +1,5 @@
 /**
- * This function performs a circular shift to a new array
+ * This function pads an array 
  * Positive values of shifts will shift to the right and negative values will do to the left
  * @example xRotate([1,2,3,4],1) -> [4,1,2,3]
  * @param {Array} array - the array that will be rotated
