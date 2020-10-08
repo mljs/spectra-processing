@@ -1,7 +1,6 @@
 /**
  * This function pads an array 
  * Positive values of shifts will shift to the right and negative values will do to the left
- * @example xRotate([1,2,3,4],1) -> [4,1,2,3]
  * @param {Array} array - the array that will be padded
  * @param {object} [options={}]
  * @param {string} [options.algorithm='value'] none, value, circular, duplicate
