@@ -11,6 +11,7 @@
  */
 export function xPadding(array, options = {}) {
   const { size = 0, value = 0, algorithm = 'value' } = options;
+  xCheck(array);
   let result = new Float64Array(array.length + size * 2);
 
   for (let i = 0; i < array.length; i++) {
