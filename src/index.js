@@ -41,6 +41,8 @@ export * from './x/xMultiply';
 export * from './x/xNoiseSanPlot';
 export * from './x/xRotate';
 export * from './x/xSubtract';
+export * from './x/xMinIndex';
+export * from './x/xMaxIndex';
 
 export * from './reim/reimAbsolute';
 export * from './reim/reimAutoPhaseCorrection';
