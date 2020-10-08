@@ -1,5 +1,5 @@
-import { xyObjectMinXPoint } from './xyObjectMinXPoint';
 import { xyObjectMaxXPoint } from './xyObjectMaxXPoint';
+import { xyObjectMinXPoint } from './xyObjectMinXPoint';
 
 /**
  * Filter the array by taking the higher points (max y value) and only
