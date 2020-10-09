@@ -13,6 +13,13 @@
 
 
 
+## [4.4.0](https://www.github.com/mljs/spectra-processing/compare/v4.3.0...v4.4.0) (2020-10-09)
+
+
+### Features
+
+* add xRolling and xRollingAverage ([#19](https://www.github.com/mljs/spectra-processing/issues/19)) ([a439036](https://www.github.com/mljs/spectra-processing/commit/a439036365311d50374fd70a1e59f61033a91ddb))
+
 ## [4.2.1](https://github.com/cheminfo/spectra-processing/compare/v4.2.0...v4.2.1) (2020-09-09)
 
 
@@ -228,6 +235,3 @@
 
 
 ## 0.0.1 (2019-07-11)
-
-
-
