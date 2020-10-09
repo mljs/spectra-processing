@@ -14,7 +14,7 @@ export function xPadding(array, options = {}) {
   xCheck(array);
 
   if (!algorithm) {
-    if (typeof array === 'Float64Array') {
+    if (array instanceof Float64Array) {
       return array.slice();
     } else {
       return Float64Array.from(array);
