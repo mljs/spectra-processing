@@ -1,5 +1,12 @@
 # Changelog
 
+### [4.4.1](https://www.github.com/mljs/spectra-processing/compare/v4.4.0...v4.4.1) (2020-10-09)
+
+
+### Bug Fixes
+
+* check that xRolling parameter is an array ([eb398ba](https://www.github.com/mljs/spectra-processing/commit/eb398baf813e7aef33b4b104d92c17165080a8f1))
+
 ## [4.4.0](https://www.github.com/mljs/spectra-processing/compare/v4.3.0...v4.4.0) (2020-10-09)
 
 
