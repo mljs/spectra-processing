@@ -1,6 +1,6 @@
 /**
  * This function returns an array with absolute values
- * @param {Array<Number>} array - the array that will be rotated
+ * @param {Array<Number>} array
  * @return {Number}
  */
 export function xAbsolute(array) {
