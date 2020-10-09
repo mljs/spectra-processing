@@ -44,6 +44,7 @@ export * from './x/xPadding';
 export * from './x/xRotate';
 export * from './x/xRolling';
 export * from './x/xRollingAverage';
+export * from './x/xRollingMedian';
 export * from './x/xSubtract';
 export * from './x/xMinIndex';
 export * from './x/xMaxIndex';
