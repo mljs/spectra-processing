@@ -42,6 +42,7 @@ export * from './x/xMultiply';
 export * from './x/xNoiseSanPlot';
 export * from './x/xPadding';
 export * from './x/xRotate';
+export * from './x/xRollingAverage';
 export * from './x/xSubtract';
 export * from './x/xMinIndex';
 export * from './x/xMaxIndex';
