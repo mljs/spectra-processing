@@ -1,6 +1,9 @@
 import { xRolling } from '../x/xRolling';
+import { xRollingAverage } from '../x/xRollingAverage';
 /**
  * This function calculates a rolling average
+ *
+ * This methods will recalculate the x values by using xRollingAverage
  * @param {ArrayPoints} [points] array of points {x,y}
  * @param {object} [options={}]
  * @param {number} [options.window=5] rolling window
@@ -17,7 +20,7 @@ export function xyRolling(points, fct, options = {}) {
 
   if (x.length !== y.length) {
     const shift = (x.length - y.length) / 2;
-    x = x.slice(shift, y.length + shift);
+    x = xRollingAverage(x, options);
   }
 
   return { x, y };

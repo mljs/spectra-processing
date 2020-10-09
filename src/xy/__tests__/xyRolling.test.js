@@ -16,4 +16,9 @@ test('xyRolling', function () {
     x: [2, 3, 4],
     y: [1, 1, 1],
   });
+
+  expect(xyRolling(points, () => 1, { window: 2 })).toStrictEqual({
+    x: [1.5, 2.5, 3.5, 4.5],
+    y: [1, 1, 1, 1],
+  });
 });
