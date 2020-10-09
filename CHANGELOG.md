@@ -1,6 +1,6 @@
 # Changelog
 
-# [4.3.0](https://github.com/cheminfo/spectra-processing/compare/v4.2.1...v4.3.0) (2020-10-09)
+## [4.3.0](https://github.com/cheminfo/spectra-processing/compare/v4.2.1...v4.3.0) (2020-10-09)
 
 
 ### Features
