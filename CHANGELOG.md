@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.3.0](https://github.com/cheminfo/spectra-processing/compare/v4.2.1...v4.3.0) (2020-10-09)
+
+
+### Features
+
+* add xAbsolute ([#15](https://github.com/cheminfo/spectra-processing/issues/15)) ([22c51d8](https://github.com/cheminfo/spectra-processing/commit/22c51d86790b23deba0b3769dd8cb7ddc5105092))
+* add xPadding ([#14](https://github.com/cheminfo/spectra-processing/issues/14)) ([7ee6dcf](https://github.com/cheminfo/spectra-processing/commit/7ee6dcf435442281f0f0fc33b72cd5c9983d02fe))
+* add xyObjectBestPoints ([de52f2b](https://github.com/cheminfo/spectra-processing/commit/de52f2b7fc6d861c60ba6ae4b3f937a85c861e36))
+* add xyObjectMaxXPoint and xyObjectMinXPoint ([876dc34](https://github.com/cheminfo/spectra-processing/commit/876dc34000435bea06d3c8fb003fa1dd7833123c))
+* added argmin and argmax ([#10](https://github.com/cheminfo/spectra-processing/issues/10)) ([2a0b4b3](https://github.com/cheminfo/spectra-processing/commit/2a0b4b36b417f13155a21e053e40f9e8f460ce0c))
+
+
+
 ## [4.2.1](https://github.com/cheminfo/spectra-processing/compare/v4.2.0...v4.2.1) (2020-09-09)
 
 
