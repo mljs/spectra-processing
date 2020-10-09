@@ -1,7 +1,7 @@
-# spectra-processing
+# ml-spectra-processing
 
 [![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
+[![build status][ci-image]][ci-url]
 [![Test coverage][codecov-image]][codecov-url]
 [![npm download][download-image]][download-url]
 
@@ -9,12 +9,12 @@ Various functions to process spectra. Those are `pure` functions.
 
 They are sorted in various categories:
 
-* x: functions that apply on a 1D array
-* xy: functions that apply on an object `{x: [], y:[]}`
-* xyObject: functions that apply on an array of point `[{x,y}]`
-* xreim: functions that apply on an object `{x: [], re:[], im:[]}`
-* reim: functions that apply on an object `{re: [], im:[]}`
-* zones: functions that apply on an array of zone `[{from,to}]`
+- x: functions that apply on a 1D array
+- xy: functions that apply on an object `{x: [], y:[]}`
+- xyObject: functions that apply on an array of point `[{x,y}]`
+- xreim: functions that apply on an object `{x: [], re:[], im:[]}`
+- reim: functions that apply on an object `{re: [], im:[]}`
+- zones: functions that apply on an array of zone `[{from,to}]`
 
 The name of the functions starts with the first argument on which they apply.
 
@@ -22,18 +22,13 @@ The name of the functions starts with the first argument on which they apply.
 
 `$ npm i ml-spectra-processing`
 
-## Build the project and publish it on npm
-
-`npm install --global cheminfo-build`
-`cheminfo-publish`
-
 ## Usage
 
 ```js
-import  { xAdd } from 'ml-spectra-processing';
+import { xAdd } from 'ml-spectra-processing';
 
-let array = [1,2,3];
-let result = xAdd(array, 5);
+const array = [1, 2, 3];
+const result = xAdd(array, 5);
 console.log(result);
 ```
 
@@ -43,11 +38,11 @@ console.log(result);
 
 [MIT](./LICENSE)
 
-[npm-image]: https://img.shields.io/npm/v/ml-spectra-processing.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/ml-spectra-processing.svg
 [npm-url]: https://www.npmjs.com/package/ml-spectra-processing
-[travis-image]: https://img.shields.io/com/travis/mljs/spectra-processing/master.svg?style=flat-square
-[travis-url]: https://travis-ci.com/mljs/spectra-processing
-[codecov-image]: https://img.shields.io/codecov/c/github/mljs/spectra-processing.svg?style=flat-square
+[ci-image]: https://github.com/mljs/spectra-processing/workflows/Node.js%20CI/badge.svg?branch=master
+[ci-url]: https://github.com/mljs/spectra-processing/actions?query=workflow%3A%22Node.js+CI%22
+[codecov-image]: https://img.shields.io/codecov/c/github/mljs/spectra-processing.svg
 [codecov-url]: https://codecov.io/gh/mljs/spectra-processing
-[download-image]: https://img.shields.io/npm/dm/spectra-processing.svg?style=flat-square
+[download-image]: https://img.shields.io/npm/dm/spectra-processing.svg
 [download-url]: https://www.npmjs.com/package/spectra-processing
