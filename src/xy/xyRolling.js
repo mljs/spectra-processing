@@ -19,7 +19,6 @@ export function xyRolling(points, fct, options = {}) {
   y = xRolling(y, fct, options);
 
   if (x.length !== y.length) {
-    const shift = (x.length - y.length) / 2;
     x = xRollingAverage(x, options);
   }
 
