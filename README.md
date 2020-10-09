@@ -44,5 +44,5 @@ console.log(result);
 [ci-url]: https://github.com/mljs/spectra-processing/actions?query=workflow%3A%22Node.js+CI%22
 [codecov-image]: https://img.shields.io/codecov/c/github/mljs/spectra-processing.svg
 [codecov-url]: https://codecov.io/gh/mljs/spectra-processing
-[download-image]: https://img.shields.io/npm/dm/spectra-processing.svg
-[download-url]: https://www.npmjs.com/package/spectra-processing
+[download-image]: https://img.shields.io/npm/dm/ml-spectra-processing.svg
+[download-url]: https://www.npmjs.com/package/ml-spectra-processing
