@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.5.0](https://www.github.com/mljs/spectra-processing/compare/v4.4.0...v4.5.0) (2020-10-09)
+
+
+### Features
+
+* add xyRolling ([#24](https://www.github.com/mljs/spectra-processing/issues/24)) ([0613eae](https://www.github.com/mljs/spectra-processing/commit/0613eaec01cfe13da6da6ec92e91a22e89183f75))
+
+
+### Bug Fixes
+
+* check that xRolling parameter is an array ([eb398ba](https://www.github.com/mljs/spectra-processing/commit/eb398baf813e7aef33b4b104d92c17165080a8f1))
+
 ## [4.4.0](https://www.github.com/mljs/spectra-processing/compare/v4.3.0...v4.4.0) (2020-10-09)
 
 
