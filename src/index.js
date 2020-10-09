@@ -26,6 +26,7 @@
  * @property {Array<Number>} im Array of im values
  */
 
+export * from './x/xAbsolute';
 export * from './x/xAbsoluteMedian';
 export * from './x/xAdd';
 export * from './x/xAutoCorrelation';
