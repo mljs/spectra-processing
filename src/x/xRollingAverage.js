@@ -13,11 +13,5 @@ import { xRolling } from './xRolling';
  * @return {Array<Number>}
  */
 export function xRollingAverage(array, options = {}) {
-  const { window = 5, padding = {} } = options;
-  const { size = window - 1, algorithm, value } = padding;
-  return xRolling(array, {
-    window,
-    padding: { size, algorithm, value },
-    fct: mean,
-  });
+  return xRolling(array, mean, options);
 }
