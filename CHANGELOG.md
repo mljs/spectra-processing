@@ -1,5 +1,12 @@
 # Changelog
 
+### [4.5.1](https://www.github.com/mljs/spectra-processing/compare/v4.5.0...v4.5.1) (2020-10-09)
+
+
+### Bug Fixes
+
+* setup registry url for npm publish ([1ae83d5](https://www.github.com/mljs/spectra-processing/commit/1ae83d522591871f2c8d44e3b34e0ed057d8f28a))
+
 ## [4.5.0](https://www.github.com/mljs/spectra-processing/compare/v4.4.0...v4.5.0) (2020-10-09)
 
 
