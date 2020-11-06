@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.7.0](https://www.github.com/mljs/spectra-processing/compare/v4.6.0...v4.7.0) (2020-11-06)
+
+
+### Features
+
+* add xyToXYArray ([71c2c4a](https://www.github.com/mljs/spectra-processing/commit/71c2c4a4f55f3c723117bb2a42a4524dbd1bb313))
+
 ## [4.6.0](https://www.github.com/mljs/spectra-processing/compare/v4.5.1...v4.6.0) (2020-11-02)
 
 
