@@ -12,5 +12,6 @@ export function xyToXYArray(data) {
   for (let i = 0; i < x.length; i++) {
     objectArray.push([x[i], y[i]]);
   }
+
   return objectArray;
 }
