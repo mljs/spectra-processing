@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.8.0](https://www.github.com/mljs/spectra-processing/compare/v4.7.0...v4.8.0) (2020-11-11)
+
+
+### Features
+
+* add Probabilistic quotient normalization method ([#30](https://www.github.com/mljs/spectra-processing/issues/30)) ([67f2ce0](https://www.github.com/mljs/spectra-processing/commit/67f2ce0243ef5d7648614e47b34e57ebd7dc5050))
+
 ## [4.7.0](https://www.github.com/mljs/spectra-processing/compare/v4.6.0...v4.7.0) (2020-11-06)
 
 
