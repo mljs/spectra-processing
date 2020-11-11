@@ -22,15 +22,12 @@ export function probabilisticQuotientNormalization(matrix, options = {}) {
   let normalizationFactor = matrix.norm() / max;
   matrix.div(normalizationFactor);
   let referenceSpectrum = [];
-  let nbSamples = matrix.rows;
   for (let i = 0; i < matrix.columns; i++) {
     let currentVariable = [];
     for (let j = 0; j < matrix.rows; j++) {
       currentVariable.push(matrix.get(j, i));
     }
-    referenceSpectrum.push(
-      currentVariable.reduce((prev, current) => prev + current) / nbSamples,
-    );
+    referenceSpectrum.push(mean(currentVariable));
   }
   let averageQuotients = [];
   for (let i = 0; i < matrix.rows; i++) {
