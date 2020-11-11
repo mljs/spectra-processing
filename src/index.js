@@ -93,3 +93,5 @@ export * from './xyObject/xyObjectToXY';
 export * from './zone/zoneToX';
 
 export * from './zones/zonesNormalize';
+
+export * from './matrix/probabilisticQuotientNormalization';
