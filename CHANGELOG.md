@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.9.0](https://www.github.com/mljs/spectra-processing/compare/v4.8.0...v4.9.0) (2020-11-18)
+
+
+### Features
+
+* add xyXShift ([2dd4b48](https://www.github.com/mljs/spectra-processing/commit/2dd4b4894307dc9f8aa2262d4db419dfaa455fac))
+
 ## [4.8.0](https://www.github.com/mljs/spectra-processing/compare/v4.7.0...v4.8.0) (2020-11-11)
 
 
