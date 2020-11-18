@@ -1,8 +1,9 @@
 name: Deploy documentation.js on GitHub pages
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - master
 
 jobs:
   deploy:
