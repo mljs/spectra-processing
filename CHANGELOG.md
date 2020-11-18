@@ -1,5 +1,12 @@
 # Changelog
 
+### [4.9.2](https://www.github.com/mljs/spectra-processing/compare/v4.9.1...v4.9.2) (2020-11-18)
+
+
+### Bug Fixes
+
+* documentation ([be46a70](https://www.github.com/mljs/spectra-processing/commit/be46a70b6fffa39e5d869f95930e226627b20ae9))
+
 ### [4.9.1](https://www.github.com/mljs/spectra-processing/compare/v4.9.0...v4.9.1) (2020-11-18)
 
 
