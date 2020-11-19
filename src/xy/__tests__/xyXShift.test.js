@@ -1,6 +1,28 @@
 import { xyXShift } from '../xyXShift.js';
 
 describe('xyXShift', function () {
+  it('undefined params', () => {
+    let data = {
+      x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      y: [1, 1, 5, 1, 1, 1, 700, 1, 1, 1, 1, 1, 1],
+    };
+
+    let xShift = xyXShift(data);
+
+    expect(xShift).toBe(0);
+  });
+
+  it('too small data', () => {
+    let data = {
+      x: [0, 1, 2, 3],
+      y: [1, 1, 5, 1],
+    };
+
+    expect(() => xyXShift(data, { from: 1, to: 10 })).toThrow(
+      'Window size is higher than the data lengt',
+    );
+  });
+
   it('no shift', () => {
     let data = {
       x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
