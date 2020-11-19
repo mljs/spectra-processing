@@ -34,7 +34,7 @@ export function xyXShift(data, range = {}, options = {}) {
     },
   } = options;
   let { from, to } = range;
-  if (!from || !to) return;
+  if (from === undefined || to === undefined) return;
 
   const fromIndex = xFindClosestIndex(data.x, from);
   const toIndex = xFindClosestIndex(data.x, to);
