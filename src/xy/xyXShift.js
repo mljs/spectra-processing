@@ -47,6 +47,8 @@ export function xyXShift(data, range = {}, options = {}) {
     .sort((a, b) => b.y - a.y)
     .slice(0, nbPeaks);
 
+  if (peaks.length === 0) return 0;
+
   const middle = mean(peaks.map((peak) => peak.x));
 
   return targetX - middle;
