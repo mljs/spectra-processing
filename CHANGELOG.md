@@ -1,5 +1,12 @@
 # Changelog
 
+### [4.9.4](https://www.github.com/mljs/spectra-processing/compare/v4.9.3...v4.9.4) (2020-11-19)
+
+
+### Bug Fixes
+
+* return value of xyXShift if from / to not defined ([ca747f5](https://www.github.com/mljs/spectra-processing/commit/ca747f5af8d88fd09b5d20162d753afdae6d7f43))
+
 ### [4.9.3](https://www.github.com/mljs/spectra-processing/compare/v4.9.2...v4.9.3) (2020-11-19)
 
 
