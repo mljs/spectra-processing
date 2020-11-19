@@ -1,5 +1,13 @@
 # Changelog
 
+### [4.9.3](https://www.github.com/mljs/spectra-processing/compare/v4.9.2...v4.9.3) (2020-11-19)
+
+
+### Bug Fixes
+
+* deal with from=0 or to=0 in xyXShift ([e0f8292](https://www.github.com/mljs/spectra-processing/commit/e0f829247c66712560d76a662e349aa97f3fb1b7))
+* in xyXShift if no peaks returns 0 ([19b1643](https://www.github.com/mljs/spectra-processing/commit/19b1643c66f4ceccf416ec0140f0b64c76892960))
+
 ### [4.9.2](https://www.github.com/mljs/spectra-processing/compare/v4.9.1...v4.9.2) (2020-11-18)
 
 
