@@ -80,6 +80,8 @@ export * from './xy/xyRolling';
 export * from './xy/xyToXYObject';
 export * from './xy/xyToXYArray';
 export * from './xy/xyXShift';
+export * from './xy/xyUniqueX';
+export * from './xy/xyQuickSortX';
 
 export * from './xyObject/xyObjectBestPoints';
 export * from './xyObject/xyObjectJoinX';
