@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.10.0](https://www.github.com/mljs/spectra-processing/compare/v4.9.4...v4.10.0) (2020-12-08)
+
+
+### Features
+
+* add xyUniqueX and xyQuickSortX ([6fd6711](https://www.github.com/mljs/spectra-processing/commit/6fd6711c61d3bfb5cc0ee8e73894c6564e80710b))
+* add xyUniqueX and xySortX ([3ab1b4e](https://www.github.com/mljs/spectra-processing/commit/3ab1b4ed1380197747eacf62544f4679349481e8))
+
 ### [4.9.4](https://www.github.com/mljs/spectra-processing/compare/v4.9.3...v4.9.4) (2020-11-19)
 
 
