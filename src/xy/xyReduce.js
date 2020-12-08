@@ -7,7 +7,7 @@ import { xyCheck } from './xyCheck';
  * display many spectra as SVG.
  * SHOULD NOT BE USED FOR DATA PROCESSING !!!
  * You should rather use ml-xy-equally-spaced to make further processing
- * @param {object} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.from=x[0]]
  * @param {number} [options.to=x[x.length-1]]

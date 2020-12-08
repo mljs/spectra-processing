@@ -1,4 +1,4 @@
-import xyUniqueX from '../xyUniqueX.js';
+import { xyUniqueX } from '../xyUniqueX.js';
 
 describe('xyUniqueX', function () {
   it('unsorted sum', function () {

@@ -1,68 +1,66 @@
 import { xyCheck } from './xyCheck';
-import xyQuickSortX from './xyQuickSortX';
+import { xySortX } from './xySortX';
+
 /**
- *
- * @param {Object} [data] Object that contains property x (Array) and y (Array)
- * @param {Object} [options] Object containing a property algorithm (can be 'sum' or 'average', the latter being the default value), and a property isSorted (boolean indicating if the x-array is sorted).
+ * Ensure x values are unique
+ * @param {DataXY} [data] Object that contains property x (Array) and y (Array)
+ * @param {Object} [options={}] Object containing a property algorithm (can be 'sum' or 'average', the latter being the default value), and a property isSorted (boolean indicating if the x-array is sorted).
+ * @param {string} [options.algorithm='average'] either 'average' or 'sum'
+ * @param {boolean} [options.isSorted=true] if false the DataXY has to be sorted first
+ * @returns {DataXY}
  */
-export default function xyUniqueX(
-  data,
-  { algorithm = 'average', isSorted = true },
-) {
+export function xyUniqueX(data, options = {}) {
   xyCheck(data);
 
-  if (isSorted === false) {
-    xyQuickSortX(data);
-  }
+  const { algorithm = 'average', isSorted = true } = options;
 
-  let newData = { x: [], y: [] };
-  let cumulativeY = data.y[0];
-  let error = new Error('incorrect parameter!');
+  if (!isSorted) {
+    data = xySortX(data);
+  }
 
   switch (algorithm) {
     case 'average':
-      let divider = 1;
-      for (let i = 1; i < data.x.length; i++) {
-        if (!(data.x[i] == data.x[i - 1])) {
-          newData.x.push(data.x[i - 1]);
-          newData.y.push(cumulativeY / divider);
-          cumulativeY = 0;
-          divider = 0;
-        }
-        cumulativeY += data.y[i];
-        divider++;
-      }
-      if (data.x[data.x.length - 1] == data.x[data.x.length - 2]) {
-        newData.x.push(data.x[data.x.length - 1]);
-        newData.y.push(cumulativeY / divider);
-      } else if (!(data.x[data.x.length - 1] == data.x[data.x.length - 2])) {
-        newData.x.push(data.x[data.x.length - 1]);
-        newData.y.push(data.y[data.y.length - 1]);
-      }
-      break;
-
+      return average(data);
     case 'sum':
-      for (let i = 1; i < data.x.length; i++) {
-        if (!(data.x[i] == data.x[i - 1])) {
-          newData.x.push(data.x[i - 1]);
-          newData.y.push(cumulativeY);
-          cumulativeY = 0;
-        }
-        cumulativeY += data.y[i];
-      }
-      if (data.x[data.x.length - 1] == data.x[data.x.length - 2]) {
-        newData.x.push(data.x[data.x.length - 1]);
-        newData.y.push(cumulativeY);
-      } else if (!(data.x[data.x.length - 1] == data.x[data.x.length - 2])) {
-        newData.x.push(data.x[data.x.length - 1]);
-        newData.y.push(data.y[data.y.length - 1]);
-      }
-
-      break;
-
+      return sum(data);
     default:
-      throw error;
+      throw new Error(`xyUniqueX: unknown algorithm: ${algorithm}`);
   }
+}
 
-  return newData;
+function average(data) {
+  let x = [];
+  let y = [];
+  let cumulativeY = data.y[0];
+  let divider = 1;
+  for (let i = 1; i < data.x.length; i++) {
+    if (!(data.x[i] === data.x[i - 1])) {
+      x.push(data.x[i - 1]);
+      y.push(cumulativeY / divider);
+      cumulativeY = 0;
+      divider = 0;
+    }
+    cumulativeY += data.y[i];
+    divider++;
+  }
+  x.push(data.x[data.x.length - 1]);
+  y.push(cumulativeY / divider);
+  return { x, y };
+}
+
+function sum(data) {
+  let x = [];
+  let y = [];
+  let cumulativeY = data.y[0];
+  for (let i = 1; i < data.x.length; i++) {
+    if (!(data.x[i] === data.x[i - 1])) {
+      x.push(data.x[i - 1]);
+      y.push(cumulativeY);
+      cumulativeY = 0;
+    }
+    cumulativeY += data.y[i];
+  }
+  x.push(data.x[data.x.length - 1]);
+  y.push(cumulativeY);
+  return { x, y };
 }
