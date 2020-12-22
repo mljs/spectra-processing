@@ -1,4 +1,4 @@
-import mean from 'ml-array-mean';
+import median from 'ml-array-median';
 import { Matrix } from 'ml-matrix';
 
 /**
@@ -8,42 +8,37 @@ import { Matrix } from 'ml-matrix';
  * @param {Matrix} [matrix] - matrix [rows][cols].
  * @param {Object} [options={}]
  * @param {number} [options.max=100] - Normalization integral constant.
- * @return {Object} { data, averageQuotients }.
+ * @return {Object} { data, medianOfQuotients }.
  * data: Normalized dataset.
- * averageQuotients: The quotients of all variables of interest.
+ * medianOfQuotients: The median of quotients of each variables.
  */
 export function probabilisticQuotientNormalization(matrix, options = {}) {
-  let { max = 100 } = options;
+  const { max = 100 } = options;
   matrix = new Matrix(matrix);
   for (let i = 0; i < matrix.rows; i++) {
-    let row = matrix.getRowVector(i).div(matrix.getRowVector(i).norm() / max);
+    const normalizationFactor = matrix.getRowVector(i).norm() / max;
+    const row = matrix.getRowVector(i).div(normalizationFactor);
     matrix.setRow(i, row);
   }
-  let normalizationFactor = matrix.norm() / max;
-  matrix.div(normalizationFactor);
+
   let referenceSpectrum = [];
   for (let i = 0; i < matrix.columns; i++) {
-    let currentVariable = [];
-    for (let j = 0; j < matrix.rows; j++) {
-      currentVariable.push(matrix.get(j, i));
-    }
-    referenceSpectrum.push(mean(currentVariable));
+    const currentVariable = matrix.getColumn(i);
+    referenceSpectrum.push(median(currentVariable));
   }
-  let averageQuotients = [];
-  for (let i = 0; i < matrix.rows; i++) {
-    let quotients = [];
-    for (let j = 0; j < matrix.columns; j++) {
-      let quotient = matrix.get(i, j) / referenceSpectrum[j];
-      quotients.push(quotient);
-    }
-    averageQuotients.push(mean(quotients));
+
+  let medianOfQuotients = [];
+  for (let i = 0; i < matrix.columns; i++) {
+    let quotients = matrix.getColumnVector(i).div(referenceSpectrum[i]);
+    medianOfQuotients.push(median(quotients.getColumn(0)));
   }
 
   for (let i = 0; i < matrix.rows; i++) {
-    matrix.mulRow(i, averageQuotients[i]);
+    matrix.mulRow(i, 1 / medianOfQuotients[i]);
   }
+
   return {
     data: matrix,
-    averageQuotients: averageQuotients,
+    medianOfQuotients: medianOfQuotients,
   };
 }
