@@ -189,8 +189,8 @@ function weightedLinearRegression(x, y, w) {
   }
 
   /* Just to know what is the matrix system that we solve
-   let Mx = [[sxtw, swx], [swx, sw]];
-   let My = [[sxtwy], [swy]];
+   let Mx=[[sxtw, swx], [swx, sw]];
+   let My=[[sxtwy], [swy]];
   */
 
   //Mx inverse

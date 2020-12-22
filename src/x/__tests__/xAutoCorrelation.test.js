@@ -18,7 +18,7 @@ describe('xCrossCorrelation', function () {
     expect(Array.from(xAutoCorrelation(linear))).toStrictEqual(result2);
   });
 
-  it('xAutoCorrelation constant tau = 2', () => {
+  it('xAutoCorrelation constant tau=2', () => {
     let constant = [5, 5, 5, 5, 5];
     let linear = [0, 1, 2, 3, 4];
     let result = [25, 75, 125, 75, 25];
@@ -30,9 +30,9 @@ describe('xCrossCorrelation', function () {
       result2,
     );
   });
-  // Scilab: xcorr(linear, maxlag = 3);
-  // Scilab: xcorr(constant, maxlag = 3)
-  it('xAutoCorrelation constant lag = 4', () => {
+  // Scilab: xcorr(linear, maxlag=3);
+  // Scilab: xcorr(constant, maxlag=3)
+  it('xAutoCorrelation constant lag=4', () => {
     let constant = [5, 5, 5, 5, 5];
     let linear = [0, 1, 2, 3, 4];
     let result1 = [50, 75, 100, 125, 100, 75, 50];

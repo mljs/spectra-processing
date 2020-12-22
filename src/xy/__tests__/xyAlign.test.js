@@ -78,7 +78,7 @@ describe('aline', function () {
   });
 
   // testing options
-  it('options.x = "x2"', () => {
+  it('options.x="x2"', () => {
     let spectrum1 = { x: [0.9, 1.9, 2.9, 3.9], y: [1, 1, 1, 1] };
     let spectrum2 = { x: [2, 3], y: [2, 2] };
     let result = xyAlign(spectrum1, spectrum2, { x: 'x2' });
@@ -88,7 +88,7 @@ describe('aline', function () {
       y2: [2, 2],
     });
   });
-  it('options.x = "weighted"', () => {
+  it('options.x="weighted"', () => {
     let spectrum1 = { x: [1, 2, 3], y: [1, 1, 1] };
     let spectrum2 = { x: [2, 3, 4], y: [1, 1, 1] };
     let result = xyAlign(spectrum1, spectrum2, { x: 'weighted' });
@@ -105,7 +105,7 @@ describe('aline', function () {
       'Error: Unknown x option value: hey',
     );
   });
-  it('common = false', () => {
+  it('common=false', () => {
     let spectrum1 = { x: [0, 1], y: [1, 1] };
     let spectrum2 = { x: [3, 4], y: [1, 1] };
     let result = xyAlign(spectrum1, spectrum2, { common: false });
@@ -115,7 +115,7 @@ describe('aline', function () {
       y2: [0, 0, 1, 1],
     });
   });
-  it('common = false, test permutability', () => {
+  it('common=false, test permutability', () => {
     let spectrum1 = { x: [3, 4], y: [1, 1] };
     let spectrum2 = { x: [0, 1], y: [1, 1] };
     let result = xyAlign(spectrum1, spectrum2, { common: false });
@@ -125,7 +125,7 @@ describe('aline', function () {
       y2: [1, 1, 0, 0],
     });
   });
-  it('different lengths L-S, options.x = "weighted", options.common = false', () => {
+  it('different lengths L-S, options.x="weighted", options.common=false', () => {
     let spectrum1 = { x: [0, 3, 5, 7], y: [1, 1, 1, 1] };
     let spectrum2 = { x: [2, 3], y: [1, 1] };
     let result = xyAlign(spectrum1, spectrum2, {
@@ -138,7 +138,7 @@ describe('aline', function () {
       y2: [0, 1, 1, 0, 0],
     });
   });
-  it('different lengths S-L, options.x = "weighted", options.common = false', () => {
+  it('different lengths S-L, options.x="weighted", options.common=false', () => {
     let spectrum1 = { x: [2, 3], y: [1, 1] };
     let spectrum2 = { x: [0, 3, 5, 7], y: [1, 1, 1, 1] };
     let result = xyAlign(spectrum1, spectrum2, {
@@ -151,7 +151,7 @@ describe('aline', function () {
       y2: [1, 1, 0, 1, 1],
     });
   });
-  it('options.delta = 2', () => {
+  it('options.delta=2', () => {
     let spectrum1 = { x: [0, 3, 5, 7], y: [1, 1, 1, 1] };
     let spectrum2 = { x: [2, 3], y: [1, 1] };
     let result = xyAlign(spectrum1, spectrum2, { x: 'weighted', delta: 2 });

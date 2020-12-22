@@ -14,9 +14,11 @@ test('xRollingAverage', function () {
   ]);
 
   // prettier-ignore
-  expect(xRollingAverage(array, { window: 3, padding: {
-    algorithm:'duplicate'
-  }})).toMatchCloseTo([
+  expect(xRollingAverage(array, {
+    window: 3, padding: {
+      algorithm: 'duplicate'
+    }
+  })).toMatchCloseTo([
     1, 1.333333, 2, 3, 4, 5, 6, 7, 8, 8.666666, 9
-  ],5);
+  ], 5);
 });

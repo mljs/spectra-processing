@@ -15,7 +15,7 @@ describe('xCrossCorrelation', function () {
       result2,
     );
   });
-  // Scilab: xcorr(constant, linear, maxlag = 3);
+  // Scilab: xcorr(constant, linear, maxlag=3);
   it('lag and tau options', () => {
     let linear = [0, 1, 2, 3, 4];
     let constant = [5, 5, 5, 5, 5];

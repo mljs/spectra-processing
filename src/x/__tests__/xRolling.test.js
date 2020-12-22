@@ -10,6 +10,6 @@ test('xRolling', function () {
   expect(() => xRolling(array)).toThrow('fct has to be a function');
   // prettier-ignore
   expect(xRolling(array, () => 1, { window: 5 })).toStrictEqual([
-    1,1,1,1,1
+    1, 1, 1, 1, 1
   ]);
 });

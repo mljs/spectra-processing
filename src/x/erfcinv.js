@@ -215,7 +215,7 @@ export default function erfcinv(x) {
   if (x === 1) {
     return 0;
   }
-  // [2] Get the sign and make use of `erfc` reflection formula: `erfc(-z) = 2 - erfc(z)`...
+  // [2] Get the sign and make use of `erfc` reflection formula: `erfc(-z)=2 - erfc(z)`...
   if (x > 1) {
     q = 2 - x;
     x = 1 - q;

@@ -14,9 +14,11 @@ test('xRollingMedian', function () {
   ]);
 
   // prettier-ignore
-  expect(xRollingMedian(array, { window: 3, padding: {
-    algorithm:'duplicate'
-  }})).toMatchCloseTo([
+  expect(xRollingMedian(array, {
+    window: 3, padding: {
+      algorithm: 'duplicate'
+    }
+  })).toMatchCloseTo([
     1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9
-  ],5);
+  ], 5);
 });
