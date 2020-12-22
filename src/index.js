@@ -98,3 +98,5 @@ export * from './zone/zoneToX';
 export * from './zones/zonesNormalize';
 
 export * from './matrix/probabilisticQuotientNormalization';
+
+export * from './utils/createSequentialArray';
