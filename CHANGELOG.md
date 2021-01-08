@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.11.0](https://www.github.com/mljs/spectra-processing/compare/v4.10.0...v4.11.0) (2021-01-08)
+
+
+### Features
+
+* add createSequentialArray ([649547d](https://www.github.com/mljs/spectra-processing/commit/649547d48c51f8b4ce95553824ed8b92b6b17040))
+* add xParetoNormalization ([ec0c517](https://www.github.com/mljs/spectra-processing/commit/ec0c5170f097fb0d4e8ed2a05e8aa96c5a4062b4))
+
+
+### Bug Fixes
+
+* change mean by median close[#32](https://www.github.com/mljs/spectra-processing/issues/32) ([#40](https://www.github.com/mljs/spectra-processing/issues/40)) ([9272c73](https://www.github.com/mljs/spectra-processing/commit/9272c7373b930567ee5ca2ab01ca746af495e8bc))
+
 ## [4.10.0](https://www.github.com/mljs/spectra-processing/compare/v4.9.4...v4.10.0) (2020-12-08)
 
 
