@@ -3,7 +3,7 @@ import { xGetFromToIndex } from '../x/xGetFromToIndex';
 import { xyCheck } from './xyCheck';
 
 /**
- * In place modification of the 2 arrays to make X unique and sum the Y if X has the same value
+ * Calculate integration
  * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.from] - First value for xyIntegration in the X scale
