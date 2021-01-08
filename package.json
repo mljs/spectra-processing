@@ -41,15 +41,15 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",
-    "@types/jest": "^26.0.17",
+    "@types/jest": "^26.0.20",
     "cheminfo-build": "^1.1.8",
-    "eslint": "^7.15.0",
+    "eslint": "^7.17.0",
     "eslint-config-cheminfo": "^5.2.2",
     "esm": "^3.2.25",
     "jest": "^26.6.3",
     "jest-matcher-deep-close-to": "^2.0.1",
     "prettier": "^2.2.1",
-    "rollup": "^2.34.2"
+    "rollup": "^2.36.1"
   },
   "dependencies": {
     "fft.js": "^4.0.3",
@@ -57,8 +57,8 @@
     "ml-array-mean": "^1.1.4",
     "ml-array-median": "^1.1.4",
     "ml-array-standard-deviation": "^1.1.5",
-    "ml-gsd": "^6.1.2",
-    "ml-matrix": "^6.5.3",
+    "ml-gsd": "^6.4.0",
+    "ml-matrix": "^6.6.0",
     "spline-interpolator": "^1.0.0"
   }
 }
