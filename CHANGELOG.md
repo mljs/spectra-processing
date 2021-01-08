@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.12.0](https://www.github.com/mljs/spectra-processing/compare/v4.11.0...v4.12.0) (2021-01-08)
+
+
+### Features
+
+* add xMaxValue ([df69c01](https://www.github.com/mljs/spectra-processing/commit/df69c01003788510ffb2bb80bf8e724000885869))
+* add xMinValue ([4674548](https://www.github.com/mljs/spectra-processing/commit/467454822b888a81409cf2143623deff8909e6fc))
+* add xSum ([6c3b90c](https://www.github.com/mljs/spectra-processing/commit/6c3b90ca16ce2eab5ee615b195dff323bdebcffc))
+
 ## [4.11.0](https://www.github.com/mljs/spectra-processing/compare/v4.10.0...v4.11.0) (2021-01-08)
 
 
