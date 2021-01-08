@@ -41,6 +41,7 @@ export * from './x/xIsMonotone';
 export * from './x/xMultiply';
 export * from './x/xNoiseSanPlot';
 export * from './x/xNorm';
+export * from './x/xParetoNormalization';
 export * from './x/xPadding';
 export * from './x/xRotate';
 export * from './x/xRolling';
