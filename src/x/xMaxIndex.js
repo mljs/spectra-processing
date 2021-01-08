@@ -1,16 +1,16 @@
 import xCheck from './xCheck';
 /**
  * Computes the index of the maximum of the given values
- * @param {Array<number>} input
+ * @param {Array<number>} array
  * @return {number}
  */
-export function xMaxIndex(input) {
-  xCheck(input);
+export function xMaxIndex(array) {
+  xCheck(array);
 
   let maxIndex = 0;
 
-  for (let i = 1; i < input.length; i++) {
-    if (input[i] > input[maxIndex]) {
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] > array[maxIndex]) {
       maxIndex = i;
     }
   }
