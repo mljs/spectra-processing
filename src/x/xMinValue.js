@@ -1,7 +1,7 @@
 import xCheck from './xCheck';
 
 /**
- * Computes the index of the minimum of the given values
+ * Computes the minimal value of an array of values
  * @param {Array<number>} input
  * @param {object} [options={}]
  * @param {number} [options.fromIndex=0] - First point for xyIntegration
