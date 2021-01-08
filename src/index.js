@@ -52,6 +52,7 @@ export * from './x/xRolling';
 export * from './x/xRollingAverage';
 export * from './x/xRollingMedian';
 export * from './x/xSubtract';
+export * from './x/xSum';
 
 export * from './reim/reimAbsolute';
 export * from './reim/reimAutoPhaseCorrection';
