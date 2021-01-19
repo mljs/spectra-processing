@@ -101,6 +101,7 @@ export * from './zone/zoneToX';
 
 export * from './zones/zonesNormalize';
 
+export * from './matrix/matrixCenterYMean';
 export * from './matrix/matrixPQN';
 
 export * from './utils/createSequentialArray';
