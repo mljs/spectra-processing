@@ -14,8 +14,8 @@ export function matrixCenterYMean(matrix) {
     for (let row = 0; row < nbRows; row++) {
       mean += matrix[row][column];
     }
-    mean /= matrix.length;
-    for (let row = 0; row < matrix.length; row++) {
+    mean /= nbRows;
+    for (let row = 0; row < nbRows; row++) {
       newMatrix[row][column] = matrix[row][column] - mean;
     }
   }
