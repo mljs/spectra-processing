@@ -1,5 +1,16 @@
 # Changelog
 
+## [5.0.0](https://www.github.com/mljs/spectra-processing/compare/v4.12.0...v5.0.0) (2021-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename xyXShift to xyCalibrate
+
+### Features
+
+* rename xyXShift to xyCalibrate ([eb04e3d](https://www.github.com/mljs/spectra-processing/commit/eb04e3d2dec985e092d730e0feec5d5254d6860c))
+
 ## [4.12.0](https://www.github.com/mljs/spectra-processing/compare/v4.11.0...v4.12.0) (2021-01-08)
 
 
