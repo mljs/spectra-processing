@@ -1,5 +1,14 @@
 # Changelog
 
+## [5.1.0](https://www.github.com/mljs/spectra-processing/compare/v5.0.0...v5.1.0) (2021-01-19)
+
+
+### Features
+
+* add matrixCenterYMean ([55dd43c](https://www.github.com/mljs/spectra-processing/commit/55dd43c8a31a2be34d0c614b319c6f56d327a6f2))
+* add matrixYRescale ([1acf214](https://www.github.com/mljs/spectra-processing/commit/1acf21484c291b9cc9c4a6fd210b30bb15dfd2ed))
+* rename probabilisticQuotientNormalization to matrixPQN ([8a1c7e0](https://www.github.com/mljs/spectra-processing/commit/8a1c7e03c698db88e5a4dc829c47d98a724a2721))
+
 ## [5.0.0](https://www.github.com/mljs/spectra-processing/compare/v4.12.0...v5.0.0) (2021-01-19)
 
 
