@@ -4,7 +4,7 @@ import { gsd } from 'ml-gsd';
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
 
 /**
- * Aligns the data based on a range and means of peaks in this range
+ * Calibrates the data based on a range and means of peaks in this range
  * Based on a range we will make a peak picking using global spectra deconvolution
  * The selected nbPeaks will then be taken into account to calculate an average X value.
  * The difference between the targetX and the averageX value will be returned
@@ -20,7 +20,7 @@ import { xFindClosestIndex } from '../x/xFindClosestIndex';
  * @returns {number} difference between targetX and currentX
  */
 
-export function xyXShift(data, range = {}, options = {}) {
+export function xyCalibrate(data, range = {}, options = {}) {
   const {
     targetX = 0,
     nbPeaks = 1,

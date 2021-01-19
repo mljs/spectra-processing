@@ -1,13 +1,13 @@
-import { xyXShift } from '../xyXShift.js';
+import { xyCalibrate } from '../xyCalibrate.js';
 
-describe('xyXShift', function () {
+describe('xyCalibrate', function () {
   it('undefined params', () => {
     let data = {
       x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       y: [1, 1, 5, 1, 1, 1, 700, 1, 1, 1, 1, 1, 1],
     };
 
-    let xShift = xyXShift(data);
+    let xShift = xyCalibrate(data);
 
     expect(xShift).toBe(0);
   });
@@ -18,7 +18,7 @@ describe('xyXShift', function () {
       y: [1, 1, 5, 1],
     };
 
-    expect(() => xyXShift(data, { from: 1, to: 10 })).toThrow(
+    expect(() => xyCalibrate(data, { from: 1, to: 10 })).toThrow(
       'Window size is higher than the data lengt',
     );
   });
@@ -39,7 +39,7 @@ describe('xyXShift', function () {
       },
     };
 
-    let xShift = xyXShift(
+    let xShift = xyCalibrate(
       data,
       { from: 1, to: 10 },
       {
@@ -67,7 +67,7 @@ describe('xyXShift', function () {
       },
     };
 
-    let xShift = xyXShift(
+    let xShift = xyCalibrate(
       data,
       { from: 1, to: 10 },
       {
