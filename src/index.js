@@ -101,6 +101,6 @@ export * from './zone/zoneToX';
 
 export * from './zones/zonesNormalize';
 
-export * from './matrix/probabilisticQuotientNormalization';
+export * from './matrix/matrixPQN';
 
 export * from './utils/createSequentialArray';
