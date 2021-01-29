@@ -4,9 +4,15 @@ import erfcinv from './erfcinv';
 import rayleighCdf from './rayleighCdf';
 
 /**
- * Determine noise level by san plot metodology (https://doi.org/10.1002/mrc.4882)
+ * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
  * @param {Array} data - real or magnitude spectra data.
- * @param {*} options
+ * @param {object} [options = {}]
+ * @param {array} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+ * @param {number} [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
+ * @param {number} [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+ * @param {number} [options.factorStd=5] - factor times std to determine what will be marked as signals.
+ * @param {boolean} [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
+ * @param {boolean} [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
  */
 
 export function xNoiseSanPlot(data, options = {}) {
