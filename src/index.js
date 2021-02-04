@@ -40,6 +40,7 @@ export * from './x/xGetTargetIndex';
 export * from './x/xIsMonotone';
 export * from './x/xMaxIndex';
 export * from './x/xMaxValue';
+export * from './x/xMean';
 export * from './x/xMinIndex';
 export * from './x/xMinValue';
 export * from './x/xMultiply';
