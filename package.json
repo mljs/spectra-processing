@@ -20,15 +20,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cheminfo/spectra-processing.git"
+    "url": "git+https://github.com/mljs/spectra-processing.git"
   },
   "keywords": [],
   "author": "Luc Patiny",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cheminfo/spectra-processing/issues"
+    "url": "https://github.com/mljs/spectra-processing/issues"
   },
-  "homepage": "https://github.com/cheminfo/spectra-processing#readme",
+  "homepage": "https://github.com/mljs/spectra-processing#readme",
   "jest": {
     "testEnvironment": "node"
   },
