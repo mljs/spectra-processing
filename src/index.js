@@ -51,6 +51,8 @@ export * from './x/xRotate';
 export * from './x/xRolling';
 export * from './x/xRollingAverage';
 export * from './x/xRollingMedian';
+export * from './x/xRollingMin';
+export * from './x/xRollingMax';
 export * from './x/xSubtract';
 export * from './x/xSum';
 
