@@ -1,6 +1,6 @@
 {
   "name": "ml-spectra-processing",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "Various method to process spectra",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -9,7 +9,8 @@
     "src"
   ],
   "scripts": {
-    "build": "rollup -c && cheminfo-build --root SpectraProcessing",    "eslint": "eslint src",
+    "build": "rollup -c && cheminfo-build --root SpectraProcessing",
+    "eslint": "eslint src",
     "eslint-fix": "npm run eslint -- --fix",
     "compile": "rollup -c",
     "prepublishOnly": "npm run compile",
