@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.2.0](https://www.github.com/mljs/spectra-processing/compare/v5.1.0...v5.2.0) (2021-02-10)
+
+
+### Features
+
+* added rollingMax, rollingMin ([#48](https://www.github.com/mljs/spectra-processing/issues/48)) ([083ca2c](https://www.github.com/mljs/spectra-processing/commit/083ca2c24a1364dd5fee1f310ee3624192704326))
+* implemented mae and mse ([#50](https://www.github.com/mljs/spectra-processing/issues/50)) ([5cabd0a](https://www.github.com/mljs/spectra-processing/commit/5cabd0a9c2c65b5b71d949bd47bd8a023a57715f))
+
 ## [5.1.0](https://www.github.com/mljs/spectra-processing/compare/v5.0.0...v5.1.0) (2021-01-19)
 
 
