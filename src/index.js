@@ -55,6 +55,8 @@ export * from './x/xRollingMin';
 export * from './x/xRollingMax';
 export * from './x/xSubtract';
 export * from './x/xSum';
+export * from './x/xMeanAbsoluteError';
+export * from './x/xMeanSquaredError';
 
 export * from './reim/reimAbsolute';
 export * from './reim/reimAutoPhaseCorrection';
