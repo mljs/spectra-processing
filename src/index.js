@@ -57,7 +57,7 @@ export * from './x/xSubtract';
 export * from './x/xSum';
 export * from './x/xMeanAbsoluteError';
 export * from './x/xMeanSquaredError';
-export * from './x/xDotProduct'
+export * from './x/xDotProduct';
 
 export * from './reim/reimAbsolute';
 export * from './reim/reimAutoPhaseCorrection';
