@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.3.0](https://www.github.com/mljs/spectra-processing/compare/v5.2.0...v5.3.0) (2021-02-15)
+
+
+### Features
+
+* exporting xDotProduct in index.js ([#51](https://www.github.com/mljs/spectra-processing/issues/51)) ([e84b430](https://www.github.com/mljs/spectra-processing/commit/e84b4304b58919cfed0c8ef32e345666b7d20d7e))
+
 ## [5.2.0](https://www.github.com/mljs/spectra-processing/compare/v5.1.0...v5.2.0) (2021-02-10)
 
 
