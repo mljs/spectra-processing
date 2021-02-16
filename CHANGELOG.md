@@ -1,5 +1,13 @@
 # Changelog
 
+### [5.3.1](https://www.github.com/mljs/spectra-processing/compare/v5.3.0...v5.3.1) (2021-02-16)
+
+
+### Bug Fixes
+
+* xAdd/substract/divide/multiply also work with floatarray ([#53](https://www.github.com/mljs/spectra-processing/issues/53)) ([6460573](https://www.github.com/mljs/spectra-processing/commit/6460573974c04387f144faa4d0b7a88ebef9cec4))
+* xMonotone was failing if it started with constant values ([#54](https://www.github.com/mljs/spectra-processing/issues/54)) ([3fbd82b](https://www.github.com/mljs/spectra-processing/commit/3fbd82b9a335724bbada5343e9654836ab769e47))
+
 ## [5.3.0](https://www.github.com/mljs/spectra-processing/compare/v5.2.0...v5.3.0) (2021-02-15)
 
 
