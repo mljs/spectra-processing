@@ -75,6 +75,7 @@ export * from './xy/xyGetNMaxY';
 export * from './xy/xyGrowingX';
 export * from './xy/xyIntegral';
 export * from './xy/xyIntegration';
+export * from './xy/xyJoinX';
 export * from './xy/xyMaxClosestYPoint';
 export * from './xy/xyMaxY';
 export * from './xy/xyMaxYPoint';
