@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.5.0](https://www.github.com/mljs/spectra-processing/compare/v5.4.0...v5.5.0) (2021-02-23)
+
+
+### Features
+
+* add lactame deployment ([81f70c0](https://www.github.com/mljs/spectra-processing/commit/81f70c0741cf556327cd72a22e69319c96d20ef8))
+
 ## [5.4.0](https://www.github.com/mljs/spectra-processing/compare/v5.3.1...v5.4.0) (2021-02-23)
 
 
