@@ -1,4 +1,4 @@
-name: Deploy build on lactame.com
+name: Build and deploy on lactame.com
 
 on:
   release:
