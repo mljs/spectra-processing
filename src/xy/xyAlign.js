@@ -10,11 +10,7 @@
  * @param {string} [options.x='x1'] Defines what x values should be kept (`x1` : spectrum 1 x values, `x2` spectrum 2 x values, `weighted`: weighted average of both spectra x values)
  */
 export function xyAlign(data1, data2, options = {}) {
-  const {
-    delta = 1,
-    common = true,
-    x = 'x1',
-  } = options;
+  const { delta = 1, common = true, x = 'x1' } = options;
 
   let result = {
     x: [],
@@ -28,11 +24,11 @@ export function xyAlign(data1, data2, options = {}) {
   let length1 = data1.x.length;
   let length2 = data2.x.length;
 
-  while (i < data1.x.length && j < data2.x.length) {
+  while (i < length1 && j < length2) {
     let maxDiff = 0;
 
     if (typeof delta === 'function') {
-      let mean = (spectrum1.x[i] + spectrum2.x[j]) / 2; // is this a good thing to do?
+      let mean = (data1.x[i] + data2.x[j]) / 2; // is this a good thing to do?
       maxDiff = delta(mean);
     } else {
       maxDiff = delta;
@@ -47,7 +43,7 @@ export function xyAlign(data1, data2, options = {}) {
           result.y1.push(0);
           result.y2.push(data2.y[j]);
           if (j === length2 - 1) {
-            while (i < data1.x.length) {
+            while (i < length1) {
               result.x.push(data1.x[i]);
               result.y1.push(data1.y[i]);
               result.y2.push(0);
@@ -63,7 +59,7 @@ export function xyAlign(data1, data2, options = {}) {
           result.y1.push(data1.y[i]);
           result.y2.push(0);
           if (i === length1 - 1) {
-            while (j < data2.x.length) {
+            while (j < length2) {
               result.x.push(data2.x[j]);
               result.y1.push(0);
               result.y2.push(data2.y[j]);
