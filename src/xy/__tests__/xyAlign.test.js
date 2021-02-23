@@ -161,24 +161,24 @@ describe('aline', function () {
       y2: [1, 1],
     });
   });
-  it('test options.weightFunction', () => {
-    const weightFunction = (x) => x * 5e-6;
+  it('test options.delta as a function', () => {
+    const delta = (x) => x * 5e-6;
     let spectrum1 = { x: [0, 3, 5, 7], y: [1, 1, 1, 1] };
     let spectrum2 = { x: [2, 3], y: [1, 1] };
-    let result = xyAlign(spectrum1, spectrum2, { weightFunction });
+    let result = xyAlign(spectrum1, spectrum2, { delta });
     expect(result).toStrictEqual({
       x: [3],
       y1: [1],
       y2: [1],
     });
   });
-  it('test options.weightFunction: (x) => x', () => {
-    const weightFunction = (x) => x;
+  it('test options.delta as a function: (x) => x', () => {
+    const delta = (x) => x;
     let spectrum1 = { x: [0, 1, 2, 3], y: [1, 1, 1, 1] };
     let spectrum2 = { x: [2, 3, 5], y: [1, 1, 1] };
     let result = xyAlign(spectrum1, spectrum2, {
       x: 'weighted',
-      weightFunction,
+      delta,
     });
     expect(result).toStrictEqual({
       x: [1.5, 2.5, 4],
