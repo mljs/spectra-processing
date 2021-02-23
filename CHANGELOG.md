@@ -1,5 +1,12 @@
 # Changelog
 
+### [5.5.1](https://www.github.com/mljs/spectra-processing/compare/v5.5.0...v5.5.1) (2021-02-23)
+
+
+### Bug Fixes
+
+* update documentation ([1292579](https://www.github.com/mljs/spectra-processing/commit/1292579334bb663b65204cdf039d520d14668dac))
+
 ## [5.5.0](https://www.github.com/mljs/spectra-processing/compare/v5.4.0...v5.5.0) (2021-02-23)
 
 
