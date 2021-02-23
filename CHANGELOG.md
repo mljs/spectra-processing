@@ -1,5 +1,15 @@
 # Changelog
 
+## [5.4.0](https://www.github.com/mljs/spectra-processing/compare/v5.3.1...v5.4.0) (2021-02-23)
+
+
+### Features
+
+* add xMean ([7d98aa9](https://www.github.com/mljs/spectra-processing/commit/7d98aa9bab601a5a87214517853ba03a530ee527))
+* add xyArrayAlign ([a96d786](https://www.github.com/mljs/spectra-processing/commit/a96d7867cf178d5e01f09663ea0c7934e3637f90))
+* add xyJoinX ([6c53bf0](https://www.github.com/mljs/spectra-processing/commit/6c53bf08741c3bd5eef0a35f1231f2461d2a6264))
+* delta may be a function in xyAlign ([f4cde8a](https://www.github.com/mljs/spectra-processing/commit/f4cde8a5c052872ab87d9428605bf585e8e9742b))
+
 ### [5.3.1](https://www.github.com/mljs/spectra-processing/compare/v5.3.0...v5.3.1) (2021-02-16)
 
 
