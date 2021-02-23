@@ -68,6 +68,8 @@ export * from './reim/reimFFT';
 export * from './xreim/xreimZeroFilling';
 export * from './xreim/xreimSortX';
 
+export * from './xyArray/xyArrayAlign';
+
 export * from './xy/xyAlign';
 export * from './xy/xyCheck';
 export * from './xy/xyExtract';
