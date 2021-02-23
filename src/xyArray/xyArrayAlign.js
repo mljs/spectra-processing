@@ -16,7 +16,7 @@ export function xyArrayAlign(spectra, options = {}) {
 
   // at first we will calculate the X values (simple mean)
   let possibleXs = Float64Array.from(
-    spectra.map((spectrum) => spectrum.x).flat(1),
+    [].concat(...spectra.map((spectrum) => spectrum.x)),
   ).sort();
 
   if (possibleXs.length < 1) {
