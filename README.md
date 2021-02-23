@@ -12,6 +12,7 @@ They are sorted in various categories:
 - matrix: functions on ml-matrix instances (or array or array)
 - x: functions that apply on a 1D array
 - xy: functions that apply on an object `{x: [], y:[]}`
+- xyArray: functions that apply on an array of objects `{x: [], y:[]}`
 - xyObject: functions that apply on an array of point `[{x,y}]`
 - xreim: functions that apply on an object `{x: [], re:[], im:[]}`
 - reim: functions that apply on an object `{re: [], im:[]}`
@@ -19,6 +20,7 @@ They are sorted in various categories:
 - zones: functions that apply on an array of zone `[{from,to}]`
 
 The name of the functions start with the first argument on which they apply.
+
 ## Installation
 
 `$ npm i ml-spectra-processing`
