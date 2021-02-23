@@ -1,5 +1,12 @@
 # Changelog
 
+### [5.5.2](https://www.github.com/mljs/spectra-processing/compare/v5.5.1...v5.5.2) (2021-02-23)
+
+
+### Bug Fixes
+
+* try to change lactame.yml to trigger it ([28cd509](https://www.github.com/mljs/spectra-processing/commit/28cd509c3fbbf4bc0f1944062fa2627b3047de02))
+
 ### [5.5.1](https://www.github.com/mljs/spectra-processing/compare/v5.5.0...v5.5.1) (2021-02-23)
 
 
