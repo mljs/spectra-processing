@@ -1,4 +1,14 @@
-export function xyEnsureGrowingX(x, y) {
+import { xyCheck } from './xyCheck';
+
+/**
+ * Filters x,y values to allow strictly growing values in x axis.
+ * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @return {DataXY}
+ */
+export function xyEnsureGrowingX(data = {}) {
+  xyCheck(data);
+  const x = Array.from(data.x);
+  const y = Array.from(data.y);
   let prevX = -Infinity;
   let ansX = [];
   let ansY = [];
@@ -10,5 +20,5 @@ export function xyEnsureGrowingX(x, y) {
       prevX = x[index];
     }
   }
-  return [ansX, ansY];
+  return { x: ansX, y: ansY };
 }
