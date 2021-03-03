@@ -72,8 +72,8 @@ export * from './xyArray/xyArrayAlign';
 
 export * from './xy/xyAlign';
 export * from './xy/xyCheck';
-export * from './xy/xyExtract';
 export * from './xy/xyEnsureGrowingX';
+export * from './xy/xyExtract';
 export * from './xy/xyGetNMaxY';
 export * from './xy/xyGrowingX';
 export * from './xy/xyIntegral';
