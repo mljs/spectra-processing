@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.6.0](https://www.github.com/mljs/spectra-processing/compare/v5.5.3...v5.6.0) (2021-03-03)
+
+
+### Features
+
+* filter non growing data ([#61](https://www.github.com/mljs/spectra-processing/issues/61)) ([f13c9eb](https://www.github.com/mljs/spectra-processing/commit/f13c9eb2666c5ca6c484ee1141a0761ca39c434e))
+
 ### [5.5.3](https://www.github.com/mljs/spectra-processing/compare/v5.5.2...v5.5.3) (2021-02-23)
 
 
