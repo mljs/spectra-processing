@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.7.0](https://www.github.com/mljs/spectra-processing/compare/v5.6.0...v5.7.0) (2021-03-04)
+
+
+### Features
+
+* add xyFilterXPositive ([7d8ffcb](https://www.github.com/mljs/spectra-processing/commit/7d8ffcbe39702db030f514e37dcf7ba7f4d18db4))
+
 ## [5.6.0](https://www.github.com/mljs/spectra-processing/compare/v5.5.3...v5.6.0) (2021-03-03)
 
 
