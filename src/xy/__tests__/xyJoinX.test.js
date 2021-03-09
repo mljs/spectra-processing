@@ -52,6 +52,14 @@ describe('xyJoinX', function () {
     });
   });
 
+  it('join with 0', () => {
+    let data = { x: [2, 3, 6], y: [0, 0, 0] };
+    expect(xyJoinX(data)).toStrictEqual({
+      x: [2.5, 6],
+      y: [0, 0],
+    });
+  });
+
   it('delta callback', () => {
     let data = { x: [2, 3, 4, 100, 1000], y: [1, 1, 1, 2, 3] };
     expect(xyJoinX(data, { delta: (x) => x / 1.5 })).toStrictEqual({
