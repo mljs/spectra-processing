@@ -1,5 +1,12 @@
 # Changelog
 
+### [5.7.1](https://www.github.com/mljs/spectra-processing/compare/v5.7.0...v5.7.1) (2021-03-09)
+
+
+### Bug Fixes
+
+* xyJoinX when Y values are zero ([69c7089](https://www.github.com/mljs/spectra-processing/commit/69c7089d048870f0266cf5db76cb8ab8c23326bb))
+
 ## [5.7.0](https://www.github.com/mljs/spectra-processing/compare/v5.6.0...v5.7.0) (2021-03-04)
 
 
