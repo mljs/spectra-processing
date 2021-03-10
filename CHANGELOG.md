@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.8.0](https://www.github.com/mljs/spectra-processing/compare/v5.7.2...v5.8.0) (2021-03-10)
+
+
+### Features
+
+* add xyArrayMerge ([e0a53ab](https://www.github.com/mljs/spectra-processing/commit/e0a53ab80614643d7f8eff70989d0b81e785baa6))
+
 ### [5.7.2](https://www.github.com/mljs/spectra-processing/compare/v5.7.1...v5.7.2) (2021-03-10)
 
 
