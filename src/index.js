@@ -69,6 +69,7 @@ export * from './xreim/xreimZeroFilling';
 export * from './xreim/xreimSortX';
 
 export * from './xyArray/xyArrayAlign';
+export * from './xyArray/xyArrayMerge';
 
 export * from './xy/xyAlign';
 export * from './xy/xyCheck';
