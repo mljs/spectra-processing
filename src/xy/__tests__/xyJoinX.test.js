@@ -55,7 +55,7 @@ describe('xyJoinX', function () {
   it('join with 0', () => {
     let data = { x: [2, 3, 6], y: [0, 0, 0] };
     expect(xyJoinX(data)).toStrictEqual({
-      x: [2.5, 6],
+      x: [2, 6],
       y: [0, 0],
     });
   });

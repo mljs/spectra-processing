@@ -25,13 +25,11 @@ export function xyJoinX(data = {}, options = {}) {
 
     if (difference <= currentDelta) {
       // we join
-      if (y[position] === 0 && y[i] === 0) {
-        x[position] = (x[position] + x[i]) / 2;
-      } else {
+      if (y[position] !== 0 || y[i] !== 0) {
         x[position] =
           (x[position] * y[position] + x[i] * y[i]) / (y[position] + y[i]);
+        y[position] += y[i];
       }
-      y[position] += y[i];
     } else {
       position++;
       x[position] = x[i];

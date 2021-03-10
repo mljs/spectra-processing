@@ -16,9 +16,11 @@ export function xyObjectJoinX(points, options = {}) {
   for (let point of points) {
     if (point.x - current.x <= xError) {
       // weighted sum
-      current.x =
-        (point.y / (current.y + point.y)) * (point.x - current.x) + current.x;
-      current.y += point.y;
+      if (current.y !== 0 || point.y !== 0) {
+        current.x =
+          (point.y / (current.y + point.y)) * (point.x - current.x) + current.x;
+        current.y += point.y;
+      }
     } else {
       current = {
         x: point.x,
