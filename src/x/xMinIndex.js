@@ -1,4 +1,4 @@
-import xCheck from './xCheck';
+import { xCheck } from './xCheck';
 
 /**
  * Computes the index of the minimum of the given values

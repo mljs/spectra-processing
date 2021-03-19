@@ -1,4 +1,4 @@
-import xCheck from './xCheck';
+import { xCheck } from './xCheck';
 import { xPadding } from './xPadding';
 /**
  * This function calculates a rolling average

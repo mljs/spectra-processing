@@ -5,7 +5,7 @@ import isArray from 'is-any-array';
  * @param {Array<number>} input
 
  */
-export default function xCheck(input) {
+export function xCheck(input) {
   if (!isArray(input)) {
     throw new TypeError('input must be an array');
   }

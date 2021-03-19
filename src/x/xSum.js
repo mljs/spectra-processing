@@ -1,4 +1,4 @@
-import xCheck from './xCheck';
+import { xCheck } from './xCheck';
 
 /**
  * Calculate the sum of the values

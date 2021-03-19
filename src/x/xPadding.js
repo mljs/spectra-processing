@@ -1,4 +1,4 @@
-import xCheck from './xCheck';
+import { xCheck } from './xCheck';
 
 /**
  * This function pads an array

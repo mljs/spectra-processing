@@ -1,6 +1,6 @@
 import sd from 'ml-array-standard-deviation';
 
-import xCheck from './xCheck';
+import { xCheck } from './xCheck';
 
 /**
  * Pareto scaling, which uses the square root of standard deviation as the scaling factor, circumvents the amplification of noise by retaining a small portion of magnitude information.
