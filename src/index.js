@@ -37,6 +37,7 @@ export * from './x/xDivide';
 export * from './x/xFindClosestIndex';
 export * from './x/xGetFromToIndex';
 export * from './x/xGetTargetIndex';
+export * from './x/xHistogram';
 export * from './x/xIsMonotone';
 export * from './x/xMaxIndex';
 export * from './x/xMaxValue';
