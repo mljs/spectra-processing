@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.9.0](https://www.github.com/mljs/spectra-processing/compare/v5.8.0...v5.9.0) (2021-03-24)
+
+
+### Features
+
+* add xHistogram ([7297b55](https://www.github.com/mljs/spectra-processing/commit/7297b5507f3f0dd81bb8a4ea19db043b7830b0c4))
+
+
+### Bug Fixes
+
+* update dependencies ([80dcdcf](https://www.github.com/mljs/spectra-processing/commit/80dcdcf7303c1f01ed6c3f8dd16b8b8615eef938))
+
 ## [5.8.0](https://www.github.com/mljs/spectra-processing/compare/v5.7.2...v5.8.0) (2021-03-10)
 
 
