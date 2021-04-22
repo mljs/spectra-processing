@@ -33,6 +33,7 @@ export * from './x/xAutoCorrelation';
 export * from './x/xBoxPlot';
 export * from './x/xCorrelation';
 export * from './x/xCrossCorrelation';
+export * from './x/xCumulative';
 export * from './x/xDivide';
 export * from './x/xFindClosestIndex';
 export * from './x/xGetFromToIndex';
