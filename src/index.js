@@ -75,6 +75,7 @@ export * from './xyArray/xyArrayMerge';
 
 export * from './xy/xyAlign';
 export * from './xy/xyCheck';
+export * from './xy/xyCumulativeDistributionStatistics';
 export * from './xy/xyEnsureGrowingX';
 export * from './xy/xyExtract';
 export * from './xy/xyFilterXPositive';
