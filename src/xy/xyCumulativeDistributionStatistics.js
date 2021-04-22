@@ -1,6 +1,6 @@
 import max from 'ml-array-max';
 
-import { xCumulativeSum } from '../x/xCumulativeSum';
+import { xCumulative } from '../x/xCumulative';
 
 import { xyCheck } from './xyCheck';
 import { xyMaxYPoint } from './xyMaxYPoint';
@@ -20,7 +20,7 @@ export function xyCumulativeDistributionStatistics(data) {
       'xyCumulativeDistributionStatistics: Array length must be greater than 0',
     );
   }
-  const cumulativeSum = xCumulativeSum(y);
+  const cumulativeSum = xCumulative(y);
   const maxY = max(cumulativeSum);
   for (let i = 0; i < cumulativeSum.length; i++) {
     cumulativeSum[i] /= maxY;
