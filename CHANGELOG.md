@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.10.0](https://www.github.com/mljs/spectra-processing/compare/v5.9.0...v5.10.0) (2021-04-22)
+
+
+### Features
+
+* add xCumulative ([a991750](https://www.github.com/mljs/spectra-processing/commit/a991750db1f218877bf457b67b20fe79147f20fd))
+* add xyCumulativeDistributionStatistics ([d805015](https://www.github.com/mljs/spectra-processing/commit/d8050152c10b27dbafcc0da682beb2010134c85e))
+
+
+### Bug Fixes
+
+* xyCumulativeDistributionStatistics ([a154964](https://www.github.com/mljs/spectra-processing/commit/a154964e20bc554a77c9c1f7545fd0f2042685cc))
+
 ## [5.9.0](https://www.github.com/mljs/spectra-processing/compare/v5.8.0...v5.9.0) (2021-03-24)
 
 
