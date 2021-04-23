@@ -1,5 +1,12 @@
 # Changelog
 
+### [5.10.1](https://www.github.com/mljs/spectra-processing/compare/v5.10.0...v5.10.1) (2021-04-23)
+
+
+### Bug Fixes
+
+* edge case of xHistogram ([40752b0](https://www.github.com/mljs/spectra-processing/commit/40752b0f3921262d25e1ff24c4df06ac0866100d))
+
 ## [5.10.0](https://www.github.com/mljs/spectra-processing/compare/v5.9.0...v5.10.0) (2021-04-22)
 
 
