@@ -22,7 +22,9 @@ export function xHistogram(array, options = {}) {
 
   const slotSize = (max - min) / (nbSlots + Number.EPSILON);
   for (let i = 0; i < array.length; i++) {
-    counts[((array[i] - min) / slotSize) >> 0]++;
+    counts[
+      Math.min(((array[i] - min - Number.EPSILON) / slotSize) >> 0, nbSlots - 1)
+    ]++;
   }
   return counts;
 }

@@ -1,6 +1,13 @@
 import { xHistogram } from '../xHistogram.js';
 
 describe('xHistogram', function () {
+  it('simple case', () => {
+    const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const histogram = xHistogram(array, { nbSlots: 10 });
+    console.log(histogram);
+    expect(histogram).toHaveLength(10);
+  });
+
   it('256 slots', () => {
     const array = new Float64Array(10000).map(Math.random);
     const histogram = xHistogram(array);
