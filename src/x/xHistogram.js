@@ -8,17 +8,22 @@ import { xMinValue } from './xMinValue';
  * @param {number} [options.nbSlots=256] Number of slots
  * @param {number} [options.min=minValue] Minimum value to calculate used to calculate slot size
  * @param {number} [options.max=maxValue] Maximal value to calculate used to calculate slot size
+ * @param {number} [options.log10Scale=false] Should we use a log scale
  * @return {array} array of counts
  */
 
 export function xHistogram(array, options = {}) {
   xCheck(array);
-  const {
-    nbSlots = 256,
-    min = xMinValue(array),
-    max = xMaxValue(array),
-  } = options;
+  const { nbSlots = 256, log10Scale = false } = options;
   const counts = new Uint32Array(nbSlots);
+  if (log10Scale) {
+    array = array.slice();
+    for (let i = 0; i < array.length; i++) {
+      array[i] = Math.log10(array[i]);
+    }
+  }
+
+  const { min = xMinValue(array), max = xMaxValue(array) } = options;
 
   const slotSize = (max - min) / (nbSlots + Number.EPSILON);
   for (let i = 0; i < array.length; i++) {
