@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.11.0](https://www.github.com/mljs/spectra-processing/compare/v5.10.0...v5.11.0) (2021-04-23)
+
+
+### Features
+
+* xHistogram returns a DataXY ([44089c7](https://www.github.com/mljs/spectra-processing/commit/44089c7915aad8372aba00c6857c4aa210150461))
+* xHistogram: add log10Scale option ([6952e19](https://www.github.com/mljs/spectra-processing/commit/6952e1931ca7a0a2a984ae4a6c21f2f0e54c3d85))
+
+
+### Bug Fixes
+
+* edge case of xHistogram ([40752b0](https://www.github.com/mljs/spectra-processing/commit/40752b0f3921262d25e1ff24c4df06ac0866100d))
+
 ## [5.10.0](https://www.github.com/mljs/spectra-processing/compare/v5.9.0...v5.10.0) (2021-04-22)
 
 
