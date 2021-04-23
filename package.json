@@ -61,7 +61,7 @@
     "ml-array-sequential-fill": "^1.1.6",
     "ml-array-standard-deviation": "^1.1.6",
     "ml-gsd": "^6.6.1",
-    "ml-matrix": "^6.7.0",
+    "ml-matrix": "^6.8.0",
     "spline-interpolator": "^1.0.0"
   }
 }
