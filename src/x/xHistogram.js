@@ -1,6 +1,7 @@
 import { xCheck } from './xCheck';
 import { xMaxValue } from './xMaxValue';
 import { xMinValue } from './xMinValue';
+import fill from 'ml-array-sequential-fill';
 
 /**
  * Calculates an histogram of defined number of slots
@@ -8,13 +9,14 @@ import { xMinValue } from './xMinValue';
  * @param {number} [options.nbSlots=256] Number of slots
  * @param {number} [options.min=minValue] Minimum value to calculate used to calculate slot size
  * @param {number} [options.max=maxValue] Maximal value to calculate used to calculate slot size
- * @param {number} [options.log10Scale=false] Should we use a log scale
- * @return {array} array of counts
+ * @param {number} [options.log10Scale=false] First apply a log10 on the values
+ * @param {number} [options.centerX=true] Center the X value. We will enlarge the first and
+ * @return {DataXY} {x,y} of the histogram
  */
 
 export function xHistogram(array, options = {}) {
   xCheck(array);
-  const { nbSlots = 256, log10Scale = false } = options;
+  const { centerX = true, nbSlots = 256, log10Scale = false } = options;
   const counts = new Uint32Array(nbSlots);
   if (log10Scale) {
     array = array.slice();
@@ -31,5 +33,12 @@ export function xHistogram(array, options = {}) {
       Math.min(((array[i] - min - Number.EPSILON) / slotSize) >> 0, nbSlots - 1)
     ]++;
   }
-  return counts;
+  return {
+    x: fill({
+      from: min + (centerX ? slotSize / 2 : 0),
+      to: max - (centerX ? slotSize / 2 : 0),
+      size: nbSlots,
+    }),
+    y: counts,
+  };
 }

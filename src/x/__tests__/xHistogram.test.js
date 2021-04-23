@@ -1,0 +1,102 @@
+import { xHistogram } from '../xHistogram.js';
+import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
+import fill from 'ml-array-sequential-fill';
+
+expect.extend({ toMatchCloseTo });
+
+describe('xHistogram', function () {
+  it('simple case', () => {
+    const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const histogram = xHistogram(array, { nbSlots: 10, centerX: false });
+    histogram.y = Array.from(histogram.y);
+    expect(histogram.x).toStrictEqual(array);
+    expect(histogram.y).toStrictEqual([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+  });
+
+  it('sequential', () => {
+    const array = fill({ from: 0, to: 99, size: 100 });
+    const histogram = xHistogram(array, { nbSlots: 10 });
+    histogram.y = Array.from(histogram.y);
+    expect(histogram.x).toMatchCloseTo(
+      [5, 15, 25, 35, 45, 55, 65, 75, 85, 95],
+      0,
+    );
+    expect(histogram.y).toStrictEqual([10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
+  });
+
+  it('simple log case', () => {
+    const array = [1, 1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8, 1e9];
+    const histogram = xHistogram(array, {
+      nbSlots: 10,
+      log10Scale: true,
+      centerX: false,
+    });
+    histogram.y = Array.from(histogram.y);
+    expect(histogram.x).toStrictEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(histogram.y).toStrictEqual([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+  });
+
+  it('256 slots', () => {
+    const array = new Float64Array(10000).map(Math.random);
+    const histogram = xHistogram(array);
+    expect(histogram.y).toHaveLength(256);
+    for (let i = 0; i < histogram.length; i++) {
+      expect(histogram.y[i]).toBeGreaterThan(10);
+    }
+  });
+
+  it('10 slots', () => {
+    const array = new Float64Array(100000).map(() => Math.random() * 900);
+    const histogram = xHistogram(array, { nbSlots: 10, centerX: false });
+    expect(histogram.x).toMatchCloseTo(
+      [0, 100, 200, 300, 400, 500, 600, 700, 800, 900],
+      1,
+    );
+    expect(histogram.y).toHaveLength(10);
+    for (let i = 0; i < histogram.length; i++) {
+      expect(histogram.y[i]).toBeGreaterThan(9000);
+      expect(histogram.y[i]).toBeLessThan(11000);
+    }
+  });
+
+  it('11 slots center X', () => {
+    const array = new Float64Array(110000).map(() => Math.random() * 1100 - 50);
+    const histogram = xHistogram(array, { nbSlots: 11, centerX: true });
+    expect(histogram.x).toMatchCloseTo(
+      [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+      1,
+    );
+    expect(histogram.y).toHaveLength(11);
+    for (let i = 0; i < histogram.length; i++) {
+      expect(histogram.y[i]).toBeGreaterThan(9000);
+      expect(histogram.y[i]).toBeLessThan(11000);
+    }
+  });
+
+  it('min -10, max 10', () => {
+    const array = new Float64Array(10000).map(Math.random);
+    const histogram = xHistogram(array, { nbSlots: 20, min: -10, max: 10 });
+    expect(Array.from(histogram.y)).toStrictEqual([
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      10000,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+    ]);
+  });
+});

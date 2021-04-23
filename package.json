@@ -58,6 +58,7 @@
     "ml-array-mean": "^1.1.5",
     "ml-array-median": "^1.1.5",
     "ml-array-min": "^1.2.2",
+    "ml-array-sequential-fill": "^1.1.6",
     "ml-array-standard-deviation": "^1.1.6",
     "ml-gsd": "^6.6.1",
     "ml-matrix": "^6.7.0",
