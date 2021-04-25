@@ -1,5 +1,28 @@
 # Changelog
 
+## [6.0.0](https://www.github.com/mljs/spectra-processing/compare/v5.10.0...v6.0.0) (2021-04-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **matrixYRescale:** rename method to matrixZRescale
+* **matrixCenterYMean:** rename method to matrixCenterZMean
+
+### Features
+
+* add matrixHistogram ([b49d2bf](https://www.github.com/mljs/spectra-processing/commit/b49d2bf353b6355aad9e21823234eb62daf199e5))
+* **matrixCenterYMean:** rename method to matrixCenterZMean ([44f2673](https://www.github.com/mljs/spectra-processing/commit/44f2673b15f59480baa5c380ba5e3b77f950fd60))
+* **matrixMinMaxZ:** add new method ([08d242e](https://www.github.com/mljs/spectra-processing/commit/08d242e6236b69f9ad8e12cf97cfffb7b1b7c99c))
+* **matrixYRescale:** rename method to matrixZRescale ([8f980eb](https://www.github.com/mljs/spectra-processing/commit/8f980ebdcd1882f9de9e626b487a44ea1ce9c8c5))
+* xHistogram returns a DataXY ([44089c7](https://www.github.com/mljs/spectra-processing/commit/44089c7915aad8372aba00c6857c4aa210150461))
+* xHistogram: add log10Scale option ([6952e19](https://www.github.com/mljs/spectra-processing/commit/6952e1931ca7a0a2a984ae4a6c21f2f0e54c3d85))
+* **xHistogram:** give possibility to append to existing histogram ([31f1e0d](https://www.github.com/mljs/spectra-processing/commit/31f1e0dad2b7585e7b71acaa9967a21317c9ddd0))
+
+
+### Bug Fixes
+
+* edge case of xHistogram ([40752b0](https://www.github.com/mljs/spectra-processing/commit/40752b0f3921262d25e1ff24c4df06ac0866100d))
+
 ## [5.10.0](https://www.github.com/mljs/spectra-processing/compare/v5.9.0...v5.10.0) (2021-04-22)
 
 
