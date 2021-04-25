@@ -1,7 +1,8 @@
+import fill from 'ml-array-sequential-fill';
+
 import { xCheck } from './xCheck';
 import { xMaxValue } from './xMaxValue';
 import { xMinValue } from './xMinValue';
-import fill from 'ml-array-sequential-fill';
 
 /**
  * Calculates an histogram of defined number of slots
@@ -11,13 +12,19 @@ import fill from 'ml-array-sequential-fill';
  * @param {number} [options.max=maxValue] Maximal value to calculate used to calculate slot size
  * @param {number} [options.log10Scale=false] First apply a log10 on the values
  * @param {number} [options.centerX=true] Center the X value. We will enlarge the first and
+ * @param {DataXY} [options.histogram={x:[], y:[]}] Previously existing histogram to continue to fill
  * @return {DataXY} {x,y} of the histogram
  */
 
 export function xHistogram(array, options = {}) {
   xCheck(array);
-  const { centerX = true, nbSlots = 256, log10Scale = false } = options;
-  const counts = new Uint32Array(nbSlots);
+  let histogram = options.histogram;
+  const {
+    centerX = true,
+    nbSlots = histogram === undefined ? 256 : histogram.x.length,
+    log10Scale = false,
+  } = options;
+
   if (log10Scale) {
     array = array.slice();
     for (let i = 0; i < array.length; i++) {
@@ -26,19 +33,27 @@ export function xHistogram(array, options = {}) {
   }
 
   const { min = xMinValue(array), max = xMaxValue(array) } = options;
-
   const slotSize = (max - min) / (nbSlots + Number.EPSILON);
+
+  const y = histogram === undefined ? new Uint32Array(nbSlots) : histogram.y;
+  const x =
+    histogram === undefined
+      ? fill({
+          from: min + (centerX ? slotSize / 2 : 0),
+          to: max - (centerX ? slotSize / 2 : 0),
+          size: nbSlots,
+        })
+      : histogram.x;
+
   for (let i = 0; i < array.length; i++) {
-    counts[
-      Math.min(((array[i] - min - Number.EPSILON) / slotSize) >> 0, nbSlots - 1)
-    ]++;
+    const index = Math.max(
+      Math.min(
+        ((array[i] - min - Number.EPSILON) / slotSize) >> 0,
+        nbSlots - 1,
+      ),
+      0,
+    );
+    y[index]++;
   }
-  return {
-    x: fill({
-      from: min + (centerX ? slotSize / 2 : 0),
-      to: max - (centerX ? slotSize / 2 : 0),
-      size: nbSlots,
-    }),
-    y: counts,
-  };
+  return { x, y };
 }

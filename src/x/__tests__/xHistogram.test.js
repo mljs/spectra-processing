@@ -1,6 +1,7 @@
-import { xHistogram } from '../xHistogram.js';
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 import fill from 'ml-array-sequential-fill';
+
+import { xHistogram } from '../xHistogram.js';
 
 expect.extend({ toMatchCloseTo });
 
@@ -11,6 +12,30 @@ describe('xHistogram', function () {
     histogram.y = Array.from(histogram.y);
     expect(histogram.x).toStrictEqual(array);
     expect(histogram.y).toStrictEqual([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+  });
+
+  it('simple case outside range', () => {
+    const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const histogram = xHistogram(array, {
+      nbSlots: 5,
+      centerX: false,
+      min: 3,
+      max: 7,
+    });
+    histogram.y = Array.from(histogram.y);
+    expect(histogram.x).toStrictEqual([3, 4, 5, 6, 7]);
+    expect(histogram.y).toStrictEqual([4, 1, 1, 1, 3]);
+  });
+
+  it('complete previous histogram', () => {
+    const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const options = { nbSlots: 10, centerX: false, min: 0, max: 9 };
+    const histogram = xHistogram(array, options);
+    const array2 = [2, 3, 4, 5, 6, 7];
+    const histogram2 = xHistogram(array2, { histogram, ...options });
+    histogram.y = Array.from(histogram2.y);
+    expect(histogram.x).toStrictEqual(array);
+    expect(histogram.y).toStrictEqual([1, 1, 2, 2, 2, 2, 2, 2, 1, 1]);
   });
 
   it('sequential', () => {
