@@ -9,7 +9,7 @@ import { xHistogram } from '../x/xHistogram';
  * @param {number} [options.nbSlots=256] Number of slots
  * @param {number} [options.min=minValue] Minimum value to calculate used to calculate slot size
  * @param {number} [options.max=maxValue] Maximal value to calculate used to calculate slot size
- * @param {number} [options.log10Scale=false] First apply a log10 on the values
+ * @param {number} [options.logBaseX] We can first apply a log on x axi
  * @param {number} [options.centerX=true] Center the X value. We will enlarge the first and
  * @return {DataXY} {x,y} of the histogram
  *

@@ -10,7 +10,7 @@ import { xMinValue } from './xMinValue';
  * @param {number} [options.nbSlots=256] Number of slots
  * @param {number} [options.min=minValue] Minimum value to calculate used to calculate slot size
  * @param {number} [options.max=maxValue] Maximal value to calculate used to calculate slot size
- * @param {number} [options.log10Scale=false] First apply a log10 on the values
+ * @param {number} [options.logBaseX] We can first apply a log on x axis
  * @param {number} [options.centerX=true] Center the X value. We will enlarge the first and
  * @param {DataXY} [options.histogram={x:[], y:[]}] Previously existing histogram to continue to fill
  * @return {DataXY} {x,y} of the histogram
@@ -22,13 +22,14 @@ export function xHistogram(array, options = {}) {
   const {
     centerX = true,
     nbSlots = histogram === undefined ? 256 : histogram.x.length,
-    log10Scale = false,
+    logBaseX,
   } = options;
 
-  if (log10Scale) {
+  if (logBaseX) {
     array = array.slice();
+    const logOfBase = Math.log10(logBaseX);
     for (let i = 0; i < array.length; i++) {
-      array[i] = Math.log10(array[i]);
+      array[i] = Math.log10(array[i]) / logOfBase;
     }
   }
 
