@@ -119,5 +119,6 @@ export * from './zones/zonesNormalize';
 export * from './matrix/matrixCenterYMean';
 export * from './matrix/matrixYRescale';
 export * from './matrix/matrixPQN';
+export * from './matrix/matrixMinMaxZ';
 
 export * from './utils/createSequentialArray';
