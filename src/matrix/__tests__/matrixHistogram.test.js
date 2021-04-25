@@ -14,7 +14,7 @@ describe('matrixHistogram', () => {
     expect(histogram.y).toStrictEqual([1, 1, 2, 3, 3, 3, 3, 2, 1, 1]);
   });
 
-  it.only('simple y log case', () => {
+  it('simple y log case', () => {
     const matrix = [
       [2, 1, 1, 1, 1],
       [3, 1, 1, 1, 1],
