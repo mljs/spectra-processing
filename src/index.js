@@ -117,8 +117,9 @@ export * from './zone/zoneToX';
 export * from './zones/zonesNormalize';
 
 export * from './matrix/matrixCenterZMean';
-export * from './matrix/matrixZRescale';
-export * from './matrix/matrixPQN';
+export * from './matrix/matrixHistogram';
 export * from './matrix/matrixMinMaxZ';
+export * from './matrix/matrixPQN';
+export * from './matrix/matrixZRescale';
 
 export * from './utils/createSequentialArray';
