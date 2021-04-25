@@ -1,12 +1,12 @@
-import { matrixCenterYMean } from '../matrixCenterYMean';
+import { matrixCenterZMean } from '../matrixCenterZMean';
 
-test('matrixCenterYMean', () => {
+test('matrixCenterZMean', () => {
   const data = [
     [1, 3, 2, 2],
     [2, 2, 1, 3],
     [3, 1, 3, 1],
   ];
-  let result = matrixCenterYMean(data);
+  let result = matrixCenterZMean(data);
 
   result = result.map((row) => Array.from(row));
 
