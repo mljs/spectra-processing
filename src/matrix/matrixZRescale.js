@@ -6,7 +6,7 @@
  * @param {object} [options.max=1]
  *
  */
-export function matrixYRescale(matrix, options = {}) {
+export function matrixZRescale(matrix, options = {}) {
   const { min = 0, max = 1 } = options;
   const nbRows = matrix.length;
   const nbColumns = matrix[0].length;

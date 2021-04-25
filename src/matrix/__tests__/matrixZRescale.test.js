@@ -1,13 +1,13 @@
-import { matrixYRescale } from '../matrixYRescale';
+import { matrixZRescale } from '../matrixZRescale';
 
-describe('matrixYRescale', () => {
+describe('matrixZRescale', () => {
   it('default options', () => {
     const data = [
       [1, 3, 2, 2],
       [2, 2, 1, 3],
       [3, 1, 3, 1],
     ];
-    let result = matrixYRescale(data);
+    let result = matrixZRescale(data);
 
     result = result.map((row) => Array.from(row));
     expect(result).toStrictEqual([
@@ -22,7 +22,7 @@ describe('matrixYRescale', () => {
       [2, 2, 1, 3],
       [3, 1, 3, 1],
     ];
-    let result = matrixYRescale(data, { min: -2, max: 3 });
+    let result = matrixZRescale(data, { min: -2, max: 3 });
 
     result = result.map((row) => Array.from(row));
     expect(result).toStrictEqual([
