@@ -116,7 +116,7 @@ export * from './zone/zoneToX';
 
 export * from './zones/zonesNormalize';
 
-export * from './matrix/matrixCenterYMean';
+export * from './matrix/matrixCenterZMean';
 export * from './matrix/matrixYRescale';
 export * from './matrix/matrixPQN';
 export * from './matrix/matrixMinMaxZ';
