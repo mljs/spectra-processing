@@ -49,7 +49,7 @@ describe('xHistogram', function () {
     expect(histogram.y).toStrictEqual([10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
   });
 
-  it.only('simple log case', () => {
+  it('simple x log case', () => {
     const array = [1, 1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8, 1e9];
     const histogram = xHistogram(array, {
       nbSlots: 10,
@@ -59,6 +59,18 @@ describe('xHistogram', function () {
     histogram.y = Array.from(histogram.y);
     expect(histogram.x).toStrictEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
     expect(histogram.y).toStrictEqual([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+  });
+
+  it('simple y log case', () => {
+    const array = [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2];
+    const histogram = xHistogram(array, {
+      nbSlots: 2,
+      logBaseY: 10,
+      centerX: false,
+    });
+    histogram.y = Array.from(histogram.y);
+    expect(histogram.x).toStrictEqual([1, 2]);
+    expect(histogram.y).toStrictEqual([0, 1]);
   });
 
   it('256 slots', () => {
