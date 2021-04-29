@@ -1,5 +1,12 @@
 # Changelog
 
+### [6.1.3](https://www.github.com/mljs/spectra-processing/compare/v6.1.2...v6.1.3) (2021-04-29)
+
+
+### Bug Fixes
+
+* correct matrixHistogram for count of 0 ([a1c6b0d](https://www.github.com/mljs/spectra-processing/commit/a1c6b0d289ee612077b7931cceb52d110569544a))
+
 ### [6.1.2](https://www.github.com/mljs/spectra-processing/compare/v6.1.1...v6.1.2) (2021-04-29)
 
 
