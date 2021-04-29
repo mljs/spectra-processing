@@ -38,7 +38,7 @@ export function xHistogram(array, options = {}) {
   const { min = xMinValue(array), max = xMaxValue(array) } = options;
   const slotSize = (max - min) / (nbSlots + Number.EPSILON);
 
-  const y = histogram === undefined ? new Uint32Array(nbSlots) : histogram.y;
+  const y = histogram === undefined ? new Float64Array(nbSlots) : histogram.y;
   const x =
     histogram === undefined
       ? fill({
