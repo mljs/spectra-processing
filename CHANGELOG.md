@@ -1,5 +1,13 @@
 # Changelog
 
+## [6.1.0](https://www.github.com/mljs/spectra-processing/compare/v6.0.0...v6.1.0) (2021-04-29)
+
+
+### Features
+
+* xHistogram and matrixHistogram add x and y log scale ([bf50407](https://www.github.com/mljs/spectra-processing/commit/bf50407c1927b9ae695c89b56bea1b3138b42f10))
+* **xHistogram:** allow any base for log scale on X axis ([23dc2b3](https://www.github.com/mljs/spectra-processing/commit/23dc2b308c6135459d6a44db1704292cf5c51213))
+
 ## [6.0.0](https://www.github.com/mljs/spectra-processing/compare/v5.10.0...v6.0.0) (2021-04-25)
 
 
