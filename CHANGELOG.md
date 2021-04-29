@@ -1,5 +1,12 @@
 # Changelog
 
+### [6.1.2](https://www.github.com/mljs/spectra-processing/compare/v6.1.1...v6.1.2) (2021-04-29)
+
+
+### Bug Fixes
+
+* xHistogram log should be value + 1 ([024fd33](https://www.github.com/mljs/spectra-processing/commit/024fd3308f25d828f88dc49c929da634f44596c2))
+
 ### [6.1.1](https://www.github.com/mljs/spectra-processing/compare/v6.1.0...v6.1.1) (2021-04-29)
 
 
