@@ -61,7 +61,7 @@ export function xHistogram(array, options = {}) {
   if (logBaseY) {
     const logOfBase = Math.log10(logBaseY);
     for (let i = 0; i < y.length; i++) {
-      y[i] = Math.log10(y[i]) / logOfBase;
+      y[i] = Math.log10(y[i] + 1) / logOfBase;
     }
   }
 

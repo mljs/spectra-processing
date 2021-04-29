@@ -62,15 +62,20 @@ describe('xHistogram', function () {
   });
 
   it('simple y log case', () => {
-    const array = [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2];
+    const array = [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4];
     const histogram = xHistogram(array, {
-      nbSlots: 2,
+      nbSlots: 4,
       logBaseY: 10,
       centerX: false,
     });
     histogram.y = Array.from(histogram.y);
-    expect(histogram.x).toStrictEqual([1, 2]);
-    expect(histogram.y).toStrictEqual([0, 1]);
+    expect(histogram.x).toStrictEqual([1, 2, 3, 4]);
+    expect(histogram.y).toMatchCloseTo([
+      0.3010299956639812,
+      1.041392685158225,
+      0,
+      0.3010299956639812,
+    ]);
   });
 
   it('256 slots', () => {
