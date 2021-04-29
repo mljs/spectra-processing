@@ -1,5 +1,12 @@
 # Changelog
 
+### [6.1.1](https://www.github.com/mljs/spectra-processing/compare/v6.1.0...v6.1.1) (2021-04-29)
+
+
+### Bug Fixes
+
+* histogram is a float array to allow log ([7db1295](https://www.github.com/mljs/spectra-processing/commit/7db1295662a6193fdd773a29d21dfd4a6943c82a))
+
 ## [6.1.0](https://www.github.com/mljs/spectra-processing/compare/v6.0.0...v6.1.0) (2021-04-29)
 
 
