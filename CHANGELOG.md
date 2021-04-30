@@ -1,5 +1,15 @@
 # Changelog
 
+## [6.2.0](https://www.github.com/mljs/spectra-processing/compare/v6.1.3...v6.2.0) (2021-04-30)
+
+
+### Features
+
+* add absolute option in xHisotgram and matrixHistogram ([f3ea8a3](https://www.github.com/mljs/spectra-processing/commit/f3ea8a337d6464816bf9d764ca34ce10207c7a40))
+* add matrixMinMaxAbsoluteZ ([0b30854](https://www.github.com/mljs/spectra-processing/commit/0b30854e6e5e35ca6ad1461777ff178568f1e0d6))
+* add matrixMinMaxAbsoluteZ ([e8662e7](https://www.github.com/mljs/spectra-processing/commit/e8662e7c2502615e398969224230f2a8f0b8ba71))
+* allow absolute in matrixHistogram ([f4e266c](https://www.github.com/mljs/spectra-processing/commit/f4e266cb327af3e8c1459f5b622a914d1ede9c2b))
+
 ### [6.1.3](https://www.github.com/mljs/spectra-processing/compare/v6.1.2...v6.1.3) (2021-04-29)
 
 
