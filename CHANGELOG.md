@@ -1,5 +1,12 @@
 # Changelog
 
+### [6.2.1](https://www.github.com/mljs/spectra-processing/compare/v6.2.0...v6.2.1) (2021-04-30)
+
+
+### Bug Fixes
+
+* fix matrixHistogram with log scale ([c531c6c](https://www.github.com/mljs/spectra-processing/commit/c531c6c1754866cdde50a2202c65d0c7a13efb1e))
+
 ## [6.2.0](https://www.github.com/mljs/spectra-processing/compare/v6.1.3...v6.2.0) (2021-04-30)
 
 
