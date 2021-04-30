@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.3.0](https://www.github.com/mljs/spectra-processing/compare/v6.2.1...v6.3.0) (2021-04-30)
+
+
+### Features
+
+* add xMinMaxValues ([7e2a85b](https://www.github.com/mljs/spectra-processing/commit/7e2a85bde1e3ca2adf828b80877ed63ee1d4d496))
+
 ### [6.2.1](https://www.github.com/mljs/spectra-processing/compare/v6.2.0...v6.2.1) (2021-04-30)
 
 
