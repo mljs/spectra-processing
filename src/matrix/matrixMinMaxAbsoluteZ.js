@@ -1,5 +1,5 @@
 /**
- * Get min and max Z
+ * Get min and max of the absolute values of Z
  * @param {Array<Array<Number>>} [matrix] - matrix [rows][cols].
  *
  */

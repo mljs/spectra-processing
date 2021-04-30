@@ -119,6 +119,7 @@ export * from './zones/zonesNormalize';
 export * from './matrix/matrixCenterZMean';
 export * from './matrix/matrixHistogram';
 export * from './matrix/matrixMinMaxZ';
+export * from './matrix/matrixMinMaxAbsoluteZ';
 export * from './matrix/matrixPQN';
 export * from './matrix/matrixZRescale';
 
