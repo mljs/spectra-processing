@@ -1,5 +1,6 @@
 import fill from 'ml-array-sequential-fill';
 
+import { xAbsolute } from './xAbsolute';
 import { xCheck } from './xCheck';
 import { xMaxValue } from './xMaxValue';
 import { xMinValue } from './xMinValue';
@@ -12,7 +13,8 @@ import { xMinValue } from './xMinValue';
  * @param {number} [options.max=maxValue] Maximal value to calculate used to calculate slot size
  * @param {number} [options.logBaseX] We can first apply a log on x axis
  * @param {number} [options.logBaseY] We can apply a log on the resulting histogram
- * @param {number} [options.centerX=true] Center the X value. We will enlarge the first and
+ * @param {boolean} [options.absolute] Take the absolute value
+ * @param {number} [options.centerX=true] Center the X value. We will enlarge the first and last values.
  * @param {DataXY} [options.histogram={x:[], y:[]}] Previously existing histogram to continue to fill
  * @return {DataXY} {x,y} of the histogram
  */
@@ -25,7 +27,12 @@ export function xHistogram(array, options = {}) {
     nbSlots = histogram === undefined ? 256 : histogram.x.length,
     logBaseX,
     logBaseY,
+    absolute = false,
   } = options;
+
+  if (absolute) {
+    array = xAbsolute(array);
+  }
 
   if (logBaseX) {
     array = array.slice();

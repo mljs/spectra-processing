@@ -27,6 +27,19 @@ describe('xHistogram', function () {
     expect(histogram.y).toStrictEqual([4, 1, 1, 1, 3]);
   });
 
+  it('simple case with negative values', () => {
+    const array = [0, -1, 2, -3, 4, -5, 6, -7, 8, -9];
+    const histogram = xHistogram(array, {
+      nbSlots: 5,
+      absolute: true,
+      centerX: false,
+      min: 3,
+      max: 7,
+    });
+    histogram.y = Array.from(histogram.y);
+    expect(histogram.x).toStrictEqual([3, 4, 5, 6, 7]);
+    expect(histogram.y).toStrictEqual([4, 1, 1, 1, 3]);
+  });
   it('complete previous histogram', () => {
     const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     const options = { nbSlots: 10, centerX: false, min: 0, max: 9 };
