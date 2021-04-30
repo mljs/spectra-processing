@@ -18,6 +18,21 @@ describe('matrixHistogram', () => {
     expect(histogram.y).toStrictEqual([1, 1, 2, 3, 3, 3, 3, 2, 1, 1]);
   });
 
+  it('absolute values', () => {
+    const matrix = [
+      [0, 1, 2, 3, 4],
+      [0, -1, -2, -3, -4],
+    ];
+    const histogram = matrixHistogram(matrix, {
+      nbSlots: 5,
+      centerX: false,
+      absolute: true,
+    });
+    histogram.y = Array.from(histogram.y);
+    expect(histogram.x).toStrictEqual([0, 1, 2, 3, 4]);
+    expect(histogram.y).toStrictEqual([2, 2, 2, 2, 2]);
+  });
+
   it('simple y log case', () => {
     const matrix = [
       [2, 1, 1, 1, 1],

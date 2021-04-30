@@ -1,9 +1,12 @@
 import { xHistogram } from '../x/xHistogram';
 
+import { matrixMinMaxAbsoluteZ } from './matrixMinMaxAbsoluteZ';
 import { matrixMinMaxZ } from './matrixMinMaxZ';
+
 /**
 import { matrixMinMaxZ } from './matrixMinMaxZ';
 import { xHistogram } from '../x/xHistogram';
+import { matrixMinMaxAbsoluteZ } from './matrixMinMaxAbsoluteZ';
  * Calculates an histogram of defined number of slots
  * @param {Array<Array<Number>>} [matrix] - matrix [rows][cols].
  * @param {number} [options.nbSlots=256] Number of slots
@@ -18,7 +21,7 @@ import { xHistogram } from '../x/xHistogram';
  */
 
 export function matrixHistogram(matrix, options = {}) {
-  const { logBaseY } = options;
+  const { logBaseY, absolute } = options;
   options = JSON.parse(JSON.stringify(options));
   delete options.logBaseY;
   if (matrix.length === 0 || matrix[0].length === 0) {
@@ -28,7 +31,9 @@ export function matrixHistogram(matrix, options = {}) {
   }
 
   if (options.min === undefined || options.max === undefined) {
-    const minMax = matrixMinMaxZ(matrix);
+    const minMax = absolute
+      ? matrixMinMaxAbsoluteZ(matrix)
+      : matrixMinMaxZ(matrix);
     if (options.min === undefined) options.min = minMax.min;
     if (options.max === undefined) options.max = minMax.max;
   }

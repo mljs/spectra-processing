@@ -27,7 +27,7 @@ describe('xHistogram', function () {
     expect(histogram.y).toStrictEqual([4, 1, 1, 1, 3]);
   });
 
-  it.only('simple case with negative values', () => {
+  it('simple case with negative values', () => {
     const array = [-3, 4, -5, 6, -7];
     const histogram = xHistogram(array, {
       nbSlots: 5,
