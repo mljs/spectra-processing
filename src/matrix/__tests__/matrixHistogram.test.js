@@ -33,6 +33,22 @@ describe('matrixHistogram', () => {
     expect(histogram.y).toStrictEqual([2, 2, 2, 2, 2]);
   });
 
+  it('logBaseX', () => {
+    const matrix = [
+      [10, 100, 1000, 10000, 100000],
+      [10, 100, 1000, 10000, 100000],
+    ];
+    const histogram = matrixHistogram(matrix, {
+      nbSlots: 5,
+      centerX: false,
+      logBaseX: 10,
+      absolute: true,
+    });
+    histogram.y = Array.from(histogram.y);
+    expect(histogram.x).toStrictEqual([1, 2, 3, 4, 5]);
+    expect(histogram.y).toStrictEqual([2, 2, 2, 2, 2]);
+  });
+
   it('simple y log case', () => {
     const matrix = [
       [2, 1, 1, 1, 1],

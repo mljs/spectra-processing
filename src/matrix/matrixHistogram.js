@@ -21,7 +21,7 @@ import { matrixMinMaxAbsoluteZ } from './matrixMinMaxAbsoluteZ';
  */
 
 export function matrixHistogram(matrix, options = {}) {
-  const { logBaseY, absolute } = options;
+  const { logBaseY, logBaseX, absolute } = options;
   options = JSON.parse(JSON.stringify(options));
   delete options.logBaseY;
   if (matrix.length === 0 || matrix[0].length === 0) {
@@ -34,8 +34,16 @@ export function matrixHistogram(matrix, options = {}) {
     const minMax = absolute
       ? matrixMinMaxAbsoluteZ(matrix)
       : matrixMinMaxZ(matrix);
-    if (options.min === undefined) options.min = minMax.min;
-    if (options.max === undefined) options.max = minMax.max;
+    if (options.min === undefined) {
+      options.min = logBaseX
+        ? Math.log(minMax.min) / Math.log(logBaseX)
+        : minMax.min;
+    }
+    if (options.max === undefined) {
+      options.max = logBaseX
+        ? Math.log(minMax.max) / Math.log(logBaseX)
+        : minMax.max;
+    }
   }
 
   let histogram = xHistogram(matrix[0], options);
