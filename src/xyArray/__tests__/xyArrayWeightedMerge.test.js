@@ -56,6 +56,24 @@ describe('xyArrayWeightedMerge', function () {
     });
   });
 
+  it('large slot', () => {
+    let data = [
+      { x: [100, 101, 102, 200, 201, 202], y: [10, 20, 30, 40, 50, 60] },
+      { x: [101, 102, 103, 300], y: [30, 10, 40, 50] },
+    ];
+    let result = xyArrayWeightedMerge(data, { delta: 100 });
+    expect(result).toMatchCloseTo({ x: [174.76470588235293], y: [340] });
+  });
+
+  it('function merge', () => {
+    let data = [
+      { x: [100, 101, 102, 200, 201, 202], y: [10, 20, 30, 40, 50, 60] },
+      { x: [101, 102, 103, 300], y: [30, 10, 40, 50] },
+    ];
+    let result = xyArrayWeightedMerge(data, { delta: (x) => x * x });
+    expect(result).toMatchCloseTo({ x: [174.76470588235293], y: [340] });
+  });
+
   it('empty data', () => {
     let data = [];
     let result = xyArrayWeightedMerge(data, { delta: 2 });

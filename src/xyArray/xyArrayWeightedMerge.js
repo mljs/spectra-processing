@@ -7,7 +7,11 @@
  * @param {number|function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
  */
 export function xyArrayWeightedMerge(spectra, options = {}) {
-  const { delta = 1 } = options;
+  let { delta = 1 } = options;
+  if (typeof delta === 'number') {
+    let deltaNumber = delta;
+    delta = () => deltaNumber;
+  }
   spectra = spectra.filter((spectrum) => spectrum.x.length > 0);
 
   if (spectra.length === 0) return { x: [], y: [] };
@@ -20,7 +24,7 @@ export function xyArrayWeightedMerge(spectra, options = {}) {
 
   nextValue(spectra, positions, point);
   let slot = {
-    maxX: point.x + delta,
+    maxX: point.x + delta(point.x),
     sumY: point.y,
     sumXY: point.y * point.x,
   };
@@ -39,7 +43,7 @@ export function xyArrayWeightedMerge(spectra, options = {}) {
 
     slot.sumY += point.y;
     slot.sumXY += point.x * point.y;
-    slot.maxX = point.x + delta;
+    slot.maxX = point.x + delta(point.x);
 
     if (spectra.length === 0) {
       if (slot.sumY > 0) {
