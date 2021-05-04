@@ -1,5 +1,13 @@
 # Changelog
 
+## [6.4.0](https://www.github.com/mljs/spectra-processing/compare/v6.3.0...v6.4.0) (2021-05-04)
+
+
+### Features
+
+* add xyArrayWeightedMerge ([37032c2](https://www.github.com/mljs/spectra-processing/commit/37032c2da9b84f2503a58af7e83ce76c1673e357))
+* xyArrayWeightedMerge allows a function for delta ([028eaa1](https://www.github.com/mljs/spectra-processing/commit/028eaa16648b33328207b1c2f4a01cbf06a4569f))
+
 ## [6.3.0](https://www.github.com/mljs/spectra-processing/compare/v6.2.1...v6.3.0) (2021-04-30)
 
 
