@@ -1,5 +1,12 @@
 # Changelog
 
+### [6.4.1](https://www.github.com/mljs/spectra-processing/compare/v6.4.0...v6.4.1) (2021-05-04)
+
+
+### Bug Fixes
+
+* script to deploy documentation ([2c2cbee](https://www.github.com/mljs/spectra-processing/commit/2c2cbee01967156ab1a2578ae0f8c6fbe8a3fd02))
+
 ## [6.4.0](https://www.github.com/mljs/spectra-processing/compare/v6.3.0...v6.4.0) (2021-05-04)
 
 
