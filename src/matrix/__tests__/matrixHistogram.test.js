@@ -63,11 +63,7 @@ describe('matrixHistogram', () => {
     histogram.y = Array.from(histogram.y);
     expect(histogram.x).toStrictEqual([1, 2, 3, 4, 5, 6]);
     expect(histogram.y).toMatchCloseTo([
-      1,
-      0.3010299956639812,
-      0.3010299956639812,
-      0.3010299956639812,
-      0,
+      1, 0.3010299956639812, 0.3010299956639812, 0.3010299956639812, 0,
       0.6020599913279624,
     ]);
   });

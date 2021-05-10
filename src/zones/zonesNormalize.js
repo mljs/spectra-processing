@@ -13,10 +13,8 @@ export function zonesNormalize(zones = [], options = {}) {
   zones = JSON.parse(JSON.stringify(zones)).map((zone) =>
     zone.from > zone.to ? { from: zone.to, to: zone.from } : zone,
   );
-  let {
-    from = Number.NEGATIVE_INFINITY,
-    to = Number.POSITIVE_INFINITY,
-  } = options;
+  let { from = Number.NEGATIVE_INFINITY, to = Number.POSITIVE_INFINITY } =
+    options;
   if (from > to) {
     [from, to] = [to, from];
   }

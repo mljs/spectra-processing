@@ -9,13 +9,7 @@ test('xRollingMax', function () {
   expect(xRollingMax(array)).toStrictEqual([5, 6, 7, 8, 9]);
 
   expect(xRollingMax(array, { window: 3 })).toStrictEqual([
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
+    3, 4, 5, 6, 7, 8, 9,
   ]);
 
   expect(

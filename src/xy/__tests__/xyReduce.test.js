@@ -99,30 +99,10 @@ describe('xyReduce', () => {
       { nbPoints: 4000, from: 10, to: 20 },
     );
     expect(Array.from(result.x)).toStrictEqual([
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
+      10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
     ]);
     expect(Array.from(result.y)).toStrictEqual([
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
+      10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
     ]);
   });
 

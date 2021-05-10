@@ -13,18 +13,14 @@ describe('xParetoNormalization', function () {
   it('2,1,2', () => {
     let array = [2, 1, 2];
     expect(xParetoNormalization(array)).toMatchCloseTo([
-      2.6321480259049848,
-      1.3160740129524924,
-      2.6321480259049848,
+      2.6321480259049848, 1.3160740129524924, 2.6321480259049848,
     ]);
   });
 
   it('3,3,1', () => {
     let array = [3, 3, 1];
     expect(xParetoNormalization(array)).toMatchCloseTo([
-      2.791814577306299,
-      2.791814577306299,
-      0.9306048591020996,
+      2.791814577306299, 2.791814577306299, 0.9306048591020996,
     ]);
   });
 });

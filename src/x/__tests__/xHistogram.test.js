@@ -82,10 +82,7 @@ describe('xHistogram', function () {
     histogram.y = Array.from(histogram.y);
     expect(histogram.x).toStrictEqual([1, 2, 3, 4]);
     expect(histogram.y).toMatchCloseTo([
-      0.3010299956639812,
-      1.041392685158225,
-      0,
-      0.3010299956639812,
+      0.3010299956639812, 1.041392685158225, 0, 0.3010299956639812,
     ]);
   });
 
@@ -130,26 +127,7 @@ describe('xHistogram', function () {
     const array = new Float64Array(10000).map(Math.random);
     const histogram = xHistogram(array, { nbSlots: 20, min: -10, max: 10 });
     expect(Array.from(histogram.y)).toStrictEqual([
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      10000,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     ]);
   });
 });

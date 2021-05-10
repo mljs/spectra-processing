@@ -6,11 +6,7 @@ test('xPadding', function () {
   expect(Array.from(xPadding(array))).toStrictEqual([1, 2, 3, 4, 5]);
 
   expect(Array.from(xPadding(array, { size: 2 }))).toStrictEqual([
-    1,
-    2,
-    3,
-    4,
-    5,
+    1, 2, 3, 4, 5,
   ]);
 
   expect(
