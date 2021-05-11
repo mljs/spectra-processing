@@ -1,3 +1,4 @@
+import fill from 'ml-array-sequential-fill';
 import SplineInterpolator from 'spline-interpolator';
 
 import erfcinv from './erfcinv';
@@ -13,6 +14,7 @@ import rayleighCdf from './rayleighCdf';
  * @param {number} [options.factorStd=5] - factor times std to determine what will be marked as signals.
  * @param {boolean} [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
  * @param {boolean} [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
+ * @param {number} [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
  */
 
 export function xNoiseSanPlot(data, options = {}) {
@@ -28,9 +30,9 @@ export function xNoiseSanPlot(data, options = {}) {
 
   let input;
   if (Array.isArray(mask) && mask.length === data.length) {
-    input = data.filter((_e, i) => !mask[i]);
+    input = new Float64Array(data.filter((_e, i) => !mask[i]));
   } else {
-    input = data.slice();
+    input = new Float64Array(data);
   }
 
   if (scaleFactor > 1) {
@@ -38,8 +40,7 @@ export function xNoiseSanPlot(data, options = {}) {
       input[i] *= scaleFactor;
     }
   }
-
-  input.sort((a, b) => b - a);
+  input = input.sort().reverse();
 
   if (fixOffset && !magnitudeMode) {
     let medianIndex = Math.floor(input.length / 2);
@@ -49,7 +50,8 @@ export function xNoiseSanPlot(data, options = {}) {
     }
   }
 
-  let firstNegativeValueIndex = input.findIndex((e) => e < 0);
+  let firstNegativeValueIndex =
+    input[input.length - 1] >= 0 ? input.length : input.findIndex((e) => e < 0);
   let lastPositiveValueIndex = firstNegativeValueIndex - 1;
   for (let i = lastPositiveValueIndex; i >= 0; i--) {
     if (input[i] > 0) {
@@ -58,10 +60,8 @@ export function xNoiseSanPlot(data, options = {}) {
     }
   }
 
-  let signPositive = new Float64Array(
-    input.slice(0, lastPositiveValueIndex + 1),
-  );
-  let signNegative = new Float64Array(input.slice(firstNegativeValueIndex));
+  let signPositive = input.slice(0, lastPositiveValueIndex + 1);
+  let signNegative = input.slice(firstNegativeValueIndex);
 
   let cutOffDist = cutOff || determineCutOff(signPositive, { magnitudeMode });
 
@@ -110,6 +110,7 @@ export function xNoiseSanPlot(data, options = {}) {
   initialNoiseLevelNegative = initialNoiseLevelNegative / correctionFactor;
 
   let effectiveCutOffDist, refinedCorrectionFactor;
+
   if (refine && cutOffSignalsIndexPlus > -1) {
     effectiveCutOffDist =
       (cutOffDist * cloneSignPositive.length + cutOffSignalsIndexPlus) /
@@ -138,6 +139,12 @@ export function xNoiseSanPlot(data, options = {}) {
     positive: noiseLevelPositive,
     negative: noiseLevelNegative,
     snr: skyPoint / noiseLevelPositive,
+    sanplot: generateSanPlot(input, {
+      fromTo: {
+        positive: { from: 0, to: lastPositiveValueIndex },
+        negative: { from: firstNegativeValueIndex, to: input.length },
+      },
+    }),
   };
 }
 
@@ -211,9 +218,48 @@ function simpleNormInv(data, options = {}) {
 }
 
 function createArray(from, to, step) {
-  let result = new Float32Array(Math.abs((from - to) / step + 1));
+  let result = new Array(Math.abs((from - to) / step + 1));
   for (let i = 0; i < result.length; i++) {
     result[i] = from + i * step;
   }
-  return Array.from(result);
+  return result;
+}
+
+function generateSanPlot(array, options = {}) {
+  const { fromTo, logBaseY = 2 } = options;
+
+  let sanplot = {};
+  for (let key in fromTo) {
+    let { from, to } = fromTo[key];
+    sanplot[key] =
+      from !== to
+        ? scale(array.slice(from, to), {
+            logBaseY,
+          })
+        : { x: [], y: [] };
+    if (key === 'negative') {
+      sanplot[key].y.reverse();
+    }
+  }
+  return sanplot;
+}
+
+function scale(array, options = {}) {
+  const { log10, abs } = Math;
+  const { logBaseY } = options;
+  if (logBaseY) {
+    array = array.slice();
+    const logOfBase = log10(logBaseY);
+    for (let i = 0; i < array.length; i++) {
+      array[i] = log10(abs(array[i])) / logOfBase;
+    }
+  }
+
+  const xAxis = fill({
+    from: 0,
+    to: array.length - 1,
+    size: array.length,
+  });
+
+  return { x: xAxis, y: array };
 }
