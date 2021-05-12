@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.6.0](https://www.github.com/mljs/spectra-processing/compare/v6.5.0...v6.6.0) (2021-05-12)
+
+
+### Features
+
+* export san plot chart ([#83](https://www.github.com/mljs/spectra-processing/issues/83)) ([fdaa738](https://www.github.com/mljs/spectra-processing/commit/fdaa738c48751dd514e99989570dd1200d5ac000))
+
 ## [6.5.0](https://www.github.com/mljs/spectra-processing/compare/v6.4.0...v6.5.0) (2021-05-04)
 
 
