@@ -4,7 +4,7 @@ describe('xyMedian', () => {
   it('check the median of four consecutive integers, should return 2.5', () => {
     const data = {
       x: [1, 2, 3, 4],
-    y: [1, 1, 1, 1],
+      y: [1, 1, 1, 1],
     };
     expect(xyMedian(data)).toStrictEqual(2.5);
   });

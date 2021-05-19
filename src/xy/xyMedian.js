@@ -12,7 +12,7 @@ export function xyMedian(data) {
     let i;
 
     if (x.length === 0) {
-        return NaN
+        return NaN;
     }
 
     if (x.length === 1) {
@@ -23,7 +23,7 @@ export function xyMedian(data) {
       sumY += y[i];
     }
 
-    for (i = 0; i < cumSumY.length; i++) {
+    for (i = 0; i < y.length; i++) {
         cumSumY += y[i];
       if (cumSumY > sumY / 2) {
         return x[i];

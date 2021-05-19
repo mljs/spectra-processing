@@ -90,6 +90,7 @@ export * from './xy/xyMaxClosestYPoint';
 export * from './xy/xyMaxY';
 export * from './xy/xyMaxYPoint';
 export * from './xy/xyMaximaY';
+export * from './xy/xyMedian';
 export * from './xy/xyMinClosestYPoint';
 export * from './xy/xyMinYPoint';
 export * from './xy/xyMinimaY';
