@@ -21,6 +21,7 @@ export function xNoiseSanPlot(data, options = {}) {
   const {
     mask,
     cutOff,
+    logBaseY = 2,
     refine = true,
     magnitudeMode = false,
     scaleFactor = 1,
@@ -144,6 +145,7 @@ export function xNoiseSanPlot(data, options = {}) {
         positive: { from: 0, to: lastPositiveValueIndex },
         negative: { from: firstNegativeValueIndex, to: input.length },
       },
+      logBaseY,
     }),
   };
 }
