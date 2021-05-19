@@ -7,15 +7,15 @@ import { reimPhaseCorrection } from './reimPhaseCorrection';
  * correction algorithm for high-resolution NMR data. 10.1002/mrc.4586
  * @param {object} data - { re, im } real and imaginary data.
  * @param {object} options -
- * @param {Number} options.minRegSize - min number of points to auto phase a region.
+ * @param {Number} options.minRegionSize - min number of points to auto phase a region.
  * @param {Number} options.maxDistanceToJoin - max distance between regions (in number of points) to join two regions
  * @param {boolean} options.magnitudeMode - if true it uses magnitude spectrum.boolean
  * @param {Number} options.factorNoise - scale the cutoff like factorStd * noiseLevel.
  */
 
 const defaultOptions = {
-  minRegSize: 30,
-  maxDistanceToJoin: 256,
+  minRegionSize: 30,
+  maxDistanceToJoin: 128, //256,
   magnitudeMode: true,
   factorNoise: 3,
 };
@@ -24,9 +24,9 @@ export function reimAutoPhaseCorrection(data, options = {}) {
   const { re, im } = data;
   const length = re.length;
 
-  options = Object.assign(defaultOptions, options);
+  options = { ...defaultOptions, ...options };
 
-  const { magnitudeMode, minRegSize } = options;
+  const { magnitudeMode, minRegionSize } = options;
 
   let magnitudeData = magnitudeMode ? reimAbsolute(data) : re;
 
@@ -59,7 +59,7 @@ export function reimAutoPhaseCorrection(data, options = {}) {
       i++;
     }
 
-    if (reTmp.length > minRegSize) {
+    if (reTmp.length > minRegionSize) {
       res.push(autoPhaseRegion(reTmp, imTmp, x0));
     }
   }
