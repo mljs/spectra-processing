@@ -1,7 +1,7 @@
 import { xFindClosestIndex } from '../xFindClosestIndex.js';
 
-describe('findClosestIndex', function () {
-  it('test findClosestIndex even', () => {
+describe('xFindClosestIndex', function () {
+  it('even', () => {
     let array = [0, 0.1, 1, 2, 3, 4];
 
     expect(xFindClosestIndex(array, 2)).toBe(3);
@@ -12,7 +12,7 @@ describe('findClosestIndex', function () {
     expect(xFindClosestIndex(array, 0)).toBe(0);
   });
 
-  it('test findClosestIndex even small array', () => {
+  it('even small array', () => {
     let array = [10, 11, 12, 13];
 
     expect(xFindClosestIndex(array, 2)).toBe(0);
@@ -26,7 +26,7 @@ describe('findClosestIndex', function () {
     expect(xFindClosestIndex(array, 13)).toBe(3);
   });
 
-  it('test findClosestIndex odd small array', () => {
+  it('odd small array', () => {
     let array = [50, 60, 70];
 
     expect(xFindClosestIndex(array, 49)).toBe(0);
@@ -42,7 +42,7 @@ describe('findClosestIndex', function () {
     expect(xFindClosestIndex(array, 71)).toBe(2);
   });
 
-  it('test findClosestIndex odd array of 5 elements', () => {
+  it('odd array of 5 elements', () => {
     let array = [50, 55, 60, 65, 70];
 
     expect(xFindClosestIndex(array, 49)).toBe(0);
