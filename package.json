@@ -10,11 +10,13 @@
   ],
   "scripts": {
     "build": "rollup -c && cheminfo-build --root SpectraProcessing",
+    "compile": "rollup -c",
     "eslint": "eslint src",
     "eslint-fix": "npm run eslint -- --fix",
-    "compile": "rollup -c",
     "prepack": "npm run compile",
-    "test": "npm run test-coverage && npm run eslint",
+    "prettier": "prettier --check src",
+    "prettier-write": "prettier --write src",
+    "test": "npm run test-coverage && npm run eslint && npm run prettier",
     "test-coverage": "jest --coverage",
     "test-only": "jest"
   },
