@@ -74,6 +74,7 @@ export * from './xreim/xreimSortX';
 export * from './xyArray/xyArrayAlign';
 export * from './xyArray/xyArrayMerge';
 export * from './xyArray/xyArrayWeightedMerge';
+export * from './xyArray/xyArrayAlignToFirst';
 
 export * from './xy/xyAlign';
 export * from './xy/xyCheck';
