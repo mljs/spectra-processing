@@ -1,5 +1,12 @@
 # Changelog
 
+### [6.7.1](https://www.github.com/mljs/spectra-processing/compare/v6.7.0...v6.7.1) (2021-06-16)
+
+
+### Bug Fixes
+
+* **xyArrayAlignToFirst:** deal correctly with delta as function ([9cef8f4](https://www.github.com/mljs/spectra-processing/commit/9cef8f49bfa66acc17f66c2ddc62ee30f459d6f5))
+
 ## [6.7.0](https://www.github.com/mljs/spectra-processing/compare/v6.6.0...v6.7.0) (2021-06-16)
 
 
