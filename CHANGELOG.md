@@ -1,5 +1,13 @@
 # Changelog
 
+## [6.7.0](https://www.github.com/mljs/spectra-processing/compare/v6.6.0...v6.7.0) (2021-06-16)
+
+
+### Features
+
+* add xyArrayAlighToFirst ([9ea0921](https://www.github.com/mljs/spectra-processing/commit/9ea0921617714eff982285eaa6aa6126c7e05e53))
+* xyMedian function added ([#85](https://www.github.com/mljs/spectra-processing/issues/85)) ([e54280a](https://www.github.com/mljs/spectra-processing/commit/e54280a55417e7ade305248e3e6aec269aad730f))
+
 ## [6.6.0](https://www.github.com/mljs/spectra-processing/compare/v6.5.0...v6.6.0) (2021-05-12)
 
 
