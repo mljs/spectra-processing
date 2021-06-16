@@ -1,5 +1,3 @@
-import { xyJoinX } from '../xy/xyJoinX';
-
 import { getSlotsToFirst } from './utils/getSlotsToFirst';
 
 /**

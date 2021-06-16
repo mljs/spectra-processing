@@ -51,7 +51,7 @@
     "jest": "^27.0.4",
     "jest-matcher-deep-close-to": "^2.0.1",
     "prettier": "^2.3.1",
-    "rollup": "^2.51.1"
+    "rollup": "^2.52.0"
   },
   "dependencies": {
     "fft.js": "^4.0.4",
