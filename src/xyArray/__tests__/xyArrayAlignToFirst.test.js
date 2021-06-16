@@ -1,6 +1,6 @@
 import { xyArrayAlignToFirst } from '../xyArrayAlignToFirst.js';
 
-describe('xyArrayAlignToFirst', function() {
+describe('xyArrayAlignToFirst', () => {
   it('same length spectra, simple integers', () => {
     let data = [
       { x: [1, 1.1, 2, 4], y: [1, 1, 1, 1] },
