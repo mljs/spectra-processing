@@ -24,7 +24,9 @@ export function getSlotsToFirst(spectra, options = {}) {
       currentPosition < otherXs.length
     ) {
       if (otherXs[currentPosition] < slot.from) {
-        let currentDelta = deltaIsFunction ? otherXs(currentPosition) : delta;
+        let currentDelta = deltaIsFunction
+          ? delta(otherXs[currentPosition])
+          : delta;
         slots.push({
           from: otherXs[currentPosition] - currentDelta,
           to: otherXs[currentPosition] + currentDelta,
@@ -35,7 +37,7 @@ export function getSlotsToFirst(spectra, options = {}) {
     }
   }
   for (let i = currentPosition; i < otherXs.length; i++) {
-    let currentDelta = deltaIsFunction ? otherXs(i) : delta;
+    let currentDelta = deltaIsFunction ? delta(otherXs[i]) : delta;
     slots.push({
       from: otherXs[i] - currentDelta,
       to: otherXs[i] + currentDelta,
