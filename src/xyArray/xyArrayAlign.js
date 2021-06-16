@@ -7,6 +7,7 @@ import { getSlots } from './utils/getSlots';
  * @param {Array<DataXY>} spectra
  * @param {object} [options={}]
  * @param {number|function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+ * @returns {object} {x:[], ys[[]]}
  */
 export function xyArrayAlign(spectra, options = {}) {
   const { delta = 1 } = options;
