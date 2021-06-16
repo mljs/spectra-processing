@@ -1,4 +1,4 @@
-name: Deploy build on lactame.com
+name: Deploy HEAD build on lactame.com
 
 on:
   workflow_dispatch:
