@@ -5,6 +5,7 @@
  * @param {Array<DataXY>} spectra
  * @param {object} [options={}]
  * @param {number|function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+ * @returns {DataXY}
  */
 export function xyArrayWeightedMerge(spectra, options = {}) {
   let { delta = 1 } = options;
