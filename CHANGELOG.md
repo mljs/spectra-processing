@@ -1,5 +1,17 @@
 # Changelog
 
+## [7.0.0](https://www.github.com/mljs/spectra-processing/compare/v6.7.1...v7.0.0) (2021-07-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename option for AutoPhaseCorrection to minRegionSize
+
+### Features
+
+* add xUniqueSorted ([104cf0f](https://www.github.com/mljs/spectra-processing/commit/104cf0f8b31f1e31a07028093f8d374af5dfe5d3))
+* rename option for AutoPhaseCorrection to minRegionSize ([a69665a](https://www.github.com/mljs/spectra-processing/commit/a69665aa7183af620526b7cb688805d5fba70cd3))
+
 ### [6.7.1](https://www.github.com/mljs/spectra-processing/compare/v6.7.0...v6.7.1) (2021-06-16)
 
 
