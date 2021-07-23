@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.8.0](https://www.github.com/mljs/spectra-processing/compare/v6.7.1...v6.8.0) (2021-07-23)
+
+
+### Features
+
+* add xUniqueSorted ([104cf0f](https://www.github.com/mljs/spectra-processing/commit/104cf0f8b31f1e31a07028093f8d374af5dfe5d3))
+
 ### [6.7.1](https://www.github.com/mljs/spectra-processing/compare/v6.7.0...v6.7.1) (2021-06-16)
 
 
