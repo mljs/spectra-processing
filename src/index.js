@@ -35,6 +35,7 @@ export * from './x/xCorrelation';
 export * from './x/xCrossCorrelation';
 export * from './x/xCumulative';
 export * from './x/xDivide';
+export * from './x/xDotProduct';
 export * from './x/xFindClosestIndex';
 export * from './x/xGetFromToIndex';
 export * from './x/xGetTargetIndex';
@@ -61,7 +62,7 @@ export * from './x/xSubtract';
 export * from './x/xSum';
 export * from './x/xMeanAbsoluteError';
 export * from './x/xMeanSquaredError';
-export * from './x/xDotProduct';
+export * from './x/xUniqueSorted';
 
 export * from './reim/reimAbsolute';
 export * from './reim/reimAutoPhaseCorrection';
