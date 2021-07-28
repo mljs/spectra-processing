@@ -4,6 +4,7 @@
 [![build status][ci-image]][ci-url]
 [![Test coverage][codecov-image]][codecov-url]
 [![npm download][download-image]][download-url]
+[![DOI](https://www.zenodo.org/badge/196417515.svg)](https://www.zenodo.org/badge/latestdoi/196417515)
 
 Various functions to process spectra. Those are `pure` functions.
 
