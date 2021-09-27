@@ -4,7 +4,7 @@ import { zonesNormalize } from '../zones/zonesNormalize';
 import { xyCheck } from './xyCheck';
 /**
  * xyReduce the number of points while keeping visually the same noise. Practical to
- * display many spectra as SVG.
+ * display many spectra as SVG. If you want a similar looking spectrum you should still however generate 4x the nbPoints that is being displayed.
  * SHOULD NOT BE USED FOR DATA PROCESSING !!!
  * You should rather use ml-xy-equally-spaced to make further processing
  * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
