@@ -13,10 +13,11 @@
     "compile": "rollup -c",
     "eslint": "eslint src",
     "eslint-fix": "npm run eslint -- --fix",
+    "jscpd": "jscpd -l 10 -i \"**/__tests__/**\" -t 1 src",
     "prepack": "npm run compile",
     "prettier": "prettier --check src",
     "prettier-write": "prettier --write src",
-    "test": "npm run test-coverage && npm run eslint && npm run prettier",
+    "test": "npm run test-coverage && npm run eslint && npm run prettier && npm run jscpd",
     "test-coverage": "jest --coverage",
     "test-only": "jest"
   },
@@ -50,6 +51,7 @@
     "esm": "^3.2.25",
     "jest": "^27.0.6",
     "jest-matcher-deep-close-to": "^2.0.1",
+    "jscpd": "^3.3.26",
     "prettier": "^2.3.2",
     "rollup": "^2.53.3"
   },
