@@ -1,7 +1,7 @@
 import { xyPeakInfo } from '../xyPeakInfo.js';
 
-describe('xyPeakInfo', function () {
-  it('positive peak', function () {
+describe('xyPeakInfo', () => {
+  it('positive peak', () => {
     let x = [0, 1, 2, 3, 4, 5, 6];
     let y = [1, 2, 3, 5, 3, 2, 1];
     let result = xyPeakInfo({ x, y }, { targetIndex: 3 });
@@ -14,7 +14,7 @@ describe('xyPeakInfo', function () {
       width: 2,
     });
   });
-  it('negative peak', function () {
+  it('negative peak', () => {
     let x = [0, 1, 2, 3, 4, 5, 6];
     let y = [-1, -2, -3, -5, -3, -2, -1];
     let result = xyPeakInfo({ x, y }, { targetIndex: 3 });

@@ -1,6 +1,6 @@
 import { xBoxPlot } from '../xBoxPlot.js';
 
-describe('xBoxPlot', function () {
+describe('xBoxPlot', () => {
   it('test xBoxPlot even', () => {
     let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     expect(xBoxPlot(array)).toStrictEqual({

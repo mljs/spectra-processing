@@ -103,7 +103,7 @@ let data = {
     45004027,
   ],
 };
-describe('reimPhaseCorrection', function () {
+describe('reimPhaseCorrection', () => {
   it('test reimPhaseCorrection even', () => {
     let re = [0, 1, 2, 3];
     let im = [0, 1, 2, 3];

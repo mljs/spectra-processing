@@ -1,6 +1,6 @@
 import { reimFFT } from '../reimFFT.js';
 
-describe('reimFFT', function () {
+describe('reimFFT', () => {
   it('test reimFFT', () => {
     let re = [0, 3, 6, 5];
     let im = [0, 4, 8, 3];

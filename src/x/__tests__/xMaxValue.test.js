@@ -6,16 +6,16 @@ test('xMaxValue', () => {
   typedArray[1] = 2;
   typedArray[2] = 3;
 
-  expect(xMaxValue([0])).toStrictEqual(0);
-  expect(xMaxValue([1])).toStrictEqual(1);
-  expect(xMaxValue([1, 2])).toStrictEqual(2);
-  expect(xMaxValue([1, 2, 1])).toStrictEqual(2);
-  expect(xMaxValue([3, 2, 1])).toStrictEqual(3);
-  expect(xMaxValue(typedArray)).toStrictEqual(3);
-  expect(xMaxValue([1, 2, 3], { fromIndex: 1 })).toStrictEqual(3);
-  expect(xMaxValue([3, 2, 1], { fromIndex: 1 })).toStrictEqual(2);
-  expect(xMaxValue([1, 2, 3], { toIndex: 1 })).toStrictEqual(2);
-  expect(xMaxValue([3, 2, 1], { toIndex: 1 })).toStrictEqual(3);
-  expect(xMaxValue([1, 2, 3], { fromIndex: 1, toIndex: 1 })).toStrictEqual(2);
-  expect(xMaxValue([3, 2, 1], { fromIndex: 1, toIndex: 1 })).toStrictEqual(2);
+  expect(xMaxValue([0])).toBe(0);
+  expect(xMaxValue([1])).toBe(1);
+  expect(xMaxValue([1, 2])).toBe(2);
+  expect(xMaxValue([1, 2, 1])).toBe(2);
+  expect(xMaxValue([3, 2, 1])).toBe(3);
+  expect(xMaxValue(typedArray)).toBe(3);
+  expect(xMaxValue([1, 2, 3], { fromIndex: 1 })).toBe(3);
+  expect(xMaxValue([3, 2, 1], { fromIndex: 1 })).toBe(2);
+  expect(xMaxValue([1, 2, 3], { toIndex: 1 })).toBe(2);
+  expect(xMaxValue([3, 2, 1], { toIndex: 1 })).toBe(3);
+  expect(xMaxValue([1, 2, 3], { fromIndex: 1, toIndex: 1 })).toBe(2);
+  expect(xMaxValue([3, 2, 1], { fromIndex: 1, toIndex: 1 })).toBe(2);
 });

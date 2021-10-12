@@ -4,7 +4,7 @@ import { xParetoNormalization } from '../xParetoNormalization.js';
 
 expect.extend({ toMatchCloseTo });
 
-describe('xParetoNormalization', function () {
+describe('xParetoNormalization', () => {
   it('1,2,3', () => {
     let array = [1, 2, 3];
     expect(xParetoNormalization(array)).toStrictEqual([1, 2, 3]);

@@ -945,7 +945,7 @@ let data = {
   ],
 };
 
-describe('xNoiseSanPlot', function () {
+describe('xNoiseSanPlot', () => {
   it('get noise level', () => {
     let noise = xNoiseSanPlot(data.re, { magnitudeMode: false });
     let noiseFromMagnitude = xNoiseSanPlot(reimAbsolute(data), {

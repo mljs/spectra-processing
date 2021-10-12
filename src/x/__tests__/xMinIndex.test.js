@@ -7,11 +7,11 @@ describe('array-xMinIndex', () => {
   typedArray[2] = 3;
 
   it('should return the argmin', () => {
-    expect(xMinIndex([0])).toStrictEqual(0);
-    expect(xMinIndex([1])).toStrictEqual(0);
-    expect(xMinIndex([1, 2])).toStrictEqual(0);
-    expect(xMinIndex([1, 2, 1])).toStrictEqual(0);
-    expect(xMinIndex([3, 2, 1])).toStrictEqual(2);
-    expect(xMinIndex(typedArray)).toStrictEqual(0);
+    expect(xMinIndex([0])).toBe(0);
+    expect(xMinIndex([1])).toBe(0);
+    expect(xMinIndex([1, 2])).toBe(0);
+    expect(xMinIndex([1, 2, 1])).toBe(0);
+    expect(xMinIndex([3, 2, 1])).toBe(2);
+    expect(xMinIndex(typedArray)).toBe(0);
   });
 });

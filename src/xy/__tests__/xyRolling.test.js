@@ -4,7 +4,7 @@ import { xyRolling } from '../xyRolling.js';
 
 expect.extend({ toMatchCloseTo });
 
-test('xyRolling', function () {
+test('xyRolling', () => {
   let points = {
     x: [1, 2, 3, 4, 5],
     y: [10, 20, 30, 40, 50],

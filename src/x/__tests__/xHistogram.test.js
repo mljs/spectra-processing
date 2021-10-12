@@ -5,7 +5,7 @@ import { xHistogram } from '../xHistogram.js';
 
 expect.extend({ toMatchCloseTo });
 
-describe('xHistogram', function () {
+describe('xHistogram', () => {
   it('simple case', () => {
     const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     const histogram = xHistogram(array, { nbSlots: 10, centerX: false });
@@ -51,8 +51,10 @@ describe('xHistogram', function () {
 
   it('sequential', () => {
     const array = fill({ from: 0, to: 99, size: 100 });
+    console.log(array);
     const histogram = xHistogram(array, { nbSlots: 10 });
     histogram.y = Array.from(histogram.y);
+    console.log(histogram);
     expect(histogram.x).toMatchCloseTo(
       [5, 15, 25, 35, 45, 55, 65, 75, 85, 95],
       0,

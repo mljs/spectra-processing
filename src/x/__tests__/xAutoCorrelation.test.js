@@ -1,6 +1,6 @@
 import { xAutoCorrelation } from '../xAutoCorrelation';
 
-describe('xCrossCorrelation', function () {
+describe('xCrossCorrelation', () => {
   // Scilab: xcorr(linear)
   it('auto-correlation linear function', () => {
     let linear = [0, 1, 2, 3, 4];

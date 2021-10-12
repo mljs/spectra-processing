@@ -1,6 +1,6 @@
 import { xAdd } from '../xAdd.js';
 
-describe('xAdd', function () {
+describe('xAdd', () => {
   it('test xAdd of 2 vectors', () => {
     let array1 = [10, 11, 12, 13, 14];
     let array2 = [5, 4, 3, 2, 1];

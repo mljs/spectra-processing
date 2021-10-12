@@ -1,6 +1,6 @@
 import { xyArrayAlign } from '../xyArrayAlign.js';
 
-describe('xyArrayAlign', function () {
+describe('xyArrayAlign', () => {
   it('same length spectra, simple integers', () => {
     let data = [
       { x: [1, 2, 3], y: [1, 1, 1] },

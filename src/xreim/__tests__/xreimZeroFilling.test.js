@@ -1,6 +1,6 @@
 import { xreimZeroFilling } from '../xreimZeroFilling.js';
 
-describe('xreimZeroFilling', function () {
+describe('xreimZeroFilling', () => {
   it('test xreimZeroFilling over', () => {
     let x = [0, 0.1, 0.2, 0.3];
     let re = [0, 1, 2, 3];

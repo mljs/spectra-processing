@@ -1,6 +1,6 @@
 import { xyJoinX } from '../xyJoinX.js';
 
-describe('xyJoinX', function () {
+describe('xyJoinX', () => {
   it('empty', () => {
     let data = { x: [], y: [] };
 

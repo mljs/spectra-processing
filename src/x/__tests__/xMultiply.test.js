@@ -1,6 +1,6 @@
 import { xMultiply } from '../xMultiply.js';
 
-describe('xMultiply', function () {
+describe('xMultiply', () => {
   it('test mul of 2 vectors', () => {
     let array1 = [10, 11, 12, 13, 14];
     let array2 = [5, 4, 3, 2, 1];

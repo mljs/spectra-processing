@@ -1,6 +1,6 @@
 import { xreimSortX } from '../xreimSortX.js';
 
-describe('xreimSortX', function () {
+describe('xreimSortX', () => {
   it('test xreimSortX do nothing', () => {
     let x = [0, 1, 2, 3];
     let re = [0, 1, 2, 3];

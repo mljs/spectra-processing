@@ -1,6 +1,6 @@
 import { reimAbsolute } from '../reimAbsolute.js';
 
-describe('reimAbsolute', function () {
+describe('reimAbsolute', () => {
   it('test reimAbsolute', () => {
     let re = [0, 3, 6];
     let im = [0, 4, 8];

@@ -4,7 +4,7 @@ import { xRollingMax } from '../xRollingMax.js';
 
 expect.extend({ toMatchCloseTo });
 
-test('xRollingMax', function () {
+test('xRollingMax', () => {
   let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   expect(xRollingMax(array)).toStrictEqual([5, 6, 7, 8, 9]);
 

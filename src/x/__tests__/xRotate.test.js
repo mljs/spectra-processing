@@ -1,6 +1,6 @@
 import { xRotate } from '../xRotate.js';
 
-describe('xRotate', function () {
+describe('xRotate', () => {
   it('test xRotate positive', () => {
     let array = [10, 11, 12, 13, 14];
     expect(Array.from(xRotate(array, 0))).toStrictEqual([10, 11, 12, 13, 14]);

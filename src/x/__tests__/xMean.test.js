@@ -8,16 +8,16 @@ test('xMean', () => {
   typedArray[3] = 4;
   typedArray[4] = 5;
 
-  expect(xMean([0])).toStrictEqual(0);
-  expect(xMean([1])).toStrictEqual(1);
-  expect(xMean([1, 2])).toStrictEqual(1.5);
-  expect(xMean([1, 2, 3])).toStrictEqual(2);
-  expect(xMean([3, 2, 1])).toStrictEqual(2);
-  expect(xMean(typedArray)).toStrictEqual(3);
-  expect(xMean([1, 2, 3], { fromIndex: 1 })).toStrictEqual(2.5);
-  expect(xMean([3, 2, 1], { fromIndex: 1 })).toStrictEqual(1.5);
-  expect(xMean([1, 2, 3], { toIndex: 1 })).toStrictEqual(1.5);
-  expect(xMean([3, 2, 1], { toIndex: 1 })).toStrictEqual(2.5);
-  expect(xMean([1, 2, 3], { fromIndex: 1, toIndex: 1 })).toStrictEqual(2);
-  expect(xMean([3, 2, 1], { fromIndex: 1, toIndex: 1 })).toStrictEqual(2);
+  expect(xMean([0])).toBe(0);
+  expect(xMean([1])).toBe(1);
+  expect(xMean([1, 2])).toBe(1.5);
+  expect(xMean([1, 2, 3])).toBe(2);
+  expect(xMean([3, 2, 1])).toBe(2);
+  expect(xMean(typedArray)).toBe(3);
+  expect(xMean([1, 2, 3], { fromIndex: 1 })).toBe(2.5);
+  expect(xMean([3, 2, 1], { fromIndex: 1 })).toBe(1.5);
+  expect(xMean([1, 2, 3], { toIndex: 1 })).toBe(1.5);
+  expect(xMean([3, 2, 1], { toIndex: 1 })).toBe(2.5);
+  expect(xMean([1, 2, 3], { fromIndex: 1, toIndex: 1 })).toBe(2);
+  expect(xMean([3, 2, 1], { fromIndex: 1, toIndex: 1 })).toBe(2);
 });

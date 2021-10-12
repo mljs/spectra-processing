@@ -1,6 +1,6 @@
 import { xSubtract } from '../xSubtract.js';
 
-describe('xSubtract', function () {
+describe('xSubtract', () => {
   it('test xSubtract of 2 vectors', () => {
     let array1 = [10, 11, 12, 13, 14];
     let array2 = [5, 4, 3, 2, 1];

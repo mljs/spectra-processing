@@ -4,7 +4,7 @@ import { xRollingAverage } from '../xRollingAverage.js';
 
 expect.extend({ toMatchCloseTo });
 
-test('xRollingAverage', function () {
+test('xRollingAverage', () => {
   let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   expect(xRollingAverage(array)).toStrictEqual([3, 4, 5, 6, 7]);

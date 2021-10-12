@@ -1,6 +1,6 @@
 import { xyAlign } from '../xyAlign.js';
 
-describe('xyAlign', function () {
+describe('xyAlign', () => {
   it('same length spectra, integers', () => {
     let data1 = { x: [1, 2, 3], y: [1, 1, 1] };
     let data2 = { x: [2, 3, 4], y: [1, 1, 1] };

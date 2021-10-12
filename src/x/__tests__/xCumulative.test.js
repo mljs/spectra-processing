@@ -1,6 +1,6 @@
 import { xCumulative } from '../xCumulative.js';
 
-describe('xCumulative', function () {
+describe('xCumulative', () => {
   it('zero length array', () => {
     let result = xCumulative([]);
     expect(Array.from(result)).toStrictEqual([]);

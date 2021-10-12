@@ -1,6 +1,6 @@
 import { xFindClosestIndex } from '../xFindClosestIndex.js';
 
-describe('xFindClosestIndex', function () {
+describe('xFindClosestIndex', () => {
   it('even', () => {
     let array = [0, 0.1, 1, 2, 3, 4];
 

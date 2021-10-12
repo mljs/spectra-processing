@@ -4,7 +4,7 @@ import { xyCumulativeDistributionStatistics } from '../xyCumulativeDistributionS
 
 expect.extend({ toMatchCloseTo });
 
-describe('xyCumulativeDistributionStatistics', function () {
+describe('xyCumulativeDistributionStatistics', () => {
   it('simple case', () => {
     let data = {
       x: [0, 1, 2, 3, 4],

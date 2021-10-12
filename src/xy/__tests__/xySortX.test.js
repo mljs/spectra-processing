@@ -1,7 +1,7 @@
 import { xySortX } from '../xySortX.js';
 
-describe('xySortX', function () {
-  it('unsorted', function () {
+describe('xySortX', () => {
+  it('unsorted', () => {
     let data = {
       x: [5, 3, 6, 7, 1, 3, 5],
       y: [1, 2, 3, 4, 5, 6, 7],
@@ -18,7 +18,7 @@ describe('xySortX', function () {
     });
   });
 
-  it('sorted', function () {
+  it('sorted', () => {
     let data = {
       x: [1, 2, 3],
       y: [1, 2, 3],
@@ -35,7 +35,7 @@ describe('xySortX', function () {
     });
   });
 
-  it('sorted reverse', function () {
+  it('sorted reverse', () => {
     let data = {
       x: [3, 2, 1],
       y: [1, 2, 3],

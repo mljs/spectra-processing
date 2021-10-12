@@ -1,6 +1,6 @@
 import { zoneToX } from '../zoneToX.js';
 
-describe('zoneToX', function () {
+describe('zoneToX', () => {
   it('test zoneToX', () => {
     let result = zoneToX({ from: 0, to: 10 }, 11);
     expect(Array.from(result)).toStrictEqual([

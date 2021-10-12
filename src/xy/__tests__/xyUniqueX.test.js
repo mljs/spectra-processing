@@ -1,7 +1,7 @@
 import { xyUniqueX } from '../xyUniqueX.js';
 
-describe('xyUniqueX', function () {
-  it('unsorted sum', function () {
+describe('xyUniqueX', () => {
+  it('unsorted sum', () => {
     let x = [0, 0, 0, 2, 4, 0, 1, 2];
     let y = [1, 1, 1, 2, 7, 1, 9, 4];
     expect(
@@ -12,7 +12,7 @@ describe('xyUniqueX', function () {
     });
   });
 
-  it('unsorted avg', function () {
+  it('unsorted avg', () => {
     let x = [0, 0, 0, 2, 4, 0, 1, 2];
     let y = [1, 1, 1, 2, 7, 1, 9, 4];
     expect(
@@ -20,7 +20,7 @@ describe('xyUniqueX', function () {
     ).toStrictEqual({ x: [0, 1, 2, 4], y: [1, 9, 3, 7] });
   });
 
-  it('sorted sum', function () {
+  it('sorted sum', () => {
     let x = [0, 0, 0, 0, 1, 2, 2, 4];
     let y = [1, 1, 1, 1, 9, 2, 4, 7];
     expect(
@@ -31,7 +31,7 @@ describe('xyUniqueX', function () {
     });
   });
 
-  it('sorted sum 2', function () {
+  it('sorted sum 2', () => {
     let x = [0, 0, 0, 0, 1, 2, 2, 4, 4];
     let y = [1, 1, 1, 1, 9, 2, 4, 7, 3];
     expect(
@@ -42,7 +42,7 @@ describe('xyUniqueX', function () {
     });
   });
 
-  it('sorted avg', function () {
+  it('sorted avg', () => {
     let x = [0, 0, 0, 0, 1, 2, 2, 4];
     let y = [1, 1, 1, 1, 9, 2, 4, 7];
     expect(
@@ -53,7 +53,7 @@ describe('xyUniqueX', function () {
     });
   });
 
-  it('sorted avg 2', function () {
+  it('sorted avg 2', () => {
     let x = [0, 0, 0, 0, 1, 2, 2, 4, 4];
     let y = [1, 1, 1, 1, 9, 2, 4, 7, 11];
     expect(

@@ -1,6 +1,6 @@
 import { xIsMonotone } from '../xIsMonotone.js';
 
-describe('xIsMonotone', function () {
+describe('xIsMonotone', () => {
   it('test xIsMonotone increasing', () => {
     let array = [1, 2, 3, 4, 5];
     expect(xIsMonotone(array)).toBe(true);

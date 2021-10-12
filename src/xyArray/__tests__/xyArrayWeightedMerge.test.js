@@ -4,7 +4,7 @@ import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge.js';
 
 expect.extend({ toMatchCloseTo });
 
-describe('xyArrayWeightedMerge', function () {
+describe('xyArrayWeightedMerge', () => {
   it('2 slots', () => {
     let data = [
       { x: [100, 202, 300], y: [10, 30, 20] },
