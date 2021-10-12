@@ -49,8 +49,8 @@ describe('xHistogram', () => {
     expect(histogram.y).toStrictEqual([1, 1, 2, 2, 2, 2, 2, 2, 1, 1]);
   });
 
-  it('sequential', () => {
-    const array = fill({ from: 0, to: 99, size: 100 });
+  it.only('sequential', () => {
+    const array = fill({ from: 0, to: 100, size: 100 });
     const histogram = xHistogram(array, { nbSlots: 10 });
     histogram.y = Array.from(histogram.y);
     expect(histogram.x).toMatchCloseTo(

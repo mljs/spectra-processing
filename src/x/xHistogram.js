@@ -33,7 +33,6 @@ export function xHistogram(array, options = {}) {
   if (absolute) {
     array = xAbsolute(array);
   }
-
   if (logBaseX) {
     array = array.slice();
     const logOfBase = Math.log10(logBaseX);
@@ -44,7 +43,6 @@ export function xHistogram(array, options = {}) {
 
   const { min = xMinValue(array), max = xMaxValue(array) } = options;
   const slotSize = (max - min) / (nbSlots + Number.EPSILON);
-
   const y = histogram === undefined ? new Float64Array(nbSlots) : histogram.y;
   const x =
     histogram === undefined
@@ -54,6 +52,7 @@ export function xHistogram(array, options = {}) {
           size: nbSlots,
         })
       : histogram.x;
+
   for (let i = 0; i < array.length; i++) {
     const index = Math.max(
       Math.min(
