@@ -51,10 +51,8 @@ describe('xHistogram', () => {
 
   it('sequential', () => {
     const array = fill({ from: 0, to: 99, size: 100 });
-    console.log(array);
     const histogram = xHistogram(array, { nbSlots: 10 });
     histogram.y = Array.from(histogram.y);
-    console.log(histogram);
     expect(histogram.x).toMatchCloseTo(
       [5, 15, 25, 35, 45, 55, 65, 75, 85, 95],
       0,
