@@ -1,3 +1,7 @@
+/**
+ * @param spectra
+ * @param options
+ */
 export function getSlots(spectra, options = {}) {
   const { delta = 1 } = options;
   const deltaIsFunction = typeof delta === 'function';

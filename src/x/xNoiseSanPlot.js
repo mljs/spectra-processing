@@ -6,9 +6,10 @@ import rayleighCdf from './rayleighCdf';
 
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
+ *
  * @param {Array} data - real or magnitude spectra data.
  * @param {object} [options = {}]
- * @param {array} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+ * @param {Array} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
  * @param {number} [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
  * @param {number} [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
  * @param {number} [options.factorStd=5] - factor times std to determine what will be marked as signals.
@@ -17,6 +18,10 @@ import rayleighCdf from './rayleighCdf';
  * @param {number} [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
  */
 
+/**
+ * @param data
+ * @param options
+ */
 export function xNoiseSanPlot(data, options = {}) {
   const {
     mask,
@@ -148,6 +153,10 @@ export function xNoiseSanPlot(data, options = {}) {
   };
 }
 
+/**
+ * @param signPositive
+ * @param options
+ */
 function determineCutOff(signPositive, options = {}) {
   let {
     magnitudeMode = false,
@@ -186,6 +195,10 @@ function determineCutOff(signPositive, options = {}) {
   return whereToCutStat;
 }
 
+/**
+ * @param data
+ * @param options
+ */
 function simpleNormInv(data, options = {}) {
   const { magnitudeMode = false } = options;
 
@@ -217,6 +230,11 @@ function simpleNormInv(data, options = {}) {
   return result.length === 1 ? result[0] : result;
 }
 
+/**
+ * @param from
+ * @param to
+ * @param step
+ */
 function createArray(from, to, step) {
   let result = new Array(Math.abs((from - to) / step + 1));
   for (let i = 0; i < result.length; i++) {
@@ -225,6 +243,10 @@ function createArray(from, to, step) {
   return result;
 }
 
+/**
+ * @param array
+ * @param options
+ */
 function generateSanPlot(array, options = {}) {
   const { fromTo, logBaseY = 2 } = options;
 
@@ -244,6 +266,10 @@ function generateSanPlot(array, options = {}) {
   return sanplot;
 }
 
+/**
+ * @param array
+ * @param options
+ */
 function scale(array, options = {}) {
   const { log10, abs } = Math;
   const { logBaseY } = options;

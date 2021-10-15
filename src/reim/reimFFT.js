@@ -2,6 +2,10 @@ import FFT from 'fft.js';
 
 import { xRotate } from '../x/xRotate';
 
+/**
+ * @param data
+ * @param options
+ */
 export function reimFFT(data, options = {}) {
   const { inverse = false, applyZeroShift = false } = options;
 

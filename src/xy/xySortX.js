@@ -2,6 +2,7 @@ import { xIsMonotone } from '../x/xIsMonotone';
 /**
 import { xIsMonotone } from '../x/xIsMonotone';
  * This function performs a quick sort of the x array while transforming the y array to preserve the coordinates.
+ *
  * @param {DataXY} [data] Object that contains property x (Array) and y (Array)
  */
 export function xySortX(data) {

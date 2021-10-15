@@ -2,11 +2,12 @@ import { xCheck } from './xCheck';
 
 /**
  * Computes the minimal value of an array of values
+ *
  * @param {Array<number>} array
  * @param {object} [options={}]
  * @param {number} [options.fromIndex=0] - First point for xyIntegration
  * @param {number} [options.toIndex=x.length-1] - Last point for xyIntegration
- * @return {number}
+ * @returns {number}
  */
 export function xMinValue(array, options = {}) {
   xCheck(array);

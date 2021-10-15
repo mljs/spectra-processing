@@ -1,10 +1,14 @@
 import { xyCheck } from './xyCheck';
 /**
  * Filter out all the points for which x <= 0. Useful to display log scale data
+ *
  * @param {DataXY} [data={}]
- * @return {{x:[],y:[]}} An object with the filtered data
+ * @returns {{x:[],y:[]}} An object with the filtered data
  */
 
+/**
+ * @param data
+ */
 export function xyFilterXPositive(data = {}) {
   xyCheck(data);
   const { x, y } = data;

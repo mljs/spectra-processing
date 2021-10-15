@@ -1,8 +1,9 @@
 import { xCheck } from './xCheck';
 /**
  * Computes the index of the maximum of the given values
+ *
  * @param {Array<number>} array
- * @return {number}
+ * @returns {number}
  */
 export function xMaxIndex(array) {
   xCheck(array);

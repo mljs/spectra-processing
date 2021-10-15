@@ -2,13 +2,18 @@ import { xFindClosestIndex } from './xFindClosestIndex';
 
 /**
  *  Returns the targetIndex
- * @param {array} [x]
+ *
+ * @param {Array} [x]
  * @param {object} [options={}]
  * @param {number} [options.target]
  * @param {number} [options.targetIndex=0]
  * @param {number}
  */
 
+/**
+ * @param x
+ * @param options
+ */
 export function xGetTargetIndex(x, options = {}) {
   let { target, targetIndex } = options;
   if (targetIndex === undefined) {

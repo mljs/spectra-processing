@@ -1,12 +1,10 @@
 /**
-
-/**
  * Calculates the correlation between 2 vectors
  * https://en.wikipedia.org/wiki/Correlation_and_dependence
  *
- * @param {Array<Number>} [A] - the array that will be rotated
- * @param {Array<Number>} [B]
- * @return {Array}
+ * @param {Array<number>} [A] - the array that will be rotated
+ * @param {Array<number>} [B]
+ * @returns {Array}
  */
 export function xCorrelation(A, B) {
   let n = A.length;

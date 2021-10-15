@@ -1,9 +1,10 @@
 import { xCheckLengths } from './xCheck.js';
 /**
  * This function calculates the mean absolute error
+ *
  * @param {Array<number>} array1 -
  * @param {Array<number>} array2
- * @return {Number}
+ * @returns {number}
  */
 export function xMeanAbsoluteError(array1, array2) {
   xCheckLengths(array1, array2);

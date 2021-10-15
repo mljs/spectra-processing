@@ -1,3 +1,7 @@
+/**
+ * @param zone
+ * @param size
+ */
 export function zoneToX(zone, size) {
   const { from, to } = zone;
   let array = new Float64Array(size);

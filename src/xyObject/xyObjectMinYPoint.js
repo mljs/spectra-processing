@@ -2,10 +2,14 @@ import { xyObjectCheck } from './xyObjectCheck';
 
 /**
  * Finds the min y value and return a {x,y,index} point
+ *
  * @param {DataXY} [points=[]] - Object that contains property x (an ordered increasing array) and y (an array)
- * @return {object}
+ * @returns {object}
  */
 
+/**
+ * @param points
+ */
 export function xyObjectMinYPoint(points = []) {
   xyObjectCheck(points);
 

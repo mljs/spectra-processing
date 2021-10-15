@@ -1,11 +1,12 @@
 /**
  * This function performs a circular shift to a new array
  * Positive values of shifts will shift to the right and negative values will do to the left
+ *
  * @example xRotate([1,2,3,4],1) -> [4,1,2,3]
  * @example xRotate([1,2,3,4],-1) -> [2,3,4,1]
  * @param {Array} array - the array that will be rotated
  * @param {number} shift
- * @return {Array}
+ * @returns {Array}
  */
 export function xRotate(array, shift) {
   shift = shift % array.length;

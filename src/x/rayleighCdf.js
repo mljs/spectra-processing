@@ -1,3 +1,7 @@
+/**
+ * @param x
+ * @param sigma
+ */
 export default function rayleighCdf(x, sigma = 1) {
   if (x < 0) {
     return 0;

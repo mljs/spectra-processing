@@ -1,7 +1,8 @@
 /**
  * Returns true if x is monotone
+ *
  * @param {Array} array
- * @return {boolean}
+ * @returns {boolean}
  */
 export function xIsMonotone(array) {
   if (array.length <= 2) {

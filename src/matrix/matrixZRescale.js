@@ -1,10 +1,10 @@
 /**
  * Rescale columns
- * @param {Array<Array<Number>>} [matrix] - matrix [rows][cols].
+ *
+ * @param {Array<Array<number>>} [matrix] - matrix [rows][cols].
  * @param {object} [options={}]
  * @param {object} [options.min=0]
  * @param {object} [options.max=1]
- *
  */
 export function matrixZRescale(matrix, options = {}) {
   const { min = 0, max = 1 } = options;

@@ -5,9 +5,12 @@ import { xyCheck } from './xyCheck';
  * of the equal part will be the position of the signal!
  *
  * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @return {Array} Array of points
+ * @returns {Array} Array of points
  */
 
+/**
+ * @param data
+ */
 export function xyMinimaY(data = {}) {
   xyCheck(data);
   const { x, y } = data;

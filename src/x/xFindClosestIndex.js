@@ -1,9 +1,14 @@
 /**
  * Returns the closest index of a `target` in an ordered array
- * @param {array<Number>} array
+ *
+ * @param {Array<number>} array
  * @param {number} target
  */
 
+/**
+ * @param array
+ * @param target
+ */
 export function xFindClosestIndex(array, target) {
   let low = 0;
   let high = array.length - 1;

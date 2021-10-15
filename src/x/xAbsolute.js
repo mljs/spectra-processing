@@ -1,7 +1,8 @@
 /**
  * This function returns an array with absolute values
- * @param {Array<Number>} array
- * @return {Number}
+ *
+ * @param {Array<number>} array
+ * @returns {number}
  */
 export function xAbsolute(array) {
   let tmpArray = array.slice();

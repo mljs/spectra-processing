@@ -2,13 +2,19 @@ import { xDotProduct } from './xDotProduct';
 
 /**
  * Calculates the cross-correlation between 2 vectors
- * @param {Array<Number>} [A] - fixed array
- * @param {Array<Number>} [B] - sweeping array
+ *
+ * @param {Array<number>} [A] - fixed array
+ * @param {Array<number>} [B] - sweeping array
  * @param {object} [options={}]
  * @param {number} [options.tau=1] - sweep increment size (in number of points, min=1, max=A.length)
  * @param {number} [options.lag=A.length - 1] - scalar lag parameter
  */
 
+/**
+ * @param A
+ * @param B
+ * @param options
+ */
 export function xCrossCorrelation(A, B, options = {}) {
   let { tau = 1, lag = A.length - 1 } = options;
   let result = new Float64Array(1 + (2 * lag) / tau);

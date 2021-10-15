@@ -1,19 +1,19 @@
 /**
- * @typedef {Object} DataXY
- * @property {Array<Number>} x Array of x values
- * @property {Array<Number>} y Array of y values
+ * @typedef {object} DataXY
+ * @property {Array<number>} x Array of x values
+ * @property {Array<number>} y Array of y values
  */
 
 /**
- * @typedef {Object} Point
- * @property {Number} x value of the x coordinate
- * @property {Number} y value of the y coordinate
+ * @typedef {object} Point
+ * @property {number} x value of the x coordinate
+ * @property {number} y value of the y coordinate
  */
 
 /**
- * @typedef {Object} Zone
- * @property {Number} from first value defining the zone
- * @property {Number} to last value defining the zone
+ * @typedef {object} Zone
+ * @property {number} from first value defining the zone
+ * @property {number} to last value defining the zone
  */
 
 /**
@@ -21,9 +21,9 @@
  */
 
 /**
- * @typedef {Object} DataReIm
- * @property {Array<Number>} re Array of re values
- * @property {Array<Number>} im Array of im values
+ * @typedef {object} DataReIm
+ * @property {Array<number>} re Array of re values
+ * @property {Array<number>} im Array of im values
  */
 
 export * from './x/xAbsolute';

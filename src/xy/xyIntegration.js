@@ -4,15 +4,20 @@ import { xyCheck } from './xyCheck';
 
 /**
  * Calculate integration
+ *
  * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.from] - First value for xyIntegration in the X scale
  * @param {number} [options.fromIndex=0] - First point for xyIntegration
  * @param {number} [options.to] - Last value for xyIntegration in the X scale
  * @param {number} [options.toIndex=x.length-1] - Last point for xyIntegration
- * @return {number} xyIntegration value on the specified range
+ * @returns {number} xyIntegration value on the specified range
  */
 
+/**
+ * @param data
+ * @param options
+ */
 export function xyIntegration(data = {}, options = {}) {
   xyCheck(data);
   const { x, y } = data;

@@ -8,7 +8,8 @@ import { matrixMinMaxZ } from './matrixMinMaxZ';
 import { xHistogram } from '../x/xHistogram';
 import { matrixMinMaxAbsoluteZ } from './matrixMinMaxAbsoluteZ';
  * Calculates an histogram of defined number of slots
- * @param {Array<Array<Number>>} [matrix] - matrix [rows][cols].
+ *
+ * @param {Array<Array<number>>} [matrix] - matrix [rows][cols].
  * @param {number} [options.nbSlots=256] Number of slots
  * @param {number} [options.min=minValue] Minimum value to calculate used to calculate slot size
  * @param {number} [options.max=maxValue] Maximal value to calculate used to calculate slot size
@@ -16,10 +17,13 @@ import { matrixMinMaxAbsoluteZ } from './matrixMinMaxAbsoluteZ';
  * @param {number} [options.logBaseY] We can apply a log on the resulting histogra
  * @param {boolean} [options.absolute] Take the absolute value
  * @param {number} [options.centerX=true] Center the X value. We will enlarge the first and
- * @return {DataXY} {x,y} of the histogram
- *
+ * @returns {DataXY} {x,y} of the histogram
  */
 
+/**
+ * @param matrix
+ * @param options
+ */
 export function matrixHistogram(matrix, options = {}) {
   const { logBaseY, logBaseX, absolute } = options;
   options = JSON.parse(JSON.stringify(options));

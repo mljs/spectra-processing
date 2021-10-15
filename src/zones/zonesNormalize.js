@@ -2,12 +2,17 @@
  * Normalize an array of zones:
  * - ensure than from < to
  * - merge overlapping zones
+ *
  * @param {Array<Zone>} [zones=[]]
  * @param {object} [options={}]
  * @param {number} [options.from=Number.MIN_VALUE]
  * @param {number} [options.to=Number.MAX_VALUE]
  */
 
+/**
+ * @param zones
+ * @param options
+ */
 export function zonesNormalize(zones = [], options = {}) {
   if (zones.length === 0) return [];
   zones = JSON.parse(JSON.stringify(zones)).map((zone) =>

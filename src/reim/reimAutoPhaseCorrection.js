@@ -5,12 +5,13 @@ import { reimPhaseCorrection } from './reimPhaseCorrection';
 /**
  * Implementation of the algorithm for automatic phase correction: A robust, general automatic phase
  * correction algorithm for high-resolution NMR data. 10.1002/mrc.4586
+ *
  * @param {object} data - { re, im } real and imaginary data.
  * @param {object} options -
- * @param {Number} options.minRegSize - min number of points to auto phase a region.
- * @param {Number} options.maxDistanceToJoin - max distance between regions (in number of points) to join two regions
+ * @param {number} options.minRegSize - min number of points to auto phase a region.
+ * @param {number} options.maxDistanceToJoin - max distance between regions (in number of points) to join two regions
  * @param {boolean} options.magnitudeMode - if true it uses magnitude spectrum.boolean
- * @param {Number} options.factorNoise - scale the cutoff like factorStd * noiseLevel.
+ * @param {number} options.factorNoise - scale the cutoff like factorStd * noiseLevel.
  */
 
 const defaultOptions = {
@@ -20,6 +21,10 @@ const defaultOptions = {
   factorNoise: 3,
 };
 
+/**
+ * @param data
+ * @param options
+ */
 export function reimAutoPhaseCorrection(data, options = {}) {
   const { re, im } = data;
   const length = re.length;
@@ -78,6 +83,11 @@ export function reimAutoPhaseCorrection(data, options = {}) {
   return { data: phased, ph0, ph1 };
 }
 
+/**
+ * @param re
+ * @param im
+ * @param x0
+ */
 function autoPhaseRegion(re, im, x0) {
   let start = -180;
   let stop = 180;
@@ -112,6 +122,9 @@ function autoPhaseRegion(re, im, x0) {
   return { ph0: bestAng, area, x0: sumX / area };
 }
 
+/**
+ * @param s
+ */
 function holoborodko(s) {
   let dk = new Float64Array(s.length);
   for (let i = 5; i < s.length - 5; i++) {
@@ -133,6 +146,10 @@ function holoborodko(s) {
   return dk;
 }
 
+/**
+ * @param s
+ * @param options
+ */
 function robustBaseLineRegionsDetection(s, options) {
   const { maxDistanceToJoin, magnitudeMode, factorNoise } = options;
 
@@ -174,6 +191,11 @@ function robustBaseLineRegionsDetection(s, options) {
   return mask;
 }
 
+/**
+ * @param x
+ * @param y
+ * @param w
+ */
 function weightedLinearRegression(x, y, w) {
   let sxtw = 0;
   let swx = 0;

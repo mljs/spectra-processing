@@ -1,7 +1,8 @@
 /**
  * Get min and max of the absolute values of Z
- * @param {Array<Array<Number>>} [matrix] - matrix [rows][cols].
  *
+ * @param {Array<Array<number>>} [matrix] - matrix [rows][cols].
+ * @returns {object}
  */
 export function matrixMinMaxAbsoluteZ(matrix) {
   if (matrix.length === 0 || matrix[0].length === 0) {

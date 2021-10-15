@@ -2,6 +2,10 @@ import { xGetTargetIndex } from '../x/xGetTargetIndex';
 
 import { xyCheck } from './xyCheck';
 
+/**
+ * @param data
+ * @param options
+ */
 export function xyRealMinYPoint(data, options = {}) {
   xyCheck(data);
   const { x, y } = data;

@@ -3,8 +3,9 @@ import { xySortX } from './xySortX';
 
 /**
  * Ensure x values are unique
+ *
  * @param {DataXY} [data] Object that contains property x (Array) and y (Array)
- * @param {Object} [options={}] Object containing a property algorithm (can be 'sum' or 'average', the latter being the default value), and a property isSorted (boolean indicating if the x-array is sorted).
+ * @param {object} [options={}] Object containing a property algorithm (can be 'sum' or 'average', the latter being the default value), and a property isSorted (boolean indicating if the x-array is sorted).
  * @param {string} [options.algorithm='average'] either 'average' or 'sum'
  * @param {boolean} [options.isSorted=true] if false the DataXY has to be sorted first
  * @returns {DataXY}
@@ -28,6 +29,9 @@ export function xyUniqueX(data, options = {}) {
   }
 }
 
+/**
+ * @param data
+ */
 function average(data) {
   let x = [];
   let y = [];
@@ -48,6 +52,9 @@ function average(data) {
   return { x, y };
 }
 
+/**
+ * @param data
+ */
 function sum(data) {
   let x = [];
   let y = [];

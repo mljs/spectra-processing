@@ -1,10 +1,14 @@
 /**
  * Order object of array, x has to be monotone.
  * Ensure x is growing
+ *
  * @param {DataXY} data Object of kind {x:[], y:[]}.
- * @return {SD}
+ * @returns {SD}
  */
 
+/**
+ * @param data
+ */
 export function xyGrowingX(data) {
   const { x, y } = data;
 

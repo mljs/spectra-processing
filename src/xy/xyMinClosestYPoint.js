@@ -4,13 +4,18 @@ import { xyCheck } from './xyCheck';
 
 /**
  * Find the closest minimum going down hill
+ *
  * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.target]
  * @param {number} [options.targetIndex=0]
- * @return {{x,y,xIndex}} An object with the x/y value
+ * @returns {{x,y,xIndex}} An object with the x/y value
  */
 
+/**
+ * @param data
+ * @param options
+ */
 export function xyMinClosestYPoint(data, options = {}) {
   xyCheck(data);
   const { x, y } = data;

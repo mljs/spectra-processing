@@ -1,5 +1,9 @@
 import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
 
+/**
+ * @param spectra
+ * @param options
+ */
 export function getSlotsToFirst(spectra, options = {}) {
   const { delta = 1 } = options;
   const deltaIsFunction = typeof delta === 'function';

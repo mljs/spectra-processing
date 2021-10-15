@@ -1,7 +1,9 @@
 /**
  * This function xSubtract the first array by the second array or a constant value from each element of the first array
- * @param {Array<Number>} array1 - the array that will be rotated
- * @return {object}
+ *
+ * @param {Array<number>} array1 - the array that will be rotated
+ * @param array
+ * @returns {object}
  */
 export function xBoxPlot(array) {
   array = array.slice(0).sort((a, b) => a - b);

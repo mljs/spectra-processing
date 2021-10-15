@@ -4,6 +4,9 @@
  * @returns {number} the median of x values
  */
 
+/**
+ * @param data
+ */
 export function xyMedian(data) {
   const { x, y } = data;
 

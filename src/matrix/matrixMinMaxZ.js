@@ -1,7 +1,7 @@
 /**
  * Get min and max Z
- * @param {Array<Array<Number>>} [matrix] - matrix [rows][cols].
  *
+ * @param {Array<Array<number>>} [matrix] - matrix [rows][cols].
  */
 export function matrixMinMaxZ(matrix) {
   if (matrix.length === 0 || matrix[0].length === 0) {

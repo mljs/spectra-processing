@@ -2,6 +2,7 @@ import isAnyArray from 'is-any-array';
 
 /**
  * Throw an error in no an object of x,y arrays
+ *
  * @param {DataXY} [data={}]
  */
 export function xyCheck(data = {}) {

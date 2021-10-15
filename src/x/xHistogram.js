@@ -7,7 +7,8 @@ import { xMinValue } from './xMinValue';
 
 /**
  * Calculates an histogram of defined number of slots
- * @param {array} [array] Array containing values
+ *
+ * @param {Array} [array] Array containing values
  * @param {number} [options.nbSlots=256] Number of slots
  * @param {number} [options.min=minValue] Minimum value to calculate used to calculate slot size
  * @param {number} [options.max=maxValue] Maximal value to calculate used to calculate slot size
@@ -16,9 +17,13 @@ import { xMinValue } from './xMinValue';
  * @param {boolean} [options.absolute] Take the absolute value
  * @param {number} [options.centerX=true] Center the X value. We will enlarge the first and last values.
  * @param {DataXY} [options.histogram={x:[], y:[]}] Previously existing histogram to continue to fill
- * @return {DataXY} {x,y} of the histogram
+ * @returns {DataXY} {x,y} of the histogram
  */
 
+/**
+ * @param array
+ * @param options
+ */
 export function xHistogram(array, options = {}) {
   xCheck(array);
   let histogram = options.histogram;

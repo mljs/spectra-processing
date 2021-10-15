@@ -15,9 +15,13 @@ import { xyCheck } from './xyCheck';
  * @param {object} [options={}]
  * @param {number} [options.target]
  * @param {number} [options.targetIndex]
- * @return {object} Information about signal
+ * @returns {object} Information about signal
  */
 
+/**
+ * @param data
+ * @param options
+ */
 export function xyPeakInfo(data = {}, options = {}) {
   xyCheck(data);
   const { x, y } = data;

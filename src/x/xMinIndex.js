@@ -2,8 +2,9 @@ import { xCheck } from './xCheck';
 
 /**
  * Computes the index of the minimum of the given values
+ *
  * @param {Array<number>} array
- * @return {number}
+ * @returns {number}
  */
 export function xMinIndex(array) {
   xCheck(array);

@@ -108,6 +108,10 @@ const Q5 = [
   1.38151865749083321638e-1, 5.91429344886417493481e-1, 1,
 ];
 
+/**
+ * @param c
+ * @param x
+ */
 function polyval(c, x) {
   let p = 0;
   for (const coef of c) {
@@ -120,12 +124,12 @@ function polyval(c, x) {
  * Calculates a rational approximation.
  *
  * @private
- * @param {Number} x
- * @param {Number} v
+ * @param {number} x
+ * @param {number} v
  * @param {Array} P - array of polynomial coefficients
  * @param {Array} Q - array of polynomial coefficients
- * @param {Number} Y
- * @returns {Number} rational approximation
+ * @param {number} Y
+ * @returns {number} rational approximation
  */
 function calc(x, v, P, Q, Y) {
   const s = x - v;
@@ -137,8 +141,8 @@ function calc(x, v, P, Q, Y) {
  * Evaluates the complementary inverse error function for an input value.
  *
  * @private
- * @param {Number} x - input value
- * @returns {Number} evaluated complementary inverse error function
+ * @param {number} x - input value
+ * @returns {number} evaluated complementary inverse error function
  */
 export default function erfcinv(x) {
   let sign = false;

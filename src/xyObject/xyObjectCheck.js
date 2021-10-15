@@ -1,5 +1,6 @@
 /**
  * Throw an error in no an object of x,y arrays
+ *
  * @param {ArrayPoints} [points=[]]
  */
 export function xyObjectCheck(points = []) {

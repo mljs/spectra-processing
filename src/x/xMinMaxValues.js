@@ -3,6 +3,7 @@ import { xCheck } from './xCheck';
 /**
 import { xCheck } from './xCheck';
  * return min and max values of an array
+ *
  * @param {Array<number>} array
  * @returns {object} Object with 2 properties, min and max
  */

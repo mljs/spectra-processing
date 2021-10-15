@@ -1,5 +1,9 @@
 import { xMultiply } from './xMultiply';
 
+/**
+ * @param A
+ * @param B
+ */
 export function xDotProduct(A, B) {
   let g = xMultiply(A, B);
   let result = 0;

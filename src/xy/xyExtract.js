@@ -4,12 +4,17 @@ import { xyCheck } from './xyCheck';
 
 /**
  * xyExtract zones from a XY data
+ *
  * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {Array} [options.zones=[]]
- * @return {Array} Array of points
+ * @returns {Array} Array of points
  */
 
+/**
+ * @param data
+ * @param options
+ */
 export function xyExtract(data = {}, options = {}) {
   xyCheck(data);
   const { x, y } = data;

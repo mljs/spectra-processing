@@ -3,6 +3,7 @@ import { xGetFromToIndex } from '../x/xGetFromToIndex';
 import { xyCheck } from './xyCheck';
 /**
  * Generate a X / Y of the xyIntegral
+ *
  * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.from] - First value for xyIntegration in the X scale
@@ -10,9 +11,13 @@ import { xyCheck } from './xyCheck';
  * @param {number} [options.to] - Last value for xyIntegration in the X scale
  * @param {number} [options.toIndex=x.length-1] - Last point for xyIntegration
  * @param {boolean} [options.reverse=false] - Integrate from the larger value to the smallest value
- * @return {{x:[],y:[]}} An object with the xyIntegration function
+ * @returns {{x:[],y:[]}} An object with the xyIntegration function
  */
 
+/**
+ * @param data
+ * @param options
+ */
 export function xyIntegral(data = {}, options = {}) {
   const { reverse = false } = options;
   xyCheck(data);

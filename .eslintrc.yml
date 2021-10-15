@@ -1,3 +1,4 @@
-extends: cheminfo
+plugins: [jsdoc]
+extends: [cheminfo, 'plugin:jsdoc/recommended']
 parserOptions:
   sourceType: module

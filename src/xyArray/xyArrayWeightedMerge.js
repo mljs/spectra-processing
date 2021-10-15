@@ -2,9 +2,10 @@
  * Merge DataXY
  * We have an array of DataXY and the goal is to merge all the values for which the deltaX is small or equal to delta.
  * X values are weighted average
+ *
  * @param {Array<DataXY>} spectra
  * @param {object} [options={}]
- * @param {number|function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+ * @param {number | Function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
  * @returns {DataXY}
  */
 export function xyArrayWeightedMerge(spectra, options = {}) {
@@ -56,6 +57,11 @@ export function xyArrayWeightedMerge(spectra, options = {}) {
   return { x, y };
 }
 
+/**
+ * @param spectra
+ * @param positions
+ * @param point
+ */
 function nextValue(spectra, positions, point) {
   let minIndex = 0;
   let minX = spectra[0].x[positions[0]];

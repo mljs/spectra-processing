@@ -7,6 +7,7 @@ import { xyCheck } from './xyCheck';
  * display many spectra as SVG. If you want a similar looking spectrum you should still however generate 4x the nbPoints that is being displayed.
  * SHOULD NOT BE USED FOR DATA PROCESSING !!!
  * You should rather use ml-xy-equally-spaced to make further processing
+ *
  * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
  * @param {number} [options.from=x[0]]
@@ -16,6 +17,10 @@ import { xyCheck } from './xyCheck';
  * @param {number} [options.optimize=false] If optimize we may have less than nbPoints at the end
  */
 
+/**
+ * @param data
+ * @param options
+ */
 export function xyReduce(data, options = {}) {
   xyCheck(data);
   const { x, y } = data;
@@ -82,6 +87,11 @@ export function xyReduce(data, options = {}) {
   }
   return { x: newX, y: newY };
 
+  /**
+   * @param fromIndex
+   * @param toIndex
+   * @param zoneNbPoints
+   */
   function appendFromTo(fromIndex, toIndex, zoneNbPoints) {
     if (zoneNbPoints === 1) {
       newX.push(x[Math.round((toIndex - fromIndex) / 2)]);

@@ -8,11 +8,12 @@ import { xFindClosestIndex } from '../x/xFindClosestIndex';
  * Based on a range we will make a peak picking using global spectra deconvolution
  * The selected nbPeaks will then be taken into account to calculate an average X value.
  * The difference between the targetX and the averageX value will be returned
+ *
  * @param {DataXY} [data] array of points {x,y}
- * @param {Object} [range={}]
+ * @param {object} [range={}]
  * @param {number} [range.from] - Beginning of the range where the interest signal is localed
  * @param {number} [range.to] - End of the range where the interest signal is localed
- * @param {Object} [options={}]
+ * @param {object} [options={}]
  * @param {number} [options.nbPeaks=1] Number of peaks to consider to calculate mean (sorted by height)
  * @param {number} [options.targetX=0] Expected value for the mean of the peaks position
  * @param {number} [options.gsd={}] GSD options. You may check options here: http://mljs.github.io/global-spectral-deconvolution/#gsd
@@ -20,6 +21,11 @@ import { xFindClosestIndex } from '../x/xFindClosestIndex';
  * @returns {number} difference between targetX and currentX
  */
 
+/**
+ * @param data
+ * @param range
+ * @param options
+ */
 export function xyCalibrate(data, range = {}, options = {}) {
   const {
     targetX = 0,

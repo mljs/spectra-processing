@@ -1,9 +1,13 @@
 /**
  * Sort object of array, x has to be monotone.
+ *
  * @param {object} data Object of kind {x:[], re:[], im:[]}.
- * @return {SD}
+ * @returns {SD}
  */
 
+/**
+ * @param data
+ */
 export function xreimSortX(data) {
   const { x, re, im } = data;
 

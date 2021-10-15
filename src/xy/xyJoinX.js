@@ -2,12 +2,17 @@ import { xyCheck } from './xyCheck';
 /**
  * Join x / y values when difference in X is closer than delta.
  * When joining, y values are summed and x values are weighted average
+ *
  * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}]
- * @param {number|function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
- * @return {DataXY} An object with the xyIntegration function
+ * @param {number | Function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+ * @returns {DataXY} An object with the xyIntegration function
  */
 
+/**
+ * @param data
+ * @param options
+ */
 export function xyJoinX(data = {}, options = {}) {
   xyCheck(data);
   const { delta = 1 } = options;

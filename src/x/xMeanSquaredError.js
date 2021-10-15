@@ -2,9 +2,10 @@ import { xCheckLengths } from './xCheck.js';
 
 /**
  * This function calculates the mean squared error
+ *
  * @param {Array<number>} array1 -
  * @param {Array<number>} array2
- * @return {Number}
+ * @returns {number}
  */
 export function xMeanSquaredError(array1, array2) {
   xCheckLengths(array1, array2);

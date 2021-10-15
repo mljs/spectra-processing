@@ -1,7 +1,9 @@
 /**
  * Calculates reimAbsolute value of a complex spectrum
+ *
  * @param {object} [reim] - An object of kind {re:[], im:[]}.
- * @return {Float64Array}
+ * @param data
+ * @returns {Float64Array}
  */
 export function reimAbsolute(data) {
   const length = data.re.length;
