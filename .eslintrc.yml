@@ -1,4 +1,4 @@
 plugins: [jsdoc]
-extends: [cheminfo, 'plugin:jsdoc/recommended']
+extends: [cheminfo-typescript, 'plugin:jsdoc/recommended']
 parserOptions:
   sourceType: module

@@ -24,6 +24,8 @@ jobs:
         run: npm run prettier
       - name: Run Copy / Paste
         run: npm run jscpd
+      - name: Check types
+        run: npm run check-types
   test:
     runs-on: ubuntu-latest
     strategy:
