@@ -1,3 +1,5 @@
+import { Point } from '..';
+
 import { xyObjectMaxXPoint } from './xyObjectMaxXPoint';
 import { xyObjectMinXPoint } from './xyObjectMinXPoint';
 
@@ -8,21 +10,33 @@ import { xyObjectMinXPoint } from './xyObjectMinXPoint';
  * new property `close` to true
  *
  * @param {Array} points - array of all the points
- * @param {object} [options={}]
+ * @param {Array<Point>} [options={}]
  * @param {number} [options.from] - min X value of the window to consider
  * @param {number} [options.to] - max X value of the window to consider
  * @param {number} [options.limit=20] - max number of points
  * @param {number} [options.threshold=0.01] - minimal intensity compare to more intense point
  * @param {number} [options.numberSlots=10] - define the number of slots and indirectly the slot width
  * @param {number} [options.numberCloseSlots=50]
- * @returns {Array} - copy of points with 'close' property
+ * @returns {Array<Point>} - copy of points with 'close' property
  */
 
+interface OptionsType {
+  from?: number;
+  to?: number;
+  limit?: number;
+  threshold?: number;
+  numberCloseSlots?: number;
+  numberSlots?: number;
+}
 /**
- * @param points
- * @param options
+ * @param {Array<Point>} points list of points
+ * @param {OptionsType} options options
+ * @returns {Array<Point>} list of points
  */
-export function xyObjectBestPoints(points, options = {}) {
+export function xyObjectBestPoints(
+  points: Point[],
+  options: OptionsType = {},
+): Point[] {
   const {
     from = xyObjectMinXPoint(points).x,
     to = xyObjectMaxXPoint(points).x,
@@ -48,7 +62,7 @@ export function xyObjectBestPoints(points, options = {}) {
     return b.point.y - a.point.y;
   });
 
-  let toReturn = [];
+  let toReturn: Point[] = [];
   if (selected.length === 0) return [];
   let minY = selected[0].point.y * threshold;
   peakLoop: for (let item of selected) {

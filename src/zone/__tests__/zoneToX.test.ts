@@ -1,4 +1,4 @@
-import { zoneToX } from '../zoneToX.js';
+import { zoneToX } from '../zoneToX';
 
 describe('zoneToX', () => {
   it('test zoneToX', () => {

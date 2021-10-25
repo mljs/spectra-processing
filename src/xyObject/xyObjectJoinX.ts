@@ -1,15 +1,28 @@
+import { Point } from '..';
+
 /**
  *
- * @param {ArrayPoints} [points] array of growing points {x,y}
- * @param {object} [options={}]
- * @param {object} [xError=Number.EPSILON] limit to join the data
+ * @param {Array<Point>} [points] array of growing points {x,y}
+ * @param {OptionsType} [options={}]
+ * @param {number} [xError=Number.EPSILON] limit to join the data
  */
-export function xyObjectJoinX(points, options = {}) {
+interface OptionsType {
+  xError?: number;
+}
+/**
+ * @param {Array<Point>} points list of points
+ * @param {OptionsType} options {xError?: number;}
+ * @returns {Array<Point>} points list of points
+ */
+export function xyObjectJoinX(
+  points: Point[],
+  options: OptionsType = {},
+): Point[] {
   const { xError = Number.EPSILON } = options;
 
   // when we join we will use the center of mass
-  let result = [];
-  let current = {
+  let result: Point[] = [];
+  let current: Point = {
     x: Number.MIN_SAFE_INTEGER,
     y: 0,
   };

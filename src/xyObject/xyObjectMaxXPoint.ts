@@ -1,18 +1,21 @@
+import { Point } from '..';
+
 import { xyObjectCheck } from './xyObjectCheck';
 /**
  * Finds the max x value and return a {x,y,index} point
  *
- * @param {DataXY} [points=[]] - Object that contains property x (an ordered increasing array) and y (an array)
- * @returns {object}
+ * @param {Array<Point>} [points=[]] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @returns {Point}
  */
 
 /**
- * @param points
+ * @param {Array<Point>} points list of points
+ * @returns {Point} point
  */
-export function xyObjectMaxXPoint(points = []) {
+export function xyObjectMaxXPoint(points: Point[] = []): Point {
   xyObjectCheck(points);
 
-  if (points.length < 1) return {};
+  if (points.length < 1) return { x: 0, y: 0 };
 
   let current = {
     x: points[0].x,

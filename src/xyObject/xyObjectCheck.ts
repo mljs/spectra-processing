@@ -1,9 +1,11 @@
+import { Point } from '..';
+
 /**
  * Throw an error in no an object of x,y arrays
  *
- * @param {ArrayPoints} [points=[]]
+ * @param {Array<Point>} [points=[]] list of points
  */
-export function xyObjectCheck(points = []) {
+export function xyObjectCheck(points: Point[] = []) {
   if (!Array.isArray(points)) {
     throw new Error('ArrayPoints must be an array of {x,y} object');
   }

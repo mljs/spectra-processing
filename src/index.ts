@@ -129,3 +129,18 @@ export * from './matrix/matrixPQN';
 export * from './matrix/matrixZRescale';
 
 export * from './utils/createSequentialArray';
+
+export interface Zone {
+  to: number;
+  from: number;
+}
+
+export interface Point {
+  x: number;
+  y: number;
+  index?: number;
+}
+export interface XYPoints {
+  x: number[];
+  y: number[];
+}

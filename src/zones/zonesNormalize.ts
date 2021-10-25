@@ -1,3 +1,4 @@
+import { Zone } from '../index';
 /**
  * Normalize an array of zones:
  * - ensure than from < to
@@ -13,9 +14,22 @@
  * @param zones
  * @param options
  */
-export function zonesNormalize(zones = [], options = {}) {
+
+interface OptionsType {
+  from?: number;
+  to?: number;
+}
+/**
+ * @param {Array<Zone>}  zones array of {to: number,from: number}
+ * @param {OptionsType} options {from:number, to:number}
+ * @returns {Array<Zone>} array of{to: number,from: number}
+ */
+export function zonesNormalize(
+  zones: Zone[] = [],
+  options: OptionsType = {},
+): Zone[] {
   if (zones.length === 0) return [];
-  zones = JSON.parse(JSON.stringify(zones)).map((zone) =>
+  zones = JSON.parse(JSON.stringify(zones)).map((zone: Zone) =>
     zone.from > zone.to ? { from: zone.to, to: zone.from } : zone,
   );
   let { from = Number.NEGATIVE_INFINITY, to = Number.POSITIVE_INFINITY } =

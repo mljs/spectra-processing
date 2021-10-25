@@ -1,8 +1,11 @@
+import { Zone } from '..';
+
 /**
- * @param zone
- * @param size
+ * @param {Zone} zone Zone
+ * @param {number} size size
+ * @returns {Array<Float64Array>} Array of float
  */
-export function zoneToX(zone, size) {
+export function zoneToX(zone: Zone, size: number): Float64Array {
   const { from, to } = zone;
   let array = new Float64Array(size);
   let step = (to - from) / (size - 1);
