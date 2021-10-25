@@ -1,4 +1,4 @@
-import { createSequentialArray } from '../createSequentialArray.js';
+import { createSequentialArray } from '../createSequentialArray';
 
 describe('createSequentialArray', () => {
   it('normal array', () => {

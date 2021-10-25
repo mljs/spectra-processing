@@ -1,4 +1,4 @@
-import { xreimSortX } from '../xreimSortX.js';
+import { xreimSortX } from '../xreimSortX';
 
 describe('xreimSortX', () => {
   it('test xreimSortX do nothing', () => {

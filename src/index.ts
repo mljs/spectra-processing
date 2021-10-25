@@ -144,3 +144,9 @@ export interface XYPoints {
   x: number[];
   y: number[];
 }
+
+export interface Data {
+  x: number[] | Float64Array;
+  re: number[] | Float64Array;
+  im: number[] | Float64Array;
+}

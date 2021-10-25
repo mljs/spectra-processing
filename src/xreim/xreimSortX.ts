@@ -1,14 +1,16 @@
+import { Data } from '..';
 /**
  * Sort object of array, x has to be monotone.
  *
- * @param {object} data Object of kind {x:[], re:[], im:[]}.
- * @returns {SD}
+ * @param {Data} data Object of kind {x:[], re:[], im:[]}.
+ * @returns {Data} Data
  */
 
 /**
- * @param data
+ * @param {Data} data {x:number[], re:number[], im:number[]}.
+ * @returns {Data} {x:number[], re:number[], im:number[]}.
  */
-export function xreimSortX(data) {
+export function xreimSortX(data: Data): Data {
   const { x, re, im } = data;
 
   if (x.length !== re.length || x.length !== im.length) {

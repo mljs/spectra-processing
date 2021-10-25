@@ -1,11 +1,13 @@
+import { Data } from '..';
+
 /**
  * This function make a zero filling to re and im part.
  *
- * @param {object} data Object of kind {x:[], re:[], im:[]}.
+ * @param {Data} data Object of kind {x:[], re:[], im:[]}.
  * @param {number} totalLength - final number of points
- * @returns {SD}
+ * @returns {Data} Data
  */
-export function xreimZeroFilling(data, totalLength) {
+export function xreimZeroFilling(data: Data, totalLength: number): Data {
   let length = data.x.length;
   if (totalLength === 0 || length === totalLength) return data;
 
