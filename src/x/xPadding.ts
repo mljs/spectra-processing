@@ -4,13 +4,20 @@ import { xCheck } from './xCheck';
  * This function pads an array
  *
  * @param {Array} array - the array that will be padded
- * @param {object} [options={}]
+ * @param {object} [options={}] options
  * @param {string} [options.algorithm=''] '', value, circular, duplicate
  * @param {number} [options.size=0] padding size before first element and after last element
  * @param {number} [options.value=0] value to use for padding (if algorithm='value')
- * @returns {Array}
+ * @returns {Array} result
  */
-export function xPadding(array, options = {}) {
+export function xPadding(
+  array: number[] | Float64Array,
+  options: {
+    size?: number;
+    value?: number;
+    algorithm?: string;
+  } = {},
+): number[] | Float64Array {
   const { size = 0, value = 0, algorithm = '' } = options;
   xCheck(array);
 

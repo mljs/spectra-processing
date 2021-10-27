@@ -6,12 +6,12 @@ import isArray from 'is-any-array';
  * @param {Array<number>} input input
  * @returns {void}
  */
-export function xCheck(input: number[] | Float64Array): void {
+export function xCheck(input?: number[] | Float64Array | Uint16Array): void {
   if (!isArray(input)) {
     throw new TypeError('input must be an array');
   }
 
-  if (input.length === 0) {
+  if ((input as number[]).length === 0) {
     throw new TypeError('input must not be empty');
   }
 }

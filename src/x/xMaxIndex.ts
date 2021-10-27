@@ -2,10 +2,12 @@ import { xCheck } from './xCheck';
 /**
  * Computes the index of the maximum of the given values
  *
- * @param {Array<number>} array
- * @returns {number}
+ * @param {Array<number>} array array of numbers
+ * @returns {number} indexe
  */
-export function xMaxIndex(array) {
+export function xMaxIndex(
+  array: number[] | Float64Array | Uint16Array,
+): number {
   xCheck(array);
 
   let maxIndex = 0;

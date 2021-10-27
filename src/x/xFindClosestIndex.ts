@@ -6,10 +6,14 @@
  */
 
 /**
- * @param array
- * @param target
+ * @param {Array<number>} array array of number
+ * @param {number} target number
+ * @returns {number} closest index
  */
-export function xFindClosestIndex(array, target) {
+export function xFindClosestIndex(
+  array: number[] | Float64Array,
+  target: number,
+): number {
   let low = 0;
   let high = array.length - 1;
   let middle = 0;

@@ -1,4 +1,4 @@
-import { xMeanAbsoluteError } from '../xMeanAbsoluteError.js';
+import { xMeanAbsoluteError } from '../xMeanAbsoluteError';
 
 describe('xMeanAbsoluteError', () => {
   it('no error', () => {

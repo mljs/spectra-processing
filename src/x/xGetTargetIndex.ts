@@ -9,12 +9,19 @@ import { xFindClosestIndex } from './xFindClosestIndex';
  * @param {number} [options.targetIndex=0]
  * @param {number}
  */
-
+interface OptionsType {
+  target?: number;
+  targetIndex?: number;
+}
 /**
- * @param x
- * @param options
+ * @param {number[]} x array of number
+ * @param {OptionsType} options options
+ * @returns {number} results
  */
-export function xGetTargetIndex(x, options = {}) {
+export function xGetTargetIndex(
+  x: number[] | Float64Array,
+  options: OptionsType = {},
+): number {
   let { target, targetIndex } = options;
   if (targetIndex === undefined) {
     if (target !== undefined) {

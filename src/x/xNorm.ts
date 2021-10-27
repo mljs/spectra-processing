@@ -5,10 +5,10 @@
  * @param {Array} array - the array that will be rotated
  * @returns {number} calculated norm
  */
-export function xNorm(array) {
+export function xNorm(array: number[] | Float64Array): number {
   let result = 0;
-  for (let i = 0; i < array.length; i++) {
-    result += array[i] ** 2;
-  }
+  array.forEach((element) => {
+    result += element ** 2;
+  });
   return Math.sqrt(result);
 }

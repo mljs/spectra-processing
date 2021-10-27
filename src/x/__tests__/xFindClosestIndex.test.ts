@@ -1,4 +1,4 @@
-import { xFindClosestIndex } from '../xFindClosestIndex.js';
+import { xFindClosestIndex } from '../xFindClosestIndex';
 
 describe('xFindClosestIndex', () => {
   it('even', () => {

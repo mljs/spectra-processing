@@ -1,6 +1,6 @@
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { xParetoNormalization } from '../xParetoNormalization.js';
+import { xParetoNormalization } from '../xParetoNormalization';
 
 expect.extend({ toMatchCloseTo });
 

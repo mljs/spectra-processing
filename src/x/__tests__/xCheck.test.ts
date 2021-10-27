@@ -1,4 +1,4 @@
-import { xCheck } from '../xCheck.js';
+import { xCheck } from '../xCheck';
 
 describe('test xcheck', () => {
   it('should throw on invalid value', () => {

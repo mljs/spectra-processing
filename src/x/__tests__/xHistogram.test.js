@@ -1,7 +1,7 @@
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 import fill from 'ml-array-sequential-fill';
 
-import { xHistogram } from '../xHistogram.js';
+import { xHistogram } from '../xHistogram';
 
 expect.extend({ toMatchCloseTo });
 

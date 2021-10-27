@@ -1,6 +1,6 @@
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { xRollingAverage } from '../xRollingAverage.js';
+import { xRollingAverage } from '../xRollingAverage';
 
 expect.extend({ toMatchCloseTo });
 

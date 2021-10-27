@@ -3,11 +3,12 @@ import isArray from 'is-any-array';
 /**
  * Calculate a new array of the same size that is the cumulative values
  *
- * @param {Array<number>} isArray
  * @param array
  * @returns {Array<number}
  */
-export function xCumulative(array) {
+export function xCumulative(
+  array: number[] | Float64Array,
+): number[] | Float64Array {
   if (!isArray(array)) {
     throw new TypeError('input must be an array');
   }

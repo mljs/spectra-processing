@@ -11,11 +11,21 @@ import { xFindClosestIndex } from './xFindClosestIndex';
  * @param {number} [options.toIndex=x.length-1] - Last point for xyIntegration
  */
 
+interface OptionsType {
+  fromIndex?: number;
+  toIndex?: number;
+  from?: number;
+  to?: number;
+}
 /**
- * @param x
- * @param options
+ * @param {number[]} x array
+ * @param {OptionsType} options options
+ * @returns {{ fromIndex: number; toIndex: number }} result
  */
-export function xGetFromToIndex(x, options = {}) {
+export function xGetFromToIndex(
+  x: number[] | Float64Array,
+  options: OptionsType = {},
+): { fromIndex: number; toIndex: number } {
   let { fromIndex, toIndex, from, to } = options;
 
   if (fromIndex === undefined) {

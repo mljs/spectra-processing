@@ -1,4 +1,4 @@
-import { xIsMonotone } from '../xIsMonotone.js';
+import { xIsMonotone } from '../xIsMonotone';
 
 describe('xIsMonotone', () => {
   it('test xIsMonotone increasing', () => {
