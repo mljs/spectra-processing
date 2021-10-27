@@ -1,4 +1,4 @@
-import { xAdd } from '../xAdd.js';
+import { xAdd } from '../xAdd';
 
 describe('xAdd', () => {
   it('test xAdd of 2 vectors', () => {

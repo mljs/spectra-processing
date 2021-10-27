@@ -1,4 +1,4 @@
-import { xMultiply } from '../xMultiply.js';
+import { xMultiply } from '../xMultiply';
 
 describe('xMultiply', () => {
   it('test mul of 2 vectors', () => {

@@ -9,13 +9,21 @@ import { xDotProduct } from './xDotProduct';
  * @param {number} [options.tau=1] - sweep increment size (in number of points, min=1, max=A.length)
  * @param {number} [options.lag=A.length - 1] - scalar lag parameter
  */
-
+interface OptionsType {
+  tau?: number;
+  lag?: number;
+}
 /**
- * @param A
- * @param B
- * @param options
+ * @param {number[]} A first array
+ * @param {number[]} B second array
+ * @param {number[]} options options
+ * @returns {number[]} results
  */
-export function xCrossCorrelation(A, B, options = {}) {
+export function xCrossCorrelation(
+  A: number[] | Float64Array,
+  B: number[] | Float64Array,
+  options: OptionsType = {},
+): number[] | Float64Array {
   let { tau = 1, lag = A.length - 1 } = options;
   let result = new Float64Array(1 + (2 * lag) / tau);
   if (A.length === B.length) {

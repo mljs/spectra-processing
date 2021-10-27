@@ -1,5 +1,4 @@
-/* eslint-disable no-loss-of-precision */
-
+/* eslint-disable @typescript-eslint/no-loss-of-precision */
 /*
 Adapted from: https://github.com/compute-io/erfcinv/blob/aa116e23883839359e310ad41a7c42f72815fc1e/lib/number.js
 
@@ -109,10 +108,11 @@ const Q5 = [
 ];
 
 /**
- * @param c
- * @param x
+ * @param {number[]} c array of number
+ * @param {number} x number
+ * @returns {number} number
  */
-function polyval(c, x) {
+function polyval(c: number[], x: number): number {
   let p = 0;
   for (const coef of c) {
     p = p * x + coef;
@@ -124,14 +124,20 @@ function polyval(c, x) {
  * Calculates a rational approximation.
  *
  * @private
- * @param {number} x
- * @param {number} v
+ * @param {number} x number
+ * @param {number} v number
  * @param {Array} P - array of polynomial coefficients
  * @param {Array} Q - array of polynomial coefficients
- * @param {number} Y
+ * @param {number} Y number
  * @returns {number} rational approximation
  */
-function calc(x, v, P, Q, Y) {
+function calc(
+  x: number,
+  v: number,
+  P: number[],
+  Q: number[],
+  Y: number,
+): number {
   const s = x - v;
   const r = polyval(P, s) / polyval(Q, s);
   return Y * x + r * x;
@@ -144,7 +150,7 @@ function calc(x, v, P, Q, Y) {
  * @param {number} x - input value
  * @returns {number} evaluated complementary inverse error function
  */
-export default function erfcinv(x) {
+export default function erfcinv(x: number): number {
   let sign = false;
   let val;
   let q;

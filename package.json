@@ -52,6 +52,7 @@
     "eslint-config-cheminfo-typescript": "^10.1.1",
     "eslint-plugin-jsdoc": "^37.0.3",
     "esm": "^3.2.25",
+    "is-any-array": "^1.0.1",
     "jest": "^27.3.1",
     "jest-matcher-deep-close-to": "^3.0.2",
     "jscpd": "^3.3.26",
@@ -62,7 +63,6 @@
   },
   "dependencies": {
     "fft.js": "^4.0.4",
-    "is-any-array": "^1.0.1",
     "ml-array-max": "^1.2.3",
     "ml-array-mean": "^1.1.5",
     "ml-array-median": "^1.1.5",

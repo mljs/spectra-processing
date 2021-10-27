@@ -1,3 +1,4 @@
+import { Reim } from '../index';
 import { xNoiseSanPlot } from '../x/xNoiseSanPlot';
 
 import { reimAbsolute } from './reimAbsolute';
@@ -20,12 +21,26 @@ const defaultOptions = {
   magnitudeMode: true,
   factorNoise: 3,
 };
-
+interface OptionsType {
+  magnitudeMode?: number;
+  minRegSize?: number;
+  maxDistanceToJoin: number;
+  factorNoise: number;
+}
+interface Region {
+  ph0: number;
+  area: number;
+  x0: number;
+}
 /**
- * @param data
- * @param options
+ * @param {Reim} data Data
+ * @param {OptionsType} options options
+ * @returns { {data: Reim; ph0: number; ph1: number} } return { Reim,number,number }
  */
-export function reimAutoPhaseCorrection(data, options = {}) {
+export function reimAutoPhaseCorrection(
+  data: Reim,
+  options: OptionsType,
+): { data: Reim; ph0: number; ph1: number } {
   const { re, im } = data;
   const length = re.length;
 
@@ -38,24 +53,24 @@ export function reimAutoPhaseCorrection(data, options = {}) {
   let ds = holoborodko(magnitudeData);
   let peaksDs = robustBaseLineRegionsDetection(ds, options);
   let peaksSp = robustBaseLineRegionsDetection(magnitudeData, options);
-  let finalPeaks = new Array(length);
+  let finalPeaks: boolean[] = new Array(length);
   for (let i = 0; i < length; i++) {
-    finalPeaks[i] = peaksSp[i] & peaksDs[i];
+    finalPeaks[i] = peaksSp[i] && peaksDs[i];
   }
 
   // Once the regions are detected, we auto phase each of them separately.
-  // TODO: This part can be put inside a function
+  // This part can be put inside a function
   let i = -1;
   let x0 = 0;
   let res = [];
   while (i < length) {
     //phase first region
-    let reTmp = [];
-    let imTmp = [];
+    let reTmp: number[] | Float64Array = [];
+    let imTmp: number[] | Float64Array = [];
 
     //Look for the first 1 in the array
     while (!finalPeaks[++i] && i < length) {
-      //TODO: Add some extra points(0.1 ppm) at rigth and left sides of the region.
+      //Add some extra points(0.1 ppm) at rigth and left sides of the region.
       x0 = i;
     }
     for (; finalPeaks[i] && i < length; i++) {
@@ -64,11 +79,12 @@ export function reimAutoPhaseCorrection(data, options = {}) {
       i++;
     }
 
-    if (reTmp.length > minRegSize) {
+    if (reTmp.length > (minRegSize as number)) {
       res.push(autoPhaseRegion(reTmp, imTmp, x0));
     }
   }
-  // TODO: Still some corrections needed. In the paper they remove the outlayers interatively
+
+  // Still some corrections needed. In the paper they remove the outlayers interatively
   // until they can perform a regression witout bad points. Can someone help here?
   let [ph1, ph0] = weightedLinearRegression(
     res.map((r) => r.x0 / length),
@@ -84,11 +100,16 @@ export function reimAutoPhaseCorrection(data, options = {}) {
 }
 
 /**
- * @param re
- * @param im
- * @param x0
+ * @param {number[]} re array of number
+ * @param {number[]} im array of number
+ * @param {number} x0 number
+ * @returns {Region} region
  */
-function autoPhaseRegion(re, im, x0) {
+function autoPhaseRegion(
+  re: number[] | Float64Array,
+  im: number[] | Float64Array,
+  x0: number,
+): Region {
   let start = -180;
   let stop = 180;
   let nSteps = 6;
@@ -123,9 +144,10 @@ function autoPhaseRegion(re, im, x0) {
 }
 
 /**
- * @param s
+ * @param {number[]} s array of float
+ * @returns {number[]} array of float
  */
-function holoborodko(s) {
+function holoborodko(s: number[] | Float64Array): number[] | Float64Array {
   let dk = new Float64Array(s.length);
   for (let i = 5; i < s.length - 5; i++) {
     dk[i] =
@@ -147,13 +169,20 @@ function holoborodko(s) {
 }
 
 /**
- * @param s
- * @param options
+ * @param {number[]} s number array
+ * @param {object} options options
+ * @param {number} options.maxDistanceToJoin number
+ * @param {number} options.magnitudeMode number
+ * @param {number} options.factorNoise number
+ * @returns {boolean[]} array of boolean
  */
-function robustBaseLineRegionsDetection(s, options) {
+function robustBaseLineRegionsDetection(
+  s: number[] | Float64Array,
+  options: OptionsType,
+): boolean[] {
   const { maxDistanceToJoin, magnitudeMode, factorNoise } = options;
 
-  let mask = new Array(s.length);
+  let mask: boolean[] = new Array(s.length);
   for (let i = 0; i < s.length; i++) {
     mask[i] = false;
   }
@@ -192,11 +221,16 @@ function robustBaseLineRegionsDetection(s, options) {
 }
 
 /**
- * @param x
- * @param y
- * @param w
+ * @param {number[]} x array of number
+ * @param {number[]} y array of number
+ * @param {number[]} w array of number
+ * @returns {number[]} array of number
  */
-function weightedLinearRegression(x, y, w) {
+function weightedLinearRegression(
+  x: number[] | Float64Array,
+  y: number[] | Float64Array,
+  w: number[] | Float64Array,
+): number[] | Float64Array {
   let sxtw = 0;
   let swx = 0;
   let sw = 0;
@@ -228,12 +262,12 @@ function weightedLinearRegression(x, y, w) {
   ];
 }
 
-const toRadians = (degree) => (degree * Math.PI) / 180;
+const toRadians = (degree: number): number => (degree * Math.PI) / 180;
 
-const getNegArea = (data) => {
+const getNegArea = (data: number[] | Float64Array): number => {
   let area = 0;
-  for (let i = 0; i < data.length; i++) {
-    if (data[i] < 0) area -= data[i];
-  }
+  data.forEach((element) => {
+    if (element < 0) area -= element;
+  });
   return area;
 };

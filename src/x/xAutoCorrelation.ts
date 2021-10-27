@@ -10,9 +10,13 @@ import { xCrossCorrelation } from './xCrossCorrelation';
  */
 
 /**
- * @param A
- * @param options
+ * @param {number[]} A number array
+ * @param {{tau?:number, lag?:number}} options options
+ * @returns {number[]} result
  */
-export function xAutoCorrelation(A, options = {}) {
+export function xAutoCorrelation(
+  A: number[] | Float64Array,
+  options = {},
+): number[] | Float64Array {
   return xCrossCorrelation(A, A, options);
 }

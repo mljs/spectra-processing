@@ -1,4 +1,4 @@
-import { reimFFT } from '../reimFFT.js';
+import { reimFFT } from '../reimFFT';
 
 describe('reimFFT', () => {
   it('test reimFFT', () => {

@@ -1,16 +1,20 @@
-import isAnyArray from 'is-any-array';
+import { isAnyArray } from 'is-any-array';
+
 /**
  * This function xMultiply the first array by the second array or a constant value to each element of the first array
  *
- * @param {Array} array1 - the array that will be rotated
- * @param {Array | number} array2
- * @returns {Float64Array}
+ * @param {number[]} array1 - the array that will be rotated
+ * @param {number[]} array2 --second array
+ * @returns {Float64Array} array of result
  */
-export function xMultiply(array1, array2) {
+export function xMultiply(
+  array1: number[] | Float64Array,
+  array2: number[] | Float64Array | number | Float32Array,
+): number[] | Float64Array {
   let isConstant = false;
-  let constant;
+  let constant = 0;
   if (isAnyArray(array2)) {
-    if (array1.length !== array2.length) {
+    if (array1.length !== (array2 as number[]).length) {
       throw new Error('xMultiply: size of array1 and array2 must be identical');
     }
   } else {
@@ -25,7 +29,7 @@ export function xMultiply(array1, array2) {
     }
   } else {
     for (let i = 0; i < array1.length; i++) {
-      array3[i] = array1[i] * array2[i];
+      array3[i] = array1[i] * (array2 as number[])[i];
     }
   }
 

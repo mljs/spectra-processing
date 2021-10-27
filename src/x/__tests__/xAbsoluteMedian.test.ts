@@ -1,4 +1,4 @@
-import { xAbsoluteMedian } from '../xAbsoluteMedian.js';
+import { xAbsoluteMedian } from '../xAbsoluteMedian';
 
 describe('xAbsoluteMedian', () => {
   it('positive values', () => {

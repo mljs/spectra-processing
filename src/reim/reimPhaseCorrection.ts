@@ -1,13 +1,18 @@
+import { Reim } from '..';
+
 /**
  * Phase correction filter
  *
- * @param {object} reim - An object of kind {re:[], im:[]}
- * @param data
+ * @param {Reim} data Riem
  * @param {number} [phi0=0] - Angle in radians for zero order phase correction
  * @param {number} [phi1=0] - Angle in radians for first order phase correction
  * @returns {object} returns a new object {re:[], im:[]}
  */
-export function reimPhaseCorrection(data, phi0, phi1) {
+export function reimPhaseCorrection(
+  data: Reim,
+  phi0: number,
+  phi1: number,
+): Reim {
   phi0 = Number.isFinite(phi0) ? phi0 : 0;
   phi1 = Number.isFinite(phi1) ? phi1 : 0;
 

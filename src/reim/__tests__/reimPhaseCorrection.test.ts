@@ -1,4 +1,4 @@
-import { reimPhaseCorrection } from '../reimPhaseCorrection.js';
+import { reimPhaseCorrection } from '../reimPhaseCorrection';
 
 let data = {
   x: [

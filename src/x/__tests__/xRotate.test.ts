@@ -1,4 +1,4 @@
-import { xRotate } from '../xRotate.js';
+import { xRotate } from '../xRotate';
 
 describe('xRotate', () => {
   it('test xRotate positive', () => {
