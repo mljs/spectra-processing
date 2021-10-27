@@ -1,18 +1,19 @@
+import { Info } from '..';
+
 /**
  * This function xSubtract the first array by the second array or a constant value from each element of the first array
  *
- * @param {Array<number>} array1 - the array that will be rotated
- * @param array
- * @returns {object}
+ * @param {Array<number>} array - the array that will be rotated
+ * @returns {Info} result
  */
-export function xBoxPlot(array) {
+export function xBoxPlot(array: number[] | Float64Array): Info {
   array = array.slice(0).sort((a, b) => a - b);
   if (array.length < 5) {
     throw Error(
       'xBoxPlot: can not calculate info if array contains less than 3 elements',
     );
   }
-  let info = {
+  let info: Info = {
     Q1: 0.0,
     Q2: 0.0,
     Q3: 0.0,

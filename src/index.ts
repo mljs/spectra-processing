@@ -155,3 +155,11 @@ export interface Reim {
   re: number[] | Float64Array;
   im: number[] | Float64Array;
 }
+
+export interface Info {
+  Q1: number;
+  Q2: number;
+  Q3: number;
+  min: number;
+  max: number;
+}

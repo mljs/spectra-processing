@@ -3,10 +3,13 @@
  * https://en.wikipedia.org/wiki/Correlation_and_dependence
  *
  * @param {Array<number>} [A] - the array that will be rotated
- * @param {Array<number>} [B]
- * @returns {Array}
+ * @param {Array<number>} [B] sencond array
+ * @returns {number} result
  */
-export function xCorrelation(A, B) {
+export function xCorrelation(
+  A: number[] | Float64Array,
+  B: number[] | Float64Array,
+): number {
   let n = A.length;
   let sumA = 0;
   let sumA2 = 0;
