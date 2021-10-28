@@ -14,13 +14,13 @@ import { xPadding } from './xPadding';
  * @returns {Array<number>} result
  */
 export function xRolling(
-  array: number[] | Float64Array,
-  fct?: (array: number[] | Float64Array) => number,
+  array: number[] | Float64Array | Float32Array | Uint16Array,
+  fct?: (array: number[] | Float64Array | Float32Array | Uint16Array) => number,
   options: {
     window?: number;
     padding?: { size?: number; algorithm?: string; value?: number };
   } = {},
-): number[] | Float64Array {
+): number[] | Float64Array | Float32Array | Uint16Array {
   xCheck(array);
   if (typeof fct !== 'function') throw Error('fct has to be a function');
 

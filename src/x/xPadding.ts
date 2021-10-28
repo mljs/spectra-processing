@@ -11,13 +11,13 @@ import { xCheck } from './xCheck';
  * @returns {Array} result
  */
 export function xPadding(
-  array: number[] | Float64Array,
+  array: number[] | Float64Array | Float32Array | Uint16Array,
   options: {
     size?: number;
     value?: number;
     algorithm?: string;
   } = {},
-): number[] | Float64Array {
+): number[] | Float64Array | Float32Array | Uint16Array {
   const { size = 0, value = 0, algorithm = '' } = options;
   xCheck(array);
 

@@ -4,11 +4,24 @@ import SplineInterpolator from 'spline-interpolator';
 import erfcinv from './erfcinv';
 import rayleighCdf from './rayleighCdf';
 
+interface OptionsType {
+  mask?: number[] | Float64Array | Float32Array | Uint16Array;
+  cutOff?: number;
+  refine?: boolean;
+  magnitudeMode?: boolean;
+  scaleFactor?: number;
+  factorStd?: number;
+  fixOffset?: boolean;
+  logBaseY?: number;
+  considerList?: { from: number; step: number; to: number };
+  fromTo?: any;
+}
+
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
  *
  * @param {Array} data - real or magnitude spectra data.
- * @param {object} [options = {}]
+ * @param {object} [options = {}] options
  * @param {Array} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
  * @param {number} [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
  * @param {number} [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
@@ -16,13 +29,12 @@ import rayleighCdf from './rayleighCdf';
  * @param {boolean} [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
  * @param {boolean} [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
  * @param {number} [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
+ * @returns {{ positive: number; negative: number; snr: number; sanplot: any }} result
  */
-
-/**
- * @param data
- * @param options
- */
-export function xNoiseSanPlot(data, options = {}) {
+export function xNoiseSanPlot(
+  data: number[] | Float64Array | Float32Array | Uint16Array,
+  options: OptionsType = {},
+): { positive: number; negative: number; snr: number; sanplot: any } {
   const {
     mask,
     cutOff,
@@ -121,7 +133,8 @@ export function xNoiseSanPlot(data, options = {}) {
       (cutOffDist * cloneSignPositive.length + cutOffSignalsIndexPlus) /
       (cloneSignPositive.length + cutOffSignalsIndexPlus);
     refinedCorrectionFactor =
-      -1 * simpleNormInv(effectiveCutOffDist / 2, { magnitudeMode });
+      -1 *
+      (simpleNormInv(effectiveCutOffDist / 2, { magnitudeMode }) as number);
 
     noiseLevelPositive /= refinedCorrectionFactor;
 
@@ -130,7 +143,8 @@ export function xNoiseSanPlot(data, options = {}) {
         (cutOffDist * cloneSignNegative.length + cutOffSignalsIndexNeg) /
         (cloneSignNegative.length + cutOffSignalsIndexNeg);
       refinedCorrectionFactor =
-        -1 * simpleNormInv(effectiveCutOffDist / 2, { magnitudeMode });
+        -1 *
+        (simpleNormInv(effectiveCutOffDist / 2, { magnitudeMode }) as number);
       if (noiseLevelNegative !== 0) {
         noiseLevelNegative /= refinedCorrectionFactor;
       }
@@ -154,10 +168,14 @@ export function xNoiseSanPlot(data, options = {}) {
 }
 
 /**
- * @param signPositive
- * @param options
+ * @param {number[]} signPositive array of numbers
+ * @param {OptionsType} options options
+ * @returns {number} result
  */
-function determineCutOff(signPositive, options = {}) {
+function determineCutOff(
+  signPositive: number[] | Float64Array | Float32Array | Uint16Array,
+  options: OptionsType = {},
+): number {
   let {
     magnitudeMode = false,
     considerList = { from: 0.5, step: 0.1, to: 0.9 },
@@ -168,7 +186,8 @@ function determineCutOff(signPositive, options = {}) {
   for (let i = 0.01; i <= 0.99; i += 0.01) {
     let index = Math.round(indexMax * i);
     let value =
-      -signPositive[index] / simpleNormInv([i / 2], { magnitudeMode });
+      -signPositive[index] /
+      (simpleNormInv([i / 2], { magnitudeMode }) as number);
     cutOff.push([i, value]);
   }
 
@@ -182,9 +201,9 @@ function determineCutOff(signPositive, options = {}) {
     let elementsOfCutOff = cutOff.filter((e) => e[0] < top && e[0] > floor);
     let averageValue = elementsOfCutOff.reduce((a, b) => a + Math.abs(b[1]), 0);
     let kiSqrt = 0;
-    for (let j = 0; j < elementsOfCutOff.length; j++) {
-      kiSqrt += Math.pow(elementsOfCutOff[j][1] - averageValue, 2);
-    }
+    elementsOfCutOff.forEach((element) => {
+      kiSqrt += Math.pow(element[1] - averageValue, 2);
+    });
 
     if (kiSqrt < minKi) {
       minKi = kiSqrt;
@@ -196,13 +215,17 @@ function determineCutOff(signPositive, options = {}) {
 }
 
 /**
- * @param data
- * @param options
+ * @param {number[]} data data array
+ * @param {OptionsType} options options
+ * @returns {number[]} result
  */
-function simpleNormInv(data, options = {}) {
+function simpleNormInv(
+  data: number[] | Float64Array | Float32Array | Uint16Array | number,
+  options: OptionsType = {},
+): number[] | Float64Array | Float32Array | Uint16Array | number {
   const { magnitudeMode = false } = options;
 
-  if (!Array.isArray(data)) data = [data];
+  if (!Array.isArray(data)) data = [data as number];
 
   let from = 0;
   let to = 2;
@@ -217,7 +240,10 @@ function simpleNormInv(data, options = {}) {
       let finalInput = xTraining[i] * factor;
       yTraining[i] = 1 - rayleighCdf(finalInput);
     }
-    let interp = new SplineInterpolator(xTraining, yTraining);
+    let interp: SplineInterpolator = new SplineInterpolator(
+      xTraining,
+      yTraining,
+    );
     for (let i = 0; i < result.length; i++) {
       let yValue = 2 * data[i];
       result[i] = -1 * interp.interpolate(yValue);
@@ -231,11 +257,16 @@ function simpleNormInv(data, options = {}) {
 }
 
 /**
- * @param from
- * @param to
- * @param step
+ * @param {number} from from
+ * @param {number} to to
+ * @param {number} step step
+ * @returns {number[]} array of results
  */
-function createArray(from, to, step) {
+function createArray(
+  from: number,
+  to: number,
+  step: number,
+): number[] | Float64Array | Float32Array | Uint16Array {
   let result = new Array(Math.abs((from - to) / step + 1));
   for (let i = 0; i < result.length; i++) {
     result[i] = from + i * step;
@@ -244,13 +275,17 @@ function createArray(from, to, step) {
 }
 
 /**
- * @param array
- * @param options
+ * @param {number[]} array array
+ * @param {OptionsType} options options
+ * @returns {any} results
  */
-function generateSanPlot(array, options = {}) {
+function generateSanPlot(
+  array: number[] | Float64Array | Float32Array | Uint16Array,
+  options: OptionsType = {},
+) {
   const { fromTo, logBaseY = 2 } = options;
 
-  let sanplot = {};
+  let sanplot: any = {};
   for (let key in fromTo) {
     let { from, to } = fromTo[key];
     sanplot[key] =
@@ -267,10 +302,17 @@ function generateSanPlot(array, options = {}) {
 }
 
 /**
- * @param array
- * @param options
+ * @param {number[]} array array
+ * @param {OptionsType} options options
+ * @returns {{ x: number[];y: number[]}} results
  */
-function scale(array, options = {}) {
+function scale(
+  array: number[] | Float64Array | Float32Array | Uint16Array,
+  options: OptionsType = {},
+): {
+  x: number[] | Float64Array | Float32Array | Uint16Array;
+  y: number[] | Float64Array | Float32Array | Uint16Array;
+} {
   const { log10, abs } = Math;
   const { logBaseY } = options;
   if (logBaseY) {

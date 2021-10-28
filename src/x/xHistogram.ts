@@ -5,10 +5,24 @@ import { xCheck } from './xCheck';
 import { xMaxValue } from './xMaxValue';
 import { xMinValue } from './xMinValue';
 
+interface OptionsType {
+  centerX?: boolean;
+  histogram?: {
+    x: number[] | Float64Array | Float32Array | Uint16Array;
+    y: number[] | Float64Array | Float32Array | Uint16Array;
+  };
+  nbSlots?: number;
+  logBaseX?: number;
+  logBaseY?: number;
+  absolute?: boolean;
+  max?: number;
+  min?: number;
+}
 /**
  * Calculates an histogram of defined number of slots
  *
  * @param {Array} [array] Array containing values
+ * @param {OptionsType} options options
  * @param {number} [options.nbSlots=256] Number of slots
  * @param {number} [options.min=minValue] Minimum value to calculate used to calculate slot size
  * @param {number} [options.max=maxValue] Maximal value to calculate used to calculate slot size
@@ -16,15 +30,16 @@ import { xMinValue } from './xMinValue';
  * @param {number} [options.logBaseY] We can apply a log on the resulting histogram
  * @param {boolean} [options.absolute] Take the absolute value
  * @param {number} [options.centerX=true] Center the X value. We will enlarge the first and last values.
- * @param {DataXY} [options.histogram={x:[], y:[]}] Previously existing histogram to continue to fill
- * @returns {DataXY} {x,y} of the histogram
+ * @param {{ x: number[]; y: number[] }} [options.histogram={x:[], y:[]}] Previously existing histogram to continue to fill
+ * @returns {{ x: number[]; y: number[] }} {x,y} of the histogram
  */
-
-/**
- * @param array
- * @param options
- */
-export function xHistogram(array, options = {}) {
+export function xHistogram(
+  array: number[] | Float64Array | Float32Array | Uint16Array,
+  options: OptionsType = {},
+): {
+  x: number[] | Float64Array | Float32Array | Uint16Array;
+  y: number[] | Float64Array | Float32Array | Uint16Array;
+} {
   xCheck(array);
   let histogram = options.histogram;
   const {
@@ -58,16 +73,13 @@ export function xHistogram(array, options = {}) {
         })
       : histogram.x;
 
-  for (let i = 0; i < array.length; i++) {
+  array.forEach((element) => {
     const index = Math.max(
-      Math.min(
-        ((array[i] - min - Number.EPSILON) / slotSize) >> 0,
-        nbSlots - 1,
-      ),
+      Math.min(((element - min - Number.EPSILON) / slotSize) >> 0, nbSlots - 1),
       0,
     );
     y[index]++;
-  }
+  });
 
   if (logBaseY) {
     const logOfBase = Math.log10(logBaseY);

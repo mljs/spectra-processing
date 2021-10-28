@@ -58,6 +58,7 @@
     "jscpd": "^3.3.26",
     "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
+    "spline-interpolator": "^1.0.0",
     "ts-jest": "^27.0.7",
     "typescript": "^4.4.4"
   },
@@ -70,7 +71,6 @@
     "ml-array-sequential-fill": "^1.1.7",
     "ml-array-standard-deviation": "^1.1.7",
     "ml-gsd": "^7.0.1",
-    "ml-matrix": "^6.8.0",
-    "spline-interpolator": "^1.0.0"
+    "ml-matrix": "^6.8.0"
   }
 }

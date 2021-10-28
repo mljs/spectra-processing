@@ -10,7 +10,7 @@ import { xCheck } from './xCheck';
  * @returns {number} result
  */
 export function xMaxValue(
-  array: number[] | Float64Array | Uint16Array,
+  array: number[] | Float64Array | Float32Array | Uint16Array,
   options: {
     fromIndex?: number;
     toIndex?: number;

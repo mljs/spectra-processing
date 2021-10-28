@@ -90,9 +90,9 @@ describe('xHistogram', () => {
     const array = new Float64Array(10000).map(Math.random);
     const histogram = xHistogram(array);
     expect(histogram.y).toHaveLength(256);
-    for (let i = 0; i < histogram.length; i++) {
-      expect(histogram.y[i]).toBeGreaterThan(10);
-    }
+    histogram.y.forEach((element) => {
+      expect(element).toBeGreaterThan(10);
+    });
   });
 
   it('10 slots', () => {
@@ -103,10 +103,11 @@ describe('xHistogram', () => {
       1,
     );
     expect(histogram.y).toHaveLength(10);
-    for (let i = 0; i < histogram.length; i++) {
-      expect(histogram.y[i]).toBeGreaterThan(9000);
-      expect(histogram.y[i]).toBeLessThan(11000);
-    }
+
+    histogram.y.forEach((element) => {
+      expect(element).toBeGreaterThan(9000);
+      expect(element).toBeLessThan(11000);
+    });
   });
 
   it('11 slots center X', () => {
@@ -117,10 +118,10 @@ describe('xHistogram', () => {
       1,
     );
     expect(histogram.y).toHaveLength(11);
-    for (let i = 0; i < histogram.length; i++) {
-      expect(histogram.y[i]).toBeGreaterThan(9000);
-      expect(histogram.y[i]).toBeLessThan(11000);
-    }
+    histogram.y.forEach((element) => {
+      expect(element).toBeGreaterThan(9000);
+      expect(element).toBeLessThan(11000);
+    });
   });
 
   it('min -10, max 10', () => {
