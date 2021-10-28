@@ -1,4 +1,4 @@
-import isArray from 'is-any-array';
+import { isAnyArray } from 'is-any-array';
 
 /**
  * Checks if input is valdi
@@ -6,7 +6,7 @@ import isArray from 'is-any-array';
  * @param {Array<number>} input
  */
 export function xCheck(input) {
-  if (!isArray(input)) {
+  if (!isAnyArray(input)) {
     throw new TypeError('input must be an array');
   }
 
