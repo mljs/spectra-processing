@@ -1,4 +1,4 @@
-import isAnyArray from 'is-any-array';
+import { isAnyArray } from 'is-any-array';
 /**
  * This function xSubtract the first array by the second array or a constant value from each element of the first array
  *
@@ -7,7 +7,7 @@ import isAnyArray from 'is-any-array';
  * @returns {Array} result
  */
 export function xSubtract(
-  array1: number[] | Float64Array,
+  array1: number[] | Float64Array | Float32Array,
   array2: number[] | Float64Array | number | Float32Array,
 ): number[] | Float64Array {
   let isConstant = false;

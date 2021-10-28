@@ -1,4 +1,4 @@
-import { xSubtract } from '../xSubtract.js';
+import { xSubtract } from '../xSubtract';
 
 describe('xSubtract', () => {
   it('test xSubtract of 2 vectors', () => {

@@ -1,15 +1,15 @@
-import isArray from 'is-any-array';
+import { isAnyArray } from 'is-any-array';
 
 /**
  * Calculate a new array of the same size that is the cumulative values
  *
- * @param array
- * @returns {Array<number}
+ * @param {number[]} array array
+ * @returns {Array<number>} result
  */
 export function xCumulative(
   array: number[] | Float64Array,
 ): number[] | Float64Array {
-  if (!isArray(array)) {
+  if (!isAnyArray(array)) {
     throw new TypeError('input must be an array');
   }
 
