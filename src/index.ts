@@ -131,7 +131,10 @@ export * from './matrix/matrixZRescale';
 export * from './utils/createSequentialArray';
 
 export interface Zone {
+  fromIndex?: number;
+  toIndex?: number;
   to: number;
+  nbPoints?: number;
   from: number;
 }
 
@@ -152,8 +155,8 @@ export interface DataX {
 }
 
 export interface Reim {
-  re: number[] | Float64Array;
-  im: number[] | Float64Array;
+  re: number[] | Float64Array | Float32Array | Uint16Array;
+  im: number[] | Float64Array | Float32Array | Uint16Array;
 }
 
 export interface Info {
@@ -163,7 +166,12 @@ export interface Info {
   min: number;
   max: number;
 }
-export interface Histogram {
+export interface Data {
   x: number[] | Float64Array | Float32Array | Uint16Array;
   y: number[] | Float64Array | Float32Array | Uint16Array;
+}
+export interface DataXYZ {
+  x?: number[] | Float64Array | Float32Array | Uint16Array;
+  y?: number[] | Float64Array | Float32Array | Uint16Array;
+  z?: number[] | Float64Array | Float32Array | Uint16Array;
 }
