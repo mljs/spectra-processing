@@ -1,8 +1,10 @@
 import fill from 'ml-array-sequential-fill';
-import SplineInterpolator from 'spline-interpolator';
 
 import erfcinv from './erfcinv';
 import rayleighCdf from './rayleighCdf';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const SplineInterpolator = require('spline-interpolator');
 
 interface OptionsType {
   mask?: number[] | Float64Array | Float32Array | Uint16Array;
@@ -240,10 +242,7 @@ function simpleNormInv(
       let finalInput = xTraining[i] * factor;
       yTraining[i] = 1 - rayleighCdf(finalInput);
     }
-    let interp: SplineInterpolator = new SplineInterpolator(
-      xTraining,
-      yTraining,
-    );
+    let interp = new SplineInterpolator(xTraining, yTraining);
     for (let i = 0; i < result.length; i++) {
       let yValue = 2 * data[i];
       result[i] = -1 * interp.interpolate(yValue);

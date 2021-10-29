@@ -5,7 +5,7 @@ import { matrixColumnsCorrelation } from '../matrixColumnsCorrelation';
 expect.extend({ toMatchCloseTo });
 
 test('matrixColumnsCorrelation', () => {
-  let data = [
+  let data: number[][] = [
     [1, 3, 1, 3],
     [2, 2, 2, 2],
     [3, 1, 3, 1],

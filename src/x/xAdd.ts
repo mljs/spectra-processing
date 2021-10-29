@@ -8,7 +8,7 @@ import { isAnyArray } from 'is-any-array';
  * @returns {Array<number>} result
  */
 export function xAdd(
-  array1: number[] | Float64Array,
+  array1: number[] | Float64Array | Float32Array,
   array2: number[] | Float64Array | number | Float32Array,
 ): number[] | Float64Array {
   let isConstant = false;

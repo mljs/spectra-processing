@@ -2,8 +2,11 @@
  * Get min and max Z
  *
  * @param {Array<Array<number>>} [matrix] - matrix [rows][cols].
+ * @returns {{ max?: number; min?: number }} result
  */
-export function matrixMinMaxZ(matrix) {
+export function matrixMinMaxZ(
+  matrix: Float64Array[] | number[][] | Float32Array[],
+): { max?: number; min?: number } {
   if (matrix.length === 0 || matrix[0].length === 0) {
     return { min: undefined, max: undefined };
   }

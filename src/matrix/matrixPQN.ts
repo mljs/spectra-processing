@@ -7,39 +7,46 @@ import { Matrix } from 'ml-matrix';
  * DOI: 10.1021/ac051632c
  *
  * @param {Array<Array<number>>} [matrix] - matrix [rows][cols].
- * @param {object} [options={}]
+ * @param {object} [options={}] Options
  * @param {number} [options.max=100] - Normalization integral constant.
+ * @param {number} options.min min
  * @returns {object} { data, medianOfQuotients }.
  * data: Normalized dataset.
  * medianOfQuotients: The median of quotients of each variables.
  */
-export function matrixPQN(matrix, options = {}) {
+export function matrixPQN(
+  matrix: Float64Array[] | number[][] | Float32Array[],
+  options: { max?: number; min?: number } = {},
+): {
+  data: Float64Array[] | number[][] | Float32Array[];
+  medianOfQuotients: Float64Array | number[] | Float32Array;
+} {
   const { max = 100 } = options;
-  matrix = new Matrix(matrix);
-  for (let i = 0; i < matrix.rows; i++) {
-    const normalizationFactor = matrix.getRowVector(i).norm() / max;
-    const row = matrix.getRowVector(i).div(normalizationFactor);
-    matrix.setRow(i, row);
+  let matrixB = new Matrix(matrix as number[][]);
+  for (let i = 0; i < matrixB.rows; i++) {
+    const normalizationFactor = matrixB.getRowVector(i).norm('frobenius') / max;
+    const row = matrixB.getRowVector(i).div(normalizationFactor);
+    matrixB.setRow(i, row);
   }
 
   let referenceSpectrum = [];
-  for (let i = 0; i < matrix.columns; i++) {
-    const currentVariable = matrix.getColumn(i);
+  for (let i = 0; i < matrixB.columns; i++) {
+    const currentVariable = matrixB.getColumn(i);
     referenceSpectrum.push(median(currentVariable));
   }
 
   let medianOfQuotients = [];
-  for (let i = 0; i < matrix.columns; i++) {
-    let quotients = matrix.getColumnVector(i).div(referenceSpectrum[i]);
+  for (let i = 0; i < matrixB.columns; i++) {
+    let quotients = matrixB.getColumnVector(i).div(referenceSpectrum[i]);
     medianOfQuotients.push(median(quotients.getColumn(0)));
   }
 
-  for (let i = 0; i < matrix.rows; i++) {
-    matrix.mulRow(i, 1 / medianOfQuotients[i]);
+  for (let i = 0; i < matrixB.rows; i++) {
+    matrixB.mulRow(i, 1 / medianOfQuotients[i]);
   }
 
   return {
-    data: matrix.to2DArray(),
+    data: matrixB.to2DArray(),
     medianOfQuotients: medianOfQuotients,
   };
 }

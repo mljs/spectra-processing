@@ -2,9 +2,11 @@
  * Get min and max of the absolute values of Z
  *
  * @param {Array<Array<number>>} [matrix] - matrix [rows][cols].
- * @returns {object}
+ * @returns {{ max?: number; min?: number }} results
  */
-export function matrixMinMaxAbsoluteZ(matrix) {
+export function matrixMinMaxAbsoluteZ(
+  matrix: Float64Array[] | number[][] | Float32Array[],
+): { min?: number; max?: number } {
   if (matrix.length === 0 || matrix[0].length === 0) {
     return { min: undefined, max: undefined };
   }

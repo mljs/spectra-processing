@@ -2,11 +2,15 @@
  * Rescale columns
  *
  * @param {Array<Array<number>>} [matrix] - matrix [rows][cols].
- * @param {object} [options={}]
- * @param {object} [options.min=0]
- * @param {object} [options.max=1]
+ * @param {object} [options={}] Options
+ * @param {object} [options.min=0] min
+ * @param {object} [options.max=1] max
+ * @returns {number[][]} result
  */
-export function matrixZRescale(matrix, options = {}) {
+export function matrixZRescale(
+  matrix: Float64Array[] | number[][] | Float32Array[],
+  options: { min?: number; max?: number } = {},
+): Float64Array[] | number[][] | Float32Array[] {
   const { min = 0, max = 1 } = options;
   const nbRows = matrix.length;
   const nbColumns = matrix[0].length;

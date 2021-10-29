@@ -22,7 +22,7 @@ const defaultOptions = {
   factorNoise: 3,
 };
 interface OptionsType {
-  magnitudeMode?: number;
+  magnitudeMode?: boolean;
   minRegSize?: number;
   maxDistanceToJoin: number;
   factorNoise: number;

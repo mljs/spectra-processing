@@ -2,8 +2,11 @@
  * Center mean of columns
  *
  * @param {Array<Array<number>>} [matrix] - matrix [rows][cols].
+ * @returns {number[][]} result
  */
-export function matrixCenterZMean(matrix) {
+export function matrixCenterZMean(
+  matrix: Float64Array[] | number[][] | Float32Array[],
+): Float64Array[] | number[][] | Float32Array[] {
   const nbRows = matrix.length;
   const nbColumns = matrix[0].length;
   const newMatrix = new Array(nbRows);
