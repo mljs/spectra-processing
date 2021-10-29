@@ -163,3 +163,7 @@ export interface Info {
   min: number;
   max: number;
 }
+export interface Histogram {
+  x: number[] | Float64Array | Float32Array | Uint16Array;
+  y: number[] | Float64Array | Float32Array | Uint16Array;
+}

@@ -1,3 +1,4 @@
+import { Histogram } from '..';
 import { xHistogram } from '../x/xHistogram';
 
 import { matrixMinMaxAbsoluteZ } from './matrixMinMaxAbsoluteZ';
@@ -5,10 +6,7 @@ import { matrixMinMaxZ } from './matrixMinMaxZ';
 
 interface OptionsType {
   centerX?: boolean;
-  histogram?: {
-    x: number[] | Float64Array | Float32Array | Uint16Array;
-    y: number[] | Float64Array | Float32Array | Uint16Array;
-  };
+  histogram?: Histogram;
   nbSlots?: number;
   logBaseX?: number;
   logBaseY?: number;
@@ -33,10 +31,7 @@ interface OptionsType {
 export function matrixHistogram(
   matrix: Float64Array[] | number[][] | Float32Array[],
   options: OptionsType = {},
-): {
-  x: number[] | Float64Array | Float32Array | Uint16Array;
-  y: number[] | Float64Array | Float32Array | Uint16Array;
-} {
+): Histogram {
   const { logBaseY, logBaseX, absolute } = options;
   options = JSON.parse(JSON.stringify(options));
   delete options.logBaseY;

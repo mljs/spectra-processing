@@ -1,4 +1,4 @@
-import { xyArrayAlignToFirst } from '../xyArrayAlignToFirst.js';
+import { xyArrayAlignToFirst } from '../xyArrayAlignToFirst';
 
 describe('xyArrayAlignToFirst', () => {
   it('mixed example with delta: 0.25', () => {

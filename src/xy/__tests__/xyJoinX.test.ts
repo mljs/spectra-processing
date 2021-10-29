@@ -1,4 +1,4 @@
-import { xyJoinX } from '../xyJoinX.js';
+import { xyJoinX } from '../xyJoinX';
 
 describe('xyJoinX', () => {
   it('empty', () => {

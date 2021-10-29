@@ -1,14 +1,19 @@
+import { Histogram, Point } from '..';
+
 /**
  * Merge DataXY
  * We have an array of DataXY and the goal is to merge all the values for which the deltaX is small or equal to delta.
  * X values are weighted average
  *
- * @param {Array<DataXY>} spectra
- * @param {object} [options={}]
+ * @param {Array<Histogram>} spectra spectra
+ * @param {object} [options={}] Options
  * @param {number | Function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
- * @returns {DataXY}
+ * @returns {Histogram} results
  */
-export function xyArrayWeightedMerge(spectra, options = {}) {
+export function xyArrayWeightedMerge(
+  spectra: Histogram[],
+  options: { delta?: ((arg: number) => number) | number } = {},
+): Histogram {
   let { delta = 1 } = options;
   if (typeof delta === 'number') {
     let deltaNumber = delta;
@@ -22,7 +27,7 @@ export function xyArrayWeightedMerge(spectra, options = {}) {
   let y = [];
 
   const positions = new Array(spectra.length).fill(0);
-  const point = { x: 0, y: 0 };
+  const point: Point = { x: 0, y: 0 };
 
   nextValue(spectra, positions, point);
   let slot = {
@@ -58,11 +63,15 @@ export function xyArrayWeightedMerge(spectra, options = {}) {
 }
 
 /**
- * @param spectra
- * @param positions
- * @param point
+ * @param {Histogram[]} spectra spectra
+ * @param {number[]} positions positions array
+ * @param {Point} point point
  */
-function nextValue(spectra, positions, point) {
+function nextValue(
+  spectra: Histogram[],
+  positions: number[] | Float64Array | Float32Array | Uint16Array,
+  point: Point,
+) {
   let minIndex = 0;
   let minX = spectra[0].x[positions[0]];
 
@@ -80,7 +89,7 @@ function nextValue(spectra, positions, point) {
   positions[minIndex]++;
 
   if (positions[minIndex] === spectra[minIndex].x.length) {
-    positions.splice(minIndex, 1);
+    (positions as number[]).splice(minIndex, 1);
     spectra.splice(minIndex, 1);
   }
 }

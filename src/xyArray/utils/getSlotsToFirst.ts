@@ -1,24 +1,30 @@
+import { Histogram } from '../../index';
 import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
 
 /**
- * @param spectra
- * @param options
+ * @param {Histogram[]} spectra spectra
+ * @param {object} options options
+ * @param {((arg: number) => number) | number } options.delta delta
+ * @returns {{ from: number; to: number; value: number }[]} result
  */
-export function getSlotsToFirst(spectra, options = {}) {
+export function getSlotsToFirst(
+  spectra: Histogram[],
+  options: { delta?: ((arg: number) => number) | number } = {},
+): { from: number; to: number; value: number }[] {
   const { delta = 1 } = options;
   const deltaIsFunction = typeof delta === 'function';
 
   let firstXs = spectra[0].x;
-  let slots = [];
+  let slots: { from: number; to: number; value: number }[] = [];
   // we first create the slots based on the first spectrum
-  for (let i = 0; i < firstXs.length; i++) {
-    let currentDelta = deltaIsFunction ? delta(firstXs[i]) : delta;
+  firstXs.forEach((element) => {
+    let currentDelta = deltaIsFunction ? delta(element) : delta;
     slots.push({
-      from: firstXs[i] - currentDelta,
-      to: firstXs[i] + currentDelta,
-      value: firstXs[i],
+      from: element - currentDelta,
+      to: element + currentDelta,
+      value: element,
     });
-  }
+  });
 
   let otherXs = xyArrayWeightedMerge(spectra.slice(1), options).x;
   let currentPosition = 0;

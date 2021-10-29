@@ -1,26 +1,29 @@
+import { Histogram } from '..';
 import { xyJoinX } from '../xy/xyJoinX';
 
 import { getSlots } from './utils/getSlots';
-
 /**
- * Aligns spectra
+ * Merge DataXY
+ * We have an array of DataXY and the goal is to merge all the values that are the closest possible
  *
- * @param {Array<DataXY>} spectra
- * @param {object} [options={}]
+ * @param {Array<Histogram>} spectra Spectra
+ * @param {object} [options={}] Options
  * @param {number | Function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
- * @returns {object} {x:[], ys[[]]}
+ * @returns {Histogram} result
  */
-export function xyArrayAlign(spectra, options = {}) {
+export function xyArrayMerge(
+  spectra: Histogram[],
+  options: { delta?: ((arg: number) => number) | number } = {},
+): Histogram {
   const { delta = 1 } = options;
-
   // we start by checking that the spectra don't have peaks too close and we simplify them
   spectra = spectra.map((spectrum) => xyJoinX(spectrum, { delta }));
 
-  const slots = getSlots(spectra, options);
+  // at first we will calculate the X values (simple mean)
+  let slots = getSlots(spectra, options);
+
   let x = Float64Array.from(slots.map((slot) => slot.average));
-  let ys = new Array(spectra.length)
-    .fill()
-    .map(() => new Float64Array(x.length));
+  let y = new Float64Array(x.length);
 
   let positions = new Uint32Array(spectra.length);
   for (let i = 0; i < slots.length; i++) {
@@ -31,11 +34,11 @@ export function xyArrayAlign(spectra, options = {}) {
         positions[j] < spectrum.x.length &&
         spectrum.x[positions[j]] <= slot.to
       ) {
-        ys[j][i] += spectrum.y[positions[j]];
+        y[i] += spectrum.y[positions[j]];
         positions[j]++;
       }
     }
   }
 
-  return { x, ys };
+  return { x, y };
 }
