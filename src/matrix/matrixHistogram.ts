@@ -1,4 +1,4 @@
-import { Histogram } from '..';
+import { Data } from '..';
 import { xHistogram } from '../x/xHistogram';
 
 import { matrixMinMaxAbsoluteZ } from './matrixMinMaxAbsoluteZ';
@@ -6,7 +6,7 @@ import { matrixMinMaxZ } from './matrixMinMaxZ';
 
 interface OptionsType {
   centerX?: boolean;
-  histogram?: Histogram;
+  histogram?: Data;
   nbSlots?: number;
   logBaseX?: number;
   logBaseY?: number;
@@ -31,7 +31,7 @@ interface OptionsType {
 export function matrixHistogram(
   matrix: Float64Array[] | number[][] | Float32Array[],
   options: OptionsType = {},
-): Histogram {
+): Data {
   const { logBaseY, logBaseX, absolute } = options;
   options = JSON.parse(JSON.stringify(options));
   delete options.logBaseY;

@@ -56,6 +56,7 @@
     "jest": "^27.3.1",
     "jest-matcher-deep-close-to": "^3.0.2",
     "jscpd": "^3.3.26",
+    "ml-gsd": "^7.0.1",
     "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
     "spline-interpolator": "^1.0.0",
@@ -70,7 +71,6 @@
     "ml-array-min": "^1.2.2",
     "ml-array-sequential-fill": "^1.1.7",
     "ml-array-standard-deviation": "^1.1.7",
-    "ml-gsd": "^7.0.1",
     "ml-matrix": "^6.8.0"
   }
 }

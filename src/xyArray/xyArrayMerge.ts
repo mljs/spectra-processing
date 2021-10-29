@@ -1,4 +1,4 @@
-import { Histogram } from '..';
+import { Data } from '..';
 import { xyJoinX } from '../xy/xyJoinX';
 
 import { getSlots } from './utils/getSlots';
@@ -6,15 +6,15 @@ import { getSlots } from './utils/getSlots';
  * Merge DataXY
  * We have an array of DataXY and the goal is to merge all the values that are the closest possible
  *
- * @param {Array<Histogram>} spectra Spectra
+ * @param {Array<Data>} spectra Spectra
  * @param {object} [options={}] Options
  * @param {number | Function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
- * @returns {Histogram} result
+ * @returns {Data} result
  */
 export function xyArrayMerge(
-  spectra: Histogram[],
+  spectra: Data[],
   options: { delta?: ((arg: number) => number) | number } = {},
-): Histogram {
+): Data {
   const { delta = 1 } = options;
   // we start by checking that the spectra don't have peaks too close and we simplify them
   spectra = spectra.map((spectrum) => xyJoinX(spectrum, { delta }));

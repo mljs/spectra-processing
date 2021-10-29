@@ -1,4 +1,4 @@
-import { Histogram } from '..';
+import { Data } from '..';
 import { xyJoinX } from '../xy/xyJoinX';
 
 import { getSlots } from './utils/getSlots';
@@ -6,13 +6,13 @@ import { getSlots } from './utils/getSlots';
 /**
  * Aligns spectra
  *
- * @param {Array<Histogram>} spectra spectra
+ * @param {Array<Data>} spectra spectra
  * @param {object} [options={}] Options
  * @param {number | Function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
  * @returns {{x:number[], ys:number[][]}} {x:[], ys:[[]]}
  */
 export function xyArrayAlign(
-  spectra: Histogram[],
+  spectra: Data[],
   options: { delta?: ((arg: number) => number) | number } = {},
 ): {
   x: number[] | Float64Array | Float32Array | Uint16Array;

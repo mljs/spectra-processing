@@ -23,7 +23,7 @@ interface OptionsType {
  * @returns {{ fromIndex: number; toIndex: number }} result
  */
 export function xGetFromToIndex(
-  x: number[] | Float64Array,
+  x: number[] | Float64Array | Float32Array | Uint16Array,
   options: OptionsType = {},
 ): { fromIndex: number; toIndex: number } {
   let { fromIndex, toIndex, from, to } = options;

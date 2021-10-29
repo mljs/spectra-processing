@@ -1,4 +1,4 @@
-import { Histogram } from '..';
+import { Data } from '..';
 
 import { getSlotsToFirst } from './utils/getSlotsToFirst';
 
@@ -6,13 +6,13 @@ import { getSlotsToFirst } from './utils/getSlotsToFirst';
  * We align all the spectra to the first array of X.
  * The alignment is based on the X values of the first spectrum and the `delta` error allowed. If some x values are missing in the first specdtrum we will add them
  *
- * @param {Array<Histogram>} spectra spectra
+ * @param {Array<Data>} spectra spectra
  * @param {object} [options={}] options
  * @param {number | Function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
  * @returns {{x:number[], ys:number[][]}} {x:[], ys:[][]}
  */
 export function xyArrayAlignToFirst(
-  spectra: Array<Histogram>,
+  spectra: Array<Data>,
   options: { delta?: ((arg: number) => number) | number } = {},
 ): {
   x: number[] | Float64Array | Float32Array | Uint16Array;

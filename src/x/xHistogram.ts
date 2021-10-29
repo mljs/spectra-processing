@@ -1,6 +1,6 @@
 import fill from 'ml-array-sequential-fill';
 
-import { Histogram } from '..';
+import { Data } from '..';
 
 import { xAbsolute } from './xAbsolute';
 import { xCheck } from './xCheck';
@@ -9,7 +9,7 @@ import { xMinValue } from './xMinValue';
 
 interface OptionsType {
   centerX?: boolean;
-  histogram?: Histogram;
+  histogram?: Data;
   nbSlots?: number;
   logBaseX?: number;
   logBaseY?: number;
@@ -29,13 +29,13 @@ interface OptionsType {
  * @param {number} [options.logBaseY] We can apply a log on the resulting histogram
  * @param {boolean} [options.absolute] Take the absolute value
  * @param {number} [options.centerX=true] Center the X value. We will enlarge the first and last values.
- * @param {Histogram} [options.histogram={x:[], y:[]}] Previously existing histogram to continue to fill
- * @returns {Histogram} {x,y} of the histogram
+ * @param {Data} [options.histogram={x:[], y:[]}] Previously existing histogram to continue to fill
+ * @returns {Data} {x,y} of the histogram
  */
 export function xHistogram(
   array: number[] | Float64Array | Float32Array | Uint16Array,
   options: OptionsType = {},
-): Histogram {
+): Data {
   xCheck(array);
   let histogram = options.histogram;
   const {

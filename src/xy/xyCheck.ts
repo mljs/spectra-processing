@@ -1,5 +1,7 @@
 import { isAnyArray } from 'is-any-array';
 
+import { DataXYZ } from '..';
+
 /**
  * Throw an error in no an object of x,y arrays
  *
@@ -8,13 +10,7 @@ import { isAnyArray } from 'is-any-array';
  * @param {number[]} data.y array of numbers
  * @param {number[]} data.z array of numbers
  */
-export function xyCheck(
-  data: {
-    x?: number[] | Float64Array | Float32Array | Uint16Array;
-    y?: number[] | Float64Array | Float32Array | Uint16Array;
-    z?: number[] | Float64Array | Float32Array | Uint16Array;
-  } = {},
-) {
+export function xyCheck(data: DataXYZ = {}) {
   if (!isAnyArray(data.x) || !isAnyArray(data.y)) {
     throw new Error('Data must be an object of x and y arrays');
   }

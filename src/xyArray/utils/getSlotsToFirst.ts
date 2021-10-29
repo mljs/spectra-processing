@@ -1,14 +1,14 @@
-import { Histogram } from '../../index';
+import { Data } from '../../index';
 import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
 
 /**
- * @param {Histogram[]} spectra spectra
+ * @param {Data[]} spectra spectra
  * @param {object} options options
  * @param {((arg: number) => number) | number } options.delta delta
  * @returns {{ from: number; to: number; value: number }[]} result
  */
 export function getSlotsToFirst(
-  spectra: Histogram[],
+  spectra: Data[],
   options: { delta?: ((arg: number) => number) | number } = {},
 ): { from: number; to: number; value: number }[] {
   const { delta = 1 } = options;

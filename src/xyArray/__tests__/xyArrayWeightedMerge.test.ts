@@ -1,6 +1,6 @@
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { Histogram } from '../..';
+import { Data } from '../..';
 import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
 
 expect.extend({ toMatchCloseTo });
@@ -76,7 +76,7 @@ describe('xyArrayWeightedMerge', () => {
   });
 
   it('empty data', () => {
-    let data: Histogram[] = [];
+    let data: Data[] = [];
     let result = xyArrayWeightedMerge(data, { delta: 2 });
     expect(result).toMatchCloseTo({ x: [], y: [] });
   });

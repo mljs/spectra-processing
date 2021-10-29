@@ -1,13 +1,13 @@
-import { Histogram } from '../..';
+import { Data } from '../..';
 
 /**
- * @param {Histogram[]} spectra spectra
+ * @param {Data[]} spectra spectra
  * @param {object} options options
  * @param {{ delta?: ((arg: number) => number) | number }} options.delta delta
  * @returns {{from: number,to: number,average: number,sum: number,number: number}[]} result
  */
 export function getSlots(
-  spectra: Histogram[],
+  spectra: Data[],
   options: { delta?: ((arg: number) => number) | number } = {},
 ): {
   from: number;

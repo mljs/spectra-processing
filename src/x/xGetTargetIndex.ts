@@ -19,7 +19,7 @@ interface OptionsType {
  * @returns {number} results
  */
 export function xGetTargetIndex(
-  x: number[] | Float64Array,
+  x: number[] | Float64Array | Float32Array | Uint16Array,
   options: OptionsType = {},
 ): number {
   let { target, targetIndex } = options;

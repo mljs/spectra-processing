@@ -11,7 +11,7 @@
  * @returns {number} closest index
  */
 export function xFindClosestIndex(
-  array: number[] | Float64Array,
+  array: number[] | Float64Array | Float32Array | Uint16Array,
   target: number,
 ): number {
   let low = 0;

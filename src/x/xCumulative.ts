@@ -1,4 +1,5 @@
 import { isAnyArray } from 'is-any-array';
+import { ArrayType } from '..';
 
 /**
  * Calculate a new array of the same size that is the cumulative values
@@ -6,9 +7,7 @@ import { isAnyArray } from 'is-any-array';
  * @param {number[]} array array
  * @returns {Array<number>} result
  */
-export function xCumulative(
-  array: number[] | Float64Array,
-): number[] | Float64Array {
+export function xCumulative(array: ArrayType): ArrayType {
   if (!isAnyArray(array)) {
     throw new TypeError('input must be an array');
   }
