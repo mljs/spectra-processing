@@ -1,4 +1,4 @@
-import { Reim } from '../index';
+import { ArrayType, Reim } from '../index';
 import { xNoiseSanPlot } from '../x/xNoiseSanPlot';
 
 import { reimAbsolute } from './reimAbsolute';
@@ -147,7 +147,7 @@ function autoPhaseRegion(
  * @param {number[]} s array of float
  * @returns {number[]} array of float
  */
-function holoborodko(s: number[] | Float64Array): number[] | Float64Array {
+function holoborodko(s: ArrayType): ArrayType {
   let dk = new Float64Array(s.length);
   for (let i = 5; i < s.length - 5; i++) {
     dk[i] =
@@ -177,7 +177,7 @@ function holoborodko(s: number[] | Float64Array): number[] | Float64Array {
  * @returns {boolean[]} array of boolean
  */
 function robustBaseLineRegionsDetection(
-  s: number[] | Float64Array,
+  s: ArrayType,
   options: OptionsType,
 ): boolean[] {
   const { maxDistanceToJoin, magnitudeMode, factorNoise } = options;
@@ -264,7 +264,7 @@ function weightedLinearRegression(
 
 const toRadians = (degree: number): number => (degree * Math.PI) / 180;
 
-const getNegArea = (data: number[] | Float64Array): number => {
+const getNegArea = (data: ArrayType): number => {
   let area = 0;
   data.forEach((element) => {
     if (element < 0) area -= element;

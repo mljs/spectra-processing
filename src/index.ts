@@ -130,6 +130,7 @@ export * from './matrix/matrixZRescale';
 
 export * from './utils/createSequentialArray';
 
+export type ArrayType = number[] | Float64Array | Float32Array | Uint16Array;
 export interface Zone {
   fromIndex?: number;
   toIndex?: number;
@@ -144,19 +145,19 @@ export interface Point {
   index?: number;
 }
 export interface XYPoints {
-  x: number[];
-  y: number[];
+  x: ArrayType;
+  y: ArrayType;
 }
 
 export interface DataX {
-  x: number[] | Float64Array;
-  re: number[] | Float64Array;
-  im: number[] | Float64Array;
+  x: ArrayType;
+  re: ArrayType;
+  im: ArrayType;
 }
 
 export interface Reim {
-  re: number[] | Float64Array | Float32Array | Uint16Array;
-  im: number[] | Float64Array | Float32Array | Uint16Array;
+  re: ArrayType;
+  im: ArrayType;
 }
 
 export interface Info {
@@ -167,11 +168,11 @@ export interface Info {
   max: number;
 }
 export interface Data {
-  x: number[] | Float64Array | Float32Array | Uint16Array;
-  y: number[] | Float64Array | Float32Array | Uint16Array;
+  x: ArrayType;
+  y: ArrayType;
 }
 export interface DataXYZ {
-  x?: number[] | Float64Array | Float32Array | Uint16Array;
-  y?: number[] | Float64Array | Float32Array | Uint16Array;
-  z?: number[] | Float64Array | Float32Array | Uint16Array;
+  x?: ArrayType;
+  y?: ArrayType;
+  z?: ArrayType;
 }
