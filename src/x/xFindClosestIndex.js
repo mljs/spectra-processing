@@ -9,7 +9,7 @@
  * @param array
  * @param target
  */
-export function xFindClosestIndex(array, target, options={}) {
+export function xFindClosestIndex(array, target, options = {}) {
   const { sorted = true } = options;
   if (sorted) {
     let low = 0;
@@ -25,7 +25,7 @@ export function xFindClosestIndex(array, target, options={}) {
         return middle;
       }
     }
-  
+
     if (low < array.length - 1) {
       if (Math.abs(target - array[low]) < Math.abs(array[low + 1] - target)) {
         return low;
