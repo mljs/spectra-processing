@@ -1,8 +1,5 @@
 import { isAnyArray } from 'is-any-array';
-<<<<<<< HEAD:src/x/xCumulative.ts
 import { ArrayType } from '..';
-=======
->>>>>>> master:src/x/xCumulative.js
 
 /**
  * Calculate a new array of the same size that is the cumulative values
@@ -10,11 +7,7 @@ import { ArrayType } from '..';
  * @param {number[]} array array
  * @returns {Array<number>} result
  */
-<<<<<<< HEAD:src/x/xCumulative.ts
 export function xCumulative(array: ArrayType): ArrayType {
-=======
-export function xCumulative(array) {
->>>>>>> master:src/x/xCumulative.js
   if (!isAnyArray(array)) {
     throw new TypeError('input must be an array');
   }

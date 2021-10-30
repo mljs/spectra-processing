@@ -1,8 +1,4 @@
 import { isAnyArray } from 'is-any-array';
-<<<<<<< HEAD:src/x/xMultiply.ts
-
-=======
->>>>>>> master:src/x/xMultiply.js
 /**
  * This function xMultiply the first array by the second array or a constant value to each element of the first array
  *

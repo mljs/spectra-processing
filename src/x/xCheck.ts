@@ -1,14 +1,14 @@
 import { isAnyArray } from 'is-any-array';
 
+import { ArrayType } from '..';
+
 /**
  * Checks if input is valdi
  *
  * @param {Array<number>} input input
  * @returns {void}
  */
-export function xCheck(
-  input?: number[] | Float64Array | Float32Array | Uint16Array,
-): void {
+export function xCheck(input?: ArrayType): void {
   if (!isAnyArray(input)) {
     throw new TypeError('input must be an array');
   }
