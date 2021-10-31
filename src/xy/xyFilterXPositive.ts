@@ -4,7 +4,7 @@ import { xyCheck } from './xyCheck';
 /**
  * Filter out all the points for which x <= 0. Useful to display log scale data
  *
- * @param {DataXYZ} [data={}]
+ * @param {DataXYZ} [data={}] data
  * @returns {Data} An object with the filtered data
  */
 export function xyFilterXPositive(data: DataXYZ = {}): Data {
@@ -12,7 +12,7 @@ export function xyFilterXPositive(data: DataXYZ = {}): Data {
   const { x, y } = data;
   const newX: ArrayType = [];
   const newY: ArrayType = [];
-  if (x == undefined || y == undefined) return { x: newX, y: newY };
+  if (x === undefined || y === undefined) return { x: newX, y: newY };
   for (let i = 0; i < x.length; i++) {
     if (x[i] > 0) {
       newX.push(x[i]);

@@ -16,6 +16,7 @@ interface OptionsType {
   fixOffset?: boolean;
   logBaseY?: number;
   considerList?: { from: number; step: number; to: number };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fromTo?: any;
 }
 
@@ -36,6 +37,7 @@ interface OptionsType {
 export function xNoiseSanPlot(
   data: number[] | Float64Array | Float32Array | Uint16Array,
   options: OptionsType = {},
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): { positive: number; negative: number; snr: number; sanplot: any } {
   const {
     mask,
@@ -284,6 +286,7 @@ function generateSanPlot(
 ) {
   const { fromTo, logBaseY = 2 } = options;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let sanplot: any = {};
   for (let key in fromTo) {
     let { from, to } = fromTo[key];

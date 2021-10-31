@@ -1,10 +1,11 @@
-import { ArrayType, Data, Point, XYPoints } from '..';
+import { Data, Point } from '..';
+
 import { xyCheck } from './xyCheck';
 
 /**
  *
- * @param {DataXY} [data] array of points {x,y}
- * @returns {DataPoints}
+ * @param {Data} [data] array of points {x,y}
+ * @returns {Point[]} results
  */
 export function xyToXYObject(data: Data): Point[] {
   xyCheck(data);
