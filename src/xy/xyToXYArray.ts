@@ -1,14 +1,14 @@
-import { ArrayType, Data } from '..';
+import { ArrayType, DataXY } from '..';
 
 import { xyCheck } from './xyCheck';
 
 /**
  * Convert a DataXY to an array of array containing x,y
  *
- * @param {Data} [data] array of points {x,y}
+ * @param {DataXY} [data] array of points {x,y}
  * @returns {Array<Array<number,number>>} result
  */
-export function xyToXYArray(data: Data): ArrayType[] {
+export function xyToXYArray(data: DataXY): ArrayType[] {
   xyCheck(data);
   const { x, y } = data;
   let objectArray = [];

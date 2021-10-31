@@ -1,12 +1,12 @@
-import { Data } from '..';
+import { DataXY } from '..';
 /**
  * Order object of array, x has to be monotone.
  * Ensure x is growing
  *
- * @param {Data} data Object of kind {x:[], y:[]}.
- * @returns {Data} result
+ * @param {DataXY} data Object of kind {x:[], y:[]}.
+ * @returns {DataXY} result
  */
-export function xyGrowingX(data: Data): Data {
+export function xyGrowingX(data: DataXY): DataXY {
   const { x, y } = data;
 
   if (x.length !== y.length) {

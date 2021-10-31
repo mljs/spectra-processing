@@ -1,6 +1,6 @@
 import FFT from 'fft.js';
 
-import { Reim } from '..';
+import { DataReIm } from '..';
 import { xRotate } from '../x/xRotate';
 
 interface OptionsType {
@@ -9,11 +9,11 @@ interface OptionsType {
 }
 
 /**
- * @param {Reim} data Reim
+ * @param {DataReIm } data Reim
  * @param {OptionsType} options Options
- * @returns {Reim} Reim
+ * @returns {DataReIm } Reim
  */
-export function reimFFT(data: Reim, options: OptionsType = {}): Reim {
+export function reimFFT(data: DataReIm, options: OptionsType = {}): DataReIm {
   const { inverse = false, applyZeroShift = false } = options;
 
   let { re, im } = data;

@@ -1,4 +1,4 @@
-import { Data } from '..';
+import { DataXY } from '..';
 
 import { xyCheck } from './xyCheck';
 /**
@@ -10,7 +10,7 @@ import { xyCheck } from './xyCheck';
  * @param {number[]} data.y data
  * @param {object} [options={}] Options
  * @param {number | Function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
- * @returns {Data} An object with the xyIntegration function
+ * @returns {DataXY} An object with the xyIntegration function
  */
 export function xyJoinX(
   data: {
@@ -18,7 +18,7 @@ export function xyJoinX(
     y?: number[] | Float64Array | Float32Array | Uint16Array;
   } = {},
   options: { delta?: ((arg: number) => number) | number } = {},
-): Data {
+): DataXY {
   xyCheck(data);
   const { delta = 1 } = options;
   const deltaIsFunction = typeof delta === 'function';

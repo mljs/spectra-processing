@@ -1,13 +1,13 @@
-import { Data } from '..';
+import { DataXY } from '..';
 import { xIsMonotone } from '../x/xIsMonotone';
 
 /**
  * This function performs a quick sort of the x array while transforming the y array to preserve the coordinates.
  *
- * @param {Data} [data] Object that contains property x (Array) and y (Array)
- * @returns {Data} results
+ * @param {DataXY} [data] Object that contains property x (Array) and y (Array)
+ * @returns {DataXY} results
  */
-export function xySortX(data: Data): Data {
+export function xySortX(data: DataXY): DataXY {
   const { x, y } = data;
 
   // no need to sort if it is already sorted

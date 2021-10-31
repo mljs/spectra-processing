@@ -1,15 +1,15 @@
-import { Data } from '..';
+import { DataXY } from '..';
 import { xGetTargetIndex } from '../x/xGetTargetIndex';
 
 import { xyCheck } from './xyCheck';
 
 /**
- * @param {Data} data Data
+ * @param {DataXY} data Data
  * @param {{}} options options
  * @returns {{ x: number; y: number; index: number }} results
  */
 export function xyRealMinYPoint(
-  data: Data,
+  data: DataXY,
   options = {},
 ): { x: number; y: number; index: number } {
   xyCheck(data);

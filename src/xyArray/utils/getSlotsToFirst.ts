@@ -1,15 +1,15 @@
-import { Data } from '../../index';
+import { DataXY, OptionsType } from '../..';
 import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
 
 /**
- * @param {Data[]} spectra spectra
+ * @param {DataXY[]} spectra spectra
  * @param {object} options options
  * @param {((arg: number) => number) | number } options.delta delta
  * @returns {{ from: number; to: number; value: number }[]} result
  */
 export function getSlotsToFirst(
-  spectra: Data[],
-  options: { delta?: ((arg: number) => number) | number } = {},
+  spectra: DataXY[],
+  options: OptionsType = {},
 ): { from: number; to: number; value: number }[] {
   const { delta = 1 } = options;
   const deltaIsFunction = typeof delta === 'function';

@@ -1,16 +1,16 @@
-import { Data, DataXYZ } from '..';
+import { DataXY, DataXYZ } from '..';
 
 import { xyCheck } from './xyCheck';
 
 /**
  * Filters x,y values to allow strictly growing values in x axis.
  *
- * @param {Data} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @returns {Data} result
+ * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @returns {DataXY} result
  */
-export function xyEnsureGrowingX(data: DataXYZ = {}): Data {
+export function xyEnsureGrowingX(data: DataXYZ = {}): DataXY {
   xyCheck(data);
-  if (data.x === undefined || data.y === undefined) return data as Data;
+  if (data.x === undefined || data.y === undefined) return data as DataXY;
   const x = Array.from(data.x);
   const y = Array.from(data.y);
   let prevX = -Infinity;

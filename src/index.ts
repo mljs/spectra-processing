@@ -144,18 +144,14 @@ export interface Point {
   y: number;
   index?: number;
 }
-export interface XYPoints {
-  x: ArrayType;
-  y: ArrayType;
-}
 
-export interface DataX {
+export interface DataXReIm {
   x: ArrayType;
   re: ArrayType;
   im: ArrayType;
 }
 
-export interface Reim {
+export interface DataReIm {
   re: ArrayType;
   im: ArrayType;
 }
@@ -167,7 +163,7 @@ export interface Info {
   min: number;
   max: number;
 }
-export interface Data {
+export interface DataXY {
   x: ArrayType;
   y: ArrayType;
 }

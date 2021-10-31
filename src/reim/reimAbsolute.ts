@@ -1,11 +1,11 @@
-import { ArrayType, Reim } from '../index';
+import { ArrayType, DataReIm } from '../index';
 /**
  * Calculates reimAbsolute value of a complex spectrum
  *
- * @param {Reim} data  DATA
+ * @param {DataReIm } data  DATA
  * @returns {Float64Array | number[]} array of float
  */
-export function reimAbsolute(data: Reim): ArrayType {
+export function reimAbsolute(data: DataReIm): ArrayType {
   const length = data.re.length;
   const re = data.re;
   const im = data.im;

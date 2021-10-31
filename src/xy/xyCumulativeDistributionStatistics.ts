@@ -1,6 +1,6 @@
 import max from 'ml-array-max';
 
-import { Data } from '..';
+import { DataXY } from '..';
 import { xCumulative } from '../x/xCumulative';
 
 import { xyCheck } from './xyCheck';
@@ -10,10 +10,10 @@ const STEPS = [0.25, 0.5, 0.75];
 /**
  * Cumulative Distribution Statistics
  *
- * @param {Data} [data] array of points {x,y}
+ * @param {DataXY} [data] array of points {x,y}
  * @returns {object} x0, x25, x50, x75, x100, mode (x for maxY)
  */
-export function xyCumulativeDistributionStatistics(data: Data) {
+export function xyCumulativeDistributionStatistics(data: DataXY) {
   xyCheck(data);
   const { x, y } = data;
   if (x.length === 0) {

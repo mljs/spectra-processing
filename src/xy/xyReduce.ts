@@ -1,4 +1,4 @@
-import { Data, Zone } from '..';
+import { DataXY, Zone } from '..';
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
 import { zonesNormalize } from '../zones/zonesNormalize';
 
@@ -17,16 +17,16 @@ interface OptionsType {
  * SHOULD NOT BE USED FOR DATA PROCESSING !!!
  * You should rather use ml-xy-equally-spaced to make further processing
  *
- * @param {Data} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}] options
  * @param {number} [options.from=x[0]] number
  * @param {number} [options.to=x[x.length-1]] number
  * @param {number} [options.nbPoints=4001] Number of points
  * @param {number} [options.zones=[]] Array of zones to keep (from/to object)
  * @param {number} [options.optimize=false] If optimize we may have less than nbPoints at the end
- * @returns {Data} results
+ * @returns {DataXY} results
  */
-export function xyReduce(data: Data, options: OptionsType = {}): Data {
+export function xyReduce(data: DataXY, options: OptionsType = {}): DataXY {
   xyCheck(data);
   const { x, y } = data;
   let {

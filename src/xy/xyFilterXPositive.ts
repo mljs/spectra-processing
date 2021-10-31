@@ -1,13 +1,13 @@
-import { ArrayType, Data, DataXYZ } from '..';
+import { ArrayType, DataXY, DataXYZ } from '..';
 
 import { xyCheck } from './xyCheck';
 /**
  * Filter out all the points for which x <= 0. Useful to display log scale data
  *
  * @param {DataXYZ} [data={}] data
- * @returns {Data} An object with the filtered data
+ * @returns {DataXY} An object with the filtered data
  */
-export function xyFilterXPositive(data: DataXYZ = {}): Data {
+export function xyFilterXPositive(data: DataXYZ = {}): DataXY {
   xyCheck(data);
   const { x, y } = data;
   const newX: ArrayType = [];

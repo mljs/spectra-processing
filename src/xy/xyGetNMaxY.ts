@@ -1,15 +1,15 @@
-import { ArrayType, Data } from '..';
+import { ArrayType, DataXY } from '..';
 
 import { xyCheck } from './xyCheck';
 
 /**
  * Returns the numberMaxPoints points with the bigger y.
  *
- * @param {Data} data - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXY} data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {number} numberMaxPoints Number of points to keep
- * @returns {Data} The points filtered to keep the `numberMaxPoints` most intense points of the input
+ * @returns {DataXY} The points filtered to keep the `numberMaxPoints` most intense points of the input
  */
-export function xyGetNMaxY(data: Data, numberMaxPoints: number): Data {
+export function xyGetNMaxY(data: DataXY, numberMaxPoints: number): DataXY {
   xyCheck(data);
   if (data.x.length <= numberMaxPoints) {
     return data;

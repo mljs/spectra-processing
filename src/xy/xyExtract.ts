@@ -1,4 +1,4 @@
-import { Data, DataXYZ, Zone } from '..';
+import { DataXY, DataXYZ, Zone } from '..';
 import { zonesNormalize } from '../zones/zonesNormalize';
 
 import { xyCheck } from './xyCheck';
@@ -9,12 +9,12 @@ import { xyCheck } from './xyCheck';
  * @param {DataXYZ} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}] options
  * @param {Zone[]} [options.zones=[]] zones
- * @returns {Data} Array of points
+ * @returns {DataXY} Array of points
  */
 export function xyExtract(
   data: DataXYZ = {},
   options: { zones?: Zone[] } = {},
-): Data {
+): DataXY {
   xyCheck(data);
   const { x, y } = data;
   let { zones } = options;
@@ -27,7 +27,7 @@ export function xyExtract(
     !Array.isArray(zones) ||
     zones.length === 0
   ) {
-    return data as Data;
+    return data as DataXY;
   }
 
   let newX = [];

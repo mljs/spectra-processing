@@ -1,4 +1,4 @@
-import { Data } from '..';
+import { DataXY } from '..';
 import { xGetTargetIndex } from '../x/xGetTargetIndex';
 
 import { xyCheck } from './xyCheck';
@@ -12,7 +12,7 @@ import { xyCheck } from './xyCheck';
  * @returns {{x,y,xIndex}} An object with the x/y value
  */
 export function xyRealMaxYPoint(
-  data: Data,
+  data: DataXY,
   options = {},
 ): { x: number; y: number; index: number } {
   xyCheck(data);

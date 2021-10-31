@@ -1,13 +1,16 @@
-import { DataX } from '..';
+import { DataXReIm } from '..';
 
 /**
  * This function make a zero filling to re and im part.
  *
- * @param {DataX} data Object of kind {x:[], re:[], im:[]}.
+ * @param {DataXReIm} data Object of kind {x:[], re:[], im:[]}.
  * @param {number} totalLength - final number of points
- * @returns {DataX} Data
+ * @returns {DataXReIm} Data
  */
-export function xreimZeroFilling(data: DataX, totalLength: number): DataX {
+export function xreimZeroFilling(
+  data: DataXReIm,
+  totalLength: number,
+): DataXReIm {
   let length = data.x.length;
   if (totalLength === 0 || length === totalLength) return data;
 

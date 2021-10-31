@@ -1,13 +1,13 @@
-import { Data, Point } from '..';
+import { DataXY, Point } from '..';
 
 import { xyCheck } from './xyCheck';
 
 /**
  *
- * @param {Data} [data] array of points {x,y}
+ * @param {DataXY} [data] array of points {x,y}
  * @returns {Point[]} results
  */
-export function xyToXYObject(data: Data): Point[] {
+export function xyToXYObject(data: DataXY): Point[] {
   xyCheck(data);
   const { x, y } = data;
   let objectArray = [];

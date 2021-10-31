@@ -1,4 +1,4 @@
-import { Data } from '..';
+import { DataXY } from '..';
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
 
 import { xyCheck } from './xyCheck';
@@ -6,14 +6,14 @@ import { xyCheck } from './xyCheck';
 /**
  * Find the closest minimum going down hill
  *
- * @param {Data} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}] Options
  * @param {number} [options.target] number
  * @param {number} [options.targetIndex=0] number
  * @returns {{x,y,xIndex}} An object with the x/y value
  */
 export function xyMinClosestYPoint(
-  data: Data,
+  data: DataXY,
   options: { target?: number; targetIndex?: number } = {},
 ) {
   xyCheck(data);

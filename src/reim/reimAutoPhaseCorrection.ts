@@ -1,4 +1,4 @@
-import { ArrayType, Reim } from '../index';
+import { ArrayType, DataReIm } from '../index';
 import { xNoiseSanPlot } from '../x/xNoiseSanPlot';
 
 import { reimAbsolute } from './reimAbsolute';
@@ -33,14 +33,14 @@ interface Region {
   x0: number;
 }
 /**
- * @param {Reim} data Data
+ * @param {DataReIm } data Data
  * @param {OptionsType} options options
- * @returns { {data: Reim; ph0: number; ph1: number} } return { Reim,number,number }
+ * @returns { {data: DataReIm ; ph0: number; ph1: number} } return { Reim,number,number }
  */
 export function reimAutoPhaseCorrection(
-  data: Reim,
+  data: DataReIm,
   options: OptionsType,
-): { data: Reim; ph0: number; ph1: number } {
+): { data: DataReIm; ph0: number; ph1: number } {
   const { re, im } = data;
   const length = re.length;
 

@@ -11,13 +11,13 @@
     "lib-esm"
   ],
   "scripts": {
-    "build": "rollup -c && cheminfo-build --root SpectraProcessing",
+    "build": "npm run tsc-esm && cheminfo-build --entry lib-esm/index.js --root SpectraProcessing",
     "check-types": "tsc --noEmit",
     "clean": "rimraf lib lib-esm",
     "eslint": "eslint src",
     "eslint-fix": "npm run eslint -- --fix",
     "jscpd": "jscpd -l 10 -i \"**/__tests__/**\" -t 1 src",
-    "prepack": "npm run compile && npm run tsc",
+    "prepack": "npm run tsc",
     "prettier": "prettier --check src",
     "prettier-write": "prettier --write src",
     "test": "npm run test-coverage && npm run eslint && npm run prettier && npm run jscpd && npm run check-types",

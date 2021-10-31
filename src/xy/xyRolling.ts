@@ -1,4 +1,4 @@
-import { ArrayType, XYPoints } from '..';
+import { ArrayType, DataXY } from '..';
 import { xRolling } from '../x/xRolling';
 import { xRollingAverage } from '../x/xRollingAverage';
 /**
@@ -6,16 +6,16 @@ import { xRollingAverage } from '../x/xRollingAverage';
  *
  * This methods will recalculate the x values by using xRollingAverage
  *
- * @param {XYPoints} [points] array of points {x,y}
+ * @param {DataXY} [points] array of points {x,y}
  * @param {Function} [fct] callback function that from an array returns a value.
  * @param {object} options options
- * @returns {XYPoints} results
+ * @returns {DataXY} results
  */
 export function xyRolling(
-  points: XYPoints,
+  points: DataXY,
   fct?: (array: ArrayType) => number,
   options = {},
-): XYPoints {
+): DataXY {
   let { x, y } = points;
 
   y = xRolling(y, fct, options);

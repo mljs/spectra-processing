@@ -1,7 +1,7 @@
 import mean from 'ml-array-mean';
 import { DataType, gsd } from 'ml-gsd';
 
-import { Data } from '..';
+import { DataXY } from '..';
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
 
 interface OptionsType {
@@ -23,7 +23,7 @@ interface OptionsType {
  * The selected nbPeaks will then be taken into account to calculate an average X value.
  * The difference between the targetX and the averageX value will be returned
  *
- * @param {Data} [data] array of points {x,y}
+ * @param {DataXY} [data] array of points {x,y}
  * @param {object} [range={}] range
  * @param {number} [range.from] - Beginning of the range where the interest signal is localed
  * @param {number} [range.to] - End of the range where the interest signal is localed
@@ -35,7 +35,7 @@ interface OptionsType {
  * @returns {number} difference between targetX and currentX
  */
 export function xyCalibrate(
-  data: Data,
+  data: DataXY,
   range: { to?: number; from?: number } = {},
   options: OptionsType = {},
 ): number {

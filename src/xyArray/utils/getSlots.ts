@@ -1,14 +1,13 @@
-import { Data } from '../..';
+import { DataXY, OptionsType } from '../..';
 
 /**
- * @param {Data[]} spectra spectra
- * @param {object} options options
- * @param {{ delta?: ((arg: number) => number) | number }} options.delta delta
+ * @param {DataXY[]} spectra spectra
+ * @param {OptionsType} options options
  * @returns {{from: number,to: number,average: number,sum: number,number: number}[]} result
  */
 export function getSlots(
-  spectra: Data[],
-  options: { delta?: ((arg: number) => number) | number } = {},
+  spectra: DataXY[],
+  options: OptionsType = {},
 ): {
   from: number;
   to: number;

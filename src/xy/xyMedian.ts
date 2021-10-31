@@ -1,4 +1,4 @@
-import { Data } from '..';
+import { DataXY } from '..';
 
 /**
  * Finds the median x value for an object with properties x and y (arrays of the same length)
@@ -6,7 +6,7 @@ import { Data } from '..';
  * @param {object} data x should be sorted in increasing order
  * @returns {number} the median of x values
  */
-export function xyMedian(data: Data): number {
+export function xyMedian(data: DataXY): number {
   const { x, y } = data;
 
   let sumY = 0;
