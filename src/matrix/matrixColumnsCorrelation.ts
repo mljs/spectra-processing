@@ -9,9 +9,9 @@ import { xCorrelation } from '../x/xCorrelation';
  * @returns {ArrayType[]} result
  */
 export function matrixColumnsCorrelation(A: ArrayType[]): ArrayType[] {
-  let B: Matrix = new Matrix(A as number[][]);
+  let B: Matrix = new Matrix(A as [][]);
   B = B.transpose();
-  let result: ArrayType[] = [];
+  let result = [];
   for (let i = 0; i < B.rows; i++) {
     result.push(new Float64Array(B.rows));
   }
