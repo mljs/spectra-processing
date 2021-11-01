@@ -1,31 +1,3 @@
-/**
- * @typedef {object} DataXY
- * @property {Array<number>} x Array of x values
- * @property {Array<number>} y Array of y values
- */
-
-/**
- * @typedef {object} Point
- * @property {number} x value of the x coordinate
- * @property {number} y value of the y coordinate
- */
-
-/**
- * @typedef {object} Zone
- * @property {number} from first value defining the zone
- * @property {number} to last value defining the zone
- */
-
-/**
- * @typedef {Array<Point>} ArrayPoints
- */
-
-/**
- * @typedef {object} DataReIm
- * @property {Array<number>} re Array of re values
- * @property {Array<number>} im Array of im values
- */
-
 export * from './x/xAbsolute';
 export * from './x/xAbsoluteMedian';
 export * from './x/xAdd';
@@ -131,6 +103,12 @@ export * from './matrix/matrixZRescale';
 export * from './utils/createSequentialArray';
 
 export type ArrayType = number[] | Float64Array | Float32Array | Uint16Array;
+/**
+ * @typedef {object} Zone
+ * @property {number} from first value defining the zone
+ * @property {number} to last value defining the zone
+ */
+
 export interface Zone {
   fromIndex?: number;
   toIndex?: number;
@@ -138,7 +116,11 @@ export interface Zone {
   nbPoints?: number;
   from: number;
 }
-
+/**
+ * @typedef {object} Point
+ * @property {number} x value of the x coordinate
+ * @property {number} y value of the y coordinate
+ */
 export interface Point {
   x: number;
   y: number;
@@ -150,7 +132,11 @@ export interface DataXReIm {
   re: ArrayType;
   im: ArrayType;
 }
-
+/**
+ * @typedef {object} DataReIm
+ * @property {ArrayType} re Array of re values
+ * @property {ArrayType} im Array of im values
+ */
 export interface DataReIm {
   re: ArrayType;
   im: ArrayType;
@@ -163,6 +149,11 @@ export interface Info {
   min: number;
   max: number;
 }
+/**
+ * @typedef {object} DataXY
+ * @property {Array<number>} x Array of x values
+ * @property {Array<number>} y Array of y values
+ */
 export interface DataXY {
   x: ArrayType;
   y: ArrayType;

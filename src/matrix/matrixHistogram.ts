@@ -1,24 +1,14 @@
-import { DataXY } from '..';
+import { ArrayType, DataXY } from '..';
 import { xHistogram } from '../x/xHistogram';
 
 import { matrixMinMaxAbsoluteZ } from './matrixMinMaxAbsoluteZ';
 import { matrixMinMaxZ } from './matrixMinMaxZ';
 
-interface OptionsType {
-  centerX?: boolean;
-  histogram?: DataXY;
-  nbSlots?: number;
-  logBaseX?: number;
-  logBaseY?: number;
-  absolute?: boolean;
-  max?: number;
-  min?: number;
-}
 /**
  * Calculates an histogram of defined number of slots
  *
- * @param {Array<Array<number>>} [matrix] - matrix [rows][cols].
- * @param {OptionsType} options options
+ * @param {ArrayType[]} [matrix] - matrix [rows][cols].
+ * @param {object} options options
  * @param {number} [options.nbSlots=256] Number of slots
  * @param {number} [options.min=minValue] Minimum value to calculate used to calculate slot size
  * @param {number} [options.max=maxValue] Maximal value to calculate used to calculate slot size
@@ -26,11 +16,21 @@ interface OptionsType {
  * @param {number} [options.logBaseY] We can apply a log on the resulting histogra
  * @param {boolean} [options.absolute] Take the absolute value
  * @param {number} [options.centerX=true] Center the X value. We will enlarge the first and
+ * @param {DataXY} options.histogram histogram
  * @returns {{x:number[],y:number[]}} {x,y} of the histogram
  */
 export function matrixHistogram(
-  matrix: Float64Array[] | number[][] | Float32Array[],
-  options: OptionsType = {},
+  matrix: ArrayType[],
+  options: {
+    centerX?: boolean;
+    histogram?: DataXY;
+    nbSlots?: number;
+    logBaseX?: number;
+    logBaseY?: number;
+    absolute?: boolean;
+    max?: number;
+    min?: number;
+  } = {},
 ): DataXY {
   const { logBaseY, logBaseX, absolute } = options;
   options = JSON.parse(JSON.stringify(options));

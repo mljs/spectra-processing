@@ -4,19 +4,6 @@ import { DataType, gsd } from 'ml-gsd';
 import { DataXY } from '..';
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
 
-interface OptionsType {
-  targetX?: number;
-  nbPeaks?: number;
-  gsd?: {
-    minMaxRatio: number;
-    realTopDetection: boolean;
-    smoothY: boolean;
-    sgOptions: {
-      windowSize: number;
-      polynomial: number;
-    };
-  };
-}
 /**
  * Calibrates the data based on a range and means of peaks in this range
  * Based on a range we will make a peak picking using global spectra deconvolution
@@ -37,7 +24,19 @@ interface OptionsType {
 export function xyCalibrate(
   data: DataXY,
   range: { to?: number; from?: number } = {},
-  options: OptionsType = {},
+  options: {
+    targetX?: number;
+    nbPeaks?: number;
+    gsd?: {
+      minMaxRatio: number;
+      realTopDetection: boolean;
+      smoothY: boolean;
+      sgOptions: {
+        windowSize: number;
+        polynomial: number;
+      };
+    };
+  } = {},
 ): number {
   const {
     targetX = 0,

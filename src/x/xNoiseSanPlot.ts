@@ -1,42 +1,48 @@
 import fill from 'ml-array-sequential-fill';
 
+import { ArrayType, DataXY } from '..';
+
 import erfcinv from './erfcinv';
 import rayleighCdf from './rayleighCdf';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const SplineInterpolator = require('spline-interpolator');
 
-interface OptionsType {
-  mask?: number[] | Float64Array | Float32Array | Uint16Array;
-  cutOff?: number;
-  refine?: boolean;
-  magnitudeMode?: boolean;
-  scaleFactor?: number;
-  factorStd?: number;
-  fixOffset?: boolean;
-  logBaseY?: number;
-  considerList?: { from: number; step: number; to: number };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  fromTo?: any;
-}
-
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
  *
- * @param {Array} data - real or magnitude spectra data.
+ * @param {ArrayType} data - real or magnitude spectra data.
  * @param {object} [options = {}] options
- * @param {Array} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+ * @param {ArrayType} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
  * @param {number} [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
  * @param {number} [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
  * @param {number} [options.factorStd=5] - factor times std to determine what will be marked as signals.
  * @param {boolean} [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
  * @param {boolean} [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
  * @param {number} [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
+ * @param {boolean} options.magnitudeMode -
+ * @param {object} options.considerList -
+ * @param {number} options.considerList.from -
+ * @param {number} options.considerList.step -
+ * @param {number} options.considerList.to -
+ * @param {number} options.fromTo -
  * @returns {{ positive: number; negative: number; snr: number; sanplot: any }} result
  */
 export function xNoiseSanPlot(
-  data: number[] | Float64Array | Float32Array | Uint16Array,
-  options: OptionsType = {},
+  data: ArrayType,
+  options: {
+    mask?: ArrayType;
+    cutOff?: number;
+    refine?: boolean;
+    magnitudeMode?: boolean;
+    scaleFactor?: number;
+    factorStd?: number;
+    fixOffset?: boolean;
+    logBaseY?: number;
+    considerList?: { from: number; step: number; to: number };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    fromTo?: any;
+  } = {},
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): { positive: number; negative: number; snr: number; sanplot: any } {
   const {
@@ -173,12 +179,37 @@ export function xNoiseSanPlot(
 
 /**
  * @param {number[]} signPositive array of numbers
- * @param {OptionsType} options options
+ * @param {object} [options = {}] options
+ * @param {ArrayType} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+ * @param {number} [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
+ * @param {number} [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+ * @param {number} [options.factorStd=5] - factor times std to determine what will be marked as signals.
+ * @param {boolean} [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
+ * @param {boolean} [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
+ * @param {number} [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
+ * @param {boolean} options.magnitudeMode -
+ * @param {object} options.considerList -
+ * @param {number} options.considerList.from -
+ * @param {number} options.considerList.step -
+ * @param {number} options.considerList.to -
+ * @param {number} options.fromTo -
  * @returns {number} result
  */
 function determineCutOff(
-  signPositive: number[] | Float64Array | Float32Array | Uint16Array,
-  options: OptionsType = {},
+  signPositive: ArrayType,
+  options: {
+    mask?: ArrayType;
+    cutOff?: number;
+    refine?: boolean;
+    magnitudeMode?: boolean;
+    scaleFactor?: number;
+    factorStd?: number;
+    fixOffset?: boolean;
+    logBaseY?: number;
+    considerList?: { from: number; step: number; to: number };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    fromTo?: any;
+  } = {},
 ): number {
   let {
     magnitudeMode = false,
@@ -219,14 +250,39 @@ function determineCutOff(
 }
 
 /**
- * @param {number[]} data data array
- * @param {OptionsType} options options
+ * @param {ArrayType |number} data data array
+ * @param {object} [options = {}] options
+ * @param {ArrayType} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+ * @param {number} [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
+ * @param {number} [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+ * @param {number} [options.factorStd=5] - factor times std to determine what will be marked as signals.
+ * @param {boolean} [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
+ * @param {boolean} [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
+ * @param {number} [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
+ * @param {boolean} options.magnitudeMode -
+ * @param {object} options.considerList -
+ * @param {number} options.considerList.from -
+ * @param {number} options.considerList.step -
+ * @param {number} options.considerList.to -
+ * @param {number} options.fromTo -
  * @returns {number[]} result
  */
 function simpleNormInv(
-  data: number[] | Float64Array | Float32Array | Uint16Array | number,
-  options: OptionsType = {},
-): number[] | Float64Array | Float32Array | Uint16Array | number {
+  data: ArrayType | number,
+  options: {
+    mask?: ArrayType;
+    cutOff?: number;
+    refine?: boolean;
+    magnitudeMode?: boolean;
+    scaleFactor?: number;
+    factorStd?: number;
+    fixOffset?: boolean;
+    logBaseY?: number;
+    considerList?: { from: number; step: number; to: number };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    fromTo?: any;
+  } = {},
+): ArrayType | number {
   const { magnitudeMode = false } = options;
 
   if (!Array.isArray(data)) data = [data as number];
@@ -261,13 +317,9 @@ function simpleNormInv(
  * @param {number} from from
  * @param {number} to to
  * @param {number} step step
- * @returns {number[]} array of results
+ * @returns {ArrayType} array of results
  */
-function createArray(
-  from: number,
-  to: number,
-  step: number,
-): number[] | Float64Array | Float32Array | Uint16Array {
+function createArray(from: number, to: number, step: number): ArrayType {
   let result = new Array(Math.abs((from - to) / step + 1));
   for (let i = 0; i < result.length; i++) {
     result[i] = from + i * step;
@@ -277,12 +329,37 @@ function createArray(
 
 /**
  * @param {number[]} array array
- * @param {OptionsType} options options
+ * @param {object} [options = {}] options
+ * @param {ArrayType} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+ * @param {number} [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
+ * @param {number} [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+ * @param {number} [options.factorStd=5] - factor times std to determine what will be marked as signals.
+ * @param {boolean} [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
+ * @param {boolean} [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
+ * @param {number} [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
+ * @param {boolean} options.magnitudeMode -
+ * @param {object} options.considerList -
+ * @param {number} options.considerList.from -
+ * @param {number} options.considerList.step -
+ * @param {number} options.considerList.to -
+ * @param {number} options.fromTo -
  * @returns {any} results
  */
 function generateSanPlot(
-  array: number[] | Float64Array | Float32Array | Uint16Array,
-  options: OptionsType = {},
+  array: ArrayType,
+  options: {
+    mask?: ArrayType;
+    cutOff?: number;
+    refine?: boolean;
+    magnitudeMode?: boolean;
+    scaleFactor?: number;
+    factorStd?: number;
+    fixOffset?: boolean;
+    logBaseY?: number;
+    considerList?: { from: number; step: number; to: number };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    fromTo?: any;
+  } = {},
 ) {
   const { fromTo, logBaseY = 2 } = options;
 
@@ -305,16 +382,38 @@ function generateSanPlot(
 
 /**
  * @param {number[]} array array
- * @param {OptionsType} options options
+ * @param {object} [options = {}] options
+ * @param {Array} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+ * @param {number} [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
+ * @param {number} [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+ * @param {number} [options.factorStd=5] - factor times std to determine what will be marked as signals.
+ * @param {boolean} [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
+ * @param {boolean} [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
+ * @param {number} [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
+ * @param {boolean} options.magnitudeMode -
+ * @param {object} options.considerList -
+ * @param {number} options.considerList.from -
+ * @param {number} options.considerList.step -
+ * @param {number} options.considerList.to -
+ * @param {number} options.fromTo -
  * @returns {{ x: number[];y: number[]}} results
  */
 function scale(
-  array: number[] | Float64Array | Float32Array | Uint16Array,
-  options: OptionsType = {},
-): {
-  x: number[] | Float64Array | Float32Array | Uint16Array;
-  y: number[] | Float64Array | Float32Array | Uint16Array;
-} {
+  array: ArrayType,
+  options: {
+    mask?: ArrayType;
+    cutOff?: number;
+    refine?: boolean;
+    magnitudeMode?: boolean;
+    scaleFactor?: number;
+    factorStd?: number;
+    fixOffset?: boolean;
+    logBaseY?: number;
+    considerList?: { from: number; step: number; to: number };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    fromTo?: any;
+  } = {},
+): DataXY {
   const { log10, abs } = Math;
   const { logBaseY } = options;
   if (logBaseY) {

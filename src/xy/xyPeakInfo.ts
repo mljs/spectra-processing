@@ -12,7 +12,7 @@ import { xyCheck } from './xyCheck';
  * ML.ArrayPoints.sortX
  * ML.ArrayPoints.equallySpaced
  *
- * @param {object} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXYZ} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}] options
  * @param {number} [options.target] number
  * @param {number} [options.targetIndex] number

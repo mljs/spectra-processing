@@ -1,26 +1,22 @@
+import { ArrayType } from '..';
+
 import { xFindClosestIndex } from './xFindClosestIndex';
 
 /**
  *  Returns the targetIndex
  *
- * @param {Array} [x]
- * @param {object} [options={}]
- * @param {number} [options.target]
- * @param {number} [options.targetIndex=0]
- * @param {number}
- */
-interface OptionsType {
-  target?: number;
-  targetIndex?: number;
-}
-/**
- * @param {number[]} x array of number
- * @param {OptionsType} options options
- * @returns {number} results
+ * @param {ArrayType} [x] array of numbers
+ * @param {object} [options={}] options
+ * @param {number} [options.target] target
+ * @param {number} [options.targetIndex=0] targetindex
+ *@returns {number} results
  */
 export function xGetTargetIndex(
-  x: number[] | Float64Array | Float32Array | Uint16Array,
-  options: OptionsType = {},
+  x: ArrayType,
+  options: {
+    target?: number;
+    targetIndex?: number;
+  } = {},
 ): number {
   let { target, targetIndex } = options;
   if (targetIndex === undefined) {

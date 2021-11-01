@@ -1,15 +1,14 @@
+import { ArrayType } from '..';
+
 /**
  * Calculates the correlation between 2 vectors
  * https://en.wikipedia.org/wiki/Correlation_and_dependence
  *
- * @param {Array<number>} [A] - the array that will be rotated
- * @param {Array<number>} [B] sencond array
+ * @param {ArrayType} [A] - the array that will be rotated
+ * @param {ArrayType} [B] sencond array
  * @returns {number} result
  */
-export function xCorrelation(
-  A: number[] | Float64Array,
-  B: number[] | Float64Array,
-): number {
+export function xCorrelation(A: ArrayType, B: ArrayType): number {
   let n = A.length;
   let sumA = 0;
   let sumA2 = 0;

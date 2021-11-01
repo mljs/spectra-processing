@@ -1,12 +1,12 @@
-import { Info } from '..';
+import { ArrayType, Info } from '..';
 
 /**
  * This function xSubtract the first array by the second array or a constant value from each element of the first array
  *
- * @param {Array<number>} array - the array that will be rotated
+ * @param {ArrayType} array - the array that will be rotated
  * @returns {Info} result
  */
-export function xBoxPlot(array: number[] | Float64Array): Info {
+export function xBoxPlot(array: ArrayType): Info {
   array = array.slice(0).sort((a, b) => a - b);
   if (array.length < 5) {
     throw Error(

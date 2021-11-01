@@ -1,16 +1,18 @@
+import { ArrayType } from '..';
+
 /**
  * Rescale columns
  *
- * @param {Array<Array<number>>} [matrix] - matrix [rows][cols].
+ * @param {ArrayType[]} [matrix] - matrix [rows][cols].
  * @param {object} [options={}] Options
  * @param {object} [options.min=0] min
  * @param {object} [options.max=1] max
  * @returns {number[][]} result
  */
 export function matrixZRescale(
-  matrix: Float64Array[] | number[][] | Float32Array[],
+  matrix: ArrayType[],
   options: { min?: number; max?: number } = {},
-): Float64Array[] | number[][] | Float32Array[] {
+): ArrayType[] {
   const { min = 0, max = 1 } = options;
   const nbRows = matrix.length;
   const nbColumns = matrix[0].length;

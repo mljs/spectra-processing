@@ -4,13 +4,6 @@ import { zonesNormalize } from '../zones/zonesNormalize';
 
 import { xyCheck } from './xyCheck';
 
-interface OptionsType {
-  from?: number;
-  to?: number;
-  nbPoints?: number;
-  optimize?: boolean;
-  zones?: Zone[];
-}
 /**
  * xyReduce the number of points while keeping visually the same noise. Practical to
  * display many spectra as SVG. If you want a similar looking spectrum you should still however generate 4x the nbPoints that is being displayed.
@@ -26,7 +19,16 @@ interface OptionsType {
  * @param {number} [options.optimize=false] If optimize we may have less than nbPoints at the end
  * @returns {DataXY} results
  */
-export function xyReduce(data: DataXY, options: OptionsType = {}): DataXY {
+export function xyReduce(
+  data: DataXY,
+  options: {
+    from?: number;
+    to?: number;
+    nbPoints?: number;
+    optimize?: boolean;
+    zones?: Zone[];
+  } = {},
+): DataXY {
   xyCheck(data);
   const { x, y } = data;
   let {

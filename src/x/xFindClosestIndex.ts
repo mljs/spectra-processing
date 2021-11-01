@@ -1,19 +1,16 @@
+import { ArrayType } from '..';
+
 /**
  * Returns the closest index of a `target`
  *
- * @param {Array<number>} array
- * @param {number} target
- */
-
-/**
- * @param {Array<number>} array array of number
- * @param {number} target number
- * @param {object} options Options
+ * @param {ArrayType} array array of numbers
+ * @param {number} target target
+ * @param {{ sorted?: boolean }} options Options
  * @param {boolean} options.sorted boolean
  * @returns {number} closest index
  */
 export function xFindClosestIndex(
-  array: number[] | Float64Array | Float32Array | Uint16Array,
+  array: ArrayType,
   target: number,
   options: { sorted?: boolean } = {},
 ): number {

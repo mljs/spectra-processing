@@ -1,27 +1,17 @@
 import fill from 'ml-array-sequential-fill';
 
-import { DataXY } from '..';
+import { ArrayType, DataXY } from '..';
 
 import { xAbsolute } from './xAbsolute';
 import { xCheck } from './xCheck';
 import { xMaxValue } from './xMaxValue';
 import { xMinValue } from './xMinValue';
 
-interface OptionsType {
-  centerX?: boolean;
-  histogram?: DataXY;
-  nbSlots?: number;
-  logBaseX?: number;
-  logBaseY?: number;
-  absolute?: boolean;
-  max?: number;
-  min?: number;
-}
 /**
  * Calculates an histogram of defined number of slots
  *
- * @param {Array} [array] Array containing values
- * @param {OptionsType} options options
+ * @param {ArrayType} [array] Array containing values
+ * @param {object} options options
  * @param {number} [options.nbSlots=256] Number of slots
  * @param {number} [options.min=minValue] Minimum value to calculate used to calculate slot size
  * @param {number} [options.max=maxValue] Maximal value to calculate used to calculate slot size
@@ -33,8 +23,17 @@ interface OptionsType {
  * @returns {DataXY} {x,y} of the histogram
  */
 export function xHistogram(
-  array: number[] | Float64Array | Float32Array | Uint16Array,
-  options: OptionsType = {},
+  array: ArrayType,
+  options: {
+    centerX?: boolean;
+    histogram?: DataXY;
+    nbSlots?: number;
+    logBaseX?: number;
+    logBaseY?: number;
+    absolute?: boolean;
+    max?: number;
+    min?: number;
+  } = {},
 ): DataXY {
   xCheck(array);
   let histogram = options.histogram;

@@ -7,7 +7,7 @@ import { xyCheck } from './xyCheck';
  * xyExtract zones from a XY data
  *
  * @param {DataXYZ} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @param {object} [options={}] options
+ * @param {{ zones?: Zone[] }} [options={}] options
  * @param {Zone[]} [options.zones=[]] zones
  * @returns {DataXY} Array of points
  */

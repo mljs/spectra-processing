@@ -1,4 +1,4 @@
-import { DataXYZ } from '..';
+import { DataXY, DataXYZ } from '..';
 import { xGetFromToIndex } from '../x/xGetFromToIndex';
 
 import { xyCheck } from './xyCheck';
@@ -23,7 +23,7 @@ export function xyIntegral(
     toIndex?: number;
     to?: number;
   } = {},
-) {
+): DataXY | number {
   const { reverse = false } = options;
   xyCheck(data);
   const { x, y } = data;

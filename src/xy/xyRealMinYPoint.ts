@@ -5,7 +5,7 @@ import { xyCheck } from './xyCheck';
 
 /**
  * @param {DataXY} data Data
- * @param {{}} options options
+ * @param {object} options options
  * @returns {{ x: number; y: number; index: number }} results
  */
 export function xyRealMinYPoint(

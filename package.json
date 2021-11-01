@@ -71,6 +71,7 @@
     "ml-array-min": "^1.2.2",
     "ml-array-sequential-fill": "^1.1.7",
     "ml-array-standard-deviation": "^1.1.7",
-    "ml-matrix": "^6.8.0"
+    "ml-matrix": "^6.8.0",
+    "typedoc": "^0.22.7"
   }
 }

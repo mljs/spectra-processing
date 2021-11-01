@@ -3,7 +3,7 @@ import { DataXY } from '..';
 /**
  * Finds the median x value for an object with properties x and y (arrays of the same length)
  *
- * @param {object} data x should be sorted in increasing order
+ * @param {DataXY} data x should be sorted in increasing order
  * @returns {number} the median of x values
  */
 export function xyMedian(data: DataXY): number {

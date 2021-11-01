@@ -8,7 +8,7 @@ import { DataXY } from '..';
  * @param {DataXY} data1 First spectrum data
  * @param {DataXY} data2 Second spectrum data
  * @param {object} [options={}] Options
- * @param {number | Function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+ * @param {((arg: number) => number) | number} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
  * @param {boolean} [options.common=true] If `true`, only the data considered as common to both spectra is kept. If `false`, the data y arrays are completed with zeroes where no common values are found
  * @param {string} [options.x='x1'] Defines what x values should be kept (`x1` : spectrum 1 x values, `x2` spectrum 2 x values, `weighted`: weighted average of both spectra x values)
  * @returns {{x: number[];y1: number[];y2: number[]}} result

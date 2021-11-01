@@ -3,20 +3,15 @@ import { Point } from '..';
 /**
  *
  * @param {Array<Point>} [points] array of growing points {x,y}
- * @param {OptionsType} [options={}]
- * @param {number} [xError=Number.EPSILON] limit to join the data
- */
-interface OptionsType {
-  xError?: number;
-}
-/**
- * @param {Array<Point>} points list of points
- * @param {OptionsType} options {xError?: number;}
- * @returns {Array<Point>} points list of points
+ * @param {{xError: number}} [options={}] Options
+ * @param {number} [options.xError=Number.EPSILON] limit to join the data
+ * @returns {Point[]} Results
  */
 export function xyObjectJoinX(
   points: Point[],
-  options: OptionsType = {},
+  options: {
+    xError?: number;
+  } = {},
 ): Point[] {
   const { xError = Number.EPSILON } = options;
 

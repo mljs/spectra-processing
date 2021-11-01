@@ -3,20 +3,15 @@ import { Point } from '..';
 /**
  *
  * @param {Point[]} [points] array of growing points {x,y}
- * @param {OptionsType} [options={}]
- * @param {number} [slotWidth=1] limit to join the data
- */
-interface OptionsType {
-  slotWidth?: number;
-}
-/**
- * @param {Point[]} points list of points
- * @param {OptionsType} options options
- * @returns {Point[]}  list of points
+ * @param {{slotWidth?: number}} [options={}] Options
+ * @param {number} [options.slotWidth=1] limit to join the dataPoints[]
+ * @returns {Point[]} result
  */
 export function xyObjectSlotX(
   points: Point[],
-  options: OptionsType = {},
+  options: {
+    slotWidth?: number;
+  } = {},
 ): Point[] {
   const { slotWidth = 1 } = options;
   const halfSlot = slotWidth / 2;

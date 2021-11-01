@@ -1,12 +1,12 @@
+import { ArrayType } from '..';
+
 /**
  * Returns true if x is monotone
  *
- * @param {Array<number>} array array of numbers
+ * @param {ArrayType} array array of numbers
  * @returns {boolean} result
  */
-export function xIsMonotone(
-  array: number[] | Float64Array | Float32Array | Uint16Array,
-): boolean {
+export function xIsMonotone(array: ArrayType): boolean {
   if (array.length <= 2) {
     return true;
   }

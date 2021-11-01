@@ -12,7 +12,7 @@ export interface OptionsType {
  * @param {Array<DataXY>} spectra spectra
  * @param {OptionsType} [options={}] Options
  * @param {number | Function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
- * @returns {{x:number[], ys:number[][]}} {x:[], ys:[[]]}
+ * @returns {{x:ArrayType, ys:ArrayType[]}} {x:[], ys:[[]]}
  */
 export function xyArrayAlign(
   spectra: DataXY[],

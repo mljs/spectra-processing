@@ -1,14 +1,16 @@
+import { ArrayType } from '..';
+
 import { xCheckLengths } from './xCheck';
 /**
  * This function calculates the mean absolute error
  *
- * @param {Array<number>} array1 -first array
- * @param {Array<number>} array2 second array
+ * @param {ArrayType} array1 -first array
+ * @param {ArrayType} array2 second array
  * @returns {number} result
  */
 export function xMeanAbsoluteError(
-  array1: number[] | Float64Array,
-  array2: number[] | Float64Array,
+  array1: ArrayType,
+  array2: ArrayType,
 ): number {
   xCheckLengths(array1, array2);
   let sum = 0;

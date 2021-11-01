@@ -5,10 +5,9 @@ import { ArrayType } from '..';
 /**
  * Checks if input is valdi
  *
- * @param {Array<number>} input input
- * @returns {void}
+ * @param {ArrayType} input input
  */
-export function xCheck(input?: ArrayType): void {
+export function xCheck(input?: ArrayType) {
   if (!isAnyArray(input)) {
     throw new TypeError('input must be an array');
   }
@@ -19,14 +18,10 @@ export function xCheck(input?: ArrayType): void {
 }
 
 /**
- * @param {Array<number>} array1 first array
- * @param {Array<number>} array2 second array
- * @returns {void}
+ * @param {ArrayType} array1 first array
+ * @param {ArrayType} array2 second array
  */
-export function xCheckLengths(
-  array1: number[] | Float64Array,
-  array2: number[] | Float64Array,
-): void {
+export function xCheckLengths(array1: ArrayType, array2: ArrayType) {
   if (array1.length !== array2.length) {
     throw new TypeError('Length of array1 and array2 must be identical');
   }

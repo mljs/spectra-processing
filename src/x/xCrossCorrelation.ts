@@ -1,29 +1,25 @@
+import { ArrayType } from '..';
+
 import { xDotProduct } from './xDotProduct';
 
 /**
  * Calculates the cross-correlation between 2 vectors
  *
- * @param {Array<number>} [A] - fixed array
- * @param {Array<number>} [B] - sweeping array
- * @param {object} [options={}]
+ * @param {ArrayType} [A] - fixed array
+ * @param {ArrayType} [B] - sweeping array
+ * @param {object} [options={}] Options
  * @param {number} [options.tau=1] - sweep increment size (in number of points, min=1, max=A.length)
  * @param {number} [options.lag=A.length - 1] - scalar lag parameter
- */
-interface OptionsType {
-  tau?: number;
-  lag?: number;
-}
-/**
- * @param {number[]} A first array
- * @param {number[]} B second array
- * @param {number[]} options options
- * @returns {number[]} results
+ * @returns {ArrayType} results
  */
 export function xCrossCorrelation(
-  A: number[] | Float64Array,
-  B: number[] | Float64Array,
-  options: OptionsType = {},
-): number[] | Float64Array {
+  A: ArrayType,
+  B: ArrayType,
+  options: {
+    tau?: number;
+    lag?: number;
+  } = {},
+): ArrayType {
   let { tau = 1, lag = A.length - 1 } = options;
   let result = new Float64Array(1 + (2 * lag) / tau);
   if (A.length === B.length) {

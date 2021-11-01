@@ -1,5 +1,7 @@
 import sd from 'ml-array-standard-deviation';
 
+import { ArrayType } from '..';
+
 import { xCheck } from './xCheck';
 
 /**
@@ -7,12 +9,10 @@ import { xCheck } from './xCheck';
  * Noda, I. (2008). Scaling techniques to enhance two-dimensional correlation spectra. Journal of Molecular Structure, 883, 216-227.
  * DOI: 10.1016/j.molstruc.2007.12.026
  *
- * @param {Array<number>} array array of number
- * @returns {Array<number>} result
+ * @param {ArrayType} array array of number
+ * @returns {ArrayType} result
  */
-export function xParetoNormalization(
-  array: number[] | Float64Array | Float32Array | Uint16Array,
-): number[] | Float64Array | Float32Array | Uint16Array {
+export function xParetoNormalization(array: ArrayType): ArrayType {
   xCheck(array);
   let result = [];
   const sqrtSD = Math.sqrt(sd(array));

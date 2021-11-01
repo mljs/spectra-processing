@@ -11,7 +11,7 @@ import { xyCheck } from './xyCheck';
  * @param {number[]} data.y y
  * @param {number[]} data.z z
  * @param {{}} _options Options
- * @returns {Array} Array of points
+ * @returns {{x,y,xIndex}[]} Array of points
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function xyMinimaY(data: DataXYZ = {}, _options = {}) {

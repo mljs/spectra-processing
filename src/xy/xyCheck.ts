@@ -5,7 +5,7 @@ import { DataXYZ } from '..';
 /**
  * Throw an error in no an object of x,y arrays
  *
- * @param {{x?:number[],y?:number[]}} [data={}] data
+ * @param {DataXYZ} [data={}] data
  * @param {number[]} data.x array of numbers
  * @param {number[]} data.y array of numbers
  * @param {number[]} data.z array of numbers

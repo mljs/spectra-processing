@@ -11,7 +11,7 @@ import { xyCheck } from './xyCheck';
  * @param {number} [options.fromIndex=0] - First point for xyIntegration
  * @param {number} [options.to] - Last value for xyIntegration in the X scale
  * @param {number} [options.toIndex=x.length-1] - Last point for xyIntegration
- * @returns {object} results
+ * @returns {{x,y,xIndex}} results
  */
 export function xyMinYPoint(data: DataXYZ = {}, options = {}) {
   xyCheck(data);

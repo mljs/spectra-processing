@@ -1,12 +1,12 @@
+import { ArrayType } from '..';
+
 /**
  * Center mean of columns
  *
- * @param {Array<Array<number>>} [matrix] - matrix [rows][cols].
- * @returns {number[][]} result
+ * @param {ArrayType[]} [matrix] - matrix [rows][cols].
+ * @returns {ArrayType[]} result
  */
-export function matrixCenterZMean(
-  matrix: Float64Array[] | number[][] | Float32Array[],
-): Float64Array[] | number[][] | Float32Array[] {
+export function matrixCenterZMean(matrix: ArrayType[]): ArrayType[] {
   const nbRows = matrix.length;
   const nbColumns = matrix[0].length;
   const newMatrix = new Array(nbRows);

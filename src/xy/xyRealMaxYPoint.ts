@@ -5,7 +5,7 @@ import { xyCheck } from './xyCheck';
 /**
  * Find the closest minimum going down hill
  *
- * @param {object} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {object} [options={}] options
  * @param {number} [options.target] number
  * @param {number} [options.targetIndex=0] number

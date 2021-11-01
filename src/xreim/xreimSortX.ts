@@ -5,11 +5,6 @@ import { DataXReIm } from '..';
  * @param {DataXReIm} data Object of kind {x:[], re:[], im:[]}.
  * @returns {DataXReIm} Data
  */
-
-/**
- * @param {DataXReIm} data {x:number[], re:number[], im:number[]}.
- * @returns {DataXReIm} {x:number[], re:number[], im:number[]}.
- */
 export function xreimSortX(data: DataXReIm): DataXReIm {
   const { x, re, im } = data;
 

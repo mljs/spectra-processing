@@ -5,12 +5,7 @@ import { xyObjectCheck } from './xyObjectCheck';
  * Finds the max y value and return a {x,y,index} point
  *
  * @param {Point[]} [points=[]] - Object that contains property x (an ordered increasing array) and y (an array)
- * @returns {object}
- */
-
-/**
- * @param {Point[]} points list of points
- * @returns {Point} point
+ * @returns {Point} result
  */
 export function xyObjectMaxYPoint(points: Point[] = []): Point {
   xyObjectCheck(points);

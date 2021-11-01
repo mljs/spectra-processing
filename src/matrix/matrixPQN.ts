@@ -1,12 +1,14 @@
 import median from 'ml-array-median';
 import { Matrix } from 'ml-matrix';
 
+import { ArrayType } from '..';
+
 /**
  * Performs a Probabilistic quotient normalization (PQN) over the dataset to account dilution based in median spectrum.
  * Dieterle, F., Ross, A., Schlotterbeck, G., & Senn, H. (2006). Probabilistic quotient normalization as robust method to account for dilution of complex biological mixtures. Application in 1H NMR metabonomics. Analytical chemistry, 78(13), 4281-4290.
  * DOI: 10.1021/ac051632c
  *
- * @param {Array<Array<number>>} [matrix] - matrix [rows][cols].
+ * @param {ArrayType[]} [matrix] - matrix [rows][cols].
  * @param {object} [options={}] Options
  * @param {number} [options.max=100] - Normalization integral constant.
  * @param {number} options.min min
@@ -15,11 +17,11 @@ import { Matrix } from 'ml-matrix';
  * medianOfQuotients: The median of quotients of each variables.
  */
 export function matrixPQN(
-  matrix: Float64Array[] | number[][] | Float32Array[],
+  matrix: ArrayType[],
   options: { max?: number; min?: number } = {},
 ): {
-  data: Float64Array[] | number[][] | Float32Array[];
-  medianOfQuotients: Float64Array | number[] | Float32Array;
+  data: ArrayType[];
+  medianOfQuotients: ArrayType;
 } {
   const { max = 100 } = options;
   let matrixB = new Matrix(matrix as number[][]);

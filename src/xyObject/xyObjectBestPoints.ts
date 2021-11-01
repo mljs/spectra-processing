@@ -9,33 +9,26 @@ import { xyObjectMinXPoint } from './xyObjectMinXPoint';
  * There are 2 different slots, the smallest one will have the
  * new property `close` to true
  *
- * @param {Array} points - array of all the points
- * @param {Array<Point>} [options={}]
+ * @param {Point[]} points - array of all the points
+ * @param {object} [options={}] Options
  * @param {number} [options.from] - min X value of the window to consider
  * @param {number} [options.to] - max X value of the window to consider
  * @param {number} [options.limit=20] - max number of points
  * @param {number} [options.threshold=0.01] - minimal intensity compare to more intense point
  * @param {number} [options.numberSlots=10] - define the number of slots and indirectly the slot width
- * @param {number} [options.numberCloseSlots=50]
+ * @param {number} [options.numberCloseSlots=50] numberCloseSlots
  * @returns {Array<Point>} - copy of points with 'close' property
- */
-
-interface OptionsType {
-  from?: number;
-  to?: number;
-  limit?: number;
-  threshold?: number;
-  numberCloseSlots?: number;
-  numberSlots?: number;
-}
-/**
- * @param {Array<Point>} points list of points
- * @param {OptionsType} options options
- * @returns {Array<Point>} list of points
  */
 export function xyObjectBestPoints(
   points: Point[],
-  options: OptionsType = {},
+  options: {
+    from?: number;
+    to?: number;
+    limit?: number;
+    threshold?: number;
+    numberCloseSlots?: number;
+    numberSlots?: number;
+  } = {},
 ): Point[] {
   const {
     from = xyObjectMinXPoint(points).x,

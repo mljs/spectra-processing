@@ -1,9 +1,9 @@
+import { ArrayType } from '..';
+
 /**
- * @param {number[]} array array of number
- * @returns  {number[]} sorted array
+ * @param {ArrayType} array array of number
+ * @returns  {ArrayType} sorted array
  */
-export function xUniqueSorted(
-  array: number[] | Float64Array,
-): number[] | Float64Array {
+export function xUniqueSorted(array: ArrayType): ArrayType {
   return Float64Array.from(new Set(array)).sort();
 }

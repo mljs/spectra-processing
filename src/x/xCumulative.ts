@@ -5,8 +5,8 @@ import { ArrayType } from '..';
 /**
  * Calculate a new array of the same size that is the cumulative values
  *
- * @param {number[]} array array
- * @returns {Array<number>} result
+ * @param {ArrayType} array array
+ * @returns {ArrayType} result
  */
 export function xCumulative(array: ArrayType): ArrayType {
   if (!isAnyArray(array)) {

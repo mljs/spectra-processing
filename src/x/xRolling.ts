@@ -1,26 +1,28 @@
+import { ArrayType } from '..';
+
 import { xCheck } from './xCheck';
 import { xPadding } from './xPadding';
 /**
  * This function calculates a rolling average
  *
- * @param {Array<number>} array - the array that will be rotated
- * @param {Function} fct callback function that from an array returns a value.
- * @param {object} [options={}] options
+ * @param {ArrayType} array - the array that will be rotated
+ * @param {(array: ArrayType) => number} fct callback function that from an array returns a value.
+ * @param {{window?: number; padding?: { size?: number; algorithm?: string; value?: number }}} [options={}] options
  * @param {number} [options.window=5] rolling window
  * @param {string} [options.padding.size=0] none, value, circular, duplicate
  * @param {string} [options.padding.algorithm='value'] none, value, circular, duplicate
  * @param {number} [options.padding.value=0] value to use for padding (if algorithm='value')
  * @param {{ size?: number; algorithm?: string; value?: number }}options.padding padding
- * @returns {Array<number>} result
+ * @returns {ArrayType} result
  */
 export function xRolling(
-  array: number[] | Float64Array | Float32Array | Uint16Array,
-  fct?: (array: number[] | Float64Array | Float32Array | Uint16Array) => number,
+  array: ArrayType,
+  fct?: (array: ArrayType) => number,
   options: {
     window?: number;
     padding?: { size?: number; algorithm?: string; value?: number };
   } = {},
-): number[] | Float64Array | Float32Array | Uint16Array {
+): ArrayType {
   xCheck(array);
   if (typeof fct !== 'function') throw Error('fct has to be a function');
 

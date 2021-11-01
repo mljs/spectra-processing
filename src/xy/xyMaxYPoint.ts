@@ -1,10 +1,11 @@
+import { DataXYZ } from '..';
 import { xGetFromToIndex } from '../x/xGetFromToIndex';
 
 import { xyCheck } from './xyCheck';
 /**
  * Finds the max y value in a range and return a {x,y} point
  *
- * @param {{x?:number[],y?:number[],z?:number[]}} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param {DataXYZ} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
  * @param {number[]} data.x x
  * @param {number[]} data.y y
  * @param {number[]} data.z z
@@ -16,11 +17,7 @@ import { xyCheck } from './xyCheck';
  * @returns {{ x: number; y: number; index: number }} result
  */
 export function xyMaxYPoint(
-  data: {
-    x?: number[] | Float64Array | Float32Array | Uint16Array;
-    y?: number[] | Float64Array | Float32Array | Uint16Array;
-    z?: number[] | Float64Array | Float32Array | Uint16Array;
-  } = {},
+  data: DataXYZ = {},
   options: {
     from?: number;
     fromIndex?: number;

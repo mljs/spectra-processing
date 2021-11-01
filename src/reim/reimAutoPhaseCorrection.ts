@@ -3,6 +3,14 @@ import { xNoiseSanPlot } from '../x/xNoiseSanPlot';
 
 import { reimAbsolute } from './reimAbsolute';
 import { reimPhaseCorrection } from './reimPhaseCorrection';
+
+const defaultOptions = {
+  minRegSize: 30,
+  maxDistanceToJoin: 256,
+  magnitudeMode: true,
+  factorNoise: 3,
+};
+
 /**
  * Implementation of the algorithm for automatic phase correction: A robust, general automatic phase
  * correction algorithm for high-resolution NMR data. 10.1002/mrc.4586
@@ -13,33 +21,16 @@ import { reimPhaseCorrection } from './reimPhaseCorrection';
  * @param {number} options.maxDistanceToJoin - max distance between regions (in number of points) to join two regions
  * @param {boolean} options.magnitudeMode - if true it uses magnitude spectrum.boolean
  * @param {number} options.factorNoise - scale the cutoff like factorStd * noiseLevel.
- */
-
-const defaultOptions = {
-  minRegSize: 30,
-  maxDistanceToJoin: 256,
-  magnitudeMode: true,
-  factorNoise: 3,
-};
-interface OptionsType {
-  magnitudeMode?: boolean;
-  minRegSize?: number;
-  maxDistanceToJoin: number;
-  factorNoise: number;
-}
-interface Region {
-  ph0: number;
-  area: number;
-  x0: number;
-}
-/**
- * @param {DataReIm } data Data
- * @param {OptionsType} options options
  * @returns { {data: DataReIm ; ph0: number; ph1: number} } return { Reim,number,number }
  */
 export function reimAutoPhaseCorrection(
   data: DataReIm,
-  options: OptionsType,
+  options: {
+    magnitudeMode?: boolean;
+    minRegSize?: number;
+    maxDistanceToJoin: number;
+    factorNoise: number;
+  },
 ): { data: DataReIm; ph0: number; ph1: number } {
   const { re, im } = data;
   const length = re.length;
@@ -65,8 +56,8 @@ export function reimAutoPhaseCorrection(
   let res = [];
   while (i < length) {
     //phase first region
-    let reTmp: number[] | Float64Array = [];
-    let imTmp: number[] | Float64Array = [];
+    let reTmp: ArrayType = [];
+    let imTmp: ArrayType = [];
 
     //Look for the first 1 in the array
     while (!finalPeaks[++i] && i < length) {
@@ -100,16 +91,20 @@ export function reimAutoPhaseCorrection(
 }
 
 /**
- * @param {number[]} re array of number
- * @param {number[]} im array of number
+ * @param {ArrayType} re array of number
+ * @param {ArrayType} im array of number
  * @param {number} x0 number
- * @returns {Region} region
+ * @returns {{ph0: number;area: number;x0: number}} region
  */
 function autoPhaseRegion(
-  re: number[] | Float64Array,
-  im: number[] | Float64Array,
+  re: ArrayType,
+  im: ArrayType,
   x0: number,
-): Region {
+): {
+  ph0: number;
+  area: number;
+  x0: number;
+} {
   let start = -180;
   let stop = 180;
   let nSteps = 6;
@@ -171,14 +166,20 @@ function holoborodko(s: ArrayType): ArrayType {
 /**
  * @param {number[]} s number array
  * @param {object} options options
- * @param {number} options.maxDistanceToJoin number
- * @param {number} options.magnitudeMode number
- * @param {number} options.factorNoise number
+ * @param {number} options.maxDistanceToJoin -
+ * @param {number} options.magnitudeMode -
+ * @param {number} options.factorNoise -
+ * @param {number} options.minRegSize -
  * @returns {boolean[]} array of boolean
  */
 function robustBaseLineRegionsDetection(
   s: ArrayType,
-  options: OptionsType,
+  options: {
+    magnitudeMode?: boolean;
+    minRegSize?: number;
+    maxDistanceToJoin: number;
+    factorNoise: number;
+  },
 ): boolean[] {
   const { maxDistanceToJoin, magnitudeMode, factorNoise } = options;
 

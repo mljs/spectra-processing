@@ -1,16 +1,15 @@
 import { isAnyArray } from 'is-any-array';
 
+import { ArrayType } from '..';
+
 /**
  * This function xAdd the first array by the second array or a constant value to each element of the first array
  *
- * @param {Array<number>} array1 - the array that will be rotated
- * @param {Array<number> | number} array2 the second array
- * @returns {Array<number>} result
+ * @param {ArrayType} array1 - the array that will be rotated
+ * @param {ArrayType | number} array2 the second array
+ * @returns {ArrayType} result
  */
-export function xAdd(
-  array1: number[] | Float64Array | Float32Array,
-  array2: number[] | Float64Array | number | Float32Array,
-): number[] | Float64Array {
+export function xAdd(array1: ArrayType, array2: ArrayType | number): ArrayType {
   let isConstant = false;
   let constant = 0;
   if (isAnyArray(array2)) {
