@@ -102,7 +102,7 @@ export * from './matrix/matrixZRescale';
 
 export * from './utils/createSequentialArray';
 
-export type ArrayType = number[] | Float64Array;
+export type ArrayType = number[] | Float64Array | Float32Array | Uint16Array;
 /**
  * @typedef {object} Zone
  * @property {number} from first value defining the zone
