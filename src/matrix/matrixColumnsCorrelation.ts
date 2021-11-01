@@ -11,9 +11,9 @@ import { xCorrelation } from '../x/xCorrelation';
 export function matrixColumnsCorrelation(A: ArrayType[]): ArrayType[] {
   let B: Matrix = new Matrix(A as number[][]);
   B = B.transpose();
-  let result: Float64Array[] | number[][] | Float32Array[] = [];
+  let result: ArrayType[] = [];
   for (let i = 0; i < B.rows; i++) {
-    (result as Float64Array[]).push(new Float64Array(B.rows));
+    result.push(new Float64Array(B.rows));
   }
   for (let i = 0; i < B.rows; i++) {
     for (let j = i; j < B.rows; j++) {
