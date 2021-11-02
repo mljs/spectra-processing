@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import fill from 'ml-array-sequential-fill';
-import SplineInterpolator from 'spline-interpolator';
 
 import { ArrayType, DataXY } from '..';
 
 import erfcinv from './erfcinv';
 import rayleighCdf from './rayleighCdf';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const SplineInterpolator = require('spline-interpolator');
 
 /**.
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
@@ -38,10 +41,9 @@ export function xNoiseSanPlot(
     fixOffset?: boolean;
     logBaseY?: number;
     considerList?: { from: number; step: number; to: number };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     fromTo?: any;
   } = {},
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): { positive: number; negative: number; snr: number; sanplot: any } {
   const {
     mask,
@@ -207,7 +209,7 @@ function determineCutOff(
     fixOffset?: boolean;
     logBaseY?: number;
     considerList?: { from: number; step: number; to: number };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     fromTo?: any;
   } = {},
 ): number {
@@ -281,7 +283,7 @@ function simpleNormInv(
     fixOffset?: boolean;
     logBaseY?: number;
     considerList?: { from: number; step: number; to: number };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     fromTo?: any;
   } = {},
 ): ArrayType | number {
@@ -363,13 +365,12 @@ function generateSanPlot(
     fixOffset?: boolean;
     logBaseY?: number;
     considerList?: { from: number; step: number; to: number };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     fromTo?: any;
   } = {},
 ) {
   const { fromTo, logBaseY = 2 } = options;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let sanplot: any = {};
   for (let key in fromTo) {
     let { from, to } = fromTo[key];
@@ -418,7 +419,7 @@ function scale(
     fixOffset?: boolean;
     logBaseY?: number;
     considerList?: { from: number; step: number; to: number };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     fromTo?: any;
   } = {},
 ): DataXY {
