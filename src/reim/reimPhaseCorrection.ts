@@ -1,12 +1,12 @@
 import { DataReIm } from '..';
 
-/**
+/**.
  * Phase correction filter
  *
- * @param {DataReIm } data Riem
- * @param {number} [phi0=0] - Angle in radians for zero order phase correction
- * @param {number} [phi1=0] - Angle in radians for first order phase correction
- * @returns {object} returns a new object {re:[], im:[]}
+ * @param data DataReIm
+ * @param [phi0=0] - Angle in radians for zero order phase correction
+ * @param [phi1=0] - Angle in radians for first order phase correction
+ * @returns returns a new object {re:[], im:[]}
  */
 export function reimPhaseCorrection(
   data: DataReIm,

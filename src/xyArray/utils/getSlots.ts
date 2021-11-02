@@ -1,9 +1,11 @@
 import { DataXY, OptionsType } from '../..';
 
 /**
- * @param {DataXY[]} spectra spectra
- * @param {OptionsType} options options
- * @returns {{from: number,to: number,average: number,sum: number,number: number}[]} result
+ * GetSlots.
+ *
+ * @param spectra - Spectra.
+ * @param options - Options.
+ * @returns Result.
  */
 export function getSlots(
   spectra: DataXY[],

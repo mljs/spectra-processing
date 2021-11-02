@@ -11,17 +11,17 @@ const defaultOptions = {
   factorNoise: 3,
 };
 
-/**
+/**.
  * Implementation of the algorithm for automatic phase correction: A robust, general automatic phase
  * correction algorithm for high-resolution NMR data. 10.1002/mrc.4586
  *
- * @param {object} data - { re, im } real and imaginary data.
- * @param {object} options -
- * @param {number} options.minRegSize - min number of points to auto phase a region.
- * @param {number} options.maxDistanceToJoin - max distance between regions (in number of points) to join two regions
- * @param {boolean} options.magnitudeMode - if true it uses magnitude spectrum.boolean
- * @param {number} options.factorNoise - scale the cutoff like factorStd * noiseLevel.
- * @returns { {data: DataReIm ; ph0: number; ph1: number} } return { Reim,number,number }
+ * @param data - { re, im } real and imaginary data.
+ * @param options -
+ * @param options.minRegSize - min number of points to auto phase a region.
+ * @param options.maxDistanceToJoin - max distance between regions (in number of points) to join two regions
+ * @param options.magnitudeMode - if true it uses magnitude spectrum.boolean
+ * @param options.factorNoise - scale the cutoff like factorStd * noiseLevel.
+ * @returns return { Reim,number,number }
  */
 export function reimAutoPhaseCorrection(
   data: DataReIm,
@@ -91,10 +91,12 @@ export function reimAutoPhaseCorrection(
 }
 
 /**
- * @param {ArrayType} re array of number
- * @param {ArrayType} im array of number
- * @param {number} x0 number
- * @returns {{ph0: number;area: number;x0: number}} region
+ * AutoPhaseRegion.
+ *
+ * @param re - Array of Number.
+ * @param im - Array of Number.
+ * @param x0 - Number.
+ * @returns Region.
  */
 function autoPhaseRegion(
   re: ArrayType,
@@ -139,8 +141,10 @@ function autoPhaseRegion(
 }
 
 /**
- * @param {number[]} s array of float
- * @returns {number[]} array of float
+ * Holoborodko.
+ *
+ * @param s - Array of float.
+ * @returns Array of float.
  */
 function holoborodko(s: ArrayType): ArrayType {
   let dk = new Float64Array(s.length);
@@ -164,13 +168,15 @@ function holoborodko(s: ArrayType): ArrayType {
 }
 
 /**
- * @param {number[]} s number array
- * @param {object} options options
- * @param {number} options.maxDistanceToJoin -
- * @param {number} options.magnitudeMode -
- * @param {number} options.factorNoise -
- * @param {number} options.minRegSize -
- * @returns {boolean[]} array of boolean
+ * RobustBaseLineRegionsDetection.
+ *
+ * @param s - Number array.
+ * @param options - Options.
+ * @param options.maxDistanceToJoin -
+ * @param options.magnitudeMode -
+ * @param options.factorNoise -
+ * @param options.minRegSize -
+ * @returns Array of boolean.
  */
 function robustBaseLineRegionsDetection(
   s: ArrayType,
@@ -222,10 +228,12 @@ function robustBaseLineRegionsDetection(
 }
 
 /**
- * @param {number[]} x array of number
- * @param {number[]} y array of number
- * @param {number[]} w array of number
- * @returns {number[]} array of number
+ * WeightedLinearRegression.
+ *
+ * @param x - Array of number.
+ * @param y - Array of number.
+ * @param w - Array of number.
+ * @returns Array of number.
  */
 function weightedLinearRegression(
   x: number[] | Float64Array,

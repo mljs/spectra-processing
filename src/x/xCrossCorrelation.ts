@@ -2,15 +2,15 @@ import { ArrayType } from '..';
 
 import { xDotProduct } from './xDotProduct';
 
-/**
+/**.
  * Calculates the cross-correlation between 2 vectors
  *
- * @param {ArrayType} [A] - fixed array
- * @param {ArrayType} [B] - sweeping array
- * @param {object} [options={}] Options
- * @param {number} [options.tau=1] - sweep increment size (in number of points, min=1, max=A.length)
- * @param {number} [options.lag=A.length - 1] - scalar lag parameter
- * @returns {ArrayType} results
+ * @param [A] - fixed array
+ * @param [B] - sweeping array
+ * @param [options={}] Options
+ * @param [options.tau=1] - sweep increment size (in number of points, min=1, max=A.length)
+ * @param [options.lag=A.length - 1] - scalar lag parameter
+ * @returns results
  */
 export function xCrossCorrelation(
   A: ArrayType,

@@ -2,12 +2,12 @@ import { ArrayType } from '..';
 
 import { xCheckLengths } from './xCheck';
 
-/**
+/**.
  * This function calculates the mean squared error
  *
- * @param {ArrayType} array1 -first array
- * @param {ArrayType} array2 second array
- * @returns {number} result
+ * @param array1 -first array
+ * @param array2 second array
+ * @returns result
  */
 export function xMeanSquaredError(
   array1: ArrayType,

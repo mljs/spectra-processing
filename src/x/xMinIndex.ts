@@ -2,11 +2,11 @@ import { ArrayType } from '..';
 
 import { xCheck } from './xCheck';
 
-/**
+/**.
  * Computes the index of the minimum of the given values
  *
- * @param {ArrayType} array array of numbers
- * @returns {number} result
+ * @param array array of numbers
+ * @returns result
  */
 export function xMinIndex(array: ArrayType): number {
   xCheck(array);

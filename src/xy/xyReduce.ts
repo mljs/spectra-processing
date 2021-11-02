@@ -4,20 +4,20 @@ import { zonesNormalize } from '../zones/zonesNormalize';
 
 import { xyCheck } from './xyCheck';
 
-/**
- * xyReduce the number of points while keeping visually the same noise. Practical to
+/**.
+ * XyReduce the number of points while keeping visually the same noise. Practical to
  * display many spectra as SVG. If you want a similar looking spectrum you should still however generate 4x the nbPoints that is being displayed.
  * SHOULD NOT BE USED FOR DATA PROCESSING !!!
  * You should rather use ml-xy-equally-spaced to make further processing
  *
- * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @param {object} [options={}] options
- * @param {number} [options.from=x[0]] number
- * @param {number} [options.to=x[x.length-1]] number
- * @param {number} [options.nbPoints=4001] Number of points
- * @param {number} [options.zones=[]] Array of zones to keep (from/to object)
- * @param {number} [options.optimize=false] If optimize we may have less than nbPoints at the end
- * @returns {DataXY} results
+ * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param [options={}] options
+ * @param [options.from=x[0]] number
+ * @param [options.to=x[x.length-1]] number
+ * @param [options.nbPoints=4001] Number of points
+ * @param [options.zones=[]] Array of zones to keep (from/to object)
+ * @param [options.optimize=false] If optimize we may have less than nbPoints at the end
+ * @returns results
  */
 export function xyReduce(
   data: DataXY,
@@ -103,9 +103,11 @@ export function xyReduce(
   return { x: newX, y: newY };
 
   /**
-   * @param {number} fromIndex from
-   * @param {number}  toIndex to
-   * @param {number} zoneNbPoints nbPoints
+   * AppendFromTo.
+   *
+   * @param fromIndex - From.
+   * @param  toIndex - To.
+   * @param zoneNbPoints - NbPoints.
    */
   function appendFromTo(
     fromIndex: number,

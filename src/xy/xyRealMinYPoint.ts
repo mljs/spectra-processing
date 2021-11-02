@@ -4,9 +4,11 @@ import { xGetTargetIndex } from '../x/xGetTargetIndex';
 import { xyCheck } from './xyCheck';
 
 /**
- * @param {DataXY} data Data
- * @param {object} options options
- * @returns {{ x: number; y: number; index: number }} results
+ * XyRealMinYPoint.
+ *
+ * @param data - Data.
+ * @param options - Options.
+ * @returns Results.
  */
 export function xyRealMinYPoint(
   data: DataXY,

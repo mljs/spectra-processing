@@ -1,10 +1,10 @@
 import { ArrayType, Info } from '..';
 
-/**
+/**.
  * This function xSubtract the first array by the second array or a constant value from each element of the first array
  *
- * @param {ArrayType} array - the array that will be rotated
- * @returns {Info} result
+ * @param array - the array that will be rotated
+ * @returns result
  */
 export function xBoxPlot(array: ArrayType): Info {
   array = array.slice(0).sort((a, b) => a - b);

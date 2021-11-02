@@ -2,11 +2,11 @@ import { isAnyArray } from 'is-any-array';
 
 import { ArrayType } from '..';
 
-/**
+/**.
  * Calculate a new array of the same size that is the cumulative values
  *
- * @param {ArrayType} array array
- * @returns {ArrayType} result
+ * @param array array
+ * @returns result
  */
 export function xCumulative(array: ArrayType): ArrayType {
   if (!isAnyArray(array)) {

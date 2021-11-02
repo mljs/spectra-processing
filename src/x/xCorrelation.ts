@@ -1,12 +1,12 @@
 import { ArrayType } from '..';
 
-/**
+/**.
  * Calculates the correlation between 2 vectors
  * https://en.wikipedia.org/wiki/Correlation_and_dependence
  *
- * @param {ArrayType} [A] - the array that will be rotated
- * @param {ArrayType} [B] sencond array
- * @returns {number} result
+ * @param [A] - the array that will be rotated
+ * @param [B] sencond array
+ * @returns result
  */
 export function xCorrelation(A: ArrayType, B: ArrayType): number {
   let n = A.length;

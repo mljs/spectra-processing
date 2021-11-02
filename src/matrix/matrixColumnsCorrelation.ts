@@ -2,11 +2,11 @@ import { Matrix } from 'ml-matrix';
 
 import { ArrayType } from '..';
 import { xCorrelation } from '../x/xCorrelation';
-/**
+/**.
  * Calculates a correlation matrix based on the columns of the initial matrix
  *
- * @param {ArrayType[]} [A] - matrix [rows][cols]
- * @returns {ArrayType[]} result
+ * @param [A] - matrix [rows][cols]
+ * @returns result
  */
 export function matrixColumnsCorrelation(A: ArrayType[]): ArrayType[] {
   let B: Matrix = new Matrix(A as [][]);

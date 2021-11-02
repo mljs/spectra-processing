@@ -1,10 +1,10 @@
 import { ArrayType } from '..';
 
-/**
+/**.
  * Get min and max of the absolute values of Z
  *
- * @param {ArrayType[]} [matrix] - matrix [rows][cols].
- * @returns {{ max?: number; min?: number }} results
+ * @param [matrix] - matrix [rows][cols].
+ * @returns results
  */
 export function matrixMinMaxAbsoluteZ(matrix: ArrayType[]): {
   min?: number;

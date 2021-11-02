@@ -2,12 +2,12 @@ import { isAnyArray } from 'is-any-array';
 
 import { ArrayType } from '..';
 
-/**
+/**.
  * This function xAdd the first array by the second array or a constant value to each element of the first array
  *
- * @param {ArrayType} array1 - the array that will be rotated
- * @param {ArrayType | number} array2 the second array
- * @returns {ArrayType} result
+ * @param array1 - the array that will be rotated
+ * @param array2 the second array
+ * @returns result
  */
 export function xAdd(array1: ArrayType, array2: ArrayType | number): ArrayType {
   let isConstant = false;

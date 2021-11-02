@@ -4,11 +4,13 @@ import { ArrayType, DataReIm } from '..';
 import { xRotate } from '../x/xRotate';
 
 /**
- * @param {DataReIm } data Reim
- * @param {object} options Options
- * @param {boolean} options.inverse -
- * @param {boolean} options.applyZeroShift -
- * @returns {DataReIm } Reim
+ * ReimFFT.
+ *
+ * @param data - DataReim.
+ * @param options - Options.
+ * @param options.inverse -
+ * @param options.applyZeroShift -
+ * @returns DataReim.
  */
 export function reimFFT(
   data: DataReIm,

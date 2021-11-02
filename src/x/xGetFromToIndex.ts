@@ -2,16 +2,16 @@ import { ArrayType } from '..';
 
 import { xFindClosestIndex } from './xFindClosestIndex';
 
-/**
+/**.
  * Returns an object with {fromIndex, toIndex} for a specific from / to
  *
- * @param {ArrayType} x array of numbers
- * @param {object} [options={}] Options
- * @param {number} [options.from] - First value for xyIntegration in the X scale
- * @param {number} [options.fromIndex=0] - First point for xyIntegration
- * @param {number} [options.to] - Last value for xyIntegration in the X scale
- * @param {number} [options.toIndex=x.length-1] - Last point for xyIntegration
- * @returns {{ fromIndex: number; toIndex: number }} result
+ * @param x array of numbers
+ * @param [options={}] Options
+ * @param [options.from] - First value for xyIntegration in the X scale
+ * @param [options.fromIndex=0] - First point for xyIntegration
+ * @param [options.to] - Last value for xyIntegration in the X scale
+ * @param [options.toIndex=x.length-1] - Last point for xyIntegration
+ * @returns result
  */
 export function xGetFromToIndex(
   x: ArrayType,

@@ -1,15 +1,15 @@
 import { Zone } from '../index';
 
-/**
- * Normalize an array of zones:
+/**.
+ * Normalize an array of zones :
  * - ensure than from < to
  * - merge overlapping zones
  *
- * @param {Array<Zone>} [zones=[]] array of zones
- * @param {object} [options={}] Options
- * @param {number} options.from -
- * @param {number} options.to -
- * @returns {Array<Zone>} array of{to: number,from: number}
+ * @param [zones=[]] array of zones
+ * @param [options={}] Options
+ * @param options.from -
+ * @param options.to -
+ * @returns array of{to: number,from: number}
  */
 export function zonesNormalize(
   zones: Zone[] = [],

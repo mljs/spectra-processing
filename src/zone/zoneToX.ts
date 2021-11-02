@@ -1,9 +1,11 @@
 import { Zone } from '..';
 
 /**
- * @param {Zone} zone Zone
- * @param {number} size size
- * @returns {Array<Float64Array>} Array of float
+ * ZoneToX.
+ *
+ * @param zone - Zone.
+ * @param size - Size.
+ * @returns Array of float.
  */
 export function zoneToX(zone: Zone, size: number): Float64Array {
   const { from, to } = zone;

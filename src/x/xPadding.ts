@@ -2,15 +2,15 @@ import { ArrayType } from '..';
 
 import { xCheck } from './xCheck';
 
-/**
+/**.
  * This function pads an array
  *
- * @param {ArrayType} array - the array that will be padded
- * @param {{size?: number;value?: number;algorithm?: string}} [options={}] options
- * @param {string} [options.algorithm=''] '', value, circular, duplicate
- * @param {number} [options.size=0] padding size before first element and after last element
- * @param {number} [options.value=0] value to use for padding (if algorithm='value')
- * @returns {ArrayType} result
+ * @param array - the array that will be padded
+ * @param [options={}] options
+ * @param [options.algorithm=''] '', value, circular, duplicate
+ * @param [options.size=0] padding size before first element and after last element
+ * @param [options.value=0] value to use for padding (if algorithm='value')
+ * @returns result
  */
 export function xPadding(
   array: ArrayType,

@@ -2,14 +2,14 @@ import { ArrayType } from '..';
 
 import { xFindClosestIndex } from './xFindClosestIndex';
 
-/**
+/**.
  *  Returns the targetIndex
  *
- * @param {ArrayType} [x] array of numbers
- * @param {object} [options={}] options
- * @param {number} [options.target] target
- * @param {number} [options.targetIndex=0] targetindex
- *@returns {number} results
+ * @param [x] array of numbers
+ * @param [options={}] options
+ * @param [options.target] target
+ * @param [options.targetIndex=0] targetindex
+ *@returns results
  */
 export function xGetTargetIndex(
   x: ArrayType,

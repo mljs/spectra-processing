@@ -2,17 +2,14 @@ import { ArrayType } from '..';
 
 import { xCheck } from './xCheck';
 
-/**
+/**.
  * Calculate the sum of the values
  *
- */
-
-/**
- * @param {ArrayType} [array={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @param {{ fromIndex?: number; toIndex?: number }} [options={}] options
- * @param {number} [options.fromIndex=0] - First point for xSum
- * @param {number} [options.toIndex=x.length-1] - Last point for xSum
- * @returns {number} xSum value on the specified range
+ * @param [array={}] - Object that contains property x (an ordered increasing array) and y (an array).
+ * @param [options={}] - Options.
+ * @param [options.fromIndex=0] - First point for xSum.
+ * @param [options.toIndex=x.length-1] - Last point for xSum.
+ * @returns XSum value on the specified range.
  */
 export function xSum(
   array: ArrayType,

@@ -3,9 +3,9 @@ import { DataXReIm } from '..';
 /**
  * This function make a zero filling to re and im part.
  *
- * @param {DataXReIm} data Object of kind {x:[], re:[], im:[]}.
- * @param {number} totalLength - final number of points
- * @returns {DataXReIm} Data
+ * @param data - Object of kind {x:[], re:[], im:[]}.
+ * @param totalLength - Final number of points.
+ * @returns Data.
  */
 export function xreimZeroFilling(
   data: DataXReIm,

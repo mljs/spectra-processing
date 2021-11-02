@@ -108,9 +108,11 @@ const Q5 = [
 ];
 
 /**
- * @param {number[]} c array of number
- * @param {number} x number
- * @returns {number} number
+ * Polyval.
+ *
+ * @param c - Array of Number.
+ * @param x - Number.
+ * @returns Number.
  */
 function polyval(c: number[], x: number): number {
   let p = 0;
@@ -124,12 +126,12 @@ function polyval(c: number[], x: number): number {
  * Calculates a rational approximation.
  *
  * @private
- * @param {number} x number
- * @param {number} v number
- * @param {Array} P - array of polynomial coefficients
- * @param {Array} Q - array of polynomial coefficients
- * @param {number} Y number
- * @returns {number} rational approximation
+ * @param x - Number.
+ * @param v - Number.
+ * @param P - Array of polynomial coefficients.
+ * @param Q - Array of polynomial coefficients.
+ * @param Y - Number.
+ * @returns Rational approximation.
  */
 function calc(
   x: number,
@@ -147,8 +149,8 @@ function calc(
  * Evaluates the complementary inverse error function for an input value.
  *
  * @private
- * @param {number} x - input value
- * @returns {number} evaluated complementary inverse error function
+ * @param x - Input value.
+ * @returns Evaluated complementary inverse error function.
  */
 export default function erfcinv(x: number): number {
   let sign = false;

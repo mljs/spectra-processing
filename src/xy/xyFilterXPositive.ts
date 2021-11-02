@@ -1,11 +1,11 @@
 import { ArrayType, DataXY, DataXYZ } from '..';
 
 import { xyCheck } from './xyCheck';
-/**
+/**.
  * Filter out all the points for which x <= 0. Useful to display log scale data
  *
- * @param {DataXYZ} [data={}] data
- * @returns {DataXY} An object with the filtered data
+ * @param [data={}] data
+ * @returns An object with the filtered data
  */
 export function xyFilterXPositive(data: DataXYZ = {}): DataXY {
   xyCheck(data);

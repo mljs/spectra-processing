@@ -1,17 +1,17 @@
 import { DataXY } from '..';
 
-/**
- * xyAlign will align data of two spectra by verifying wether x values are in a certain range (`delta`).
+/**.
+ * XyAlign will align data of two spectra by verifying wether x values are in a certain range (`delta`).
  * The two spectra should not have two consecutive x values which difference is
  * smaller than `delta` to achieve good results!
  *
- * @param {DataXY} data1 First spectrum data
- * @param {DataXY} data2 Second spectrum data
- * @param {object} [options={}] Options
- * @param {((arg: number) => number) | number} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
- * @param {boolean} [options.common=true] If `true`, only the data considered as common to both spectra is kept. If `false`, the data y arrays are completed with zeroes where no common values are found
- * @param {string} [options.x='x1'] Defines what x values should be kept (`x1` : spectrum 1 x values, `x2` spectrum 2 x values, `weighted`: weighted average of both spectra x values)
- * @returns {{x: number[];y1: number[];y2: number[]}} result
+ * @param data1 First spectrum data
+ * @param data2 Second spectrum data
+ * @param [options={}] Options
+ * @param [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+ * @param [options.common=true] If `true`, only the data considered as common to both spectra is kept. If `false`, the data y arrays are completed with zeroes where no common values are found
+ * @param [options.x='x1'] Defines what x values should be kept (`x1` : spectrum 1 x values, `x2` spectrum 2 x values, `weighted`: weighted average of both spectra x values)
+ * @returns result
  */
 export function xyAlign(
   data1: DataXY,

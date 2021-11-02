@@ -3,21 +3,21 @@ import { Point } from '..';
 import { xyObjectMaxXPoint } from './xyObjectMaxXPoint';
 import { xyObjectMinXPoint } from './xyObjectMinXPoint';
 
-/**
+/**.
  * Filter the array by taking the higher points (max y value) and only
  * keep one per slot.
  * There are 2 different slots, the smallest one will have the
  * new property `close` to true
  *
- * @param {Point[]} points - array of all the points
- * @param {object} [options={}] Options
- * @param {number} [options.from] - min X value of the window to consider
- * @param {number} [options.to] - max X value of the window to consider
- * @param {number} [options.limit=20] - max number of points
- * @param {number} [options.threshold=0.01] - minimal intensity compare to more intense point
- * @param {number} [options.numberSlots=10] - define the number of slots and indirectly the slot width
- * @param {number} [options.numberCloseSlots=50] numberCloseSlots
- * @returns {Array<Point>} - copy of points with 'close' property
+ * @param points - array of all the points
+ * @param [options={}] Options
+ * @param [options.from] - min X value of the window to consider
+ * @param [options.to] - max X value of the window to consider
+ * @param [options.limit=20] - max number of points
+ * @param [options.threshold=0.01] - minimal intensity compare to more intense point
+ * @param [options.numberSlots=10] - define the number of slots and indirectly the slot width
+ * @param [options.numberCloseSlots=50] numberCloseSlots
+ * @returns - copy of points with 'close' property
  */
 export function xyObjectBestPoints(
   points: Point[],

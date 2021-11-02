@@ -5,8 +5,8 @@ import { xyCheck } from './xyCheck';
 /**
  * Filters x,y values to allow strictly growing values in x axis.
  *
- * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @returns {DataXY} result
+ * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array).
+ * @returns Result.
  */
 export function xyEnsureGrowingX(data: DataXYZ = {}): DataXY {
   xyCheck(data);

@@ -6,13 +6,14 @@ import { getSlots } from './utils/getSlots';
 export interface OptionsType {
   delta?: ((arg: number) => number) | number;
 }
-/**
+/**.
  * Aligns spectra
  *
- * @param {Array<DataXY>} spectra spectra
- * @param {OptionsType} [options={}] Options
- * @param {number | Function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
- * @returns {{x:ArrayType, ys:ArrayType[]}} {x:[], ys:[[]]}
+ * @param spectra spectra
+ * @param [options={}] Options
+ * @param [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+ * @returns Result
+
  */
 export function xyArrayAlign(
   spectra: DataXY[],

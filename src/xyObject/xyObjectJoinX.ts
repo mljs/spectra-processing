@@ -2,10 +2,12 @@ import { Point } from '..';
 
 /**
  *
- * @param {Array<Point>} [points] array of growing points {x,y}
- * @param {{xError: number}} [options={}] Options
- * @param {number} [options.xError=Number.EPSILON] limit to join the data
- * @returns {Point[]} Results
+ * xyObjectJoinX.
+ *
+ * @param [points] - Array of growing points {x,y}.
+ * @param [options={}] - Options.
+ * @param [options.xError=Number.EPSILON] - Limit to join the data.
+ * @returns Results.
  */
 export function xyObjectJoinX(
   points: Point[],

@@ -6,9 +6,9 @@ import { xyCheck } from './xyCheck';
  * If the values are equal the middle
  * of the equal part will be the position of the signal!
  *
- * @param {DataXYZ} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @param {{}} _options options
- * @returns {Array} Array of points
+ * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array).
+ * @param _options - Options.
+ * @returns Array of points.
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function xyMaximaY(data: DataXYZ = {}, _options = {}) {

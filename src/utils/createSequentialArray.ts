@@ -1,13 +1,13 @@
 import { ArrayType } from '..';
 
-/**
+/**.
  * Create an array with sequential numbers between from and to of length
  *
- * @param {object} options Options
- * @param {number} [options.from=0] from
- * @param {number} [options.to=1] to
- * @param {number} [options.length=1001] length
- * @returns {ArrayType} array of floats
+ * @param options Options
+ * @param [options.from=0] from
+ * @param [options.to=1] to
+ * @param [options.length=1001] length
+ * @returns array of floats
  */
 export function createSequentialArray(
   options: {

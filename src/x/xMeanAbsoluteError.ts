@@ -1,12 +1,12 @@
 import { ArrayType } from '..';
 
 import { xCheckLengths } from './xCheck';
-/**
+/**.
  * This function calculates the mean absolute error
  *
- * @param {ArrayType} array1 -first array
- * @param {ArrayType} array2 second array
- * @returns {number} result
+ * @param array1 -first array
+ * @param array2 second array
+ * @returns result
  */
 export function xMeanAbsoluteError(
   array1: ArrayType,

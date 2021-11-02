@@ -1,10 +1,10 @@
 import { ArrayType } from '..';
 
-/**
+/**.
  * Center mean of columns
  *
- * @param {ArrayType[]} [matrix] - matrix [rows][cols].
- * @returns {ArrayType[]} result
+ * @param [matrix] - matrix [rows][cols].
+ * @returns result
  */
 export function matrixCenterZMean(matrix: ArrayType[]): ArrayType[] {
   const nbRows = matrix.length;

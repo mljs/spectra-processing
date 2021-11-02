@@ -2,10 +2,12 @@ import { DataXY, OptionsType } from '../..';
 import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
 
 /**
- * @param {DataXY[]} spectra spectra
- * @param {object} options options
- * @param {((arg: number) => number) | number } options.delta delta
- * @returns {{ from: number; to: number; value: number }[]} result
+ * GetSlotsToFirst.
+ *
+ * @param spectra - Spectra.
+ * @param options - Options.
+ * @param options.delta - Delta.
+ * @returns Result.
  */
 export function getSlotsToFirst(
   spectra: DataXY[],

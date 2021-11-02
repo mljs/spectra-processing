@@ -3,14 +3,14 @@ import { DataXY } from '..';
 import { xyCheck } from './xyCheck';
 import { xySortX } from './xySortX';
 
-/**
+/**.
  * Ensure x values are unique
  *
- * @param {DataXY} [data] Object that contains property x (Array) and y (Array)
- * @param {object} [options={}] Object containing a property algorithm (can be 'sum' or 'average', the latter being the default value), and a property isSorted (boolean indicating if the x-array is sorted).
- * @param {string} [options.algorithm='average'] either 'average' or 'sum'
- * @param {boolean} [options.isSorted=true] if false the DataXY has to be sorted first
- * @returns {DataXY} result
+ * @param [data] Object that contains property x (Array) and y (Array)
+ * @param [options={}] Object containing a property algorithm (can be 'sum' or 'average', the latter being the default value), and a property isSorted (boolean indicating if the x-array is sorted).
+ * @param [options.algorithm='average'] either 'average' or 'sum'
+ * @param [options.isSorted=true] if false the DataXY has to be sorted first
+ * @returns result
  */
 export function xyUniqueX(
   data: DataXY,
@@ -35,8 +35,10 @@ export function xyUniqueX(
 }
 
 /**
- * @param {DataXY} data input
- * @returns {DataXY} result
+ * Average.
+ *
+ * @param data - Input.
+ * @returns Result.
  */
 function average(data: DataXY): DataXY {
   let x = [];
@@ -59,8 +61,10 @@ function average(data: DataXY): DataXY {
 }
 
 /**
- * @param {DataXY} data input
- * @returns {DataXY} result
+ * Sum.
+ *
+ * @param data - Input.
+ * @returns Result.
  */
 function sum(data: DataXY) {
   let x = [];

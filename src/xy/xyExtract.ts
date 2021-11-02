@@ -3,13 +3,13 @@ import { zonesNormalize } from '../zones/zonesNormalize';
 
 import { xyCheck } from './xyCheck';
 
-/**
- * xyExtract zones from a XY data
+/**.
+ * XyExtract zones from a XY data
  *
- * @param {DataXYZ} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @param {{ zones?: Zone[] }} [options={}] options
- * @param {Zone[]} [options.zones=[]] zones
- * @returns {DataXY} Array of points
+ * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param [options={}] options
+ * @param [options.zones=[]] zones
+ * @returns Array of points
  */
 export function xyExtract(
   data: DataXYZ = {},

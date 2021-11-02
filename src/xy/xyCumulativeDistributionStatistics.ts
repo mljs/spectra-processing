@@ -7,11 +7,11 @@ import { xyCheck } from './xyCheck';
 import { xyMaxYPoint } from './xyMaxYPoint';
 
 const STEPS = [0.25, 0.5, 0.75];
-/**
+/**.
  * Cumulative Distribution Statistics
  *
- * @param {DataXY} [data] array of points {x,y}
- * @returns {object} x0, x25, x50, x75, x100, mode (x for maxY)
+ * @param [data] array of points {x,y}
+ * @returns x0, x25, x50, x75, x100, mode (x for maxY)
  */
 export function xyCumulativeDistributionStatistics(data: DataXY) {
   xyCheck(data);

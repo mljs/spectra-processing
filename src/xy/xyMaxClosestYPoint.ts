@@ -3,14 +3,14 @@ import { xFindClosestIndex } from '../x/xFindClosestIndex';
 
 import { xyCheck } from './xyCheck';
 
-/**
+/**.
  * Find the closest maximum going up hill
  *
- * @param {DataXY} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @param {object} [options={}] options
- * @param {number} [options.target] number
- * @param {number} [options.targetIndex=0] number
- * @returns {{x,y,index}} An object with the x/y value
+ * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param [options={}] options
+ * @param [options.target] number
+ * @param [options.targetIndex=0] number
+ * @returns An object with the x/y value
  */
 export function xyMaxClosestYPoint(
   data: DataXY,

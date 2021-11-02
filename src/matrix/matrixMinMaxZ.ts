@@ -1,10 +1,10 @@
 import { ArrayType } from '..';
 
-/**
+/**.
  * Get min and max Z
  *
- * @param {ArrayType[]} [matrix] - matrix [rows][cols].
- * @returns {{ max?: number; min?: number }} result
+ * @param [matrix] - matrix [rows][cols].
+ * @returns result
  */
 export function matrixMinMaxZ(matrix: ArrayType[]): {
   max?: number;

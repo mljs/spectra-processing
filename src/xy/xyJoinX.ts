@@ -1,14 +1,14 @@
 import { DataXY, DataXYZ, OptionsType } from '..';
 
 import { xyCheck } from './xyCheck';
-/**
+/**.
  * Join x / y values when difference in X is closer than delta.
  * When joining, y values are summed and x values are weighted average
  *
- * @param {DataXYZ} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @param {object} [options={}] Options
- * @param {number | Function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
- * @returns {DataXY} An object with the xyIntegration function
+ * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param [options={}] Options
+ * @param [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+ * @returns An object with the xyIntegration function
  */
 export function xyJoinX(data: DataXYZ = {}, options: OptionsType = {}): DataXY {
   xyCheck(data);

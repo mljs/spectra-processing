@@ -105,8 +105,8 @@ export * from './utils/createSequentialArray';
 export type ArrayType = number[] | Float64Array | Float32Array | Uint16Array;
 /**
  * @typedef {object} Zone
- * @property {number} from first value defining the zone
- * @property {number} to last value defining the zone
+ * @property {number} from First value defining the zone.
+ * @property {number} to Last value defining the zone.
  */
 
 export interface Zone {
@@ -118,8 +118,8 @@ export interface Zone {
 }
 /**
  * @typedef {object} Point
- * @property {number} x value of the x coordinate
- * @property {number} y value of the y coordinate
+ * @property {number} x Value of the x coordinate.
+ * @property {number} y Value of the y coordinate.
  */
 export interface Point {
   x: number;
@@ -134,8 +134,8 @@ export interface DataXReIm {
 }
 /**
  * @typedef {object} DataReIm
- * @property {ArrayType} re Array of re values
- * @property {ArrayType} im Array of im values
+ * @property {ArrayType} re Array of re values.
+ * @property {ArrayType} im Array of im values.
  */
 export interface DataReIm {
   re: ArrayType;
@@ -151,8 +151,8 @@ export interface Info {
 }
 /**
  * @typedef {object} DataXY
- * @property {Array<number>} x Array of x values
- * @property {Array<number>} y Array of y values
+ * @property {Array<number>} x Array of x values.
+ * @property {Array<number>} y Array of y values.
  */
 export interface DataXY {
   x: ArrayType;

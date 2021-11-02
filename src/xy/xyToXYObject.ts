@@ -3,9 +3,10 @@ import { DataXY, Point } from '..';
 import { xyCheck } from './xyCheck';
 
 /**
+ *XyToXYObject.
  *
- * @param {DataXY} [data] array of points {x,y}
- * @returns {Point[]} results
+ * @param [data] - Array of points {x,y}.
+ * @returns Results.
  */
 export function xyToXYObject(data: DataXY): Point[] {
   xyCheck(data);

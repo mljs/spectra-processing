@@ -2,12 +2,11 @@ import { ArrayType } from '..';
 
 import { xCheck } from './xCheck';
 
-/**
-import { xCheck } from './xCheck';
- * return min and max values of an array
+/**.
+ * Return min and max values of an array
  *
- * @param {ArrayType} array array of number
- * @returns { {min: number,max: number}} Object with 2 properties, min and max
+ * @param array array of number
+ * @returns Object with 2 properties, min and max
  */
 export function xMinMaxValues(array: ArrayType): {
   min: number;

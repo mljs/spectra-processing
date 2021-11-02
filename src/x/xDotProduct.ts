@@ -3,9 +3,11 @@ import { ArrayType } from '..';
 import { xMultiply } from './xMultiply';
 
 /**
- * @param {ArrayType} A first array
- * @param {ArrayType} B second array
- * @returns {number} result
+ * XDotProduct.
+ *
+ * @param A - First array.
+ * @param B - Second array.
+ * @returns Result.
  */
 export function xDotProduct(A: ArrayType, B: ArrayType): number {
   let g = xMultiply(A, B);

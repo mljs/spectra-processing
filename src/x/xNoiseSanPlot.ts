@@ -8,25 +8,25 @@ import rayleighCdf from './rayleighCdf';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const SplineInterpolator = require('spline-interpolator');
 
-/**
+/**.
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
  *
- * @param {ArrayType} data - real or magnitude spectra data.
- * @param {object} [options = {}] options
- * @param {ArrayType} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
- * @param {number} [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
- * @param {number} [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
- * @param {number} [options.factorStd=5] - factor times std to determine what will be marked as signals.
- * @param {boolean} [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
- * @param {boolean} [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
- * @param {number} [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
- * @param {boolean} options.magnitudeMode -
- * @param {object} options.considerList -
- * @param {number} options.considerList.from -
- * @param {number} options.considerList.step -
- * @param {number} options.considerList.to -
- * @param {number} options.fromTo -
- * @returns {{ positive: number; negative: number; snr: number; sanplot: any }} result
+ * @param data - real or magnitude spectra data.
+ * @param [options = {}] options
+ * @param [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+ * @param [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
+ * @param [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+ * @param [options.factorStd=5] - factor times std to determine what will be marked as signals.
+ * @param [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
+ * @param [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
+ * @param [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
+ * @param options.magnitudeMode -
+ * @param options.considerList -
+ * @param options.considerList.from -
+ * @param options.considerList.step -
+ * @param options.considerList.to -
+ * @param options.fromTo -
+ * @returns result
  */
 export function xNoiseSanPlot(
   data: ArrayType,
@@ -178,22 +178,24 @@ export function xNoiseSanPlot(
 }
 
 /**
- * @param {number[]} signPositive array of numbers
- * @param {object} [options = {}] options
- * @param {ArrayType} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
- * @param {number} [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
- * @param {number} [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
- * @param {number} [options.factorStd=5] - factor times std to determine what will be marked as signals.
- * @param {boolean} [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
- * @param {boolean} [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
- * @param {number} [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
- * @param {boolean} options.magnitudeMode -
- * @param {object} options.considerList -
- * @param {number} options.considerList.from -
- * @param {number} options.considerList.step -
- * @param {number} options.considerList.to -
- * @param {number} options.fromTo -
- * @returns {number} result
+ * DetermineCutOff.
+ *
+ * @param signPositive - Array of numbers.
+ * @param [options = {}] - Options.
+ * @param [options.mask] - Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+ * @param [options.scaleFactor=1] - Factor to scale the data input[i]*=scaleFactor.
+ * @param [options.cutOff] - Percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+ * @param [options.factorStd=5] - Factor times std to determine what will be marked as signals.
+ * @param [options.refine=true] - If true the noise level will be recalculated get out the signals using factorStd.
+ * @param [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. If true, the distribution will be centered.
+ * @param [options.logBaseY=2] - Log scale to apply in the intensity axis in order to avoid big numbers.
+ * @param options.magnitudeMode -
+ * @param options.considerList -
+ * @param options.considerList.from -
+ * @param options.considerList.step -
+ * @param options.considerList.to -
+ * @param options.fromTo -
+ * @returns Result.
  */
 function determineCutOff(
   signPositive: ArrayType,
@@ -250,22 +252,24 @@ function determineCutOff(
 }
 
 /**
- * @param {ArrayType |number} data data array
- * @param {object} [options = {}] options
- * @param {ArrayType} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
- * @param {number} [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
- * @param {number} [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
- * @param {number} [options.factorStd=5] - factor times std to determine what will be marked as signals.
- * @param {boolean} [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
- * @param {boolean} [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
- * @param {number} [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
- * @param {boolean} options.magnitudeMode -
- * @param {object} options.considerList -
- * @param {number} options.considerList.from -
- * @param {number} options.considerList.step -
- * @param {number} options.considerList.to -
- * @param {number} options.fromTo -
- * @returns {number[]} result
+ * SimpleNormInvs.
+ *
+ * @param data - Data array.
+ * @param [options = {}] - Options.
+ * @param [options.mask] - Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+ * @param [options.scaleFactor=1] - Factor to scale the data input[i]*=scaleFactor.
+ * @param [options.cutOff] - Percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+ * @param [options.factorStd=5] - Factor times std to determine what will be marked as signals.
+ * @param [options.refine=true] - If true the noise level will be recalculated get out the signals using factorStd.
+ * @param [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. If true, the distribution will be centered.
+ * @param [options.logBaseY=2] - Log scale to apply in the intensity axis in order to avoid big numbers.
+ * @param options.magnitudeMode -
+ * @param options.considerList -
+ * @param options.considerList.from -
+ * @param options.considerList.step -
+ * @param options.considerList.to -
+ * @param options.fromTo -
+ * @returns Result.
  */
 function simpleNormInv(
   data: ArrayType | number,
@@ -314,10 +318,12 @@ function simpleNormInv(
 }
 
 /**
- * @param {number} from from
- * @param {number} to to
- * @param {number} step step
- * @returns {ArrayType} array of results
+ * CreateArray.
+ *
+ * @param from - From.
+ * @param to - To.
+ * @param step - Step.
+ * @returns Array of results.
  */
 function createArray(from: number, to: number, step: number): ArrayType {
   let result = new Array(Math.abs((from - to) / step + 1));
@@ -328,22 +334,24 @@ function createArray(from: number, to: number, step: number): ArrayType {
 }
 
 /**
- * @param {number[]} array array
- * @param {object} [options = {}] options
- * @param {ArrayType} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
- * @param {number} [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
- * @param {number} [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
- * @param {number} [options.factorStd=5] - factor times std to determine what will be marked as signals.
- * @param {boolean} [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
- * @param {boolean} [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
- * @param {number} [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
- * @param {boolean} options.magnitudeMode -
- * @param {object} options.considerList -
- * @param {number} options.considerList.from -
- * @param {number} options.considerList.step -
- * @param {number} options.considerList.to -
- * @param {number} options.fromTo -
- * @returns {any} results
+ * GenerateSanPlot.
+ *
+ * @param array - Array.
+ * @param [options = {}] - Options.
+ * @param [options.mask] - Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+ * @param [options.scaleFactor=1] - Factor to scale the data input[i]*=scaleFactor.
+ * @param [options.cutOff] - Percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+ * @param [options.factorStd=5] - Factor times std to determine what will be marked as signals.
+ * @param [options.refine=true] - If true the noise level will be recalculated get out the signals using factorStd.
+ * @param [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. If true, the distribution will be centered.
+ * @param [options.logBaseY=2] - Log scale to apply in the intensity axis in order to avoid big numbers.
+ * @param options.magnitudeMode -
+ * @param options.considerList -
+ * @param options.considerList.from -
+ * @param options.considerList.step -
+ * @param options.considerList.to -
+ * @param options.fromTo -
+ * @returns Results.
  */
 function generateSanPlot(
   array: ArrayType,
@@ -381,22 +389,24 @@ function generateSanPlot(
 }
 
 /**
- * @param {number[]} array array
- * @param {object} [options = {}] options
- * @param {Array} [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
- * @param {number} [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
- * @param {number} [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
- * @param {number} [options.factorStd=5] - factor times std to determine what will be marked as signals.
- * @param {boolean} [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
- * @param {boolean} [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
- * @param {number} [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
- * @param {boolean} options.magnitudeMode -
- * @param {object} options.considerList -
- * @param {number} options.considerList.from -
- * @param {number} options.considerList.step -
- * @param {number} options.considerList.to -
- * @param {number} options.fromTo -
- * @returns {{ x: number[];y: number[]}} results
+ * Scale.
+ *
+ * @param array - Array.
+ * @param [options = {}] - Options.
+ * @param [options.mask] - Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+ * @param [options.scaleFactor=1] - Factor to scale the data input[i]*=scaleFactor.
+ * @param [options.cutOff] - Percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+ * @param [options.factorStd=5] - Factor times std to determine what will be marked as signals.
+ * @param [options.refine=true] - If true the noise level will be recalculated get out the signals using factorStd.
+ * @param [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. If true, the distribution will be centered.
+ * @param [options.logBaseY=2] - Log scale to apply in the intensity axis in order to avoid big numbers.
+ * @param options.magnitudeMode -
+ * @param options.considerList -
+ * @param options.considerList.from -
+ * @param options.considerList.step -
+ * @param options.considerList.to -
+ * @param options.fromTo -
+ * @returns Results.
  */
 function scale(
   array: ArrayType,

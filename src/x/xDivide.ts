@@ -2,12 +2,12 @@ import { isAnyArray } from 'is-any-array';
 
 import { ArrayType } from '..';
 
-/**
+/**.
  * This function divide the first array by the second array or a constant value to each element of the first array
  *
- * @param {ArrayType} array1 - the array that will be rotated
- * @param {ArrayType | number} array2 second array or number
- * @returns {Array} result
+ * @param array1 - the array that will be rotated
+ * @param array2 second array or number
+ * @returns result
  */
 export function xDivide(array1: ArrayType, array2: ArrayType | number) {
   let isConstant = false;

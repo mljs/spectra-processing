@@ -1,11 +1,13 @@
 import { Point } from '..';
 
-/**
+/**.
  *
- * @param {Point[]} [points] array of growing points {x,y}
- * @param {{slotWidth?: number}} [options={}] Options
- * @param {number} [options.slotWidth=1] limit to join the dataPoints[]
- * @returns {Point[]} result
+ * XyObjectSlotX
+ *
+ * @param [points] - Array of growing points {x,y}.
+ * @param [options={}] - Options.
+ * @param [options.slotWidth=1] - Limit to join the dataPoints[].
+ * @returns Result.
  */
 export function xyObjectSlotX(
   points: Point[],

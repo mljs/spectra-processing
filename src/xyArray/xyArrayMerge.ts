@@ -2,14 +2,14 @@ import { DataXY, OptionsType } from '..';
 import { xyJoinX } from '../xy/xyJoinX';
 
 import { getSlots } from './utils/getSlots';
-/**
+/**.
  * Merge DataXY
  * We have an array of DataXY and the goal is to merge all the values that are the closest possible
  *
- * @param {Array<DataXY>} spectra Spectra
- * @param {OptionsType} [options={}] Options
- * @param {number | Function} [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
- * @returns {DataXY} result
+ * @param spectra Spectra
+ * @param [options={}] Options
+ * @param [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+ * @returns result
  */
 export function xyArrayMerge(
   spectra: DataXY[],

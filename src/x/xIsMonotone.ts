@@ -1,10 +1,10 @@
 import { ArrayType } from '..';
 
-/**
+/**.
  * Returns true if x is monotone
  *
- * @param {ArrayType} array array of numbers
- * @returns {boolean} result
+ * @param array array of numbers
+ * @returns result
  */
 export function xIsMonotone(array: ArrayType): boolean {
   if (array.length <= 2) {

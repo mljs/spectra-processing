@@ -3,8 +3,8 @@ import { xFindClosestIndex } from '../x/xFindClosestIndex';
 
 import { xyCheck } from './xyCheck';
 
-/**
- * Returns an information about a signal
+/**.
+ * Returns an information about a signal.
  *
  * We expect ordered data and equidistant X axis
  * You can use the method helper if required:
@@ -12,11 +12,11 @@ import { xyCheck } from './xyCheck';
  * ML.ArrayPoints.sortX
  * ML.ArrayPoints.equallySpaced
  *
- * @param {DataXYZ} [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @param {object} [options={}] options
- * @param {number} [options.target] number
- * @param {number} [options.targetIndex] number
- * @returns {object} Information about signal
+ * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param [options={}] options
+ * @param [options.target] number
+ * @param [options.targetIndex] number
+ * @returns Information about signal
  */
 export function xyPeakInfo(
   data: DataXYZ = {},

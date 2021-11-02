@@ -1,7 +1,9 @@
 /**
- * @param {number} x number
- * @param {number} sigma number
- * @returns {number} number
+ * RayleighCdf.
+ *
+ * @param x - Number.
+ * @param sigma - Number.
+ * @returns Number.
  */
 export default function rayleighCdf(x: number, sigma = 1): number {
   if (x < 0) {

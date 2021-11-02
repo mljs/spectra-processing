@@ -1,11 +1,11 @@
 import { ArrayType } from '..';
 
-/**
+/**.
  * This function calculate the norm of a vector
  *
  * @example xNorm([3, 4]) -> 5
- * @param {ArrayType} array - the array that will be rotated
- * @returns {number} calculated norm
+ * @param array - the array that will be rotated
+ * @returns calculated norm
  */
 export function xNorm(array: ArrayType): number {
   let result = 0;

@@ -1,13 +1,13 @@
 import { ArrayType } from '..';
 
-/**
+/**.
  * Rescale columns
  *
- * @param {ArrayType[]} [matrix] - matrix [rows][cols].
- * @param {object} [options={}] Options
- * @param {object} [options.min=0] min
- * @param {object} [options.max=1] max
- * @returns {number[][]} result
+ * @param [matrix] - matrix [rows][cols].
+ * @param [options={}] Options
+ * @param [options.min=0] min
+ * @param [options.max=1] max
+ * @returns result
  */
 export function matrixZRescale(
   matrix: ArrayType[],

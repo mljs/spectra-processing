@@ -1,10 +1,10 @@
 import { DataXY } from '..';
-/**
+/**.
  * Order object of array, x has to be monotone.
  * Ensure x is growing
  *
- * @param {DataXY} data Object of kind {x:[], y:[]}.
- * @returns {DataXY} result
+ * @param data Object of kind {x:[], y:[]}.
+ * @returns result
  */
 export function xyGrowingX(data: DataXY): DataXY {
   const { x, y } = data;

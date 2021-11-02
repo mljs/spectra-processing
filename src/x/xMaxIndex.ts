@@ -1,11 +1,11 @@
 import { ArrayType } from '..';
 
 import { xCheck } from './xCheck';
-/**
+/**.
  * Computes the index of the maximum of the given values
  *
- * @param {ArrayType} array array of numbers
- * @returns {number} indexe
+ * @param array array of numbers
+ * @returns indexe
  */
 export function xMaxIndex(array: ArrayType): number {
   xCheck(array);

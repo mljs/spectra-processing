@@ -1,10 +1,10 @@
 import { ArrayType } from '..';
 
-/**
+/**.
  * This function returns an array with absolute values
  *
- * @param {ArrayType} array array of number
- * @returns {ArrayType} absolute array
+ * @param array array of number
+ * @returns absolute array
  */
 export function xAbsolute(array: ArrayType): ArrayType {
   let tmpArray = array.slice();

@@ -1,12 +1,12 @@
 import { isAnyArray } from 'is-any-array';
 
 import { ArrayType } from '..';
-/**
+/**.
  * This function xSubtract the first array by the second array or a constant value from each element of the first array
  *
- * @param {ArrayType} array1 - the array that will be rotated
- * @param {ArrayType | number} array2 second array or number
- * @returns {ArrayType} result
+ * @param array1 - the array that will be rotated
+ * @param array2 second array or number
+ * @returns result
  */
 export function xSubtract(
   array1: ArrayType,

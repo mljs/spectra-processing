@@ -1,14 +1,14 @@
 import { ArrayType } from '..';
 
-/**
+/**.
  * This function performs a circular shift to a new array
  * Positive values of shifts will shift to the right and negative values will do to the left
  *
  * @example xRotate([1,2,3,4],1) -> [4,1,2,3]
  * @example xRotate([1,2,3,4],-1) -> [2,3,4,1]
- * @param {ArrayType} array - the array that will be rotated
- * @param {number} shift number
- * @returns {ArrayType} array of float
+ * @param array - the array that will be rotated
+ * @param shift number
+ * @returns array of float
  */
 export function xRotate(array: ArrayType, shift: number): ArrayType {
   shift = shift % array.length;

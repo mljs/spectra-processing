@@ -7,20 +7,20 @@ import { xCheck } from './xCheck';
 import { xMaxValue } from './xMaxValue';
 import { xMinValue } from './xMinValue';
 
-/**
+/**.
  * Calculates an histogram of defined number of slots
  *
- * @param {ArrayType} [array] Array containing values
- * @param {object} options options
- * @param {number} [options.nbSlots=256] Number of slots
- * @param {number} [options.min=minValue] Minimum value to calculate used to calculate slot size
- * @param {number} [options.max=maxValue] Maximal value to calculate used to calculate slot size
- * @param {number} [options.logBaseX] We can first apply a log on x axis
- * @param {number} [options.logBaseY] We can apply a log on the resulting histogram
- * @param {boolean} [options.absolute] Take the absolute value
- * @param {number} [options.centerX=true] Center the X value. We will enlarge the first and last values.
- * @param {DataXY} [options.histogram={x:[], y:[]}] Previously existing histogram to continue to fill
- * @returns {DataXY} {x,y} of the histogram
+ * @param [array] Array containing values
+ * @param options options
+ * @param [options.nbSlots=256] Number of slots
+ * @param [options.min=minValue] Minimum value to calculate used to calculate slot size
+ * @param [options.max=maxValue] Maximal value to calculate used to calculate slot size
+ * @param [options.logBaseX] We can first apply a log on x axis
+ * @param [options.logBaseY] We can apply a log on the resulting histogram
+ * @param [options.absolute] Take the absolute value
+ * @param [options.centerX=true] Center the X value. We will enlarge the first and last values.
+ * @param [options.histogram={x:[], y:[]}] Previously existing histogram to continue to fill
+ * @returns of the histogram
  */
 export function xHistogram(
   array: ArrayType,
