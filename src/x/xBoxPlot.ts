@@ -1,4 +1,4 @@
-import { ArrayType, Info } from '..';
+import { ArrayType } from '..';
 
 /**.
  * This function xSubtract the first array by the second array or a constant value from each element of the first array
@@ -6,14 +6,14 @@ import { ArrayType, Info } from '..';
  * @param array - the array that will be rotated
  * @returns result
  */
-export function xBoxPlot(array: ArrayType): Info {
+export function xBoxPlot(array: ArrayType) {
   array = array.slice(0).sort((a, b) => a - b);
   if (array.length < 5) {
     throw Error(
       'xBoxPlot: can not calculate info if array contains less than 3 elements',
     );
   }
-  let info: Info = {
+  let info = {
     Q1: 0.0,
     Q2: 0.0,
     Q3: 0.0,

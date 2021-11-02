@@ -142,13 +142,6 @@ export interface DataReIm {
   im: ArrayType;
 }
 
-export interface Info {
-  Q1: number;
-  Q2: number;
-  Q3: number;
-  min: number;
-  max: number;
-}
 /**
  * @typedef {object} DataXY
  * @property {Array<number>} x Array of x values.

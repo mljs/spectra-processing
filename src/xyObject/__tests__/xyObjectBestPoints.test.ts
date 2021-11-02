@@ -1,7 +1,7 @@
 import { xyObjectBestPoints } from '../xyObjectBestPoints';
 
 describe('test xyObjectBestPeaks', () => {
-  let Points = [
+  let points = [
     { x: 1, y: 1 },
     { x: 2, y: 4 },
     { x: 3, y: 2 },
@@ -9,7 +9,7 @@ describe('test xyObjectBestPeaks', () => {
     { x: 5, y: 3 },
   ];
   it('default options', () => {
-    let result = xyObjectBestPoints(Points);
+    let result = xyObjectBestPoints(points);
     expect(result).toStrictEqual([
       { x: 1, y: 1, close: false },
       { x: 2, y: 4, close: false },
@@ -20,7 +20,7 @@ describe('test xyObjectBestPeaks', () => {
   });
 
   it('custom options', () => {
-    let result = xyObjectBestPoints(Points, {
+    let result = xyObjectBestPoints(points, {
       numberSlots: 3,
       numberCloseSlots: 6,
     });
@@ -34,7 +34,7 @@ describe('test xyObjectBestPeaks', () => {
   });
 
   it('custom options threshold', () => {
-    let result = xyObjectBestPoints(Points, { threshold: 0.5 });
+    let result = xyObjectBestPoints(points, { threshold: 0.5 });
     expect(result).toStrictEqual([
       { close: false, x: 2, y: 4 },
       { close: false, x: 4, y: 5 },
