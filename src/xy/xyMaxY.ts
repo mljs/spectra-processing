@@ -2,7 +2,7 @@ import { DataXYZ } from '..';
 import { xGetFromToIndex } from '../x/xGetFromToIndex';
 
 import { xyCheck } from './xyCheck';
-/**.
+/**
  * Finds the max value in a zone
  *
  * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)

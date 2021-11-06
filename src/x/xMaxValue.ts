@@ -2,7 +2,7 @@ import { ArrayType } from '..';
 
 import { xCheck } from './xCheck';
 
-/**.
+/**
  * Computes the maximal value of an array of values
  *
  * @param array array of number

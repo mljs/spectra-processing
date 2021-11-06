@@ -1,6 +1,6 @@
 import { Point } from '..';
 
-/**.
+/**
  *
  * XyObjectSlotX
  *

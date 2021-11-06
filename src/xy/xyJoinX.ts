@@ -1,7 +1,7 @@
 import { DataXY, DataXYZ, OptionsType } from '..';
 
 import { xyCheck } from './xyCheck';
-/**.
+/**
  * Join x / y values when difference in X is closer than delta.
  * When joining, y values are summed and x values are weighted average
  *

@@ -1,6 +1,6 @@
 import { ArrayType } from '..';
 
-/**.
+/**
  * Returns the closest index of a `target`
  *
  * @param array array of numbers

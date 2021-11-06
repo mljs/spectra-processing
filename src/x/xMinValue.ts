@@ -2,7 +2,7 @@ import { ArrayType } from '..';
 
 import { xCheck } from './xCheck';
 
-/**.
+/**
  * Computes the minimal value of an array of values
  *
  * @param array array of numbers

@@ -2,7 +2,7 @@ import { ArrayType } from '..';
 
 import { xDotProduct } from './xDotProduct';
 
-/**.
+/**
  * Calculates the cross-correlation between 2 vectors
  *
  * @param [A] - fixed array

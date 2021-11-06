@@ -4,7 +4,7 @@ import { zonesNormalize } from '../zones/zonesNormalize';
 
 import { xyCheck } from './xyCheck';
 
-/**.
+/**
  * XyReduce the number of points while keeping visually the same noise. Practical to
  * display many spectra as SVG. If you want a similar looking spectrum you should still however generate 4x the nbPoints that is being displayed.
  * SHOULD NOT BE USED FOR DATA PROCESSING !!!

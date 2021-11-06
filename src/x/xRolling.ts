@@ -2,7 +2,7 @@ import { ArrayType } from '..';
 
 import { xCheck } from './xCheck';
 import { xPadding } from './xPadding';
-/**.
+/**
  * This function calculates a rolling average
  *
  * @param array - the array that will be rotated

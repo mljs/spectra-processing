@@ -2,7 +2,7 @@ import { Matrix } from 'ml-matrix';
 
 import { ArrayType } from '..';
 import { xCorrelation } from '../x/xCorrelation';
-/**.
+/**
  * Calculates a correlation matrix based on the columns of the initial matrix
  *
  * @param [A] - matrix [rows][cols]

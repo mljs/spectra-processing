@@ -1,6 +1,6 @@
 import { Zone } from '../index';
 
-/**.
+/**
  * Normalize an array of zones :
  * - ensure than from < to
  * - merge overlapping zones

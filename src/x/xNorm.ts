@@ -1,6 +1,6 @@
 import { ArrayType } from '..';
 
-/**.
+/**
  * This function calculate the norm of a vector
  *
  * @example xNorm([3, 4]) -> 5

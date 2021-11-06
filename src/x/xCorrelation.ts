@@ -1,6 +1,6 @@
 import { ArrayType } from '..';
 
-/**.
+/**
  * Calculates the correlation between 2 vectors
  * https://en.wikipedia.org/wiki/Correlation_and_dependence
  *

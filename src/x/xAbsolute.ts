@@ -1,6 +1,6 @@
 import { ArrayType } from '..';
 
-/**.
+/**
  * This function returns an array with absolute values
  *
  * @param array array of number

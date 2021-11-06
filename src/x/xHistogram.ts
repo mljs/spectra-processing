@@ -7,7 +7,7 @@ import { xCheck } from './xCheck';
 import { xMaxValue } from './xMaxValue';
 import { xMinValue } from './xMinValue';
 
-/**.
+/**
  * Calculates an histogram of defined number of slots
  *
  * @param [array] Array containing values

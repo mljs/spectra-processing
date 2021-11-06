@@ -1,6 +1,6 @@
 import { ArrayType } from '..';
 
-/**.
+/**
  * This function performs a circular shift to a new array
  * Positive values of shifts will shift to the right and negative values will do to the left
  *

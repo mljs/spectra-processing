@@ -1,6 +1,6 @@
 import { DataReIm } from '..';
 
-/**.
+/**
  * Phase correction filter
  *
  * @param data DataReIm

@@ -2,7 +2,7 @@ import { isAnyArray } from 'is-any-array';
 
 import { DataXYZ } from '..';
 
-/**.
+/**
  * Throw an error in no an object of x,y arrays
  *
  * @param [data={}] data

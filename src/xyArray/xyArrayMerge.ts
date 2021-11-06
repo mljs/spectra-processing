@@ -2,7 +2,7 @@ import { DataXY, OptionsType } from '..';
 import { xyJoinX } from '../xy/xyJoinX';
 
 import { getSlots } from './utils/getSlots';
-/**.
+/**
  * Merge DataXY
  * We have an array of DataXY and the goal is to merge all the values that are the closest possible
  *

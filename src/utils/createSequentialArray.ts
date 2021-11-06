@@ -1,6 +1,6 @@
 import { ArrayType } from '..';
 
-/**.
+/**
  * Create an array with sequential numbers between from and to of length
  *
  * @param options Options

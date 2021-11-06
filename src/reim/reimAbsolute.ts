@@ -1,5 +1,5 @@
 import { ArrayType, DataReIm } from '../index';
-/**.
+/**
  * Calculates reimAbsolute value of a complex spectrum
  *
  * @param data  DATA

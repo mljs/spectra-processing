@@ -2,7 +2,7 @@ import { ArrayType } from '..';
 
 import { xFindClosestIndex } from './xFindClosestIndex';
 
-/**.
+/**
  * Returns an object with {fromIndex, toIndex} for a specific from / to
  *
  * @param x array of numbers

@@ -1,6 +1,6 @@
 import { ArrayType } from '..';
 
-/**.
+/**
  * Returns true if x is monotone
  *
  * @param array array of numbers

@@ -3,7 +3,7 @@ import { zonesNormalize } from '../zones/zonesNormalize';
 
 import { xyCheck } from './xyCheck';
 
-/**.
+/**
  * XyExtract zones from a XY data
  *
  * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)

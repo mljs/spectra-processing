@@ -1,7 +1,7 @@
 import { ArrayType, DataXY, DataXYZ } from '..';
 
 import { xyCheck } from './xyCheck';
-/**.
+/**
  * Filter out all the points for which x <= 0. Useful to display log scale data
  *
  * @param [data={}] data

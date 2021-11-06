@@ -3,7 +3,7 @@ import { xFindClosestIndex } from '../x/xFindClosestIndex';
 
 import { xyCheck } from './xyCheck';
 
-/**.
+/**
  * Find the closest maximum going up hill
  *
  * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)

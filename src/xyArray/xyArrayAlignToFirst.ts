@@ -2,7 +2,7 @@ import { ArrayType, DataXY, OptionsType } from '..';
 
 import { getSlotsToFirst } from './utils/getSlotsToFirst';
 
-/**.
+/**
  * We align all the spectra to the first array of X.
  * The alignment is based on the X values of the first spectrum and the `delta` error allowed. If some x values are missing in the first specdtrum we will add them
  *

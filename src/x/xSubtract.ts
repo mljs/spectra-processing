@@ -1,7 +1,7 @@
 import { isAnyArray } from 'is-any-array';
 
 import { ArrayType } from '..';
-/**.
+/**
  * This function xSubtract the first array by the second array or a constant value from each element of the first array
  *
  * @param array1 - the array that will be rotated

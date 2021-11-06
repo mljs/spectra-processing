@@ -1,7 +1,7 @@
 import { ArrayType } from '..';
 
 import { xCheckLengths } from './xCheck';
-/**.
+/**
  * This function calculates the mean absolute error
  *
  * @param array1 -first array

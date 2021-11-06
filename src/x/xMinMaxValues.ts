@@ -2,7 +2,7 @@ import { ArrayType } from '..';
 
 import { xCheck } from './xCheck';
 
-/**.
+/**
  * Return min and max values of an array
  *
  * @param array array of number

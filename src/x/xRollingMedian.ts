@@ -4,7 +4,7 @@ import { ArrayType } from '..';
 
 import { xRolling } from './xRolling';
 
-/**.
+/**
  * This function calculates a rolling average
  *
  * @param array - the array that will be rotated

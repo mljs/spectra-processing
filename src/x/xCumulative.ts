@@ -2,7 +2,7 @@ import { isAnyArray } from 'is-any-array';
 
 import { ArrayType } from '..';
 
-/**.
+/**
  * Calculate a new array of the same size that is the cumulative values
  *
  * @param array array

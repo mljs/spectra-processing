@@ -1,6 +1,6 @@
 import { DataXY } from '..';
 
-/**.
+/**
  * Finds the median x value for an object with properties x and y (arrays of the same length)
  *
  * @param data x should be sorted in increasing order

@@ -3,7 +3,7 @@ import { DataXY } from '..';
 import { xyCheck } from './xyCheck';
 import { xySortX } from './xySortX';
 
-/**.
+/**
  * Ensure x values are unique
  *
  * @param [data] Object that contains property x (Array) and y (Array)

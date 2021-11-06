@@ -1,6 +1,6 @@
 import { ArrayType } from '..';
 
-/**.
+/**
  * Center mean of columns
  *
  * @param [matrix] - matrix [rows][cols].

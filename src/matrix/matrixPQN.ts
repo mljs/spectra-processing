@@ -3,7 +3,7 @@ import { Matrix } from 'ml-matrix';
 
 import { ArrayType } from '..';
 
-/**.
+/**
  * Performs a Probabilistic quotient normalization (PQN) over the dataset to account dilution based in median spectrum.
  * Dieterle, F., Ross, A., Schlotterbeck, G., & Senn, H. (2006). Probabilistic quotient normalization as robust method to account for dilution of complex biological mixtures. Application in 1H NMR metabonomics. Analytical chemistry, 78(13), 4281-4290.
  * DOI: 10.1021/ac051632c

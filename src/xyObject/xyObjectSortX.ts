@@ -1,5 +1,5 @@
 import { Point } from '..';
-/**.
+/**
  * Sorts an array of points
  *
  * @param [points] array of points {x,y}

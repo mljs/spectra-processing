@@ -2,7 +2,7 @@ import { ArrayType } from '..';
 
 import { xCheck } from './xCheck';
 
-/**.
+/**
  * Calculate the sum of the values
  *
  * @param [array={}] - Object that contains property x (an ordered increasing array) and y (an array).

@@ -3,7 +3,7 @@ import { xGetFromToIndex } from '../x/xGetFromToIndex';
 
 import { xyCheck } from './xyCheck';
 
-/**.
+/**
  * Calculate integration
  *
  * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)

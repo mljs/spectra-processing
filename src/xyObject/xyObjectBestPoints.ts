@@ -3,9 +3,10 @@ import { Point } from '..';
 import { xyObjectMaxXPoint } from './xyObjectMaxXPoint';
 import { xyObjectMinXPoint } from './xyObjectMinXPoint';
 
-/**.
- * Filter the array by taking the higher points (max y value) and only
- * keep one per slot.
+/**
+ *
+ * Filter the array by taking the higher points (max y value) and only.
+ * Keep one per slot.
  * There are 2 different slots, the smallest one will have the
  * new property `close` to true
  *

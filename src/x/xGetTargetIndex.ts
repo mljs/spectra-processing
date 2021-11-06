@@ -2,7 +2,7 @@ import { ArrayType } from '..';
 
 import { xFindClosestIndex } from './xFindClosestIndex';
 
-/**.
+/**
  *  Returns the targetIndex
  *
  * @param [x] array of numbers

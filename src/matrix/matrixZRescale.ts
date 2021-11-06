@@ -1,6 +1,6 @@
 import { ArrayType } from '..';
 
-/**.
+/**
  * Rescale columns
  *
  * @param [matrix] - matrix [rows][cols].

@@ -2,8 +2,9 @@ import { ArrayType } from '..';
 
 import { xCheck } from './xCheck';
 
-/**.
+/**
  * This function pads an array
+ *
  *
  * @param array - the array that will be padded
  * @param [options={}] options

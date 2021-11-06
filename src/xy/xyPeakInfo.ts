@@ -3,8 +3,9 @@ import { xFindClosestIndex } from '../x/xFindClosestIndex';
 
 import { xyCheck } from './xyCheck';
 
-/**.
+/**
  * Returns an information about a signal.
+ *
  *
  * We expect ordered data and equidistant X axis
  * You can use the method helper if required:

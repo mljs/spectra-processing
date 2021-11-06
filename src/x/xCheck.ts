@@ -2,7 +2,7 @@ import { isAnyArray } from 'is-any-array';
 
 import { ArrayType } from '..';
 
-/**.
+/**
  * Checks if input is valdi
  *
  * @param input input

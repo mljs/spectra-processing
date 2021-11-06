@@ -1,6 +1,6 @@
 import { ArrayType } from '..';
 
-/**.
+/**
  * This function xSubtract the first array by the second array or a constant value from each element of the first array
  *
  * @param array - the array that will be rotated

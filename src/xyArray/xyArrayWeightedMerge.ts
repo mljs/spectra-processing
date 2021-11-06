@@ -1,6 +1,6 @@
 import { DataXY, OptionsType, Point } from '..';
 
-/**.
+/**
  * Merge DataXY
  * We have an array of DataXY and the goal is to merge all the values for which the deltaX is small or equal to delta.
  * X values are weighted average

@@ -2,7 +2,7 @@ import { DataXY, DataXYZ } from '..';
 import { xGetFromToIndex } from '../x/xGetFromToIndex';
 
 import { xyCheck } from './xyCheck';
-/**.
+/**
  * Generate a X / Y of the xyIntegral
  *
  * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)

@@ -4,7 +4,8 @@ import { DataType, gsd } from 'ml-gsd';
 import { DataXY } from '..';
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
 
-/**.
+/**
+ *
  * Calibrates the data based on a range and means of peaks in this range
  * Based on a range we will make a peak picking using global spectra deconvolution
  * The selected nbPeaks will then be taken into account to calculate an average X value.

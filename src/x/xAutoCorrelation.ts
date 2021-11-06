@@ -2,7 +2,7 @@ import { ArrayType } from '..';
 
 import { xCrossCorrelation } from './xCrossCorrelation';
 
-/**.
+/**
  * Calculates the auto-correlation of a vector
  *
  * @param [A] - the array that will be fixed

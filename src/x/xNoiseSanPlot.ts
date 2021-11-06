@@ -9,7 +9,7 @@ import rayleighCdf from './rayleighCdf';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const SplineInterpolator = require('spline-interpolator');
 
-/**.
+/**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
  *
  * @param data - real or magnitude spectra data.

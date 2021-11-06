@@ -1,5 +1,5 @@
 import { DataXY } from '..';
-/**.
+/**
  * Order object of array, x has to be monotone.
  * Ensure x is growing
  *

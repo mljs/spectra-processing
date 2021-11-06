@@ -4,7 +4,7 @@ import { xHistogram } from '../x/xHistogram';
 import { matrixMinMaxAbsoluteZ } from './matrixMinMaxAbsoluteZ';
 import { matrixMinMaxZ } from './matrixMinMaxZ';
 
-/**.
+/**
  * Calculates an histogram of defined number of slots
  *
  * @param [matrix] - matrix [rows][cols].

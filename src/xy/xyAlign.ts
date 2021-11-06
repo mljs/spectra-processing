@@ -1,6 +1,6 @@
 import { DataXY } from '..';
 
-/**.
+/**
  * XyAlign will align data of two spectra by verifying wether x values are in a certain range (`delta`).
  * The two spectra should not have two consecutive x values which difference is
  * smaller than `delta` to achieve good results!

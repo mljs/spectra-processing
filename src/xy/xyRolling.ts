@@ -1,7 +1,7 @@
 import { ArrayType, DataXY } from '..';
 import { xRolling } from '../x/xRolling';
 import { xRollingAverage } from '../x/xRollingAverage';
-/**.
+/**
  * This function calculates a rolling average.
  *
  * This methods will recalculate the x values by using xRollingAverage

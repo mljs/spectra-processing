@@ -1,6 +1,6 @@
 import { ArrayType } from '..';
 
-/**.
+/**
  * Get min and max of the absolute values of Z
  *
  * @param [matrix] - matrix [rows][cols].
