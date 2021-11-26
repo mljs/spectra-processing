@@ -4,46 +4,59 @@ import { xNoiseSanPlot } from '../x/xNoiseSanPlot';
 import { reimAbsolute } from './reimAbsolute';
 import { reimPhaseCorrection } from './reimPhaseCorrection';
 
-const defaultOptions = {
-  minRegSize: 30,
-  maxDistanceToJoin: 256,
-  magnitudeMode: true,
-  factorNoise: 3,
-};
-
 /**
  * Implementation of the algorithm for automatic phase correction: A robust, general automatic phase
  * correction algorithm for high-resolution NMR data. 10.1002/mrc.4586
- *
- * @param data - { re, im } real and imaginary data.
- * @param options -
- * @param options.minRegSize - min number of points to auto phase a region.
- * @param options.maxDistanceToJoin - max distance between regions (in number of points) to join two regions
- * @param options.magnitudeMode - if true it uses magnitude spectrum.boolean
- * @param options.factorNoise - scale the cutoff like factorStd * noiseLevel.
- * @returns return { Reim,number,number }
  */
+
 export function reimAutoPhaseCorrection(
   data: DataReIm,
   options: {
+    /**
+     * if true it uses magnitude spectrum.boolean
+     * @default true
+     */
     magnitudeMode?: boolean;
+    /**
+     * min number of points to auto phase a region
+     * @default 30
+     */
     minRegSize?: number;
-    maxDistanceToJoin: number;
-    factorNoise: number;
-  },
+    /**
+     * max distance between regions (in number of points) to join two regions
+     * @default 256
+     */
+    maxDistanceToJoin?: number;
+    /**
+     * scale the cutoff like factorStd * noiseLevel
+     * @default 3
+     */
+    factorNoise?: number;
+  } = {},
 ): { data: DataReIm; ph0: number; ph1: number } {
   const { re, im } = data;
   const length = re.length;
 
-  options = Object.assign(defaultOptions, options);
-
-  const { magnitudeMode, minRegSize } = options;
+  const {
+    magnitudeMode = true,
+    minRegSize = 30,
+    factorNoise = 3,
+    maxDistanceToJoin = 256,
+  } = options;
 
   let magnitudeData = magnitudeMode ? reimAbsolute(data) : re;
 
   let ds = holoborodko(magnitudeData);
-  let peaksDs = robustBaseLineRegionsDetection(ds, options);
-  let peaksSp = robustBaseLineRegionsDetection(magnitudeData, options);
+  let peaksDs = robustBaseLineRegionsDetection(ds, {
+    maxDistanceToJoin,
+    magnitudeMode,
+    factorNoise,
+  });
+  let peaksSp = robustBaseLineRegionsDetection(magnitudeData, {
+    maxDistanceToJoin,
+    magnitudeMode,
+    factorNoise,
+  });
   let finalPeaks: boolean[] = new Array(length);
   for (let i = 0; i < length; i++) {
     finalPeaks[i] = peaksSp[i] && peaksDs[i];
@@ -70,7 +83,7 @@ export function reimAutoPhaseCorrection(
       i++;
     }
 
-    if (reTmp.length > (minRegSize as number)) {
+    if (reTmp.length > minRegSize) {
       res.push(autoPhaseRegion(reTmp, imTmp, x0));
     }
   }
@@ -170,19 +183,16 @@ function holoborodko(s: ArrayType): ArrayType {
 /**
  * RobustBaseLineRegionsDetection.
  *
- * @param s - Number array.
- * @param options - Options.
- * @param options.maxDistanceToJoin -
- * @param options.magnitudeMode -
- * @param options.factorNoise -
- * @param options.minRegSize -
- * @returns Array of boolean.
+ * @param s
+ * @param options
+ * @param options.magnitudeMode
+ * @param options.maxDistanceToJoin
+ * @param options.factorNoise
  */
 function robustBaseLineRegionsDetection(
   s: ArrayType,
   options: {
-    magnitudeMode?: boolean;
-    minRegSize?: number;
+    magnitudeMode: boolean;
     maxDistanceToJoin: number;
     factorNoise: number;
   },
@@ -230,10 +240,9 @@ function robustBaseLineRegionsDetection(
 /**
  * WeightedLinearRegression.
  *
- * @param x - Array of number.
- * @param y - Array of number.
- * @param w - Array of number.
- * @returns Array of number.
+ * @param x
+ * @param y
+ * @param w
  */
 function weightedLinearRegression(
   x: number[] | Float64Array,
