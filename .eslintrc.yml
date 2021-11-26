@@ -1,4 +1,1 @@
-plugins: [jsdoc]
-extends: [cheminfo-typescript, cheminfo-typescript/jsdoc]
-parserOptions:
-  sourceType: module
+extends: [cheminfo-typescript]
