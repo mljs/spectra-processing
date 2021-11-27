@@ -1,5 +1,5 @@
 import mean from 'ml-array-mean';
-import { DataType, gsd } from 'ml-gsd';
+import { gsd, Peak1D } from 'ml-gsd';
 import { DataXY } from '..';
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
 
@@ -61,18 +61,18 @@ export function xyCalibrate(
 
   const fromIndex = xFindClosestIndex(data.x, from);
   const toIndex = xFindClosestIndex(data.x, to);
-  const sliceddata: DataType = {
+  const sliceddata = {
     x: data.x.slice(fromIndex, toIndex) as number[],
     y: data.y.slice(fromIndex, toIndex) as number[],
   };
 
   let peaks = gsd(sliceddata, gsdOptions)
-    .sort((a, b) => b.y - a.y)
+    .sort((a: Peak1D, b: Peak1D) => b.y - a.y)
     .slice(0, nbPeaks);
 
   if (peaks.length === 0) return 0;
 
-  const middle = mean(peaks.map((peak) => peak.x));
+  const middle = mean(peaks.map((peak: Peak1D) => peak.x));
 
   return targetX - middle;
 }

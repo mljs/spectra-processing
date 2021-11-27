@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import fill from 'ml-array-sequential-fill';
-import rayleighCdf from './rayleighCdf';
 import SplineInterpolator from 'spline-interpolator';
+
 import { ArrayType, DataXY } from '..';
+
 import erfcinv from './erfcinv';
+import rayleighCdf from './rayleighCdf';
 
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
