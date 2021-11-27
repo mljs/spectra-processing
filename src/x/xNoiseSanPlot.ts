@@ -1,13 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import fill from 'ml-array-sequential-fill';
-
-import { ArrayType, DataXY } from '..';
-
-import erfcinv from './erfcinv';
 import rayleighCdf from './rayleighCdf';
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const SplineInterpolator = require('spline-interpolator');
+import SplineInterpolator from 'spline-interpolator';
+import { ArrayType, DataXY } from '..';
+import erfcinv from './erfcinv';
 
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
