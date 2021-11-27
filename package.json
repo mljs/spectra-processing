@@ -56,7 +56,7 @@
     "jest": "^27.3.1",
     "jest-matcher-deep-close-to": "^3.0.2",
     "jscpd": "^3.4.2",
-    "ml-gsd": "^9.0.1",
+    "ml-gsd": "^8.0.0",
     "prettier": "^2.5.0",
     "rimraf": "^3.0.2",
     "spline-interpolator": "^1.0.0",
