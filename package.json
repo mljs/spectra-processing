@@ -46,24 +46,25 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.2",
+    "@types/jest": "^27.0.3",
     "cheminfo-build": "^1.1.11",
-    "eslint": "^8.2.0",
-    "eslint-config-cheminfo-typescript": "^10.2.2",
+    "eslint": "^8.3.0",
+    "eslint-config-cheminfo-typescript": "^10.2.4",
     "eslint-plugin-jsdoc": "^37.0.3",
     "esm": "^3.2.25",
     "is-any-array": "^2.0.0",
     "jest": "^27.3.1",
     "jest-matcher-deep-close-to": "^3.0.2",
-    "jscpd": "^3.4.1",
-    "ml-gsd": "^8.0.0",
-    "prettier": "^2.4.1",
+    "jscpd": "^3.4.2",
+    "ml-gsd": "^9.0.1",
+    "prettier": "^2.5.0",
     "rimraf": "^3.0.2",
     "spline-interpolator": "^1.0.0",
     "ts-jest": "^27.0.7",
-    "typescript": "^4.4.4"
+    "typescript": "^4.5.2"
   },
   "dependencies": {
+    "cheminfo-types": "^0.8.0",
     "fft.js": "^4.0.4",
     "ml-array-max": "^1.2.3",
     "ml-array-mean": "^1.1.5",
@@ -71,7 +72,7 @@
     "ml-array-min": "^1.2.2",
     "ml-array-sequential-fill": "^1.1.7",
     "ml-array-standard-deviation": "^1.1.7",
-    "ml-matrix": "^6.8.0",
-    "typedoc": "^0.22.7"
+    "ml-matrix": "^6.8.2",
+    "typedoc": "^0.22.10"
   }
 }
