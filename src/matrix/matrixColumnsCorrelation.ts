@@ -1,6 +1,6 @@
-import { DoubleArray } from 'cheminfo-types';
 import { Matrix } from 'ml-matrix';
 
+import { DoubleMatrix } from '..';
 import { xCorrelation } from '../x/xCorrelation';
 /**
  * Calculates a correlation matrix based on the columns of the initial matrix
@@ -8,7 +8,7 @@ import { xCorrelation } from '../x/xCorrelation';
  * @param [A] - matrix [rows][cols]
  * @returns result
  */
-export function matrixColumnsCorrelation(A: DoubleArray[]): DoubleArray[] {
+export function matrixColumnsCorrelation(A: DoubleMatrix): DoubleMatrix {
   let B: Matrix = new Matrix(A as [][]);
   B = B.transpose();
   let result = [];

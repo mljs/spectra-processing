@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { DoubleMatrix } from '..';
 
 /**
  * Rescale columns
@@ -10,9 +10,9 @@ import { DoubleArray } from 'cheminfo-types';
  * @returns result
  */
 export function matrixZRescale(
-  matrix: DoubleArray[],
+  matrix: DoubleMatrix,
   options: { min?: number; max?: number } = {},
-): DoubleArray[] {
+): DoubleMatrix {
   const { min = 0, max = 1 } = options;
   const nbRows = matrix.length;
   const nbColumns = matrix[0].length;

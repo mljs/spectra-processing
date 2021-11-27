@@ -104,6 +104,7 @@ export * from './matrix/matrixZRescale';
 
 export * from './utils/createSequentialArray';
 
+export type DoubleMatrix = DoubleArray[];
 export interface Zone {
   fromIndex?: number;
   toIndex?: number;

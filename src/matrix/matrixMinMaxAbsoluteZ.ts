@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { DoubleMatrix } from '..';
 
 /**
  * Get min and max of the absolute values of Z
@@ -6,7 +6,7 @@ import { DoubleArray } from 'cheminfo-types';
  * @param [matrix] - matrix [rows][cols].
  * @returns results
  */
-export function matrixMinMaxAbsoluteZ(matrix: DoubleArray[]): {
+export function matrixMinMaxAbsoluteZ(matrix: DoubleMatrix): {
   min?: number;
   max?: number;
 } {
