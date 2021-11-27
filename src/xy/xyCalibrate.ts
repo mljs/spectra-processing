@@ -1,6 +1,5 @@
 import mean from 'ml-array-mean';
 import { DataType, gsd } from 'ml-gsd';
-
 import { DataXY } from '..';
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
 
