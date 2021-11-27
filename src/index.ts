@@ -104,12 +104,6 @@ export * from './matrix/matrixZRescale';
 
 export * from './utils/createSequentialArray';
 
-/**
- * @typedef {object} Zone
- * @property {number} from First value defining the zone.
- * @property {number} to Last value defining the zone.
- */
-
 export interface Zone {
   fromIndex?: number;
   toIndex?: number;
@@ -117,11 +111,6 @@ export interface Zone {
   nbPoints?: number;
   from: number;
 }
-/**
- * @typedef {object} Point
- * @property {number} x Value of the x coordinate.
- * @property {number} y Value of the y coordinate.
- */
 export interface Point {
   x: number;
   y: number;
@@ -133,11 +122,6 @@ export interface DataXReIm {
   re: DoubleArray;
   im: DoubleArray;
 }
-/**
- * @typedef {object} DataReIm
- * @property {DoubleArray} re Array of re values.
- * @property {DoubleArray} im Array of im values.
- */
 export interface DataReIm {
   re: DoubleArray;
   im: DoubleArray;
