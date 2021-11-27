@@ -1,4 +1,5 @@
-import { ArrayType, DataXY } from '..';
+import { DoubleArray, DataXY } from 'cheminfo-types';
+
 import { xyJoinX } from '../xy/xyJoinX';
 
 import { getSlots } from './utils/getSlots';
@@ -18,8 +19,8 @@ export function xyArrayAlign(
   spectra: DataXY[],
   options: OptionsType = {},
 ): {
-  x: ArrayType;
-  ys: ArrayType[];
+  x: DoubleArray;
+  ys: DoubleArray[];
 } {
   const { delta = 1 } = options;
 

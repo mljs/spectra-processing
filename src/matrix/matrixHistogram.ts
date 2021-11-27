@@ -1,4 +1,5 @@
-import { ArrayType, DataXY } from '..';
+import { DoubleArray, DataXY } from 'cheminfo-types';
+
 import { xHistogram } from '../x/xHistogram';
 
 import { matrixMinMaxAbsoluteZ } from './matrixMinMaxAbsoluteZ';
@@ -20,7 +21,7 @@ import { matrixMinMaxZ } from './matrixMinMaxZ';
  * @returns of the histogram
  */
 export function matrixHistogram(
-  matrix: ArrayType[],
+  matrix: DoubleArray[],
   options: {
     centerX?: boolean;
     histogram?: DataXY;

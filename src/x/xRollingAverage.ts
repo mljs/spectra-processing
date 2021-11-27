@@ -1,6 +1,5 @@
+import { DoubleArray } from 'cheminfo-types';
 import mean from 'ml-array-mean';
-
-import { ArrayType } from '..';
 
 import { xRolling } from './xRolling';
 
@@ -16,6 +15,6 @@ import { xRolling } from './xRolling';
  * @param options.padding padding
  * @returns result
  */
-export function xRollingAverage(array: ArrayType, options = {}): ArrayType {
+export function xRollingAverage(array: DoubleArray, options = {}): DoubleArray {
   return xRolling(array, mean, options);
 }

@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 import { xMultiply } from './xMultiply';
 
@@ -9,7 +9,7 @@ import { xMultiply } from './xMultiply';
  * @param B - Second array.
  * @returns Result.
  */
-export function xDotProduct(A: ArrayType, B: ArrayType): number {
+export function xDotProduct(A: DoubleArray, B: DoubleArray): number {
   let g = xMultiply(A, B);
   let result = 0;
   for (let i = 0; i < A.length; i++) {

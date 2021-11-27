@@ -1,6 +1,5 @@
+import { DoubleArray } from 'cheminfo-types';
 import sd from 'ml-array-standard-deviation';
-
-import { ArrayType } from '..';
 
 import { xCheck } from './xCheck';
 
@@ -12,7 +11,7 @@ import { xCheck } from './xCheck';
  * @param array array of number
  * @returns result
  */
-export function xParetoNormalization(array: ArrayType): ArrayType {
+export function xParetoNormalization(array: DoubleArray): DoubleArray {
   xCheck(array);
   let result = [];
   const sqrtSD = Math.sqrt(sd(array));

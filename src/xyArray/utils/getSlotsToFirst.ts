@@ -1,6 +1,7 @@
-import { DataXY, OptionsType } from '../..';
-import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
+import { DataXY } from 'cheminfo-types';
 
+import { OptionsType } from '../..';
+import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
 /**
  * GetSlotsToFirst.
  *

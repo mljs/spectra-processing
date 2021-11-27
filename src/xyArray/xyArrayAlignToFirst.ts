@@ -1,4 +1,6 @@
-import { ArrayType, DataXY, OptionsType } from '..';
+import { DoubleArray, DataXY } from 'cheminfo-types';
+
+import { OptionsType } from '..';
 
 import { getSlotsToFirst } from './utils/getSlotsToFirst';
 
@@ -15,8 +17,8 @@ export function xyArrayAlignToFirst(
   spectra: Array<DataXY>,
   options: OptionsType = {},
 ): {
-  x: ArrayType;
-  ys: ArrayType[];
+  x: DoubleArray;
+  ys: DoubleArray[];
 } {
   const slots = getSlotsToFirst(spectra, options);
   let x = Float64Array.from(slots.map((slot) => slot.value));

@@ -1,4 +1,6 @@
-import { DataXY, Zone } from '..';
+import { DataXY } from 'cheminfo-types';
+
+import { Zone } from '..';
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
 import { zonesNormalize } from '../zones/zonesNormalize';
 

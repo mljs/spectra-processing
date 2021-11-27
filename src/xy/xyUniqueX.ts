@@ -1,4 +1,4 @@
-import { DataXY } from '..';
+import { DataXY } from 'cheminfo-types';
 
 import { xyCheck } from './xyCheck';
 import { xySortX } from './xySortX';

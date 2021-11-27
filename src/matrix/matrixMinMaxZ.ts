@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 /**
  * Get min and max Z
@@ -6,7 +6,7 @@ import { ArrayType } from '..';
  * @param [matrix] - matrix [rows][cols].
  * @returns result
  */
-export function matrixMinMaxZ(matrix: ArrayType[]): {
+export function matrixMinMaxZ(matrix: DoubleArray[]): {
   max?: number;
   min?: number;
 } {

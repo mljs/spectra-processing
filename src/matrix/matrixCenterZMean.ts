@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 /**
  * Center mean of columns
@@ -6,7 +6,7 @@ import { ArrayType } from '..';
  * @param [matrix] - matrix [rows][cols].
  * @returns result
  */
-export function matrixCenterZMean(matrix: ArrayType[]): ArrayType[] {
+export function matrixCenterZMean(matrix: DoubleArray[]): DoubleArray[] {
   const nbRows = matrix.length;
   const nbColumns = matrix[0].length;
   const newMatrix = new Array(nbRows);

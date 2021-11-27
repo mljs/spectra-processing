@@ -1,6 +1,6 @@
+import { DataXY } from 'cheminfo-types';
 import max from 'ml-array-max';
 
-import { DataXY } from '..';
 import { xCumulative } from '../x/xCumulative';
 
 import { xyCheck } from './xyCheck';

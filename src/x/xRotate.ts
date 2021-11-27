@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 /**
  * This function performs a circular shift to a new array
@@ -10,7 +10,7 @@ import { ArrayType } from '..';
  * @param shift number
  * @returns array of float
  */
-export function xRotate(array: ArrayType, shift: number): ArrayType {
+export function xRotate(array: DoubleArray, shift: number): DoubleArray {
   shift = shift % array.length;
   if (shift < 0) shift += array.length;
   let result = new Float64Array(array.length);

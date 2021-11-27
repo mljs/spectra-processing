@@ -1,6 +1,5 @@
+import { DoubleArray } from 'cheminfo-types';
 import median from 'ml-array-median';
-
-import { ArrayType } from '..';
 
 import { xRolling } from './xRolling';
 
@@ -15,6 +14,6 @@ import { xRolling } from './xRolling';
  * @param [options.padding.value=0] value to use for padding (if algorithm='value')
  * @returns results
  */
-export function xRollingMedian(array: ArrayType, options = {}): ArrayType {
+export function xRollingMedian(array: DoubleArray, options = {}): DoubleArray {
   return xRolling(array, median, options);
 }

@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 
@@ -14,13 +14,13 @@ import { xCheck } from './xCheck';
  * @returns result
  */
 export function xPadding(
-  array: ArrayType,
+  array: DoubleArray,
   options: {
     size?: number;
     value?: number;
     algorithm?: string;
   } = {},
-): ArrayType {
+): DoubleArray {
   const { size = 0, value = 0, algorithm = '' } = options;
   xCheck(array);
 

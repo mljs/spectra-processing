@@ -1,6 +1,5 @@
+import { DoubleArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
-
-import { ArrayType } from '..';
 
 /**
  * This function divide the first array by the second array or a constant value to each element of the first array
@@ -10,7 +9,7 @@ import { ArrayType } from '..';
  * @returns result
  *
  */
-export function xDivide(array1: ArrayType, array2: ArrayType | number) {
+export function xDivide(array1: DoubleArray, array2: DoubleArray | number) {
   let isConstant = false;
   let constant = 0;
   if (isAnyArray(array2)) {

@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 import { xDotProduct } from './xDotProduct';
 
@@ -13,13 +13,13 @@ import { xDotProduct } from './xDotProduct';
  * @returns results
  */
 export function xCrossCorrelation(
-  A: ArrayType,
-  B: ArrayType,
+  A: DoubleArray,
+  B: DoubleArray,
   options: {
     tau?: number;
     lag?: number;
   } = {},
-): ArrayType {
+): DoubleArray {
   let { tau = 1, lag = A.length - 1 } = options;
   let result = new Float64Array(1 + (2 * lag) / tau);
   if (A.length === B.length) {

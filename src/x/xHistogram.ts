@@ -1,6 +1,5 @@
+import { DoubleArray, DataXY } from 'cheminfo-types';
 import fill from 'ml-array-sequential-fill';
-
-import { ArrayType, DataXY } from '..';
 
 import { xAbsolute } from './xAbsolute';
 import { xCheck } from './xCheck';
@@ -23,7 +22,7 @@ import { xMinValue } from './xMinValue';
  * @returns of the histogram
  */
 export function xHistogram(
-  array: ArrayType,
+  array: DoubleArray,
   options: {
     centerX?: boolean;
     histogram?: DataXY;

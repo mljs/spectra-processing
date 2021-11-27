@@ -1,6 +1,7 @@
+import { DataXY } from 'cheminfo-types';
 import mean from 'ml-array-mean';
 import { gsd, Peak1D } from 'ml-gsd';
-import { DataXY } from '..';
+
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
 
 /**

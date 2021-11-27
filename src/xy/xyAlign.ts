@@ -1,4 +1,4 @@
-import { DataXY } from '..';
+import { DataXY } from 'cheminfo-types';
 
 /**
  * XyAlign will align data of two spectra by verifying wether x values are in a certain range (`delta`).

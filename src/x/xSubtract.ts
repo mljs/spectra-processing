@@ -1,6 +1,6 @@
+import { DoubleArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
-import { ArrayType } from '..';
 /**
  * This function xSubtract the first array by the second array or a constant value from each element of the first array
  *
@@ -9,9 +9,9 @@ import { ArrayType } from '..';
  * @returns result
  */
 export function xSubtract(
-  array1: ArrayType,
-  array2: ArrayType | number,
-): ArrayType {
+  array1: DoubleArray | Float32Array,
+  array2: DoubleArray | number,
+): DoubleArray {
   let isConstant = false;
   let constant = 0;
   if (isAnyArray(array2)) {

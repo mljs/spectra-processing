@@ -1,4 +1,4 @@
-import { ArrayType, DataXY } from '..';
+import { DoubleArray, DataXY } from 'cheminfo-types';
 
 import { xyCheck } from './xyCheck';
 
@@ -8,7 +8,7 @@ import { xyCheck } from './xyCheck';
  * @param [data] array of points {x,y}
  * @returns result
  */
-export function xyToXYArray(data: DataXY): ArrayType[] {
+export function xyToXYArray(data: DataXY): DoubleArray[] {
   xyCheck(data);
   const { x, y } = data;
   let objectArray = [];

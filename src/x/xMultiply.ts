@@ -1,6 +1,6 @@
+import { DoubleArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
-import { ArrayType } from '..';
 /**
  * This function xMultiply the first array by the second array or a constant value to each element of the first array
  *
@@ -9,9 +9,9 @@ import { ArrayType } from '..';
  * @returns array of result
  */
 export function xMultiply(
-  array1: ArrayType,
-  array2: ArrayType | number,
-): ArrayType {
+  array1: DoubleArray,
+  array2: DoubleArray | number,
+): DoubleArray {
   let isConstant = false;
   let constant = 0;
   if (isAnyArray(array2)) {

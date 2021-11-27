@@ -1,6 +1,6 @@
+import { DataXY } from 'cheminfo-types';
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { DataXY } from '../..';
 import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
 
 expect.extend({ toMatchCloseTo });

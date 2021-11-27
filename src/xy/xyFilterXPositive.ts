@@ -1,4 +1,6 @@
-import { ArrayType, DataXY, DataXYZ } from '..';
+import { DoubleArray, DataXY } from 'cheminfo-types';
+
+import { DataXYZ } from '..';
 
 import { xyCheck } from './xyCheck';
 /**
@@ -10,8 +12,8 @@ import { xyCheck } from './xyCheck';
 export function xyFilterXPositive(data: DataXYZ = {}): DataXY {
   xyCheck(data);
   const { x, y } = data;
-  const newX: ArrayType = [];
-  const newY: ArrayType = [];
+  const newX: DoubleArray = [];
+  const newY: DoubleArray = [];
   if (x === undefined || y === undefined) return { x: newX, y: newY };
   for (let i = 0; i < x.length; i++) {
     if (x[i] > 0) {

@@ -1,4 +1,6 @@
-import { ArrayType, DataReIm } from '../index';
+import { DoubleArray } from 'cheminfo-types';
+
+import { DataReIm } from '../index';
 import { xNoiseSanPlot } from '../x/xNoiseSanPlot';
 
 import { reimAbsolute } from './reimAbsolute';
@@ -69,8 +71,8 @@ export function reimAutoPhaseCorrection(
   let res = [];
   while (i < length) {
     //phase first region
-    let reTmp: ArrayType = [];
-    let imTmp: ArrayType = [];
+    let reTmp: DoubleArray = [];
+    let imTmp: DoubleArray = [];
 
     //Look for the first 1 in the array
     while (!finalPeaks[++i] && i < length) {
@@ -112,8 +114,8 @@ export function reimAutoPhaseCorrection(
  * @returns Region.
  */
 function autoPhaseRegion(
-  re: ArrayType,
-  im: ArrayType,
+  re: DoubleArray,
+  im: DoubleArray,
   x0: number,
 ): {
   ph0: number;
@@ -159,7 +161,7 @@ function autoPhaseRegion(
  * @param s - Array of float.
  * @returns Array of float.
  */
-function holoborodko(s: ArrayType): ArrayType {
+function holoborodko(s: DoubleArray): DoubleArray {
   let dk = new Float64Array(s.length);
   for (let i = 5; i < s.length - 5; i++) {
     dk[i] =
@@ -190,7 +192,7 @@ function holoborodko(s: ArrayType): ArrayType {
  * @param options.factorNoise
  */
 function robustBaseLineRegionsDetection(
-  s: ArrayType,
+  s: DoubleArray,
   options: {
     magnitudeMode: boolean;
     maxDistanceToJoin: number;
@@ -282,7 +284,7 @@ function weightedLinearRegression(
 
 const toRadians = (degree: number): number => (degree * Math.PI) / 180;
 
-const getNegArea = (data: ArrayType): number => {
+const getNegArea = (data: DoubleArray): number => {
   let area = 0;
   data.forEach((element) => {
     if (element < 0) area -= element;

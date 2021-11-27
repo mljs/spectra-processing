@@ -1,4 +1,6 @@
-import { DataXY, DataXYZ, Zone } from '..';
+import { DataXY } from 'cheminfo-types';
+
+import { DataXYZ, Zone } from '..';
 import { zonesNormalize } from '../zones/zonesNormalize';
 
 import { xyCheck } from './xyCheck';

@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 /**
  * XUniqueSorted.
@@ -6,6 +6,6 @@ import { ArrayType } from '..';
  * @param array - Array of number.
  * @returns Sorted array.
  */
-export function xUniqueSorted(array: ArrayType): ArrayType {
+export function xUniqueSorted(array: DoubleArray): DoubleArray {
   return Float64Array.from(new Set(array)).sort();
 }

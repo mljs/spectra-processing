@@ -1,11 +1,14 @@
-import { ArrayType, DataReIm } from '../index';
+import { DoubleArray } from 'cheminfo-types';
+
+import { DataReIm } from '../index';
+
 /**
  * Calculates reimAbsolute value of a complex spectrum
  *
  * @param data  DATA
  * @returns array of float
  */
-export function reimAbsolute(data: DataReIm): ArrayType {
+export function reimAbsolute(data: DataReIm): DoubleArray {
   const length = data.re.length;
   const re = data.re;
   const im = data.im;

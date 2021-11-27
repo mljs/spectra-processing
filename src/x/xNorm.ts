@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 /**
  * This function calculate the norm of a vector
@@ -7,7 +7,7 @@ import { ArrayType } from '..';
  * @param array - the array that will be rotated
  * @returns calculated norm
  */
-export function xNorm(array: ArrayType): number {
+export function xNorm(array: DoubleArray): number {
   let result = 0;
   array.forEach((element) => {
     result += element ** 2;

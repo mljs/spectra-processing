@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 /**
  * Calculates the correlation between 2 vectors
@@ -8,7 +8,7 @@ import { ArrayType } from '..';
  * @param [B] sencond array
  * @returns result
  */
-export function xCorrelation(A: ArrayType, B: ArrayType): number {
+export function xCorrelation(A: DoubleArray, B: DoubleArray): number {
   let n = A.length;
   let sumA = 0;
   let sumA2 = 0;

@@ -1,4 +1,5 @@
-import { DataXY } from '..';
+import { DataXY } from 'cheminfo-types';
+
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
 
 import { xyCheck } from './xyCheck';

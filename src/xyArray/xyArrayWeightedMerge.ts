@@ -1,4 +1,6 @@
-import { DataXY, OptionsType, Point } from '..';
+import { DataXY } from 'cheminfo-types';
+
+import { OptionsType, Point } from '..';
 
 /**
  * Merge DataXY

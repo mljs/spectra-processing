@@ -1,4 +1,6 @@
-import { DataXY, DataXYZ } from '..';
+import { DataXY } from 'cheminfo-types';
+
+import { DataXYZ } from '..';
 import { xGetFromToIndex } from '../x/xGetFromToIndex';
 
 import { xyCheck } from './xyCheck';

@@ -1,7 +1,6 @@
+import { DoubleArray } from 'cheminfo-types';
 import median from 'ml-array-median';
 import { Matrix } from 'ml-matrix';
-
-import { ArrayType } from '..';
 
 /**
  * Performs a Probabilistic quotient normalization (PQN) over the dataset to account dilution based in median spectrum.
@@ -17,11 +16,11 @@ import { ArrayType } from '..';
  * medianOfQuotients: The median of quotients of each variables.
  */
 export function matrixPQN(
-  matrix: ArrayType[],
+  matrix: DoubleArray[],
   options: { max?: number; min?: number } = {},
 ): {
-  data: ArrayType[];
-  medianOfQuotients: ArrayType;
+  data: DoubleArray[];
+  medianOfQuotients: DoubleArray;
 } {
   const { max = 100 } = options;
   let matrixB = new Matrix(matrix as number[][]);

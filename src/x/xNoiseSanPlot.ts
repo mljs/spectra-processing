@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { DataXY, FromTo, DoubleArray } from 'cheminfo-types';
 import fill from 'ml-array-sequential-fill';
-import SplineInterpolator from 'spline-interpolator';
-
-import { ArrayType, DataXY } from '..';
 
 import erfcinv from './erfcinv';
 import rayleighCdf from './rayleighCdf';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const SplineInterpolator = require('spline-interpolator');
 
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
@@ -28,9 +28,9 @@ import rayleighCdf from './rayleighCdf';
  * @returns result
  */
 export function xNoiseSanPlot(
-  data: ArrayType,
+  data: DoubleArray,
   options: {
-    mask?: ArrayType;
+    mask?: DoubleArray;
     cutOff?: number;
     refine?: boolean;
     magnitudeMode?: boolean;
@@ -40,9 +40,14 @@ export function xNoiseSanPlot(
     logBaseY?: number;
     considerList?: { from: number; step: number; to: number };
 
-    fromTo?: any;
+    fromTo?: Record<string, FromTo>;
   } = {},
-): { positive: number; negative: number; snr: number; sanplot: any } {
+): {
+  positive: number;
+  negative: number;
+  snr: number;
+  sanplot: Record<string, DataXY>;
+} {
   const {
     mask,
     cutOff,
@@ -196,9 +201,9 @@ export function xNoiseSanPlot(
  * @returns Result.
  */
 function determineCutOff(
-  signPositive: ArrayType,
+  signPositive: DoubleArray,
   options: {
-    mask?: ArrayType;
+    mask?: DoubleArray;
     cutOff?: number;
     refine?: boolean;
     magnitudeMode?: boolean;
@@ -208,7 +213,7 @@ function determineCutOff(
     logBaseY?: number;
     considerList?: { from: number; step: number; to: number };
 
-    fromTo?: any;
+    fromTo?: Record<string, FromTo>;
   } = {},
 ): number {
   let {
@@ -270,9 +275,9 @@ function determineCutOff(
  * @returns Result.
  */
 function simpleNormInv(
-  data: ArrayType | number,
+  data: DoubleArray | number,
   options: {
-    mask?: ArrayType;
+    mask?: DoubleArray;
     cutOff?: number;
     refine?: boolean;
     magnitudeMode?: boolean;
@@ -282,9 +287,9 @@ function simpleNormInv(
     logBaseY?: number;
     considerList?: { from: number; step: number; to: number };
 
-    fromTo?: any;
+    fromTo?: Record<string, FromTo>;
   } = {},
-): ArrayType | number {
+): DoubleArray | number {
   const { magnitudeMode = false } = options;
 
   if (!Array.isArray(data)) data = [data as number];
@@ -323,7 +328,7 @@ function simpleNormInv(
  * @param step - Step.
  * @returns Array of results.
  */
-function createArray(from: number, to: number, step: number): ArrayType {
+function createArray(from: number, to: number, step: number): DoubleArray {
   let result = new Array(Math.abs((from - to) / step + 1));
   for (let i = 0; i < result.length; i++) {
     result[i] = from + i * step;
@@ -352,9 +357,9 @@ function createArray(from: number, to: number, step: number): ArrayType {
  * @returns Results.
  */
 function generateSanPlot(
-  array: ArrayType,
+  array: DoubleArray,
   options: {
-    mask?: ArrayType;
+    mask?: DoubleArray;
     cutOff?: number;
     refine?: boolean;
     magnitudeMode?: boolean;
@@ -364,12 +369,12 @@ function generateSanPlot(
     logBaseY?: number;
     considerList?: { from: number; step: number; to: number };
 
-    fromTo?: any;
+    fromTo?: Record<string, FromTo>;
   } = {},
 ) {
   const { fromTo, logBaseY = 2 } = options;
 
-  let sanplot: any = {};
+  let sanplot: Record<string, DataXY> = {};
   for (let key in fromTo) {
     let { from, to } = fromTo[key];
     sanplot[key] =
@@ -406,9 +411,9 @@ function generateSanPlot(
  * @returns Results.
  */
 function scale(
-  array: ArrayType,
+  array: DoubleArray,
   options: {
-    mask?: ArrayType;
+    mask?: DoubleArray;
     cutOff?: number;
     refine?: boolean;
     magnitudeMode?: boolean;
@@ -418,7 +423,7 @@ function scale(
     logBaseY?: number;
     considerList?: { from: number; step: number; to: number };
 
-    fromTo?: any;
+    fromTo?: Record<string, FromTo>;
   } = {},
 ): DataXY {
   const { log10, abs } = Math;

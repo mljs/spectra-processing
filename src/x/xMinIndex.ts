@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 
@@ -8,7 +8,7 @@ import { xCheck } from './xCheck';
  * @param array array of numbers
  * @returns result
  */
-export function xMinIndex(array: ArrayType): number {
+export function xMinIndex(array: DoubleArray | Uint16Array): number {
   xCheck(array);
   let minIndex = 0;
   for (let i = 1; i < array.length; i++) {

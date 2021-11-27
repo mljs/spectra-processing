@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 import { xCrossCorrelation } from './xCrossCorrelation';
 
@@ -11,6 +11,6 @@ import { xCrossCorrelation } from './xCrossCorrelation';
  * @param [options.lag=A.length - 1] - scalar lag parameter
  * @returns result
  */
-export function xAutoCorrelation(A: ArrayType, options = {}): ArrayType {
+export function xAutoCorrelation(A: DoubleArray, options = {}): DoubleArray {
   return xCrossCorrelation(A, A, options);
 }

@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 /**
  * Create an array with sequential numbers between from and to of length
@@ -15,7 +15,7 @@ export function createSequentialArray(
     to?: number;
     length?: number;
   } = {},
-): ArrayType {
+): DoubleArray {
   const { from = 0, to = 1, length = 1000 } = options;
   const array = new Float64Array(length);
   let step = (to - from) / (array.length - 1);

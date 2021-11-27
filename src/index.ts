@@ -1,3 +1,5 @@
+import { DoubleArray } from 'cheminfo-types';
+
 export * from './x/xAbsolute';
 export * from './x/xAbsoluteMedian';
 export * from './x/xAdd';
@@ -102,7 +104,6 @@ export * from './matrix/matrixZRescale';
 
 export * from './utils/createSequentialArray';
 
-export type ArrayType = number[] | Float64Array | Float32Array | Uint16Array;
 /**
  * @typedef {object} Zone
  * @property {number} from First value defining the zone.
@@ -128,31 +129,22 @@ export interface Point {
 }
 
 export interface DataXReIm {
-  x: ArrayType;
-  re: ArrayType;
-  im: ArrayType;
+  x: DoubleArray;
+  re: DoubleArray;
+  im: DoubleArray;
 }
 /**
  * @typedef {object} DataReIm
- * @property {ArrayType} re Array of re values.
- * @property {ArrayType} im Array of im values.
+ * @property {DoubleArray} re Array of re values.
+ * @property {DoubleArray} im Array of im values.
  */
 export interface DataReIm {
-  re: ArrayType;
-  im: ArrayType;
+  re: DoubleArray;
+  im: DoubleArray;
 }
 
-/**
- * @typedef {object} DataXY
- * @property {Array<number>} x Array of x values.
- * @property {Array<number>} y Array of y values.
- */
-export interface DataXY {
-  x: ArrayType;
-  y: ArrayType;
-}
 export interface DataXYZ {
-  x?: ArrayType;
-  y?: ArrayType;
-  z?: ArrayType;
+  x?: DoubleArray;
+  y?: DoubleArray;
+  z?: DoubleArray;
 }

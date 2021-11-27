@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 import { xCheckLengths } from './xCheck';
 /**
@@ -9,8 +9,8 @@ import { xCheckLengths } from './xCheck';
  * @returns result
  */
 export function xMeanAbsoluteError(
-  array1: ArrayType,
-  array2: ArrayType,
+  array1: DoubleArray,
+  array2: DoubleArray,
 ): number {
   xCheckLengths(array1, array2);
   let sum = 0;

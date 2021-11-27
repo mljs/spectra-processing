@@ -1,6 +1,5 @@
+import { DoubleArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
-
-import { ArrayType } from '..';
 
 /**
  * Calculate a new array of the same size that is the cumulative values
@@ -8,7 +7,7 @@ import { ArrayType } from '..';
  * @param array array
  * @returns result
  */
-export function xCumulative(array: ArrayType): ArrayType {
+export function xCumulative(array: DoubleArray): DoubleArray {
   if (!isAnyArray(array)) {
     throw new TypeError('input must be an array');
   }

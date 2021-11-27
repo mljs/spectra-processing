@@ -1,4 +1,6 @@
-import { DataXY, OptionsType } from '..';
+import { DataXY } from 'cheminfo-types';
+
+import { OptionsType } from '..';
 import { xyJoinX } from '../xy/xyJoinX';
 
 import { getSlots } from './utils/getSlots';

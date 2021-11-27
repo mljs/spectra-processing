@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 import { xPadding } from './xPadding';
@@ -16,13 +16,13 @@ import { xPadding } from './xPadding';
  * @returns result
  */
 export function xRolling(
-  array: ArrayType,
-  fct?: (array: ArrayType) => number,
+  array: DoubleArray,
+  fct?: (array: DoubleArray) => number,
   options: {
     window?: number;
     padding?: { size?: number; algorithm?: string; value?: number };
   } = {},
-): ArrayType {
+): DoubleArray {
   xCheck(array);
   if (typeof fct !== 'function') throw Error('fct has to be a function');
 

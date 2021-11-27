@@ -1,4 +1,5 @@
-import { DataXY } from '..';
+import { DataXY } from 'cheminfo-types';
+
 import { xIsMonotone } from '../x/xIsMonotone';
 
 /**

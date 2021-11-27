@@ -1,4 +1,6 @@
-import { DataXY, Point } from '..';
+import { DataXY } from 'cheminfo-types';
+
+import { Point } from '..';
 
 import { xyCheck } from './xyCheck';
 

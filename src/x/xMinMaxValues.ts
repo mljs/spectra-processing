@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 
@@ -8,7 +8,7 @@ import { xCheck } from './xCheck';
  * @param array array of number
  * @returns Object with 2 properties, min and max
  */
-export function xMinMaxValues(array: ArrayType): {
+export function xMinMaxValues(array: DoubleArray | Uint16Array): {
   min: number;
   max: number;
 } {

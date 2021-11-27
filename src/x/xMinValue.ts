@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 
@@ -12,7 +12,7 @@ import { xCheck } from './xCheck';
  * @returns result
  */
 export function xMinValue(
-  array: ArrayType,
+  array: DoubleArray | Uint16Array,
   options: {
     fromIndex?: number;
     toIndex?: number;

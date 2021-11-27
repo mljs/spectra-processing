@@ -1,4 +1,4 @@
-import { ArrayType, DataXY } from '..';
+import { DoubleArray, DataXY } from 'cheminfo-types';
 
 import { xyCheck } from './xyCheck';
 
@@ -14,8 +14,8 @@ export function xyGetNMaxY(data: DataXY, numberMaxPoints: number): DataXY {
   if (data.x.length <= numberMaxPoints) {
     return data;
   } else {
-    let newX: ArrayType = new Array(numberMaxPoints);
-    let newY: ArrayType = new Array(numberMaxPoints);
+    let newX: DoubleArray = new Array(numberMaxPoints);
+    let newY: DoubleArray = new Array(numberMaxPoints);
 
     // slice() is used to make a copy of the array, because sort() is IPM
     let threshold = data.y.slice().sort((a, b) => b - a)[numberMaxPoints - 1];

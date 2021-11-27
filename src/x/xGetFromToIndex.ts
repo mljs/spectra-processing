@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 import { xFindClosestIndex } from './xFindClosestIndex';
 
@@ -14,7 +14,7 @@ import { xFindClosestIndex } from './xFindClosestIndex';
  * @returns result
  */
 export function xGetFromToIndex(
-  x: ArrayType,
+  x: DoubleArray,
   options: {
     fromIndex?: number;
     toIndex?: number;

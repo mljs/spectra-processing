@@ -1,4 +1,5 @@
-import { DataXY } from '..';
+import { DataXY } from 'cheminfo-types';
+
 import { xGetTargetIndex } from '../x/xGetTargetIndex';
 
 import { xyCheck } from './xyCheck';

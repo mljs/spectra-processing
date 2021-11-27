@@ -1,4 +1,4 @@
-import { ArrayType } from '..';
+import { DoubleArray } from 'cheminfo-types';
 
 /**
  * Returns true if x is monotone
@@ -6,7 +6,7 @@ import { ArrayType } from '..';
  * @param array array of numbers
  * @returns result
  */
-export function xIsMonotone(array: ArrayType): boolean {
+export function xIsMonotone(array: DoubleArray): boolean {
   if (array.length <= 2) {
     return true;
   }

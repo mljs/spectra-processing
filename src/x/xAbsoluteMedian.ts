@@ -1,6 +1,5 @@
+import { DoubleArray } from 'cheminfo-types';
 import median from 'ml-array-median';
-
-import { ArrayType } from '..';
 
 import { xAbsolute } from './xAbsolute';
 /**
@@ -9,6 +8,6 @@ import { xAbsolute } from './xAbsolute';
  * @param array - the array that will be rotated
  * @returns median
  */
-export function xAbsoluteMedian(array: ArrayType): number {
+export function xAbsoluteMedian(array: DoubleArray): number {
   return median(xAbsolute(array));
 }
