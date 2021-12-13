@@ -45,3 +45,5 @@ lib-esm
 dist
 
 .DS_Store
+
+docs
