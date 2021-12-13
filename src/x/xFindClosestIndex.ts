@@ -5,14 +5,18 @@ import { DoubleArray } from 'cheminfo-types';
  *
  * @param array array of numbers
  * @param target target
- * @param options Options
- * @param options.sorted boolean
  * @returns closest index
  */
 export function xFindClosestIndex(
   array: DoubleArray,
   target: number,
-  options: { sorted?: boolean } = {},
+  options: {
+    /**
+     * Is the array sorted ? This allows to make a dichotomic search that is much faster.
+     * @default true
+     */
+    sorted?: boolean;
+  } = {},
 ): number {
   const { sorted = true } = options;
   if (sorted) {
