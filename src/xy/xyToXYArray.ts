@@ -5,8 +5,7 @@ import { xyCheck } from './xyCheck';
 /**
  * Convert a DataXY to an array of array containing x,y
  *
- * @param [data] array of points {x,y}
- * @returns result
+ * @param data - array of points {x,y}
  */
 export function xyToXYArray(data: DataXY): DoubleArray[] {
   xyCheck(data);
