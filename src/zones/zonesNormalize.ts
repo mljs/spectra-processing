@@ -5,11 +5,9 @@ import { Zone } from '../index';
  * - ensure than from < to
  * - merge overlapping zones
  *
- * @param [zones=[]] array of zones
- * @param [options={}] Options
- * @param options.from -
- * @param options.to -
- * @returns array of{to: number,from: number}
+ * @param zones - array of zones
+ * @param options - Options
+ * @returns array of zones
  */
 export function zonesNormalize(
   zones: Zone[] = [],

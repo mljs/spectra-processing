@@ -4,14 +4,14 @@ import { Point } from '..';
  *
  * xyObjectJoinX.
  *
- * @param [points] - Array of growing points {x,y}.
- * @param [options={}] - Options.
- * @param [options.xError=Number.EPSILON] - Limit to join the data.
- * @returns Results.
+ * @param points - Array of growing points {x,y}.
+ * @param options - Options.
+ * @param options.xError - Limit to join the data.
  */
 export function xyObjectJoinX(
   points: Point[],
   options: {
+    /**@default Number.EPSILON */
     xError?: number;
   } = {},
 ): Point[] {

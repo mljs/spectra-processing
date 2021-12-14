@@ -11,13 +11,13 @@ import { xyObjectMinXPoint } from './xyObjectMinXPoint';
  * new property `close` to true
  *
  * @param points - array of all the points
- * @param [options={}] Options
- * @param [options.from] - min X value of the window to consider
- * @param [options.to] - max X value of the window to consider
- * @param [options.limit=20] - max number of points
- * @param [options.threshold=0.01] - minimal intensity compare to more intense point
- * @param [options.numberSlots=10] - define the number of slots and indirectly the slot width
- * @param [options.numberCloseSlots=50] numberCloseSlots
+ * @param options - Options
+ * @param options.from - min X value of the window to consider
+ * @param options.to - max X value of the window to consider
+ * @param options.limit - max number of points
+ * @param options.threshold - minimal intensity compare to more intense point
+ * @param options.numberCloseSlots - numberCloseSlots
+ * @param options.numberSlots - define the number of slots and indirectly the slot width
  * @returns - copy of points with 'close' property
  */
 export function xyObjectBestPoints(
@@ -25,9 +25,13 @@ export function xyObjectBestPoints(
   options: {
     from?: number;
     to?: number;
+    /**@default 20 */
     limit?: number;
+    /**@default 0.01 */
     threshold?: number;
+    /**@default 50 */
     numberCloseSlots?: number;
+    /**@default 10 */
     numberSlots?: number;
   } = {},
 ): Point[] {

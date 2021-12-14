@@ -3,7 +3,7 @@ import { Point } from '..';
 /**
  * Throw an error in no an object of x,y arrays
  *
- * @param [points=[]] list of points
+ * @param points - list of points
  */
 export function xyObjectCheck(points: Point[] = []) {
   if (!Array.isArray(points)) {
