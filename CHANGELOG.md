@@ -1,5 +1,27 @@
 # Changelog
 
+## [7.0.0](https://www.github.com/mljs/spectra-processing/compare/v6.8.0...v7.0.0) (2021-12-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove node 10 from CI
+
+### Features
+
+* add sorted option to xFindClosestIndex function ([#94](https://www.github.com/mljs/spectra-processing/issues/94)) ([aa228be](https://www.github.com/mljs/spectra-processing/commit/aa228beb14e321cd8d43eddec89c1ad9923d7561))
+
+
+### Bug Fixes
+
+* documentation of xyCheck ([4c6b59a](https://www.github.com/mljs/spectra-processing/commit/4c6b59a26bd255a49bab8ff39abb8e330f76993e))
+* xHistogram test case ([4170db9](https://www.github.com/mljs/spectra-processing/commit/4170db98ab911a4caa2f03553da216d0875a5056))
+
+
+### Miscellaneous Chores
+
+* remove node 10 from CI ([391b064](https://www.github.com/mljs/spectra-processing/commit/391b064f357a69e2725ad581f90de2ecc09d519e))
+
 ## [6.8.0](https://www.github.com/mljs/spectra-processing/compare/v6.7.1...v6.8.0) (2021-07-23)
 
 
