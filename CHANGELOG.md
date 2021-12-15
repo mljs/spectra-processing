@@ -1,5 +1,12 @@
 # Changelog
 
+### [8.0.1](https://www.github.com/mljs/spectra-processing/compare/v8.0.0...v8.0.1) (2021-12-15)
+
+
+### Bug Fixes
+
+* correctly import spline-interpolation and fix xNoiseSanPlot ([474f08c](https://www.github.com/mljs/spectra-processing/commit/474f08c190bb604e8039fedcb0c0ee5ec200b4f8))
+
 ## [8.0.0](https://www.github.com/mljs/spectra-processing/compare/v7.0.0...v8.0.0) (2021-12-15)
 
 
