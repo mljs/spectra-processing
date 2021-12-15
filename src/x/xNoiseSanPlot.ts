@@ -1,11 +1,10 @@
 import { DataXY, FromTo, DoubleArray } from 'cheminfo-types';
 import fill from 'ml-array-sequential-fill';
+// @ts-ignore
+import SplineInterpolator from 'spline-interpolator';
 
 import erfcinv from './erfcinv';
 import rayleighCdf from './rayleighCdf';
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const SplineInterpolator = require('spline-interpolator');
 
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
