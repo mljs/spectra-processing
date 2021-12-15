@@ -1,5 +1,16 @@
 # Changelog
 
+## [8.0.0](https://www.github.com/mljs/spectra-processing/compare/v7.0.0...v8.0.0) (2021-12-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* Remove xyCalibrate
+
+### Miscellaneous Chores
+
+* Remove xyCalibrate ([90d81cb](https://www.github.com/mljs/spectra-processing/commit/90d81cb663abfd48f6c2edae597a0579dc33afac))
+
 ## [7.0.0](https://www.github.com/mljs/spectra-processing/compare/v6.8.0...v7.0.0) (2021-12-14)
 
 
