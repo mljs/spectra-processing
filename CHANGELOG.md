@@ -1,5 +1,12 @@
 # Changelog
 
+### [8.0.3](https://www.github.com/mljs/spectra-processing/compare/v8.0.2...v8.0.3) (2021-12-15)
+
+
+### Bug Fixes
+
+* is-any-array is a dependency and not a devDependency ([c7e6510](https://www.github.com/mljs/spectra-processing/commit/c7e651095f5204d968fd403cda16a2b2219dad8e))
+
 ### [8.0.2](https://www.github.com/mljs/spectra-processing/compare/v8.0.1...v8.0.2) (2021-12-15)
 
 
