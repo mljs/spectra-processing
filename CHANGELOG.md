@@ -1,5 +1,12 @@
 # Changelog
 
+### [8.0.2](https://www.github.com/mljs/spectra-processing/compare/v8.0.1...v8.0.2) (2021-12-15)
+
+
+### Bug Fixes
+
+* correct package.json, spline-interpolator is a dependency ([737eb3e](https://www.github.com/mljs/spectra-processing/commit/737eb3ee63376f648b5458900830260a99d18bdf))
+
 ### [8.0.1](https://www.github.com/mljs/spectra-processing/compare/v8.0.0...v8.0.1) (2021-12-15)
 
 
