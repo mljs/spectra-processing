@@ -50,7 +50,7 @@
     "cheminfo-build": "^1.1.11",
     "eslint": "^8.4.1",
     "eslint-config-cheminfo-typescript": "^10.2.4",
-    "eslint-plugin-jsdoc": "^37.2.0",
+    "eslint-plugin-jsdoc": "^37.2.1",
     "esm": "^3.2.25",
     "is-any-array": "^2.0.0",
     "jest": "^27.4.5",
@@ -72,7 +72,6 @@
     "ml-array-min": "^1.2.2",
     "ml-array-sequential-fill": "^1.1.7",
     "ml-array-standard-deviation": "^1.1.7",
-    "ml-gsd": "^9.0.4",
     "ml-matrix": "^6.8.2"
   }
 }
