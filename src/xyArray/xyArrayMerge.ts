@@ -8,10 +8,9 @@ import { getSlots } from './utils/getSlots';
  * Merge DataXY
  * We have an array of DataXY and the goal is to merge all the values that are the closest possible
  *
- * @param spectra Spectra
- * @param [options={}] Options
- * @param [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
- * @returns result
+ * @param spectra - Spectra
+ * @param options - Options
+ * @param options.delta - The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
  */
 export function xyArrayMerge(
   spectra: DataXY[],

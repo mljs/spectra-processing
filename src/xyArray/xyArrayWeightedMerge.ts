@@ -7,10 +7,9 @@ import { OptionsType, Point } from '..';
  * We have an array of DataXY and the goal is to merge all the values for which the deltaX is small or equal to delta.
  * X values are weighted average
  *
- * @param spectra spectra
- * @param [options={}] Options
- * @param [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
- * @returns results
+ * @param spectra - spectra
+ * @param options - Options
+ * @param options.delta - The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
  */
 export function xyArrayWeightedMerge(
   spectra: DataXY[],

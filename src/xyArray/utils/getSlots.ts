@@ -7,7 +7,6 @@ import { OptionsType } from '../..';
  *
  * @param spectra - Spectra.
  * @param options - Options.
- * @returns Result.
  */
 export function getSlots(
   spectra: DataXY[],

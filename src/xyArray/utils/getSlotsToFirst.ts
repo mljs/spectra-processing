@@ -8,7 +8,6 @@ import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
  * @param spectra - Spectra.
  * @param options - Options.
  * @param options.delta - Delta.
- * @returns Result.
  */
 export function getSlotsToFirst(
   spectra: DataXY[],

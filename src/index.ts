@@ -150,3 +150,8 @@ export interface DataXYZ {
   /** Array of z values */
   z?: DoubleArray;
 }
+
+export interface OptionsType {
+  /** @default 1 */
+  delta?: ((arg: number) => number) | number;
+}

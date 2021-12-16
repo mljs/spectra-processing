@@ -9,9 +9,8 @@ import { getSlotsToFirst } from './utils/getSlotsToFirst';
  * The alignment is based on the X values of the first spectrum and the `delta` error allowed. If some x values are missing in the first specdtrum we will add them
  *
  * @param spectra spectra
- * @param [options={}] options
- * @param [options.delta=1] The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
- * @returns Result
+ * @param options options
+ * @param options.delta - The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
  */
 export function xyArrayAlignToFirst(
   spectra: Array<DataXY>,
