@@ -152,6 +152,9 @@ export interface DataXYZ {
 }
 
 export interface OptionsType {
-  /** @default 1 */
+  /**
+   * The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+   *  @default 1
+   * */
   delta?: ((arg: number) => number) | number;
 }

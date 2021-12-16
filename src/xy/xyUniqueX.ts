@@ -6,15 +6,19 @@ import { xySortX } from './xySortX';
 /**
  * Ensure x values are unique
  *
- * @param [data] Object that contains property x (Array) and y (Array)
- * @param [options={}] Object containing a property algorithm (can be 'sum' or 'average', the latter being the default value), and a property isSorted (boolean indicating if the x-array is sorted).
- * @param [options.algorithm='average'] either 'average' or 'sum'
- * @param [options.isSorted=true] if false the DataXY has to be sorted first
- * @returns result
+ * @param data Object that contains property x (Array) and y (Array)
+ * @param options Object containing a property algorithm (can be 'sum' or 'average', the latter being the default value), and a property isSorted (boolean indicating if the x-array is sorted).
+ * @param options.algorithm - either 'average' or 'sum'
+ * @param options.isSorted - if false the DataXY has to be sorted first
  */
 export function xyUniqueX(
   data: DataXY,
-  options: { algorithm?: string; isSorted?: boolean } = {},
+  options: {
+    /**@default 'average' */
+    algorithm?: string;
+    /** @default true */
+    isSorted?: boolean;
+  } = {},
 ): DataXY {
   xyCheck(data);
 

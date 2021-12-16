@@ -3,8 +3,7 @@ import { DataXY } from 'cheminfo-types';
  * Order object of array, x has to be monotone.
  * Ensure x is growing
  *
- * @param data Object of kind {x:[], y:[]}.
- * @returns result
+ * @param data - Object of kind {x:[], y:[]}.
  */
 export function xyGrowingX(data: DataXY): DataXY {
   const { x, y } = data;

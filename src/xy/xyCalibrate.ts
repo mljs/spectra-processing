@@ -11,29 +11,32 @@ import { xFindClosestIndex } from '../x/xFindClosestIndex';
  * The selected nbPeaks will then be taken into account to calculate an average X value.
  * The difference between the targetX and the averageX value will be returned
  *
- * @param [data] array of points {x,y}
- * @param [range={}] range
- * @param [range.from] - Beginning of the range where the interest signal is localed
- * @param [range.to] - End of the range where the interest signal is localed
- * @param [options={}] options
- * @param [options.nbPeaks=1] Number of peaks to consider to calculate mean (sorted by height)
- * @param [options.targetX=0] Expected value for the mean of the peaks position
- * @param [options.gsd={}] GSD options. You may check options here: http://mljs.github.io/global-spectral-deconvolution/#gsd
- * @param [options.gsd.minMaxRatio=0.2] - GSD Threshold to determine if a given peak should be considered as a noise.
- * @param options.gsd.realTopDetection realTopDetection
- * @param options.gsd.smoothY smoothY
- * @param options.gsd.sgOptions sgOptions
- * @param options.gsd.sgOptions.windowSize sgOptions.windowSize
- * @param options.gsd.sgOptions.polynomial sgOptions.polynomial
- * @returns difference between targetX and currentX
+ * @param data - array of points {x,y}
+ * @param range - range
+ * @param range.from - Beginning of the range where the interest signal is localed
+ * @param range.to - End of the range where the interest signal is localed
+ * @param options - options
+ * @param options.nbPeaks - Number of peaks to consider to calculate mean (sorted by height)
+ * @param options.targetX - Expected value for the mean of the peaks position
+ * @param options.gsd - GSD options. You may check options here: http://mljs.github.io/global-spectral-deconvolution/#gsd
+ * @param options.gsd.minMaxRatio - GSD Threshold to determine if a given peak should be considered as a noise.
+ * @param options.gsd.realTopDetection - realTopDetection
+ * @param options.gsd.smoothY - smoothY
+ * @param options.gsd.sgOptions - sgOptions
+ * @param options.gsd.sgOptions.windowSize - sgOptions.windowSize
+ * @param options.gsd.sgOptions.polynomial - sgOptions.polynomial
+ * @returns - difference between targetX and currentX
  */
 export function xyCalibrate(
   data: DataXY,
   range: { to?: number; from?: number } = {},
   options: {
+    /**@default 0 */
     targetX?: number;
+    /**@default 1 */
     nbPeaks?: number;
     gsd?: {
+      /**@default 0.2 */
       minMaxRatio: number;
       realTopDetection: boolean;
       smoothY: boolean;

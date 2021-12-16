@@ -1,4 +1,5 @@
-import { DataXYZ } from '..';
+import { DataXY } from 'cheminfo-types';
+
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
 
 import { xyCheck } from './xyCheck';
@@ -13,14 +14,14 @@ import { xyCheck } from './xyCheck';
  * ML.ArrayPoints.sortX
  * ML.ArrayPoints.equallySpaced
  *
- * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @param [options={}] options
- * @param [options.target] number
- * @param [options.targetIndex] number
- * @returns Information about signal
+ * @param data - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param options - options
+ * @param options.target -
+ * @param options.targetIndex -
+ * @returns - Information about signal
  */
 export function xyPeakInfo(
-  data: DataXYZ = {},
+  data: DataXY,
   options: { targetIndex?: number; target?: number } = {},
 ) {
   xyCheck(data);

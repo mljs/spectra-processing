@@ -1,15 +1,13 @@
 import { DoubleArray, DataXY } from 'cheminfo-types';
 
-import { DataXYZ } from '..';
-
 import { xyCheck } from './xyCheck';
 /**
  * Filter out all the points for which x <= 0. Useful to display log scale data
  *
- * @param [data={}] data
- * @returns An object with the filtered data
+ * @param data - data
+ * @returns - An object with the filtered data
  */
-export function xyFilterXPositive(data: DataXYZ = {}): DataXY {
+export function xyFilterXPositive(data: DataXY): DataXY {
   xyCheck(data);
   const { x, y } = data;
   const newX: DoubleArray = [];

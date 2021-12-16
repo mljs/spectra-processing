@@ -12,22 +12,26 @@ import { xyCheck } from './xyCheck';
  * SHOULD NOT BE USED FOR DATA PROCESSING !!!
  * You should rather use ml-xy-equally-spaced to make further processing
  *
- * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @param [options={}] options
- * @param [options.from=x[0]] number
- * @param [options.to=x[x.length-1]] number
- * @param [options.nbPoints=4001] Number of points
- * @param [options.zones=[]] Array of zones to keep (from/to object)
- * @param [options.optimize=false] If optimize we may have less than nbPoints at the end
- * @returns results
+ * @param data - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param options - options
+ * @param options.from -
+ * @param options.to -
+ * @param options.nbPoints - Number of points
+ * @param options.zones - Array of zones to keep (from/to object)
+ * @param options.optimize - If optimize we may have less than nbPoints at the end
  */
 export function xyReduce(
   data: DataXY,
   options: {
+    /**@default x[0] */
     from?: number;
+    /**@default x[x.length-1] */
     to?: number;
+    /**@default 4001 */
     nbPoints?: number;
+    /**@default false */
     optimize?: boolean;
+    /**@default [] */
     zones?: Zone[];
   } = {},
 ): DataXY {

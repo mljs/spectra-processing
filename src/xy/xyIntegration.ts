@@ -1,4 +1,5 @@
-import { DataXYZ } from '..';
+import { DataXY } from 'cheminfo-types';
+
 import { xGetFromToIndex } from '../x/xGetFromToIndex';
 
 import { xyCheck } from './xyCheck';
@@ -6,15 +7,11 @@ import { xyCheck } from './xyCheck';
 /**
  * Calculate integration
  *
- * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @param [options={}] Options
- * @param [options.from] - First value for xyIntegration in the X scale
- * @param [options.fromIndex=0] - First point for xyIntegration
- * @param [options.to] - Last value for xyIntegration in the X scale
- * @param [options.toIndex=x.length-1] - Last point for xyIntegration
- * @returns xyIntegration value on the specified range
+ * @param data - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param options - Options
+ * @returns - xyIntegration value on the specified range
  */
-export function xyIntegration(data: DataXYZ = {}, options = {}): number {
+export function xyIntegration(data: DataXY, options = {}): number {
   xyCheck(data);
   const { x, y } = data;
   if (x === undefined || y === undefined || x.length < 2) return 0;

@@ -7,7 +7,7 @@ import { xyCheck } from './xyCheck';
  *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array).
  * @param numberMaxPoints - Number of points to keep.
- * @returns The points filtered to keep the `numberMaxPoints` most intense points of the input.
+ * @returns - The points filtered to keep the `numberMaxPoints` most intense points of the input.
  */
 export function xyGetNMaxY(data: DataXY, numberMaxPoints: number): DataXY {
   xyCheck(data);
