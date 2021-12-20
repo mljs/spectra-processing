@@ -3,8 +3,7 @@ import { DoubleMatrix } from '..';
 /**
  * Get min and max Z
  *
- * @param [matrix] - matrix [rows][cols].
- * @returns result
+ * @param matrix - matrix [rows][cols].
  */
 export function matrixMinMaxZ(matrix: DoubleMatrix): {
   max?: number;

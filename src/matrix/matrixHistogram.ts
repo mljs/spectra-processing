@@ -9,28 +9,32 @@ import { matrixMinMaxZ } from './matrixMinMaxZ';
 /**
  * Calculates an histogram of defined number of slots
  *
- * @param [matrix] - matrix [rows][cols].
- * @param options options
- * @param [options.nbSlots=256] Number of slots
- * @param [options.min=minValue] Minimum value to calculate used to calculate slot size
- * @param [options.max=maxValue] Maximal value to calculate used to calculate slot size
- * @param [options.logBaseX] We can first apply a log on x axi
- * @param [options.logBaseY] We can apply a log on the resulting histogra
- * @param [options.absolute] Take the absolute value
- * @param [options.centerX=true] Center the X value. We will enlarge the first and
- * @param options.histogram histogram
- * @returns of the histogram
+ * @param matrix - matrix [rows][cols].
+ * @param options - options
+ * @param options.nbSlots - Number of slots
+ * @param options.min - Minimum value to calculate used to calculate slot size
+ * @param options.max - Maximal value to calculate used to calculate slot size
+ * @param options.logBaseX - We can first apply a log on x axi
+ * @param options.logBaseY - We can apply a log on the resulting histogra
+ * @param options.absolute - Take the absolute value
+ * @param options.centerX - Center the X value. We will enlarge the first and
+ * @param options.histogram - histogram
+ * @returns - of the histogram
  */
 export function matrixHistogram(
   matrix: DoubleMatrix,
   options: {
+    /** @default true */
     centerX?: boolean;
     histogram?: DataXY;
+    /** @default 256 */
     nbSlots?: number;
     logBaseX?: number;
     logBaseY?: number;
     absolute?: boolean;
+    /** @default maxValue */
     max?: number;
+    /** @default minValue */
     min?: number;
   } = {},
 ): DataXY {

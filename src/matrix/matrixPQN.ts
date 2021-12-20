@@ -9,17 +9,20 @@ import { DoubleMatrix } from '..';
  * Dieterle, F., Ross, A., Schlotterbeck, G., & Senn, H. (2006). Probabilistic quotient normalization as robust method to account for dilution of complex biological mixtures. Application in 1H NMR metabonomics. Analytical chemistry, 78(13), 4281-4290.
  * DOI: 10.1021/ac051632c
  *
- * @param [matrix] - matrix [rows][cols].
- * @param [options={}] Options
- * @param [options.max=100] - Normalization integral constant.
- * @param options.min min
- * @returns result
+ * @param matrix - matrix [rows][cols].
+ * @param options Options
+ * @param options.max - Normalization integral constant.
+ * @param options.min - min
  * data: Normalized dataset.
  * medianOfQuotients: The median of quotients of each variables.
  */
 export function matrixPQN(
   matrix: DoubleMatrix,
-  options: { max?: number; min?: number } = {},
+  options: {
+    /** @default 100 */
+    max?: number;
+    min?: number;
+  } = {},
 ): {
   data: DoubleMatrix;
   medianOfQuotients: DoubleArray;
