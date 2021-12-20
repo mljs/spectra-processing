@@ -1,6 +1,6 @@
 import { DataXY, FromTo, DoubleArray } from 'cheminfo-types';
 import fill from 'ml-array-sequential-fill';
-// @ts-ignore
+// @ts-expect-error javascript package used
 import SplineInterpolator from 'spline-interpolator';
 
 import erfcinv from './erfcinv';
