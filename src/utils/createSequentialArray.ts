@@ -3,16 +3,19 @@ import { DoubleArray } from 'cheminfo-types';
 /**
  * Create an array with sequential numbers between from and to of length
  *
- * @param options Options
- * @param [options.from=0] from
- * @param [options.to=1] to
- * @param [options.length=1001] length
- * @returns array of floats
+ * @param options - Options
+ * @param options.from - from
+ * @param options.to - to
+ * @param options.length - length
+ * @returns - array of floats
  */
 export function createSequentialArray(
   options: {
+    /**@default 0 */
     from?: number;
+    /**@default 1 */
     to?: number;
+    /**@default 1001 */
     length?: number;
   } = {},
 ): DoubleArray {
