@@ -1,5 +1,59 @@
 # Changelog
 
+### [8.0.3](https://www.github.com/mljs/spectra-processing/compare/v8.0.2...v8.0.3) (2021-12-15)
+
+
+### Bug Fixes
+
+* is-any-array is a dependency and not a devDependency ([c7e6510](https://www.github.com/mljs/spectra-processing/commit/c7e651095f5204d968fd403cda16a2b2219dad8e))
+
+### [8.0.2](https://www.github.com/mljs/spectra-processing/compare/v8.0.1...v8.0.2) (2021-12-15)
+
+
+### Bug Fixes
+
+* correct package.json, spline-interpolator is a dependency ([737eb3e](https://www.github.com/mljs/spectra-processing/commit/737eb3ee63376f648b5458900830260a99d18bdf))
+
+### [8.0.1](https://www.github.com/mljs/spectra-processing/compare/v8.0.0...v8.0.1) (2021-12-15)
+
+
+### Bug Fixes
+
+* correctly import spline-interpolation and fix xNoiseSanPlot ([474f08c](https://www.github.com/mljs/spectra-processing/commit/474f08c190bb604e8039fedcb0c0ee5ec200b4f8))
+
+## [8.0.0](https://www.github.com/mljs/spectra-processing/compare/v7.0.0...v8.0.0) (2021-12-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* Remove xyCalibrate
+
+### Miscellaneous Chores
+
+* Remove xyCalibrate ([90d81cb](https://www.github.com/mljs/spectra-processing/commit/90d81cb663abfd48f6c2edae597a0579dc33afac))
+
+## [7.0.0](https://www.github.com/mljs/spectra-processing/compare/v6.8.0...v7.0.0) (2021-12-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove node 10 from CI
+
+### Features
+
+* add sorted option to xFindClosestIndex function ([#94](https://www.github.com/mljs/spectra-processing/issues/94)) ([aa228be](https://www.github.com/mljs/spectra-processing/commit/aa228beb14e321cd8d43eddec89c1ad9923d7561))
+
+
+### Bug Fixes
+
+* documentation of xyCheck ([4c6b59a](https://www.github.com/mljs/spectra-processing/commit/4c6b59a26bd255a49bab8ff39abb8e330f76993e))
+* xHistogram test case ([4170db9](https://www.github.com/mljs/spectra-processing/commit/4170db98ab911a4caa2f03553da216d0875a5056))
+
+
+### Miscellaneous Chores
+
+* remove node 10 from CI ([391b064](https://www.github.com/mljs/spectra-processing/commit/391b064f357a69e2725ad581f90de2ecc09d519e))
+
 ## [6.8.0](https://www.github.com/mljs/spectra-processing/compare/v6.7.1...v6.8.0) (2021-07-23)
 
 

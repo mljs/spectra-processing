@@ -77,7 +77,6 @@ export * from './xy/xyReduce';
 export * from './xy/xyRolling';
 export * from './xy/xyToXYObject';
 export * from './xy/xyToXYArray';
-export * from './xy/xyCalibrate';
 export * from './xy/xyUniqueX';
 export * from './xy/xySortX';
 
