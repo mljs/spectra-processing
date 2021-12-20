@@ -4,13 +4,15 @@ import { DataReIm } from '..';
  * Phase correction filter
  *
  * @param data DataReIm
- * @param [phi0=0] - Angle in radians for zero order phase correction
- * @param [phi1=0] - Angle in radians for first order phase correction
- * @returns returns a new object {re:[], im:[]}
+ * @param phi0 - Angle in radians for zero order phase correction
+ * @param phi1 - Angle in radians for first order phase correction
+ * @returns - returns a new object {re:[], im:[]}
  */
 export function reimPhaseCorrection(
   data: DataReIm,
+  /**@default 0 */
   phi0: number,
+  /**@default 0 */
   phi1: number,
 ): DataReIm {
   phi0 = Number.isFinite(phi0) ? phi0 : 0;
