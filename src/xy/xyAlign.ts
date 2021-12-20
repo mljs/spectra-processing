@@ -8,20 +8,23 @@ import { DataXY } from 'cheminfo-types';
  * @param data1 - First spectrum data
  * @param data2 - Second spectrum data
  * @param options - Options
- * @param options.delta - The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
- * @param options.common - If `true`, only the data considered as common to both spectra is kept. If `false`, the data y arrays are completed with zeroes where no common values are found
- * @param options.x - Defines what x values should be kept (`x1` : spectrum 1 x values, `x2` spectrum 2 x values, `weighted`: weighted average of both spectra x values)
 
  */
 export function xyAlign(
   data1: DataXY,
   data2: DataXY,
   options: {
-    /**@default 1 */
+    /**The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+     * @default 1
+     */
     delta?: ((arg: number) => number) | number;
-    /**@default true */
+    /**If `true`, only the data considered as common to both spectra is kept. If `false`, the data y arrays are completed with zeroes where no common values are found
+     * @default true
+     */
     common?: boolean;
-    /**@default "x1" */
+    /** Defines what x values should be kept (`x1` : spectrum 1 x values, `x2` spectrum 2 x values, `weighted`: weighted average of both spectra x values)
+     * @default "x1"
+     * */
     x?: string;
   } = {},
 ): {

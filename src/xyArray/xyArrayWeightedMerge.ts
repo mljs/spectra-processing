@@ -1,6 +1,6 @@
 import { DataXY } from 'cheminfo-types';
 
-import { OptionsType, Point } from '..';
+import { Point } from '..';
 
 /**
  * Merge DataXY
@@ -9,11 +9,16 @@ import { OptionsType, Point } from '..';
  *
  * @param spectra - spectra
  * @param options - Options
- * @param options.delta - The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
  */
 export function xyArrayWeightedMerge(
   spectra: DataXY[],
-  options: OptionsType = {},
+  options: {
+    /**
+     * The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+     * @default 1
+     */
+    delta?: ((arg: number) => number) | number;
+  } = {},
 ): DataXY {
   let { delta = 1 } = options;
   if (typeof delta === 'number') {

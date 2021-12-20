@@ -1,17 +1,21 @@
 import { DataXY } from 'cheminfo-types';
 
-import { OptionsType } from '../..';
 import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
 /**
  * GetSlotsToFirst.
  *
  * @param spectra - Spectra.
  * @param options - Options.
- * @param options.delta - Delta.
  */
 export function getSlotsToFirst(
   spectra: DataXY[],
-  options: OptionsType = {},
+  options: {
+    /**
+     * The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+     * @default 1
+     */
+    delta?: ((arg: number) => number) | number;
+  } = {},
 ): { from: number; to: number; value: number }[] {
   const { delta = 1 } = options;
   const deltaIsFunction = typeof delta === 'function';

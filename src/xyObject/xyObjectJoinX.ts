@@ -6,12 +6,14 @@ import { Point } from '..';
  *
  * @param points - Array of growing points {x,y}.
  * @param options - Options.
- * @param options.xError - Limit to join the data.
  */
 export function xyObjectJoinX(
   points: Point[],
   options: {
-    /**@default Number.EPSILON */
+    /**
+     * Limit to join the data.
+     * @default Number.EPSILON
+     * */
     xError?: number;
   } = {},
 ): Point[] {

@@ -1,7 +1,5 @@
 import { DataXY } from 'cheminfo-types';
 
-import { OptionsType } from '../..';
-
 /**
  * GetSlots.
  *
@@ -10,7 +8,13 @@ import { OptionsType } from '../..';
  */
 export function getSlots(
   spectra: DataXY[],
-  options: OptionsType = {},
+  options: {
+    /**
+     * The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+     * @default 1
+     */
+    delta?: ((arg: number) => number) | number;
+  } = {},
 ): {
   from: number;
   to: number;

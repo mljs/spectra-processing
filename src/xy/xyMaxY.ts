@@ -7,20 +7,28 @@ import { xyCheck } from './xyCheck';
  *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - Options
- * @param options.from - First value for xyIntegration in the X scale
- * @param options.fromIndex - First point for xyIntegration
- * @param options.to] - Last value for xyIntegration in the X scale
- * @param options.toIndex - Last point for xyIntegration
  * @returns - Max y on the specified range
  */
 export function xyMaxY(
   data: DataXYZ = {},
   options: {
+    /**
+     * First value for xyIntegration in the X scale
+     */
     from?: number;
-    /**@default 0 */
+    /**
+     * First point for xyIntegration
+     * @default 0
+     * */
     fromIndex?: number;
-    /**@default x.length-1 */
+    /**
+     *  Last point for xyIntegration
+     * @default x.length-1
+     * */
     toIndex?: number;
+    /**
+     * Last value for xyIntegration in the X scale
+     */
     to?: number;
   } = {},
 ): number {

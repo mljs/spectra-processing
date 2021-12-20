@@ -14,11 +14,6 @@ import { xyCheck } from './xyCheck';
  *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - options
- * @param options.from -
- * @param options.to -
- * @param options.nbPoints - Number of points
- * @param options.zones - Array of zones to keep (from/to object)
- * @param options.optimize - If optimize we may have less than nbPoints at the end
  */
 export function xyReduce(
   data: DataXY,
@@ -27,11 +22,19 @@ export function xyReduce(
     from?: number;
     /**@default x[x.length-1] */
     to?: number;
-    /**@default 4001 */
+    /**
+     * Number of points
+     * @default 4001
+     * */
     nbPoints?: number;
-    /**@default false */
+    /**
+     * If optimize we may have less than nbPoints at the end
+     * @default false
+     * */
     optimize?: boolean;
-    /**@default [] */
+    /**Array of zones to keep (from/to object)
+     * @default []
+     * */
     zones?: Zone[];
   } = {},
 ): DataXY {

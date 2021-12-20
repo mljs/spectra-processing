@@ -1,7 +1,5 @@
 import { DoubleArray, DataXY } from 'cheminfo-types';
 
-import { OptionsType } from '..';
-
 import { getSlotsToFirst } from './utils/getSlotsToFirst';
 
 /**
@@ -10,11 +8,16 @@ import { getSlotsToFirst } from './utils/getSlotsToFirst';
  *
  * @param spectra spectra
  * @param options options
- * @param options.delta - The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
  */
 export function xyArrayAlignToFirst(
   spectra: Array<DataXY>,
-  options: OptionsType = {},
+  options: {
+    /**
+     * The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+     * @default 1
+     */
+    delta?: ((arg: number) => number) | number;
+  } = {},
 ): {
   x: DoubleArray;
   ys: DoubleArray[];

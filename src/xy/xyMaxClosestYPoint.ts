@@ -9,8 +9,6 @@ import { xyCheck } from './xyCheck';
  *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - options
- * @param options.target -
- * @param options.targetIndex -
  * @returns - An object with the x/y value
  */
 export function xyMaxClosestYPoint(

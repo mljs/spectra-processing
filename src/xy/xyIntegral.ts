@@ -7,24 +7,34 @@ import { xyCheck } from './xyCheck';
  * Generate a X / Y of the xyIntegral
  *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
- * @param options Options
- * @param options.from - First value for xyIntegration in the X scale
- * @param options.fromIndex - First point for xyIntegration
- * @param options.to - Last value for xyIntegration in the X scale
- * @param options.toIndex - Last point for xyIntegration
- * @param options.reverse - Integrate from the larger value to the smallest value
+ * @param options - Options
  * @returns - An object with the xyIntegration function
  */
 export function xyIntegral(
   data: DataXY,
   options: {
-    /**@default false */
+    /**
+     * Integrate from the larger value to the smallest value
+     * @default false
+     * */
     reverse?: boolean;
+    /**
+     * First value for xyIntegration in the X scale
+     */
     from?: number;
-    /**@default 0 */
+    /**
+     * First point for xyIntegration
+     * @default 0
+     * */
     fromIndex?: number;
-    /**@default x.length-1 */
+    /**
+     *  Last point for xyIntegration
+     * @default x.length-1
+     * */
     toIndex?: number;
+    /**
+     * Last value for xyIntegration in the X scale
+     */
     to?: number;
   } = {},
 ): DataXY | number {
