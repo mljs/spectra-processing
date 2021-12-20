@@ -10,10 +10,8 @@ import { DataReIm } from '..';
  */
 export function reimPhaseCorrection(
   data: DataReIm,
-  /**@default 0 */
-  phi0: number,
-  /**@default 0 */
-  phi1: number,
+  phi0 = 0,
+  phi1 = 0,
 ): DataReIm {
   phi0 = Number.isFinite(phi0) ? phi0 : 0;
   phi1 = Number.isFinite(phi1) ? phi1 : 0;

@@ -12,10 +12,6 @@ import { reimPhaseCorrection } from './reimPhaseCorrection';
  *
  * @param data - DataReim.
  * @param options - Options.
- * @param options.magnitudeMode -
- * @param options.minRegSize -
- * @param options.maxDistanceToJoin -
- * @param options.factorNoise -
  */
 
 export function reimAutoPhaseCorrection(

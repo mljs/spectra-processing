@@ -9,8 +9,6 @@ import { xRotate } from '../x/xRotate';
  *
  * @param data - DataReim.
  * @param options - Options.
- * @param options.inverse -
- * @param options.applyZeroShift -
  * @returns DataReim.
  */
 export function reimFFT(

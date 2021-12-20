@@ -4,7 +4,7 @@ import { isAnyArray } from 'is-any-array';
 /**
  * Checks if input is valdi
  *
- * @param input input
+ * @param input - input
  */
 export function xCheck(input?: DoubleArray | Uint16Array) {
   if (!isAnyArray(input)) {

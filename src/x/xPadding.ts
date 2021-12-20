@@ -7,17 +7,25 @@ import { xCheck } from './xCheck';
  *
  *
  * @param array - the array that will be padded
- * @param [options={}] options
- * @param [options.algorithm=''] '', value, circular, duplicate
- * @param [options.size=0] padding size before first element and after last element
- * @param [options.value=0] value to use for padding (if algorithm='value')
- * @returns result
+ * @param options - options
  */
 export function xPadding(
   array: DoubleArray,
   options: {
+    /**
+     * padding size before first element and after last element
+     * @default 0
+     */
     size?: number;
+    /**
+     * value to use for padding (if algorithm='value')
+     * @default 0
+     */
     value?: number;
+    /**
+     * '', value, circular, duplicate
+     * @default ''
+     */
     algorithm?: string;
   } = {},
 ): DoubleArray {

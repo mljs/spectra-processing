@@ -9,28 +9,49 @@ import { xMinValue } from './xMinValue';
 /**
  * Calculates an histogram of defined number of slots
  *
- * @param [array] Array containing values
- * @param options options
- * @param [options.nbSlots=256] Number of slots
- * @param [options.min=minValue] Minimum value to calculate used to calculate slot size
- * @param [options.max=maxValue] Maximal value to calculate used to calculate slot size
- * @param [options.logBaseX] We can first apply a log on x axis
- * @param [options.logBaseY] We can apply a log on the resulting histogram
- * @param [options.absolute] Take the absolute value
- * @param [options.centerX=true] Center the X value. We will enlarge the first and last values.
- * @param [options.histogram={x:[], y:[]}] Previously existing histogram to continue to fill
- * @returns of the histogram
+ * @param array - Array containing values
+ * @param options - options
+ * @returns - result of the histogram
  */
 export function xHistogram(
   array: DoubleArray,
   options: {
+    /**
+     * Center the X value. We will enlarge the first and
+     * @default true
+     * */
     centerX?: boolean;
+    /**
+     * Previously existing histogram to continue to fill
+     * @default {x:[],y:[]}
+     * */
     histogram?: DataXY;
+    /**
+     * Number of slots
+     * @default 256
+     * */
     nbSlots?: number;
+    /**
+     * We can first apply a log on x axis
+     * */
     logBaseX?: number;
+    /**
+     * We can apply a log on the resulting histogram
+     */
     logBaseY?: number;
+    /**
+     * Take the absolute value
+     */
     absolute?: boolean;
+    /**
+     * Maximal value to calculate used to calculate slot size
+     * @default maxValue
+     * */
     max?: number;
+    /**
+     * Minimum value to calculate used to calculate slot size
+     * @default minValue
+     * */
     min?: number;
   } = {},
 ): DataXY {

@@ -4,7 +4,6 @@ import { DoubleArray } from 'cheminfo-types';
  * This function xSubtract the first array by the second array or a constant value from each element of the first array
  *
  * @param array - the array that will be rotated
- * @returns result
  */
 export function xBoxPlot(array: DoubleArray) {
   array = array.slice(0).sort((a, b) => a - b);

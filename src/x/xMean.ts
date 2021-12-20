@@ -5,16 +5,21 @@ import { xCheck } from './xCheck';
 /**
  * Computes the maximal value of an array of values
  *
- * @param array array of numbers
- * @param [options={}] options
- * @param [options.fromIndex=0] - First point for xyIntegration
- * @param [options.toIndex=x.length-1] - Last point for xyIntegration
- * @returns result
+ * @param array - array of numbers
+ * @param options - options
  */
 export function xMean(
   array: DoubleArray | Uint16Array,
   options: {
+    /**
+     * First point for xyIntegration
+     * @default 0
+     */
     fromIndex?: number;
+    /**
+     * Last point for xyIntegration
+     * @default x.length-1
+     */
     toIndex?: number;
   } = {},
 ): number {

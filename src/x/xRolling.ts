@@ -6,21 +6,38 @@ import { xPadding } from './xPadding';
  * This function calculates a rolling average
  *
  * @param array - the array that will be rotated
- * @param fct callback function that from an array returns a value.
- * @param [options={}] options
- * @param [options.window=5] rolling window
- * @param [options.padding.size=0] none, value, circular, duplicate
- * @param [options.padding.algorithm='value'] none, value, circular, duplicate
- * @param [options.padding.value=0] value to use for padding (if algorithm='value')
- * @param options.padding padding
- * @returns result
+ * @param fct - callback function that from an array returns a value.
+ * @param options - options
  */
 export function xRolling(
   array: DoubleArray,
   fct?: (array: DoubleArray) => number,
   options: {
+    /**
+     * rolling window
+     * @default 5
+     */
     window?: number;
-    padding?: { size?: number; algorithm?: string; value?: number };
+    /**
+     * padding
+     */
+    padding?: {
+      /**
+       * padding size before first element and after last element
+       * @default 0
+       */
+      size?: number;
+      /**
+       * value to use for padding (if algorithm='value')
+       * @default 0
+       */
+      value?: number;
+      /**
+       * '', value, circular, duplicate
+       * @default 'value'
+       */
+      algorithm?: string;
+    };
   } = {},
 ): DoubleArray {
   xCheck(array);

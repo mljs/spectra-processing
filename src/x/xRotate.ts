@@ -7,8 +7,8 @@ import { DoubleArray } from 'cheminfo-types';
  * @example xRotate([1,2,3,4],1) -> [4,1,2,3]
  * @example xRotate([1,2,3,4],-1) -> [2,3,4,1]
  * @param array - the array that will be rotated
- * @param shift number
- * @returns array of float
+ * @param shift - number
+ * @returns - array of float
  */
 export function xRotate(array: DoubleArray, shift: number): DoubleArray {
   shift = shift % array.length;

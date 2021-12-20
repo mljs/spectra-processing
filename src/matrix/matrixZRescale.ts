@@ -5,15 +5,19 @@ import { DoubleMatrix } from '..';
  *
  * @param matrix - matrix [rows][cols].
  * @param options - Options
- * @param options.min - min
- * @param options.max - max
  */
 export function matrixZRescale(
   matrix: DoubleMatrix,
   options: {
-    /**@default 0 */
+    /**
+     * min
+     * @default 0
+     * */
     min?: number;
-    /**@default 1 */
+    /**
+     * max
+     * @default 1
+     * */
     max?: number;
   } = {},
 ): DoubleMatrix {

@@ -5,8 +5,7 @@ import { isAnyArray } from 'is-any-array';
  * This function xAdd the first array by the second array or a constant value to each element of the first array
  *
  * @param array1 - the array that will be rotated
- * @param array2 the second array
- * @returns result
+ * @param array2 - the second array
  */
 export function xAdd(
   array1: DoubleArray,

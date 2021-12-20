@@ -11,16 +11,20 @@ import { DoubleMatrix } from '..';
  *
  * @param matrix - matrix [rows][cols].
  * @param options Options
- * @param options.max - Normalization integral constant.
- * @param options.min - min
  * data: Normalized dataset.
  * medianOfQuotients: The median of quotients of each variables.
  */
 export function matrixPQN(
   matrix: DoubleMatrix,
   options: {
-    /** @default 100 */
+    /**
+     * Normalization integral constant.
+     * @default 100
+     * */
     max?: number;
+    /**
+     * min
+     */
     min?: number;
   } = {},
 ): {

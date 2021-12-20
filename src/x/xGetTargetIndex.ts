@@ -5,16 +5,16 @@ import { xFindClosestIndex } from './xFindClosestIndex';
 /**
  *  Returns the targetIndex
  *
- * @param [x] array of numbers
- * @param [options={}] options
- * @param [options.target] target
- * @param [options.targetIndex=0] targetindex
- *@returns results
+ * @param x - array of numbers
+ * @param options - options
  */
 export function xGetTargetIndex(
   x: DoubleArray,
   options: {
     target?: number;
+    /**
+     * @default 0
+     */
     targetIndex?: number;
   } = {},
 ): number {

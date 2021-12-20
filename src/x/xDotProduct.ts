@@ -7,7 +7,6 @@ import { xMultiply } from './xMultiply';
  *
  * @param A - First array.
  * @param B - Second array.
- * @returns Result.
  */
 export function xDotProduct(A: DoubleArray, B: DoubleArray): number {
   let g = xMultiply(A, B);

@@ -3,9 +3,9 @@ import { DoubleArray } from 'cheminfo-types';
 /**
  * Returns the closest index of a `target`
  *
- * @param array array of numbers
- * @param target target
- * @returns closest index
+ * @param array - array of numbers
+ * @param target - target
+ * @returns - closest index
  */
 export function xFindClosestIndex(
   array: DoubleArray,
