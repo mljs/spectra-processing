@@ -5,8 +5,7 @@ import { xCheck } from './xCheck';
 /**
  * Computes the index of the minimum of the given values
  *
- * @param array array of numbers
- * @returns result
+ * @param array - array of numbers
  */
 export function xMinIndex(array: DoubleArray | Uint16Array): number {
   xCheck(array);

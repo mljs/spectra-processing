@@ -1,28 +1,40 @@
 import { DataXY } from 'cheminfo-types';
 
-import { DataXYZ } from '..';
 import { xGetFromToIndex } from '../x/xGetFromToIndex';
 
 import { xyCheck } from './xyCheck';
 /**
  * Generate a X / Y of the xyIntegral
  *
- * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @param [options={}] Options
- * @param [options.from] - First value for xyIntegration in the X scale
- * @param [options.fromIndex=0] - First point for xyIntegration
- * @param [options.to] - Last value for xyIntegration in the X scale
- * @param [options.toIndex=x.length-1] - Last point for xyIntegration
- * @param [options.reverse=false] - Integrate from the larger value to the smallest value
- * @returns An object with the xyIntegration function
+ * @param data - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param options - Options
+ * @returns - An object with the xyIntegration function
  */
 export function xyIntegral(
-  data: DataXYZ = {},
+  data: DataXY,
   options: {
+    /**
+     * Integrate from the larger value to the smallest value
+     * @default false
+     * */
     reverse?: boolean;
+    /**
+     * First value for xyIntegration in the X scale
+     */
     from?: number;
+    /**
+     * First point for xyIntegration
+     * @default 0
+     * */
     fromIndex?: number;
+    /**
+     *  Last point for xyIntegration
+     * @default x.length-1
+     * */
     toIndex?: number;
+    /**
+     * Last value for xyIntegration in the X scale
+     */
     to?: number;
   } = {},
 ): DataXY | number {

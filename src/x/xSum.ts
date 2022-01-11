@@ -5,15 +5,24 @@ import { xCheck } from './xCheck';
 /**
  * Calculate the sum of the values
  *
- * @param [array={}] - Object that contains property x (an ordered increasing array) and y (an array).
- * @param [options={}] - Options.
- * @param [options.fromIndex=0] - First point for xSum.
- * @param [options.toIndex=x.length-1] - Last point for xSum.
+ * @param array - Object that contains property x (an ordered increasing array) and y (an array).
+ * @param options - Options.
  * @returns XSum value on the specified range.
  */
 export function xSum(
   array: DoubleArray | Uint16Array,
-  options: { fromIndex?: number; toIndex?: number } = {},
+  options: {
+    /**
+     * First point for xSum.
+     * @default 0
+     */
+    fromIndex?: number;
+    /**
+     * Last point for xSum.
+     * @default x.length-1
+     */
+    toIndex?: number;
+  } = {},
 ): number {
   const { fromIndex = 0, toIndex = array.length - 1 } = options;
   xCheck(array);

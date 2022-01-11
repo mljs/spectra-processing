@@ -1,4 +1,4 @@
-import { DataXYZ } from '..';
+import { DataXY } from 'cheminfo-types';
 
 import { xyCheck } from './xyCheck';
 /**
@@ -6,15 +6,12 @@ import { xyCheck } from './xyCheck';
  * If the values are equal the middle
  * of the equal part will be the position of the signal!
  *
- * @param [data={}] - Object that contains property X (an ordered increasing array) and y (an arraY).
- * @param data.x - X.
- * @param data.y - Y.
- * @param data.z - Z.
- * @param _options - Options.
- * @returns Array of points.
+ * @param data - Object that contains property X (an ordered increasing array) and y (an arraY).
+ * @param options - Options.
+ * @returns - Array of points.
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function xyMinimaY(data: DataXYZ = {}, _options = {}) {
+export function xyMinimaY(data: DataXY, options = {}) {
   xyCheck(data);
   const { x, y } = data;
   if (x === undefined || y === undefined || x.length < 3) return [];

@@ -5,7 +5,7 @@ import { DoubleArray } from 'cheminfo-types';
  *
  * @example xNorm([3, 4]) -> 5
  * @param array - the array that will be rotated
- * @returns calculated norm
+ * @returns - calculated norm
  */
 export function xNorm(array: DoubleArray): number {
   let result = 0;

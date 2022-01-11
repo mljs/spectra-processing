@@ -3,8 +3,7 @@ import { DoubleArray } from 'cheminfo-types';
 /**
  * Returns true if x is monotone
  *
- * @param array array of numbers
- * @returns result
+ * @param array - array of numbers
  */
 export function xIsMonotone(array: DoubleArray): boolean {
   if (array.length <= 2) {

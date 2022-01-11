@@ -1,6 +1,6 @@
 import { DataXY } from 'cheminfo-types';
 
-import { DataXYZ, Zone } from '..';
+import { Zone } from '..';
 import { zonesNormalize } from '../zones/zonesNormalize';
 
 import { xyCheck } from './xyCheck';
@@ -8,13 +8,12 @@ import { xyCheck } from './xyCheck';
 /**
  * XyExtract zones from a XY data
  *
- * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @param [options={}] options
- * @param [options.zones=[]] zones
- * @returns Array of points
+ * @param data - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param options - options
+ * @returns - Array of points
  */
 export function xyExtract(
-  data: DataXYZ = {},
+  data: DataXY,
   options: { zones?: Zone[] } = {},
 ): DataXY {
   xyCheck(data);
@@ -29,7 +28,7 @@ export function xyExtract(
     !Array.isArray(zones) ||
     zones.length === 0
   ) {
-    return data as DataXY;
+    return data;
   }
 
   let newX = [];

@@ -7,15 +7,17 @@ import { xyCheck } from './xyCheck';
 /**
  * Find the closest maximum going up hill
  *
- * @param [data={}] - Object that contains property x (an ordered increasing array) and y (an array)
- * @param [options={}] options
- * @param [options.target] number
- * @param [options.targetIndex=0] number
- * @returns An object with the x/y value
+ * @param data - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param options - options
+ * @returns - An object with the x/y value
  */
 export function xyMaxClosestYPoint(
   data: DataXY,
-  options: { target?: number; targetIndex?: number } = {},
+  options: {
+    target?: number;
+    /**@default 0 */
+    targetIndex?: number;
+  } = {},
 ): { x: number; y: number; index: number } {
   xyCheck(data);
   const { x, y } = data;

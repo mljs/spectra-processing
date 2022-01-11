@@ -5,8 +5,7 @@ import { isAnyArray } from 'is-any-array';
  * This function xMultiply the first array by the second array or a constant value to each element of the first array
  *
  * @param array1 - the array that will be rotated
- * @param array2 --second array
- * @returns array of result
+ * @param array2 - second array
  */
 export function xMultiply(
   array1: DoubleArray,

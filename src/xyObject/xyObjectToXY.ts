@@ -6,8 +6,7 @@ import { Point } from '..';
  *
  * XyObjectToXY.
  *
- * @param [points] - Array of points {x,y}.
- * @returns DataXY.
+ * @param points - Array of points {x,y}.
  */
 export function xyObjectToXY(points: Point[]): DataXY {
   return {

@@ -7,10 +7,9 @@ import { xRollingAverage } from '../x/xRollingAverage';
  *
  * This methods will recalculate the x values by using xRollingAverage
  *
- * @param [points] array of points {x,y}
- * @param [fct] callback function that from an array returns a value.
- * @param options options
- * @returns results
+ * @param points - array of points {x,y}
+ * @param fct - callback function that from an array returns a value.
+ * @param options - options
  */
 export function xyRolling(
   points: DataXY,

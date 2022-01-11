@@ -5,8 +5,7 @@ import { xCorrelation } from '../x/xCorrelation';
 /**
  * Calculates a correlation matrix based on the columns of the initial matrix
  *
- * @param [A] - matrix [rows][cols]
- * @returns result
+ * @param A - matrix [rows][cols]
  */
 export function matrixColumnsCorrelation(A: DoubleMatrix): DoubleMatrix {
   let B: Matrix = new Matrix(A as [][]);

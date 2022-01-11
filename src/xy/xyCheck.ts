@@ -4,6 +4,8 @@ import { DataXYZ } from '..';
 
 /**
  * Throw an error in no an object of x,y arrays
+ *
+ * @param data - array of points {x,y,z}
  */
 export function xyCheck(data: DataXYZ = {}) {
   if (!isAnyArray(data.x) || !isAnyArray(data.y)) {

@@ -1,6 +1,6 @@
 import { DataXY, FromTo, DoubleArray } from 'cheminfo-types';
 import fill from 'ml-array-sequential-fill';
-// @ts-ignore
+// @ts-expect-error javascript package used
 import SplineInterpolator from 'spline-interpolator';
 
 import erfcinv from './erfcinv';
@@ -10,32 +10,44 @@ import rayleighCdf from './rayleighCdf';
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
  *
  * @param data - real or magnitude spectra data.
- * @param [options = {}] options
- * @param [options.mask] - boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
- * @param [options.scaleFactor=1] - factor to scale the data input[i]*=scaleFactor.
- * @param [options.cutOff] - percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
- * @param [options.factorStd=5] - factor times std to determine what will be marked as signals.
- * @param [options.refine=true] - if true the noise level will be recalculated get out the signals using factorStd.
- * @param [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
- * @param [options.logBaseY=2] - log scale to apply in the intensity axis in order to avoid big numbers.
- * @param options.magnitudeMode -
- * @param options.considerList -
- * @param options.considerList.from -
- * @param options.considerList.step -
- * @param options.considerList.to -
- * @param options.fromTo -
- * @returns result
+ * @param options - options
  */
 export function xNoiseSanPlot(
   data: DoubleArray,
   options: {
+    /**
+     * boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+     */
     mask?: DoubleArray;
+    /**
+     * percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+     */
     cutOff?: number;
+    /**
+     * true the noise level will be recalculated get out the signals using factorStd.
+     * @default true
+     */
     refine?: boolean;
     magnitudeMode?: boolean;
+    /**
+     * factor to scale the data input[i]*=scaleFactor.
+     * @default 1
+     */
     scaleFactor?: number;
+    /**
+     * factor times std to determine what will be marked as signals.
+     * @default 5
+     */
     factorStd?: number;
+    /**
+     * If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
+     * @default true
+     */
     fixOffset?: boolean;
+    /**
+     * log scale to apply in the intensity axis in order to avoid big numbers.
+     * @default 2
+     */
     logBaseY?: number;
     considerList?: { from: number; step: number; to: number };
 

@@ -4,9 +4,8 @@ import { DoubleArray } from 'cheminfo-types';
  * Calculates the correlation between 2 vectors
  * https://en.wikipedia.org/wiki/Correlation_and_dependence
  *
- * @param [A] - the array that will be rotated
- * @param [B] sencond array
- * @returns result
+ * @param A - the array that will be rotated
+ * @param B - sencond array
  */
 export function xCorrelation(A: DoubleArray, B: DoubleArray): number {
   let n = A.length;

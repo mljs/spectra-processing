@@ -3,15 +3,23 @@ import { DoubleMatrix } from '..';
 /**
  * Rescale columns
  *
- * @param [matrix] - matrix [rows][cols].
- * @param [options={}] Options
- * @param [options.min=0] min
- * @param [options.max=1] max
- * @returns result
+ * @param matrix - matrix [rows][cols].
+ * @param options - Options
  */
 export function matrixZRescale(
   matrix: DoubleMatrix,
-  options: { min?: number; max?: number } = {},
+  options: {
+    /**
+     * min
+     * @default 0
+     * */
+    min?: number;
+    /**
+     * max
+     * @default 1
+     * */
+    max?: number;
+  } = {},
 ): DoubleMatrix {
   const { min = 0, max = 1 } = options;
   const nbRows = matrix.length;

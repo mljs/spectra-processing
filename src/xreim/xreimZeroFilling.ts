@@ -5,7 +5,7 @@ import { DataXReIm } from '..';
  *
  * @param data - Object of kind {x:[], re:[], im:[]}.
  * @param totalLength - Final number of points.
- * @returns Data.
+ * @returns - Data.
  */
 export function xreimZeroFilling(
   data: DataXReIm,

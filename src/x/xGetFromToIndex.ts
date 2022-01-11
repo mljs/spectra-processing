@@ -5,20 +5,29 @@ import { xFindClosestIndex } from './xFindClosestIndex';
 /**
  * Returns an object with {fromIndex, toIndex} for a specific from / to
  *
- * @param x array of numbers
- * @param [options={}] Options
- * @param [options.from] - First value for xyIntegration in the X scale
- * @param [options.fromIndex=0] - First point for xyIntegration
- * @param [options.to] - Last value for xyIntegration in the X scale
- * @param [options.toIndex=x.length-1] - Last point for xyIntegration
- * @returns result
+ * @param x - array of numbers
+ * @param options - Options
  */
 export function xGetFromToIndex(
   x: DoubleArray,
   options: {
+    /**
+     * First point for xyIntegration
+     * @default 0
+     * */
     fromIndex?: number;
+    /**
+     * Last point for xyIntegration
+     * @default x.length-1
+     * */
     toIndex?: number;
+    /**
+     * First value for xyIntegration in the X scale
+     * */
     from?: number;
+    /**
+     * Last value for xyIntegration in the X scale
+     * */
     to?: number;
   } = {},
 ): { fromIndex: number; toIndex: number } {
