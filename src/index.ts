@@ -102,6 +102,8 @@ export * from './matrix/matrixPQN';
 export * from './matrix/matrixZRescale';
 
 export * from './utils/createSequentialArray';
+export * from './utils/applyNumericEncoding';
+export * from './utils/numericEncodingOfArray';
 
 export type DoubleMatrix = DoubleArray[];
 export interface Zone {
