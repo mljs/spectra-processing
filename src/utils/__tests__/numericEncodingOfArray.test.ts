@@ -1,7 +1,6 @@
 import { numericEncodingOfArray } from '../numericEncodingOfArray';
 
 describe('numericEncodingOfArray', () => {
-
   let dataset = [
     [73, 'a', 'o', 152],
     [93, 'b', 'u', 185],
@@ -24,7 +23,7 @@ describe('numericEncodingOfArray', () => {
   it('should return an array of numbers', () => {
     numericEncodingOfArray(dataset);
 
-    function allNumbers(arrayData : (string|number)[][]) {
+    function allNumbers(arrayData: (string | number)[][]) {
       for (let subArray of arrayData) {
         for (let element of subArray) {
           if (typeof element === 'string') {
