@@ -1,6 +1,7 @@
-import { numericEncodingOfArray } from '../numericEncodingOfArray';
+import { matrixNumericalDecoding } from '../matrixNumericalDecoding';
+import { matrixNumericalEncoding } from '../matrixNumericalEncoding';
 
-describe('numericEncodingOfArray', () => {
+describe('matrixNumericalDecoding', () => {
   let dataset = [
     [73, 'a', 'o', 152],
     [93, 'b', 'u', 185],
@@ -21,18 +22,9 @@ describe('numericEncodingOfArray', () => {
   ];
 
   it('should return an array of numbers', () => {
-    numericEncodingOfArray(dataset);
+    const dictionnary = matrixNumericalEncoding(dataset);
+    const matrix = matrixNumericalDecoding(dataset, dictionnary);
 
-    function allNumbers(arrayData: (string | number)[][]) {
-      for (let subArray of arrayData) {
-        for (let element of subArray) {
-          if (typeof element === 'string') {
-            return false;
-          }
-        }
-      }
-      return true;
-    }
-    expect(allNumbers(dataset)).toBe(true);
+    expect(matrix).toStrictEqual(dataset);
   });
 });

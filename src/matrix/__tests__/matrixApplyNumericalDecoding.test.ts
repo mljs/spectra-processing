@@ -1,7 +1,7 @@
-import { applyNumericEncoding } from '../applyNumericEncoding';
-import { numericEncodingOfArray } from '../numericEncodingOfArray';
+import { matrixApplyNumericalEncoding } from '../matrixApplyNumericalEncoding';
+import { matrixNumericalEncoding } from '../matrixNumericalEncoding';
 
-describe('applyNumericEncoding', () => {
+describe('matrixApplyNumericalEncoding', () => {
   let datasetForEncoding = [
     [73, 'a', 'o', 152],
     [93, 'b', 'u', 185],
@@ -34,8 +34,8 @@ describe('applyNumericEncoding', () => {
   ];
 
   it('should return an array of numbers', () => {
-    const dictionnary = numericEncodingOfArray(datasetForEncoding);
-    const array = applyNumericEncoding(datasetToEncode, dictionnary);
+    const dictionnary = matrixNumericalEncoding(datasetForEncoding);
+    const array = matrixApplyNumericalEncoding(datasetToEncode, dictionnary);
 
     function allNumbers(arrayData: (string | number)[][]) {
       for (let subArray of arrayData) {

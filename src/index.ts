@@ -100,10 +100,11 @@ export * from './matrix/matrixMinMaxZ';
 export * from './matrix/matrixMinMaxAbsoluteZ';
 export * from './matrix/matrixPQN';
 export * from './matrix/matrixZRescale';
+export * from './matrix/matrixNumericalEncoding';
+export * from './matrix/matrixNumericalDecoding';
+export * from './matrix/matrixApplyNumericalEncoding';
 
 export * from './utils/createSequentialArray';
-export * from './utils/applyNumericEncoding';
-export * from './utils/numericEncodingOfArray';
 
 export type DoubleMatrix = DoubleArray[];
 export interface Zone {
