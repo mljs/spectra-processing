@@ -1,3 +1,5 @@
+import { matrixClone } from './matrixClone';
+
 /**
  * Numerically decodes the matrix using the dictionnary
  * @param array - original matrix before encoding
@@ -14,15 +16,16 @@ function swap(dictionnary: { [stringValue: string]: number }) {
 }
 
 export function matrixNumericalDecoding(
-  matrix: (number | string)[][],
+  matrixInitial : number[][],
   dictionnary: { [stringValue: string]: number },
-): (number | string)[][] {
+) : (string|number)[][] {
+  let matrix = matrixClone(matrixInitial);
   let invertedDictionnary: { [numberValue: number]: string } =
     swap(dictionnary);
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[0].length; j++) {
       if (matrix[i][j] in invertedDictionnary) {
-        matrix[i][j] = invertedDictionnary[Number(matrix[i][j])];
+        matrix[i][j] = invertedDictionnary[matrix[i][j]];
       }
     }
   }

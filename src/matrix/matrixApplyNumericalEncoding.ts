@@ -1,3 +1,7 @@
+import max from 'ml-array-max';
+
+import { matrixClone } from './matrixClone';
+
 /**
  * Numerically encodes the strings in the matrix with an encoding dictionary
  * @param array - original matrix before encoding
@@ -5,14 +9,16 @@
  * @returns - encoded matrix
  */
 export function matrixApplyNumericalEncoding(
-  matrix: (string | number)[][],
+  matrixInitial: (string | number)[][],
   dictionnary: { [nameString: string]: number },
-) {
+) : number[][] {
+
+  let matrix = matrixClone(matrixInitial);
   let arrayOfValues = [];
   for (let key in dictionnary) {
     arrayOfValues.push(dictionnary[key]);
   }
-  let k = Math.max(...arrayOfValues);
+  let k = max(arrayOfValues);
 
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[0].length; j++) {
@@ -20,7 +26,7 @@ export function matrixApplyNumericalEncoding(
         if (matrix[i][j] in dictionnary) {
           matrix[i][j] = dictionnary[matrix[i][j]];
         } else {
-          k = k + 1;
+          k++;
           dictionnary[matrix[i][j]] = k;
           matrix[i][j] = k;
         }

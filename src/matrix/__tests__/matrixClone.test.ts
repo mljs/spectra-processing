@@ -1,6 +1,6 @@
-import { matrixNumericalEncoding } from '../matrixNumericalEncoding';
+import { matrixClone } from '../matrixClone';
 
-describe('matrixNumericalEncoding', () => {
+describe('matrixClone', () => {
   let dataset = [
     [73, 'a', 'o', 152],
     [93, 'b', 'u', 185],
@@ -21,19 +21,7 @@ describe('matrixNumericalEncoding', () => {
   ];
 
   it('should return an array of numbers', () => {
-    let {matrix} = matrixNumericalEncoding(dataset);
-
-    function allNumbers(arrayData: (string | number)[][]) {
-      for (let subArray of arrayData) {
-        for (let element of subArray) {
-          if (typeof element === 'string') {
-            return false;
-          }
-        }
-      }
-      return true;
-    }
-
-    expect(allNumbers(matrix)).toBe(true);
+    const matrix = matrixClone(dataset);
+    expect(matrix).toStrictEqual(dataset);
   });
 });

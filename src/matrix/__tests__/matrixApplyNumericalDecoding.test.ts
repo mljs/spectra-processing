@@ -34,12 +34,12 @@ describe('matrixApplyNumericalEncoding', () => {
   ];
 
   it('should return an array of numbers', () => {
-    const dictionnary = matrixNumericalEncoding(datasetForEncoding);
-    const array = matrixApplyNumericalEncoding(datasetToEncode, dictionnary);
+    const {dictCategoricalToNumerical} = matrixNumericalEncoding(datasetForEncoding);
+    const matrix = matrixApplyNumericalEncoding(datasetToEncode, dictCategoricalToNumerical);
 
-    function allNumbers(arrayData: (string | number)[][]) {
-      for (let subArray of arrayData) {
-        for (let element of subArray) {
+    function allNumbers(matrixData: (string | number)[][]) {
+      for (let array of matrixData) {
+        for (let element of array) {
           if (typeof element === 'string') {
             return false;
           }
@@ -48,6 +48,6 @@ describe('matrixApplyNumericalEncoding', () => {
       return true;
     }
 
-    expect(allNumbers(array)).toBe(true);
+    expect(allNumbers(matrix)).toBe(true);
   });
 });

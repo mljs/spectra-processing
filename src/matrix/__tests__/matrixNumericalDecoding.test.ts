@@ -21,10 +21,9 @@ describe('matrixNumericalDecoding', () => {
     [93, 'n', 'aa', 192],
   ];
 
-  it('should return an array of numbers', () => {
-    const dictionnary = matrixNumericalEncoding(dataset);
-    const matrix = matrixNumericalDecoding(dataset, dictionnary);
-
-    expect(matrix).toStrictEqual(dataset);
+  it('The encoded and decoded dataset should equal the original dataset', () => {
+    const {matrix, dictCategoricalToNumerical} = matrixNumericalEncoding(dataset);
+    const decodedMatrix = matrixNumericalDecoding(matrix, dictCategoricalToNumerical);
+    expect(decodedMatrix).toStrictEqual(dataset);
   });
 });
