@@ -21,7 +21,7 @@ describe('matrixNumericalEncoding', () => {
   ];
 
   it('should return an array of numbers', () => {
-    let {matrix} = matrixNumericalEncoding(dataset);
+    let { matrix } = matrixNumericalEncoding(dataset);
 
     function allNumbers(arrayData: (string | number)[][]) {
       for (let subArray of arrayData) {

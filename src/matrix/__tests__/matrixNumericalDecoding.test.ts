@@ -22,8 +22,12 @@ describe('matrixNumericalDecoding', () => {
   ];
 
   it('The encoded and decoded dataset should equal the original dataset', () => {
-    const {matrix, dictCategoricalToNumerical} = matrixNumericalEncoding(dataset);
-    const decodedMatrix = matrixNumericalDecoding(matrix, dictCategoricalToNumerical);
+    const { matrix, dictCategoricalToNumerical } =
+      matrixNumericalEncoding(dataset);
+    const decodedMatrix = matrixNumericalDecoding(
+      matrix,
+      dictCategoricalToNumerical,
+    );
     expect(decodedMatrix).toStrictEqual(dataset);
   });
 });

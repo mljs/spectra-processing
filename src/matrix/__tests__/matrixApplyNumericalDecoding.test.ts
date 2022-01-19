@@ -34,8 +34,12 @@ describe('matrixApplyNumericalEncoding', () => {
   ];
 
   it('should return an array of numbers', () => {
-    const {dictCategoricalToNumerical} = matrixNumericalEncoding(datasetForEncoding);
-    const matrix = matrixApplyNumericalEncoding(datasetToEncode, dictCategoricalToNumerical);
+    const { dictCategoricalToNumerical } =
+      matrixNumericalEncoding(datasetForEncoding);
+    const matrix = matrixApplyNumericalEncoding(
+      datasetToEncode,
+      dictCategoricalToNumerical,
+    );
 
     function allNumbers(matrixData: (string | number)[][]) {
       for (let array of matrixData) {

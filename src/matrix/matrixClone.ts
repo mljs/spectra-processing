@@ -6,6 +6,6 @@
  * @param options.length - length
  * @returns - array of floats
  */
-export function matrixClone(matrix : any[]): any[] {
-  return matrix.map(row => row.slice(0))
+export function matrixClone(matrix: any[]): any[] {
+  return matrix.map((row) => row.slice(0));
 }

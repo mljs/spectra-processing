@@ -16,9 +16,9 @@ function swap(dictionnary: { [stringValue: string]: number }) {
 }
 
 export function matrixNumericalDecoding(
-  matrixInitial : number[][],
+  matrixInitial: number[][],
   dictionnary: { [stringValue: string]: number },
-) : (string|number)[][] {
+): (string | number)[][] {
   let matrix = matrixClone(matrixInitial);
   let invertedDictionnary: { [numberValue: number]: string } =
     swap(dictionnary);

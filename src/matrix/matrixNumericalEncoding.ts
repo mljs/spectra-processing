@@ -5,8 +5,10 @@ import { matrixClone } from './matrixClone';
  * @param matrix - original matrix before encoding
  * @returns - dictionnary from string to number
  */
-export function matrixNumericalEncoding(matrixInitial : (string | number)[][]) : {matrix : number[][], dictCategoricalToNumerical : { [stringValue: string]: number }}{
-
+export function matrixNumericalEncoding(matrixInitial: (string | number)[][]): {
+  matrix: number[][];
+  dictCategoricalToNumerical: { [stringValue: string]: number };
+} {
   let matrix = matrixClone(matrixInitial);
   let nRows = matrix.length;
   let nColumns = matrix[0].length;
@@ -35,5 +37,5 @@ export function matrixNumericalEncoding(matrixInitial : (string | number)[][]) :
       }
     }
   }
-  return {matrix, dictCategoricalToNumerical};
+  return { matrix, dictCategoricalToNumerical };
 }

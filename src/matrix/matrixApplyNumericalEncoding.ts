@@ -11,8 +11,7 @@ import { matrixClone } from './matrixClone';
 export function matrixApplyNumericalEncoding(
   matrixInitial: (string | number)[][],
   dictionnary: { [nameString: string]: number },
-) : number[][] {
-
+): number[][] {
   let matrix = matrixClone(matrixInitial);
   let arrayOfValues = [];
   for (let key in dictionnary) {
