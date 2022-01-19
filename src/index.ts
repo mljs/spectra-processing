@@ -100,6 +100,7 @@ export * from './matrix/matrixMinMaxZ';
 export * from './matrix/matrixMinMaxAbsoluteZ';
 export * from './matrix/matrixPQN';
 export * from './matrix/matrixZRescale';
+export * from './matrix/matrixClone';
 export * from './matrix/matrixNumericalEncoding';
 export * from './matrix/matrixNumericalDecoding';
 export * from './matrix/matrixApplyNumericalEncoding';
