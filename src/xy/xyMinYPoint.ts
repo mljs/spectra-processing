@@ -4,15 +4,37 @@ import { xGetFromToIndex } from '../x/xGetFromToIndex';
 
 import { xyCheck } from './xyCheck';
 /**
- * Finds the max y value in a range and return a {x,y} point
+ * Finds the min y value in a range and return a {x,y} point
  *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - Options
  */
-export function xyMinYPoint(data: DataXY, options = {}) {
-  xyCheck(data);
+export function xyMinYPoint(
+  data: DataXY,
+  options: {
+    /**
+     * First value for xyMinYPoint in the X scale
+     */
+    from?: number;
+    /**
+     * First point for xyMinYPoint
+     * @default 0
+     * */
+    fromIndex?: number;
+    /**
+     *  Last point for xyMinYPoint
+     * @default x.length-1
+     * */
+    toIndex?: number;
+    /**
+     * Last value for xyMinYPoint in the X scale
+     */
+    to?: number;
+  } = {},
+) {
+  xyCheck(data, { minLength: 1 });
   const { x, y } = data;
-  if (x === undefined || y === undefined || x.length < 2) return 0;
+  if (x.length === 1) return { x: x[0], y: y[0], index: 0 };
 
   const { fromIndex, toIndex } = xGetFromToIndex(x, options);
 
