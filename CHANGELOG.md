@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.1.0](https://www.github.com/mljs/spectra-processing/compare/v8.0.3...v8.1.0) (2022-01-20)
+
+
+### Features
+
+* added utility functions in order to encode textual features into numerical features  ([#104](https://www.github.com/mljs/spectra-processing/issues/104)) ([d987ac9](https://www.github.com/mljs/spectra-processing/commit/d987ac95488230fab109942a8cd39c751fb08016))
+
 ### [8.0.3](https://www.github.com/mljs/spectra-processing/compare/v8.0.2...v8.0.3) (2021-12-15)
 
 
