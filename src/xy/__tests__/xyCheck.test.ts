@@ -9,7 +9,7 @@ describe('xyCheck', () => {
       'data.x must have a length of at least 1',
     );
     expect(() => xyCheck({ x: [1], y: [1, 2] })).toThrow(
-      'The x and y arrays mush have the same length',
+      'The x and y arrays must have the same length',
     );
     expect(xyCheck({ x: [1], y: [1] })).toBeUndefined();
   });
