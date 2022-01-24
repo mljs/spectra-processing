@@ -143,12 +143,3 @@ export interface DataReIm {
   /** Array of im values */
   im: DoubleArray;
 }
-
-export interface DataXYZ {
-  /** Array of x values */
-  x?: DoubleArray;
-  /** Array of y values */
-  y?: DoubleArray;
-  /** Array of z values */
-  z?: DoubleArray;
-}
