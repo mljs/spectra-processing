@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.3.0](https://www.github.com/mljs/spectra-processing/compare/v8.2.0...v8.3.0) (2022-01-25)
+
+
+### Features
+
+* add xyObjectSumY ([28b709c](https://www.github.com/mljs/spectra-processing/commit/28b709cc0ca29051e7ad58f27ac7aab81c0010fd))
+
 ## [8.2.0](https://www.github.com/mljs/spectra-processing/compare/v8.1.0...v8.2.0) (2022-01-24)
 
 
