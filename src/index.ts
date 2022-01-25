@@ -88,6 +88,7 @@ export * from './xyObject/xyObjectMaxYPoint';
 export * from './xyObject/xyObjectMinYPoint';
 export * from './xyObject/xyObjectSlotX';
 export * from './xyObject/xyObjectSortX';
+export * from './xyObject/xyObjectSumY';
 export * from './xyObject/xyObjectToXY';
 
 export * from './zone/zoneToX';
