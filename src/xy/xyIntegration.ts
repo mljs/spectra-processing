@@ -12,9 +12,9 @@ import { xyCheck } from './xyCheck';
  * @returns - xyIntegration value on the specified range
  */
 export function xyIntegration(data: DataXY, options = {}): number {
-  xyCheck(data);
+  xyCheck(data, { minLength: 1 });
   const { x, y } = data;
-  if (x === undefined || y === undefined || x.length < 2) return 0;
+  if (x.length === 1) return 0;
   const { fromIndex, toIndex } = xGetFromToIndex(x, options);
   let currentxyIntegration = 0;
   for (let i = fromIndex; i < toIndex; i++) {
