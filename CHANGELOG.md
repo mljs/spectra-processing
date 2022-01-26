@@ -1,5 +1,12 @@
 # Changelog
 
+### [8.3.1](https://www.github.com/mljs/spectra-processing/compare/v8.3.0...v8.3.1) (2022-01-26)
+
+
+### Bug Fixes
+
+* xyIntegral and xyIntegration throw error is length 0 and returns correct value if length=1 ([#110](https://www.github.com/mljs/spectra-processing/issues/110)) ([cdbe86e](https://www.github.com/mljs/spectra-processing/commit/cdbe86efcfdd0a77b3027a8568ba69a388d5e514))
+
 ## [8.3.0](https://www.github.com/mljs/spectra-processing/compare/v8.2.0...v8.3.0) (2022-01-25)
 
 
