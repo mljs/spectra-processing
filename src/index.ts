@@ -32,6 +32,7 @@ export * from './x/xRollingAverage';
 export * from './x/xRollingMedian';
 export * from './x/xRollingMin';
 export * from './x/xRollingMax';
+export * from './x/xSampling';
 export * from './x/xSubtract';
 export * from './x/xSum';
 export * from './x/xMeanAbsoluteError';
