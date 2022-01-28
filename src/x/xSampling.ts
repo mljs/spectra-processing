@@ -72,7 +72,7 @@ export function xSampling(
       if (includeStart === true) {
         for (
           let i = 0, j = 0;
-          i < endPoint && j < nbPoints;
+          i <= endPoint && j < nbPoints;
           i = i + delta, j++
         ) {
           returnArray.push(startPoint + i);
@@ -80,7 +80,7 @@ export function xSampling(
       } else {
         for (
           let i = 0, j = 0;
-          i < endPoint && j < nbPoints;
+          i <= endPoint && j < nbPoints;
           i = i + delta, j++
         ) {
           returnArray.push(startPoint + delta + i);
@@ -90,7 +90,7 @@ export function xSampling(
       if (includeStart === true) {
         for (
           let i = 0, j = 0;
-          i < endPoint && j < nbPoints;
+          i <= endPoint && j < nbPoints;
           i = i + delta, j++
         ) {
           returnArray.push(base ** (startPoint + i));
@@ -98,7 +98,7 @@ export function xSampling(
       } else {
         for (
           let i = 0, j = 0;
-          i < endPoint && j < nbPoints;
+          i <= endPoint && j < nbPoints;
           i = i + delta, j++
         ) {
           returnArray.push(base ** (startPoint + delta + i));
