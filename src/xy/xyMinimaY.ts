@@ -7,14 +7,11 @@ import { xyCheck } from './xyCheck';
  * of the equal part will be the position of the signal!
  *
  * @param data - Object that contains property X (an ordered increasing array) and y (an arraY).
- * @param options - Options.
  * @returns - Array of points.
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function xyMinimaY(data: DataXY, options = {}) {
-  xyCheck(data);
+export function xyMinimaY(data: DataXY) {
+  xyCheck(data, { minLength: 2 });
   const { x, y } = data;
-  if (x === undefined || y === undefined || x.length < 3) return [];
   let maxima = [];
   let startEqualIndex = -1;
   for (let i = 1; i < x.length - 1; i++) {

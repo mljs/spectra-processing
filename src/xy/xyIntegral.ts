@@ -37,11 +37,10 @@ export function xyIntegral(
      */
     to?: number;
   } = {},
-): DataXY | number {
+): DataXY {
   const { reverse = false } = options;
-  xyCheck(data);
+  xyCheck(data, { minLength: 1 });
   const { x, y } = data;
-  if (x === undefined || y === undefined || x.length < 2) return 0;
 
   const { fromIndex, toIndex } = xGetFromToIndex(x, options);
 

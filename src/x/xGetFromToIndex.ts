@@ -47,6 +47,11 @@ export function xGetFromToIndex(
       toIndex = x.length - 1;
     }
   }
+  if (fromIndex < 0) fromIndex = 0;
+  if (toIndex < 0) toIndex = 0;
+  if (fromIndex >= x.length) fromIndex = x.length - 1;
+  if (toIndex >= x.length) toIndex = x.length - 1;
+
   if (fromIndex > toIndex) [fromIndex, toIndex] = [toIndex, fromIndex];
   return { fromIndex, toIndex };
 }

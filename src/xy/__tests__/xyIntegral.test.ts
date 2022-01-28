@@ -1,6 +1,21 @@
 import { xyIntegral } from '../xyIntegral';
 
 describe('xyIntegral', () => {
+  it('zero element', () => {
+    let x: number[] = [];
+    let y: number[] = [];
+    expect(() => xyIntegral({ x, y })).toThrow(
+      'data.x must have a length of at least 1',
+    );
+  });
+
+  it('one element', () => {
+    let x = [1];
+    let y = [2];
+    let result = xyIntegral({ x, y });
+    expect(result).toStrictEqual({ x: [1], y: [0] });
+  });
+
   it('no from to', () => {
     let x = [0, 1, 2, 3];
     let y = [1, 1, 1, 1];

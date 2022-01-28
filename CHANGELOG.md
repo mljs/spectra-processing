@@ -1,5 +1,39 @@
 # Changelog
 
+### [8.3.1](https://www.github.com/mljs/spectra-processing/compare/v8.3.0...v8.3.1) (2022-01-26)
+
+
+### Bug Fixes
+
+* xyIntegral and xyIntegration throw error is length 0 and returns correct value if length=1 ([#110](https://www.github.com/mljs/spectra-processing/issues/110)) ([cdbe86e](https://www.github.com/mljs/spectra-processing/commit/cdbe86efcfdd0a77b3027a8568ba69a388d5e514))
+
+## [8.3.0](https://www.github.com/mljs/spectra-processing/compare/v8.2.0...v8.3.0) (2022-01-25)
+
+
+### Features
+
+* add xyObjectSumY ([28b709c](https://www.github.com/mljs/spectra-processing/commit/28b709cc0ca29051e7ad58f27ac7aab81c0010fd))
+
+## [8.2.0](https://www.github.com/mljs/spectra-processing/compare/v8.1.0...v8.2.0) (2022-01-24)
+
+
+### Features
+
+* xyCheck may have the option minLength ([06501df](https://www.github.com/mljs/spectra-processing/commit/06501dfd989cbe1cc799485492bd03271bf67871))
+
+
+### Bug Fixes
+
+* avoid to return number in xyMaxYPoint and xyMinYPoint (throw error in no elements in array) ([5f9aae3](https://www.github.com/mljs/spectra-processing/commit/5f9aae3e6b959eb77f63b28a52f66fe77bdfe874))
+* xGetFromToIndex takes care about the size of the array ([14f10f1](https://www.github.com/mljs/spectra-processing/commit/14f10f1afc747aa47bc2478a47fa643cad969b26))
+
+## [8.1.0](https://www.github.com/mljs/spectra-processing/compare/v8.0.3...v8.1.0) (2022-01-20)
+
+
+### Features
+
+* added utility functions in order to encode textual features into numerical features  ([#104](https://www.github.com/mljs/spectra-processing/issues/104)) ([d987ac9](https://www.github.com/mljs/spectra-processing/commit/d987ac95488230fab109942a8cd39c751fb08016))
+
 ### [8.0.3](https://www.github.com/mljs/spectra-processing/compare/v8.0.2...v8.0.3) (2021-12-15)
 
 

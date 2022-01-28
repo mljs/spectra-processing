@@ -88,6 +88,7 @@ export * from './xyObject/xyObjectMaxYPoint';
 export * from './xyObject/xyObjectMinYPoint';
 export * from './xyObject/xyObjectSlotX';
 export * from './xyObject/xyObjectSortX';
+export * from './xyObject/xyObjectSumY';
 export * from './xyObject/xyObjectToXY';
 
 export * from './zone/zoneToX';
@@ -142,13 +143,4 @@ export interface DataReIm {
   re: DoubleArray;
   /** Array of im values */
   im: DoubleArray;
-}
-
-export interface DataXYZ {
-  /** Array of x values */
-  x?: DoubleArray;
-  /** Array of y values */
-  y?: DoubleArray;
-  /** Array of z values */
-  z?: DoubleArray;
 }
