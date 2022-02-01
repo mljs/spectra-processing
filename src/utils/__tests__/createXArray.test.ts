@@ -7,18 +7,47 @@ expect.extend({ toBeDeepCloseTo });
 describe('createXArray', () => {
   it('case when we sample within a specific range with log distribution and include start and end points', () => {
     let result = createXArray({
-      from: 1,
-      to: 5,
+      from: 2,
+      to: 32,
       length: 5,
       includeFrom: true,
       includeTo: true,
       distribution: 'log',
-      base: 2,
     });
     expect(result).toBeDeepCloseTo([2, 4, 8, 16, 32]);
   });
 
-  it('case when we sample within a specific range with uniform distribution and include start and end points', () => {
+  it('case when we sample within a specific range with log distribution and include start point but not end point', () => {
+    let result = createXArray({
+      from: 2,
+      to: 32,
+      length: 5,
+      includeFrom: true,
+      includeTo: false,
+      distribution: 'log',
+    });
+    expect(result).toBeDeepCloseTo([
+      2, 3.4822022531844965, 6.062866266041592, 10.556063286183154,
+      18.379173679952558,
+    ]);
+  });
+
+  it('case when we sample within a specific range with log distribution and include end point but not start point', () => {
+    let result = createXArray({
+      from: 2,
+      to: 32,
+      length: 5,
+      includeFrom: false,
+      includeTo: true,
+      distribution: 'log',
+    });
+    expect(result).toBeDeepCloseTo([
+      3.4822022531844965, 6.062866266041592, 10.556063286183154,
+      18.379173679952558, 32,
+    ]);
+  });
+
+  it('case when we sample within a speci]fic range with uniform distribution and include start and end points', () => {
     let result = createXArray({
       from: 1,
       to: 100,

@@ -32,10 +32,6 @@ export function createXArray(
      * distribution used
      * @default uniform */
     distribution?: string;
-    /**
-     * base of log distribution if log used
-     * @default 10 */
-    base?: number;
   } = {},
 ): DoubleArray {
   const {
@@ -45,7 +41,6 @@ export function createXArray(
     includeFrom = true,
     includeTo = true,
     distribution = 'uniform',
-    base = 10,
   } = options;
 
   const array = new Float64Array(length);
@@ -74,13 +69,16 @@ export function createXArray(
       }
     }
   } else if (distribution === 'log') {
+    let base = Math.pow(to / from, 1 / div);
+    let firstExponent = Math.log(from) / Math.log(base);
+
     if (includeFrom === true) {
-      for (let i = 0, j = 0; i <= to && j < length; i = i + delta, j++) {
-        array[j] = base ** (from + i);
+      for (let i = from, j = 0; i <= to && j < length; i = i * base, j++) {
+        array[j] = base ** (firstExponent + j);
       }
     } else {
-      for (let i = 0, j = 0; i <= to && j < length; i = i + delta, j++) {
-        array[j] = base ** (from + delta + i);
+      for (let i = from, j = 0; i <= to && j < length; i = i * base, j++) {
+        array[j] = base ** (firstExponent + 1 + j);
       }
     }
   } else {
