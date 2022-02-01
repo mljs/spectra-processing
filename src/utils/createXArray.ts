@@ -60,25 +60,33 @@ export function createXArray(
   let delta = (to - from) / div;
   if (distribution === 'uniform') {
     if (includeFrom === true) {
-      for (let i = 0, j = 0; i <= to && j < length; i = i + delta, j++) {
-        array[j] = from + i;
+      let index = 0;
+      while (index < length) {
+        array[index] = from + delta * index;
+        index++;
       }
     } else {
-      for (let i = 0, j = 0; i <= to && j < length; i = i + delta, j++) {
-        array[j] = from + delta + i;
+      let index = 0;
+      while (index < length) {
+        array[index] = from + delta * (index + 1);
+        index++;
       }
     }
   } else if (distribution === 'log') {
-    let base = Math.pow(to / from, 1 / div);
+    let base = (to / from) ** (1 / div);
     let firstExponent = Math.log(from) / Math.log(base);
 
     if (includeFrom === true) {
-      for (let i = from, j = 0; i <= to && j < length; i = i * base, j++) {
-        array[j] = base ** (firstExponent + j);
+      let index = 0;
+      while (index < length) {
+        array[index] = base ** (firstExponent + index);
+        index++;
       }
     } else {
-      for (let i = from, j = 0; i <= to && j < length; i = i * base, j++) {
-        array[j] = base ** (firstExponent + 1 + j);
+      let index = 0;
+      while (index < length) {
+        array[index] = base ** (firstExponent + index + 1);
+        index++;
       }
     }
   } else {
