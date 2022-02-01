@@ -107,7 +107,7 @@ export * from './matrix/matrixNumericalEncoding';
 export * from './matrix/matrixNumericalDecoding';
 export * from './matrix/matrixApplyNumericalEncoding';
 
-export * from './utils/createSequentialArray';
+export * from './utils/createXArray';
 
 export type DoubleMatrix = DoubleArray[];
 export interface Zone {
