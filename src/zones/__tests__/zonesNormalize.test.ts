@@ -1,4 +1,4 @@
-import { normalize } from '../normalize';
+import { zonesNormalize } from '../zonesNormalize';
 
 describe('normalize', () => {
   it('test normalize', () => {
@@ -10,7 +10,7 @@ describe('normalize', () => {
       { from: 6, to: 7 },
     ];
 
-    let result = normalize(zones);
+    let result = zonesNormalize(zones);
     expect(result).toStrictEqual([
       { from: 1, to: 4 },
       { from: 5, to: 7 },
@@ -24,7 +24,7 @@ describe('normalize', () => {
       { from: 7, to: 6 },
     ];
 
-    let result = normalize(zones);
+    let result = zonesNormalize(zones);
     expect(result).toStrictEqual([
       { from: 1, to: 2 },
       { from: 3, to: 4 },
@@ -39,7 +39,7 @@ describe('normalize', () => {
       { from: 7, to: 6 },
     ];
 
-    let result = normalize(zones, { from: 10, to: 5 });
+    let result = zonesNormalize(zones, { from: 10, to: 5 });
     expect(result).toStrictEqual([{ from: 6, to: 7 }]);
   });
 
@@ -50,7 +50,7 @@ describe('normalize', () => {
       { from: 7, to: 6 },
     ];
 
-    let result = normalize(zones, { from: 10, to: 12 });
+    let result = zonesNormalize(zones, { from: 10, to: 12 });
     expect(result).toStrictEqual([]);
   });
 
@@ -61,7 +61,7 @@ describe('normalize', () => {
       { from: 7, to: 6 },
     ];
 
-    let result = normalize(zones, { from: -1, to: -5 });
+    let result = zonesNormalize(zones, { from: -1, to: -5 });
     expect(result).toStrictEqual([]);
   });
 
@@ -72,7 +72,7 @@ describe('normalize', () => {
       { from: 7, to: 6 },
     ];
 
-    let result = normalize(zones, { from: 1.5, to: 6.5 });
+    let result = zonesNormalize(zones, { from: 1.5, to: 6.5 });
     expect(result).toStrictEqual([
       { from: 1.5, to: 2 },
       { from: 3, to: 4 },

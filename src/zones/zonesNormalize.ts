@@ -2,16 +2,29 @@
  * Normalize an array of zones:
  * - ensure than from < to
  * - merge overlapping zones
+ *
  * @param zones - array of zones
  * @param options - options
- * @param options.from - specify min value of a zone
- * @param options.to - specify max value of a zone
  * @returns array of zones
  */
 
-export function normalize(
-  zones: { from: number; to: number }[] = [],
-  options: { from?: number; to?: number } = {},
+export function zonesNormalize(
+  zones: {
+    /** start of zone*/
+    from: number;
+    /** end of zone*/
+    to: number;
+  }[] = [],
+  options: {
+    /** specify min value of zones
+     * @default Number.NEGATIVE_INFINITY
+     */
+    from?: number;
+    /** specify max value of zones
+     * @default Number.POSITIVE_INFINITY
+     */
+    to?: number;
+  } = {},
 ): { from: number; to: number }[] {
   if (zones.length === 0) return [];
   let { from = Number.NEGATIVE_INFINITY, to = Number.POSITIVE_INFINITY } =

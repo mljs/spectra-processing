@@ -1,22 +1,39 @@
-import { normalize } from './normalize';
+import { zonesNormalize } from './zonesNormalize';
 
 /**
  * Add the number of points per zone to reach a specified total
+ *
  * @param zones - array of zones
  * @param numberOfPoints - total number of points to distribute between zones
  * @param options - options
- * @param options.from - specify min value of a zone
- * @param options.to - specify max value of a zone
  * @returns array of zones with points
  */
 
 export function zonesWithPoints(
-  zones: { from: number; to: number }[] = [],
+  zones: {
+    /** start of zone*/
+    from: number;
+    /** end of zone */
+    to: number;
+  }[] = [],
+  /**
+   * total number of points to distribute between zones
+   * @default 10
+   */
   numberOfPoints = 10,
-  options: { from?: number; to?: number } = {},
+  options: {
+    /** specify min value of zones
+     * @default Number.NEGATIVE_INFINITY
+     */
+    from?: number;
+    /** specify max value of zones
+     * @default Number.POSITIVE_INFINITY
+     */
+    to?: number;
+  } = {},
 ): { from: number; to: number; numberOfPoints?: number }[] {
   if (zones.length === 0) return zones;
-  let returnZones = normalize(zones, options);
+  let returnZones = zonesNormalize(zones, options);
 
   const totalSize = returnZones.reduce((previous, current) => {
     return previous + (current.to - current.from);
