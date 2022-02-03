@@ -75,6 +75,7 @@ export * from './xy/xyRealMaxYPoint';
 export * from './xy/xyRealMinYPoint';
 export * from './xy/xyReduce';
 export * from './xy/xyRolling';
+export * from './xy/xySetYValue';
 export * from './xy/xyToXYObject';
 export * from './xy/xyToXYArray';
 export * from './xy/xyUniqueX';
