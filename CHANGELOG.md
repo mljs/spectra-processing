@@ -1,5 +1,17 @@
 # Changelog
 
+## [9.0.0](https://www.github.com/mljs/spectra-processing/compare/v8.3.1...v9.0.0) (2022-02-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* added the xSampling and createXArray functions (#112)
+
+### Features
+
+* added the xSampling and createXArray functions ([#112](https://www.github.com/mljs/spectra-processing/issues/112)) ([655c428](https://www.github.com/mljs/spectra-processing/commit/655c428849a258a86ee7c01b4f0a701f493fc446))
+* rename createSequentialArray was renamed to createXArray ([655c428](https://www.github.com/mljs/spectra-processing/commit/655c428849a258a86ee7c01b4f0a701f493fc446))
+
 ### [8.3.1](https://www.github.com/mljs/spectra-processing/compare/v8.3.0...v8.3.1) (2022-01-26)
 
 
