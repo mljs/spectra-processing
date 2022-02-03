@@ -1,5 +1,12 @@
 # Changelog
 
+## [9.1.0](https://www.github.com/mljs/spectra-processing/compare/v9.0.0...v9.1.0) (2022-02-03)
+
+
+### Features
+
+* add xySetYValue ([e047bfd](https://www.github.com/mljs/spectra-processing/commit/e047bfdec7199cb33b5dd32b7512955472854544))
+
 ## [9.0.0](https://www.github.com/mljs/spectra-processing/compare/v8.3.1...v9.0.0) (2022-02-01)
 
 
