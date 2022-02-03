@@ -95,7 +95,9 @@ export * from './xyObject/xyObjectToXY';
 
 export * from './zone/zoneToX';
 
-export * from './zones/zonesNormalize';
+export * from './zones/normalize';
+export * from './zones/invert';
+export * from './zones/zonesWithPoints';
 
 export * from './matrix/matrixCenterZMean';
 export * from './matrix/matrixHistogram';

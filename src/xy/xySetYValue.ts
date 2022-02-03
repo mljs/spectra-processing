@@ -1,7 +1,7 @@
 import { DataXY } from 'cheminfo-types';
 
 import { Zone } from '..';
-import { zonesNormalize } from '../zones/zonesNormalize';
+import { normalize } from '../zones/normalize';
 
 import { xyCheck } from './xyCheck';
 
@@ -20,7 +20,7 @@ export function xySetYValue(
   const { x, y } = data;
   let { zones, value = 0 } = options;
 
-  zones = zonesNormalize(zones);
+  zones = normalize(zones);
 
   if (!Array.isArray(zones) || zones.length === 0) {
     return data;

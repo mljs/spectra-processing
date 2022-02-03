@@ -1,7 +1,7 @@
-import { zonesNormalize } from '../zonesNormalize';
+import { normalize } from '../normalize';
 
-describe('zonesNormalize', () => {
-  it('test zonesNormalize', () => {
+describe('normalize', () => {
+  it('test normalize', () => {
     let zones = [
       { from: 1, to: 2 },
       { from: 4, to: 2 },
@@ -10,21 +10,21 @@ describe('zonesNormalize', () => {
       { from: 6, to: 7 },
     ];
 
-    let result = zonesNormalize(zones);
+    let result = normalize(zones);
     expect(result).toStrictEqual([
       { from: 1, to: 4 },
       { from: 5, to: 7 },
     ]);
   });
 
-  it('test zonesNormalize no overlap', () => {
+  it('test normalize no overlap', () => {
     let zones = [
       { from: 1, to: 2 },
       { from: 3, to: 4 },
       { from: 7, to: 6 },
     ];
 
-    let result = zonesNormalize(zones);
+    let result = normalize(zones);
     expect(result).toStrictEqual([
       { from: 1, to: 2 },
       { from: 3, to: 4 },
@@ -32,47 +32,47 @@ describe('zonesNormalize', () => {
     ]);
   });
 
-  it('test zonesNormalize from, to', () => {
+  it('test normalize from, to', () => {
     let zones = [
       { from: 1, to: 2 },
       { from: 3, to: 4 },
       { from: 7, to: 6 },
     ];
 
-    let result = zonesNormalize(zones, { from: 10, to: 5 });
+    let result = normalize(zones, { from: 10, to: 5 });
     expect(result).toStrictEqual([{ from: 6, to: 7 }]);
   });
 
-  it('test zonesNormalize from, to outside', () => {
+  it('test normalize from, to outside', () => {
     let zones = [
       { from: 1, to: 2 },
       { from: 3, to: 4 },
       { from: 7, to: 6 },
     ];
 
-    let result = zonesNormalize(zones, { from: 10, to: 12 });
+    let result = normalize(zones, { from: 10, to: 12 });
     expect(result).toStrictEqual([]);
   });
 
-  it('test zonesNormalize from outside, to', () => {
+  it('test normalize from outside, to', () => {
     let zones = [
       { from: 1, to: 2 },
       { from: 3, to: 4 },
       { from: 7, to: 6 },
     ];
 
-    let result = zonesNormalize(zones, { from: -1, to: -5 });
+    let result = normalize(zones, { from: -1, to: -5 });
     expect(result).toStrictEqual([]);
   });
 
-  it('test zonesNormalize from 1.5, to 6.5', () => {
+  it('test normalize from 1.5, to 6.5', () => {
     let zones = [
       { from: 1, to: 2 },
       { from: 3, to: 4 },
       { from: 7, to: 6 },
     ];
 
-    let result = zonesNormalize(zones, { from: 1.5, to: 6.5 });
+    let result = normalize(zones, { from: 1.5, to: 6.5 });
     expect(result).toStrictEqual([
       { from: 1.5, to: 2 },
       { from: 3, to: 4 },

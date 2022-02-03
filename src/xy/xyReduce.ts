@@ -2,7 +2,7 @@ import { DataXY } from 'cheminfo-types';
 
 import { Zone } from '..';
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
-import { zonesNormalize } from '../zones/zonesNormalize';
+import { normalize } from '../zones/normalize';
 
 import { xyCheck } from './xyCheck';
 
@@ -48,7 +48,7 @@ export function xyReduce(
     zones = [],
   } = options;
 
-  zones = zonesNormalize(zones, { from, to });
+  zones = normalize(zones, { from, to });
   if (zones.length === 0) zones = [{ from, to }]; // we take everything
 
   // for each zone we should know the first index, the last index and the number of points
