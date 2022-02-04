@@ -1,5 +1,6 @@
 import binarySearch from 'binary-search';
-import { numberSortAscending, numberSortDescending } from 'num-sort';
+
+import { numberSortAscending, numberSortDescending } from '../utils/numberSort';
 
 /**
  * @param points - points in cartesian space

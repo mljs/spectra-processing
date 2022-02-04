@@ -121,7 +121,6 @@ export default function xyEquallySpaced(
       zone.to,
       zone.numberOfPoints,
       variant,
-      reverse,
     );
 
     xResult = xResult.concat(zoneResult.x);
@@ -149,7 +148,6 @@ function processZone(
   to: number,
   numberOfPoints: number,
   variant: string,
-  reverse?: boolean,
 ) {
   if (numberOfPoints < 1) {
     throw new RangeError('the number of points must be at least 1');

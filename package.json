@@ -74,7 +74,6 @@
     "ml-array-standard-deviation": "^1.1.8",
     "ml-matrix": "^6.8.2",
     "ml-zones": "^0.1.0",
-    "num-sort": "^3.0.0",
     "spline-interpolator": "^1.0.0"
   }
 }
