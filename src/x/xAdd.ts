@@ -9,7 +9,7 @@ import { isAnyArray } from 'is-any-array';
  */
 export function xAdd(
   array1: DoubleArray,
-  array2: DoubleArray | number | Float32Array,
+  array2: DoubleArray | number,
 ): DoubleArray {
   let isConstant = false;
   let constant = 0;

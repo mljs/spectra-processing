@@ -1,12 +1,12 @@
-import filterX from '../xyFilterX';
+import { xyFilterX } from '../xyFilterX';
 
-describe('filterX', () => {
+describe('xyFilterX', () => {
   const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const y = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
   const points = { x, y };
 
   it('no filter', () => {
-    let result = filterX(points);
+    let result = xyFilterX(points);
     expect(result).toStrictEqual({
       x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       y: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
@@ -14,7 +14,7 @@ describe('filterX', () => {
   });
 
   it('from filter', () => {
-    let result = filterX(points, { from: 5 });
+    let result = xyFilterX(points, { from: 5 });
     expect(result).toStrictEqual({
       x: [5, 6, 7, 8, 9, 10],
       y: [6, 7, 8, 9, 10, 11],
@@ -22,7 +22,7 @@ describe('filterX', () => {
   });
 
   it('to filter', () => {
-    let result = filterX(points, { to: 5 });
+    let result = xyFilterX(points, { to: 5 });
     expect(result).toStrictEqual({
       x: [0, 1, 2, 3, 4, 5],
       y: [1, 2, 3, 4, 5, 6],
@@ -30,7 +30,7 @@ describe('filterX', () => {
   });
 
   it('from / to filter', () => {
-    let result = filterX(points, { from: 3, to: 5 });
+    let result = xyFilterX(points, { from: 3, to: 5 });
     expect(result).toStrictEqual({
       x: [3, 4, 5],
       y: [4, 5, 6],
@@ -38,7 +38,7 @@ describe('filterX', () => {
   });
 
   it('one exclusion', () => {
-    let result = filterX(points, { exclusions: [{ from: 2, to: 8 }] });
+    let result = xyFilterX(points, { exclusions: [{ from: 2, to: 8 }] });
     expect(result).toStrictEqual({
       x: [0, 1, 2, 8, 9, 10],
       y: [1, 2, 3, 9, 10, 11],
@@ -46,7 +46,7 @@ describe('filterX', () => {
   });
 
   it('exclusions and from, to', () => {
-    let result = filterX(points, {
+    let result = xyFilterX(points, {
       from: 2.5,
       to: 8.5,
       exclusions: [
@@ -61,7 +61,7 @@ describe('filterX', () => {
   });
 
   it('exclusions and other from, to', () => {
-    let result = filterX(points, {
+    let result = xyFilterX(points, {
       from: -5,
       to: 20,
       exclusions: [

@@ -1,3 +1,5 @@
+import { DataXY } from 'cheminfo-types';
+
 import getZones from '../utils/getZones';
 
 /**
@@ -8,13 +10,9 @@ import getZones from '../utils/getZones';
  * @return filtered array
  */
 
-export default function xyFilterX(
-  points: {
-    /** The x coordinates */
-    x: number[];
-    /** The y coordinates */
-    y: number[];
-  },
+export function xyFilterX(
+  /** points */
+  points: DataXY,
   options: {
     /** filter from
      * @default x[0]

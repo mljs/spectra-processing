@@ -5,7 +5,7 @@
  * @param options - options
  * @return array of merged and weighted points
  */
-export default function xyWeightedMerge(
+export function xyWeightedMerge(
   points: {
     /** sorted abscissas values */
     x: number[];

@@ -4,7 +4,7 @@
  * @param options - options
  * @return array of merged and weighted points
  */
-export default function xyMaxMerge(
+export function xyMaxMerge(
   points: {
     /** sorted abscissas values */
     x: number[];

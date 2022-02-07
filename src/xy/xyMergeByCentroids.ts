@@ -5,7 +5,7 @@
  * @param options
  * @return merged points
  */
-export default function xyMergeByCentroids(
+export function xyMergeByCentroids(
   originalPoints: { x: number[]; y: number[] },
   centroids: number[],
   options: {

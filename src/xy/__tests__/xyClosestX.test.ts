@@ -1,4 +1,4 @@
-import closestX from '../xyClosestX';
+import { closestX } from '../xyClosestX';
 
 describe('closestX', () => {
   it('should yield the correct result with even element array', () => {

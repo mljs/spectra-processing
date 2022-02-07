@@ -15,7 +15,7 @@ describe('xSubtract', () => {
   });
 
   it('test xSubtract of array and floatarray', () => {
-    let array1 = new Float32Array([10, 11, 12, 13, 14]);
+    let array1 = new Float64Array([10, 11, 12, 13, 14]);
     let array2 = [5, 4, 3, 2, 1];
     expect(Array.from(xSubtract(array1, array2))).toStrictEqual([
       5, 7, 9, 11, 13,

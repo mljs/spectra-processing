@@ -77,7 +77,7 @@ export function xyArrayWeightedMerge(
  */
 function nextValue(
   spectra: DataXY[],
-  positions: number[] | Float64Array | Float32Array | Uint16Array,
+  positions: number[] | Float64Array | Uint16Array,
   point: Point,
 ) {
   let minIndex = 0;

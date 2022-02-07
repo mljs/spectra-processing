@@ -5,7 +5,7 @@ import mean from 'ml-array-mean';
  * @param options
  * @return the covariance
  */
-export default function xyCovariance(
+export function xyCovariance(
   points: {
     x: number[];
     y: number[];

@@ -7,7 +7,7 @@ import { numberSortAscending, numberSortDescending } from '../utils/numberSort';
  * @param options - options
  * @returns - closest point
  */
-export default function closestX(
+export function closestX(
   points: {
     /** The x coordinates */
     x: number[];

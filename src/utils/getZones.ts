@@ -1,3 +1,9 @@
+/**
+ * function that gets the zoness
+ * 
+ * ADD LATER
+ */
+
 export default function getZones(
   /** from value */
   from: number,

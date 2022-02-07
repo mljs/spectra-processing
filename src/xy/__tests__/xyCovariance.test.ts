@@ -1,4 +1,4 @@
-import xyCovariance from '../xyCovariance';
+import { xyCovariance } from '../xyCovariance';
 
 describe('covariance', () => {
   it('should yield the correct result', () => {

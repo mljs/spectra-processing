@@ -8,7 +8,7 @@ import { isAnyArray } from 'is-any-array';
  * @param array2 - second array or number
  */
 export function xSubtract(
-  array1: DoubleArray | Float32Array,
+  array1: DoubleArray,
   array2: DoubleArray | number,
 ): DoubleArray {
   let isConstant = false;

@@ -1,8 +1,10 @@
+import { DataXY } from 'cheminfo-types';
 import sequentialFill from 'ml-array-sequential-fill';
 import { zonesWithPoints, invert } from 'ml-zones';
 
 import equallySpacedSlot from '../utils/equallySpacedSlot';
 import equallySpacedSmooth from '../utils/equallySpacedSmooth';
+import { zoneCheck } from '../zone/zoneCheck';
 
 /**
  * Function that returns a Number array of equally spaced numberOfPoints
@@ -27,13 +29,9 @@ import equallySpacedSmooth from '../utils/equallySpacedSmooth';
  * @return new object with x / y array with the equally spaced data.
  */
 
-export default function xyEquallySpaced(
-  arrayXY: {
-    /** x coordinates */
-    x: number[];
-    /** y coordinates */
-    y: number[];
-  },
+export function xyEquallySpaced(
+  /** points */
+  arrayXY: DataXY,
   options: {
     /** from
      * @default x[0]
@@ -85,7 +83,7 @@ export default function xyEquallySpaced(
     zones = [],
   } = options;
 
-  if (xLength !== y.length) {
+  if (!zoneCheck(arrayXY)) {
     throw new RangeError("the x and y vector doesn't have the same size.");
   }
 
@@ -115,8 +113,8 @@ export default function xyEquallySpaced(
   let yResult: number[] = [];
   for (let zone of zonesWithPointsRes) {
     let zoneResult = processZone(
-      x,
-      y,
+      Array.from(x),
+      Array.from(y),
       zone.from,
       zone.to,
       zone.numberOfPoints,
