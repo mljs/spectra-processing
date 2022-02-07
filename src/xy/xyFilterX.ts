@@ -27,7 +27,7 @@ export function xyFilterX(
      */
     exclusions?: { from: number; to: number }[];
   } = {},
-): { x: number[]; y: number[] } {
+): DataXY {
   const { x, y } = points;
   const { from = x[0], to = x[x.length - 1], exclusions = [] } = options;
 

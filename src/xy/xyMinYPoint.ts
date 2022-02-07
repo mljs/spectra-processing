@@ -3,6 +3,7 @@ import { DataXY } from 'cheminfo-types';
 import { xGetFromToIndex } from '../x/xGetFromToIndex';
 
 import { xyCheck } from './xyCheck';
+
 /**
  * Finds the min y value in a range and return a {x,y} point
  *

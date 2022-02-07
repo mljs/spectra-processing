@@ -1,4 +1,4 @@
-import { DoubleArray } from "cheminfo-types";
+import { DoubleArray } from 'cheminfo-types';
 
 /** Function that sorts arrays or Float64Arrays in ascending order
  * @param array - array to sort

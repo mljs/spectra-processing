@@ -1,3 +1,4 @@
+import { DataXY } from 'cheminfo-types';
 import mean from 'ml-array-mean';
 
 /**
@@ -6,17 +7,14 @@ import mean from 'ml-array-mean';
  * @return the covariance
  */
 export function xyCovariance(
-  points: {
-    x: number[];
-    y: number[];
-  },
+  points: DataXY,
   options: {
     /** if true, divide by (n-1); if false, divide by n
      * @default true
      */
     unbiased?: number;
   } = {},
-) {
+): number {
   const { x, y } = points;
   const { unbiased = true } = options;
 

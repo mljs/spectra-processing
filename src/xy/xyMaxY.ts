@@ -3,6 +3,7 @@ import { DataXY } from 'cheminfo-types';
 import { xGetFromToIndex } from '../x/xGetFromToIndex';
 
 import { xyCheck } from './xyCheck';
+
 /**
  * Finds the max value in a zone
  *
@@ -10,6 +11,7 @@ import { xyCheck } from './xyCheck';
  * @param options - Options
  * @returns - Max y on the specified range
  */
+
 export function xyMaxY(
   data: DataXY,
   options: {

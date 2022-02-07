@@ -2,6 +2,7 @@ import { DoubleArray, DataXY } from 'cheminfo-types';
 
 import { xRolling } from '../x/xRolling';
 import { xRollingAverage } from '../x/xRollingAverage';
+
 /**
  * This function calculates a rolling average.
  *

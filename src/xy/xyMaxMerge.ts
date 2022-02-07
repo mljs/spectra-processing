@@ -1,3 +1,5 @@
+import { DataXY } from 'cheminfo-types';
+
 /**
  * Merge abscissas values on similar ordinates and weight the group of abscissas
  * @param points - points
@@ -5,22 +7,14 @@
  * @return array of merged and weighted points
  */
 export function xyMaxMerge(
-  points: {
-    /** sorted abscissas values */
-    x: number[];
-    /** ordinates values */
-    y: number[];
-  },
+  points: DataXY,
   options: {
     /** window for abscissas to merge
      * @default 0.001
      */
     groupWidth?: number;
   } = {},
-): {
-  x: number[];
-  y: number[];
-} {
+): DataXY {
   const { x, y } = points;
   const { groupWidth = 0.001 } = options;
 

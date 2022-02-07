@@ -1,4 +1,5 @@
 import binarySearch from 'binary-search';
+import { DataXY } from 'cheminfo-types';
 
 import { numberSortAscending, numberSortDescending } from '../utils/numberSort';
 
@@ -8,12 +9,8 @@ import { numberSortAscending, numberSortDescending } from '../utils/numberSort';
  * @returns - closest point
  */
 export function closestX(
-  points: {
-    /** The x coordinates */
-    x: number[];
-    /** The y coordinates */
-    y: number[];
-  },
+  /** points */
+  points: DataXY,
   options: {
     /** The target to which the x-coordinates should be close to
      * @default x[0]

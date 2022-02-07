@@ -64,15 +64,9 @@ export function xyEquallySpaced(
       to: number;
     }[];
   } = {},
-): { x: number[]; y: number[] } {
+): DataXY {
   let { x, y } = arrayXY;
   let xLength = x.length;
-  let reverse = false;
-  if (x.length > 1 && x[0] > x[1]) {
-    x = x.slice().reverse();
-    y = y.slice().reverse();
-    reverse = true;
-  }
 
   let {
     from = x[0],
@@ -82,6 +76,13 @@ export function xyEquallySpaced(
     exclusions = [],
     zones = [],
   } = options;
+
+  let reverse = false;
+  if (x.length > 1 && x[0] > x[1]) {
+    x = x.slice().reverse();
+    y = y.slice().reverse();
+    reverse = true;
+  }
 
   if (!zoneCheck(arrayXY)) {
     throw new RangeError("the x and y vector doesn't have the same size.");
