@@ -27,7 +27,8 @@ export default function equallySpacedSlot(
   let lastStep = x[x.length - 1] - x[x.length - 2];
 
   let start = from - halfStep;
-  let output = new Array(numberOfPoints);
+  // Changed Array to Float64Array
+  let output = new Float64Array(numberOfPoints);
 
   // Init main variables
   let min = start;

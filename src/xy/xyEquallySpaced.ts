@@ -15,10 +15,10 @@ import equallySpacedSmooth from '../utils/equallySpacedSmooth';
  * numberOfPoints: number of points between from and to
  * variant: "slot" or "smooth" - smooth is the default option
  *
- * The slot variant consist that each point in the new array is calculated
+ * The slot variant consist that each point in an array is calculated
  * averaging the existing points between the slot that belongs to the current
  * value. The smooth variant is the same but takes the integral of the range
- * of the slot and divide by the step size between two points in the new array.
+ * of the slot and divide by the step size between two points in an array.
  *
  * If exclusions zone are present, zones are ignored !
  *
@@ -154,8 +154,8 @@ function processZone(
   }
   let output =
     variant === 'slot'
-      ? equallySpacedSlot(x, y, from, to, numberOfPoints)
-      : equallySpacedSmooth(x, y, from, to, numberOfPoints);
+      ? Array.from(equallySpacedSlot(x, y, from, to, numberOfPoints))
+      : Array.from(equallySpacedSmooth(x, y, from, to, numberOfPoints));
 
   return {
     x: sequentialFill({

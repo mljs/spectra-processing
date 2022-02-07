@@ -19,7 +19,8 @@ export default function xyMergeByCentroids(
 
   let mergedPoints = {
     x: centroids.slice(),
-    y: new Array(centroids.length).fill(0),
+    // Changed Array to Float64Array
+    y: new Float64Array(centroids.length).fill(0),
   };
 
   let originalIndex = 0;

@@ -22,7 +22,8 @@ export function xAdd(
     constant = Number(array2);
   }
 
-  let array3 = new Array(array1.length);
+  // Changed from Array to Float64Array
+  let array3 = new Float64Array(array1.length);
   if (isConstant) {
     for (let i = 0; i < array1.length; i++) {
       array3[i] = array1[i] + constant;

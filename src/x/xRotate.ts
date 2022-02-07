@@ -1,7 +1,7 @@
 import { DoubleArray } from 'cheminfo-types';
 
 /**
- * This function performs a circular shift to a new array
+ * This function performs a circular shift to an array
  * Positive values of shifts will shift to the right and negative values will do to the left
  *
  * @example xRotate([1,2,3,4],1) -> [4,1,2,3]

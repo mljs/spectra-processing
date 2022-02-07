@@ -27,7 +27,8 @@ export default function equallySpacedSmooth(
   let step = (to - from) / (numberOfPoints > 1 ? numberOfPoints - 1 : 1);
   let halfStep = step / 2;
 
-  let output = new Array(numberOfPoints);
+  // Changed Array to Float64Array
+  let output = new Float64Array(numberOfPoints);
 
   let initialOriginalStep = x[1] - x[0];
   let lastOriginalStep = x[xLength - 1] - x[xLength - 2];

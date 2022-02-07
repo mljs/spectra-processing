@@ -9,7 +9,7 @@ describe('mergeByCentroids', () => {
   it('base case', () => {
     expect(mergeByCentroids(originalPoints, [1.01, 1.04])).toStrictEqual({
       x: [1.01, 1.04],
-      y: [3, 1],
+      y: new Float64Array([3, 1]),
     });
   });
 
@@ -18,7 +18,7 @@ describe('mergeByCentroids', () => {
       mergeByCentroids(originalPoints, [1, 1.03], { window: 0.013 }),
     ).toStrictEqual({
       x: [1, 1.03],
-      y: [3, 2],
+      y: new Float64Array([3, 2]),
     });
   });
 });

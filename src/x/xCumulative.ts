@@ -2,7 +2,7 @@ import { DoubleArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 /**
- * Calculate a new array of the same size that is the cumulative values
+ * Calculate an array of the same size that is the cumulative values
  *
  * @param array - DoubleArray
  */

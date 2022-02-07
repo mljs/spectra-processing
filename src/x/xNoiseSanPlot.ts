@@ -308,7 +308,7 @@ function simpleNormInv(
   let from = 0;
   let to = 2;
   let step = 0.01;
-  let xTraining = createArray(from, to, step);
+  let xTraining = Array.from(createArray(from, to, step));
 
   let result = new Float64Array(data.length);
   let yTraining = new Float64Array(xTraining.length);
@@ -340,7 +340,8 @@ function simpleNormInv(
  * @returns Array of results.
  */
 function createArray(from: number, to: number, step: number): DoubleArray {
-  let result = new Array(Math.abs((from - to) / step + 1));
+  // Changed Array to Float64Array
+  let result = new Float64Array(Math.abs((from - to) / step + 1));
   for (let i = 0; i < result.length; i++) {
     result[i] = from + i * step;
   }
