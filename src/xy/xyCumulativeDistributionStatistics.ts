@@ -1,14 +1,14 @@
 import { DataXY } from 'cheminfo-types';
-import max from 'ml-array-max';
 
 import { xCumulative } from '../x/xCumulative';
+import { xMaxValue } from '../x/xMaxValue';
 
 import { xyCheck } from './xyCheck';
 import { xyMaxYPoint } from './xyMaxYPoint';
 
 const STEPS = [0.25, 0.5, 0.75];
-/**
- * Cumulative Distribution Statistics
+
+/** Cumulative Distribution Statistics
  *
  * @param data - array of points {x,y}
  * @returns x0, x25, x50, x75, x100, mode (x for maxY)
@@ -22,7 +22,7 @@ export function xyCumulativeDistributionStatistics(data: DataXY) {
     );
   }
   const cumulativeSum = xCumulative(y);
-  const maxY = max(cumulativeSum);
+  const maxY = xMaxValue(cumulativeSum);
   for (let i = 0; i < cumulativeSum.length; i++) {
     cumulativeSum[i] /= maxY;
   }

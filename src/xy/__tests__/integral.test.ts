@@ -1,4 +1,4 @@
-import integral from '../integral';
+import integral from '../utils/integral';
 
 describe('integral', () => {
   it('should compute expect(integral with a,b, x0 and x1', () => {

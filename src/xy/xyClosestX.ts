@@ -3,12 +3,13 @@ import { DataXY } from 'cheminfo-types';
 
 import { numberSortAscending, numberSortDescending } from '../utils/numberSort';
 
-/**
+/**Findding the closest points
+ *
  * @param points - points in cartesian space
  * @param options - options
  * @returns - closest point
  */
-export function closestX(
+export function xyClosestX(
   /** points */
   points: DataXY,
   options: {

@@ -1,4 +1,4 @@
-import getZones from '../getZones';
+import getZones from '../utils/getZones';
 
 describe('getZones', () => {
   it('no options', () => {

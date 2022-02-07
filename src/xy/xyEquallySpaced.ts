@@ -1,10 +1,12 @@
 import { DataXY } from 'cheminfo-types';
-import sequentialFill from 'ml-array-sequential-fill';
-import { zonesWithPoints, invert } from 'ml-zones';
 
-import equallySpacedSlot from '../utils/equallySpacedSlot';
-import equallySpacedSmooth from '../utils/equallySpacedSmooth';
+import { xSequentialFill } from '../x/xSequentialFill';
 import { zoneCheck } from '../zone/zoneCheck';
+import { zonesInvert } from '../zones/zonesInvert';
+import { zonesWithPoints } from '../zones/zonesWithPoints';
+
+import equallySpacedSlot from './utils/equallySpacedSlot';
+import equallySpacedSmooth from './utils/equallySpacedSmooth';
 
 /**
  * Function that returns a Number array of equally spaced numberOfPoints
@@ -105,7 +107,7 @@ export function xyEquallySpaced(
   }
 
   if (zones.length === 0) {
-    zones = invert(exclusions, { from, to });
+    zones = zonesInvert(exclusions, { from, to });
   }
 
   let zonesWithPointsRes = zonesWithPoints(zones, numberOfPoints, { from, to });
@@ -113,6 +115,10 @@ export function xyEquallySpaced(
   let xResult: number[] = [];
   let yResult: number[] = [];
   for (let zone of zonesWithPointsRes) {
+    if (!zone.numberOfPoints) {
+      zone.numberOfPoints = 0;
+    }
+
     let zoneResult = processZone(
       Array.from(x),
       Array.from(y),
@@ -122,7 +128,7 @@ export function xyEquallySpaced(
       variant,
     );
 
-    xResult = xResult.concat(zoneResult.x);
+    xResult = xResult.concat(zoneResult.x as ConcatArray<number>);
     yResult = yResult.concat(zoneResult.y);
   }
   if (reverse) {
@@ -157,7 +163,7 @@ function processZone(
       : Array.from(equallySpacedSmooth(x, y, from, to, numberOfPoints));
 
   return {
-    x: sequentialFill({
+    x: xSequentialFill({
       from,
       to,
       size: numberOfPoints,

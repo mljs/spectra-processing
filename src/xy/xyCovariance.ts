@@ -1,7 +1,9 @@
 import { DataXY } from 'cheminfo-types';
-import mean from 'ml-array-mean';
 
-/**
+import { xMean } from '../x/xMean';
+
+/**Finds the covariance of the points
+ *
  * @param points
  * @param options
  * @return the covariance
@@ -18,8 +20,8 @@ export function xyCovariance(
   const { x, y } = points;
   const { unbiased = true } = options;
 
-  const meanX = mean(x);
-  const meanY = mean(y);
+  const meanX = xMean(x);
+  const meanY = xMean(y);
 
   let error = 0;
 

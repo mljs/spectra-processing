@@ -1,7 +1,8 @@
 import { DoubleArray } from 'cheminfo-types';
-import median from 'ml-array-median';
 
 import { xAbsolute } from './xAbsolute';
+import { xMedian } from './xMedian';
+
 /**
  * This function calculates the median after taking the reimAbsolute values of the points
  *
@@ -9,5 +10,5 @@ import { xAbsolute } from './xAbsolute';
  * @returns - median
  */
 export function xAbsoluteMedian(array: DoubleArray): number {
-  return median(xAbsolute(array));
+  return xMedian(xAbsolute(array));
 }

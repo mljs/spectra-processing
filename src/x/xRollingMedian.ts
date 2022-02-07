@@ -1,6 +1,6 @@
 import { DoubleArray } from 'cheminfo-types';
-import median from 'ml-array-median';
 
+import { xMedian } from './xMedian';
 import { xRolling } from './xRolling';
 
 /**
@@ -39,5 +39,5 @@ export function xRollingMedian(
     };
   } = {},
 ): DoubleArray {
-  return xRolling(array, median, options);
+  return xRolling(array, xMedian, options);
 }

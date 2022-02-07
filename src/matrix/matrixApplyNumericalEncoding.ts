@@ -1,4 +1,4 @@
-import max from 'ml-array-max';
+import { xMaxValue } from '../x/xMaxValue';
 
 import { matrixClone } from './matrixClone';
 
@@ -17,7 +17,7 @@ export function matrixApplyNumericalEncoding(
   for (let key in dictionnary) {
     arrayOfValues.push(dictionnary[key]);
   }
-  let k = max(arrayOfValues);
+  let k = xMaxValue(arrayOfValues);
 
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[0].length; j++) {

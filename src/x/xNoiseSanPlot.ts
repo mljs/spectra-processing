@@ -1,17 +1,18 @@
 import { DataXY, FromTo, DoubleArray } from 'cheminfo-types';
-import fill from 'ml-array-sequential-fill';
-// @ts-expect-error javascript package used
 import SplineInterpolator from 'spline-interpolator';
 
 import erfcinv from './erfcinv';
 import rayleighCdf from './rayleighCdf';
+import { xSequentialFill } from './xSequentialFill';
 
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
  *
  * @param data - real or magnitude spectra data.
  * @param options - options
+ * @returns noise level
  */
+
 export function xNoiseSanPlot(
   data: DoubleArray,
   options: {
@@ -437,7 +438,7 @@ function scale(
 
     fromTo?: Record<string, FromTo>;
   } = {},
-): DataXY {
+) {
   const { log10, abs } = Math;
   const { logBaseY } = options;
   if (logBaseY) {
@@ -448,7 +449,7 @@ function scale(
     }
   }
 
-  const xAxis = fill({
+  const xAxis = xSequentialFill({
     from: 0,
     to: array.length - 1,
     size: array.length,

@@ -41,6 +41,7 @@ export function zonesWithPoints(
 
   let unitsPerPoint = totalSize / numberOfPoints;
   let currentTotal = 0;
+
   for (let i = 0; i < returnZones.length - 1; i++) {
     let zone: any = returnZones[i];
     zone.numberOfPoints = Math.min(

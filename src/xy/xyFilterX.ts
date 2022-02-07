@@ -1,9 +1,8 @@
 import { DataXY } from 'cheminfo-types';
 
-import getZones from '../utils/getZones';
+import getZones from '../zones/utils/getZones';
 
-/**
- * Filter an array x/y based on various criteria x points are expected to be sorted
+/** Filter an array x/y based on various criteria x points are expected to be sorted
  *
  * @param points
  * @param options
