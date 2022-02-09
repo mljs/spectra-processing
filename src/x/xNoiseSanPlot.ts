@@ -1,9 +1,10 @@
 import { DataXY, FromTo, DoubleArray } from 'cheminfo-types';
 import SplineInterpolator from 'spline-interpolator';
 
+import { createXArray } from '../utils/createXArray';
+
 import erfcinv from './erfcinv';
 import rayleighCdf from './rayleighCdf';
-import { xSequentialFill } from './xSequentialFill';
 
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
@@ -449,10 +450,10 @@ function scale(
     }
   }
 
-  const xAxis = xSequentialFill({
+  const xAxis = createXArray({
     from: 0,
     to: array.length - 1,
-    size: array.length,
+    length: array.length,
   });
 
   return { x: xAxis, y: array };
