@@ -224,29 +224,6 @@ describe('equallySpaced', () => {
     });
   });
 
-  it('many exclusions with 2 points', () => {
-    let x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    let y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-    let ans = xyEquallySpaced(
-      { x, y },
-      {
-        from: 1,
-        to: 8,
-        numberOfPoints: 2,
-        variant: 'smooth',
-        exclusions: [
-          { from: 2, to: 7 },
-          { from: 9, to: 10 },
-        ],
-      },
-    );
-    expect(ans).toStrictEqual({
-      x: [1, 7],
-      y: [1, 7],
-    });
-  });
-
   it('testing inverted exclusions', () => {
     let x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     let y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

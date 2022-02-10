@@ -43,7 +43,7 @@ export function createXArray(
     distribution = 'uniform',
   } = options;
 
-  const array = new Float64Array(length);
+  const array = new Array(length);
 
   let div = length;
   if (includeFrom === true && includeTo === true) {
