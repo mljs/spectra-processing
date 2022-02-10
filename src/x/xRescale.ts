@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 import { xMaxValue } from './xMaxValue';
@@ -12,10 +12,10 @@ import { xMinValue } from './xMinValue';
  */
 
 export function xRescale(
-  input: DoubleArray | Uint16Array,
+  input: NumberArray,
   options: {
     /** output into which to placed the data */
-    output?: DoubleArray | Uint16Array;
+    output?: NumberArray;
     /** min used for the scaling */
     min?: number;
     /** max used for the scaling */
@@ -54,7 +54,7 @@ export function xRescale(
 
   const factor = (maxValue - minValue) / (currentMax - currentMin);
   for (let i = 0; i < input.length; i++) {
-    output[i] = (input[i] - currentMin) * factor + minValue;
+    output[i] = ((input[i] as number) - currentMin) * factor + minValue;
   }
 
   return output;

@@ -10,7 +10,7 @@ import { isAnyArray } from 'is-any-array';
 export function xMultiply(
   array1: DoubleArray,
   array2: DoubleArray | number,
-): DoubleArray {
+): Float64Array {
   let isConstant = false;
   let constant = 0;
   if (isAnyArray(array2)) {

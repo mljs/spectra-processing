@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 
@@ -9,7 +9,7 @@ import { xCheck } from './xCheck';
  * @param options - options
  */
 export function xMaxValue(
-  array: DoubleArray | Uint16Array,
+  array: NumberArray,
   options: {
     /**
      * First point for xyIntegration
@@ -32,5 +32,5 @@ export function xMaxValue(
       maxValue = array[i];
     }
   }
-  return maxValue;
+  return maxValue as number;
 }

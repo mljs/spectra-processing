@@ -28,7 +28,7 @@ export function xPadding(
      */
     algorithm?: string;
   } = {},
-): DoubleArray {
+): Float64Array {
   const { size = 0, value = 0, algorithm = '' } = options;
   xCheck(array);
 

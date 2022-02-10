@@ -1,5 +1,3 @@
-import { DoubleArray } from 'cheminfo-types';
-
 import { DataReIm } from '../index';
 
 /**
@@ -8,7 +6,7 @@ import { DataReIm } from '../index';
  * @param data - DATA
  * @returns - array of float
  */
-export function reimAbsolute(data: DataReIm): DoubleArray {
+export function reimAbsolute(data: DataReIm): Float64Array {
   const length = data.re.length;
   const re = data.re;
   const im = data.im;

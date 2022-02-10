@@ -6,7 +6,7 @@ import { isAnyArray } from 'is-any-array';
  *
  * @param array - DoubleArray
  */
-export function xCumulative(array: DoubleArray): DoubleArray {
+export function xCumulative(array: DoubleArray): Float64Array {
   if (!isAnyArray(array)) {
     throw new TypeError('input must be an array');
   }

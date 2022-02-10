@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xVariance } from './xVariance';
 
@@ -8,9 +8,6 @@ import { xVariance } from './xVariance';
  * @param options - options
  * @returns standard deviation
  */
-export function xStandardDeviation(
-  values: DoubleArray | Uint16Array,
-  options = {},
-) {
+export function xStandardDeviation(values: NumberArray, options = {}) {
   return Math.sqrt(xVariance(values, options));
 }

@@ -1,5 +1,3 @@
-import { DoubleArray } from 'cheminfo-types';
-
 /**
  * Create an array with numbers between "from" and "to" of length "length"
  *
@@ -38,7 +36,7 @@ export function createXArray(
      * @default uniform */
     distribution?: string;
   } = {},
-): DoubleArray {
+): Float64Array {
   if (options.to && options.step) {
     throw new Error('Define either to or step, but not both.');
   }
@@ -58,7 +56,7 @@ export function createXArray(
     to = from + step * length;
   }
 
-  const array = new Array(length);
+  const array = new Float64Array(length);
 
   let div = length;
   if (includeFrom === true && includeTo === true) {

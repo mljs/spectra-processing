@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 /**
  * Calculates the mode of an array
@@ -7,7 +7,7 @@ import { DoubleArray } from 'cheminfo-types';
  * @returns - mode
  */
 
-export function xMode(input: DoubleArray | Uint16Array) {
+export function xMode(input: NumberArray) {
   if (input.length === 0) {
     throw new TypeError('input must not be empty');
   }
@@ -19,17 +19,17 @@ export function xMode(input: DoubleArray | Uint16Array) {
 
   for (let i = 0; i < input.length; ++i) {
     let element = input[i];
-    count = counts[element];
+    count = counts[element as number];
     if (count) {
-      counts[element]++;
+      counts[element as number]++;
       count++;
     } else {
-      counts[element] = count = 1;
+      counts[element as number] = count = 1;
     }
 
     if (count > maxCount) {
       maxCount = count;
-      maxValue = input[i];
+      maxValue = input[i] as number;
     }
   }
 

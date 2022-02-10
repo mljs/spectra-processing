@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 
@@ -9,7 +9,7 @@ import { xCheck } from './xCheck';
  * @param options - options
  */
 export function xMean(
-  array: DoubleArray | Uint16Array,
+  array: NumberArray,
   options: {
     /**
      * First point for xyIntegration
@@ -25,10 +25,10 @@ export function xMean(
 ): number {
   xCheck(array);
   const { fromIndex = 0, toIndex = array.length - 1 } = options;
-  let sumValue = array[fromIndex];
+  let sumValue = array[fromIndex] as number;
 
   for (let i = fromIndex + 1; i <= toIndex; i++) {
-    sumValue += array[i];
+    sumValue += array[i] as number;
   }
   return sumValue / (toIndex - fromIndex + 1);
 }

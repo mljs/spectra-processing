@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 import quickSelectMedian from 'median-quickselect';
 
@@ -9,7 +9,7 @@ import quickSelectMedian from 'median-quickselect';
  * @returns - median
  */
 
-export function xMedian(input: DoubleArray | Uint16Array) {
+export function xMedian(input: NumberArray) {
   if (!isAnyArray(input)) {
     throw new TypeError('input must be an array');
   }

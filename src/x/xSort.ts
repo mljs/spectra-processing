@@ -8,7 +8,7 @@ export function xSortAscending(array: DoubleArray) {
   if (array instanceof Float64Array) {
     return array.sort();
   } else if (array instanceof Array) {
-    return array.sort((a, b) => (a > b ? 1 : -1));
+    return array.sort((a, b) => a - b);
   }
 }
 
@@ -20,6 +20,6 @@ export function xSortDescending(array: DoubleArray) {
   if (array instanceof Float64Array) {
     return array.sort().reverse();
   } else if (array instanceof Array) {
-    return array.sort((a, b) => (a > b ? -1 : 1));
+    return array.sort((a, b) => b - a);
   }
 }

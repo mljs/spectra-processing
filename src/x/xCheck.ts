@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray, DoubleArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 /**
@@ -6,7 +6,7 @@ import { isAnyArray } from 'is-any-array';
  *
  * @param input - input
  */
-export function xCheck(input?: DoubleArray | Uint16Array) {
+export function xCheck(input?: NumberArray) {
   if (!isAnyArray(input)) {
     throw new TypeError('input must be an array');
   }

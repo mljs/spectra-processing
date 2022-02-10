@@ -82,11 +82,13 @@ export function xHistogram(
   const y = histogram === undefined ? new Float64Array(nbSlots) : histogram.y;
   const x =
     histogram === undefined
-      ? createXArray({
-          from: min + (centerX ? slotSize / 2 : 0),
-          to: max - (centerX ? slotSize / 2 : 0),
-          length: nbSlots,
-        })
+      ? Array.from(
+          createXArray({
+            from: min + (centerX ? slotSize / 2 : 0),
+            to: max - (centerX ? slotSize / 2 : 0),
+            length: nbSlots,
+          }),
+        )
       : histogram.x;
 
   array.forEach((element) => {

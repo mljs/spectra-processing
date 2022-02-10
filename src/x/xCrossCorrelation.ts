@@ -24,7 +24,7 @@ export function xCrossCorrelation(
      * */
     lag?: number;
   } = {},
-): DoubleArray {
+): Float64Array {
   let { tau = 1, lag = A.length - 1 } = options;
   let result = new Float64Array(1 + (2 * lag) / tau);
   if (A.length === B.length) {

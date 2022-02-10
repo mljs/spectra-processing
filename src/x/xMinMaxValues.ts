@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 
@@ -8,18 +8,18 @@ import { xCheck } from './xCheck';
  * @param array - array of number
  * @returns - Object with 2 properties, min and max
  */
-export function xMinMaxValues(array: DoubleArray | Uint16Array): {
+export function xMinMaxValues(array: NumberArray): {
   min: number;
   max: number;
 } {
   xCheck(array);
 
-  let min = array[0];
-  let max = array[0];
+  let min = array[0] as number;
+  let max = array[0] as number;
 
   for (let value of array) {
-    if (value < min) min = value;
-    if (value > max) max = value;
+    if (value < min) min = value as number;
+    if (value > max) max = value as number;
   }
 
   return { min, max };
