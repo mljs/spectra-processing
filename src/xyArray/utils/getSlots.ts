@@ -3,14 +3,14 @@ import { DataXY } from 'cheminfo-types';
 /**
  * GetSlots.
  *
- * @param spectra - Spectra.
+ * @param data - data.
  * @param options - Options.
  */
 export function getSlots(
-  spectra: DataXY[],
+  data: DataXY[],
   options: {
     /**
-     * The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+     * The range in which the two x values of the data/spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
      * @default 1
      */
     delta?: ((arg: number) => number) | number;
@@ -26,9 +26,7 @@ export function getSlots(
   const deltaIsFunction = typeof delta === 'function';
 
   let possibleXs = Float64Array.from(
-    ([] as number[]).concat(
-      ...spectra.map((spectrum) => spectrum.x as number[]),
-    ),
+    ([] as number[]).concat(...data.map((spectrum) => spectrum.x as number[])),
   ).sort();
 
   if (possibleXs.length < 1) {

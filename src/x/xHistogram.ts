@@ -1,10 +1,10 @@
 import { DoubleArray, DataXY } from 'cheminfo-types';
-import fill from 'ml-array-sequential-fill';
 
 import { xAbsolute } from './xAbsolute';
 import { xCheck } from './xCheck';
 import { xMaxValue } from './xMaxValue';
 import { xMinValue } from './xMinValue';
+import { xSequentialFill } from './xSequentialFill';
 
 /**
  * Calculates an histogram of defined number of slots
@@ -54,7 +54,7 @@ export function xHistogram(
      * */
     min?: number;
   } = {},
-): DataXY {
+) {
   xCheck(array);
   let histogram = options.histogram;
   const {
@@ -81,7 +81,7 @@ export function xHistogram(
   const y = histogram === undefined ? new Float64Array(nbSlots) : histogram.y;
   const x =
     histogram === undefined
-      ? fill({
+      ? xSequentialFill({
           from: min + (centerX ? slotSize / 2 : 0),
           to: max - (centerX ? slotSize / 2 : 0),
           size: nbSlots,

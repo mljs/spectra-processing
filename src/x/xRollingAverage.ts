@@ -1,6 +1,6 @@
 import { DoubleArray } from 'cheminfo-types';
-import mean from 'ml-array-mean';
 
+import { xMean } from './xMean';
 import { xRolling } from './xRolling';
 
 /**
@@ -39,5 +39,5 @@ export function xRollingAverage(
     };
   } = {},
 ): DoubleArray {
-  return xRolling(array, mean, options);
+  return xRolling(array, xMean, options);
 }

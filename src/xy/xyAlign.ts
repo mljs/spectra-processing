@@ -8,7 +8,6 @@ import { DataXY } from 'cheminfo-types';
  * @param data1 - First spectrum data
  * @param data2 - Second spectrum data
  * @param options - Options
-
  */
 export function xyAlign(
   data1: DataXY,

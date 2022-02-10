@@ -12,7 +12,10 @@ describe('xyGetNMaxY', () => {
   it('should return one peak', () => {
     let spectrum = { x: [1, 2, 3, 4], y: [1, 2, 3, 4] };
     let result = xyGetNMaxY(spectrum, 1);
-    expect(result).toStrictEqual({ x: [4], y: [4] });
+    expect(result).toStrictEqual({
+      x: new Float64Array([4]),
+      y: new Float64Array([4]),
+    });
   });
   it('should throw error', () => {
     let spectrum = { x: [1, 5], y: [1, 2, 3, 4] };
@@ -26,7 +29,10 @@ describe('xyGetNMaxY', () => {
       y: [1, 5, 7, 3, 1, 8, 9, 13, 40, 3, 4],
     };
     let result = xyGetNMaxY(spectrum, 3);
-    expect(result).toStrictEqual({ x: [9, 13, 40], y: [9, 13, 40] });
+    expect(result).toStrictEqual({
+      x: new Float64Array([9, 13, 40]),
+      y: new Float64Array([9, 13, 40]),
+    });
   });
   it('test repeating values', () => {
     let spectrum = {
@@ -34,6 +40,9 @@ describe('xyGetNMaxY', () => {
       y: [1, 5, 7, 3, 1, 40, 51, 40, 40, 3, 4],
     };
     let result = xyGetNMaxY(spectrum, 3);
-    expect(result).toStrictEqual({ x: [8, 9, 13], y: [40, 51, 40] });
+    expect(result).toStrictEqual({
+      x: new Float64Array([8, 9, 13]),
+      y: new Float64Array([40, 51, 40]),
+    });
   });
 });

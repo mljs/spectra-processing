@@ -1,12 +1,13 @@
 import { DataXY } from 'cheminfo-types';
 
 import { xyCheck } from './xyCheck';
+
 /**
  * Finds all the min values
  * If the values are equal the middle
  * of the equal part will be the position of the signal!
  *
- * @param data - Object that contains property X (an ordered increasing array) and y (an arraY).
+ * @param data - Object that contains property X (an ordered increasing array) and y (an arraY)
  * @returns - Array of points.
  */
 export function xyMinimaY(data: DataXY) {

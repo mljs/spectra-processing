@@ -8,7 +8,7 @@ import { xyCheck } from './xyCheck';
  * Find the closest minimum going down hill
  *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
- * @param options Options
+ * @param options - Options
  * @returns - An object with the x/y value
  */
 export function xyMinClosestYPoint(

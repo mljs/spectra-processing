@@ -1,6 +1,6 @@
 import { DoubleArray } from 'cheminfo-types';
-import max from 'ml-array-max';
 
+import { xMaxValue } from './xMaxValue';
 import { xRolling } from './xRolling';
 
 /**
@@ -39,5 +39,5 @@ export function xRollingMax(
     };
   } = {},
 ): DoubleArray {
-  return xRolling(array, max, options);
+  return xRolling(array, xMaxValue, options);
 }

@@ -1,17 +1,18 @@
 import { DataXY, FromTo, DoubleArray } from 'cheminfo-types';
-import fill from 'ml-array-sequential-fill';
-// @ts-expect-error javascript package used
 import SplineInterpolator from 'spline-interpolator';
 
 import erfcinv from './erfcinv';
 import rayleighCdf from './rayleighCdf';
+import { xSequentialFill } from './xSequentialFill';
 
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
  *
  * @param data - real or magnitude spectra data.
  * @param options - options
+ * @returns noise level
  */
+
 export function xNoiseSanPlot(
   data: DoubleArray,
   options: {
@@ -308,7 +309,7 @@ function simpleNormInv(
   let from = 0;
   let to = 2;
   let step = 0.01;
-  let xTraining = createArray(from, to, step);
+  let xTraining = Array.from(createArray(from, to, step));
 
   let result = new Float64Array(data.length);
   let yTraining = new Float64Array(xTraining.length);
@@ -340,7 +341,8 @@ function simpleNormInv(
  * @returns Array of results.
  */
 function createArray(from: number, to: number, step: number): DoubleArray {
-  let result = new Array(Math.abs((from - to) / step + 1));
+  // Changed Array to Float64Array
+  let result = new Float64Array(Math.abs((from - to) / step + 1));
   for (let i = 0; i < result.length; i++) {
     result[i] = from + i * step;
   }
@@ -436,7 +438,7 @@ function scale(
 
     fromTo?: Record<string, FromTo>;
   } = {},
-): DataXY {
+) {
   const { log10, abs } = Math;
   const { logBaseY } = options;
   if (logBaseY) {
@@ -447,7 +449,7 @@ function scale(
     }
   }
 
-  const xAxis = fill({
+  const xAxis = xSequentialFill({
     from: 0,
     to: array.length - 1,
     size: array.length,

@@ -3,6 +3,7 @@ import { DataXY } from 'cheminfo-types';
 import { xGetTargetIndex } from '../x/xGetTargetIndex';
 
 import { xyCheck } from './xyCheck';
+
 /**
  * Find the closest minimum going down hill
  *

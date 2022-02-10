@@ -1,6 +1,6 @@
 import { DoubleArray } from 'cheminfo-types';
-import min from 'ml-array-min';
 
+import { xMinValue } from './xMinValue';
 import { xRolling } from './xRolling';
 
 /**
@@ -39,5 +39,5 @@ export function xRollingMin(
     };
   } = {},
 ): DoubleArray {
-  return xRolling(array, min, options);
+  return xRolling(array, xMinValue, options);
 }

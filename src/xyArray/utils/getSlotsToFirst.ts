@@ -4,14 +4,14 @@ import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
 /**
  * GetSlotsToFirst.
  *
- * @param spectra - Spectra.
+ * @param data - data.
  * @param options - Options.
  */
 export function getSlotsToFirst(
-  spectra: DataXY[],
+  data: DataXY[],
   options: {
     /**
-     * The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+     * The range in which the two x values of the data/spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
      * @default 1
      */
     delta?: ((arg: number) => number) | number;
@@ -20,7 +20,7 @@ export function getSlotsToFirst(
   const { delta = 1 } = options;
   const deltaIsFunction = typeof delta === 'function';
 
-  let firstXs = spectra[0].x;
+  let firstXs = data[0].x;
   let slots: { from: number; to: number; value: number }[] = [];
   // we first create the slots based on the first spectrum
   firstXs.forEach((element) => {
@@ -32,7 +32,7 @@ export function getSlotsToFirst(
     });
   });
 
-  let otherXs = xyArrayWeightedMerge(spectra.slice(1), options).x;
+  let otherXs = xyArrayWeightedMerge(data.slice(1), options).x;
   let currentPosition = 0;
   for (let slot of slots) {
     while (

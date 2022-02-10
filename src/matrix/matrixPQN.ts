@@ -1,8 +1,8 @@
 import { DoubleArray } from 'cheminfo-types';
-import median from 'ml-array-median';
 import { Matrix } from 'ml-matrix';
 
 import { DoubleMatrix } from '..';
+import { xMedian } from '../x/xMedian';
 
 /**
  * Performs a Probabilistic quotient normalization (PQN) over the dataset to account dilution based in median spectrum.
@@ -42,13 +42,13 @@ export function matrixPQN(
   let referenceSpectrum = [];
   for (let i = 0; i < matrixB.columns; i++) {
     const currentVariable = matrixB.getColumn(i);
-    referenceSpectrum.push(median(currentVariable));
+    referenceSpectrum.push(xMedian(currentVariable));
   }
 
   let medianOfQuotients = [];
   for (let i = 0; i < matrixB.columns; i++) {
     let quotients = matrixB.getColumnVector(i).div(referenceSpectrum[i]);
-    medianOfQuotients.push(median(quotients.getColumn(0)));
+    medianOfQuotients.push(xMedian(quotients.getColumn(0)));
   }
 
   for (let i = 0; i < matrixB.rows; i++) {
