@@ -53,6 +53,7 @@ export function createXArray(
     distribution = 'uniform',
   } = options;
 
+  // step parameter
   if (step) {
     to = from + step * length;
   }
