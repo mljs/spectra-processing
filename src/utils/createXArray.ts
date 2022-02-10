@@ -17,6 +17,11 @@ export function createXArray(
      * @default 1 */
     to?: number;
     /**
+     * step if "to" not defined
+     * @default null
+     */
+    step?: number;
+    /**
      * number of points in range
      * @default 1000 */
     length?: number;
@@ -34,14 +39,23 @@ export function createXArray(
     distribution?: string;
   } = {},
 ): DoubleArray {
-  const {
+  if (options.to && options.step) {
+    throw new Error('Define either to or step, but not both.');
+  }
+
+  let {
     from = 0,
     to = 1,
+    step = null,
     length = 1000,
     includeFrom = true,
     includeTo = true,
     distribution = 'uniform',
   } = options;
+
+  if (step) {
+    to = from + step * length;
+  }
 
   const array = new Array(length);
 
