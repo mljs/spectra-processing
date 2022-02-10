@@ -1,7 +1,5 @@
 import { DoubleArray, DataXY } from 'cheminfo-types';
-
 import { createXArray } from '../utils/createXArray';
-
 import { xAbsolute } from './xAbsolute';
 import { xCheck } from './xCheck';
 import { xMaxValue } from './xMaxValue';
