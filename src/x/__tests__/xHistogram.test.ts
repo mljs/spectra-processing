@@ -2,7 +2,6 @@ import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
 import { createXArray } from '../../utils/createXArray';
 import { xHistogram } from '../xHistogram';
-import { xSequentialFill } from '../xSequentialFill';
 
 expect.extend({ toMatchCloseTo });
 
@@ -51,7 +50,6 @@ describe('xHistogram', () => {
   });
 
   it('sequential', () => {
-
     const array = createXArray({ from: 0, to: 100, length: 100 });
     const histogram = xHistogram(Array.from(array), { nbSlots: 10 });
     histogram.y = Array.from(histogram.y);
