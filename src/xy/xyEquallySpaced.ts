@@ -1,6 +1,6 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xSequentialFill } from '../x/xSequentialFill';
+import { createXArray } from '../utils/createXArray';
 import { zoneCheck } from '../zone/zoneCheck';
 import { zonesInvert } from '../zones/zonesInvert';
 import { zonesWithPoints } from '../zones/zonesWithPoints';
@@ -163,10 +163,10 @@ function processZone(
       : Array.from(equallySpacedSmooth(x, y, from, to, numberOfPoints));
 
   return {
-    x: xSequentialFill({
+    x: createXArray({
       from,
       to,
-      size: numberOfPoints,
+      length: numberOfPoints,
     }),
     y: output,
   };
