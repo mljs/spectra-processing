@@ -10,7 +10,7 @@ import { isAnyArray } from 'is-any-array';
 
 export function xSequentialFill(
   input:
-    NumberArray
+    | NumberArray
     | {
         /** first value in the array
          * @default 0
