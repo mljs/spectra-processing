@@ -38,7 +38,7 @@ export function createXArray(
   } = {},
 ): Float64Array {
   if (options.to && options.step) {
-    throw new Error('Define either to or step, but not both.');
+    throw new Error('Define either "to" or "step", but not both.');
   }
 
   let {
