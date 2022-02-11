@@ -54,7 +54,7 @@ export function xNormed(
       let absoluteSumValue = absoluteSum(input) / sumValue;
       if (absoluteSumValue === 0) return input.slice(0);
       for (let i = 0; i < input.length; i++) {
-        output[i] = (input[i] as number) / absoluteSumValue;
+        output[i] = input[i] / absoluteSumValue;
       }
       return output;
     }
@@ -63,7 +63,7 @@ export function xNormed(
       if (currentMaxValue === 0) return input.slice(0);
       const factor = maxValue / currentMaxValue;
       for (let i = 0; i < input.length; i++) {
-        output[i] = (input[i] as number) * factor;
+        output[i] = input[i] * factor;
       }
       return output;
     }
@@ -71,7 +71,7 @@ export function xNormed(
       let sumFactor = xSum(input) / sumValue;
       if (sumFactor === 0) return input.slice(0);
       for (let i = 0; i < input.length; i++) {
-        output[i] = (input[i] as number) / sumFactor;
+        output[i] = input[i] / sumFactor;
       }
       return output;
     }
@@ -83,7 +83,7 @@ export function xNormed(
 function absoluteSum(input: NumberArray) {
   let sumValue = 0;
   for (let i = 0; i < input.length; i++) {
-    sumValue += Math.abs(input[i] as number);
+    sumValue += Math.abs(input[i]);
   }
   return sumValue;
 }

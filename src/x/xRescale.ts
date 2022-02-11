@@ -54,7 +54,7 @@ export function xRescale(
 
   const factor = (maxValue - minValue) / (currentMax - currentMin);
   for (let i = 0; i < input.length; i++) {
-    output[i] = ((input[i] as number) - currentMin) * factor + minValue;
+    output[i] = (input[i] - currentMin) * factor + minValue;
   }
 
   return output;

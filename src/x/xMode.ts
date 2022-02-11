@@ -19,17 +19,17 @@ export function xMode(input: NumberArray) {
 
   for (let i = 0; i < input.length; ++i) {
     let element = input[i];
-    count = counts[element as number];
+    count = counts[element];
     if (count) {
-      counts[element as number]++;
+      counts[element]++;
       count++;
     } else {
-      counts[element as number] = count = 1;
+      counts[element] = count = 1;
     }
 
     if (count > maxCount) {
       maxCount = count;
-      maxValue = input[i] as number;
+      maxValue = input[i];
     }
   }
 

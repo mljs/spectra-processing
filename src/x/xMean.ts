@@ -25,10 +25,10 @@ export function xMean(
 ): number {
   xCheck(array);
   const { fromIndex = 0, toIndex = array.length - 1 } = options;
-  let sumValue = array[fromIndex] as number;
+  let sumValue = array[fromIndex];
 
   for (let i = fromIndex + 1; i <= toIndex; i++) {
-    sumValue += array[i] as number;
+    sumValue += array[i];
   }
   return sumValue / (toIndex - fromIndex + 1);
 }

@@ -19,7 +19,7 @@ export function matrixNumericalEncoding(matrixInitial: (string | number)[][]): {
   for (let i = 0; i < nRows; i++) {
     for (let j = 0; j < nColumns; j++) {
       if (typeof matrix[i][j] === 'number' && matrix[i][j] > k) {
-        k = matrix[i][j] as number;
+        k = matrix[i][j];
       }
     }
   }

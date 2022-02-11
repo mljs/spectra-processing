@@ -63,7 +63,7 @@
   },
   "dependencies": {
     "binary-search": "^1.3.6",
-    "cheminfo-types": "^0.10.0",
+    "cheminfo-types": "^0.10.1",
     "fft.js": "^4.0.4",
     "is-any-array": "^2.0.0",
     "median-quickselect": "^1.0.1",

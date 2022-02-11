@@ -14,12 +14,12 @@ export function xMinMaxValues(array: NumberArray): {
 } {
   xCheck(array);
 
-  let min = array[0] as number;
-  let max = array[0] as number;
+  let min = array[0];
+  let max = array[0];
 
   for (let value of array) {
-    if (value < min) min = value as number;
-    if (value > max) max = value as number;
+    if (value < min) min = value;
+    if (value > max) max = value;
   }
 
   return { min, max };

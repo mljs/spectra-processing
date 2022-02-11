@@ -32,5 +32,5 @@ export function xMinValue(
       minValue = array[i];
     }
   }
-  return minValue as number;
+  return minValue;
 }

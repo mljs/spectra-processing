@@ -32,5 +32,5 @@ export function xMaxValue(
       maxValue = array[i];
     }
   }
-  return maxValue as number;
+  return maxValue;
 }

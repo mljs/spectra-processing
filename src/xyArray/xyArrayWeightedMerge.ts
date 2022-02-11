@@ -77,10 +77,10 @@ export function xyArrayWeightedMerge(
  */
 function nextValue(data: DataXY[], positions: NumberArray, point: Point) {
   let minIndex = 0;
-  let minX = data[0].x[positions[0] as number];
+  let minX = data[0].x[positions[0]];
 
   for (let i = 1; i < data.length; i++) {
-    let currentX = data[i].x[positions[i] as number];
+    let currentX = data[i].x[positions[i]];
     if (currentX < minX) {
       minX = currentX;
       minIndex = i;
@@ -88,7 +88,7 @@ function nextValue(data: DataXY[], positions: NumberArray, point: Point) {
   }
 
   point.x = minX;
-  point.y = data[minIndex].y[positions[minIndex] as number];
+  point.y = data[minIndex].y[positions[minIndex]];
 
   positions[minIndex]++;
 
