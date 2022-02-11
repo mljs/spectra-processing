@@ -5,7 +5,6 @@
  * @return - array of floats
  */
 
-// variables used in the method
 let spare: number;
 let hasSpare = false;
 
