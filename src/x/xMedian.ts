@@ -17,5 +17,8 @@ export function xMedian(input: DoubleArray | Uint16Array) {
   if (input.length === 0) {
     throw new TypeError('input must not be empty');
   }
+
+  // we need to slice because the order of elements is changed in the quickselect
+  // https://github.com/mad-gooze/median-quickselect
   return quickSelectMedian(input.slice());
 }
