@@ -5,6 +5,7 @@ export * from './x/xAbsoluteMedian';
 export * from './x/xAdd';
 export * from './x/xAutoCorrelation';
 export * from './x/xBoxPlot';
+export * from './x/xIsEquallySpaced';
 export * from './x/xCorrelation';
 export * from './x/xCrossCorrelation';
 export * from './x/xCumulative';
