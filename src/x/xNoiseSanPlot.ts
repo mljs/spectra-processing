@@ -9,13 +9,13 @@ import rayleighCdf from './rayleighCdf';
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
  *
- * @param data - real or magnitude spectra data.
+ * @param array - real or magnitude spectra data.
  * @param options - options
  * @returns noise level
  */
 
 export function xNoiseSanPlot(
-  data: DoubleArray,
+  array: DoubleArray,
   options: {
     /**
      * boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
@@ -72,10 +72,10 @@ export function xNoiseSanPlot(
   } = options;
 
   let input;
-  if (Array.isArray(mask) && mask.length === data.length) {
-    input = new Float64Array(data.filter((_e, i) => !mask[i]));
+  if (Array.isArray(mask) && mask.length === array.length) {
+    input = new Float64Array(array.filter((_e, i) => !mask[i]));
   } else {
-    input = new Float64Array(data);
+    input = new Float64Array(array);
   }
 
   if (scaleFactor > 1) {
