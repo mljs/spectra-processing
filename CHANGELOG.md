@@ -1,5 +1,15 @@
 # Changelog
 
+## [9.2.0](https://www.github.com/mljs/spectra-processing/compare/v9.1.0...v9.2.0) (2022-02-11)
+
+
+### Features
+
+* add xIsEquallySpaced ([19c182f](https://www.github.com/mljs/spectra-processing/commit/19c182f99e3d76f6dcca8bef80bcd2549663b5e6))
+* add xMedianAbsoluteDeviation ([c8d5e38](https://www.github.com/mljs/spectra-processing/commit/c8d5e3811781dc4471caef395648b4df9fe3d65f))
+* add xNoiseStandardDeviation ([9baff45](https://www.github.com/mljs/spectra-processing/commit/9baff45e5d33ecb85f519ea7c6ddb1c0bac96cb6))
+* Implemented invert.ts, normalize.ts, zonesWithPoints.ts  ([#115](https://www.github.com/mljs/spectra-processing/issues/115)) ([4599613](https://www.github.com/mljs/spectra-processing/commit/4599613903398fe6953b3797a7282d40073fa1a6))
+
 ## [9.1.0](https://www.github.com/mljs/spectra-processing/compare/v9.0.0...v9.1.0) (2022-02-03)
 
 
