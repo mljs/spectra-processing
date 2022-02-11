@@ -1,7 +1,5 @@
 import { DoubleArray } from 'cheminfo-types';
 
-import { xSubtract } from '..';
-
 import { xMedian } from './xMedian';
 
 /**
