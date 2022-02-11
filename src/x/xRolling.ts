@@ -50,11 +50,7 @@ export function xRolling(
 
   const newArray = [];
   for (let i = 0; i < array.length - window + 1; i++) {
-    let subArray = new Float64Array(
-      (array as Float64Array).buffer,
-      i * 8,
-      window,
-    );
+    let subArray = new Float64Array(array.buffer, i * 8, window);
     // we will send a view to the original buffer
     newArray.push(fct(subArray));
   }

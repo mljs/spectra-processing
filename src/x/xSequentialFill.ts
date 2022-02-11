@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray, DoubleArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 /** Fill an array with sequential numbers
@@ -10,8 +10,7 @@ import { isAnyArray } from 'is-any-array';
 
 export function xSequentialFill(
   input:
-    | DoubleArray
-    | Uint16Array
+    | NumberArray
     | {
         /** first value in the array
          * @default 0

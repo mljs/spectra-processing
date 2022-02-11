@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 /**
  * Calculates the mode of an array
@@ -7,7 +7,7 @@ import { DoubleArray } from 'cheminfo-types';
  * @returns - mode
  */
 
-export function xMode(input: DoubleArray | Uint16Array) {
+export function xMode(input: NumberArray) {
   if (input.length === 0) {
     throw new TypeError('input must not be empty');
   }

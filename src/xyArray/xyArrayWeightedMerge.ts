@@ -1,4 +1,4 @@
-import { DataXY } from 'cheminfo-types';
+import { DataXY, NumberArray } from 'cheminfo-types';
 
 import { Point } from '..';
 
@@ -75,11 +75,7 @@ export function xyArrayWeightedMerge(
  * @param positions - Positions array.
  * @param point - Point.
  */
-function nextValue(
-  data: DataXY[],
-  positions: number[] | Float64Array | Uint16Array,
-  point: Point,
-) {
+function nextValue(data: DataXY[], positions: NumberArray, point: Point) {
   let minIndex = 0;
   let minX = data[0].x[positions[0]];
 

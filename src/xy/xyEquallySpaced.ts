@@ -163,11 +163,13 @@ function processZone(
       : Array.from(equallySpacedSmooth(x, y, from, to, numberOfPoints));
 
   return {
-    x: createXArray({
-      from,
-      to,
-      length: numberOfPoints,
-    }),
+    x: Array.from(
+      createXArray({
+        from,
+        to,
+        length: numberOfPoints,
+      }),
+    ),
     y: output,
   };
 }

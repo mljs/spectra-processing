@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 import { xMaxValue } from './xMaxValue';
@@ -12,7 +12,7 @@ import { xSum } from './xSum';
  */
 
 export function xNormed(
-  input: DoubleArray | Uint16Array,
+  input: NumberArray,
   options: {
     /** value by which to divide the data
      * @default 'absolute'
@@ -27,7 +27,7 @@ export function xNormed(
      */
     maxValue?: number;
     /** output into which the result should be placed if needed */
-    output?: DoubleArray | Uint16Array;
+    output?: NumberArray;
   } = {},
 ) {
   const { algorithm = 'absolute', sumValue = 1, maxValue = 1 } = options;
@@ -80,7 +80,7 @@ export function xNormed(
   }
 }
 
-function absoluteSum(input: DoubleArray | Uint16Array) {
+function absoluteSum(input: NumberArray) {
   let sumValue = 0;
   for (let i = 0; i < input.length; i++) {
     sumValue += Math.abs(input[i]);

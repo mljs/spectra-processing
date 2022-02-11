@@ -68,14 +68,16 @@ export function matrixHistogram(
       ? matrixMinMaxAbsoluteZ(matrix)
       : matrixMinMaxZ(matrix);
     if (options.min === undefined) {
-      options.min = logBaseX
-        ? Math.log(minMax.min as number) / Math.log(logBaseX)
-        : minMax.min;
+      options.min =
+        logBaseX && minMax.min
+          ? Math.log(minMax.min) / Math.log(logBaseX)
+          : minMax.min;
     }
     if (options.max === undefined) {
-      options.max = logBaseX
-        ? Math.log(minMax.max as number) / Math.log(logBaseX)
-        : minMax.max;
+      options.max =
+        logBaseX && minMax.max
+          ? Math.log(minMax.max) / Math.log(logBaseX)
+          : minMax.max;
     }
   }
 

@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 /**
@@ -7,7 +7,7 @@ import { xCheck } from './xCheck';
  * @param array - array of numbers
  * @returns - indexe
  */
-export function xMaxIndex(array: DoubleArray | Uint16Array): number {
+export function xMaxIndex(array: NumberArray): number {
   xCheck(array);
 
   let maxIndex = 0;

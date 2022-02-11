@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 import { xMean } from './xMean';
@@ -9,7 +9,7 @@ import { xMean } from './xMean';
  * @param options - options
  */
 export function xVariance(
-  values: DoubleArray | Uint16Array,
+  values: NumberArray,
   options: {
     /** Unbiased option
      * @default true

@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 
@@ -10,7 +10,7 @@ import { xCheck } from './xCheck';
  * @returns XSum value on the specified range.
  */
 export function xSum(
-  array: DoubleArray | Uint16Array,
+  array: NumberArray,
   options: {
     /**
      * First point for xSum.
