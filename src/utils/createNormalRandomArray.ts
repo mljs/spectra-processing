@@ -8,7 +8,7 @@
 let spare: number;
 let hasSpare = false;
 
-export function createNormalRandomXArray(
+export function createNormalRandomArray(
   options: {
     /**
      * mean
