@@ -21,6 +21,7 @@ export * from './x/xGetTargetIndex';
 export * from './x/xHistogram';
 export * from './x/xIsEquallySpaced';
 export * from './x/xIsMonotone';
+export * from './x/xIsMonotoneIncreasing';
 export * from './x/xMaxIndex';
 export * from './x/xMaxValue';
 export * from './x/xMean';
