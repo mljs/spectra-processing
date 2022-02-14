@@ -3,8 +3,8 @@ import { DataReIm } from '../index';
 /**
  * Calculates reimAbsolute value of a complex spectrum
  *
- * @param data - DATA
- * @returns - array of float
+ * @param data - complex spectrum
+ * @returns - reimAbsolute value
  */
 export function reimAbsolute(data: DataReIm): Float64Array {
   const length = data.re.length;

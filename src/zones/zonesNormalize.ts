@@ -7,7 +7,6 @@
  * @param options - options
  * @returns array of zones
  */
-
 export function zonesNormalize(
   zones: {
     /** start of zone*/

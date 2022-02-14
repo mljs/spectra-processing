@@ -4,7 +4,7 @@ import { DoubleArray } from 'cheminfo-types';
  * This function calculate the norm of a vector
  *
  * @example xNorm([3, 4]) -> 5
- * @param array - the array that will be rotated
+ * @param array - array
  * @returns - calculated norm
  */
 export function xNorm(array: DoubleArray): number {

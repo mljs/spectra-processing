@@ -14,7 +14,12 @@ import { xyCheck } from './xyCheck';
  */
 export function xySetYValue(
   data: DataXY,
-  options: { zones?: Zone[]; value?: number } = {},
+  options: {
+    /** zones */
+    zones?: Zone[];
+    /** data contains x and y values */
+    value?: number;
+  } = {},
 ): DataXY {
   xyCheck(data);
   const { x, y } = data;

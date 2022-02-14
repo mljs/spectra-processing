@@ -4,13 +4,12 @@ import getZones from '../zones/utils/getZones';
 
 /** Filter an array x/y based on various criteria x points are expected to be sorted
  *
- * @param points
- * @param options
+ * @param points - points
+ * @param options - options
  * @return filtered array
  */
 
 export function xyFilterX(
-  /** points */
   points: DataXY,
   options: {
     /** filter from

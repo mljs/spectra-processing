@@ -2,11 +2,12 @@ import { DoubleArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 import { xPadding } from './xPadding';
+
 /**
  * This function calculates a rolling average
  *
- * @param array - the array that will be rotated
- * @param fct - callback function that from an array returns a value.
+ * @param array - array
+ * @param fct - callback function that from an array returns a value
  * @param options - options
  */
 export function xRolling(

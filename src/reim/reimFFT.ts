@@ -7,9 +7,9 @@ import { xRotate } from '../x/xRotate';
 /**
  * ReimFFT.
  *
- * @param data - DataReim.
- * @param options - Options.
- * @returns DataReim.
+ * @param data - complex spectrum
+ * @param options - options.
+ * @returns FFT of complex spectrum.
  */
 export function reimFFT(
   data: DataReIm,

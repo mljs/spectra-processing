@@ -6,6 +6,7 @@ import { isAnyArray } from 'is-any-array';
  *
  * @param array1 - the array that will be rotated
  * @param array2 - second array or number
+ * @returns array after subtraction
  */
 export function xSubtract(
   array1: DoubleArray,

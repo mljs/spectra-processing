@@ -3,6 +3,7 @@ import { matrixClone } from './matrixClone';
 /**
  * Numerically encodes the strings in the matrix and returns an encoding dictionnary which can be used to encode other matrices
  * @param matrix - original matrix before encoding
+ * @param dictCategoricalToNumerical - dictionnary for encoding
  * @returns - dictionnary from string to number
  */
 export function matrixNumericalEncoding(matrixInitial: (string | number)[][]): {

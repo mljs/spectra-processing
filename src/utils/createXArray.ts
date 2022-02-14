@@ -2,7 +2,7 @@
  * Create an array with numbers between "from" and "to" of length "length"
  *
  * @param options - options
- * @return - array of floats
+ * @return - array of distributed numbers between "from" and "to"
  */
 export function createXArray(
   options: {
@@ -14,11 +14,6 @@ export function createXArray(
      * end value of range
      * @default 1 */
     to?: number;
-    /**
-     * step if "to" not defined
-     * @default null
-     */
-    step?: number;
     /**
      * number of points in range
      * @default 1000 */
@@ -37,23 +32,14 @@ export function createXArray(
     distribution?: string;
   } = {},
 ): Float64Array {
-  if (options.to && options.step) {
-    throw new Error('Define either "to" or "step", but not both.');
-  }
-
   let {
     from = 0,
     to = 1,
-    step = null,
     length = 1000,
     includeFrom = true,
     includeTo = true,
     distribution = 'uniform',
   } = options;
-
-  if (step) {
-    to = from + step * length;
-  }
 
   const array = new Float64Array(length);
 

@@ -32,7 +32,6 @@ import equallySpacedSmooth from './utils/equallySpacedSmooth';
  */
 
 export function xyEquallySpaced(
-  /** points */
   arrayXY: DataXY,
   options: {
     /** from

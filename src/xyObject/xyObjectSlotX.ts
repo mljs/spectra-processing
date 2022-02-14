@@ -1,7 +1,6 @@
 import { Point } from '..';
 
 /**
- *
  * XyObjectSlotX
  *
  * @param points - Array of growing points {x,y}.

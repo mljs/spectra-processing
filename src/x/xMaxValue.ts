@@ -5,7 +5,7 @@ import { xCheck } from './xCheck';
 /**
  * Computes the maximal value of an array of values
  *
- * @param array - array of number
+ * @param array - array of numbers
  * @param options - options
  */
 export function xMaxValue(

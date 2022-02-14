@@ -10,8 +10,8 @@ import { reimPhaseCorrection } from './reimPhaseCorrection';
  * Implementation of the algorithm for automatic phase correction: A robust, general automatic phase
  * correction algorithm for high-resolution NMR data. 10.1002/mrc.4586
  *
- * @param data - DataReim.
- * @param options - Options.
+ * @param data - complex spectrum
+ * @param options - options
  */
 
 export function reimAutoPhaseCorrection(

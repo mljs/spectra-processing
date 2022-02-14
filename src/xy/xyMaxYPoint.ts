@@ -10,7 +10,6 @@ import { xyCheck } from './xyCheck';
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options Options
  */
-
 export function xyMaxYPoint(
   data: DataXY,
   options: {

@@ -10,7 +10,6 @@ import { xIsMonotone } from '../x/xIsMonotone';
 export function xySortX(data: DataXY): DataXY {
   const { x, y } = data;
 
-  // no need to sort if it is already sorted
   if (xIsMonotone(x) && x.length > 1) {
     if (x[0] < x[1]) {
       return {

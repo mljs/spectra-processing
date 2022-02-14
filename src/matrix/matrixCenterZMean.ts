@@ -3,7 +3,7 @@ import { DoubleMatrix } from '..';
 /**
  * Center mean of columns
  *
- * @param matrix - matrix [rows][cols].
+ * @param matrix - matrix [rows][cols]
  */
 export function matrixCenterZMean(matrix: DoubleMatrix): DoubleMatrix {
   const nbRows = matrix.length;

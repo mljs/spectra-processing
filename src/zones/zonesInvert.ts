@@ -7,7 +7,6 @@ import { zonesNormalize } from './zonesNormalize';
  * @param options - options
  * @returns array of inverted zones
  */
-
 export function zonesInvert(
   exclusions: {
     /** start of zone*/

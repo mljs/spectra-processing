@@ -6,7 +6,7 @@ import { xRolling } from './xRolling';
 /**
  * This function calculates a minimum within a rolling window
  *
- * @param array - the array that will be rotated
+ * @param array - array
  * @param options - options
  */
 export function xRollingMin(

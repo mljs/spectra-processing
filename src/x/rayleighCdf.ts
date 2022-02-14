@@ -1,9 +1,9 @@
 /**
  * RayleighCdf.
  *
- * @param x - Number.
- * @param sigma - Number.
- * @returns Number.
+ * @param x - data
+ * @param sigma - standard deviation
+ * @returns - rayleigh cdf
  */
 export default function rayleighCdf(x: number, sigma = 1): number {
   if (x < 0) {

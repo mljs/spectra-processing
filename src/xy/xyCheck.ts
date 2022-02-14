@@ -5,7 +5,13 @@ import { isAnyArray } from 'is-any-array';
  *
  * @param data - array of points {x,y,z}
  */
-export function xyCheck(data: any, options: { minLength?: number } = {}) {
+export function xyCheck(
+  data: any,
+  options: {
+    /** minimum length */
+    minLength?: number;
+  } = {},
+) {
   const { minLength } = options;
   if (typeof data !== 'object' || !isAnyArray(data.x) || !isAnyArray(data.y)) {
     throw new Error('Data must be an object of x and y arrays');

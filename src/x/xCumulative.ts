@@ -4,7 +4,7 @@ import { isAnyArray } from 'is-any-array';
 /**
  * Calculate an array of the same size that is the cumulative values
  *
- * @param array - DoubleArray
+ * @param array - initial array
  */
 export function xCumulative(array: DoubleArray): Float64Array {
   if (!isAnyArray(array)) {

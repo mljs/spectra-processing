@@ -5,7 +5,7 @@ import { Point } from '..';
 import { xyCheck } from './xyCheck';
 
 /**
- *XyToXYObject.
+ * XyToXYObject.
  *
  * @param data - Array of points {x,y}.
  */

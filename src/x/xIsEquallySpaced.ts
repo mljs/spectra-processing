@@ -1,7 +1,7 @@
 import { DoubleArray } from 'cheminfo-types';
 
 /**
- * Check if the values are separated by always the same difference
+ * Check if the values are separated always by the same difference
  *
  * @param array - Monotone growing array of number
  */

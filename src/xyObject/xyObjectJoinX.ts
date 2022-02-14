@@ -1,7 +1,6 @@
 import { Point } from '..';
 
 /**
- *
  * xyObjectJoinX.
  *
  * @param points - Array of growing points {x,y}.

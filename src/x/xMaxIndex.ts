@@ -5,7 +5,7 @@ import { xCheck } from './xCheck';
  * Computes the index of the maximum of the given values
  *
  * @param array - array of numbers
- * @returns - indexe
+ * @returns - index
  */
 export function xMaxIndex(array: NumberArray): number {
   xCheck(array);
