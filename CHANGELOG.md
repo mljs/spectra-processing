@@ -1,5 +1,19 @@
 # Changelog
 
+## [10.0.0](https://www.github.com/mljs/spectra-processing/compare/v9.2.0...v10.0.0) (2022-02-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename createXArray to createFromToArray
+
+### Features
+
+* add xIsMonotoneIncreasing ([fd8fb17](https://www.github.com/mljs/spectra-processing/commit/fd8fb174d3d0ad256b17392d9425a8277be5d6f2))
+* rename createNormalRandomXArray to createNormalRandomArray ([6d2a40f](https://www.github.com/mljs/spectra-processing/commit/6d2a40f0557ccfef633106e9c0fccef1434d9b1a))
+* rename createXArray to createFromToArray ([e9280e2](https://www.github.com/mljs/spectra-processing/commit/e9280e2ccae3842a960b2724aaba286d78415f65))
+* rename createXArrayWithStep to createStepArray ([0db5d53](https://www.github.com/mljs/spectra-processing/commit/0db5d536b853e701d83b285f71bf7bc7cebc3b3d))
+
 ## [9.2.0](https://www.github.com/mljs/spectra-processing/compare/v9.1.0...v9.2.0) (2022-02-11)
 
 
