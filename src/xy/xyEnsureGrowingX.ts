@@ -1,5 +1,7 @@
 import { DataXY } from 'cheminfo-types';
 
+import { xIsMonotoneIncreasing } from '..';
+
 import { xyCheck } from './xyCheck';
 
 /**
@@ -9,19 +11,24 @@ import { xyCheck } from './xyCheck';
  */
 export function xyEnsureGrowingX(data: DataXY): DataXY {
   xyCheck(data);
-  if (data.x === undefined || data.y === undefined) return data;
+  if (xIsMonotoneIncreasing(data.x)) return data;
   const x = Array.from(data.x);
   const y = Array.from(data.y);
-  let prevX = -Infinity;
-  let ansX = [];
-  let ansY = [];
+  let prevX = Number.NEGATIVE_INFINITY;
+
+  let currentIndex = 0;
 
   for (let index = 0; index < x.length; index++) {
     if (prevX < x[index]) {
-      ansX.push(x[index]);
-      ansY.push(y[index]);
+      if (currentIndex < index) {
+        x[currentIndex] = x[index];
+        y[currentIndex] = y[index];
+      }
+      currentIndex++;
       prevX = x[index];
     }
   }
-  return { x: ansX, y: ansY };
+  x.length = currentIndex;
+  y.length = currentIndex;
+  return { x, y };
 }
