@@ -4,7 +4,7 @@ import { createXArrayWithStep } from '../createXArrayWithStep';
 
 expect.extend({ toBeDeepCloseTo });
 
-describe('createXArray', () => {
+describe('createFromToArray', () => {
   it('case when we specify the step', () => {
     let result = createXArrayWithStep({
       from: 1,

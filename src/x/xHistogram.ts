@@ -1,6 +1,6 @@
 import { DoubleArray, DataXY } from 'cheminfo-types';
 
-import { createXArray } from '../utils/createXArray';
+import { createFromToArray } from '../utils/createFromToArray';
 
 import { xAbsolute } from './xAbsolute';
 import { xCheck } from './xCheck';
@@ -83,7 +83,7 @@ export function xHistogram(
   const x =
     histogram === undefined
       ? Array.from(
-          createXArray({
+          createFromToArray({
             from: min + (centerX ? slotSize / 2 : 0),
             to: max - (centerX ? slotSize / 2 : 0),
             length: nbSlots,

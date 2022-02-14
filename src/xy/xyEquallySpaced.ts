@@ -1,6 +1,6 @@
 import { DataXY } from 'cheminfo-types';
 
-import { createXArray } from '../utils/createXArray';
+import { createFromToArray } from '../utils/createFromToArray';
 import { zoneCheck } from '../zone/zoneCheck';
 import { zonesInvert } from '../zones/zonesInvert';
 import { zonesWithPoints } from '../zones/zonesWithPoints';
@@ -163,7 +163,7 @@ function processZone(
 
   return {
     x: Array.from(
-      createXArray({
+      createFromToArray({
         from,
         to,
         length: numberOfPoints,

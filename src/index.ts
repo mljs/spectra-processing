@@ -126,7 +126,7 @@ export * from './matrix/matrixNumericalEncoding';
 export * from './matrix/matrixNumericalDecoding';
 export * from './matrix/matrixApplyNumericalEncoding';
 
-export * from './utils/createXArray';
+export * from './utils/createFromToArray';
 export * from './utils/createNormalRandomXArray';
 export * from './utils/createXArrayWithStep';
 

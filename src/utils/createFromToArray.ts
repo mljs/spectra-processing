@@ -4,7 +4,7 @@
  * @param options - options
  * @return - array of distributed numbers between "from" and "to"
  */
-export function createXArray(
+export function createFromToArray(
   options: {
     /**
      * start value of range

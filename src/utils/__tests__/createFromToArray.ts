@@ -1,12 +1,12 @@
 import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
 
-import { createXArray } from '../createXArray';
+import { createFromToArray } from '../createFromToArray';
 
 expect.extend({ toBeDeepCloseTo });
 
-describe('createXArray', () => {
+describe('createFromToArray', () => {
   it('case when we sample within a specific range with log distribution and include start and end points', () => {
-    let result = createXArray({
+    let result = createFromToArray({
       from: 2,
       to: 32,
       length: 5,
@@ -18,7 +18,7 @@ describe('createXArray', () => {
   });
 
   it('case when we sample within a specific range with log distribution and include start point but not end point', () => {
-    let result = createXArray({
+    let result = createFromToArray({
       from: 2,
       to: 32,
       length: 5,
@@ -33,7 +33,7 @@ describe('createXArray', () => {
   });
 
   it('case when we sample within a specific range with log distribution and include end point but not start point', () => {
-    let result = createXArray({
+    let result = createFromToArray({
       from: 2,
       to: 32,
       length: 5,
@@ -48,7 +48,7 @@ describe('createXArray', () => {
   });
 
   it('case when we sample within a speci]fic range with uniform distribution and include start and end points', () => {
-    let result = createXArray({
+    let result = createFromToArray({
       from: 1,
       to: 100,
       length: 10,
@@ -60,7 +60,7 @@ describe('createXArray', () => {
   });
 
   it('case when we sample within a specific range with uniform distribution and include start point but do not include end point', () => {
-    let result = createXArray({
+    let result = createFromToArray({
       from: 1,
       to: 100,
       length: 10,
@@ -74,7 +74,7 @@ describe('createXArray', () => {
   });
 
   it('case when we sample within a specific range with uniform distribution and include end point but do not include start point', () => {
-    let result = createXArray({
+    let result = createFromToArray({
       from: 1,
       to: 100,
       length: 10,
@@ -88,7 +88,7 @@ describe('createXArray', () => {
   });
 
   it('case when we sample within a specific range with uniform distribution and do not include start point or end point', () => {
-    let result = createXArray({
+    let result = createFromToArray({
       from: 1,
       to: 100,
       length: 10,
@@ -102,7 +102,7 @@ describe('createXArray', () => {
 
   it('case when we choose a distribution other than uniform or log', () => {
     expect(() => {
-      createXArray({
+      createFromToArray({
         from: 1,
         to: 100,
         length: 10,

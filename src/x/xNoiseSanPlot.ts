@@ -1,7 +1,7 @@
 import { DataXY, FromTo, DoubleArray } from 'cheminfo-types';
 import SplineInterpolator from 'spline-interpolator';
 
-import { createXArray } from '../utils/createXArray';
+import { createFromToArray } from '../utils/createFromToArray';
 
 import erfcinv from './erfcinv';
 import rayleighCdf from './rayleighCdf';
@@ -450,7 +450,7 @@ function scale(
     }
   }
 
-  const xAxis = createXArray({
+  const xAxis = createFromToArray({
     from: 0,
     to: array.length - 1,
     length: array.length,
