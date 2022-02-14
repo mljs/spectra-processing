@@ -128,7 +128,7 @@ export * from './matrix/matrixApplyNumericalEncoding';
 
 export * from './utils/createFromToArray';
 export * from './utils/createNormalRandomArray';
-export * from './utils/createXArrayWithStep';
+export * from './utils/createStepArray';
 
 export type DoubleMatrix = DoubleArray[];
 export interface Zone {
