@@ -1,6 +1,7 @@
 import { DoubleArray } from 'cheminfo-types';
 
 /** Function that sorts arrays or Float64Arrays in ascending order
+ *
  * @param array - array to sort
  * @returns sorted array
  */
@@ -13,6 +14,7 @@ export function xSortAscending(array: DoubleArray) {
 }
 
 /** Function that sorts arrays or Float64Arrays in descending order
+ *
  * @param array - array to sort
  * @returns sorted array
  */

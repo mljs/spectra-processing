@@ -1,13 +1,14 @@
 import { DataXY } from 'cheminfo-types';
 
 import { xyCheck } from './xyCheck';
+
 /**
  * Finds all the max values
  * If the values are equal the middle
  * of the equal part will be the position of the signal!
  *
- * @param data - Object that contains property x (an ordered increasing array) and y (an array).
- * @returns - Array of points.
+ * @param data - Object that contains property x (an ordered increasing array) and y (an array)
+ * @returns - Array of points
  */
 export function xyMaximaY(data: DataXY) {
   xyCheck(data, { minLength: 2 });

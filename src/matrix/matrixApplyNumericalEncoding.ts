@@ -4,7 +4,7 @@ import { matrixClone } from './matrixClone';
 
 /**
  * Numerically encodes the strings in the matrix with an encoding dictionary
- * @param array - original matrix before encoding
+ * @param matrixInitial - original matrix before encoding
  * @param dictionnary - dictionary against which to do the encoding
  * @returns - encoded matrix
  */

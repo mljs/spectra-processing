@@ -2,7 +2,7 @@
  * Create an array with numbers starting from "from" with step "step" of length "length"
  *
  * @param options - options
- * @return - array of floats
+ * @return - array of distributed numbers with step "step" from "from"
  */
 export function createXArrayWithStep(
   options: {
@@ -11,7 +11,7 @@ export function createXArrayWithStep(
      * @default 0 */
     from?: number;
     /**
-     * step if "to" not defined
+     * step value between points
      * @default 1
      */
     step?: number;
@@ -20,75 +20,31 @@ export function createXArrayWithStep(
      * @default 1000 */
     length?: number;
     /**
-     * include from
-     * @default true */
-    includeFrom?: boolean;
-    /**
-     * include to
-     * @default true */
-    includeTo?: boolean;
-    /**
      * distribution used
      * @default uniform */
     distribution?: string;
   } = {},
 ): Float64Array {
-  let {
-    from = 0,
-    step = 1,
-    length = 1000,
-    includeFrom = true,
-    includeTo = true,
-    distribution = 'uniform',
-  } = options;
+  let { from = 0, step = 1, length = 1000, distribution = 'uniform' } = options;
 
   let to = from + step * length;
 
   const array = new Float64Array(length);
+  let delta = (to - from) / length;
 
-  let div = length;
-  if (includeFrom === true && includeTo === true) {
-    div = length - 1;
-  } else if (
-    (includeFrom === false && includeTo === true) ||
-    (includeFrom === true && includeTo === false)
-  ) {
-    div = length;
-  } else if (includeFrom === false && includeTo === false) {
-    div = length + 1;
-  }
-
-  let delta = (to - from) / div;
   if (distribution === 'uniform') {
-    if (includeFrom === true) {
-      let index = 0;
-      while (index < length) {
-        array[index] = from + delta * index;
-        index++;
-      }
-    } else {
-      let index = 0;
-      while (index < length) {
-        array[index] = from + delta * (index + 1);
-        index++;
-      }
+    let index = 0;
+    while (index < length) {
+      array[index] = from + delta * index;
+      index++;
     }
   } else if (distribution === 'log') {
-    let base = (to / from) ** (1 / div);
+    let base = (to / from) ** (1 / length);
     let firstExponent = Math.log(from) / Math.log(base);
-
-    if (includeFrom === true) {
-      let index = 0;
-      while (index < length) {
-        array[index] = base ** (firstExponent + index);
-        index++;
-      }
-    } else {
-      let index = 0;
-      while (index < length) {
-        array[index] = base ** (firstExponent + index + 1);
-        index++;
-      }
+    let index = 0;
+    while (index < length) {
+      array[index] = base ** (firstExponent + index);
+      index++;
     }
   } else {
     throw new Error(

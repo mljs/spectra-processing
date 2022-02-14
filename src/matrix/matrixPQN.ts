@@ -10,9 +10,8 @@ import { xMedian } from '../x/xMedian';
  * DOI: 10.1021/ac051632c
  *
  * @param matrix - matrix [rows][cols].
- * @param options Options
- * data: Normalized dataset.
- * medianOfQuotients: The median of quotients of each variables.
+ * @param options - options
+ * @returns - {data: Normalized dataset, medianOfQuotients: The median of quotients of each variables}
  */
 export function matrixPQN(
   matrix: DoubleMatrix,

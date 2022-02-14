@@ -2,9 +2,10 @@ import { DataXY } from 'cheminfo-types';
 
 /**
  * Merge abscissa values if the ordinate value is in a list of centroids
- * @param points
- * @param centroids
- * @param options
+ *
+ * @param points - points
+ * @param centroids - centroids
+ * @param options - options
  * @return merged points
  */
 export function xyMergeByCentroids(

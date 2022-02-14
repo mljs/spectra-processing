@@ -2,7 +2,7 @@ import { NumberArray, DoubleArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 /**
- * Checks if input is valdi
+ * Checks if input is of type array
  *
  * @param input - input
  */

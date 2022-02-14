@@ -3,7 +3,7 @@ import { DoubleArray } from 'cheminfo-types';
 import { xDotProduct } from './xDotProduct';
 
 /**
- * Calculates the cross-correlation between 2 vectors
+ * Calculates the cross-correlation between 2 arrays
  *
  * @param A - fixed array
  * @param B - sweeping array

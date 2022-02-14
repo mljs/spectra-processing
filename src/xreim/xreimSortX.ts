@@ -2,8 +2,8 @@ import { DataXReIm } from '..';
 /**
  * Sort object of array, x has to be monotone.
  *
- * @param data - Object of kind {x:[], re:[], im:[]}.
- * @returns - Data.
+ * @param data - object of kind {x:[], re:[], im:[]}
+ * @returns - sorted array
  */
 export function xreimSortX(data: DataXReIm): DataXReIm {
   const { x, re, im } = data;

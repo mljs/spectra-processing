@@ -8,7 +8,6 @@ import { zonesNormalize } from './zonesNormalize';
  * @param options - options
  * @returns array of zones with points
  */
-
 export function zonesWithPoints(
   zones: {
     /** start of zone*/

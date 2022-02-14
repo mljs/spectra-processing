@@ -4,6 +4,11 @@ function assertNumber(number: number) {
   }
 }
 
+/**
+ * Function for comparing numbers and sorting them in ascending order
+ *
+ * @param options - options
+ */
 export function numberSortAscending(left: number, right: number) {
   assertNumber(left);
   assertNumber(right);
@@ -19,6 +24,11 @@ export function numberSortAscending(left: number, right: number) {
   return left - right;
 }
 
+/**
+ * Function for comparing numbers and sorting them in descending order
+ *
+ * @param options - options
+ */
 export function numberSortDescending(left: number, right: number) {
   assertNumber(left);
   assertNumber(right);

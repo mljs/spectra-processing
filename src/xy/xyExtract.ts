@@ -14,7 +14,10 @@ import { xyCheck } from './xyCheck';
  */
 export function xyExtract(
   data: DataXY,
-  options: { zones?: Zone[] } = {},
+  options: {
+    /** zones */
+    zones?: Zone[];
+  } = {},
 ): DataXY {
   xyCheck(data);
   const { x, y } = data;

@@ -4,8 +4,7 @@ import { xCheck } from './xCheck';
 
 /**
  * This function pads an array
- *
- *
+ *s
  * @param array - the array that will be padded
  * @param options - options
  */

@@ -3,6 +3,7 @@ import { DataXY } from 'cheminfo-types';
 import { xGetFromToIndex } from '../x/xGetFromToIndex';
 
 import { xyCheck } from './xyCheck';
+
 /**
  * Generate a X / Y of the xyIntegral
  *

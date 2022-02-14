@@ -2,13 +2,13 @@
  * Create a random array of numbers of a specific length, with gaussian distribution with a specific mean and standard deviation
  *
  * @param options - options
- * @return - array of floats
+ * @return - array of random floats normally distributed
  */
 
 let spare: number;
 let hasSpare = false;
 
-export function createRandomXArray(
+export function createNormalRandomXArray(
   options: {
     /**
      * mean

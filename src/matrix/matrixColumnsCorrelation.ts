@@ -2,6 +2,7 @@ import { Matrix } from 'ml-matrix';
 
 import { DoubleMatrix } from '..';
 import { xCorrelation } from '../x/xCorrelation';
+
 /**
  * Calculates a correlation matrix based on the columns of the initial matrix
  *

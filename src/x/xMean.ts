@@ -3,7 +3,7 @@ import { NumberArray } from 'cheminfo-types';
 import { xCheck } from './xCheck';
 
 /**
- * Computes the maximal value of an array of values
+ * Computes the mean value of an array of values
  *
  * @param array - array of numbers
  * @param options - options

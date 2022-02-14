@@ -3,9 +3,9 @@ import { DoubleArray } from 'cheminfo-types';
 import { xCrossCorrelation } from './xCrossCorrelation';
 
 /**
- * Calculates the auto-correlation of a vector
+ * Calculates the auto-correlation of an array
  *
- * @param A - the array that will be fixed
+ * @param A - the array for which to calculate the auto-correlation
  * @param options - Options
  */
 export function xAutoCorrelation(

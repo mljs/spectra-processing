@@ -8,7 +8,7 @@ import { xMaxValue } from './xMaxValue';
 import { xMinValue } from './xMinValue';
 
 /**
- * Calculates an histogram of defined number of slots
+ * Calculates a histogram of defined number of slots
  *
  * @param array - Array containing values
  * @param options - options

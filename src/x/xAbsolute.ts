@@ -3,8 +3,8 @@ import { DoubleArray } from 'cheminfo-types';
 /**
  * This function returns an array with absolute values
  *
- * @param array - array of number
- * @returns - absolute array
+ * @param array - array of data
+ * @returns - array with absolute values
  */
 export function xAbsolute(array: DoubleArray): DoubleArray {
   let tmpArray = array.slice();

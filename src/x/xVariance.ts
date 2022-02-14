@@ -7,6 +7,7 @@ import { xMean } from './xMean';
  *
  * @param values - the values of the array
  * @param options - options
+ * @returns variance
  */
 export function xVariance(
   values: NumberArray,

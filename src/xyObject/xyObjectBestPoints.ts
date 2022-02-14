@@ -4,10 +4,8 @@ import { xyObjectMaxXPoint } from './xyObjectMaxXPoint';
 import { xyObjectMinXPoint } from './xyObjectMinXPoint';
 
 /**
- *
  * Filter the array by taking the higher points (max y value) and only.
- * Keep one per slot.
- * There are 2 different slots, the smallest one will have the
+ * Keep one per slot. There are 2 different slots, the smallest one will have the
  * new property `close` to true
  *
  * @param points - array of all the points
@@ -35,7 +33,8 @@ export function xyObjectBestPoints(
      * @default 0.01
      * */
     threshold?: number;
-    /**@default 50 */
+    /** number of slots
+     * @default 50 */
     numberCloseSlots?: number;
     /**
      * define the number of slots and indirectly the slot width
