@@ -128,7 +128,7 @@ export * from './matrix/matrixNumericalDecoding';
 export * from './matrix/matrixApplyNumericalEncoding';
 
 export * from './utils/createFromToArray';
-export * from './utils/createNormalRandomArray';
+export * from './utils/createRandomArray';
 export * from './utils/createStepArray';
 
 export type DoubleMatrix = DoubleArray[];
