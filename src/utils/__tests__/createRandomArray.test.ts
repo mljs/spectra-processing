@@ -13,7 +13,7 @@ describe('createRandomXArray', () => {
       standardDeviation: 0.001,
       length: 5,
     });
-    expect(array).toBeDeepCloseTo([10, 10, 10, 10, 10]);
+    expect(array).toBeDeepCloseTo([10, 10, 10, 10, 10], 1);
   });
 
   it('uniform distribution', () => {
@@ -48,10 +48,10 @@ describe('createRandomXArray', () => {
       { shape: { kind: 'gaussian' } },
     );
 
-    expect(fittedPeaks.error).toBeDeepCloseTo(0.4916571856669893);
-    expect(fittedPeaks.peaks[0].x).toBeDeepCloseTo(10.14761671663178);
-    expect(fittedPeaks.peaks[0].y).toBeDeepCloseTo(393.31306945371506);
-    expect(fittedPeaks.peaks[0].width).toBeDeepCloseTo(2);
-    expect(fittedPeaks.peaks[0].fwhm).toBeDeepCloseTo(12);
+    expect(fittedPeaks.error).toBeDeepCloseTo(0.4916571856669893, 1);
+    expect(fittedPeaks.peaks[0].x).toBeDeepCloseTo(10.14761671663178, 1);
+    expect(fittedPeaks.peaks[0].y).toBeDeepCloseTo(393.31306945371506, 1);
+    expect(fittedPeaks.peaks[0].width).toBeDeepCloseTo(2, 1);
+    expect(fittedPeaks.peaks[0].fwhm).toBeDeepCloseTo(12, 1);
   });
 });
