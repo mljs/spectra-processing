@@ -10,7 +10,20 @@ import { xMedianAbsoluteDeviation } from '..';
  * @returns noise level corresponding to one standard deviation
  */
 
-export function xNoiseStandardDeviation(array: DoubleArray) {
-  const { mad } = xMedianAbsoluteDeviation(array);
-  return mad / 0.6744897501960817;
+export function xNoiseStandardDeviation(array: DoubleArray): {
+  /**
+   * Median of the data
+   */
+  median: number;
+  /**
+   * Median absolute devication
+   */
+  mad: number;
+  /**
+   * standard deviation of the noise
+   */
+  sd: number;
+} {
+  const { mad, median } = xMedianAbsoluteDeviation(array);
+  return { sd: mad / 0.6744897501960817, mad, median };
 }
