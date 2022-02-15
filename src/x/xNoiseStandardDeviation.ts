@@ -11,6 +11,6 @@ import { xMedianAbsoluteDeviation } from '..';
  */
 
 export function xNoiseStandardDeviation(array: DoubleArray) {
-  const mad = xMedianAbsoluteDeviation(array);
+  const { mad } = xMedianAbsoluteDeviation(array);
   return mad / 0.6744897501960817;
 }
