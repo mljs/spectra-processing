@@ -1,4 +1,5 @@
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
+import XSAdd from 'ml-xsadd';
 
 import { createFromToArray } from '../../utils/createFromToArray';
 import { xHistogram } from '../xHistogram';
@@ -87,7 +88,8 @@ describe('xHistogram', () => {
   });
 
   it('256 slots', () => {
-    const array = new Float64Array(10000).map(Math.random);
+    const generator = new XSAdd();
+    const array = new Float64Array(10000).map(generator.random);
     const histogram = xHistogram(array);
     expect(histogram.y).toHaveLength(256);
     histogram.y.forEach((element) => {
@@ -96,7 +98,8 @@ describe('xHistogram', () => {
   });
 
   it('10 slots', () => {
-    const array = new Float64Array(100000).map(() => Math.random() * 900);
+    const generator = new XSAdd();
+    const array = new Float64Array(100000).map(() => generator.random() * 900);
     const histogram = xHistogram(array, { nbSlots: 10, centerX: false });
     expect(histogram.x).toMatchCloseTo(
       [0, 100, 200, 300, 400, 500, 600, 700, 800, 900],
@@ -111,7 +114,10 @@ describe('xHistogram', () => {
   });
 
   it('11 slots center X', () => {
-    const array = new Float64Array(110000).map(() => Math.random() * 1100 - 50);
+    const generator = new XSAdd();
+    const array = new Float64Array(110000).map(
+      () => generator.random() * 1100 - 50,
+    );
     const histogram = xHistogram(array, { nbSlots: 11, centerX: true });
     expect(histogram.x).toMatchCloseTo(
       [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
@@ -125,7 +131,8 @@ describe('xHistogram', () => {
   });
 
   it('min -10, max 10', () => {
-    const array = new Float64Array(10000).map(Math.random);
+    const generator = new XSAdd();
+    const array = new Float64Array(10000).map(generator.random);
     const histogram = xHistogram(array, { nbSlots: 20, min: -10, max: 10 });
     expect(Array.from(histogram.y)).toStrictEqual([
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0,

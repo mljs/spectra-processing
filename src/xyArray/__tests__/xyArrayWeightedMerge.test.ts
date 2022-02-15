@@ -1,5 +1,6 @@
 import { DataXY } from 'cheminfo-types';
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
+import XSAdd from 'ml-xsadd';
 
 import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
 
@@ -84,6 +85,7 @@ describe('xyArrayWeightedMerge', () => {
   it('large Data Set', () => {
     let data = [];
     let arraySize = 1e5;
+    const generator = new XSAdd();
     for (let dataset = 0; dataset < 20; dataset++) {
       let datum = {
         x: new Float64Array(arraySize),
@@ -91,8 +93,9 @@ describe('xyArrayWeightedMerge', () => {
       };
       data.push(datum);
       for (let i = 0; i < arraySize; i++) {
-        datum.x[i] = Math.round(Math.random() * 100) * 10 + Math.random();
-        datum.y[i] = Math.random();
+        datum.x[i] =
+          Math.round(generator.random() * 100) * 10 + generator.random();
+        datum.y[i] = generator.random();
       }
       datum.x.sort();
       datum.y.sort();

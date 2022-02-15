@@ -1,3 +1,5 @@
+import XSAdd from 'ml-xsadd';
+
 import { reimPhaseCorrection } from '../reimPhaseCorrection';
 
 let data = {
@@ -114,9 +116,10 @@ describe('reimPhaseCorrection', () => {
     expect({ re: newRe, im: newIm }).toStrictEqual({ re, im });
   });
   it('180 zero order phasing', () => {
+    const generator = new XSAdd();
     let phased = reimPhaseCorrection(data, Math.PI, 0);
     let diff = data.re.map((e, i) => e + phased.re[i]);
-    let index = Math.floor(Math.random() * data.x.length);
+    let index = Math.floor(generator.random() * data.x.length);
     expect(diff[index]).toBeCloseTo(0, 4);
   });
 });

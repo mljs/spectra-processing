@@ -1,9 +1,12 @@
+import XSAdd from 'ml-xsadd';
+
 import { xMedian } from '../xMedian';
 
 describe('array-median', () => {
+  const generator = new XSAdd();
   let data: number[] = [];
   for (let i = 0; i < 1000; i++) {
-    data.push(Math.random());
+    data.push(generator.random());
   }
 
   it('should return the median', () => {

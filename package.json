@@ -68,6 +68,7 @@
     "is-any-array": "^2.0.0",
     "median-quickselect": "^1.0.1",
     "ml-matrix": "^6.8.2",
+    "ml-xsadd": "^2.0.0",
     "spline-interpolator": "^1.0.0"
   }
 }
