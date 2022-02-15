@@ -82,29 +82,27 @@ describe('normalize', () => {
   it('test normalize small zones with big fractions that combined into one zone from 1 to 8', () => {
     let zones = [
       {
-        from: 3.9099321719248614,
-        to: 4.445177851049571,
+        from: 3.9,
+        to: 4.4,
       },
       {
-        from: 5.237341456154142,
-        to: 5.526374122881485,
+        from: 5.25,
+        to: 5.5,
       },
       {
-        from: 6.104439456336173,
-        to: 6.586160567548412,
+        from: 6.1,
+        to: 6.5,
       },
       {
-        from: 6.918012888605731,
-        to: 7.538897876390395,
+        from: 6.9,
+        to: 7.5,
       },
       {
-        from: 1.445177851049571,
-        to: 8.918012888605731,
+        from: 1.4,
+        to: 8.9,
       },
     ];
     let result = zonesNormalize(zones);
-    expect(result).toStrictEqual([
-      { from: 1.445177851049571, to: 8.918012888605731 },
-    ]);
+    expect(result).toStrictEqual([{ from: 1.4, to: 8.9 }]);
   });
 });
