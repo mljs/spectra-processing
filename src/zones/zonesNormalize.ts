@@ -52,7 +52,9 @@ export function zonesNormalize(
   for (let i = 1; i < zones.length; i++) {
     let zone = zones[i];
     if (zone.from <= currentZone.to) {
-      currentZone.to = zone.to;
+      if (currentZone.to < zone.to) {
+        currentZone.to = zone.to;
+      }
     } else {
       currentZone = zone;
       result.push(currentZone);
