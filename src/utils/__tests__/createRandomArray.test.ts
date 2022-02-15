@@ -22,9 +22,13 @@ describe('createRandomXArray', () => {
       distribution: 'uniform',
     });
     const histogram = xHistogram(array, { nbSlots: 10 });
-    for (let intensity of histogram.y) {
-      expect(intensity).toBeGreaterThan(9500);
-      expect(intensity).toBeLessThan(10500);
+    for (let i = 0; i < histogram.x.length; i++) {
+      const slot = 9 + 0.1 + i * 0.2;
+      expect(histogram.x[i]).toBeCloseTo(slot);
+    }
+    for (let y of histogram.y) {
+      expect(y).toBeGreaterThan(9500);
+      expect(y).toBeLessThan(10500);
     }
   });
 });
