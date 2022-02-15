@@ -1,5 +1,12 @@
 # Changelog
 
+### [10.0.1](https://www.github.com/mljs/spectra-processing/compare/v10.0.0...v10.0.1) (2022-02-15)
+
+
+### Bug Fixes
+
+* improve xyEnsureGrowingX ([c8b33d6](https://www.github.com/mljs/spectra-processing/commit/c8b33d6c113e4f202492a72772064896d5827179))
+
 ## [10.0.0](https://www.github.com/mljs/spectra-processing/compare/v9.2.0...v10.0.0) (2022-02-14)
 
 
