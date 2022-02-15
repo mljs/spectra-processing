@@ -1,4 +1,5 @@
 import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
+import { optimize } from 'ml-spectra-fitting';
 
 import { xHistogram } from '../../x/xHistogram';
 import { createRandomArray } from '../createRandomArray';
@@ -14,6 +15,7 @@ describe('createRandomXArray', () => {
     });
     expect(array).toBeDeepCloseTo([10, 10, 10, 10, 10]);
   });
+
   it('uniform distribution', () => {
     let array = createRandomArray({
       mean: 10,
@@ -30,5 +32,26 @@ describe('createRandomXArray', () => {
       expect(y).toBeGreaterThan(9500);
       expect(y).toBeLessThan(10500);
     }
+  });
+
+  it('Testing in conjunction with spectra-fitting', () => {
+    let array = createRandomArray({
+      mean: 10,
+      range: 2,
+      length: 100000,
+      distribution: 'uniform',
+    });
+    const histogram = xHistogram(array, { centerX: false });
+    let fittedPeaks = optimize(
+      histogram,
+      [{ x: 10, y: 0.1, width: 2, fwhm: 3 }],
+      { shape: { kind: 'gaussian' } },
+    );
+
+    expect(fittedPeaks.error).toBeDeepCloseTo(0.4916571856669893);
+    expect(fittedPeaks.peaks[0].x).toBeDeepCloseTo(10.14761671663178);
+    expect(fittedPeaks.peaks[0].y).toBeDeepCloseTo(393.31306945371506);
+    expect(fittedPeaks.peaks[0].width).toBeDeepCloseTo(2);
+    expect(fittedPeaks.peaks[0].fwhm).toBeDeepCloseTo(12);
   });
 });
