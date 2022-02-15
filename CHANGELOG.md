@@ -1,5 +1,12 @@
 # Changelog
 
+### [10.1.2](https://www.github.com/mljs/spectra-processing/compare/v10.1.1...v10.1.2) (2022-02-15)
+
+
+### Bug Fixes
+
+* throw error in null matrix for matrixMinMaxZ and matrixMinMaxAbsoluteZ ([fd1d921](https://www.github.com/mljs/spectra-processing/commit/fd1d921ba835340f926effc61a105f9482888688))
+
 ### [10.1.1](https://www.github.com/mljs/spectra-processing/compare/v10.1.0...v10.1.1) (2022-02-15)
 
 
