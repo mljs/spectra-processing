@@ -12,9 +12,8 @@ describe('matrixMinMaxZ', () => {
   });
   it('zero', () => {
     const matrix = [[]];
-    expect(matrixMinMaxZ(matrix)).toStrictEqual({
-      min: undefined,
-      max: undefined,
-    });
+    expect(() => {
+      matrixMinMaxZ(matrix);
+    }).toThrow('matrixMinMaxZ requires at least 1 row and 1 column');
   });
 });
