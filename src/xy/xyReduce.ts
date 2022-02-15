@@ -135,8 +135,6 @@ export function xyReduce(
     }
     newX.push(x[fromIndex]);
     newY.push(y[fromIndex]);
-    let minY = Number.MAX_VALUE;
-    let xyMaxY = Number.MIN_VALUE;
     if (zoneNbPoints % 2 === 0) {
       zoneNbPoints = zoneNbPoints / 2 + 1;
     } else {
@@ -148,6 +146,8 @@ export function xyReduce(
     let slot = (x[toIndex] - x[fromIndex]) / (zoneNbPoints - 1);
     let currentX = x[fromIndex] + slot;
     let first = true;
+    let minY = Number.POSITIVE_INFINITY;
+    let xyMaxY = Number.NEGATIVE_INFINITY;
     for (let i = fromIndex + 1; i <= toIndex; i++) {
       if (first) {
         minY = y[i];
