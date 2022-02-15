@@ -22,7 +22,7 @@ export function xyObjectSlotX(
   // when we join we will use the center of mass
   let result: Point[] = [];
   let current: Point = {
-    x: Number.MIN_VALUE,
+    x: Number.NEGATIVE_INFINITY,
     y: 0,
   };
   for (let point of points) {
