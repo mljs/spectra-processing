@@ -6,11 +6,13 @@ import { DoubleMatrix } from '..';
  * @param matrix - matrix [rows][cols].
  */
 export function matrixMinMaxAbsoluteZ(matrix: DoubleMatrix): {
-  min?: number;
-  max?: number;
+  min: number;
+  max: number;
 } {
   if (matrix.length === 0 || matrix[0].length === 0) {
-    return { min: undefined, max: undefined };
+    throw new Error(
+      'matrixMinMaxAbsoluteZ requires at least 1 row and 1 column',
+    );
   }
   const nbRows = matrix.length;
   const nbColumns = matrix[0].length;
