@@ -1,5 +1,5 @@
-import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
 import binarySearch from 'binary-search';
+import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
 
 import { numberSortAscending, numberSortDescending } from '../numberSort';
 

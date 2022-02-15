@@ -37,21 +37,21 @@ describe('createRandomXArray', () => {
   it('Testing in conjunction with spectra-fitting', () => {
     let array = createRandomArray({
       mean: 10,
-      range: 2,
+      standardDeviation: 1,
       length: 100000,
-      distribution: 'uniform',
+      distribution: 'normal',
     });
     const histogram = xHistogram(array, { centerX: false });
     let fittedPeaks = optimize(
       histogram,
-      [{ x: 10, y: 0.1, width: 2, fwhm: 3 }],
+      [{ x: 10, y: 0.1, width: 2, fwhm: 2 }],
       { shape: { kind: 'gaussian' } },
     );
-
-    expect(fittedPeaks.error).toBeDeepCloseTo(0.4916571856669893, 0);
-    expect(fittedPeaks.peaks[0].x).toBeDeepCloseTo(10.14761671663178, 0);
-    expect(fittedPeaks.peaks[0].y).toBeDeepCloseTo(393.31306945371506, 0);
-    expect(fittedPeaks.peaks[0].width).toBeDeepCloseTo(2, 0);
-    expect(fittedPeaks.peaks[0].fwhm).toBeDeepCloseTo(12, 0);
+    expect(fittedPeaks.peaks[0].x).toBeDeepCloseTo(10, 2);
+    expect(fittedPeaks.peaks[0].width).toBeDeepCloseTo(2, 2);
+    expect(fittedPeaks.peaks[0].fwhm).toBeDeepCloseTo(
+      2 * Math.sqrt(2 * Math.log(2)),
+      1,
+    );
   });
 });
