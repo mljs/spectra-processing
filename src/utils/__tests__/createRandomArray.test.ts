@@ -48,10 +48,10 @@ describe('createRandomXArray', () => {
       { shape: { kind: 'gaussian' } },
     );
 
-    expect(fittedPeaks.error).toBeDeepCloseTo(0.4916571856669893, 1);
-    expect(fittedPeaks.peaks[0].x).toBeDeepCloseTo(10.14761671663178, 1);
-    expect(fittedPeaks.peaks[0].y).toBeDeepCloseTo(393.31306945371506, 1);
-    expect(fittedPeaks.peaks[0].width).toBeDeepCloseTo(2, 1);
-    expect(fittedPeaks.peaks[0].fwhm).toBeDeepCloseTo(12, 1);
+    expect(fittedPeaks.error).toBeDeepCloseTo(0.4916571856669893, 0);
+    expect(fittedPeaks.peaks[0].x).toBeDeepCloseTo(10.14761671663178, 0);
+    expect(fittedPeaks.peaks[0].y).toBeDeepCloseTo(393.31306945371506, 0);
+    expect(fittedPeaks.peaks[0].width).toBeDeepCloseTo(2, 0);
+    expect(fittedPeaks.peaks[0].fwhm).toBeDeepCloseTo(12, 0);
   });
 });
