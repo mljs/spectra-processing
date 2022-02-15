@@ -1,5 +1,14 @@
 # Changelog
 
+### [10.1.1](https://www.github.com/mljs/spectra-processing/compare/v10.1.0...v10.1.1) (2022-02-15)
+
+
+### Bug Fixes
+
+* don't use MIN_VALUE in xyReduce ([edafc19](https://www.github.com/mljs/spectra-processing/commit/edafc19178d7a90095796bbe92f4a1ad89cd0a20))
+* don't use Number.MIN_VALUE in xyObjectSlotX ([c364d4c](https://www.github.com/mljs/spectra-processing/commit/c364d4c73003e674099b99413066423fe3ba1d7b))
+* Normalize small zones that combined into one zone ([#132](https://www.github.com/mljs/spectra-processing/issues/132)) ([91225c5](https://www.github.com/mljs/spectra-processing/commit/91225c552b6ffa0886410e4fbcf93ac0fab5ad7a))
+
 ## [10.1.0](https://www.github.com/mljs/spectra-processing/compare/v10.0.0...v10.1.0) (2022-02-15)
 
 
