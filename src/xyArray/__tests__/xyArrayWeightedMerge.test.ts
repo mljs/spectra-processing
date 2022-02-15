@@ -85,7 +85,7 @@ describe('xyArrayWeightedMerge', () => {
   it('large Data Set', () => {
     let data = [];
     let arraySize = 1e5;
-    const generator = new XSAdd();
+    const generator = new XSAdd(0);
     for (let dataset = 0; dataset < 20; dataset++) {
       let datum = {
         x: new Float64Array(arraySize),

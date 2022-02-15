@@ -3,7 +3,7 @@ import XSAdd from 'ml-xsadd';
 import { xMedian } from '../xMedian';
 
 describe('array-median', () => {
-  const generator = new XSAdd();
+  const generator = new XSAdd(0);
   let data: number[] = [];
   for (let i = 0; i < 1000; i++) {
     data.push(generator.random());

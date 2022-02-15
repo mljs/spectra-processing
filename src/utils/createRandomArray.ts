@@ -1,4 +1,4 @@
-import XSadd from 'ml-xsadd';
+import XSAdd from 'ml-xsadd';
 /**
  * Create a random array of numbers of a specific length
  *
@@ -17,6 +17,7 @@ export function createRandomArray(
     distribution?: 'uniform' | 'normal';
     /**
      * Seed for a deterministic sequence of random numbers.
+     * @default Date.now()
      */
     seed?: number;
     /**
@@ -42,11 +43,11 @@ export function createRandomArray(
     standardDeviation = 1,
     length = 1000,
     range = 1,
-    seed = 0,
+    seed,
     distribution = 'normal',
   } = options;
 
-  const generator = new XSadd(seed);
+  const generator = new XSAdd(seed);
 
   let returnArray = new Float64Array(length);
   switch (distribution) {
@@ -71,7 +72,7 @@ export function createRandomArray(
 function generateGaussian(
   mean: number,
   standardDeviation: number,
-  generator: XSadd,
+  generator: XSAdd,
 ): number {
   let val, u, v, s;
 

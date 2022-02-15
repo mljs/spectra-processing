@@ -11,6 +11,7 @@ describe('createRandomXArray', () => {
       mean: 10,
       standardDeviation: 0.001,
       length: 5,
+      seed: 0,
     });
     expect(array).toBeDeepCloseTo([10, 10, 10, 10, 10]);
   });
@@ -20,6 +21,7 @@ describe('createRandomXArray', () => {
       range: 2,
       length: 100000,
       distribution: 'uniform',
+      seed: 0,
     });
     const histogram = xHistogram(array, { nbSlots: 10 });
     for (let i = 0; i < histogram.x.length; i++) {

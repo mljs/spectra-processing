@@ -8,13 +8,13 @@ describe('xMedianAbsoluteDeviation', () => {
     expect(result.mad).toBe(1);
   });
   it('noisy example', () => {
-    const array = createRandomArray({ mean: 0 });
+    const array = createRandomArray({ mean: 0, seed: 0 });
     const result = xMedianAbsoluteDeviation(array);
     expect(result.median).toBeCloseTo(0, 1);
     expect(result.mad).toBeCloseTo(0.6929);
   });
   it('noisy shifted example', () => {
-    const array = createRandomArray({ mean: 10 });
+    const array = createRandomArray({ mean: 10, seed: 0 });
     const result = xMedianAbsoluteDeviation(array);
     expect(result.median).toBeCloseTo(10, 1);
     expect(result.mad).toBeCloseTo(0.6929);

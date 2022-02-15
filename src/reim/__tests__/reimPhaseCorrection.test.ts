@@ -116,7 +116,7 @@ describe('reimPhaseCorrection', () => {
     expect({ re: newRe, im: newIm }).toStrictEqual({ re, im });
   });
   it('180 zero order phasing', () => {
-    const generator = new XSAdd();
+    const generator = new XSAdd(0);
     let phased = reimPhaseCorrection(data, Math.PI, 0);
     let diff = data.re.map((e, i) => e + phased.re[i]);
     let index = Math.floor(generator.random() * data.x.length);
