@@ -1,5 +1,12 @@
 # Changelog
 
+### [10.1.3](https://www.github.com/mljs/spectra-processing/compare/v10.1.2...v10.1.3) (2022-02-15)
+
+
+### Bug Fixes
+
+* matrixMinMaxZ returns always min and max as numbers ([a68fe87](https://www.github.com/mljs/spectra-processing/commit/a68fe879ab0660acb8d12f2b7ba3625bae17a956))
+
 ### [10.1.2](https://www.github.com/mljs/spectra-processing/compare/v10.1.1...v10.1.2) (2022-02-15)
 
 
