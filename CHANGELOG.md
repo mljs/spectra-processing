@@ -1,5 +1,19 @@
 # Changelog
 
+## [10.1.0](https://www.github.com/mljs/spectra-processing/compare/v10.0.0...v10.1.0) (2022-02-15)
+
+
+### Features
+
+* add uniform random array generator and rename createNormalRandomArray to createRandomArray ([adbf2b4](https://www.github.com/mljs/spectra-processing/commit/adbf2b4b06cf6f25575c87e87926d7b4cbb2e3c7))
+* xMedianAbsoluteDeviation returns an object with median and mad ([26430ca](https://www.github.com/mljs/spectra-processing/commit/26430ca2233fe1c97a528f1b73b324df238596e4))
+* xNoiseStandardDeviation returns now mad, median and sd ([8c7d332](https://www.github.com/mljs/spectra-processing/commit/8c7d3323671e4cf097271be0c5424e493e26810a))
+
+
+### Bug Fixes
+
+* improve xyEnsureGrowingX ([c8b33d6](https://www.github.com/mljs/spectra-processing/commit/c8b33d6c113e4f202492a72772064896d5827179))
+
 ## [10.0.0](https://www.github.com/mljs/spectra-processing/compare/v9.2.0...v10.0.0) (2022-02-14)
 
 
