@@ -42,6 +42,7 @@ describe('createRandomXArray', () => {
       standardDeviation: 1,
       length: 100000,
       distribution: 'normal',
+      seed: 0,
     });
     const histogram = xHistogram(array, { centerX: false });
     let fittedPeaks = optimize(
