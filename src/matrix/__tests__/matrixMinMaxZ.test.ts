@@ -14,6 +14,6 @@ describe('matrixMinMaxZ', () => {
     const matrix = [[]];
     expect(() => {
       matrixMinMaxZ(matrix);
-    }).toThrow('matrixMinMaxZ requires at least 1 row and 1 column');
+    }).toThrow('matrix should contain data');
   });
 });
