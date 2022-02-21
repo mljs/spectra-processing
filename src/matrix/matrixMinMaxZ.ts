@@ -1,4 +1,5 @@
 import { DoubleMatrix } from '..';
+import { matrixCheck } from './matrixCheck';
 
 /**
  * Get min and max Z
@@ -9,9 +10,7 @@ export function matrixMinMaxZ(matrix: DoubleMatrix): {
   max: number;
   min: number;
 } {
-  if (matrix.length === 0 || matrix[0].length === 0) {
-    throw new Error('matrixMinMaxZ requires at least 1 row and 1 column');
-  }
+  matrixCheck(matrix);
   const nbRows = matrix.length;
   const nbColumns = matrix[0].length;
 
