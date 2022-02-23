@@ -23,4 +23,15 @@ describe('xMultiply', () => {
       50, 55, 60, 65, 70,
     ]);
   });
+  it('check 2 different array', () => {
+    let array = [10, 11, 12, 13, 14];
+    let result = xMultiply(array, 5);
+    expect(array).not.toBe(result);
+  });
+  it('check same array', () => {
+    let array = [10, 11, 12, 13, 14];
+    let result = xMultiply(array, 5, { output: array });
+    expect(array).toBe(result);
+    expect(result).toStrictEqual([50, 55, 60, 65, 70]);
+  });
 });

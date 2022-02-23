@@ -1,16 +1,23 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
+
+import { getOutputArray } from './utils/getOutputArray';
 
 /**
  * This function xMultiply the first array by the second array or a constant value to each element of the first array
  *
  * @param array1 - first array
  * @param array2 - second array
+ * @param options - options
  */
 export function xMultiply(
-  array1: DoubleArray,
-  array2: DoubleArray | number,
-): Float64Array {
+  array1: NumberArray,
+  array2: NumberArray | number,
+  options: {
+    /** output into which the result should be placed if needed. In can be the same as array1 in order to have in-place modification */
+    output?: NumberArray;
+  } = {},
+): NumberArray {
   let isConstant = false;
   let constant = 0;
   if (isAnyArray(array2)) {
@@ -22,7 +29,7 @@ export function xMultiply(
     constant = Number(array2);
   }
 
-  let array3 = new Float64Array(array1.length);
+  let array3 = getOutputArray(options.output, array1.length);
   if (isConstant) {
     for (let i = 0; i < array1.length; i++) {
       array3[i] = array1[i] * constant;

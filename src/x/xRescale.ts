@@ -1,6 +1,8 @@
 import { NumberArray } from 'cheminfo-types';
-import { isAnyArray } from 'is-any-array';
 
+import { xCheck } from '..';
+
+import { getOutputArray } from './utils/getOutputArray';
 import { xMaxValue } from './xMaxValue';
 import { xMinValue } from './xMinValue';
 
@@ -24,15 +26,8 @@ export function xRescale(
     autoMinMax?: boolean;
   } = {},
 ) {
-  let output;
-  if (options.output !== undefined) {
-    if (!isAnyArray(options.output)) {
-      throw new TypeError('output option must be an array if specified');
-    }
-    output = options.output;
-  } else {
-    output = new Float64Array(input.length);
-  }
+  xCheck(input);
+  const output = getOutputArray(options.output, input.length);
 
   const currentMin = xMinValue(input);
   const currentMax = xMaxValue(input);

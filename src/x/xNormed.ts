@@ -1,7 +1,7 @@
 import { NumberArray } from 'cheminfo-types';
-import { isAnyArray } from 'is-any-array';
 
 import { getOutputArray } from './utils/getOutputArray';
+import { xCheck } from './xCheck';
 import { xMaxValue } from './xMaxValue';
 import { xSum } from './xSum';
 
@@ -32,9 +32,7 @@ export function xNormed(
   } = {},
 ) {
   const { algorithm = 'absolute', sumValue = 1, maxValue = 1 } = options;
-  if (!isAnyArray(input)) {
-    throw new Error('input must be an array');
-  }
+  xCheck(input);
 
   const output = getOutputArray(options.output, input.length);
 
