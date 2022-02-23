@@ -1,6 +1,6 @@
 import { DoubleArray } from 'cheminfo-types';
 
-import { xCheckLengths } from './xCheck';
+import { xCheckLengths } from './xCheckLengths';
 /**
  * This function calculates the mean absolute error
  *
