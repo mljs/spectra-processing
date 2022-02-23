@@ -10,6 +10,7 @@ export * from './x/xAbsoluteMedian';
 export * from './x/xAdd';
 export * from './x/xAutoCorrelation';
 export * from './x/xBoxPlot';
+export * from './x/xCheck';
 export * from './x/xCorrelation';
 export * from './x/xCrossCorrelation';
 export * from './x/xCumulative';
@@ -53,6 +54,8 @@ export * from './x/xStandardDeviation';
 export * from './x/xSubtract';
 export * from './x/xSum';
 export * from './x/xUniqueSorted';
+
+export * from './x/utils/getOutputArray';
 
 export * from './xy/xyAlign';
 export * from './xy/xyCheck';
