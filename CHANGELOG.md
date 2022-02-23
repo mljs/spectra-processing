@@ -1,5 +1,14 @@
 # Changelog
 
+## [10.3.0](https://www.github.com/mljs/spectra-processing/compare/v10.2.0...v10.3.0) (2022-02-23)
+
+
+### Features
+
+* expose xCheck ([3fe1914](https://www.github.com/mljs/spectra-processing/commit/3fe1914c1211254c27c92e2b4cce4f4541605e8a))
+* xDivide and xMultiply allow have output parameter ([0bd78dd](https://www.github.com/mljs/spectra-processing/commit/0bd78dd732dbfafcce58be3eef71db3f0e8e1b5e))
+* xRescale and xNormed returns typed array ([20eadc0](https://www.github.com/mljs/spectra-processing/commit/20eadc03dd1da59dc17fc29e8baa046db760001b))
+
 ## [10.2.0](https://www.github.com/mljs/spectra-processing/compare/v10.1.2...v10.2.0) (2022-02-21)
 
 
