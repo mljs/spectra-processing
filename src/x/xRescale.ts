@@ -31,7 +31,7 @@ export function xRescale(
     }
     output = options.output;
   } else {
-    output = new Array(input.length);
+    output = new Float64Array(input.length);
   }
 
   const currentMin = xMinValue(input);

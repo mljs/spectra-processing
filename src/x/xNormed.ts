@@ -42,7 +42,7 @@ export function xNormed(
     }
     output = options.output;
   } else {
-    output = new Array(input.length);
+    output = new Float64Array(input.length);
   }
 
   if (input.length === 0) {
