@@ -1,6 +1,7 @@
 import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
+import { getOutputArray } from './utils/getOutputArray';
 import { xMaxValue } from './xMaxValue';
 import { xSum } from './xSum';
 
@@ -35,15 +36,7 @@ export function xNormed(
     throw new Error('input must be an array');
   }
 
-  let output;
-  if (options.output !== undefined) {
-    if (!isAnyArray(options.output)) {
-      throw new TypeError('output option must be an array if specified');
-    }
-    output = options.output;
-  } else {
-    output = new Float64Array(input.length);
-  }
+  const output = getOutputArray(options.output, input.length);
 
   if (input.length === 0) {
     throw new Error('input must not be empty');
