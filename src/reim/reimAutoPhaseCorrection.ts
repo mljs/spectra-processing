@@ -62,7 +62,7 @@ export function reimAutoPhaseCorrection(
     magnitudeMode,
     factorNoise,
   });
-  let finalPeaks: boolean[] = new Array(length);
+  let finalPeaks = new Uint8Array(length);
   for (let i = 0; i < length; i++) {
     finalPeaks[i] = peaksSp[i] && peaksDs[i];
   }
@@ -201,12 +201,12 @@ function robustBaseLineRegionsDetection(
     maxDistanceToJoin: number;
     factorNoise: number;
   },
-): boolean[] {
+) {
   const { maxDistanceToJoin, magnitudeMode, factorNoise } = options;
 
-  let mask: boolean[] = new Array(s.length);
+  let mask = new Uint8Array(s.length);
   for (let i = 0; i < s.length; i++) {
-    mask[i] = false;
+    mask[i] = 0;
   }
 
   let change = true;
@@ -217,7 +217,7 @@ function robustBaseLineRegionsDetection(
     for (let i = 0; i < s.length; i++) {
       if (Math.abs(s[i]) > cutOff && !mask[i]) {
         change = true;
-        mask[i] = true;
+        mask[i] = 1;
       }
     }
   }
@@ -230,7 +230,7 @@ function robustBaseLineRegionsDetection(
     } else {
       if (count < maxDistanceToJoin) {
         for (let j = 0; j <= count; j++) {
-          mask[prev + j] = true;
+          mask[prev + j] = 1;
         }
       }
       while (mask[++i] && i < s.length);
@@ -289,8 +289,8 @@ const toRadians = (degree: number): number => (degree * Math.PI) / 180;
 
 const getNegArea = (data: DoubleArray): number => {
   let area = 0;
-  data.forEach((element) => {
+  for (let element of data) {
     if (element < 0) area -= element;
-  });
+  }
   return area;
 };
