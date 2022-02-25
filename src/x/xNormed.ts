@@ -5,14 +5,14 @@ import { xCheck } from './xCheck';
 import { xMaxValue } from './xMaxValue';
 import { xSum } from './xSum';
 
-/** Divides the data with either the sum, the absolute sum or the maximum of the data
- *
+/**
+ * Divides the data with either the sum, the absolute sum or the maximum of the data
  * @param array - Array containing values
  * @param options - options
  * @returns - normalized data
  */
 
-export function xNormed(
+export function xNormed<T extends NumberArray = Float64Array>(
   input: NumberArray,
   options: {
     /** value by which to divide the data
@@ -28,9 +28,9 @@ export function xNormed(
      */
     maxValue?: number;
     /** output into which the result should be placed if needed */
-    output?: NumberArray;
+    output?: T;
   } = {},
-) {
+): T {
   const { algorithm = 'absolute', sumValue = 1, maxValue = 1 } = options;
   xCheck(input);
 
@@ -43,7 +43,9 @@ export function xNormed(
   switch (algorithm.toLowerCase()) {
     case 'absolute': {
       let absoluteSumValue = absoluteSum(input) / sumValue;
-      if (absoluteSumValue === 0) return input.slice(0);
+      if (absoluteSumValue === 0) {
+        throw new Error('xNormed: trying to divide by 0');
+      }
       for (let i = 0; i < input.length; i++) {
         output[i] = input[i] / absoluteSumValue;
       }
@@ -51,7 +53,9 @@ export function xNormed(
     }
     case 'max': {
       let currentMaxValue = xMaxValue(input);
-      if (currentMaxValue === 0) return input.slice(0);
+      if (currentMaxValue === 0) {
+        throw new Error('xNormed: trying to divide by 0');
+      }
       const factor = maxValue / currentMaxValue;
       for (let i = 0; i < input.length; i++) {
         output[i] = input[i] * factor;
@@ -60,7 +64,9 @@ export function xNormed(
     }
     case 'sum': {
       let sumFactor = xSum(input) / sumValue;
-      if (sumFactor === 0) return input.slice(0);
+      if (sumFactor === 0) {
+        throw new Error('xNormed: trying to divide by 0');
+      }
       for (let i = 0; i < input.length; i++) {
         output[i] = input[i] / sumFactor;
       }
