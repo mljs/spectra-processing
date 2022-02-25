@@ -1,5 +1,17 @@
 # Changelog
 
+## [11.0.0](https://www.github.com/mljs/spectra-processing/compare/v10.3.0...v11.0.0) (2022-02-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* xNormed throws an error if divide by 0
+
+### Features
+
+* improve xDive, xMultiply, xRescale for typescript return value ([e90f3b2](https://www.github.com/mljs/spectra-processing/commit/e90f3b26f0f8576d49292abd7b2fa536114e8b9b))
+* xNormed throws an error if divide by 0 ([7976466](https://www.github.com/mljs/spectra-processing/commit/79764667d07cef004bb687805a201d035a882ed5))
+
 ## [10.3.0](https://www.github.com/mljs/spectra-processing/compare/v10.2.0...v10.3.0) (2022-02-23)
 
 
