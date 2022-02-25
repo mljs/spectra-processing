@@ -13,11 +13,11 @@ import { xMinValue } from './xMinValue';
  * @returns rescaled data
  */
 
-export function xRescale(
+export function xRescale<T extends NumberArray = Float64Array>(
   input: NumberArray,
   options: {
     /** output into which to placed the data */
-    output?: NumberArray;
+    output?: T;
     /** min used for the scaling */
     min?: number;
     /** max used for the scaling */
@@ -25,7 +25,7 @@ export function xRescale(
     /** option to find min and max automatically */
     autoMinMax?: boolean;
   } = {},
-) {
+): T {
   xCheck(input);
   const output = getOutputArray(options.output, input.length);
 

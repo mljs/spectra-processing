@@ -1,21 +1,24 @@
 import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
-export function getOutputArray<T extends NumberArray>(
-  outpud: T,
+export function getOutputArray<T extends NumberArray = Float64Array>(
+  output: T,
   length: number,
 ): T;
+
 export function getOutputArray(output: undefined, length: number): Float64Array;
-export function getOutputArray(
-  output: NumberArray | undefined,
+
+export function getOutputArray<T extends NumberArray = Float64Array>(
+  output: T | undefined,
   length: number,
-): NumberArray;
+): T;
 /**
  * This function
  * @param output - undefined or a new array
  * @param length - length of the output array
  * @returns
  */
+
 export function getOutputArray(
   output: NumberArray | undefined,
   length: number,

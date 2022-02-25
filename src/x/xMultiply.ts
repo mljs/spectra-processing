@@ -10,14 +10,14 @@ import { getOutputArray } from './utils/getOutputArray';
  * @param array2 - second array
  * @param options - options
  */
-export function xMultiply(
+export function xMultiply<T extends NumberArray = Float64Array>(
   array1: NumberArray,
   array2: NumberArray | number,
   options: {
     /** output into which the result should be placed if needed. In can be the same as array1 in order to have in-place modification */
-    output?: NumberArray;
+    output?: T;
   } = {},
-): NumberArray {
+): T {
   let isConstant = false;
   let constant = 0;
   if (isAnyArray(array2)) {
