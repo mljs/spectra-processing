@@ -4,12 +4,12 @@ import { xMean } from '../x/xMean';
 
 /**Finds the covariance of the points
  *
- * @param points
+ * @param data
  * @param options
  * @return the covariance
  */
 export function xyCovariance(
-  points: DataXY,
+  data: DataXY,
   options: {
     /** if true, divide by (n-1); if false, divide by n
      * @default true
@@ -17,7 +17,7 @@ export function xyCovariance(
     unbiased?: number;
   } = {},
 ): number {
-  const { x, y } = points;
+  const { x, y } = data;
   const { unbiased = true } = options;
 
   const meanX = xMean(x);

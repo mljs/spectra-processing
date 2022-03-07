@@ -3,12 +3,12 @@ import { DataXY } from 'cheminfo-types';
 /**
  * Merge abscissas values on similar ordinates and weight the group of abscissas
  *
- * @param points - points
+ * @param data - points
  * @param options - options
  * @return array of merged and weighted points
  */
 export function xyWeightedMerge(
-  points: DataXY,
+  data: DataXY,
   options: {
     /** window for abscissas to merge
      * @default 0.001
@@ -16,7 +16,7 @@ export function xyWeightedMerge(
     groupWidth?: number;
   } = {},
 ): DataXY {
-  const { x, y } = points;
+  const { x, y } = data;
   const { groupWidth = 0.001 } = options;
 
   let merged: { x: number[]; y: number[] } = { x: [], y: [] };

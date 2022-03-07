@@ -3,13 +3,13 @@ import { DataXY } from 'cheminfo-types';
 /**
  * Merge abscissa values if the ordinate value is in a list of centroids
  *
- * @param points - points
+ * @param data - points
  * @param centroids - centroids
  * @param options - options
  * @return merged points
  */
 export function xyMergeByCentroids(
-  points: DataXY,
+  data: DataXY,
   centroids: number[],
   options: {
     /** window size, has to be a positive number
@@ -27,10 +27,10 @@ export function xyMergeByCentroids(
 
   let originalIndex = 0;
   let mergedIndex = 0;
-  while (originalIndex < points.x.length && mergedIndex < centroids.length) {
-    let diff = points.x[originalIndex] - centroids[mergedIndex];
+  while (originalIndex < data.x.length && mergedIndex < centroids.length) {
+    let diff = data.x[originalIndex] - centroids[mergedIndex];
     if (Math.abs(diff) < window) {
-      mergedPoints.y[mergedIndex] += points.y[originalIndex++];
+      mergedPoints.y[mergedIndex] += data.y[originalIndex++];
     } else if (diff < 0) {
       originalIndex++;
     } else {

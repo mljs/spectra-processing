@@ -3,14 +3,14 @@ import { DataXY } from 'cheminfo-types';
 /**
  * zoneCheck.
  *
- * @param arrayXY
+ * @param data
  * @returns boolean
  */
 export function zoneCheck(
   /** points */
-  arrayXY: DataXY,
+  data: DataXY,
 ): boolean {
-  let { x, y } = arrayXY;
+  let { x, y } = data;
   if (x.length !== y.length) {
     return false;
   }

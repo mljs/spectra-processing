@@ -26,13 +26,13 @@ import equallySpacedSmooth from './utils/equallySpacedSmooth';
  *
  * If exclusions zone are present, zones are ignored !
  *
- * @param arrayXY - object containing 2 properties x and y
+ * @param data - object containing 2 properties x and y
  * @param options - options
  * @return new object with x / y array with the equally spaced data.
  */
 
 export function xyEquallySpaced(
-  arrayXY: DataXY,
+  data: DataXY,
   options: {
     /** from
      * @default x[0]
@@ -66,7 +66,7 @@ export function xyEquallySpaced(
     }[];
   } = {},
 ): DataXY {
-  let { x, y } = arrayXY;
+  let { x, y } = data;
   let xLength = x.length;
 
   let {
@@ -85,7 +85,7 @@ export function xyEquallySpaced(
     reverse = true;
   }
 
-  if (!zoneCheck(arrayXY)) {
+  if (!zoneCheck(data)) {
     throw new RangeError("the x and y vector doesn't have the same size.");
   }
 

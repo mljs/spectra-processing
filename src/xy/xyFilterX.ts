@@ -4,13 +4,13 @@ import getZones from '../zones/utils/getZones';
 
 /** Filter an array x/y based on various criteria x points are expected to be sorted
  *
- * @param points - points
+ * @param data - points
  * @param options - options
  * @return filtered array
  */
 
 export function xyFilterX(
-  points: DataXY,
+  data: DataXY,
   options: {
     /** filter from
      * @default x[0]
@@ -26,7 +26,7 @@ export function xyFilterX(
     exclusions?: { from: number; to: number }[];
   } = {},
 ): DataXY {
-  const { x, y } = points;
+  const { x, y } = data;
   const { from = x[0], to = x[x.length - 1], exclusions = [] } = options;
 
   let zones = getZones(from, to, exclusions);

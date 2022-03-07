@@ -7,16 +7,16 @@ import { xRollingAverage } from '../x/xRollingAverage';
  * This function calculates a rolling average.
  * This methods will recalculate the x values by using xRollingAverage
  *
- * @param points - array of points {x,y}
+ * @param data - array of points {x,y}
  * @param fct - callback function that from an array returns a value.
  * @param options - options
  */
 export function xyRolling(
-  points: DataXY,
+  data: DataXY,
   fct?: (array: DoubleArray) => number,
   options = {},
 ): DataXY {
-  let { x, y } = points;
+  let { x, y } = data;
 
   y = xRolling(y, fct, options);
 

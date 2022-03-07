@@ -5,13 +5,13 @@ import { numberSortAscending, numberSortDescending } from '../utils/numberSort';
 
 /**Findding the closest points
  *
- * @param points - points in cartesian space
+ * @param data - points in cartesian space
  * @param options - options
  * @returns - closest point
  */
 export function xyClosestX(
   /** points */
-  points: DataXY,
+  data: DataXY,
   options: {
     /** The target to which the x-coordinates should be close to
      * @default x[0]
@@ -26,7 +26,7 @@ export function xyClosestX(
   x: number;
   y: number;
 } {
-  const { x, y } = points;
+  const { x, y } = data;
   const { target = x[0], reverse = false } = options;
 
   let index;
