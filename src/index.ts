@@ -59,7 +59,7 @@ export * from './x/utils/getOutputArray';
 
 export * from './xy/xyAlign';
 export * from './xy/xyCheck';
-export * from './xy/xyClosestX';
+export * from './xy/xyFindClosestPoint';
 export * from './xy/xyCovariance';
 export * from './xy/xyCumulativeDistributionStatistics';
 export * from './xy/xyEnsureGrowingX';
