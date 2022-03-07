@@ -1,4 +1,3 @@
-import binarySearch from 'binary-search';
 import { DataXY, PointXY } from 'cheminfo-types';
 
 import { xFindClosestIndex } from '../x/xFindClosestIndex';

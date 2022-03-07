@@ -50,7 +50,6 @@
     "cheminfo-build": "^1.1.11",
     "eslint": "^8.9.0",
     "eslint-config-cheminfo-typescript": "^10.3.0",
-    "eslint-plugin-jsdoc": "^37.9.4",
     "esm": "^3.2.25",
     "jest": "^27.5.1",
     "jest-matcher-deep-close-to": "^3.0.2",
