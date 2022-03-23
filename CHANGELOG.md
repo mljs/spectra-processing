@@ -1,5 +1,13 @@
 # Changelog
 
+## [11.1.0](https://github.com/mljs/spectra-processing/compare/v11.0.0...v11.1.0) (2022-03-23)
+
+
+### Features
+
+* add xEnsureFloat64 ([cc58e79](https://github.com/mljs/spectra-processing/commit/cc58e7919b9e74c8ad248ef1630d08f375e6e945))
+* rename xyClosestX to xyFindClosestPoint and only allow sorted array ([2b439f8](https://github.com/mljs/spectra-processing/commit/2b439f8141c4d7869b0bac96101829c2cb8ec8a9))
+
 ## [11.0.0](https://www.github.com/mljs/spectra-processing/compare/v10.3.0...v11.0.0) (2022-02-25)
 
 
