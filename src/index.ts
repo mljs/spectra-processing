@@ -16,6 +16,7 @@ export * from './x/xCrossCorrelation';
 export * from './x/xCumulative';
 export * from './x/xDivide';
 export * from './x/xDotProduct';
+export * from './x/xEnsureFloat64';
 export * from './x/xFindClosestIndex';
 export * from './x/xGetFromToIndex';
 export * from './x/xGetTargetIndex';
