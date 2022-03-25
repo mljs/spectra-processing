@@ -15,7 +15,7 @@ import { xSum } from './xSum';
 export function xNormed<T extends NumberArray = Float64Array>(
   input: NumberArray,
   options: {
-    /** value by which to divide the data
+    /** algorithm can be 'sum' 'max' or 'absolute'
      * @default 'absolute'
      */
     algorithm?: string;
