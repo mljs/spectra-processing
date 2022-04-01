@@ -1,6 +1,7 @@
 import { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
+import { xGetFromToIndex, XGetFromToIndexOptions } from './xGetFromToIndex';
 
 /**
  * Calculate the sum of the values
@@ -11,21 +12,10 @@ import { xCheck } from './xCheck';
  */
 export function xSum(
   array: NumberArray,
-  options: {
-    /**
-     * First point for xSum.
-     * @default 0
-     */
-    fromIndex?: number;
-    /**
-     * Last point for xSum.
-     * @default x.length-1
-     */
-    toIndex?: number;
-  } = {},
+  options: XGetFromToIndexOptions = {},
 ): number {
-  const { fromIndex = 0, toIndex = array.length - 1 } = options;
   xCheck(array);
+  const { fromIndex, toIndex } = xGetFromToIndex(array, options);
 
   let sumValue = array[fromIndex];
   for (let i = fromIndex + 1; i <= toIndex; i++) {
