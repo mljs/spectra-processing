@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xFindClosestIndex } from './xFindClosestIndex';
 
@@ -9,7 +9,7 @@ import { xFindClosestIndex } from './xFindClosestIndex';
  * @param options - Options
  */
 export function xGetFromToIndex(
-  x: DoubleArray,
+  x: NumberArray,
   options: {
     /**
      * First point for xyIntegration
