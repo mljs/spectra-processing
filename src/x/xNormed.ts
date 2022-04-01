@@ -18,7 +18,7 @@ export function xNormed<T extends NumberArray = Float64Array>(
     /** algorithm can be 'sum' 'max' or 'absolute'
      * @default 'absolute'
      */
-    algorithm?: string;
+    algorithm?: 'absolute' | 'max' | 'sum';
     /** sum value
      * @default 1
      */
