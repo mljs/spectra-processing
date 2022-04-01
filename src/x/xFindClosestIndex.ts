@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 /**
  * Returns the closest index of a `target`
@@ -8,7 +8,7 @@ import { DoubleArray } from 'cheminfo-types';
  * @returns - closest index
  */
 export function xFindClosestIndex(
-  array: DoubleArray,
+  array: NumberArray,
   target: number,
   options: {
     /**
