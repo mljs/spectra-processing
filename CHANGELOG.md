@@ -1,5 +1,20 @@
 # Changelog
 
+## [11.2.0](https://github.com/mljs/spectra-processing/compare/v11.1.0...v11.2.0) (2022-04-01)
+
+
+### Features
+
+* xFindClosestIndex accepts a NumberArray ([4c10bc7](https://github.com/mljs/spectra-processing/commit/4c10bc73580dac0554af54cfd878525582f87024))
+* xGetFromToIndex accepts a NumberArray ([c2acea7](https://github.com/mljs/spectra-processing/commit/c2acea7c0453ce3020d823abcfba08aeb1dcb14b))
+* xMaxValue, xMinValue and xSum allow to specify from and to ([5e7212a](https://github.com/mljs/spectra-processing/commit/5e7212a939fb62676c315dd2c8f5651e3c95bd21))
+* xMean allows to specify from and to ([4141d0f](https://github.com/mljs/spectra-processing/commit/4141d0f62815b9057ced8deac8067664f4cf290e))
+
+
+### Bug Fixes
+
+* xMean gives correct result if fromIndex or toIndex outside range ([4141d0f](https://github.com/mljs/spectra-processing/commit/4141d0f62815b9057ced8deac8067664f4cf290e))
+
 ## [11.1.0](https://github.com/mljs/spectra-processing/compare/v11.0.0...v11.1.0) (2022-03-23)
 
 
