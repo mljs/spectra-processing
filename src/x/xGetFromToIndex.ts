@@ -2,6 +2,27 @@ import { NumberArray } from 'cheminfo-types';
 
 import { xFindClosestIndex } from './xFindClosestIndex';
 
+export interface XGetFromToIndexOptions {
+  /**
+   * First point for xyIntegration
+   * @default 0
+   * */
+  fromIndex?: number;
+  /**
+   * Last point for xyIntegration
+   * @default x.length-1
+   * */
+  toIndex?: number;
+  /**
+   * First value for xyIntegration in the X scale
+   * */
+  from?: number;
+  /**
+   * Last value for xyIntegration in the X scale
+   * */
+  to?: number;
+}
+
 /**
  * Returns an object with {fromIndex, toIndex} for a specific from / to
  *
@@ -10,26 +31,7 @@ import { xFindClosestIndex } from './xFindClosestIndex';
  */
 export function xGetFromToIndex(
   x: NumberArray,
-  options: {
-    /**
-     * First point for xyIntegration
-     * @default 0
-     * */
-    fromIndex?: number;
-    /**
-     * Last point for xyIntegration
-     * @default x.length-1
-     * */
-    toIndex?: number;
-    /**
-     * First value for xyIntegration in the X scale
-     * */
-    from?: number;
-    /**
-     * Last value for xyIntegration in the X scale
-     * */
-    to?: number;
-  } = {},
+  options: XGetFromToIndexOptions = {},
 ): { fromIndex: number; toIndex: number } {
   let { fromIndex, toIndex, from, to } = options;
 

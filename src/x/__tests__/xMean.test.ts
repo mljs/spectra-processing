@@ -19,6 +19,6 @@ test('xMean', () => {
   expect(xMean([1, 2, 3], { toIndex: 1 })).toBe(1.5);
   expect(xMean([3, 2, 1], { toIndex: 1 })).toBe(2.5);
   expect(xMean([1, 2, 3], { fromIndex: 1, toIndex: 1 })).toBe(2);
-  expect(xMean([1, 2, 3], { fromIndex: 1, toIndex: 10 })).toBe(2);
+  expect(xMean([1, 2, 3], { fromIndex: 1, toIndex: 10 })).toBe(2.5);
   expect(xMean([3, 2, 1], { fromIndex: 1, toIndex: 1 })).toBe(2);
 });
