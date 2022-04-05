@@ -18,7 +18,9 @@ export function xyGetNMaxY(data: DataXY, numberMaxPoints: number): DataXY {
     let newY = new Float64Array(numberMaxPoints);
 
     // slice() is used to make a copy of the array, because sort() is IPM
-    let threshold = data.y.slice().sort((a, b) => b - a)[numberMaxPoints - 1];
+    let threshold = Float64Array.from(data.y).sort().reverse()[
+      numberMaxPoints - 1
+    ];
 
     let index = 0;
     for (let i = 0; i < data.x.length; i++) {

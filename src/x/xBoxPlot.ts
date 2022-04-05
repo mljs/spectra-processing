@@ -6,7 +6,7 @@ import { DoubleArray } from 'cheminfo-types';
  * @param array - data
  */
 export function xBoxPlot(array: DoubleArray) {
-  array = array.slice(0).sort((a, b) => a - b);
+  array = Float64Array.from(array).sort();
   if (array.length < 5) {
     throw Error(
       'xBoxPlot: can not calculate info if array contains less than 3 elements',
