@@ -17,8 +17,10 @@ export function xMaxIndex(
   xCheck(array);
 	const { fromIndex, toIndex} = xGetFromToIndex(array,
 	options);
-	let maxIndex = 0;
-
+	let maxIndex = fromIndex;
+		if (fromIndex === toIndex){
+			maxIndex = 0;
+		}
   for (let i = fromIndex + 1; i <= toIndex; i++) {
     if (array[i] > array[maxIndex]) {
       maxIndex = i;

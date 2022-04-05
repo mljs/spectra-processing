@@ -14,7 +14,10 @@ export function xMinIndex(array: NumberArray,
 	): number {
   xCheck(array);
 	const { fromIndex, toIndex } = xGetFromToIndex(array,options);
-  let minIndex = 0;
+  let minIndex = fromIndex;
+	if (fromIndex === toIndex){
+		minIndex = 0;
+	}
   for (let i = fromIndex + 1; i <= toIndex; i++) {
     if (array[i] < array[minIndex]) {
       minIndex = i;
