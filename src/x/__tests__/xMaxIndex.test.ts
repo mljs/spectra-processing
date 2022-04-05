@@ -1,4 +1,3 @@
-
 import { xMaxIndex } from '../xMaxIndex';
 
 describe('array-xMaxIndex', () => {

@@ -1,4 +1,3 @@
-
 import { xMinIndex } from '../xMinIndex';
 
 describe('array-xMinIndex', () => {
