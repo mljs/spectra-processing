@@ -1,4 +1,4 @@
-/* eslint-disable no-tabs */
+
 import { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';

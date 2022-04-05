@@ -1,4 +1,4 @@
-/* eslint-disable no-tabs */
+
 import { xMaxIndex } from '../xMaxIndex';
 
 describe('array-xMaxIndex', () => {

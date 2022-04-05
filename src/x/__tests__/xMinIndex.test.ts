@@ -1,4 +1,4 @@
-/* eslint-disable no-tabs */
+
 import { xMinIndex } from '../xMinIndex';
 
 describe('array-xMinIndex', () => {
