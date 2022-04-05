@@ -9,15 +9,16 @@ import { xGetFromToIndex, XGetFromToIndexOptions } from './xGetFromToIndex';
  * @param array - array of numbers
  * @param options - options
  */
-export function xMinIndex(array: NumberArray,
-	options: XGetFromToIndexOptions = {},
-	): number {
+export function xMinIndex(
+  array: NumberArray,
+  options: XGetFromToIndexOptions = {},
+): number {
   xCheck(array);
-	const { fromIndex, toIndex } = xGetFromToIndex(array,options);
+  const { fromIndex, toIndex } = xGetFromToIndex(array, options);
   let minIndex = fromIndex;
-	if (fromIndex === toIndex){
-		minIndex = 0;
-	}
+  if (fromIndex === toIndex) {
+    minIndex = 0;
+  }
   for (let i = fromIndex + 1; i <= toIndex; i++) {
     if (array[i] < array[minIndex]) {
       minIndex = i;
