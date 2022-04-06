@@ -18,12 +18,16 @@ export function xRescale<T extends NumberArray = Float64Array>(
   options: {
     /** output into which to placed the data */
     output?: T;
-    /** min used for the scaling */
+    /**
+     * min used for the scaling
+     * @default 0
+     */
     min?: number;
-    /** max used for the scaling */
+    /**
+     * max used for the scaling
+     * @default 1
+     */
     max?: number;
-    /** option to find min and max automatically */
-    autoMinMax?: boolean;
   } = {},
 ): T {
   xCheck(input);
@@ -38,18 +42,15 @@ export function xRescale<T extends NumberArray = Float64Array>(
     );
   }
 
-  const {
-    min: minValue = options.autoMinMax ? currentMin : 0,
-    max: maxValue = options.autoMinMax ? currentMax : 1,
-  } = options;
+  const { min = 0, max = 1 } = options;
 
-  if (minValue >= maxValue) {
+  if (min >= max) {
     throw new RangeError('min option must be smaller than max option');
   }
 
-  const factor = (maxValue - minValue) / (currentMax - currentMin);
+  const factor = (max - min) / (currentMax - currentMin);
   for (let i = 0; i < input.length; i++) {
-    output[i] = (input[i] - currentMin) * factor + minValue;
+    output[i] = (input[i] - currentMin) * factor + min;
   }
 
   return output;

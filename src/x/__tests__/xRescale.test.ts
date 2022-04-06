@@ -71,13 +71,4 @@ describe('xRescale', () => {
       /input must not be empty/,
     );
   });
-
-  it('should work with current min/max', () => {
-    expect(
-      Array.from(xRescale([0, 1, 2], { min: 1, autoMinMax: true })),
-    ).toStrictEqual([1, 1.5, 2]);
-    expect(
-      Array.from(xRescale([0, 1, 2], { max: 3, autoMinMax: true })),
-    ).toStrictEqual([0, 1.5, 3]);
-  });
 });
