@@ -1,3 +1,4 @@
+import { xGetFromToIndex } from '../xGetFromToIndex';
 import { xMinIndex } from '../xMinIndex';
 
 describe('array-xMinIndex', () => {
@@ -6,11 +7,8 @@ describe('array-xMinIndex', () => {
   typedArray[1] = 2;
   typedArray[2] = 3;
 
-  let anotherArray = new Uint16Array(4);
-  anotherArray[0] = 3;
-  anotherArray[1] = 5;
-  anotherArray[2] = 4;
-  anotherArray[3] = 1;
+  let anotherArray = Uint16Array.from([3,5,4,1]);
+
 
   it('should return the argmin', () => {
     expect(xMinIndex([0])).toBe(0);
@@ -19,7 +17,8 @@ describe('array-xMinIndex', () => {
     expect(xMinIndex([1, 2, 1])).toBe(0);
     expect(xMinIndex([3, 2, 1])).toBe(2);
     expect(xMinIndex(typedArray)).toBe(0);
-    expect(xMinIndex([4, 4, 4, 4, 4])).toBe(0);
     expect(xMinIndex(anotherArray)).toBe(3);
+    expect(xMinIndex([1, 2, 3], { fromIndex: 1, toIndex: 1 })).toBe(1);
+    expect(xMinIndex(anotherArray, { fromIndex: 1, toIndex: 3 })).toBe(3);
   });
 });
