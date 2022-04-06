@@ -22,16 +22,16 @@ export function xNormed<T extends NumberArray = Float64Array>(
     /** sum value
      * @default 1
      */
-    sumValue?: number;
+    sum?: number;
     /** max value
      * @default 1
      */
-    maxValue?: number;
+    max?: number;
     /** output into which the result should be placed if needed */
     output?: T;
   } = {},
 ): T {
-  const { algorithm = 'absolute', sumValue = 1, maxValue = 1 } = options;
+  const { algorithm = 'absolute', sum = 1, max = 1 } = options;
   xCheck(input);
 
   const output = getOutputArray(options.output, input.length);
@@ -42,7 +42,7 @@ export function xNormed<T extends NumberArray = Float64Array>(
 
   switch (algorithm.toLowerCase()) {
     case 'absolute': {
-      let absoluteSumValue = absoluteSum(input) / sumValue;
+      let absoluteSumValue = absoluteSum(input) / sum;
       if (absoluteSumValue === 0) {
         throw new Error('xNormed: trying to divide by 0');
       }
@@ -56,14 +56,14 @@ export function xNormed<T extends NumberArray = Float64Array>(
       if (currentMaxValue === 0) {
         throw new Error('xNormed: trying to divide by 0');
       }
-      const factor = maxValue / currentMaxValue;
+      const factor = max / currentMaxValue;
       for (let i = 0; i < input.length; i++) {
         output[i] = input[i] * factor;
       }
       return output;
     }
     case 'sum': {
-      let sumFactor = xSum(input) / sumValue;
+      let sumFactor = xSum(input) / sum;
       if (sumFactor === 0) {
         throw new Error('xNormed: trying to divide by 0');
       }
