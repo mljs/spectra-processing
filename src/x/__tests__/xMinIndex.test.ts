@@ -1,4 +1,3 @@
-
 import { xMinIndex } from '../xMinIndex';
 
 describe('array-xMinIndex', () => {
@@ -7,8 +6,7 @@ describe('array-xMinIndex', () => {
   typedArray[1] = 2;
   typedArray[2] = 3;
 
-  let anotherArray = Uint16Array.from([3,5,4,1]);
-
+  let anotherArray = Uint16Array.from([3, 5, 4, 1]);
 
   it('should return the argmin', () => {
     expect(xMinIndex([0])).toBe(0);
