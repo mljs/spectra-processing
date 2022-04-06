@@ -1,4 +1,4 @@
-import { xGetFromToIndex } from '../xGetFromToIndex';
+
 import { xMinIndex } from '../xMinIndex';
 
 describe('array-xMinIndex', () => {
