@@ -45,7 +45,7 @@ export function xyEquallySpaced(
     /** variant
      * @default 'smooth'
      */
-    variant?: string;
+    variant?: 'slot' | 'smooth';
     /** number of points
      * @default 100
      */
@@ -151,7 +151,7 @@ function processZone(
   from: number,
   to: number,
   numberOfPoints: number,
-  variant: string,
+  variant: 'smooth' | 'slot',
 ) {
   if (numberOfPoints < 1) {
     throw new RangeError('the number of points must be at least 1');
