@@ -6,7 +6,7 @@ import { xGetFromToIndex, XGetFromToIndexOptions } from './xGetFromToIndex';
  * Computes the index of the maximum of the given values
  *
  * @param array - array of numbers
- * @param  options - allows to apply the algorithm on a part of the array
+ * @param  options - options
  * @returns - index
  */
 export function xMaxIndex(
