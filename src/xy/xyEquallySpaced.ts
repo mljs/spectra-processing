@@ -8,6 +8,33 @@ import equallySpacedSlot from './utils/equallySpacedSlot';
 import equallySpacedSmooth from './utils/equallySpacedSmooth';
 import { xyCheck } from './xyCheck';
 
+export interface XYEquallySpacedOptions {
+  /** from
+   * @default x[0]
+   */
+  from?: number;
+  /** to
+   * @default x[x.length-1]
+   */
+  to?: number;
+  /** variant
+   * @default 'smooth'
+   */
+  variant?: 'slot' | 'smooth';
+  /** number of points
+   * @default 100
+   */
+  numberOfPoints?: number;
+  /** array of from / to that should be skipped for the generation of the points
+   * @default []
+   */
+  exclusions?: FromTo[];
+  /** array of from / to that should be kept
+   * @default []
+   */
+  zones?: FromTo[];
+}
+
 /**
  * Function that returns a Number array of equally spaced numberOfPoints
  * containing a representation of intensities of the spectra arguments x
@@ -33,32 +60,7 @@ import { xyCheck } from './xyCheck';
 
 export function xyEquallySpaced(
   data: DataXY,
-  options: {
-    /** from
-     * @default x[0]
-     */
-    from?: number;
-    /** to
-     * @default x[x.length - 1]
-     */
-    to?: number;
-    /** variant
-     * @default 'smooth'
-     */
-    variant?: 'slot' | 'smooth';
-    /** number of points
-     * @default 100
-     */
-    numberOfPoints?: number;
-    /** array of from / to that should be skipped for the generation of the points
-     * @default []
-     */
-    exclusions?: FromTo[];
-    /** array of from / to that should be kept
-     * @default []
-     */
-    zones?: FromTo[];
-  } = {},
+  options: XYEquallySpacedOptions = {},
 ): DataXY {
   let { x, y } = data;
   let xLength = x.length;

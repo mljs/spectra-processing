@@ -2,33 +2,34 @@ import { DataXY, FromTo } from 'cheminfo-types';
 
 import { zonesNormalize } from '../zones/zonesNormalize';
 
+export interface XYFilterXOptions {
+  /** filter from
+   * @default x[0]
+   */
+  from?: number;
+  /** filter to
+   * @default x[x.length - 1]
+   */
+  to?: number;
+  /** zones to exclude, contains {from, to} pairs
+   * @default []
+   */
+  exclusions?: FromTo[];
+  /** zones to keep
+   * @default [{from,to}]
+   */
+  zones?: FromTo[];
+}
+
 /** Filter an array x/y based on various criteria x points are expected to be sorted
  *
  * @param data - points
  * @param options - options
  * @return filtered array
  */
-
 export function xyFilterX(
   data: DataXY,
-  options: {
-    /** filter from
-     * @default x[0]
-     */
-    from?: number;
-    /** filter to
-     * @default x[x.length - 1]
-     */
-    to?: number;
-    /** zones to exclude, contains {from, to} pairs
-     * @default []
-     */
-    exclusions?: FromTo[];
-    /** zones to keep
-     * @default [{from,to}]
-     */
-    zones?: FromTo[];
-  } = {},
+  options: XYFilterXOptions = {},
 ): DataXY {
   const { x, y } = data;
   const {
