@@ -17,9 +17,13 @@ import { xyCheck } from './xyCheck';
 export function xyReduce(
   data: DataXY,
   options: {
-    /**@default x[0] */
+    /**
+     * @default x[0]
+     */
     from?: number;
-    /**@default x[x.length-1] */
+    /**
+     * @default x[x.length-1]
+     */
     to?: number;
     /**
      * Number of points
@@ -31,7 +35,8 @@ export function xyReduce(
      * @default false
      * */
     optimize?: boolean;
-    /**Array of zones to keep (from/to object)
+    /**
+     * Array of zones to keep (from/to object)
      * @default []
      * */
     zones?: FromTo[];
