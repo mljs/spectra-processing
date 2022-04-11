@@ -1,6 +1,5 @@
-import { DataXY } from 'cheminfo-types';
+import { DataXY, FromTo } from 'cheminfo-types';
 
-import { Zone } from '..';
 import { zonesNormalize } from '../zones/zonesNormalize';
 
 import { xyCheck } from './xyCheck';
@@ -15,8 +14,7 @@ import { xyCheck } from './xyCheck';
 export function xySetYValue(
   data: DataXY,
   options: {
-    /** zones */
-    zones?: Zone[];
+    zones?: FromTo[];
     /** data contains x and y values */
     value?: number;
   } = {},

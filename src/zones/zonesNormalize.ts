@@ -1,3 +1,5 @@
+import { FromTo } from 'cheminfo-types';
+
 /**
  * Normalize an array of zones:
  * - ensure than from < to
@@ -8,12 +10,7 @@
  * @returns array of zones
  */
 export function zonesNormalize(
-  zones: {
-    /** start of zone*/
-    from: number;
-    /** end of zone*/
-    to: number;
-  }[] = [],
+  zones: FromTo[] = [],
   options: {
     /** specify min value of zones
      * @default Number.NEGATIVE_INFINITY
@@ -24,7 +21,7 @@ export function zonesNormalize(
      */
     to?: number;
   } = {},
-): { from: number; to: number }[] {
+): FromTo[] {
   if (zones.length === 0) return [];
   let { from = Number.NEGATIVE_INFINITY, to = Number.POSITIVE_INFINITY } =
     options;

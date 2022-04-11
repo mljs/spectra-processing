@@ -136,18 +136,7 @@ export * from './utils/createRandomArray';
 export * from './utils/createStepArray';
 
 export type DoubleMatrix = DoubleArray[];
-export interface Zone {
-  /** starting index */
-  fromIndex?: number;
-  /** finishing index */
-  toIndex?: number;
-  /** starting value */
-  from: number;
-  /** finishing value */
-  to: number;
-  /** number of points */
-  nbPoints?: number;
-}
+
 export interface Point {
   /** x value */
   x: number;

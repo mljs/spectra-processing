@@ -1,6 +1,5 @@
-import { DataXY } from 'cheminfo-types';
+import { DataXY, FromTo } from 'cheminfo-types';
 
-import { Zone } from '..';
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
 import { zonesNormalize } from '../zones/zonesNormalize';
 
@@ -35,7 +34,7 @@ export function xyReduce(
     /**Array of zones to keep (from/to object)
      * @default []
      * */
-    zones?: Zone[];
+    zones?: FromTo[];
   } = {},
 ): DataXY {
   xyCheck(data);
@@ -52,9 +51,15 @@ export function xyReduce(
   if (zones.length === 0) zones = [{ from, to }]; // we take everything
 
   // for each zone we should know the first index, the last index and the number of points
-
+  const internalZones: {
+    from: number;
+    to: number;
+    fromIndex?: number;
+    toIndex?: number;
+    nbPoints?: number;
+  }[] = zones;
   let totalPoints = 0;
-  for (let zone of zones) {
+  for (let zone of internalZones) {
     zone.fromIndex = xFindClosestIndex(x, zone.from);
     zone.toIndex = xFindClosestIndex(x, zone.to);
     if (zone.fromIndex > 0 && x[zone.fromIndex] > zone.from) {
@@ -72,17 +77,17 @@ export function xyReduce(
     // need to xyReduce number of points
     let ratio = nbPoints / totalPoints;
     let currentTotal = 0;
-    for (let i = 0; i < zones.length - 1; i++) {
-      const zone = zones[i];
+    for (let i = 0; i < internalZones.length - 1; i++) {
+      const zone = internalZones[i];
       zone.nbPoints = Math.round((zone.nbPoints as number) * ratio);
       currentTotal += zone.nbPoints;
     }
-    zones[zones.length - 1].nbPoints = nbPoints - currentTotal;
+    internalZones[internalZones.length - 1].nbPoints = nbPoints - currentTotal;
   } else {
     let newX = new Float64Array(totalPoints);
     let newY = new Float64Array(totalPoints);
     let index = 0;
-    for (let zone of zones) {
+    for (let zone of internalZones) {
       for (
         let i = zone.fromIndex as number;
         i < (zone.toIndex as number) + 1;
@@ -101,7 +106,7 @@ export function xyReduce(
 
   let newX: number[] = [];
   let newY: number[] = [];
-  for (let zone of zones) {
+  for (let zone of internalZones) {
     if (!zone.nbPoints) continue;
     appendFromTo(
       zone.fromIndex as number,
