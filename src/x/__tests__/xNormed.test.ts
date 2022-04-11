@@ -44,17 +44,17 @@ describe('array-norm', () => {
 
   it('should return the norm algorithm=max and max to 100', () => {
     expect(() => {
-      Array.from(xNormed([0], { algorithm: 'max', max: 100 }));
+      Array.from(xNormed([0], { algorithm: 'max', value: 100 }));
     }).toThrow('xNormed: trying to divide by 0');
     expect(() => {
-      Array.from(xNormed([0, 0], { algorithm: 'max', max: 100 }));
+      Array.from(xNormed([0, 0], { algorithm: 'max', value: 100 }));
     }).toThrow('xNormed: trying to divide by 0');
 
     expect(
-      Array.from(xNormed([-1, 1], { algorithm: 'max', max: 100 })),
+      Array.from(xNormed([-1, 1], { algorithm: 'max', value: 100 })),
     ).toStrictEqual([-100, 100]);
     expect(
-      Array.from(xNormed([1, 4], { algorithm: 'max', max: 100 })),
+      Array.from(xNormed([1, 4], { algorithm: 'max', value: 100 })),
     ).toStrictEqual([25, 100]);
   });
 
@@ -78,19 +78,19 @@ describe('array-norm', () => {
 
   it('should return the norm algorithm=sum sumValue=5', () => {
     expect(() => {
-      Array.from(xNormed([0], { algorithm: 'sum', sum: 5 }));
+      Array.from(xNormed([0], { algorithm: 'sum', value: 5 }));
     }).toThrow('xNormed: trying to divide by 0');
     expect(() => {
-      Array.from(xNormed([0, 0], { algorithm: 'sum', sum: 5 }));
+      Array.from(xNormed([0, 0], { algorithm: 'sum', value: 5 }));
     }).toThrow('xNormed: trying to divide by 0');
     expect(() => {
-      Array.from(xNormed([-1, 1], { algorithm: 'sum', sum: 5 }));
+      Array.from(xNormed([-1, 1], { algorithm: 'sum', value: 5 }));
     }).toThrow('xNormed: trying to divide by 0');
     expect(
-      Array.from(xNormed([-1, 3], { algorithm: 'sum', sum: 5 })),
+      Array.from(xNormed([-1, 3], { algorithm: 'sum', value: 5 })),
     ).toStrictEqual([-2.5, 7.5]);
     expect(
-      Array.from(xNormed([1, 3], { algorithm: 'sum', sum: 5 })),
+      Array.from(xNormed([1, 3], { algorithm: 'sum', value: 5 })),
     ).toStrictEqual([1.25, 3.75]);
   });
 
