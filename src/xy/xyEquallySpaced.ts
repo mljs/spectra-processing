@@ -87,18 +87,6 @@ export function xyEquallySpaced(
 
   xyCheck(data);
 
-  if (typeof from !== 'number' || isNaN(from)) {
-    throw new RangeError("'from' option must be a number");
-  }
-
-  if (typeof to !== 'number' || isNaN(to)) {
-    throw new RangeError("'to' option must be a number");
-  }
-
-  if (typeof numberOfPoints !== 'number' || isNaN(numberOfPoints)) {
-    throw new RangeError("'numberOfPoints' option must be a number");
-  }
-
   if (numberOfPoints < 2) {
     throw new RangeError("'numberOfPoints' option must be greater than 1");
   }

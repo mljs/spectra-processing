@@ -1,8 +1,10 @@
+import { FromTo } from 'cheminfo-types';
+
 import { zonesWithPoints } from '../zonesWithPoints';
 
 describe('zonesWithPoints', () => {
   it('no zones', () => {
-    let zones: { from: number; to: number }[] = [];
+    let zones: FromTo[] = [];
     let result = zonesWithPoints(zones, 1024);
     expect(result).toStrictEqual([]);
   });

@@ -1,3 +1,5 @@
+import { FromTo } from 'cheminfo-types';
+
 import { zonesNormalize } from './zonesNormalize';
 
 /**
@@ -8,12 +10,7 @@ import { zonesNormalize } from './zonesNormalize';
  * @returns array of inverted zones
  */
 export function zonesInvert(
-  exclusions: {
-    /** start of zone*/
-    from: number;
-    /** end of zone */
-    to: number;
-  }[] = [],
+  exclusions: FromTo[] = [],
   options: {
     /** specify min value of zones
      * @default Number.NEGATIVE_INFINITY
@@ -24,7 +21,7 @@ export function zonesInvert(
      */
     to?: number;
   } = {},
-): { from: number; to: number }[] {
+): FromTo[] {
   let { from = Number.NEGATIVE_INFINITY, to = Number.POSITIVE_INFINITY } =
     options;
   if (from > to) [from, to] = [to, from];

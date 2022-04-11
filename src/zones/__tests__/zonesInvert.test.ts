@@ -1,8 +1,10 @@
+import { FromTo } from 'cheminfo-types';
+
 import { zonesInvert } from '../zonesInvert';
 
 describe('zonesInvert', () => {
   it('no exclusions, no from to', () => {
-    let exclusions: { from: number; to: number }[] = [];
+    let exclusions: FromTo[] = [];
     let result = zonesInvert(exclusions);
     expect(result).toStrictEqual([
       { from: Number.NEGATIVE_INFINITY, to: Number.POSITIVE_INFINITY },
@@ -10,7 +12,7 @@ describe('zonesInvert', () => {
   });
 
   it('no exclusions, from to', () => {
-    let exclusions: { from: number; to: number }[] = [];
+    let exclusions: FromTo[] = [];
     let result = zonesInvert(exclusions, { from: 2, to: 4 });
     expect(result).toStrictEqual([{ from: 2, to: 4 }]);
   });

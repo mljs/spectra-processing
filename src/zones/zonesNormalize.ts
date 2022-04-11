@@ -27,9 +27,8 @@ export function zonesNormalize(
     options;
   if (from > to) [from, to] = [to, from];
 
-  zones = JSON.parse(JSON.stringify(zones)).map(
-    (zone: { from: number; to: number }) =>
-      zone.from > zone.to ? { from: zone.to, to: zone.from } : zone,
+  zones = JSON.parse(JSON.stringify(zones)).map((zone: FromTo) =>
+    zone.from > zone.to ? { from: zone.to, to: zone.from } : zone,
   );
   zones = zones.sort((a, b) => {
     if (a.from !== b.from) return a.from - b.from;

@@ -1,4 +1,4 @@
-import { DataXY } from 'cheminfo-types';
+import { DataXY, FromTo } from 'cheminfo-types';
 
 import getZones from '../zones/utils/getZones';
 
@@ -23,7 +23,7 @@ export function xyFilterX(
     /** zones to exclude, contains {from, to} pairs
      * @default []
      */
-    exclusions?: { from: number; to: number }[];
+    exclusions?: FromTo[];
   } = {},
 ): DataXY {
   const { x, y } = data;
