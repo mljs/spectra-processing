@@ -1,12 +1,12 @@
 import { DataXY } from 'cheminfo-types';
 
 import { createFromToArray } from '../utils/createFromToArray';
-import { zoneCheck } from '../zone/zoneCheck';
 import { zonesInvert } from '../zones/zonesInvert';
 import { zonesWithPoints } from '../zones/zonesWithPoints';
 
 import equallySpacedSlot from './utils/equallySpacedSlot';
 import equallySpacedSmooth from './utils/equallySpacedSmooth';
+import { xyCheck } from './xyCheck';
 
 /**
  * Function that returns a Number array of equally spaced numberOfPoints
@@ -85,9 +85,7 @@ export function xyEquallySpaced(
     reverse = true;
   }
 
-  if (!zoneCheck(data)) {
-    throw new RangeError("the x and y vector doesn't have the same size.");
-  }
+  xyCheck(data);
 
   if (typeof from !== 'number' || isNaN(from)) {
     throw new RangeError("'from' option must be a number");
