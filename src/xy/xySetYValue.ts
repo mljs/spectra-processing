@@ -23,11 +23,11 @@ export function xySetYValue(
   const { x, y } = data;
   let { zones, value = 0 } = options;
 
-  zones = zonesNormalize(zones);
-
   if (!Array.isArray(zones) || zones.length === 0) {
     return data;
   }
+
+  zones = zonesNormalize(zones);
 
   const newX = x.slice();
   const newY = y.slice();

@@ -1,7 +1,7 @@
 import { DataXY } from 'cheminfo-types';
 
 import { createFromToArray } from '../utils/createFromToArray';
-import { zonesInvert } from '../zones/zonesInvert';
+import { zonesNormalize } from '../zones/zonesNormalize';
 import { zonesWithPoints } from '../zones/zonesWithPoints';
 
 import equallySpacedSlot from './utils/equallySpacedSlot';
@@ -69,13 +69,13 @@ export function xyEquallySpaced(
   let { x, y } = data;
   let xLength = x.length;
 
-  let {
+  const {
     from = x[0],
     to = x[xLength - 1],
     variant = 'smooth',
     numberOfPoints = 100,
     exclusions = [],
-    zones = [],
+    zones = [{ from, to }],
   } = options;
 
   let reverse = false;
@@ -91,11 +91,12 @@ export function xyEquallySpaced(
     throw new RangeError("'numberOfPoints' option must be greater than 1");
   }
 
-  if (zones.length === 0) {
-    zones = zonesInvert(exclusions, { from, to });
-  }
+  const normalizedZones = zonesNormalize(zones, { from, to, exclusions });
 
-  let zonesWithPointsRes = zonesWithPoints(zones, numberOfPoints, { from, to });
+  const zonesWithPointsRes = zonesWithPoints(normalizedZones, numberOfPoints, {
+    from,
+    to,
+  });
 
   let xResult: number[] = [];
   let yResult: number[] = [];

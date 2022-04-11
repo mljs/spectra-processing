@@ -4,7 +4,8 @@ import { FromTo } from 'cheminfo-types';
  * Normalize an array of zones:
  * - ensure than from < to
  * - merge overlapping zones
- *
+ * - deal with exclusions zones
+ * - if no zones is specified add one between -Infinity and +Infinity
  * @param zones - array of zones
  * @param options - options
  * @returns array of zones
@@ -20,11 +21,18 @@ export function zonesNormalize(
      * @default Number.POSITIVE_INFINITY
      */
     to?: number;
+    /**
+     * List of exclusion zones
+     */
+    exclusions?: FromTo[];
   } = {},
 ): FromTo[] {
-  if (zones.length === 0) return [];
-  let { from = Number.NEGATIVE_INFINITY, to = Number.POSITIVE_INFINITY } =
-    options;
+  let {
+    from = Number.NEGATIVE_INFINITY,
+    to = Number.POSITIVE_INFINITY,
+    exclusions = [],
+  } = options;
+
   if (from > to) [from, to] = [to, from];
 
   zones = JSON.parse(JSON.stringify(zones)).map((zone: FromTo) =>
@@ -34,6 +42,9 @@ export function zonesNormalize(
     if (a.from !== b.from) return a.from - b.from;
     return a.to - b.to;
   });
+  if (zones.length === 0) {
+    zones.push({ from, to });
+  }
 
   zones.forEach((zone) => {
     if (from > zone.from) zone.from = from;
@@ -44,7 +55,7 @@ export function zonesNormalize(
   if (zones.length === 0) return [];
 
   let currentZone = zones[0];
-  let result = [currentZone];
+  let beforeExclusionsZones = [currentZone];
   for (let i = 1; i < zones.length; i++) {
     let zone = zones[i];
     if (zone.from <= currentZone.to) {
@@ -53,8 +64,66 @@ export function zonesNormalize(
       }
     } else {
       currentZone = zone;
-      result.push(currentZone);
+      beforeExclusionsZones.push(currentZone);
     }
   }
-  return result;
+
+  if (exclusions.length === 0) return beforeExclusionsZones;
+
+  const normalizedExclusions = zonesNormalize(exclusions);
+
+  let currentExclusionIndex = 0;
+  const results: FromTo[] = [];
+  let counter = 0;
+  for (
+    let zoneIndex = 0;
+    zoneIndex < beforeExclusionsZones.length;
+    zoneIndex++
+  ) {
+    if (counter++ > 5) break;
+    const zone = beforeExclusionsZones[zoneIndex];
+    if (currentExclusionIndex === normalizedExclusions.length) {
+      // we analysed all the exclusion zones
+      results.push(zone);
+      continue;
+    }
+    while (
+      currentExclusionIndex < normalizedExclusions.length &&
+      normalizedExclusions[currentExclusionIndex].to <= zone.from
+    ) {
+      currentExclusionIndex++;
+    }
+    if (currentExclusionIndex === normalizedExclusions.length) {
+      // we analysed all the exclusion zones
+      results.push(zone);
+      continue;
+    }
+    if (zone.to < normalizedExclusions[currentExclusionIndex].from) {
+      // no problems, not yet in exclusion
+      results.push(zone);
+      continue;
+    }
+    if (normalizedExclusions[currentExclusionIndex].to >= zone.to) {
+      // could be totally excluded
+      if (normalizedExclusions[currentExclusionIndex].from <= zone.from) {
+        continue;
+      }
+      results.push({
+        from: normalizedExclusions[currentExclusionIndex].to,
+        to: zone.to,
+      });
+    }
+    // we cut in the middle, we need to create more zones, annoying !
+    if (normalizedExclusions[currentExclusionIndex].from > zone.from) {
+      results.push({
+        from: zone.from,
+        to: normalizedExclusions[currentExclusionIndex].from,
+      });
+    }
+
+    zone.from = normalizedExclusions[currentExclusionIndex].to;
+    zoneIndex--;
+  }
+
+  return results;
 }

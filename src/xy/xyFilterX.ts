@@ -1,6 +1,6 @@
 import { DataXY, FromTo } from 'cheminfo-types';
 
-import getZones from '../zones/utils/getZones';
+import { zonesNormalize } from '../zones/zonesNormalize';
 
 /** Filter an array x/y based on various criteria x points are expected to be sorted
  *
@@ -24,12 +24,21 @@ export function xyFilterX(
      * @default []
      */
     exclusions?: FromTo[];
+    /** zones to keep
+     * @default [{from,to}]
+     */
+    zones?: FromTo[];
   } = {},
 ): DataXY {
   const { x, y } = data;
-  const { from = x[0], to = x[x.length - 1], exclusions = [] } = options;
+  const {
+    from = x[0],
+    to = x[x.length - 1],
+    zones = [{ from, to }],
+    exclusions = [],
+  } = options;
 
-  let zones = getZones(from, to, exclusions);
+  let normalizedZones = zonesNormalize(zones, { from, to, exclusions });
 
   let currentZoneIndex = 0;
   let newX = [];
@@ -37,15 +46,15 @@ export function xyFilterX(
   let position = 0;
   while (position < x.length) {
     if (
-      x[position] <= zones[currentZoneIndex].to &&
-      x[position] >= zones[currentZoneIndex].from
+      x[position] <= normalizedZones[currentZoneIndex].to &&
+      x[position] >= normalizedZones[currentZoneIndex].from
     ) {
       newX.push(x[position]);
       newY.push(y[position]);
     } else {
-      if (x[position] > zones[currentZoneIndex].to) {
+      if (x[position] > normalizedZones[currentZoneIndex].to) {
         currentZoneIndex++;
-        if (!zones[currentZoneIndex]) break;
+        if (!normalizedZones[currentZoneIndex]) break;
       }
     }
     position++;

@@ -13,6 +13,19 @@ describe('xyFilterX', () => {
     });
   });
 
+  it('keep 2 zones', () => {
+    let result = xyFilterX(points, {
+      zones: [
+        { from: 1, to: 2 },
+        { from: 5, to: 7 },
+      ],
+    });
+    expect(result).toStrictEqual({
+      x: [1, 2, 5, 6, 7],
+      y: [2, 3, 6, 7, 8],
+    });
+  });
+
   it('from filter', () => {
     let result = xyFilterX(points, { from: 5 });
     expect(result).toStrictEqual({
