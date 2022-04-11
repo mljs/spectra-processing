@@ -1,6 +1,6 @@
 import { zonesNormalize } from '../zonesNormalize';
 
-describe.only('zonesNormalize', () => {
+describe('zonesNormalize', () => {
   it('no zones', () => {
     let result = zonesNormalize([]);
     expect(result).toStrictEqual([{ from: -Infinity, to: Infinity }]);
@@ -117,7 +117,7 @@ describe.only('zonesNormalize', () => {
   });
 });
 
-describe.only('zonesNormalize with exclusions', () => {
+describe('zonesNormalize with exclusions', () => {
   it('no zones', () => {
     let result = zonesNormalize([], { exclusions: [{ from: 1, to: 2 }] });
     expect(result).toStrictEqual([

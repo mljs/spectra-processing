@@ -1,4 +1,4 @@
-import { DataXY } from 'cheminfo-types';
+import { DataXY, FromTo } from 'cheminfo-types';
 
 import { createFromToArray } from '../utils/createFromToArray';
 import { zonesNormalize } from '../zones/zonesNormalize';
@@ -53,17 +53,11 @@ export function xyEquallySpaced(
     /** array of from / to that should be skipped for the generation of the points
      * @default []
      */
-    exclusions?: {
-      from: number;
-      to: number;
-    }[];
+    exclusions?: FromTo[];
     /** array of from / to that should be kept
      * @default []
      */
-    zones?: {
-      from: number;
-      to: number;
-    }[];
+    zones?: FromTo[];
   } = {},
 ): DataXY {
   let { x, y } = data;
@@ -78,11 +72,8 @@ export function xyEquallySpaced(
     zones = [{ from, to }],
   } = options;
 
-  let reverse = false;
-  if (x.length > 1 && x[0] > x[1]) {
-    x = x.slice().reverse();
-    y = y.slice().reverse();
-    reverse = true;
+  if (from > to) {
+    throw new RangeError('from should be larger than to');
   }
 
   xyCheck(data);
@@ -114,22 +105,11 @@ export function xyEquallySpaced(
       variant,
     );
 
-    xResult = xResult.concat(zoneResult.x as ConcatArray<number>);
+    xResult = xResult.concat(zoneResult.x);
     yResult = yResult.concat(zoneResult.y);
   }
-  if (reverse) {
-    if (from < to) {
-      return { x: xResult.reverse(), y: yResult.reverse() };
-    } else {
-      return { x: xResult, y: yResult };
-    }
-  } else {
-    if (from < to) {
-      return { x: xResult, y: yResult };
-    } else {
-      return { x: xResult.reverse(), y: yResult.reverse() };
-    }
-  }
+
+  return { x: xResult, y: yResult };
 }
 
 function processZone(

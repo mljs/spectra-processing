@@ -150,20 +150,17 @@ describe('equallySpaced', () => {
 
     x = [10, 5, 0];
     y = [10, 5, 0];
-    ans = xyEquallySpaced(
-      { x, y },
-      {
-        from: 0,
-        to: 10,
-        numberOfPoints: 2,
-        variant: 'slot',
-      },
-    );
-
-    expect(ans).toStrictEqual({
-      x: [10, 0],
-      y: [10, 2.5],
-    });
+    expect(() => {
+      xyEquallySpaced(
+        { x, y },
+        {
+          from: 0,
+          to: 10,
+          numberOfPoints: 2,
+          variant: 'slot',
+        },
+      );
+    }).toThrow('x must be a growing series');
 
     x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     y = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0];
@@ -187,20 +184,17 @@ describe('equallySpaced', () => {
     let x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     let y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-    let ans = xyEquallySpaced(
-      { x, y },
-      {
-        from: 6,
-        to: 3,
-        numberOfPoints: 4,
-        variant: 'smooth',
-      },
-    );
-
-    expect(ans).toStrictEqual({
-      x: [6, 5, 4, 3],
-      y: [6, 5, 4, 3],
-    });
+    expect(() => {
+      xyEquallySpaced(
+        { x, y },
+        {
+          from: 6,
+          to: 3,
+          numberOfPoints: 4,
+          variant: 'smooth',
+        },
+      );
+    }).toThrow('from should be larger than to');
   });
 
   it('testing exclusions', () => {
@@ -228,21 +222,18 @@ describe('equallySpaced', () => {
     let x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     let y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-    let ans = xyEquallySpaced(
-      { x, y },
-      {
-        from: 8,
-        to: 1,
-        numberOfPoints: 4,
-        variant: 'smooth',
-        exclusions: [{ from: 7, to: 2 }],
-      },
-    );
-
-    expect(ans).toStrictEqual({
-      x: [8, 7, 2, 1],
-      y: [8, 7, 2, 1],
-    });
+    expect(() => {
+      xyEquallySpaced(
+        { x, y },
+        {
+          from: 8,
+          to: 1,
+          numberOfPoints: 4,
+          variant: 'smooth',
+          exclusions: [{ from: 7, to: 2 }],
+        },
+      );
+    }).toThrow('from should be larger than to');
   });
 
   it('testing zones', () => {
