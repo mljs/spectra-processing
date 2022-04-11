@@ -1,5 +1,19 @@
 # Changelog
 
+## [11.4.0](https://github.com/mljs/spectra-processing/compare/v11.3.0...v11.4.0) (2022-04-11)
+
+
+### Features
+
+* refactor zonesNormalize and remove zonesInvert and getZones ([0236bbf](https://github.com/mljs/spectra-processing/commit/0236bbfe135c03b5ec4586a70cbad8722b55ff8b))
+* xyEquallySpaced must be growing ! Throw error if not ([8221a2f](https://github.com/mljs/spectra-processing/commit/8221a2fdecb6604ec4f7f0e7e4b2bea1777e8394))
+
+
+### Bug Fixes
+
+* Remove Zone interface (that should be FromTo) ([a389f30](https://github.com/mljs/spectra-processing/commit/a389f30389ec382edc49ea93f200fde416acfdc5))
+* specify variant possibilities ([7b22eb1](https://github.com/mljs/spectra-processing/commit/7b22eb13e1f6ce2656070e481e6b866c153bc417))
+
 ## [11.3.0](https://github.com/mljs/spectra-processing/compare/v11.2.0...v11.3.0) (2022-04-06)
 
 
