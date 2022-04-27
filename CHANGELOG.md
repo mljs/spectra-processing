@@ -1,5 +1,17 @@
 # Changelog
 
+## [11.5.0](https://github.com/mljs/spectra-processing/compare/v11.4.0...v11.5.0) (2022-04-27)
+
+
+### Features
+
+* add xApplyFunctionStr ([e9e13fd](https://github.com/mljs/spectra-processing/commit/e9e13fdf493bb18b3589c6e4d49673055070839d))
+
+
+### Bug Fixes
+
+* xNormed use as options value instead of sum / max ([a9d1cbe](https://github.com/mljs/spectra-processing/commit/a9d1cbe637559d260f246b21e057113d32cce997))
+
 ## [11.4.0](https://github.com/mljs/spectra-processing/compare/v11.3.0...v11.4.0) (2022-04-11)
 
 
