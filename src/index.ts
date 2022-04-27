@@ -52,6 +52,7 @@ export * from './x/xRotate';
 export * from './x/xSampling';
 export * from './x/xSequentialFill';
 export * from './x/xStandardDeviation';
+export * from './x/xApplyFunctionStr';
 export * from './x/xSubtract';
 export * from './x/xSum';
 export * from './x/xUniqueSorted';
