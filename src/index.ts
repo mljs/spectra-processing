@@ -136,26 +136,6 @@ export * from './utils/createStepArray';
 
 export type DoubleMatrix = DoubleArray[];
 
-export interface Point {
-  /** x value */
-  x: number;
-  /** y value */
-  y: number;
-  /** point index */
-  index?: number;
-}
-
-export interface DataXReIm {
-  /** Array of x values */
-  x: DoubleArray;
-  /** Array of re values */
-  re: DoubleArray;
-  /** Array of im values */
-  im: DoubleArray;
-}
-export interface DataReIm {
-  /** Array of re values */
-  re: DoubleArray;
-  /** Array of im values */
-  im: DoubleArray;
-}
+export * from './types/DataReIm';
+export * from './types/DataXReIm';
+export * from './types/Point';

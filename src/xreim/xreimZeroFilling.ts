@@ -1,5 +1,4 @@
-import { DataXReIm } from '..';
-
+import { DataXReIm } from '../types/DataXReIm';
 /**
  * This function make a zero filling to re and im part.
  *

@@ -1,4 +1,4 @@
-import { DataReIm } from '../index';
+import { DataReIm } from '../types/DataReIm';
 
 /**
  * Calculates reimAbsolute value of a complex spectrum

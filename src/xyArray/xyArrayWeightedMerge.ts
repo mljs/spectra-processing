@@ -1,6 +1,6 @@
 import { DataXY, NumberArray } from 'cheminfo-types';
 
-import { Point } from '..';
+import { Point } from '../types/Point';
 
 /**
  * Merge DataXY

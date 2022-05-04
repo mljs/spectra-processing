@@ -1,6 +1,6 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xIsMonotoneIncreasing } from '..';
+import { xIsMonotoneIncreasing } from '../x/xIsMonotoneIncreasing';
 
 import { xyCheck } from './xyCheck';
 

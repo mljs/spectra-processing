@@ -45,14 +45,11 @@ describe('createRandomXArray', () => {
       seed: 0,
     });
     const histogram = xHistogram(array, { centerX: false });
-    let fittedPeaks = optimize(
-      histogram,
-      [{ x: 10, y: 0.1, width: 2, fwhm: 2 }],
-      { shape: { kind: 'gaussian' } },
-    );
+    let fittedPeaks = optimize(histogram, [{ x: 10, y: 0.1 }], {
+      shape: { kind: 'gaussian', fwhm: 2 },
+    });
     expect(fittedPeaks.peaks[0].x).toBeDeepCloseTo(10, 2);
-    expect(fittedPeaks.peaks[0].width).toBeDeepCloseTo(2, 2);
-    expect(fittedPeaks.peaks[0].fwhm).toBeDeepCloseTo(
+    expect(fittedPeaks.peaks[0].shape.fwhm).toBeDeepCloseTo(
       2 * Math.sqrt(2 * Math.log(2)),
       1,
     );

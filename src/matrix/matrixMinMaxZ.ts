@@ -1,4 +1,5 @@
 import { DoubleMatrix } from '..';
+
 import { matrixCheck } from './matrixCheck';
 
 /**

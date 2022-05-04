@@ -1,4 +1,4 @@
-import { Point } from '..';
+import { Point } from '../types/Point';
 
 import { xyObjectCheck } from './xyObjectCheck';
 
