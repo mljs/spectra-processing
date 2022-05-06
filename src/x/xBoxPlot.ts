@@ -13,9 +13,9 @@ export function xBoxPlot(array: DoubleArray) {
     );
   }
   let info = {
-    Q1: 0.0,
-    Q2: 0.0,
-    Q3: 0.0,
+    q1: 0.0,
+    median: 0.0,
+    q3: 0.0,
     min: array[0],
     max: array[array.length - 1],
   };
@@ -23,22 +23,22 @@ export function xBoxPlot(array: DoubleArray) {
   if (array.length % 2 === 1) {
     // odd
     let middle = (array.length - 1) / 2;
-    info.Q2 = array[middle];
+    info.median = array[middle];
     q1max = middle - 1;
     q3min = middle + 1;
   } else {
     // even
     q3min = array.length / 2;
     q1max = q3min - 1;
-    info.Q2 = (array[q1max] + array[q3min]) / 2;
+    info.median = (array[q1max] + array[q3min]) / 2;
   }
   if (q1max % 2 === 0) {
-    info.Q1 = array[q1max / 2];
-    info.Q3 = array[(array.length + q3min - 1) / 2];
+    info.q1 = array[q1max / 2];
+    info.q3 = array[(array.length + q3min - 1) / 2];
   } else {
-    info.Q1 = (array[(q1max + 1) / 2] + array[(q1max - 1) / 2]) / 2;
+    info.q1 = (array[(q1max + 1) / 2] + array[(q1max - 1) / 2]) / 2;
     let middleOver = (array.length + q3min) / 2;
-    info.Q3 = (array[middleOver] + array[middleOver - 1]) / 2;
+    info.q3 = (array[middleOver] + array[middleOver - 1]) / 2;
   }
   return info;
 }
