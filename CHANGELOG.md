@@ -1,5 +1,17 @@
 # Changelog
 
+## [11.6.0](https://github.com/mljs/spectra-processing/compare/v11.5.0...v11.6.0) (2022-05-06)
+
+
+### Features
+
+* xBoxPlot returns an object with better named properties ([125a4cc](https://github.com/mljs/spectra-processing/commit/125a4cc8b05c0862f0d775a5f8a7882f64f81bf2))
+
+
+### Bug Fixes
+
+* update dependencies and fix cyclic dependencies ([f8c2445](https://github.com/mljs/spectra-processing/commit/f8c24454bee6f380cce3274bfab2f0837c3cbc62))
+
 ## [11.5.0](https://github.com/mljs/spectra-processing/compare/v11.4.0...v11.5.0) (2022-04-27)
 
 
