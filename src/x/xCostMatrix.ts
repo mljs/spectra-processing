@@ -1,17 +1,16 @@
 import { DoubleArray } from 'cheminfo-types';
-import Matrix from 'ml-matrix';
-import { xSubtract } from './xSubtract';
+import { Matrix } from 'ml-matrix';
 
 const absDiff = (a: number, b: number) => Math.abs(a - b);
 
-interface xCostMatrixOptions {
+interface XCostMatrixOptions {
   fct?: (a: number, b: number) => number;
 }
 
 export function xCostMatrix(
   array1: DoubleArray,
   array2: DoubleArray,
-  options: xCostMatrixOptions = {},
+  options: XCostMatrixOptions = {},
 ) {
   const { fct = absDiff } = options;
 
