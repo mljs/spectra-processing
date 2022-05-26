@@ -1,5 +1,57 @@
 # Changelog
 
+## [10.0.0](https://github.com/mljs/spectra-processing/compare/v9.2.0...v10.0.0) (2022-05-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* xNormed throws an error if divide by 0
+* rename createXArray to createFromToArray
+
+### Features
+
+* add uniform random array generator and rename createNormalRandomArray to createRandomArray ([adbf2b4](https://github.com/mljs/spectra-processing/commit/adbf2b4b06cf6f25575c87e87926d7b4cbb2e3c7))
+* add xApplyFunctionStr ([e9e13fd](https://github.com/mljs/spectra-processing/commit/e9e13fdf493bb18b3589c6e4d49673055070839d))
+* add xCostMatrix function ([#151](https://github.com/mljs/spectra-processing/issues/151)) ([fd88754](https://github.com/mljs/spectra-processing/commit/fd88754ae487efca6772265cfdb2a97d149c1c6d))
+* add xEnsureFloat64 ([cc58e79](https://github.com/mljs/spectra-processing/commit/cc58e7919b9e74c8ad248ef1630d08f375e6e945))
+* add xIsMonotoneIncreasing ([fd8fb17](https://github.com/mljs/spectra-processing/commit/fd8fb174d3d0ad256b17392d9425a8277be5d6f2))
+* default seed for createRandomArray is Date.now() ([67ef5d9](https://github.com/mljs/spectra-processing/commit/67ef5d9fd10df5e70e06c78501f168864132974c))
+* expose xCheck ([3fe1914](https://github.com/mljs/spectra-processing/commit/3fe1914c1211254c27c92e2b4cce4f4541605e8a))
+* homogenisation of parameter names. xNormed use max and sum options ([412801c](https://github.com/mljs/spectra-processing/commit/412801c5a10fd67b88a706d0d260b01205021f3e))
+* improve xDive, xMultiply, xRescale for typescript return value ([e90f3b2](https://github.com/mljs/spectra-processing/commit/e90f3b26f0f8576d49292abd7b2fa536114e8b9b))
+* refactor zonesNormalize and remove zonesInvert and getZones ([0236bbf](https://github.com/mljs/spectra-processing/commit/0236bbfe135c03b5ec4586a70cbad8722b55ff8b))
+* remove autoMinMax from xRescale ([ddad5ae](https://github.com/mljs/spectra-processing/commit/ddad5aeefcdbfb60e4c9689520bd1c497211d024))
+* rename createNormalRandomXArray to createNormalRandomArray ([6d2a40f](https://github.com/mljs/spectra-processing/commit/6d2a40f0557ccfef633106e9c0fccef1434d9b1a))
+* rename createXArray to createFromToArray ([e9280e2](https://github.com/mljs/spectra-processing/commit/e9280e2ccae3842a960b2724aaba286d78415f65))
+* rename createXArrayWithStep to createStepArray ([0db5d53](https://github.com/mljs/spectra-processing/commit/0db5d536b853e701d83b285f71bf7bc7cebc3b3d))
+* rename xyClosestX to xyFindClosestPoint and only allow sorted array ([2b439f8](https://github.com/mljs/spectra-processing/commit/2b439f8141c4d7869b0bac96101829c2cb8ec8a9))
+* xBoxPlot returns an object with better named properties ([125a4cc](https://github.com/mljs/spectra-processing/commit/125a4cc8b05c0862f0d775a5f8a7882f64f81bf2))
+* xDivide and xMultiply allow have output parameter ([0bd78dd](https://github.com/mljs/spectra-processing/commit/0bd78dd732dbfafcce58be3eef71db3f0e8e1b5e))
+* xFindClosestIndex accepts a NumberArray ([4c10bc7](https://github.com/mljs/spectra-processing/commit/4c10bc73580dac0554af54cfd878525582f87024))
+* xGetFromToIndex accepts a NumberArray ([c2acea7](https://github.com/mljs/spectra-processing/commit/c2acea7c0453ce3020d823abcfba08aeb1dcb14b))
+* xMaxValue, xMinValue and xSum allow to specify from and to ([5e7212a](https://github.com/mljs/spectra-processing/commit/5e7212a939fb62676c315dd2c8f5651e3c95bd21))
+* xMean allows to specify from and to ([4141d0f](https://github.com/mljs/spectra-processing/commit/4141d0f62815b9057ced8deac8067664f4cf290e))
+* xMedianAbsoluteDeviation returns an object with median and mad ([26430ca](https://github.com/mljs/spectra-processing/commit/26430ca2233fe1c97a528f1b73b324df238596e4))
+* xNoiseStandardDeviation returns now mad, median and sd ([8c7d332](https://github.com/mljs/spectra-processing/commit/8c7d3323671e4cf097271be0c5424e493e26810a))
+* xNormed throws an error if divide by 0 ([7976466](https://github.com/mljs/spectra-processing/commit/79764667d07cef004bb687805a201d035a882ed5))
+* xRescale and xNormed returns typed array ([20eadc0](https://github.com/mljs/spectra-processing/commit/20eadc03dd1da59dc17fc29e8baa046db760001b))
+* xyEquallySpaced must be growing ! Throw error if not ([8221a2f](https://github.com/mljs/spectra-processing/commit/8221a2fdecb6604ec4f7f0e7e4b2bea1777e8394))
+
+
+### Bug Fixes
+
+* don't use MIN_VALUE in xyReduce ([edafc19](https://github.com/mljs/spectra-processing/commit/edafc19178d7a90095796bbe92f4a1ad89cd0a20))
+* don't use Number.MIN_VALUE in xyObjectSlotX ([c364d4c](https://github.com/mljs/spectra-processing/commit/c364d4c73003e674099b99413066423fe3ba1d7b))
+* improve xyEnsureGrowingX ([c8b33d6](https://github.com/mljs/spectra-processing/commit/c8b33d6c113e4f202492a72772064896d5827179))
+* matrixMinMaxZ returns always min and max as numbers ([a68fe87](https://github.com/mljs/spectra-processing/commit/a68fe879ab0660acb8d12f2b7ba3625bae17a956))
+* Normalize small zones that combined into one zone ([#132](https://github.com/mljs/spectra-processing/issues/132)) ([91225c5](https://github.com/mljs/spectra-processing/commit/91225c552b6ffa0886410e4fbcf93ac0fab5ad7a))
+* Remove Zone interface (that should be FromTo) ([a389f30](https://github.com/mljs/spectra-processing/commit/a389f30389ec382edc49ea93f200fde416acfdc5))
+* specify variant possibilities ([7b22eb1](https://github.com/mljs/spectra-processing/commit/7b22eb13e1f6ce2656070e481e6b866c153bc417))
+* throw error in null matrix for matrixMinMaxZ and matrixMinMaxAbsoluteZ ([fd1d921](https://github.com/mljs/spectra-processing/commit/fd1d921ba835340f926effc61a105f9482888688))
+* update dependencies and fix cyclic dependencies ([f8c2445](https://github.com/mljs/spectra-processing/commit/f8c24454bee6f380cce3274bfab2f0837c3cbc62))
+* xMean gives correct result if fromIndex or toIndex outside range ([4141d0f](https://github.com/mljs/spectra-processing/commit/4141d0f62815b9057ced8deac8067664f4cf290e))
+* xNormed use as options value instead of sum / max ([a9d1cbe](https://github.com/mljs/spectra-processing/commit/a9d1cbe637559d260f246b21e057113d32cce997))
+
 ## [11.6.0](https://github.com/mljs/spectra-processing/compare/v11.5.0...v11.6.0) (2022-05-06)
 
 
