@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.7.0](https://github.com/mljs/spectra-processing/compare/v11.6.0...v11.7.0) (2022-06-07)
+
+
+### Features
+
+* add xCostMatrix function ([#151](https://github.com/mljs/spectra-processing/issues/151)) ([fd88754](https://github.com/mljs/spectra-processing/commit/fd88754ae487efca6772265cfdb2a97d149c1c6d))
+
 ## [11.6.0](https://github.com/mljs/spectra-processing/compare/v11.5.0...v11.6.0) (2022-05-06)
 
 
