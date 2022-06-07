@@ -56,6 +56,6 @@ export function matrixPQN(
 
   return {
     data: matrixB.to2DArray(),
-    medianOfQuotients: medianOfQuotients,
+    medianOfQuotients,
   };
 }

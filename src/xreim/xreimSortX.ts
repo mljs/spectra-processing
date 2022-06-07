@@ -9,7 +9,7 @@ export function xreimSortX(data: DataXReIm): DataXReIm {
   const { x, re, im } = data;
 
   if (x.length !== re.length || x.length !== im.length) {
-    throw TypeError('xreimSortX: length of x, re and im must be identical');
+    throw new TypeError('xreimSortX: length of x, re and im must be identical');
   }
 
   if (x.length < 2 || x[0] < x[1]) return data;

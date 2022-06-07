@@ -52,11 +52,9 @@ export function xyFilterX(
     ) {
       newX.push(x[position]);
       newY.push(y[position]);
-    } else {
-      if (x[position] > normalizedZones[currentZoneIndex].to) {
-        currentZoneIndex++;
-        if (!normalizedZones[currentZoneIndex]) break;
-      }
+    } else if (x[position] > normalizedZones[currentZoneIndex].to) {
+      currentZoneIndex++;
+      if (!normalizedZones[currentZoneIndex]) break;
     }
     position++;
   }

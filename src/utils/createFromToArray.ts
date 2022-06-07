@@ -44,20 +44,17 @@ export function createFromToArray(
   const array = new Float64Array(length);
 
   let div = length;
-  if (includeFrom === true && includeTo === true) {
+  if (includeFrom && includeTo) {
     div = length - 1;
-  } else if (
-    (includeFrom === false && includeTo === true) ||
-    (includeFrom === true && includeTo === false)
-  ) {
+  } else if ((!includeFrom && includeTo) || (includeFrom && !includeTo)) {
     div = length;
-  } else if (includeFrom === false && includeTo === false) {
+  } else if (!includeFrom && !includeTo) {
     div = length + 1;
   }
 
   let delta = (to - from) / div;
   if (distribution === 'uniform') {
-    if (includeFrom === true) {
+    if (includeFrom) {
       let index = 0;
       while (index < length) {
         array[index] = from + delta * index;
@@ -74,7 +71,7 @@ export function createFromToArray(
     let base = (to / from) ** (1 / div);
     let firstExponent = Math.log(from) / Math.log(base);
 
-    if (includeFrom === true) {
+    if (includeFrom) {
       let index = 0;
       while (index < length) {
         array[index] = base ** (firstExponent + index);

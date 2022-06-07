@@ -24,7 +24,8 @@ export function xMode(input: NumberArray) {
       counts[element]++;
       count++;
     } else {
-      counts[element] = count = 1;
+      counts[element] = 1;
+      count = 1;
     }
 
     if (count > maxCount) {
