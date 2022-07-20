@@ -1,5 +1,18 @@
 # Changelog
 
+## [11.8.0](https://github.com/mljs/spectra-processing/compare/v11.7.0...v11.8.0) (2022-07-20)
+
+
+### Features
+
+* add matrixMaxAbsoluteZ ([c8ae9c0](https://github.com/mljs/spectra-processing/commit/c8ae9c0e7a64242a8643f429246ede9108374fd7))
+* add matrixZPivotRescale ([784ab2e](https://github.com/mljs/spectra-processing/commit/784ab2eade4300c9b50f9a55cb1a99248a231bc2))
+
+
+### Bug Fixes
+
+* rename matrixZRescale to matrixZRescalePerColumn ([377300c](https://github.com/mljs/spectra-processing/commit/377300cd75ebbc65237c3d9a1659cc7852220e1c))
+
 ## [11.7.0](https://github.com/mljs/spectra-processing/compare/v11.6.0...v11.7.0) (2022-06-07)
 
 
