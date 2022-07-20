@@ -3,7 +3,7 @@ import { DoubleMatrix } from '..';
 import { matrixMinMaxZ } from './matrixMinMaxZ';
 
 /**
- * Rescale columns
+ * Rescale a matrix between min and max values
  *
  * @param matrix - matrix [rows][cols].
  * @param options - Options

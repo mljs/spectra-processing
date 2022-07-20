@@ -1,5 +1,6 @@
 import { DoubleMatrix } from '..';
 
+import { matrixCreateEmpty } from './matrixCreateEmpty';
 /**
  * Rescale the matrix per column for which we get the min and max values
  *
@@ -22,12 +23,9 @@ export function matrixZRescalePerColumn(
   } = {},
 ): DoubleMatrix {
   const { min = 0, max = 1 } = options;
-  const nbRows = matrix.length;
   const nbColumns = matrix[0].length;
-  const newMatrix = new Array(nbRows);
-  for (let row = 0; row < nbRows; row++) {
-    newMatrix[row] = new Float64Array(nbColumns);
-  }
+  const nbRows = matrix.length;
+  const newMatrix = matrixCreateEmpty({ nbColumns, nbRows });
   for (let column = 0; column < nbColumns; column++) {
     let currentMin = matrix[0][column];
     let currentMax = matrix[0][column];
