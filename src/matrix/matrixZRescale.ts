@@ -1,5 +1,6 @@
 import { DoubleMatrix } from '..';
 
+import { matrixCreateEmpty } from './matrixCreateEmpty';
 import { matrixMinMaxZ } from './matrixMinMaxZ';
 
 /**
@@ -21,15 +22,16 @@ export function matrixZRescale(
      * @default 1
      * */
     max?: number;
+    /**
+     * Allows to specify the type of array to use
+     */
+    ArrayConstructor?: any;
   } = {},
 ): DoubleMatrix {
-  const { min = 0, max = 1 } = options;
-  const nbRows = matrix.length;
+  const { min = 0, max = 1, ArrayConstructor } = options;
   const nbColumns = matrix[0].length;
-  const newMatrix = new Array(nbRows);
-  for (let row = 0; row < nbRows; row++) {
-    newMatrix[row] = new Float64Array(nbColumns);
-  }
+  const nbRows = matrix.length;
+  const newMatrix = matrixCreateEmpty({ nbColumns, nbRows, ArrayConstructor });
 
   const { min: currentMin, max: currentMax } = matrixMinMaxZ(matrix);
 

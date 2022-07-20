@@ -17,12 +17,16 @@ export function matrixZPivotRescale(
      * @default 1
      * */
     max?: number;
+    /**
+     * Allows to specify the type of array to use
+     */
+    ArrayConstructor?: any;
   } = {},
 ): DoubleMatrix {
-  const { max = 1 } = options;
+  const { max = 1, ArrayConstructor } = options;
   const nbColumns = matrix[0].length;
   const nbRows = matrix.length;
-  const newMatrix = matrixCreateEmpty({ nbColumns, nbRows });
+  const newMatrix = matrixCreateEmpty({ nbColumns, nbRows, ArrayConstructor });
 
   const currentMax = matrixMaxAbsoluteZ(matrix);
 
