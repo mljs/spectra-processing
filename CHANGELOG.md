@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.9.0](https://github.com/mljs/spectra-processing/compare/v11.8.0...v11.9.0) (2022-07-20)
+
+
+### Features
+
+* allows to specify the array target type for matrixZRescale ([3e8a39d](https://github.com/mljs/spectra-processing/commit/3e8a39dae0895fdb5237f771321f7f2700bac65e))
+
 ## [11.8.0](https://github.com/mljs/spectra-processing/compare/v11.7.0...v11.8.0) (2022-07-20)
 
 
