@@ -1,13 +1,13 @@
-import { matrixZRescale } from '../matrixZRescale';
+import { matrixZRescalePerColumn } from '../matrixZRescalePerColumn';
 
-describe('matrixZRescale', () => {
+describe('matrixZRescalePerColumn', () => {
   it('default options', () => {
     const data = [
       [1, 3, 2, 2],
       [2, 2, 1, 3],
       [3, 1, 3, 1],
     ];
-    let result = matrixZRescale(data);
+    let result = matrixZRescalePerColumn(data);
 
     result = result.map((row) => Array.from(row));
     expect(result).toStrictEqual([
@@ -18,17 +18,17 @@ describe('matrixZRescale', () => {
   });
   it('min: -2, max: 3', () => {
     const data = [
-      [0, 1, 2, 3],
-      [0, 1, 2, 3],
-      [0, 1, 2, 3],
+      [1, 3, 2, 2],
+      [2, 2, 1, 3],
+      [3, 1, 3, 1],
     ];
-    let result = matrixZRescale(data, { min: -3, max: 3 });
+    let result = matrixZRescalePerColumn(data, { min: -2, max: 3 });
 
     result = result.map((row) => Array.from(row));
     expect(result).toStrictEqual([
-      [-3, -1, 1, 3],
-      [-3, -1, 1, 3],
-      [-3, -1, 1, 3],
+      [-2, 3, 0.5, 0.5],
+      [0.5, 0.5, -2, 3],
+      [3, -2, 3, -2],
     ]);
   });
 });

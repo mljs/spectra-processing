@@ -119,16 +119,17 @@ export * from './zone/zoneToX';
 
 export * from './zones/zonesNormalize';
 
+export * from './matrix/matrixApplyNumericalEncoding';
 export * from './matrix/matrixCenterZMean';
+export * from './matrix/matrixClone';
 export * from './matrix/matrixHistogram';
 export * from './matrix/matrixMinMaxZ';
 export * from './matrix/matrixMinMaxAbsoluteZ';
-export * from './matrix/matrixPQN';
-export * from './matrix/matrixZRescale';
-export * from './matrix/matrixClone';
 export * from './matrix/matrixNumericalEncoding';
 export * from './matrix/matrixNumericalDecoding';
-export * from './matrix/matrixApplyNumericalEncoding';
+export * from './matrix/matrixPQN';
+export * from './matrix/matrixZRescale';
+export * from './matrix/matrixZRescalePerColumn';
 
 export * from './utils/createFromToArray';
 export * from './utils/createRandomArray';

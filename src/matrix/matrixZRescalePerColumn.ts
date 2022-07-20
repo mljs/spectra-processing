@@ -1,14 +1,12 @@
 import { DoubleMatrix } from '..';
 
-import { matrixMinMaxZ } from './matrixMinMaxZ';
-
 /**
- * Rescale columns
+ * Rescale the matrix per column for which we get the min and max values
  *
  * @param matrix - matrix [rows][cols].
  * @param options - Options
  */
-export function matrixZRescale(
+export function matrixZRescalePerColumn(
   matrix: DoubleMatrix,
   options: {
     /**
@@ -30,10 +28,14 @@ export function matrixZRescale(
   for (let row = 0; row < nbRows; row++) {
     newMatrix[row] = new Float64Array(nbColumns);
   }
-
-  const { min: currentMin, max: currentMax } = matrixMinMaxZ(matrix);
-
   for (let column = 0; column < nbColumns; column++) {
+    let currentMin = matrix[0][column];
+    let currentMax = matrix[0][column];
+    for (let row = 1; row < nbRows; row++) {
+      if (matrix[row][column] < currentMin) currentMin = matrix[row][column];
+      if (matrix[row][column] > currentMax) currentMax = matrix[row][column];
+    }
+
     const factor = (max - min) / (currentMax - currentMin);
 
     for (let row = 0; row < nbRows; row++) {
