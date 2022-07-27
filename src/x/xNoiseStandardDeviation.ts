@@ -16,7 +16,7 @@ export function xNoiseStandardDeviation(array: DoubleArray): {
    */
   median: number;
   /**
-   * Median absolute devication
+   * Median absolute deviation
    */
   mad: number;
   /**
