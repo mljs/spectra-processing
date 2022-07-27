@@ -3,6 +3,10 @@ import { xMedian } from '../x/xMedian';
 
 import { matrixCheck } from './matrixCheck';
 
+/**
+ * returns the median of the matrix
+ */
+
 export function matrixMedian(matrix: DoubleMatrix) {
   matrixCheck(matrix);
 
