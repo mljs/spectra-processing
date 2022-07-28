@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.11.0](https://github.com/mljs/spectra-processing/compare/v11.10.0...v11.11.0) (2022-07-28)
+
+
+### Features
+
+* add xMaxAbsoluteValue ([d173542](https://github.com/mljs/spectra-processing/commit/d173542e2694d25b00583ff809f670319d8a88fd))
+
 ## [11.10.0](https://github.com/mljs/spectra-processing/compare/v11.9.0...v11.10.0) (2022-07-28)
 
 
