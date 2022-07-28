@@ -22,10 +22,8 @@ export function xMaxAbsoluteValue(
       if (array[i] > maxValue) {
         maxValue = array[i];
       }
-    } else {
-      if (-array[i] > maxValue) {
-        maxValue = -array[i];
-      }
+    } else if (-array[i] > maxValue) {
+      maxValue = -array[i];
     }
   }
   return maxValue;
