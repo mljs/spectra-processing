@@ -1,5 +1,13 @@
 # Changelog
 
+## [11.10.0](https://github.com/mljs/spectra-processing/compare/v11.9.0...v11.10.0) (2022-07-28)
+
+
+### Features
+
+* add matrixMedian ([#157](https://github.com/mljs/spectra-processing/issues/157)) ([4ce1b72](https://github.com/mljs/spectra-processing/commit/4ce1b726a9c49d723add5e5fcf92549b1ba472b6))
+* add matrixToArray and matrixNoiseStandardDeviation ([ead7b21](https://github.com/mljs/spectra-processing/commit/ead7b218466c4cad87c800e602804662916fd8b5))
+
 ## [11.9.0](https://github.com/mljs/spectra-processing/compare/v11.8.0...v11.9.0) (2022-07-20)
 
 
