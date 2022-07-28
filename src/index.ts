@@ -134,7 +134,7 @@ export * from './matrix/matrixZRescale';
 export * from './matrix/matrixZRescalePerColumn';
 export * from './matrix/matrixMedian';
 export * from './matrix/matrixNoiseStandardDeviation';
-export * from './matrix/matrixFlatToFloat64';
+export * from './matrix/matrixToArray';
 
 export * from './utils/createFromToArray';
 export * from './utils/createRandomArray';

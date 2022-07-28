@@ -1,7 +1,7 @@
 import { DoubleMatrix } from '..';
 import { xNoiseStandardDeviation } from '../x/xNoiseStandardDeviation';
 
-import { matrixFlatToFloat64 } from './matrixFlatToFloat64';
+import { matrixToArray } from './matrixToArray';
 
 /**
  * Determine noise level using MAD https://en.wikipedia.org/wiki/Median_absolute_deviation
@@ -12,5 +12,5 @@ import { matrixFlatToFloat64 } from './matrixFlatToFloat64';
  */
 
 export function matrixNoiseStandardDeviation(matrix: DoubleMatrix) {
-  return xNoiseStandardDeviation(matrixFlatToFloat64(matrix));
+  return xNoiseStandardDeviation(matrixToArray(matrix));
 }
