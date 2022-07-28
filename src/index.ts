@@ -26,6 +26,7 @@ export * from './x/xIsMonotone';
 export * from './x/xIsMonotoneIncreasing';
 export * from './x/xMaxIndex';
 export * from './x/xMaxValue';
+export * from './x/xMaxAbsoluteValue';
 export * from './x/xMean';
 export * from './x/xMeanAbsoluteError';
 export * from './x/xMeanSquaredError';
