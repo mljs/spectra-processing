@@ -1,19 +1,13 @@
-import { DoubleMatrix } from '..';
-import { xMedian } from '../x/xMedian';
+import quickSelectMedian from 'median-quickselect';
 
-import { matrixCheck } from './matrixCheck';
+import { DoubleMatrix } from '..';
+
+import { matrixFlatToFloat64 } from './matrixFlatToFloat64';
 
 /**
  * returns the median of the matrix
  */
 
 export function matrixMedian(matrix: DoubleMatrix) {
-  matrixCheck(matrix);
-
-  const medians = new Float64Array(matrix.length);
-  for (let i = 0; i < matrix.length; i++) {
-    medians[i] = xMedian(matrix[i]);
-  }
-
-  return xMedian(medians);
+  return quickSelectMedian(matrixFlatToFloat64(matrix));
 }
