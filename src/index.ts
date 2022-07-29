@@ -133,6 +133,7 @@ export * from './matrix/matrixZPivotRescale';
 export * from './matrix/matrixPQN';
 export * from './matrix/matrixZRescale';
 export * from './matrix/matrixZRescalePerColumn';
+export * from './matrix/matrixAbsoluteMedian';
 export * from './matrix/matrixMedian';
 export * from './matrix/matrixNoiseStandardDeviation';
 export * from './matrix/matrixToArray';
