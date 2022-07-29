@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.12.0](https://github.com/mljs/spectra-processing/compare/v11.11.0...v11.12.0) (2022-07-29)
+
+
+### Features
+
+* add matrixAbsoluteMedian ([a7a77b0](https://github.com/mljs/spectra-processing/commit/a7a77b01b854a9a1905956a3c065379fee8a2a64))
+
 ## [11.11.0](https://github.com/mljs/spectra-processing/compare/v11.10.0...v11.11.0) (2022-07-28)
 
 
