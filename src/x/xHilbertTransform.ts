@@ -3,7 +3,11 @@
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  */
 
-export function hilbertTransform(input: number[]) {
+export function hilbertTransform(
+  input: number[],
+  options: { inClockwise?: boolean } = {},
+) {
+  const { inClockwise = true } = options;
   const array = [0, 0].concat(input).concat(0);
   const result = new Float64Array(input.length);
   for (let k = 2; k < array.length - 1; k++) {
@@ -18,7 +22,7 @@ export function hilbertTransform(input: number[]) {
       const log = Math.log((i - k) / (i - k + 1));
       cSum += array[i] * log + (array[i - 1] - array[i]) * (1 + (i - k) * log);
     }
-    result[k - 2] = (aSum + b + cSum) / Math.PI;
+    result[k - 2] = ((inClockwise ? 1 : -1) * (aSum + b + cSum)) / Math.PI;
   }
   return result;
 }
