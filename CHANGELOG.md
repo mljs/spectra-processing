@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.13.0](https://github.com/mljs/spectra-processing/compare/v11.12.0...v11.13.0) (2022-10-04)
+
+
+### Features
+
+* add xHilbertTransform ([9521510](https://github.com/mljs/spectra-processing/commit/9521510a9087de4e38f0ff4a5f3a671ee22ae351))
+
 ## [11.12.0](https://github.com/mljs/spectra-processing/compare/v11.11.0...v11.12.0) (2022-07-29)
 
 
