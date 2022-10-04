@@ -20,6 +20,7 @@ export * from './x/xEnsureFloat64';
 export * from './x/xFindClosestIndex';
 export * from './x/xGetFromToIndex';
 export * from './x/xGetTargetIndex';
+export * from './x/xHilbertTransform';
 export * from './x/xHistogram';
 export * from './x/xIsEquallySpaced';
 export * from './x/xIsMonotone';
