@@ -30,7 +30,7 @@ export function xApplyFunctionStr(
   const fct = new Function(
     variableLabel,
     `return Number(${fctString
-      .replace(/(?:^|\W)(?:[a-z]{2,})/g, '$1Math.$2')
+      .replace(/(?<before>^|\W)(?<after>[a-z0-9]{2,}\()/g, '$1Math.$2')
       .replace(/Math\.Math/g, 'Math')})`,
   );
   const toReturn = Float64Array.from(array);
