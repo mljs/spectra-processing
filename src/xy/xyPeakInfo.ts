@@ -26,10 +26,8 @@ export function xyPeakInfo(
   const { x, y } = data;
   if (x === undefined || y === undefined || x.length < 3) return undefined;
   let { targetIndex, target } = options;
-  if (targetIndex === undefined) {
-    if (target !== undefined) {
-      targetIndex = xFindClosestIndex(x, target);
-    }
+  if (targetIndex === undefined && target !== undefined) {
+    targetIndex = xFindClosestIndex(x, target);
   }
 
   if (targetIndex === undefined) {

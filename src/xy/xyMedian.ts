@@ -14,7 +14,7 @@ export function xyMedian(data: DataXY): number {
   let i;
 
   if (x.length === 0) {
-    return NaN;
+    return Number.NaN;
   }
 
   if (x.length === 1) {
@@ -33,5 +33,5 @@ export function xyMedian(data: DataXY): number {
       return 0.5 * (x[i] + x[i + 1]);
     }
   }
-  return NaN;
+  return Number.NaN;
 }

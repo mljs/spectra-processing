@@ -12,7 +12,7 @@ export function xCumulative(array: DoubleArray): Float64Array {
   }
 
   let newArray = new Float64Array(array.length);
-  if (array.length < 1) return newArray;
+  if (array.length === 0) return newArray;
 
   newArray[0] = array[0];
   for (let i = 1; i < array.length; i++) {

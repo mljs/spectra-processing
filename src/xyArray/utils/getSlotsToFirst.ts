@@ -23,14 +23,14 @@ export function getSlotsToFirst(
   let firstXs = data[0].x;
   let slots: { from: number; to: number; value: number }[] = [];
   // we first create the slots based on the first spectrum
-  firstXs.forEach((element) => {
+  for (const element of firstXs) {
     let currentDelta = deltaIsFunction ? delta(element) : delta;
     slots.push({
       from: element - currentDelta,
       to: element + currentDelta,
       value: element,
     });
-  });
+  }
 
   let otherXs = xyArrayWeightedMerge(data.slice(1), options).x;
   let currentPosition = 0;

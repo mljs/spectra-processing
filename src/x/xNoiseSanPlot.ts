@@ -254,9 +254,9 @@ function determineCutOff(
     let elementsOfCutOff = cutOff.filter((e) => e[0] < top && e[0] > floor);
     let averageValue = elementsOfCutOff.reduce((a, b) => a + Math.abs(b[1]), 0);
     let kiSqrt = 0;
-    elementsOfCutOff.forEach((element) => {
+    for (const element of elementsOfCutOff) {
       kiSqrt += Math.pow(element[1] - averageValue, 2);
-    });
+    }
 
     if (kiSqrt < minKi) {
       minKi = kiSqrt;

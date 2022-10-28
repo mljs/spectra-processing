@@ -29,7 +29,7 @@ export function getSlots(
     ([] as number[]).concat(...data.map((spectrum) => spectrum.x as number[])),
   ).sort();
 
-  if (possibleXs.length < 1) {
+  if (possibleXs.length === 0) {
     throw new Error('xyArrayMerge can not process empty arrays');
   }
 

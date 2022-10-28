@@ -42,7 +42,7 @@ export function xyArrayWeightedMerge(
     sumXY: point.y * point.x,
   };
 
-  while (data.length !== 0) {
+  while (data.length > 0) {
     nextValue(data, positions, point);
     let sameSlot = point.x <= slot.maxX;
     if (!sameSlot) {
@@ -58,11 +58,9 @@ export function xyArrayWeightedMerge(
     slot.sumXY += point.x * point.y;
     slot.maxX = point.x + delta(point.x);
 
-    if (data.length === 0) {
-      if (slot.sumY > 0) {
-        x.push(slot.sumXY / slot.sumY);
-        y.push(slot.sumY);
-      }
+    if (data.length === 0 && slot.sumY > 0) {
+      x.push(slot.sumXY / slot.sumY);
+      y.push(slot.sumY);
     }
   }
   return { x, y };

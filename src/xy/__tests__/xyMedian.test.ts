@@ -48,6 +48,6 @@ describe('xyMedian', () => {
       x: [],
       y: [],
     };
-    expect(isNaN(xyMedian(data))).toBe(true);
+    expect(Number.isNaN(xyMedian(data))).toBe(true);
   });
 });

@@ -19,9 +19,7 @@ export function xyCheck(
   if ((data.x as number[]).length !== (data.y as number[]).length) {
     throw new Error('The x and y arrays must have the same length');
   }
-  if (minLength) {
-    if (data.x.length < minLength) {
-      throw new Error(`data.x must have a length of at least ${minLength}`);
-    }
+  if (minLength && data.x.length < minLength) {
+    throw new Error(`data.x must have a length of at least ${minLength}`);
   }
 }

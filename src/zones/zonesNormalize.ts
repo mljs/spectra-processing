@@ -46,10 +46,10 @@ export function zonesNormalize(
     zones.push({ from, to });
   }
 
-  zones.forEach((zone) => {
+  for (const zone of zones) {
     if (from > zone.from) zone.from = from;
     if (to < zone.to) zone.to = to;
-  });
+  }
 
   zones = zones.filter((zone) => zone.from <= zone.to);
   if (zones.length === 0) return [];

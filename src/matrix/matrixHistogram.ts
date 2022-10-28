@@ -54,7 +54,7 @@ export function matrixHistogram(
     min?: number;
   } = {},
 ): DataXY {
-  const { logBaseY, logBaseX, absolute } = options;
+  const { logBaseY, logBaseX, absolute, min, max } = options;
   options = JSON.parse(JSON.stringify(options));
   delete options.logBaseY;
   if (matrix.length === 0 || matrix[0].length === 0) {
@@ -63,17 +63,17 @@ export function matrixHistogram(
     );
   }
 
-  if (options.min === undefined || options.max === undefined) {
+  if (min === undefined || max === undefined) {
     const minMax: { min?: number; max?: number } = absolute
       ? matrixMinMaxAbsoluteZ(matrix)
       : matrixMinMaxZ(matrix);
-    if (options.min === undefined) {
+    if (min === undefined) {
       options.min =
         logBaseX && minMax.min
           ? Math.log(minMax.min) / Math.log(logBaseX)
           : minMax.min;
     }
-    if (options.max === undefined) {
+    if (max === undefined) {
       options.max =
         logBaseX && minMax.max
           ? Math.log(minMax.max) / Math.log(logBaseX)

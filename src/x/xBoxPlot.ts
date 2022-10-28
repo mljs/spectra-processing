@@ -8,14 +8,14 @@ import { DoubleArray } from 'cheminfo-types';
 export function xBoxPlot(array: DoubleArray) {
   array = Float64Array.from(array).sort();
   if (array.length < 5) {
-    throw Error(
+    throw new Error(
       'xBoxPlot: can not calculate info if array contains less than 3 elements',
     );
   }
   let info = {
-    q1: 0.0,
-    median: 0.0,
-    q3: 0.0,
+    q1: 0,
+    median: 0,
+    q3: 0,
     min: array[0],
     max: array[array.length - 1],
   };

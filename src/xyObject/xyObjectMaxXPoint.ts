@@ -9,7 +9,7 @@ import { xyObjectCheck } from './xyObjectCheck';
 export function xyObjectMaxXPoint(points: Point[] = []): Point {
   xyObjectCheck(points);
 
-  if (points.length < 1) return { x: 0, y: 0 };
+  if (points.length === 0) return { x: 0, y: 0 };
 
   let current = {
     x: points[0].x,

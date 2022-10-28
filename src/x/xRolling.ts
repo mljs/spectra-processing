@@ -42,7 +42,7 @@ export function xRolling(
   } = {},
 ): DoubleArray {
   xCheck(array);
-  if (typeof fct !== 'function') throw Error('fct has to be a function');
+  if (typeof fct !== 'function') throw new Error('fct has to be a function');
 
   const { window = 5, padding = {} } = options;
   const { size = window - 1, algorithm, value } = padding;

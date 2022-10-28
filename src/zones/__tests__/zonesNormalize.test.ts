@@ -3,7 +3,9 @@ import { zonesNormalize } from '../zonesNormalize';
 describe('zonesNormalize', () => {
   it('no zones', () => {
     let result = zonesNormalize([]);
-    expect(result).toStrictEqual([{ from: -Infinity, to: Infinity }]);
+    expect(result).toStrictEqual([
+      { from: Number.NEGATIVE_INFINITY, to: Number.POSITIVE_INFINITY },
+    ]);
   });
 
   it('no zones but from to', () => {
@@ -121,8 +123,8 @@ describe('zonesNormalize with exclusions', () => {
   it('no zones', () => {
     let result = zonesNormalize([], { exclusions: [{ from: 1, to: 2 }] });
     expect(result).toStrictEqual([
-      { from: -Infinity, to: 1 },
-      { from: 2, to: Infinity },
+      { from: Number.NEGATIVE_INFINITY, to: 1 },
+      { from: 2, to: Number.POSITIVE_INFINITY },
     ]);
   });
 
