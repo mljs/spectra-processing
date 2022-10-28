@@ -20,20 +20,11 @@ describe('matrixNumericalEncoding', () => {
     [93, 'n', 'aa', 192],
   ];
 
-  it('should return an array of numbers', () => {
+  it('should return a matrix of numbers', () => {
     let { matrix } = matrixNumericalEncoding(dataset);
-
-    function allNumbers(arrayData: (string | number)[][]) {
-      for (let subArray of arrayData) {
-        for (let element of subArray) {
-          if (typeof element === 'string') {
-            return false;
-          }
-        }
-      }
-      return true;
-    }
-
-    expect(allNumbers(matrix)).toBe(true);
+    const nonNumbers = matrix
+      .flat(2)
+      .filter((value) => typeof value !== 'number');
+    expect(nonNumbers).toHaveLength(0);
   });
 });

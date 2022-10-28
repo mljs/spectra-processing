@@ -89,12 +89,12 @@ describe('xHistogram', () => {
 
   it('256 slots', () => {
     const generator = new XSAdd(0);
-    const array = new Float64Array(10000).map(generator.random);
+    const array = new Float64Array(10000).map(() => generator.random());
     const histogram = xHistogram(array);
     expect(histogram.y).toHaveLength(256);
-    histogram.y.forEach((element) => {
+    for (const element of histogram.y) {
       expect(element).toBeGreaterThan(10);
-    });
+    }
   });
 
   it('10 slots', () => {
@@ -107,10 +107,10 @@ describe('xHistogram', () => {
     );
     expect(histogram.y).toHaveLength(10);
 
-    histogram.y.forEach((element) => {
+    for (const element of histogram.y) {
       expect(element).toBeGreaterThan(9000);
       expect(element).toBeLessThan(11000);
-    });
+    }
   });
 
   it('11 slots center X', () => {
@@ -124,15 +124,15 @@ describe('xHistogram', () => {
       1,
     );
     expect(histogram.y).toHaveLength(11);
-    histogram.y.forEach((element) => {
+    for (const element of histogram.y) {
       expect(element).toBeGreaterThan(9000);
       expect(element).toBeLessThan(11000);
-    });
+    }
   });
 
   it('min -10, max 10', () => {
     const generator = new XSAdd(0);
-    const array = new Float64Array(10000).map(generator.random);
+    const array = new Float64Array(10000).map(() => generator.random());
     const histogram = xHistogram(array, { nbSlots: 20, min: -10, max: 10 });
     expect(Array.from(histogram.y)).toStrictEqual([
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0,

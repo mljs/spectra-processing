@@ -162,10 +162,13 @@ describe('xyAlign', () => {
     });
   });
   it('test options.delta as a function', () => {
-    const delta = (x: number) => x * 5e-6;
     let data1 = { x: [0, 3, 5, 7], y: [1, 1, 1, 1] };
     let data2 = { x: [2, 3], y: [1, 1] };
-    let result = xyAlign(data1, data2, { delta });
+    let result = xyAlign(data1, data2, {
+      delta(x) {
+        return x * 5e-6;
+      },
+    });
     expect(result).toStrictEqual({
       x: [3],
       y1: [1],
@@ -173,12 +176,13 @@ describe('xyAlign', () => {
     });
   });
   it('test options.delta as a function: (x) => x', () => {
-    const delta = (x: number) => x;
     let data1 = { x: [0, 1, 2, 3], y: [1, 1, 1, 1] };
     let data2 = { x: [2, 3, 5], y: [1, 1, 1] };
     let result = xyAlign(data1, data2, {
       x: 'weighted',
-      delta,
+      delta(x) {
+        return x;
+      },
     });
     expect(result).toStrictEqual({
       x: [1.5, 2.5, 4],

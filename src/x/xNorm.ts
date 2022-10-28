@@ -9,8 +9,8 @@ import { DoubleArray } from 'cheminfo-types';
  */
 export function xNorm(array: DoubleArray): number {
   let result = 0;
-  array.forEach((element) => {
+  for (const element of array) {
     result += element ** 2;
-  });
+  }
   return Math.sqrt(result);
 }

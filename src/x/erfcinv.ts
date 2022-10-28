@@ -163,7 +163,7 @@ export default function erfcinv(x: number): number {
 
   // NaN:
   if (Number.isNaN(x)) {
-    return NaN;
+    return Number.NaN;
   }
   // x not on the interval: [0,2]
   if (x < 0 || x > 2) {

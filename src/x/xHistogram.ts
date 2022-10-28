@@ -91,13 +91,13 @@ export function xHistogram(
         )
       : histogram.x;
 
-  array.forEach((element) => {
+  for (const element of array) {
     const index = Math.max(
       Math.min(((element - min - Number.EPSILON) / slotSize) >> 0, nbSlots - 1),
       0,
     );
     y[index]++;
-  });
+  }
 
   if (logBaseY) {
     const logOfBase = Math.log10(logBaseY);

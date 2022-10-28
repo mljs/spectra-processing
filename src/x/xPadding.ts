@@ -75,7 +75,7 @@ export function xPadding(
       }
       break;
     default:
-      throw Error('xPadding: unknown algorithm');
+      throw new Error('xPadding: unknown algorithm');
   }
 
   return result;

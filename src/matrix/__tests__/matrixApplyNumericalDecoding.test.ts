@@ -41,17 +41,9 @@ describe('matrixApplyNumericalEncoding', () => {
       dictCategoricalToNumerical,
     );
 
-    function allNumbers(matrixData: (string | number)[][]) {
-      for (let array of matrixData) {
-        for (let element of array) {
-          if (typeof element === 'string') {
-            return false;
-          }
-        }
-      }
-      return true;
-    }
-
-    expect(allNumbers(matrix)).toBe(true);
+    const nonNumbers = matrix
+      .flat(2)
+      .filter((value) => typeof value !== 'number');
+    expect(nonNumbers).toHaveLength(0);
   });
 });

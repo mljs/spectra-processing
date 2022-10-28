@@ -51,10 +51,6 @@ export default function equallySpacedSmooth(
   let i = 0; // index of input
   let j = 0; // index of output
 
-  function getSlope(x0: number, y0: number, x1: number, y1: number) {
-    return (y1 - y0) / (x1 - x0);
-  }
-
   let add = 0;
   main: while (true) {
     if (previousX >= nextX) throw new Error('x must be a growing series');
@@ -97,4 +93,8 @@ export default function equallySpacedSmooth(
   }
 
   return output;
+}
+
+function getSlope(x0: number, y0: number, x1: number, y1: number) {
+  return (y1 - y0) / (x1 - x0);
 }

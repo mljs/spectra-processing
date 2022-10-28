@@ -31,7 +31,7 @@ export function xApplyFunctionStr(
     variableLabel,
     `return Number(${fctString
       .replace(
-        /(?<before>^|\W)(?<after>[a-z0-9]{2,}\()/g,
+        /(?<before>^|\W)(?<after>[\da-z]{2,}\()/g,
         '$<before>Math.$<after>',
       )
       .replace(/Math\.Math/g, 'Math')})`,
@@ -39,8 +39,8 @@ export function xApplyFunctionStr(
   const toReturn = Float64Array.from(array);
   for (let i = 0; i < array.length; i++) {
     toReturn[i] = fct(array[i]);
-    if (isNaN(toReturn[i])) {
-      throw Error(
+    if (Number.isNaN(toReturn[i])) {
+      throw new Error(
         `The callback ${fctString} does not return a number: ${array[i]}`,
       );
     }

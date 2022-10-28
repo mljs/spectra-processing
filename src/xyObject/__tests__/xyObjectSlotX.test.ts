@@ -13,8 +13,7 @@ test('xyObjectSlotX', () => {
   ];
 
   let expected = [];
-  expected.push({ x: 1, y: 6 });
-  expected.push({ x: 2, y: 4 });
+  expected.push({ x: 1, y: 6 }, { x: 2, y: 4 });
 
   expect(xyObjectSlotX(arrayXY)).toStrictEqual(expected);
 
