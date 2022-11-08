@@ -3,7 +3,7 @@
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  */
 
-export function hilbertTransform(
+export function xHilbertTransform(
   input: number[],
   options: { inClockwise?: boolean } = {},
 ) {

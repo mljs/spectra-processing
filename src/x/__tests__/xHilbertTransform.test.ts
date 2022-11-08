@@ -1,4 +1,4 @@
-import { hilbertTransform } from '../xHilbertTransform';
+import { xHilbertTransform } from '../xHilbertTransform';
 
 describe('test hilbert transform of cos(t)', () => {
   const length = 50;
@@ -9,7 +9,7 @@ describe('test hilbert transform of cos(t)', () => {
     const sin = new Array(length)
       .fill(0)
       .map((_, i) => Math.sin((i * Math.PI) / 10));
-    const trs = hilbertTransform(cos);
+    const trs = xHilbertTransform(cos);
     const result = Array.from(trs);
     // Excluding some points due to the edge effects
     for (let i = 5; i < 45; i++) {
@@ -24,7 +24,7 @@ describe('test hilbert transform of cos(t)', () => {
     const sin = new Array(length)
       .fill(0)
       .map((_, i) => Math.sin((i * Math.PI) / 10));
-    const trs = hilbertTransform(sin);
+    const trs = xHilbertTransform(sin);
     const result = Array.from(trs);
     // Excluding some points due to the edge effects
     for (let i = 15; i < 35; i++) {
