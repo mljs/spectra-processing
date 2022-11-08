@@ -1,5 +1,13 @@
 # Changelog
 
+## [11.13.1](https://github.com/mljs/spectra-processing/compare/v11.13.0...v11.13.1) (2022-11-08)
+
+
+### Bug Fixes
+
+* correctly export hilbertTransform as xHilbertTransform ([e0a80ef](https://github.com/mljs/spectra-processing/commit/e0a80ef17d9f971f8f398fffa5668e804831f004))
+* xApplyFunctionStr did not accept functions ([8b6dca3](https://github.com/mljs/spectra-processing/commit/8b6dca3c71be6c379899ed0e002eb214a4d09f5c))
+
 ## [11.13.0](https://github.com/mljs/spectra-processing/compare/v11.12.0...v11.13.0) (2022-10-04)
 
 
