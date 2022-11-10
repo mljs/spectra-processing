@@ -1,5 +1,13 @@
 # Changelog
 
+## [11.14.0](https://github.com/mljs/spectra-processing/compare/v11.13.1...v11.14.0) (2022-11-10)
+
+
+### Features
+
+* add matrixAutoCorrelation ([#173](https://github.com/mljs/spectra-processing/issues/173)) ([a7cda65](https://github.com/mljs/spectra-processing/commit/a7cda65a95ce6106913d40a2b6e0be5c1af8bd7c))
+* add matrixBoxPlot ([#171](https://github.com/mljs/spectra-processing/issues/171)) ([a474793](https://github.com/mljs/spectra-processing/commit/a474793ffc37eef0cc9d6e0e1288d16fac2d1897))
+
 ## [11.13.1](https://github.com/mljs/spectra-processing/compare/v11.13.0...v11.13.1) (2022-11-08)
 
 
