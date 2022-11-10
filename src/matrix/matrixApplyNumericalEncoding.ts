@@ -12,7 +12,7 @@ export function matrixApplyNumericalEncoding(
   matrixInitial: (string | number)[][],
   dictionnary: { [nameString: string]: number },
 ): number[][] {
-  let matrix = matrixClone(matrixInitial);
+  const matrix = matrixClone(matrixInitial);
   let arrayOfValues = [];
   for (let key in dictionnary) {
     arrayOfValues.push(dictionnary[key]);

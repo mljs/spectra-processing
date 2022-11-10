@@ -19,7 +19,7 @@ export function matrixNumericalDecoding(
   matrixInitial: number[][],
   dictionnary: { [stringValue: string]: number },
 ): (string | number)[][] {
-  let matrix = matrixClone(matrixInitial);
+  const matrix = matrixClone(matrixInitial);
   let invertedDictionnary: { [numberValue: number]: string } =
     swap(dictionnary);
   for (let i = 0; i < matrix.length; i++) {

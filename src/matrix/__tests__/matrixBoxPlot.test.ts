@@ -2,7 +2,7 @@ import { matrixBoxPlot } from '../matrixBoxPlot';
 
 describe('matrixBoxPlot', () => {
   it('test matrixBoxPlot even', () => {
-    let matrix = [
+    const matrix = [
       [0, 0],
       [1, 10],
       [2, 20],
@@ -26,7 +26,7 @@ describe('matrixBoxPlot', () => {
   });
 
   it('test matrixBoxPlot even small', () => {
-    let matrix = [[0], [1], [2], [3], [4], [5]];
+    const matrix = [[0], [1], [2], [3], [4], [5]];
     expect(matrixBoxPlot(matrix)).toStrictEqual({
       q1: Float64Array.from([1]),
       median: Float64Array.from([2.5]),
@@ -37,7 +37,7 @@ describe('matrixBoxPlot', () => {
   });
 
   it('test matrixBoxPlot odd', () => {
-    let matrix = [[0], [1], [2], [3], [4], [5], [6], [7], [8], [9], [10]];
+    const matrix = [[0], [1], [2], [3], [4], [5], [6], [7], [8], [9], [10]];
     expect(matrixBoxPlot(matrix)).toStrictEqual({
       q1: Float64Array.from([2]),
       median: Float64Array.from([5]),
@@ -48,7 +48,7 @@ describe('matrixBoxPlot', () => {
   });
 
   it('test matrixBoxPlot odd small', () => {
-    let matrix = [[0], [1], [2], [3], [4]];
+    const matrix = [[0], [1], [2], [3], [4]];
     expect(matrixBoxPlot(matrix)).toStrictEqual({
       q1: Float64Array.from([0.5]),
       median: Float64Array.from([2]),
@@ -59,7 +59,7 @@ describe('matrixBoxPlot', () => {
   });
 
   it('test matrixBoxPlot too small', () => {
-    let matrix = [[0], [1], [2], [4]];
+    const matrix = [[0], [1], [2], [4]];
     expect(() => matrixBoxPlot(matrix)).toThrow(
       'matrixBoxPlot: can not calculate info if matrix contains less than 5 rows',
     );
