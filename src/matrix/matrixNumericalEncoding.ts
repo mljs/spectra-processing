@@ -10,7 +10,7 @@ export function matrixNumericalEncoding(matrixInitial: (string | number)[][]): {
   matrix: number[][];
   dictCategoricalToNumerical: { [stringValue: string]: number };
 } {
-  let matrix = matrixClone(matrixInitial);
+  const matrix = matrixClone(matrixInitial);
   let nRows = matrix.length;
   let nColumns = matrix[0].length;
 

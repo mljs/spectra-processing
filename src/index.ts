@@ -122,6 +122,7 @@ export * from './zone/zoneToX';
 export * from './zones/zonesNormalize';
 
 export * from './matrix/matrixApplyNumericalEncoding';
+export * from './matrix/matrixAutoCorrelation';
 export * from './matrix/matrixBoxPlot';
 export * from './matrix/matrixCenterZMean';
 export * from './matrix/matrixClone';
