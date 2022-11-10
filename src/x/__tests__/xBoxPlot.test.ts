@@ -44,4 +44,11 @@ describe('xBoxPlot', () => {
       max: 4,
     });
   });
+
+  it('test xBoxPlot too small', () => {
+    let array = [0, 1, 2, 3];
+    expect(() => xBoxPlot(array)).toThrow(
+      'xBoxPlot: can not calculate info if array contains less than 5 elements',
+    );
+  });
 });
