@@ -9,7 +9,7 @@ export function xBoxPlot(array: DoubleArray) {
   array = Float64Array.from(array).sort();
   if (array.length < 5) {
     throw new Error(
-      'xBoxPlot: can not calculate info if array contains less than 3 elements',
+      'xBoxPlot: can not calculate info if array contains less than 5 elements',
     );
   }
   let info = {
