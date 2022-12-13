@@ -39,7 +39,7 @@ export function createRandomArray(
     length?: number;
   } = {},
 ): Float64Array {
-  let {
+  const {
     mean = 0,
     standardDeviation = 1,
     length = 1000,
