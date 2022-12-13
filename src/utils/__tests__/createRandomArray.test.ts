@@ -17,6 +17,19 @@ describe('createRandomXArray', () => {
     expect(array).toBeDeepCloseTo([10, 10, 10, 10, 10], 1);
   });
 
+  it('normal distribution default mean (0)', () => {
+    let array = createRandomArray({
+      standardDeviation: 1,
+      length: 10000,
+      seed: 0,
+    });
+    expect(Math.min(...array)).toBeCloseTo(-3.7159385968751244);
+    expect(Math.max(...array)).toBeCloseTo(3.606967549040919);
+    expect(
+      array.reduce((previous, current) => previous + current, 0) / 10000,
+    ).toBeCloseTo(0);
+  });
+
   it('uniform distribution', () => {
     let array = createRandomArray({
       mean: 10,

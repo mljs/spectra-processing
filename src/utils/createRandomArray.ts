@@ -13,6 +13,7 @@ export function createRandomArray(
     /**
      * Type of random distribution.
      * 'uniform' (true random) or 'normal' (gaussian distribution)
+     * @default 'normal'
      */
     distribution?: 'uniform' | 'normal';
     /**
