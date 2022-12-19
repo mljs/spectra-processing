@@ -11,6 +11,7 @@ export function xSortAscending(array: DoubleArray) {
   } else if (Array.isArray(array)) {
     return array.sort((a, b) => a - b);
   }
+  throw new Error('Trying to sort non aray');
 }
 
 /** Function that sorts arrays or Float64Arrays in descending order
@@ -24,4 +25,5 @@ export function xSortDescending(array: DoubleArray) {
   } else if (Array.isArray(array)) {
     return array.sort((a, b) => b - a);
   }
+  throw new Error('Trying to sort non aray');
 }
