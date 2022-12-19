@@ -1,5 +1,13 @@
 # Changelog
 
+## [11.15.0](https://github.com/mljs/spectra-processing/compare/v11.14.0...v11.15.0) (2022-12-19)
+
+
+### Features
+
+* add xyFilterMinYValue ([5845edd](https://github.com/mljs/spectra-processing/commit/5845edd2c8d07256f01b0339ba3e1459f63fb7b3))
+* add xyFilterTopYValues ([7570091](https://github.com/mljs/spectra-processing/commit/7570091ef091c49856dd88f2b17f88d8bcfe9fc2))
+
 ## [11.14.0](https://github.com/mljs/spectra-processing/compare/v11.13.1...v11.14.0) (2022-11-10)
 
 
