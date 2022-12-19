@@ -59,7 +59,6 @@
     "cheminfo-types": "^1.4.0",
     "fft.js": "^4.0.4",
     "is-any-array": "^2.0.0",
-    "median-quickselect": "^1.0.1",
     "ml-matrix": "^6.10.4",
     "ml-xsadd": "^2.0.0",
     "spline-interpolator": "^1.0.0"
