@@ -1,6 +1,5 @@
 import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
-import quickSelectMedian from 'median-quickselect';
 
 /**
  * Calculates the median of an array

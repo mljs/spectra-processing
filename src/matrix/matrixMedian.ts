@@ -1,6 +1,4 @@
-import quickSelectMedian from 'median-quickselect';
-
-import { DoubleMatrix } from '..';
+import { DoubleMatrix, xMedian } from '..';
 
 import { matrixToArray } from './matrixToArray';
 
@@ -9,5 +7,5 @@ import { matrixToArray } from './matrixToArray';
  */
 
 export function matrixMedian(matrix: DoubleMatrix) {
-  return quickSelectMedian(matrixToArray(matrix));
+  return xMedian(matrixToArray(matrix));
 }

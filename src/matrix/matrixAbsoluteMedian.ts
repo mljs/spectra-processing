@@ -1,6 +1,4 @@
-import quickSelectMedian from 'median-quickselect';
-
-import { DoubleMatrix } from '..';
+import { DoubleMatrix, xMedian } from '..';
 
 /**
  * returns the median of the absolute matrix
@@ -16,5 +14,5 @@ export function matrixAbsoluteMedian(matrix: DoubleMatrix) {
       flatten[currentRow + column] = value < 0 ? -value : value;
     }
   }
-  return quickSelectMedian(flatten);
+  return xMedian(flatten);
 }
