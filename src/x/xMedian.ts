@@ -21,7 +21,9 @@ export function xMedian(input: NumberArray) {
 
   let low = 0;
   let high = array.length - 1;
-  let middle, ll, hh;
+  let middle = 0;
+  let currentLow = 0;
+  let currentHigh = 0;
   let median = calcMiddle(low, high);
 
   while (true) {
@@ -46,30 +48,30 @@ export function xMedian(input: NumberArray) {
     swap(array, middle, low + 1);
 
     // Nibble from each end towards middle, swapping items when stuck
-    ll = low + 1;
-    hh = high;
+    currentLow = low + 1;
+    currentHigh = high;
     while (true) {
-      do ll++;
-      while (array[low] > array[ll]);
-      do hh--;
-      while (array[hh] > array[low]);
+      do currentLow++;
+      while (array[low] > array[currentLow]);
+      do currentHigh--;
+      while (array[currentHigh] > array[low]);
 
-      if (hh < ll) {
+      if (currentHigh < currentLow) {
         break;
       }
 
-      swap(array, ll, hh);
+      swap(array, currentLow, currentHigh);
     }
 
     // Swap middle item (in position low) back into correct position
-    swap(array, low, hh);
+    swap(array, low, currentHigh);
 
     // Re-set active partition
-    if (hh <= median) {
-      low = ll;
+    if (currentHigh <= median) {
+      low = currentLow;
     }
-    if (hh >= median) {
-      high = hh - 1;
+    if (currentHigh >= median) {
+      high = currentHigh - 1;
     }
   }
 }
@@ -81,5 +83,5 @@ function swap(array: NumberArray, i: number, j: number) {
 }
 
 function calcMiddle(i: number, j: number) {
-  return ~~((i + j) / 2);
+  return Math.floor((i + j) / 2);
 }

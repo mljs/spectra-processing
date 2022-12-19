@@ -21,7 +21,7 @@ export function xyMinimaY(data: DataXY) {
     } else if (y[i - 1] > y[i] && y[i + 1] === y[i]) {
       startEqualIndex = i;
     } else if (y[i - 1] === y[i] && y[i + 1] > y[i]) {
-      let index = ((i + startEqualIndex) / 2) >> 0;
+      let index = Math.floor((i + startEqualIndex) / 2);
       maxima.push({ x: x[index], y: y[index], index });
     }
   }

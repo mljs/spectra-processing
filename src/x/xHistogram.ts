@@ -93,7 +93,10 @@ export function xHistogram(
 
   for (const element of array) {
     const index = Math.max(
-      Math.min(((element - min - Number.EPSILON) / slotSize) >> 0, nbSlots - 1),
+      Math.min(
+        Math.floor((element - min - Number.EPSILON) / slotSize),
+        nbSlots - 1,
+      ),
       0,
     );
     y[index]++;
