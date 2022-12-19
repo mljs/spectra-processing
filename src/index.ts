@@ -69,6 +69,7 @@ export * from './xy/xyCumulativeDistributionStatistics';
 export * from './xy/xyEnsureGrowingX';
 export * from './xy/xyEquallySpaced';
 export * from './xy/xyExtract';
+export * from './xy/xyFilterMinYValue';
 export * from './xy/xyFilterX';
 export * from './xy/xyFilterXPositive';
 export * from './xy/xyGetNMaxY';
