@@ -3,7 +3,7 @@ import { DataXY } from 'cheminfo-types';
 /**
  * Merge abscissa values if the ordinate value is in a list of centroids
  *
- * @param data - points
+ * @param data - object containing 2 properties x and y
  * @param centroids - centroids
  * @param options - options
  * @return merged points

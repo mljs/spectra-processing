@@ -3,7 +3,7 @@ import { DataXY } from 'cheminfo-types';
 /**
  * Merge abscissas values on similar ordinates and weight the group of abscissas
  *
- * @param data - points
+ * @param data - object containing 2 properties x and y
  * @param options - options
  * @return array of merged and weighted points
  */
