@@ -1,6 +1,6 @@
 {
   "name": "ml-spectra-processing",
-  "version": "11.15.0",
+  "version": "11.16.0",
   "description": "Various method to process spectra",
   "main": "./lib/index.js",
   "module": "./lib-esm/index.js",
