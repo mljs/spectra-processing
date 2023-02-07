@@ -44,7 +44,7 @@ console.log(result);
 
 [npm-image]: https://img.shields.io/npm/v/ml-spectra-processing.svg
 [npm-url]: https://www.npmjs.com/package/ml-spectra-processing
-[ci-image]: https://github.com/mljs/spectra-processing/workflows/Node.js%20CI/badge.svg?branch=master
+[ci-image]: https://github.com/mljs/spectra-processing/workflows/Node.js%20CI/badge.svg?branch=main
 [ci-url]: https://github.com/mljs/spectra-processing/actions?query=workflow%3A%22Node.js+CI%22
 [codecov-image]: https://img.shields.io/codecov/c/github/mljs/spectra-processing.svg
 [codecov-url]: https://codecov.io/gh/mljs/spectra-processing

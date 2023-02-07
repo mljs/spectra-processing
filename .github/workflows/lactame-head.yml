@@ -3,7 +3,7 @@ name: Deploy HEAD build on lactame.com
 on:
   workflow_dispatch:
   push:
-    branches: master
+    branches: main
 
 env:
   NODE_VERSION: 14.x
