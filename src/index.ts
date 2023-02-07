@@ -100,6 +100,8 @@ export * from './xy/xyToXYObject';
 export * from './xy/xyUniqueX';
 export * from './xy/xyWeightedMerge';
 
+export * from './xy2/xy2ToXY';
+
 export * from './xreim/xreimZeroFilling';
 export * from './xreim/xreimSortX';
 
