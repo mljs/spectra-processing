@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.16.0](https://github.com/mljs/spectra-processing/compare/v11.15.0...v11.16.0) (2023-02-07)
+
+
+### Features
+
+* add xy2ToXY ([6bf49a5](https://github.com/mljs/spectra-processing/commit/6bf49a566cfae65cb246652cc9e3fd198e4fc2b1))
+
 ## [11.15.0](https://github.com/mljs/spectra-processing/compare/v11.14.0...v11.15.0) (2022-12-19)
 
 
