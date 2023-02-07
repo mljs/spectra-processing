@@ -34,10 +34,9 @@ export function matrixZRescale(
   const newMatrix = matrixCreateEmpty({ nbColumns, nbRows, ArrayConstructor });
 
   const { min: currentMin, max: currentMax } = matrixMinMaxZ(matrix);
+  const factor = (max - min) / (currentMax - currentMin);
 
   for (let column = 0; column < nbColumns; column++) {
-    const factor = (max - min) / (currentMax - currentMin);
-
     for (let row = 0; row < nbRows; row++) {
       newMatrix[row][column] =
         (matrix[row][column] - currentMin) * factor + min;
