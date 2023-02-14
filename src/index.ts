@@ -35,6 +35,7 @@ export * from './x/xMedian';
 export * from './x/xMedianAbsoluteDeviation';
 export * from './x/xMinIndex';
 export * from './x/xMinMaxValues';
+export * from './x/xMinMaxDelta';
 export * from './x/xMinValue';
 export * from './x/xMode';
 export * from './x/xMultiply';
