@@ -15,7 +15,7 @@ export function xMeanWeighted(
   weights: NumberArray,
   options: XGetFromToIndexOptions = {},
 ): number {
-  xCheck(array);
+  xCheck(array, { minLength: 1 });
   xCheck(weights);
   if (array.length !== weights.length) {
     throw new Error('array and weights must have the same length');
