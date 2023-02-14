@@ -29,6 +29,7 @@ export * from './x/xMaxIndex';
 export * from './x/xMaxValue';
 export * from './x/xMaxAbsoluteValue';
 export * from './x/xMean';
+export * from './x/xMeanWeighted';
 export * from './x/xMeanAbsoluteError';
 export * from './x/xMeanSquaredError';
 export * from './x/xMedian';
