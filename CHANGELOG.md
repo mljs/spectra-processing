@@ -1,5 +1,14 @@
 # Changelog
 
+## [11.17.0](https://github.com/mljs/spectra-processing/compare/v11.16.0...v11.17.0) (2023-02-14)
+
+
+### Features
+
+* add xMinMaxDelta ([b142519](https://github.com/mljs/spectra-processing/commit/b142519a295c88d8a0b3d7de9419f484eddb102d))
+* implement xMeanWeighted ([#178](https://github.com/mljs/spectra-processing/issues/178)) ([686d804](https://github.com/mljs/spectra-processing/commit/686d80475a4f2aa07466fe511bf8a5a4986a9844))
+* xCheck as a minLength ([231ca46](https://github.com/mljs/spectra-processing/commit/231ca46a8e5e0b96d932bd9ec607eb705e05ffa8))
+
 ## [11.16.0](https://github.com/mljs/spectra-processing/compare/v11.15.0...v11.16.0) (2023-02-07)
 
 
