@@ -1,6 +1,6 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xIsMonotone } from '../x/xIsMonotone';
+import { xIsMonotonic } from '../x/xIsMonotonic';
 
 /**
  * This function performs a quick sort of the x array while transforming the y array to preserve the coordinates.
@@ -10,7 +10,7 @@ import { xIsMonotone } from '../x/xIsMonotone';
 export function xySortX(data: DataXY): DataXY {
   const { x, y } = data;
 
-  if (xIsMonotone(x) && x.length > 1) {
+  if (xIsMonotonic(x) && x.length > 1) {
     if (x[0] < x[1]) {
       return {
         x: Float64Array.from(x),
