@@ -1,6 +1,6 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xIsMonotoneIncreasing } from '../x/xIsMonotoneIncreasing';
+import { xIsMonotonic } from '../x/xIsMonotonic';
 
 import { xyCheck } from './xyCheck';
 
@@ -11,7 +11,7 @@ import { xyCheck } from './xyCheck';
  */
 export function xyEnsureGrowingX(data: DataXY): DataXY {
   xyCheck(data);
-  if (xIsMonotoneIncreasing(data.x)) return data;
+  if (xIsMonotonic(data.x) === 1) return data;
   const x = Array.from(data.x);
   const y = Array.from(data.y);
   let prevX = Number.NEGATIVE_INFINITY;
