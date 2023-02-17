@@ -44,7 +44,7 @@
     "eslint": "^8.34.0",
     "eslint-config-cheminfo-typescript": "^11.2.2",
     "esm": "^3.2.25",
-    "jest": "^29.4.2",
+    "jest": "^29.4.3",
     "jest-matcher-deep-close-to": "^3.0.2",
     "jscpd": "^3.5.3",
     "ml-spectra-fitting": "^4.2.0",
