@@ -12,13 +12,15 @@ export function xMinMaxDelta(array: NumberArray): {
   min: number;
   max: number;
 } {
-  xCheck(array, { minLength: 2 });
+  xCheck(array, {
+    minLength: 2,
+  });
 
   let minDelta = array[1] - array[0];
   let maxDelta = minDelta;
 
   for (let i = 0; i < array.length - 1; i++) {
-    let delta = array[i + 1] - array[i];
+    const delta = array[i + 1] - array[i];
     if (delta < minDelta) minDelta = delta;
     if (delta > maxDelta) maxDelta = delta;
   }

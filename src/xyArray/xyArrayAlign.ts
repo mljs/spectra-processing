@@ -18,12 +18,17 @@ export function xyArrayAlign(
      * @default 1
      */
     delta?: ((arg: number) => number) | number;
+    /**
+     * If true, the y values must be present everywhere
+     * @default false
+     */
+    requiredY?: boolean;
   } = {},
 ): {
   x: DoubleArray;
   ys: DoubleArray[];
 } {
-  const { delta = 1 } = options;
+  const { delta = 1, requiredY = false } = options;
 
   data = data.map((spectrum) => xyJoinX(spectrum, { delta }));
 
@@ -46,5 +51,21 @@ export function xyArrayAlign(
     }
   }
 
+  if (requiredY) return filterRequiredY(x, ys);
+
   return { x, ys };
+}
+
+function filterRequiredY(x: DoubleArray, ys: DoubleArray[]) {
+  const newX = [];
+  const newYs: number[][] = new Array(ys.length).fill(0).map(() => []);
+  for (let i = 0; i < x.length; i++) {
+    if (ys.every((y) => y[i] !== 0)) {
+      newX.push(x[i]);
+      for (let j = 0; j < ys.length; j++) {
+        newYs[j].push(ys[j][i]);
+      }
+    }
+  }
+  return { x: newX, ys: newYs };
 }
