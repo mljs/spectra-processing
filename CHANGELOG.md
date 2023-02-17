@@ -1,5 +1,19 @@
 # Changelog
 
+## [12.0.0](https://github.com/mljs/spectra-processing/compare/v11.17.0...v12.0.0) (2023-02-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove xIsMonotone and xIsMonotoneIncreasing
+    - remove xIsMonotone, should be replace by xIsMonotonic
+    - remove xIsMonotoneIncreasing, xIsMonotonic should return 1
+
+### Features
+
+* add xIsMonotonic that returns -1, 0 or 1 ([c672db1](https://github.com/mljs/spectra-processing/commit/c672db1bb17b35a7a66aa82221846d79826b0553))
+* xyArrayAlign is able to filter result to have a Y value ([a0c9496](https://github.com/mljs/spectra-processing/commit/a0c94968122ece243a6a651433e0d047a0c06070))
+
 ## [11.17.0](https://github.com/mljs/spectra-processing/compare/v11.16.0...v11.17.0) (2023-02-14)
 
 
