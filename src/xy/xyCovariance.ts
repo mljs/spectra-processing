@@ -14,7 +14,7 @@ export function xyCovariance(
     /** if true, divide by (n-1); if false, divide by n
      * @default true
      */
-    unbiased?: number;
+    unbiased?: boolean;
   } = {},
 ): number {
   const { x, y } = data;
