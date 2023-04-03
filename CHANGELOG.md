@@ -1,5 +1,17 @@
 # Changelog
 
+## [12.1.0](https://github.com/mljs/spectra-processing/compare/v12.0.0...v12.1.0) (2023-04-03)
+
+
+### Features
+
+* add xVariance ([b1ae447](https://github.com/mljs/spectra-processing/commit/b1ae44737d6f177eaf4638b33ccd22e55881acf0))
+
+
+### Bug Fixes
+
+* xyCovariance unbiased type ([0e0361b](https://github.com/mljs/spectra-processing/commit/0e0361bab81e8a12c700b4429e468f92182370ad))
+
 ## [12.0.0](https://github.com/mljs/spectra-processing/compare/v11.17.0...v12.0.0) (2023-02-17)
 
 
