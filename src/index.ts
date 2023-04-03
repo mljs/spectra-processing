@@ -59,6 +59,7 @@ export * from './x/xApplyFunctionStr';
 export * from './x/xSubtract';
 export * from './x/xSum';
 export * from './x/xUniqueSorted';
+export * from './x/xVariance';
 
 export * from './x/utils/getOutputArray';
 
