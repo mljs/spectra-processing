@@ -12,9 +12,8 @@ export function reimPhaseCorrection(
   data: DataReIm,
   phi0 = 0,
   phi1 = 0,
-  options: { reverse?: boolean } = {}
+  options: { reverse?: boolean } = {},
 ): DataReIm {
-
   const { reverse = false } = options;
   phi0 = Number.isFinite(phi0) ? phi0 : 0;
   phi1 = Number.isFinite(phi1) ? phi1 : 0;
