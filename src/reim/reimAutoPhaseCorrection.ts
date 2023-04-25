@@ -37,6 +37,11 @@ export function reimAutoPhaseCorrection(
      * @default 3
      */
     factorNoise?: number;
+    /**
+     * Apply the phase correction from the last element of the array
+     * @default false
+     */
+    reverse?: boolean;
   } = {},
 ): { data: DataReIm; ph0: number; ph1: number } {
   const { re, im } = data;
@@ -47,6 +52,7 @@ export function reimAutoPhaseCorrection(
     minRegSize = 30,
     factorNoise = 3,
     maxDistanceToJoin = 256,
+    reverse = false,
   } = options;
 
   let magnitudeData = magnitudeMode ? reimAbsolute(data) : re;
@@ -89,7 +95,7 @@ export function reimAutoPhaseCorrection(
     }
 
     if (reTmp.length > minRegSize) {
-      res.push(autoPhaseRegion(reTmp, imTmp, x0));
+      res.push(autoPhaseRegion(reTmp, imTmp, x0, reverse));
     }
   }
 
@@ -104,6 +110,7 @@ export function reimAutoPhaseCorrection(
     { re, im },
     (ph0 * Math.PI) / 180,
     (ph1 * Math.PI) / 180,
+    { reverse }
   );
   return { data: phased, ph0, ph1 };
 }
@@ -120,6 +127,7 @@ function autoPhaseRegion(
   re: DoubleArray,
   im: DoubleArray,
   x0: number,
+  reverse: boolean,
 ): {
   ph0: number;
   area: number;
@@ -135,7 +143,7 @@ function autoPhaseRegion(
   while (maxSteps > 0) {
     let dAng = (stop - start) / (nSteps + 1);
     for (let i = start; i <= stop; i += dAng) {
-      let phased = reimPhaseCorrection({ re, im }, toRadians(i), 0);
+      let phased = reimPhaseCorrection({ re, im }, toRadians(i), 0, { reverse });
       let negArea = getNegArea(phased.re);
       if (negArea < minArea) {
         [minArea, bestAng] = [negArea, i];
@@ -147,7 +155,7 @@ function autoPhaseRegion(
   }
 
   // Calculate the area for the best angle
-  let phased = reimPhaseCorrection({ re, im }, toRadians(bestAng), 0);
+  let phased = reimPhaseCorrection({ re, im }, toRadians(bestAng), 0, { reverse });
   let area = 0;
   let sumX = 0;
   for (let j = 0; j < re.length; j++) {
