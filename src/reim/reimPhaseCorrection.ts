@@ -12,7 +12,9 @@ export function reimPhaseCorrection(
   data: DataReIm,
   phi0 = 0,
   phi1 = 0,
+  options: { reverse?: boolean } = {},
 ): DataReIm {
+  const { reverse = false } = options;
   phi0 = Number.isFinite(phi0) ? phi0 : 0;
   phi1 = Number.isFinite(phi1) ? phi1 : 0;
 
@@ -20,17 +22,23 @@ export function reimPhaseCorrection(
   const im = data.im;
   const length = data.re.length;
 
-  const delta = phi1 / length;
+  let firstAngle = phi0;
+  let delta = phi1 / length;
+  if (reverse) {
+    delta *= -1;
+    firstAngle += phi1;
+  }
+
   const alpha = 2 * Math.pow(Math.sin(delta / 2), 2);
   const beta = Math.sin(delta);
-  let cosTheta = Math.cos(phi0);
-  let sinTheta = Math.sin(phi0);
+  let cosTheta = Math.cos(firstAngle);
+  let sinTheta = Math.sin(firstAngle);
 
   const newRe = new Float64Array(length);
   const newIm = new Float64Array(length);
   for (let i = 0; i < length; i++) {
     newRe[i] = re[i] * cosTheta - im[i] * sinTheta;
-    newIm[i] = re[i] * sinTheta + im[i] * cosTheta;
+    newIm[i] = im[i] * cosTheta + re[i] * sinTheta;
     // calculate angles i+1 from i
     let newCosTheta = cosTheta - (alpha * cosTheta + beta * sinTheta);
     let newSinTheta = sinTheta - (alpha * sinTheta - beta * cosTheta);
