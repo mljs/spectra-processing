@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.2.0](https://github.com/mljs/spectra-processing/compare/v12.1.0...v12.2.0) (2023-04-25)
+
+
+### Features
+
+* add reverse to reimPhaseCorrection ([#183](https://github.com/mljs/spectra-processing/issues/183)) ([daed2d7](https://github.com/mljs/spectra-processing/commit/daed2d7d4b5312038508694b30a2c9736c31cd15))
+
 ## [12.1.0](https://github.com/mljs/spectra-processing/compare/v12.0.0...v12.1.0) (2023-04-03)
 
 
