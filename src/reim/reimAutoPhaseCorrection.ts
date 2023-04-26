@@ -75,6 +75,7 @@ export function reimAutoPhaseCorrection(
 
   // Once the regions are detected, we auto phase each of them separately.
   // This part can be put inside a function
+  const indexMask = reverse ? (i: number) => length - i : (i: number) => i;
   let i = -1;
   let x0 = 0;
   let res = [];
@@ -86,7 +87,7 @@ export function reimAutoPhaseCorrection(
     //Look for the first 1 in the array
     while (!finalPeaks[++i] && i < length) {
       //Add some extra points(0.1 ppm) at rigth and left sides of the region.
-      x0 = i;
+      x0 = indexMask(i);
     }
     for (; finalPeaks[i] && i < length; i++) {
       reTmp.push(re[i]);
@@ -95,10 +96,9 @@ export function reimAutoPhaseCorrection(
     }
 
     if (reTmp.length > minRegSize) {
-      res.push(autoPhaseRegion(reTmp, imTmp, x0, reverse));
+      res.push(autoPhaseRegion(reTmp, imTmp, x0));
     }
   }
-
   // Still some corrections needed. In the paper they remove the outlayers interatively
   // until they can perform a regression witout bad points. Can someone help here?
   let [ph1, ph0] = weightedLinearRegression(
@@ -110,7 +110,7 @@ export function reimAutoPhaseCorrection(
     { re, im },
     (ph0 * Math.PI) / 180,
     (ph1 * Math.PI) / 180,
-    { reverse }
+    { reverse },
   );
   return { data: phased, ph0, ph1 };
 }
@@ -127,7 +127,6 @@ function autoPhaseRegion(
   re: DoubleArray,
   im: DoubleArray,
   x0: number,
-  reverse: boolean,
 ): {
   ph0: number;
   area: number;
@@ -143,7 +142,7 @@ function autoPhaseRegion(
   while (maxSteps > 0) {
     let dAng = (stop - start) / (nSteps + 1);
     for (let i = start; i <= stop; i += dAng) {
-      let phased = reimPhaseCorrection({ re, im }, toRadians(i), 0, { reverse });
+      let phased = reimPhaseCorrection({ re, im }, toRadians(i), 0);
       let negArea = getNegArea(phased.re);
       if (negArea < minArea) {
         [minArea, bestAng] = [negArea, i];
@@ -155,7 +154,7 @@ function autoPhaseRegion(
   }
 
   // Calculate the area for the best angle
-  let phased = reimPhaseCorrection({ re, im }, toRadians(bestAng), 0, { reverse });
+  let phased = reimPhaseCorrection({ re, im }, toRadians(bestAng), 0);
   let area = 0;
   let sumX = 0;
   for (let j = 0; j < re.length; j++) {
