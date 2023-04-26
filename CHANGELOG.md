@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.3.0](https://github.com/mljs/spectra-processing/compare/v12.2.0...v12.3.0) (2023-04-26)
+
+
+### Features
+
+* added reverse option to autoPhaseCorrection ([#186](https://github.com/mljs/spectra-processing/issues/186)) ([3970d65](https://github.com/mljs/spectra-processing/commit/3970d654f0287a61326b7c1afeb63a32ab8226d4))
+
 ## [12.2.0](https://github.com/mljs/spectra-processing/compare/v12.1.0...v12.2.0) (2023-04-25)
 
 
