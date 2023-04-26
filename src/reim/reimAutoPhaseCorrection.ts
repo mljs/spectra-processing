@@ -37,6 +37,11 @@ export function reimAutoPhaseCorrection(
      * @default 3
      */
     factorNoise?: number;
+    /**
+     * Apply the phase correction from the last element of the array
+     * @default false
+     */
+    reverse?: boolean;
   } = {},
 ): { data: DataReIm; ph0: number; ph1: number } {
   const { re, im } = data;
@@ -47,6 +52,7 @@ export function reimAutoPhaseCorrection(
     minRegSize = 30,
     factorNoise = 3,
     maxDistanceToJoin = 256,
+    reverse = false,
   } = options;
 
   let magnitudeData = magnitudeMode ? reimAbsolute(data) : re;
@@ -69,6 +75,7 @@ export function reimAutoPhaseCorrection(
 
   // Once the regions are detected, we auto phase each of them separately.
   // This part can be put inside a function
+  const indexMask = reverse ? (i: number) => length - i : (i: number) => i;
   let i = -1;
   let x0 = 0;
   let res = [];
@@ -80,7 +87,7 @@ export function reimAutoPhaseCorrection(
     //Look for the first 1 in the array
     while (!finalPeaks[++i] && i < length) {
       //Add some extra points(0.1 ppm) at rigth and left sides of the region.
-      x0 = i;
+      x0 = indexMask(i);
     }
     for (; finalPeaks[i] && i < length; i++) {
       reTmp.push(re[i]);
@@ -92,7 +99,6 @@ export function reimAutoPhaseCorrection(
       res.push(autoPhaseRegion(reTmp, imTmp, x0));
     }
   }
-
   // Still some corrections needed. In the paper they remove the outlayers interatively
   // until they can perform a regression witout bad points. Can someone help here?
   let [ph1, ph0] = weightedLinearRegression(
@@ -104,6 +110,7 @@ export function reimAutoPhaseCorrection(
     { re, im },
     (ph0 * Math.PI) / 180,
     (ph1 * Math.PI) / 180,
+    { reverse },
   );
   return { data: phased, ph0, ph1 };
 }
