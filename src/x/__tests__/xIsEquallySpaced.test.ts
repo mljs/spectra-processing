@@ -1,4 +1,4 @@
-import { xIsEquallySpaced } from '../xIsEquallySpaced';
+import { xIsEquallySpaced } from '../../index';
 
 describe('xIsEquallySpaced', () => {
   it('empty', () => {

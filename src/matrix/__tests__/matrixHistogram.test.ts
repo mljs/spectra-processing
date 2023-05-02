@@ -1,6 +1,6 @@
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { matrixHistogram } from '../matrixHistogram';
+import { matrixHistogram } from '../../index';
 
 expect.extend({ toMatchCloseTo });
 

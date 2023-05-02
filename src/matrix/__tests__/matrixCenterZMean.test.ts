@@ -1,4 +1,4 @@
-import { matrixCenterZMean } from '../matrixCenterZMean';
+import { matrixCenterZMean } from '../../index';
 
 test('matrixCenterZMean', () => {
   const data = [

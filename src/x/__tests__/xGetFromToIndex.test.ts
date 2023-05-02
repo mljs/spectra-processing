@@ -1,4 +1,4 @@
-import { xGetFromToIndex } from '../xGetFromToIndex';
+import { xGetFromToIndex } from '../../index';
 
 describe('xGetFromToIndex', () => {
   it('no from to', () => {

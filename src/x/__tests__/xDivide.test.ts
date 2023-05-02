@@ -1,4 +1,4 @@
-import { xDivide } from '../xDivide';
+import { xDivide } from '../../index';
 
 describe('divide', () => {
   it('test divide of 2 vectors', () => {

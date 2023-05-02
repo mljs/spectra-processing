@@ -1,4 +1,4 @@
-import { xMean } from '../xMean';
+import { xMean } from '../../index';
 
 test('xMean', () => {
   let typedArray = new Uint16Array(5);

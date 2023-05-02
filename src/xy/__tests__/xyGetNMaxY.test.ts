@@ -1,4 +1,4 @@
-import { xyGetNMaxY } from '../xyGetNMaxY';
+import { xyGetNMaxY } from '../../index';
 
 describe('xyGetNMaxY', () => {
   it('number max peaks bigger than spectrum length', () => {

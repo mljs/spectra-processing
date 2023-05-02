@@ -1,4 +1,4 @@
-import { reimAbsolute } from '../reimAbsolute';
+import { reimAbsolute } from '../../index';
 
 describe('reimAbsolute', () => {
   it('test reimAbsolute', () => {

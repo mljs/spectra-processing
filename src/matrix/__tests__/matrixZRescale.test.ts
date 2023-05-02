@@ -1,4 +1,4 @@
-import { matrixZRescale } from '../matrixZRescale';
+import { matrixZRescale } from '../../index';
 
 describe('matrixZRescale', () => {
   it('default options', () => {

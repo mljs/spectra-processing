@@ -1,4 +1,4 @@
-import { xSubtract } from '../xSubtract';
+import { xSubtract } from '../../index';
 
 describe('xSubtract', () => {
   it('test xSubtract of 2 vectors', () => {

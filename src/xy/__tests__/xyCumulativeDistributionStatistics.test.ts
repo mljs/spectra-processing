@@ -1,6 +1,6 @@
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { xyCumulativeDistributionStatistics } from '../xyCumulativeDistributionStatistics';
+import { xyCumulativeDistributionStatistics } from '../../index';
 
 expect.extend({ toMatchCloseTo });
 

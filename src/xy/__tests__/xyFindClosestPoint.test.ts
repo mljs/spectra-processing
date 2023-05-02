@@ -1,4 +1,4 @@
-import { xyFindClosestPoint } from '../xyFindClosestPoint';
+import { xyFindClosestPoint } from '../../index';
 
 describe('closestX', () => {
   it('should yield the correct result with even element array', () => {

@@ -1,5 +1,4 @@
-import { matrixNumericalDecoding } from '../matrixNumericalDecoding';
-import { matrixNumericalEncoding } from '../matrixNumericalEncoding';
+import { matrixNumericalDecoding, matrixNumericalEncoding } from '../../index';
 
 describe('matrixNumericalDecoding', () => {
   let dataset = [

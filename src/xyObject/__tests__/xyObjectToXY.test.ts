@@ -1,4 +1,4 @@
-import { xyObjectToXY } from '../xyObjectToXY';
+import { xyObjectToXY } from '../../index';
 
 test('xyObjectToXY', () => {
   let arrayXY = [

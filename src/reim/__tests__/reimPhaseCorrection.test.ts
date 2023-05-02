@@ -1,6 +1,6 @@
 import XSAdd from 'ml-xsadd';
 
-import { reimPhaseCorrection } from '../reimPhaseCorrection';
+import { reimPhaseCorrection } from '../../index';
 
 let data = {
   x: [

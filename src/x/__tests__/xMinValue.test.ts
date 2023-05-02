@@ -1,4 +1,4 @@
-import { xMinValue } from '../xMinValue';
+import { xMinValue } from '../../index';
 
 test('xMinValue', () => {
   let typedArray = new Uint16Array(3);

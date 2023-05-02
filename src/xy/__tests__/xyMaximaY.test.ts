@@ -1,4 +1,4 @@
-import { xyMaximaY } from '../xyMaximaY';
+import { xyMaximaY } from '../../index';
 
 describe('xyMaximaY', () => {
   it('clear top', () => {

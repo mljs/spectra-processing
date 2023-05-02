@@ -1,4 +1,4 @@
-import { xCrossCorrelation } from '../xCrossCorrelation';
+import { xCrossCorrelation } from '../../index';
 
 describe('xCrossCorrelation', () => {
   it('cross-correlation linear and constant function', () => {

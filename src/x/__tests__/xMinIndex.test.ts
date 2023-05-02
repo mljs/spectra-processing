@@ -1,4 +1,4 @@
-import { xMinIndex } from '../xMinIndex';
+import { xMinIndex } from '../../index';
 
 describe('array-xMinIndex', () => {
   let typedArray = new Uint16Array(3);

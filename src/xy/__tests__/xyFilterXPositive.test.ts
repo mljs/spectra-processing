@@ -1,4 +1,4 @@
-import { xyFilterXPositive } from '../xyFilterXPositive';
+import { xyFilterXPositive } from '../../index';
 
 test('xyFilterXPositive', () => {
   const data = {

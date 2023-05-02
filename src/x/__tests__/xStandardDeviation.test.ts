@@ -1,4 +1,4 @@
-import { xStandardDeviation } from '../xStandardDeviation';
+import { xStandardDeviation } from '../../index';
 
 let data = [15, 13, 17, 7];
 

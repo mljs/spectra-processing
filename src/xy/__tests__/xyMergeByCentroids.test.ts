@@ -1,4 +1,4 @@
-import { xyMergeByCentroids } from '../xyMergeByCentroids';
+import { xyMergeByCentroids } from '../../index';
 
 const originalPoints = {
   x: [0.01, 1.008, 1.01, 1.012, 1.02, 1.04],

@@ -1,4 +1,4 @@
-import { xyObjectBestPoints } from '../xyObjectBestPoints';
+import { xyObjectBestPoints } from '../../index';
 
 describe('test xyObjectBestPeaks', () => {
   let points = [

@@ -1,4 +1,4 @@
-import { xVariance } from '../xVariance';
+import { xVariance } from '../../index';
 
 describe('variance', () => {
   it('array', () => {

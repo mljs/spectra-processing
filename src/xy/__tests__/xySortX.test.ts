@@ -1,4 +1,4 @@
-import { xySortX } from '../xySortX';
+import { xySortX } from '../../index';
 
 describe('xySortX', () => {
   it('unsorted', () => {

@@ -1,4 +1,4 @@
-import { matrixZRescalePerColumn } from '../matrixZRescalePerColumn';
+import { matrixZRescalePerColumn } from '../../index';
 
 describe('matrixZRescalePerColumn', () => {
   it('default options', () => {

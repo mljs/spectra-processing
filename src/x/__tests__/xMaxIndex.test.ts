@@ -1,4 +1,4 @@
-import { xMaxIndex } from '../xMaxIndex';
+import { xMaxIndex } from '../../index';
 
 describe('array-xMaxIndex', () => {
   let typedArray = new Uint16Array(3);

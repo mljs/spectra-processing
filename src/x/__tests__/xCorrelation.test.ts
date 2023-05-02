@@ -1,4 +1,4 @@
-import { xCorrelation } from '../xCorrelation';
+import { xCorrelation } from '../../index';
 
 describe('xCorrelation', () => {
   // wolfram alpha: xCorrelation([1,2,3],[4,5,6])

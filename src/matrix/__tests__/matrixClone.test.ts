@@ -1,4 +1,4 @@
-import { matrixClone } from '../matrixClone';
+import { matrixClone } from '../../index';
 
 describe('matrixClone', () => {
   let dataset = [

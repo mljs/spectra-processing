@@ -1,4 +1,4 @@
-import { xAutoCorrelation } from '../xAutoCorrelation';
+import { xAutoCorrelation } from '../../index';
 
 describe('xCrossCorrelation', () => {
   // Scilab: xcorr(linear)

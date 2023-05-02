@@ -1,4 +1,4 @@
-import { xMeanWeighted } from '../xMeanWeighted';
+import { xMeanWeighted } from '../../index';
 
 test('xMeanWeighted', () => {
   let typedArray = new Uint16Array(5);

@@ -1,4 +1,4 @@
-import { xyPeakInfo } from '../xyPeakInfo';
+import { xyPeakInfo } from '../../index';
 
 describe('xyPeakInfo', () => {
   it('positive peak', () => {

@@ -1,4 +1,4 @@
-import { xAbsolute } from '../xAbsolute';
+import { xAbsolute } from '../../index';
 
 describe('xAbsolute', () => {
   it('normal array', () => {

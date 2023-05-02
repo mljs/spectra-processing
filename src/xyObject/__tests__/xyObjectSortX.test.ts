@@ -1,4 +1,4 @@
-import { xyObjectSortX } from '../xyObjectSortX';
+import { xyObjectSortX } from '../../index';
 
 test('xyObjectSortX', () => {
   let arrayXY = [

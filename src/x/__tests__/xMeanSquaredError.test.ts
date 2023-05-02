@@ -1,4 +1,4 @@
-import { xMeanSquaredError } from '../xMeanSquaredError';
+import { xMeanSquaredError } from '../../index';
 
 describe('xMeanSquaredError', () => {
   it('no error', () => {

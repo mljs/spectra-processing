@@ -1,4 +1,4 @@
-import { matrixMinMaxAbsoluteZ } from '../matrixMinMaxAbsoluteZ';
+import { matrixMinMaxAbsoluteZ } from '../../index';
 
 describe('matrixMinMaxAbsoluteZ', () => {
   it('basic', () => {

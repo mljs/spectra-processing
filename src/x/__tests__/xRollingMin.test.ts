@@ -1,6 +1,6 @@
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { xRollingMin } from '../xRollingMin';
+import { xRollingMin } from '../../index';
 
 expect.extend({ toMatchCloseTo });
 

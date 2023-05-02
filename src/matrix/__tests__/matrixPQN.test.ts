@@ -1,4 +1,4 @@
-import { matrixPQN } from '../matrixPQN';
+import { matrixPQN } from '../../index';
 
 test('Probabilistic quotient normalization method', () => {
   const data = [

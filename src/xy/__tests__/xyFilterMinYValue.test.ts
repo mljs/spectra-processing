@@ -1,4 +1,4 @@
-import { xyFilterMinYValue } from '../xyFilterMinYValue';
+import { xyFilterMinYValue } from '../../index';
 
 describe('xyFilterMinYValue', () => {
   const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

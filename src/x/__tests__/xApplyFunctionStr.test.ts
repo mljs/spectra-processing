@@ -1,4 +1,4 @@
-import { xApplyFunctionStr } from '../xApplyFunctionStr';
+import { xApplyFunctionStr } from '../../index';
 
 test('xApplyFunctionStr', () => {
   expect(xApplyFunctionStr([3, 4])).toStrictEqual(Float64Array.from([3, 4]));

@@ -1,4 +1,4 @@
-import { xSampling } from '../xSampling';
+import { xSampling } from '../../index';
 
 describe('test xSampling', () => {
   it('testing on array', () => {

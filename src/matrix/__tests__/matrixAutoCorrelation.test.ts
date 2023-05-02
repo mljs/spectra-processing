@@ -1,4 +1,4 @@
-import { matrixAutoCorrelation } from '../matrixAutoCorrelation';
+import { matrixAutoCorrelation } from '../../index';
 
 describe('matrixAutoCorrelation', () => {
   it('simple', () => {

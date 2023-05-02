@@ -1,6 +1,6 @@
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { xRollingMedian } from '../xRollingMedian';
+import { xRollingMedian } from '../../index';
 
 expect.extend({ toMatchCloseTo });
 

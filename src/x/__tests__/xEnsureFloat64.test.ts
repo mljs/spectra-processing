@@ -1,4 +1,4 @@
-import { xEnsureFloat64 } from '../xEnsureFloat64';
+import { xEnsureFloat64 } from '../../index';
 
 describe('xEnsureFloat64', () => {
   it('normal array', () => {

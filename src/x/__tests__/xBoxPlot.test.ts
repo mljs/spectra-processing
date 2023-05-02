@@ -1,4 +1,4 @@
-import { xBoxPlot } from '../xBoxPlot';
+import { xBoxPlot } from '../../index';
 
 describe('xBoxPlot', () => {
   it('test xBoxPlot even', () => {

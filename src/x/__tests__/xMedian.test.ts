@@ -1,6 +1,6 @@
 import XSAdd from 'ml-xsadd';
 
-import { xMedian } from '../xMedian';
+import { xMedian } from '../../index';
 
 describe('array-median', () => {
   const generator = new XSAdd(0);

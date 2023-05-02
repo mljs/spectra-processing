@@ -1,4 +1,4 @@
-import { xyIntegral } from '../xyIntegral';
+import { xyIntegral } from '../../index';
 
 describe('xyIntegral', () => {
   it('zero element', () => {

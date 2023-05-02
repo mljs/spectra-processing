@@ -1,4 +1,4 @@
-import { xyFilterX } from '../xyFilterX';
+import { xyFilterX } from '../../index';
 
 describe('xyFilterX', () => {
   const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

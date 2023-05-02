@@ -2,7 +2,7 @@ import { DataXY } from 'cheminfo-types';
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 import XSAdd from 'ml-xsadd';
 
-import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
+import { xyArrayWeightedMerge } from '../../index';
 
 expect.extend({ toMatchCloseTo });
 

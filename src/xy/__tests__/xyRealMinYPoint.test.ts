@@ -1,4 +1,4 @@
-import { xyRealMinYPoint } from '../xyRealMinYPoint';
+import { xyRealMinYPoint } from '../../index';
 
 describe('xyRealMinYPoint', () => {
   it('positive symmetric peak', () => {

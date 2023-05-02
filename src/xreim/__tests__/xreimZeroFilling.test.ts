@@ -1,4 +1,4 @@
-import { xreimZeroFilling } from '../xreimZeroFilling';
+import { xreimZeroFilling } from '../../index';
 
 describe('xreimZeroFilling', () => {
   it('test xreimZeroFilling over', () => {

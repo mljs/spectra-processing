@@ -1,4 +1,4 @@
-import { xDotProduct } from '../xDotProduct';
+import { xDotProduct } from '../../index';
 
 describe('crossCorrelation', () => {
   it('cross-correlation linear and constant function', () => {

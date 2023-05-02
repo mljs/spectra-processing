@@ -1,6 +1,6 @@
 import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
 
-import { xyMaxMerge } from '../xyMaxMerge';
+import { xyMaxMerge } from '../../index';
 
 expect.extend({ toBeDeepCloseTo });
 

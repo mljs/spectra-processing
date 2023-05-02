@@ -1,6 +1,6 @@
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { matrixColumnsCorrelation } from '../matrixColumnsCorrelation';
+import { matrixColumnsCorrelation } from '../../index';
 
 expect.extend({ toMatchCloseTo });
 

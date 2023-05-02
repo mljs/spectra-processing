@@ -1,4 +1,4 @@
-import { xyCheck } from '../xyCheck';
+import { xyCheck } from '../../index';
 
 describe('xyCheck', () => {
   it('various kind of object', () => {

@@ -1,4 +1,4 @@
-import { xyMedian } from '../xyMedian';
+import { xyMedian } from '../../index';
 
 describe('xyMedian', () => {
   it('check the median of four consecutive integers, should return 2.5', () => {

@@ -1,4 +1,4 @@
-import { xyMinYPoint } from '../xyMinYPoint';
+import { xyMinYPoint } from '../../index';
 
 describe('xyMinYPoint', () => {
   it('no from to', () => {

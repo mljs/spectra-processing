@@ -1,4 +1,4 @@
-import { xMaxValue } from '../xMaxValue';
+import { xMaxValue } from '../../index';
 
 test('xMaxValue', () => {
   let typedArray = new Uint16Array(3);

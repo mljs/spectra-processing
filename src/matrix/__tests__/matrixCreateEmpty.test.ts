@@ -1,4 +1,4 @@
-import { matrixCreateEmpty } from '../matrixCreateEmpty';
+import { matrixCreateEmpty } from '../../index';
 
 describe('matrixCreateEmpty', () => {
   it('should return an array of numbers', () => {

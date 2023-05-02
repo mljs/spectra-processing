@@ -1,4 +1,4 @@
-import { xyIntegration } from '../xyIntegration';
+import { xyIntegration } from '../../index';
 
 describe('XY xyIntegration', () => {
   it('zero element', () => {

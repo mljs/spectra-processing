@@ -1,4 +1,4 @@
-import { xyObjectJoinX } from '../xyObjectJoinX';
+import { xyObjectJoinX } from '../../index';
 
 test('xyObjectJoinX', () => {
   let arrayXY = [

@@ -1,4 +1,4 @@
-import { xPadding } from '../xPadding';
+import { xPadding } from '../../index';
 
 test('xPadding', () => {
   let array = [1, 2, 3, 4, 5];

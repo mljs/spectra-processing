@@ -1,6 +1,6 @@
 import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
 
-import { createFromToArray } from '../createFromToArray';
+import { createFromToArray } from '../../index';
 
 expect.extend({ toBeDeepCloseTo });
 

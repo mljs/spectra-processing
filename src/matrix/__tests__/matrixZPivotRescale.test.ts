@@ -1,4 +1,4 @@
-import { matrixZPivotRescale } from '../matrixZPivotRescale';
+import { matrixZPivotRescale } from '../../index';
 
 describe('matrixZPivotRescale', () => {
   it('only positive number', () => {

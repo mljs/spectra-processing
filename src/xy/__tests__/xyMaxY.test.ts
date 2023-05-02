@@ -1,4 +1,4 @@
-import { xyMaxY } from '../xyMaxY';
+import { xyMaxY } from '../../index';
 
 describe('xyMaxY', () => {
   it('no from to', () => {

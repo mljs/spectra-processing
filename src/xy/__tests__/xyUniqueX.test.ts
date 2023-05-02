@@ -1,4 +1,4 @@
-import { xyUniqueX } from '../xyUniqueX';
+import { xyUniqueX } from '../../index';
 
 describe('xyUniqueX', () => {
   it('unsorted sum', () => {

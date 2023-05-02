@@ -1,4 +1,4 @@
-import { xyMinimaY } from '../xyMinimaY';
+import { xyMinimaY } from '../../index';
 
 describe('xyMinimaY', () => {
   it('clear top', () => {

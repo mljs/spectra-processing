@@ -1,4 +1,4 @@
-import { xyMaxClosestYPoint } from '../xyMaxClosestYPoint';
+import { xyMaxClosestYPoint } from '../../index';
 
 describe('xyMaxClosestYPoint', () => {
   it('positive peak', () => {

@@ -1,4 +1,4 @@
-import { matrixCheck } from '../matrixCheck';
+import { matrixCheck } from '../../index';
 
 describe('matrixCheck', () => {
   it('should throw error', () => {

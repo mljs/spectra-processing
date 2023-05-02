@@ -1,4 +1,4 @@
-import { xCumulative } from '../xCumulative';
+import { xCumulative } from '../../index';
 
 describe('xCumulative', () => {
   it('zero length array', () => {

@@ -1,4 +1,4 @@
-import { matrixBoxPlot } from '../matrixBoxPlot';
+import { matrixBoxPlot } from '../../index';
 
 describe('matrixBoxPlot', () => {
   it('test matrixBoxPlot even', () => {

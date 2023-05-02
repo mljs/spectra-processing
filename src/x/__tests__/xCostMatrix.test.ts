@@ -1,6 +1,6 @@
 import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { xCostMatrix } from '../xCostMatrix';
+import { xCostMatrix } from '../../index';
 
 expect.extend({ toMatchCloseTo });
 

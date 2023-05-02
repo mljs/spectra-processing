@@ -1,4 +1,4 @@
-import { xyGrowingX } from '../xyGrowingX';
+import { xyGrowingX } from '../../index';
 
 describe('xyGrowingX', () => {
   it('test xyGrowingX do nothing', () => {

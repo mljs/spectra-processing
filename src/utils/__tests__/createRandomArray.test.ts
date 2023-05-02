@@ -1,8 +1,7 @@
 import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
 import { optimize } from 'ml-spectra-fitting';
 
-import { xHistogram } from '../../x/xHistogram';
-import { createRandomArray } from '../createRandomArray';
+import { createRandomArray, xHistogram } from '../../index';
 
 expect.extend({ toBeDeepCloseTo });
 

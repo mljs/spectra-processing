@@ -1,6 +1,6 @@
 import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
 
-import { createStepArray } from '../createStepArray';
+import { createStepArray } from '../../index';
 
 expect.extend({ toBeDeepCloseTo });
 

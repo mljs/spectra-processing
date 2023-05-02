@@ -1,4 +1,4 @@
-import { xyArrayAlign } from '../xyArrayAlign';
+import { xyArrayAlign } from '../../index';
 
 describe('xyArrayAlign', () => {
   it('same length spectra, simple integers', () => {

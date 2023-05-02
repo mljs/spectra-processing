@@ -2,7 +2,7 @@ import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 import XSAdd from 'ml-xsadd';
 
 import { createFromToArray } from '../../utils/createFromToArray';
-import { xHistogram } from '../xHistogram';
+import { xHistogram } from '../../index';
 
 expect.extend({ toMatchCloseTo });
 

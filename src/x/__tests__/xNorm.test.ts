@@ -1,4 +1,4 @@
-import { xNorm } from '../xNorm';
+import { xNorm } from '../../index';
 
 describe('xNorm', () => {
   it('Should return the norm of the vector', () => {

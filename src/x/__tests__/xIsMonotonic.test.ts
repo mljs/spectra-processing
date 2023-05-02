@@ -1,4 +1,4 @@
-import { xIsMonotonic } from '../xIsMonotonic';
+import { xIsMonotonic } from '../../index';
 
 describe('xIsMonotonic', () => {
   it('test xIsMonotonic increasing', () => {

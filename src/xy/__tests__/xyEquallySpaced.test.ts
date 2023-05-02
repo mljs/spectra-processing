@@ -1,4 +1,4 @@
-import { xyEquallySpaced } from '../xyEquallySpaced';
+import { xyEquallySpaced } from '../../index';
 
 describe('equallySpaced', () => {
   it('testing 1 points', () => {

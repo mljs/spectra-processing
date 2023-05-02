@@ -1,4 +1,4 @@
-import { xHilbertTransform } from '../xHilbertTransform';
+import { xHilbertTransform } from '../../index';
 
 describe('test hilbert transform of cos(t)', () => {
   const length = 50;

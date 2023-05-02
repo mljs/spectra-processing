@@ -1,4 +1,4 @@
-import { xUniqueSorted } from '../xUniqueSorted';
+import { xUniqueSorted } from '../../index';
 
 test('xUniqueSorted', () => {
   let array = [-1, 2, -3, 4, -1, 2];

@@ -1,4 +1,4 @@
-import { xMode } from '../xMode';
+import { xMode } from '../../index';
 
 describe('array-mode', () => {
   let typedArray = new Uint16Array(3);

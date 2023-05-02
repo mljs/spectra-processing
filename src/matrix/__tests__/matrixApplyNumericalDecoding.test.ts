@@ -1,5 +1,7 @@
-import { matrixApplyNumericalEncoding } from '../matrixApplyNumericalEncoding';
-import { matrixNumericalEncoding } from '../matrixNumericalEncoding';
+import {
+  matrixApplyNumericalEncoding,
+  matrixNumericalEncoding,
+} from '../../index';
 
 describe('matrixApplyNumericalEncoding', () => {
   let datasetForEncoding = [

@@ -1,4 +1,4 @@
-import { xyArrayMerge } from '../xyArrayMerge';
+import { xyArrayMerge } from '../../index';
 
 describe('xyArrayMerge', () => {
   it('same length spectra, simple integers', () => {

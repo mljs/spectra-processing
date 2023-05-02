@@ -1,4 +1,4 @@
-import { xyEnsureGrowingX } from '../xyEnsureGrowingX';
+import { xyEnsureGrowingX } from '../../index';
 
 describe('xyEnsureGrowingX', () => {
   it('skip middle', () => {

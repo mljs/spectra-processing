@@ -1,4 +1,4 @@
-import { xSequentialFill } from '../xSequentialFill';
+import { xSequentialFill } from '../../index';
 
 describe('array-sequential fill', () => {
   it('default value', () => {

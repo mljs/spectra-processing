@@ -1,4 +1,4 @@
-import { xreimSortX } from '../xreimSortX';
+import { xreimSortX } from '../../index';
 
 describe('xreimSortX', () => {
   it('test xreimSortX do nothing', () => {

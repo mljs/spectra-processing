@@ -1,4 +1,4 @@
-import { xNormed } from '../xNormed';
+import { xNormed } from '../../index';
 
 describe('array-norm', () => {
   it('should return the norm', () => {

@@ -1,4 +1,4 @@
-import { xRescale } from '../xRescale';
+import { xRescale } from '../../index';
 
 describe('xRescale', () => {
   let typedArray = new Uint16Array(3);
