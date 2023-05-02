@@ -1,5 +1,5 @@
-import { reimAbsolute } from '../../reim/reimAbsolute';
 import { xNoiseSanPlot } from '../../index';
+import { reimAbsolute } from '../../reim/reimAbsolute';
 
 let data = {
   x: [

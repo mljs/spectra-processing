@@ -1,5 +1,5 @@
-import { createRandomArray } from '../../utils/createRandomArray';
 import { xMedianAbsoluteDeviation } from '../../index';
+import { createRandomArray } from '../../utils/createRandomArray';
 
 describe('xMedianAbsoluteDeviation', () => {
   it('basic example', () => {

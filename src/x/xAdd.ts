@@ -19,7 +19,7 @@ export function xAdd(
     }
   } else {
     isConstant = true;
-    constant = array2 as number;
+    constant = array2;
   }
 
   let array3 = new Float64Array(array1.length);
