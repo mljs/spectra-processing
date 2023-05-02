@@ -20,7 +20,6 @@ export function xCheck(
   if ((input as NumberArray).length === 0) {
     throw new TypeError('input must not be empty');
   }
-  //@ts-expect-error we already checked that input is an array
   if (minLength && input.length < minLength) {
     throw new Error(`input must have a length of at least ${minLength}`);
   }
