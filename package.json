@@ -2,9 +2,56 @@
   "name": "ml-spectra-processing",
   "version": "12.3.0",
   "description": "Various method to process spectra",
-  "main": "./lib/index.js",
-  "module": "./lib-esm/index.js",
-  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "node": "./lib/index.js",
+      "default": "./lib-esm/index.js"
+    },
+    "./matrix": {
+      "node": "./lib/matrix/index.js",
+      "default": "./lib-esm/matrix/index.js"
+    },
+    "./reim": {
+      "node": "./lib/reim/index.js",
+      "default": "./lib-esm/reim/index.js"
+    },
+    "./utils": {
+      "node": "./lib/utils/index.js",
+      "default": "./lib-esm/utils/index.js"
+    },
+    "./x": {
+      "node": "./lib/x/index.js",
+      "default": "./lib-esm/x/index.js"
+    },
+    "./xreim": {
+      "node": "./lib/xreim/index.js",
+      "default": "./lib-esm/xreim/index.js"
+    },
+    "./xy": {
+      "node": "./lib/xy/index.js",
+      "default": "./lib-esm/xy/index.js"
+    },
+    "./xy2": {
+      "node": "./lib/xy2/index.js",
+      "default": "./lib-esm/xy2/index.js"
+    },
+    "./xyArray": {
+      "node": "./lib/xyArray/index.js",
+      "default": "./lib-esm/xyArray/index.js"
+    },
+    "./xyObject": {
+      "node": "./lib/xyObject/index.js",
+      "default": "./lib-esm/xyObject/index.js"
+    },
+    "./zone": {
+      "node": "./lib/zone/index.js",
+      "default": "./lib-esm/zone/index.js"
+    },
+    "./zones": {
+      "node": "./lib/zones/index.js",
+      "default": "./lib-esm/zones/index.js"
+    }
+  },
   "files": [
     "src",
     "lib",
