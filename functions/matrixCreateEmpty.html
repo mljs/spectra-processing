@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>xreimZeroFilling | ml-spectra-processing</title><meta name="description" content="Documentation for ml-spectra-processing"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script async src="../assets/search.js" id="search-script"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"/><script src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js"></script><script>
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>matrixCreateEmpty | ml-spectra-processing</title><meta name="description" content="Documentation for ml-spectra-processing"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script async src="../assets/search.js" id="search-script"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"/><script src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js"></script><script>
 					window.__typeDocPluginKatexOptions={"delimiters":[{"left":"$","right":"$","display":true}],"fleqn":"true","leqno":"false"};
 					window.addEventListener('load', () => window.renderMathInElement(document.body, window.__typeDocPluginKatexOptions));
 				</script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
@@ -16,32 +16,43 @@
 <div class="tsd-page-title">
 <ul class="tsd-breadcrumb">
 <li><a href="../modules.html">ml-spectra-processing</a></li>
-<li><a href="xreimZeroFilling.html">xreimZeroFilling</a></li></ul>
-<h1>Function xreimZeroFilling</h1></div>
+<li><a href="matrixCreateEmpty.html">matrixCreateEmpty</a></li></ul>
+<h1>Function matrixCreateEmpty</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures tsd-kind-function">
-<li class="tsd-signature tsd-anchor-link" id="xreimZeroFilling">xreim<wbr/>Zero<wbr/>Filling<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="../interfaces/DataXReIm.html" class="tsd-signature-type" data-tsd-kind="Interface">DataXReIm</a>, totalLength<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/DataXReIm.html" class="tsd-signature-type" data-tsd-kind="Interface">DataXReIm</a><a href="#xreimZeroFilling" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="matrixCreateEmpty">matrix<wbr/>Create<wbr/>Empty<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span><br/><span>    </span>ArrayConstructor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>matrix<span class="tsd-signature-symbol">?: </span><a href="../types/DoubleMatrix.html" class="tsd-signature-type" data-tsd-kind="Type alias">DoubleMatrix</a><span class="tsd-signature-symbol">; </span><br/><span>    </span>nbColumns<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>nbRows<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../types/DoubleMatrix.html" class="tsd-signature-type" data-tsd-kind="Type alias">DoubleMatrix</a><a href="#matrixCreateEmpty" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>This function make a zero filling to re and im part.</p>
-
-<h3>Returns</h3><ul>
-<li>data.</li>
-</ul>
+<div class="tsd-comment tsd-typography"><p>Create a new matrix based on the size of the current one</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5>data: <a href="../interfaces/DataXReIm.html" class="tsd-signature-type" data-tsd-kind="Interface">DataXReIm</a></h5>
-<div class="tsd-comment tsd-typography"><p>object of kind {x:[], re:[], im:[]}</p>
+<h5>options: <span class="tsd-signature-symbol">{ </span><br/><span>    </span>ArrayConstructor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>matrix<span class="tsd-signature-symbol">?: </span><a href="../types/DoubleMatrix.html" class="tsd-signature-type" data-tsd-kind="Type alias">DoubleMatrix</a><span class="tsd-signature-symbol">; </span><br/><span>    </span>nbColumns<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>nbRows<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span></h5>
+<ul class="tsd-parameters">
+<li class="tsd-parameter">
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> Array<wbr/>Constructor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span></h5>
+<div class="tsd-comment tsd-typography"><p>Allows to specify the type of array to use</p>
 </div></li>
-<li>
-<h5>totalLength: <span class="tsd-signature-type">number</span></h5>
-<div class="tsd-comment tsd-typography"><p>final number of points</p>
-</div></li></ul></div>
-<h4 class="tsd-returns-title">Returns <a href="../interfaces/DataXReIm.html" class="tsd-signature-type" data-tsd-kind="Interface">DataXReIm</a></h4><aside class="tsd-sources">
+<li class="tsd-parameter">
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> matrix<span class="tsd-signature-symbol">?: </span><a href="../types/DoubleMatrix.html" class="tsd-signature-type" data-tsd-kind="Type alias">DoubleMatrix</a></h5>
+<div class="tsd-comment tsd-typography"><p>Matrix from which to extract nbRows and nbColumns</p>
+</div></li>
+<li class="tsd-parameter">
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> nb<wbr/>Columns<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>Matrix from which to extract nbRows and nbColumns</p>
+
+<h3>Default</h3><p>matrix[0].length || 1</p>
+</div></li>
+<li class="tsd-parameter">
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> nb<wbr/>Rows<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>Matrix from which to extract nbRows and nbColumns</p>
+
+<h3>Default</h3><p>matrix.length || 1</p>
+</div></li></ul></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="../types/DoubleMatrix.html" class="tsd-signature-type" data-tsd-kind="Type alias">DoubleMatrix</a></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/mljs/spectra-processing/blob/8da34e7/src/xreim/xreimZeroFilling.ts#L9">xreim/xreimZeroFilling.ts:9</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/mljs/spectra-processing/blob/8da34e7/src/matrix/matrixCreateEmpty.ts#L6">matrix/matrixCreateEmpty.ts:6</a></li></ul></aside></li></ul></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
@@ -83,7 +94,7 @@
 <li class="tsd-kind-function"><a href="matrixCheck.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>matrix<wbr/>Check</a></li>
 <li class="tsd-kind-function"><a href="matrixClone.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>matrix<wbr/>Clone</a></li>
 <li class="tsd-kind-function"><a href="matrixColumnsCorrelation.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>matrix<wbr/>Columns<wbr/>Correlation</a></li>
-<li class="tsd-kind-function"><a href="matrixCreateEmpty.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>matrix<wbr/>Create<wbr/>Empty</a></li>
+<li class="current tsd-kind-function"><a href="matrixCreateEmpty.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>matrix<wbr/>Create<wbr/>Empty</a></li>
 <li class="tsd-kind-function"><a href="matrixHistogram.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>matrix<wbr/>Histogram</a></li>
 <li class="tsd-kind-function"><a href="matrixMaxAbsoluteZ.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>matrix<wbr/>Max<wbr/>AbsoluteZ</a></li>
 <li class="tsd-kind-function"><a href="matrixMedian.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>matrix<wbr/>Median</a></li>
@@ -158,7 +169,7 @@
 <li class="tsd-kind-function"><a href="xUniqueSorted.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>x<wbr/>Unique<wbr/>Sorted</a></li>
 <li class="tsd-kind-function"><a href="xVariance.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>x<wbr/>Variance</a></li>
 <li class="tsd-kind-function"><a href="xreimSortX.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>xreim<wbr/>SortX</a></li>
-<li class="current tsd-kind-function"><a href="xreimZeroFilling.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>xreim<wbr/>Zero<wbr/>Filling</a></li>
+<li class="tsd-kind-function"><a href="xreimZeroFilling.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>xreim<wbr/>Zero<wbr/>Filling</a></li>
 <li class="tsd-kind-function"><a href="xy2ToXY.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>xy2<wbr/>ToXY</a></li>
 <li class="tsd-kind-function"><a href="xyAlign.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>xy<wbr/>Align</a></li>
 <li class="tsd-kind-function"><a href="xyArrayAlign.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>xy<wbr/>Array<wbr/>Align</a></li>
