@@ -1,5 +1,18 @@
 # Changelog
 
+## [12.4.0](https://github.com/mljs/spectra-processing/compare/v12.3.0...v12.4.0) (2023-05-05)
+
+
+### Features
+
+* expoe in package.json the different folders ([cb0025b](https://github.com/mljs/spectra-processing/commit/cb0025b8190e1fcb2a67a25b42d3438b3443e4dd))
+* expose xCostMatrix ([dccc9ba](https://github.com/mljs/spectra-processing/commit/dccc9bae7521dcd15f29af2051989cf62f0d9fb4))
+
+
+### Bug Fixes
+
+* correct eslint problems ([f631198](https://github.com/mljs/spectra-processing/commit/f631198a126fe9ce23c941df091395317314d26d))
+
 ## [12.3.0](https://github.com/mljs/spectra-processing/compare/v12.2.0...v12.3.0) (2023-04-26)
 
 
