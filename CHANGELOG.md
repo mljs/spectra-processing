@@ -1,5 +1,13 @@
 # Changelog
 
+## [12.5.0](https://github.com/mljs/spectra-processing/compare/v12.4.0...v12.5.0) (2023-06-23)
+
+
+### Features
+
+* add getRecaler with clamping ([95c1e74](https://github.com/mljs/spectra-processing/commit/95c1e74257e0600cd03ff651f4a4104de6441271))
+* add more getRescaler algorithms ([6f1b5de](https://github.com/mljs/spectra-processing/commit/6f1b5de12cad21a9cffcc5f807ea8c206444f9f0))
+
 ## [12.4.0](https://github.com/mljs/spectra-processing/compare/v12.3.0...v12.4.0) (2023-05-05)
 
 
