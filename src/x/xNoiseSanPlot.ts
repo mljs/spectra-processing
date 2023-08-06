@@ -86,14 +86,14 @@ export function xNoiseSanPlot(
   input = input.sort().reverse();
 
   if (fixOffset && !magnitudeMode) {
-    let medianIndex = Math.floor(input.length / 2);
-    let median = 0.5 * (input[medianIndex] + input[medianIndex + 1]);
+    const medianIndex = Math.floor(input.length / 2);
+    const median = 0.5 * (input[medianIndex] + input[medianIndex + 1]);
     for (let i = 0; i < input.length; i++) {
       input[i] -= median;
     }
   }
 
-  let firstNegativeValueIndex =
+  const firstNegativeValueIndex =
     input[input.length - 1] >= 0 ? input.length : input.findIndex((e) => e < 0);
   let lastPositiveValueIndex = firstNegativeValueIndex - 1;
   for (let i = lastPositiveValueIndex; i >= 0; i--) {
@@ -103,19 +103,19 @@ export function xNoiseSanPlot(
     }
   }
 
-  let signPositive = input.slice(0, lastPositiveValueIndex + 1);
-  let signNegative = input.slice(firstNegativeValueIndex);
+  const signPositive = input.slice(0, lastPositiveValueIndex + 1);
+  const signNegative = input.slice(firstNegativeValueIndex);
 
-  let cutOffDist = cutOff || determineCutOff(signPositive, { magnitudeMode });
+  const cutOffDist = cutOff || determineCutOff(signPositive, { magnitudeMode });
 
-  let pIndex = Math.floor(signPositive.length * cutOffDist);
+  const pIndex = Math.floor(signPositive.length * cutOffDist);
   let initialNoiseLevelPositive = signPositive[pIndex];
 
-  let skyPoint = signPositive[0];
+  const skyPoint = signPositive[0];
 
   let initialNoiseLevelNegative;
   if (signNegative.length > 0) {
-    let nIndex = Math.floor(signNegative.length * (1 - cutOffDist));
+    const nIndex = Math.floor(signNegative.length * (1 - cutOffDist));
     initialNoiseLevelNegative = -1 * signNegative[nIndex];
   } else {
     initialNoiseLevelNegative = 0;
@@ -148,7 +148,7 @@ export function xNoiseSanPlot(
         ];
     }
   }
-  let correctionFactor = -simpleNormInv(cutOffDist / 2, { magnitudeMode });
+  const correctionFactor = -simpleNormInv(cutOffDist / 2, { magnitudeMode });
   initialNoiseLevelPositive = initialNoiseLevelPositive / correctionFactor;
   initialNoiseLevelNegative = initialNoiseLevelNegative / correctionFactor;
 
@@ -229,30 +229,33 @@ function determineCutOff(
     fromTo?: Record<string, FromTo>;
   } = {},
 ): number {
-  let {
+  const {
     magnitudeMode = false,
     considerList = { from: 0.5, step: 0.1, to: 0.9 },
   } = options;
   //generate a list of values for
-  let cutOff = [];
-  let indexMax = signPositive.length - 1;
+  const cutOff = [];
+  const indexMax = signPositive.length - 1;
   for (let i = 0.01; i <= 0.99; i += 0.01) {
-    let index = Math.round(indexMax * i);
-    let value =
+    const index = Math.round(indexMax * i);
+    const value =
       -signPositive[index] /
       (simpleNormInv([i / 2], { magnitudeMode }) as number);
     cutOff.push([i, value]);
   }
 
   let minKi = Number.MAX_SAFE_INTEGER;
-  let { from, to, step } = considerList;
-  let delta = step / 2;
+  const { from, to, step } = considerList;
+  const delta = step / 2;
   let whereToCutStat = 0.5;
   for (let i = from; i <= to; i += step) {
-    let floor = i - delta;
-    let top = i + delta;
-    let elementsOfCutOff = cutOff.filter((e) => e[0] < top && e[0] > floor);
-    let averageValue = elementsOfCutOff.reduce((a, b) => a + Math.abs(b[1]), 0);
+    const floor = i - delta;
+    const top = i + delta;
+    const elementsOfCutOff = cutOff.filter((e) => e[0] < top && e[0] > floor);
+    const averageValue = elementsOfCutOff.reduce(
+      (a, b) => a + Math.abs(b[1]),
+      0,
+    );
     let kiSqrt = 0;
     for (const element of elementsOfCutOff) {
       kiSqrt += Math.pow(element[1] - averageValue, 2);
@@ -307,22 +310,22 @@ function simpleNormInv(
 
   if (!Array.isArray(data)) data = [data as number];
 
-  let from = 0;
-  let to = 2;
-  let step = 0.01;
-  let xTraining = Array.from(createArray(from, to, step));
+  const from = 0;
+  const to = 2;
+  const step = 0.01;
+  const xTraining = Array.from(createArray(from, to, step));
 
-  let result = new Float64Array(data.length);
-  let yTraining = new Float64Array(xTraining.length);
+  const result = new Float64Array(data.length);
+  const yTraining = new Float64Array(xTraining.length);
   if (magnitudeMode) {
-    let factor = 1;
+    const factor = 1;
     for (let i = 0; i < yTraining.length; i++) {
-      let finalInput = xTraining[i] * factor;
+      const finalInput = xTraining[i] * factor;
       yTraining[i] = 1 - rayleighCdf(finalInput);
     }
-    let interp = new SplineInterpolator(xTraining, yTraining);
+    const interp = new SplineInterpolator(xTraining, yTraining);
     for (let i = 0; i < result.length; i++) {
-      let yValue = 2 * data[i];
+      const yValue = 2 * data[i];
       result[i] = -1 * interp.interpolate(yValue);
     }
   } else {
@@ -343,7 +346,7 @@ function simpleNormInv(
  */
 function createArray(from: number, to: number, step: number): DoubleArray {
   // Changed Array to Float64Array
-  let result = new Float64Array(Math.abs((from - to) / step + 1));
+  const result = new Float64Array(Math.abs((from - to) / step + 1));
   for (let i = 0; i < result.length; i++) {
     result[i] = from + i * step;
   }
@@ -388,9 +391,9 @@ function generateSanPlot(
 ) {
   const { fromTo, logBaseY = 2 } = options;
 
-  let sanplot: Record<string, DataXY> = {};
-  for (let key in fromTo) {
-    let { from, to } = fromTo[key];
+  const sanplot: Record<string, DataXY> = {};
+  for (const key in fromTo) {
+    const { from, to } = fromTo[key];
     sanplot[key] =
       from !== to
         ? scale(array.slice(from, to), {

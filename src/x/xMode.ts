@@ -15,10 +15,10 @@ export function xMode(input: NumberArray) {
   let maxValue = 0;
   let maxCount = 0;
   let count = 0;
-  let counts: { [element: number]: number } = {};
+  const counts: Record<number, number> = {};
 
   for (let i = 0; i < input.length; ++i) {
-    let element = input[i];
+    const element = input[i];
     count = counts[element];
     if (count) {
       counts[element]++;

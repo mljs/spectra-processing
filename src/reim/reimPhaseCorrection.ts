@@ -40,8 +40,8 @@ export function reimPhaseCorrection(
     newRe[i] = re[i] * cosTheta - im[i] * sinTheta;
     newIm[i] = im[i] * cosTheta + re[i] * sinTheta;
     // calculate angles i+1 from i
-    let newCosTheta = cosTheta - (alpha * cosTheta + beta * sinTheta);
-    let newSinTheta = sinTheta - (alpha * sinTheta - beta * cosTheta);
+    const newCosTheta = cosTheta - (alpha * cosTheta + beta * sinTheta);
+    const newSinTheta = sinTheta - (alpha * sinTheta - beta * cosTheta);
     cosTheta = newCosTheta;
     sinTheta = newSinTheta;
   }

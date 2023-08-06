@@ -1,7 +1,7 @@
 import { matrixClone } from '../../index';
 
 describe('matrixClone', () => {
-  let dataset = [
+  const dataset = [
     [73, 'a', 'o', 152],
     [93, 'b', 'u', 185],
     [89, 'c', 'p', 180],

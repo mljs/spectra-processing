@@ -13,7 +13,7 @@ import { xyCheck } from './xyCheck';
 export function xyMinimaY(data: DataXY) {
   xyCheck(data, { minLength: 2 });
   const { x, y } = data;
-  let maxima = [];
+  const maxima = [];
   let startEqualIndex = -1;
   for (let i = 1; i < x.length - 1; i++) {
     if (y[i - 1] > y[i] && y[i + 1] > y[i]) {
@@ -21,7 +21,7 @@ export function xyMinimaY(data: DataXY) {
     } else if (y[i - 1] > y[i] && y[i + 1] === y[i]) {
       startEqualIndex = i;
     } else if (y[i - 1] === y[i] && y[i + 1] > y[i]) {
-      let index = Math.floor((i + startEqualIndex) / 2);
+      const index = Math.floor((i + startEqualIndex) / 2);
       maxima.push({ x: x[index], y: y[index], index });
     }
   }

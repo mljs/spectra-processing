@@ -32,8 +32,8 @@ export function xyExtract(
     return data;
   }
 
-  let newX = [];
-  let newY = [];
+  const newX = [];
+  const newY = [];
 
   let currentZone = zones[0];
   let position = 0;

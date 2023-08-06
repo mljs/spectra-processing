@@ -2,14 +2,16 @@ import { xreimZeroFilling } from '../../index';
 
 describe('xreimZeroFilling', () => {
   it('test xreimZeroFilling over', () => {
-    let x = [0, 0.1, 0.2, 0.3];
-    let re = [0, 1, 2, 3];
-    let im = [4, 5, 6, 7];
-    let result = xreimZeroFilling({ x, re, im }, 6);
-    let newX = Array.from(result.x).map((value) => Math.round(value * 10) / 10);
+    const x = [0, 0.1, 0.2, 0.3];
+    const re = [0, 1, 2, 3];
+    const im = [4, 5, 6, 7];
+    const result = xreimZeroFilling({ x, re, im }, 6);
+    const newX = Array.from(result.x).map(
+      (value) => Math.round(value * 10) / 10,
+    );
 
-    let newRe = Array.from(result.re);
-    let newIm = Array.from(result.im);
+    const newRe = Array.from(result.re);
+    const newIm = Array.from(result.im);
 
     expect({ x: newX, re: newRe, im: newIm }).toStrictEqual({
       x: [0, 0.1, 0.2, 0.3, 0.4, 0.5],
@@ -19,13 +21,13 @@ describe('xreimZeroFilling', () => {
   });
 
   it('test xreimZeroFilling equal', () => {
-    let x = [0, 0.1, 0.2, 0.3];
-    let re = [0, 1, 2, 3];
-    let im = [4, 5, 6, 7];
-    let result = xreimZeroFilling({ x, re, im }, 4);
-    let newX = Array.from(result.x);
-    let newRe = Array.from(result.re);
-    let newIm = Array.from(result.im);
+    const x = [0, 0.1, 0.2, 0.3];
+    const re = [0, 1, 2, 3];
+    const im = [4, 5, 6, 7];
+    const result = xreimZeroFilling({ x, re, im }, 4);
+    const newX = Array.from(result.x);
+    const newRe = Array.from(result.re);
+    const newIm = Array.from(result.im);
 
     expect({ x: newX, re: newRe, im: newIm }).toStrictEqual({
       x: [0, 0.1, 0.2, 0.3],
@@ -35,13 +37,13 @@ describe('xreimZeroFilling', () => {
   });
 
   it('test xreimZeroFilling under', () => {
-    let x = [0, 0.1, 0.2, 0.3];
-    let re = [0, 1, 2, 3];
-    let im = [4, 5, 6, 7];
-    let result = xreimZeroFilling({ x, re, im }, 2);
-    let newX = Array.from(result.x);
-    let newRe = Array.from(result.re);
-    let newIm = Array.from(result.im);
+    const x = [0, 0.1, 0.2, 0.3];
+    const re = [0, 1, 2, 3];
+    const im = [4, 5, 6, 7];
+    const result = xreimZeroFilling({ x, re, im }, 2);
+    const newX = Array.from(result.x);
+    const newRe = Array.from(result.re);
+    const newIm = Array.from(result.im);
 
     expect({ x: newX, re: newRe, im: newIm }).toStrictEqual({
       x: [0, 0.1],

@@ -21,7 +21,8 @@ export function xySetYValue(
 ): DataXY {
   xyCheck(data);
   const { x, y } = data;
-  let { zones, value = 0 } = options;
+  const { value = 0 } = options;
+  let { zones } = options;
 
   if (!Array.isArray(zones) || zones.length === 0) {
     return data;

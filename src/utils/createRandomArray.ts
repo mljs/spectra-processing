@@ -50,7 +50,7 @@ export function createRandomArray(
 
   const generator = new XSAdd(seed);
 
-  let returnArray = new Float64Array(length);
+  const returnArray = new Float64Array(length);
   switch (distribution) {
     case 'normal':
       for (let i = 0; i < length; i++) {

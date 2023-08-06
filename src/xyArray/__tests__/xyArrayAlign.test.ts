@@ -2,12 +2,12 @@ import { xyArrayAlign } from '../../index';
 
 describe('xyArrayAlign', () => {
   it('same length spectra, simple integers', () => {
-    let data = [
+    const data = [
       { x: [1, 2, 3], y: [1, 1, 1] },
       { x: [0.1, 1.1, 2.1, 3.1, 4.1], y: [1, 1, 1, 1, 1] },
       { x: [2.9, 3.1, 3.9, 4.9], y: [1, 1, 1, 1] },
     ];
-    let result = xyArrayAlign(data, { delta: 0.15 });
+    const result = xyArrayAlign(data, { delta: 0.15 });
 
     result.x = Array.from(result.x);
     result.ys = result.ys.map((array) => Array.from(array));
@@ -23,12 +23,12 @@ describe('xyArrayAlign', () => {
   });
 
   it('The y values must be present everywhere', () => {
-    let data = [
+    const data = [
       { x: [1, 2, 3], y: [1, 1, 1] },
       { x: [0.1, 1.1, 2.1, 3.1, 4.1], y: [1, 1, 1, 1, 1] },
       { x: [2.9, 3.1, 3.9, 4.9], y: [1, 1, 1, 1] },
     ];
-    let result = xyArrayAlign(data, { delta: 0.15, requiredY: true });
+    const result = xyArrayAlign(data, { delta: 0.15, requiredY: true });
 
     result.x = Array.from(result.x);
     result.ys = result.ys.map((array) => Array.from(array));

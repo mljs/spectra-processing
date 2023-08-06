@@ -33,14 +33,16 @@ export function xyArrayAlign(
   data = data.map((spectrum) => xyJoinX(spectrum, { delta }));
 
   const slots = getSlots(data, options);
-  let x = Float64Array.from(slots.map((slot) => slot.average));
-  let ys = new Array(data.length).fill(0).map(() => new Float64Array(x.length));
+  const x = Float64Array.from(slots.map((slot) => slot.average));
+  const ys = new Array(data.length)
+    .fill(0)
+    .map(() => new Float64Array(x.length));
 
-  let positions = new Uint32Array(data.length);
+  const positions = new Uint32Array(data.length);
   for (let i = 0; i < slots.length; i++) {
-    let slot = slots[i];
+    const slot = slots[i];
     for (let j = 0; j < data.length; j++) {
-      let spectrum = data[j];
+      const spectrum = data[j];
       while (
         positions[j] < spectrum.x.length &&
         spectrum.x[positions[j]] <= slot.to

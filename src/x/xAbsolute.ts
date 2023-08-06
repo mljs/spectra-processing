@@ -7,7 +7,7 @@ import { DoubleArray } from 'cheminfo-types';
  * @returns - array with absolute values
  */
 export function xAbsolute(array: DoubleArray): DoubleArray {
-  let tmpArray = array.slice();
+  const tmpArray = array.slice();
   for (let i = 0; i < tmpArray.length; i++) {
     if (tmpArray[i] < 0) tmpArray[i] *= -1;
   }

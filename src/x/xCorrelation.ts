@@ -8,15 +8,15 @@ import { DoubleArray } from 'cheminfo-types';
  * @param B - sencond array
  */
 export function xCorrelation(A: DoubleArray, B: DoubleArray): number {
-  let n = A.length;
+  const n = A.length;
   let sumA = 0;
   let sumA2 = 0;
   let sumB = 0;
   let sumB2 = 0;
   let sumAB = 0;
   for (let i = 0; i < n; i++) {
-    let a = A[i];
-    let b = B[i];
+    const a = A[i];
+    const b = B[i];
     sumA += a;
     sumA2 += a ** 2;
     sumB += b;

@@ -2,12 +2,12 @@ import { xyArrayAlignToFirst } from '../../index';
 
 describe('xyArrayAlignToFirst', () => {
   it('mixed example with delta: 0.25', () => {
-    let data = [
+    const data = [
       { x: [1, 1.1, 2, 4], y: [1, 1, 1, 1] },
       { x: [0.1, 0.95, 1.05, 3], y: [1, 1, 1, 1] },
       { x: [2.05, 3.9, 4.1, 4.9, 5.1], y: [1, 1, 1, 1, 3] },
     ];
-    let result = xyArrayAlignToFirst(data, { delta: 0.25 });
+    const result = xyArrayAlignToFirst(data, { delta: 0.25 });
     result.x = Array.from(result.x);
     result.ys = result.ys.map((array) => Array.from(array));
     expect(result).toStrictEqual({
@@ -21,12 +21,12 @@ describe('xyArrayAlignToFirst', () => {
   });
 
   it('mixed example with delta a callback', () => {
-    let data = [
+    const data = [
       { x: [1, 1.1, 2, 4], y: [1, 1, 1, 1] },
       { x: [0.1, 0.95, 1.05, 3], y: [1, 1, 1, 1] },
       { x: [2.05, 3.9, 4.1, 4.9, 5.1], y: [1, 1, 1, 1, 3] },
     ];
-    let result = xyArrayAlignToFirst(data, { delta: () => 0.25 });
+    const result = xyArrayAlignToFirst(data, { delta: () => 0.25 });
     result.x = Array.from(result.x);
     result.ys = result.ys.map((array) => Array.from(array));
     expect(result).toStrictEqual({

@@ -20,7 +20,7 @@ export function xyMergeByCentroids(
 ) {
   const { window = 0.01 } = options;
 
-  let mergedPoints = {
+  const mergedPoints = {
     x: centroids.slice(),
     y: new Float64Array(centroids.length).fill(0),
   };
@@ -28,7 +28,7 @@ export function xyMergeByCentroids(
   let originalIndex = 0;
   let mergedIndex = 0;
   while (originalIndex < data.x.length && mergedIndex < centroids.length) {
-    let diff = data.x[originalIndex] - centroids[mergedIndex];
+    const diff = data.x[originalIndex] - centroids[mergedIndex];
     if (Math.abs(diff) < window) {
       mergedPoints.y[mergedIndex] += data.y[originalIndex++];
     } else if (diff < 0) {

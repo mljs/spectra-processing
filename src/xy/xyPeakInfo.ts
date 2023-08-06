@@ -25,7 +25,8 @@ export function xyPeakInfo(
   xyCheck(data);
   const { x, y } = data;
   if (x === undefined || y === undefined || x.length < 3) return undefined;
-  let { targetIndex, target } = options;
+  const { target } = options;
+  let { targetIndex } = options;
   if (targetIndex === undefined && target !== undefined) {
     targetIndex = xFindClosestIndex(x, target);
   }
@@ -37,25 +38,25 @@ export function xyPeakInfo(
   let i = targetIndex;
   let currentDiff = y[i] - y[i + 1];
 
-  let multiplier = currentDiff < 0 ? -1 : 1;
+  const multiplier = currentDiff < 0 ? -1 : 1;
   currentDiff *= multiplier;
   while (i < x.length - 1) {
     i++;
-    let newDiff = (y[i] - y[i + 1]) * multiplier;
+    const newDiff = (y[i] - y[i + 1]) * multiplier;
     if (newDiff < currentDiff) break;
     currentDiff = newDiff;
   }
-  let after = { x: x[i], y: y[i] };
+  const after = { x: x[i], y: y[i] };
 
   i = targetIndex;
   currentDiff = (y[i] - y[i - 1]) * multiplier;
   while (i > 1) {
     i--;
-    let newDiff = (y[i] - y[i - 1]) * multiplier;
+    const newDiff = (y[i] - y[i - 1]) * multiplier;
     if (newDiff < currentDiff) break;
     currentDiff = newDiff;
   }
-  let before = { x: x[i], y: y[i] };
+  const before = { x: x[i], y: y[i] };
 
   return {
     inflectionBefore: before,

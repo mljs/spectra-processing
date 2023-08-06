@@ -29,7 +29,7 @@ export function xDivide<T extends NumberArray = Float64Array>(
     constant = Number(array2);
   }
 
-  let array3 = getOutputArray(options.output, array1.length);
+  const array3 = getOutputArray(options.output, array1.length);
   if (isConstant) {
     for (let i = 0; i < array1.length; i++) {
       array3[i] = array1[i] / constant;

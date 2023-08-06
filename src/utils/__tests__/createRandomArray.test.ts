@@ -7,7 +7,7 @@ expect.extend({ toBeDeepCloseTo });
 
 describe('createRandomXArray', () => {
   it('normal distribution', () => {
-    let array = createRandomArray({
+    const array = createRandomArray({
       mean: 10,
       standardDeviation: 0.001,
       length: 5,
@@ -17,7 +17,7 @@ describe('createRandomXArray', () => {
   });
 
   it('normal distribution default mean (0)', () => {
-    let array = createRandomArray({
+    const array = createRandomArray({
       standardDeviation: 1,
       length: 10000,
       seed: 0,
@@ -30,7 +30,7 @@ describe('createRandomXArray', () => {
   });
 
   it('uniform distribution', () => {
-    let array = createRandomArray({
+    const array = createRandomArray({
       mean: 10,
       range: 2,
       length: 100000,
@@ -42,14 +42,14 @@ describe('createRandomXArray', () => {
       const slot = 9 + 0.1 + i * 0.2;
       expect(histogram.x[i]).toBeCloseTo(slot);
     }
-    for (let y of histogram.y) {
+    for (const y of histogram.y) {
       expect(y).toBeGreaterThan(9500);
       expect(y).toBeLessThan(10500);
     }
   });
 
   it('Testing in conjunction with spectra-fitting', () => {
-    let array = createRandomArray({
+    const array = createRandomArray({
       mean: 10,
       standardDeviation: 1,
       length: 100000,
@@ -57,7 +57,7 @@ describe('createRandomXArray', () => {
       seed: 0,
     });
     const histogram = xHistogram(array, { centerX: false });
-    let fittedPeaks = optimize(histogram, [{ x: 10, y: 0.1 }], {
+    const fittedPeaks = optimize(histogram, [{ x: 10, y: 0.1 }], {
       shape: { kind: 'gaussian', fwhm: 2 },
     });
     expect(fittedPeaks.peaks[0].x).toBeDeepCloseTo(10, 2);

@@ -1,7 +1,7 @@
 import { xMode } from '../../index';
 
 describe('array-mode', () => {
-  let typedArray = new Uint16Array(3);
+  const typedArray = new Uint16Array(3);
   typedArray[0] = 2;
   typedArray[1] = 3;
   typedArray[2] = 1;

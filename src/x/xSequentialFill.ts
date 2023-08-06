@@ -44,9 +44,9 @@ export function xSequentialFill(
   }
 
   // maybe should not specify default step and size
+  const { to = 10 } = options;
   let {
     from = 0,
-    to = 10,
     size = Array.isArray(input) ||
     input.constructor === Float64Array ||
     input.constructor === Uint16Array

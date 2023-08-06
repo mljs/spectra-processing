@@ -20,7 +20,7 @@ export function reimFFT(
 ): DataReIm {
   const { inverse = false, applyZeroShift = false } = options;
 
-  let { re, im } = data;
+  const { re, im } = data;
   const size = re.length;
   const csize = size << 1;
 
@@ -30,7 +30,7 @@ export function reimFFT(
     complexArray[i + 1] = im[i >>> 1];
   }
 
-  let fft = new FFT(size);
+  const fft = new FFT(size);
   let output: DoubleArray = new Float64Array(csize);
   if (inverse) {
     if (applyZeroShift) complexArray = zeroShift(complexArray, true);
@@ -40,8 +40,8 @@ export function reimFFT(
     if (applyZeroShift) output = zeroShift(output);
   }
 
-  let newRe = new Float64Array(size);
-  let newIm = new Float64Array(size);
+  const newRe = new Float64Array(size);
+  const newIm = new Float64Array(size);
   for (let i = 0; i < csize; i += 2) {
     newRe[i >>> 1] = output[i];
     newIm[i >>> 1] = output[i + 1];
@@ -51,7 +51,7 @@ export function reimFFT(
 }
 
 const zeroShift = (data: DoubleArray, inverse?: boolean): DoubleArray => {
-  let middle = inverse
+  const middle = inverse
     ? Math.ceil(data.length / 2)
     : Math.floor(data.length / 2);
   return xRotate(data, middle);

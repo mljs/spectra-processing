@@ -20,7 +20,7 @@ export function xIsEquallySpaced(
   let maxDx = 0;
   let minDx = Number.MAX_SAFE_INTEGER;
   for (let i = 0; i < array.length - 1; ++i) {
-    let absoluteDifference = array[i + 1] - array[i];
+    const absoluteDifference = array[i + 1] - array[i];
     if (absoluteDifference < minDx) {
       minDx = absoluteDifference;
     }

@@ -24,14 +24,14 @@ export function xySortX(data: DataXY): DataXY {
     }
   }
 
-  let xyObject = (x as number[])
+  const xyObject = (x as number[])
     .map((val, index) => ({
       x: val,
       y: y[index],
     }))
     .sort((a, b) => a.x - b.x);
 
-  let response = {
+  const response = {
     x: new Float64Array(x.length),
     y: new Float64Array(y.length),
   };

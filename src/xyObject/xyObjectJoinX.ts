@@ -19,12 +19,12 @@ export function xyObjectJoinX(
   const { xError = Number.EPSILON } = options;
 
   // when we join we will use the center of mass
-  let result: Point[] = [];
+  const result: Point[] = [];
   let current: Point = {
     x: Number.MIN_SAFE_INTEGER,
     y: 0,
   };
-  for (let point of points) {
+  for (const point of points) {
     if (point.x - current.x <= xError) {
       // weighted sum
       if (current.y !== 0 || point.y !== 0) {

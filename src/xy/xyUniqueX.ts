@@ -49,8 +49,8 @@ export function xyUniqueX(
  * @returns Result.
  */
 function average(data: DataXY): DataXY {
-  let x = [];
-  let y = [];
+  const x = [];
+  const y = [];
   let cumulativeY = data.y[0];
   let divider = 1;
   for (let i = 1; i < data.x.length; i++) {
@@ -75,8 +75,8 @@ function average(data: DataXY): DataXY {
  * @returns Result.
  */
 function sum(data: DataXY) {
-  let x = [];
-  let y = [];
+  const x = [];
+  const y = [];
   let cumulativeY = data.y[0];
   for (let i = 1; i < data.x.length; i++) {
     if (!(data.x[i] === data.x[i - 1])) {

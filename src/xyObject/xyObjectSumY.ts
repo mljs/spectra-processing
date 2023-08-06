@@ -11,7 +11,7 @@ export function xyObjectSumY(points: Point[] = []): number {
   xyObjectCheck(points);
 
   let sum = 0;
-  for (let point of points) {
+  for (const point of points) {
     sum += point.y;
   }
 

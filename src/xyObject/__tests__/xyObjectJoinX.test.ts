@@ -1,7 +1,7 @@
 import { xyObjectJoinX } from '../../index';
 
 test('xyObjectJoinX', () => {
-  let arrayXY = [
+  const arrayXY = [
     { x: 0, y: 1 },
     { x: 1, y: 1 },
     { x: 3, y: 2 },
@@ -13,7 +13,7 @@ test('xyObjectJoinX', () => {
     { x: 3.5, y: 4 },
   ]);
 
-  let arrayXYzero = [
+  const arrayXYzero = [
     { x: 0, y: 0 },
     { x: 1, y: 0 },
     { x: 3, y: 0 },

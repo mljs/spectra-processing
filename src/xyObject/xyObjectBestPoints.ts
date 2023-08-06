@@ -51,8 +51,8 @@ export function xyObjectBestPoints(
     numberCloseSlots = 50,
     numberSlots = 10,
   } = options;
-  let slot = (to - from) / numberSlots;
-  let closeSlot = (to - from) / numberCloseSlots;
+  const slot = (to - from) / numberSlots;
+  const closeSlot = (to - from) / numberCloseSlots;
   let selected = points
     .filter((point) => point.x >= from && point.x <= to)
     .map((point) => {
@@ -68,10 +68,10 @@ export function xyObjectBestPoints(
     return b.point.y - a.point.y;
   });
 
-  let toReturn: Point[] = [];
+  const toReturn: Point[] = [];
   if (selected.length === 0) return [];
-  let minY = selected[0].point.y * threshold;
-  peakLoop: for (let item of selected) {
+  const minY = selected[0].point.y * threshold;
+  peakLoop: for (const item of selected) {
     if (item.point.y < minY) {
       if (item.monoisotopic) {
         continue;
@@ -80,7 +80,7 @@ export function xyObjectBestPoints(
       }
     }
     let close = false;
-    for (let existing of toReturn) {
+    for (const existing of toReturn) {
       if (Math.abs(existing.x - item.point.x) < closeSlot) {
         continue peakLoop;
       }
@@ -88,7 +88,7 @@ export function xyObjectBestPoints(
         close = true;
       }
     }
-    let newPeak = JSON.parse(JSON.stringify(item.point));
+    const newPeak = JSON.parse(JSON.stringify(item.point));
     newPeak.close = close;
     toReturn.push(newPeak);
     if (toReturn.length === limit) break;

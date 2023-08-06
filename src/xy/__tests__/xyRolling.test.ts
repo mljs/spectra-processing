@@ -5,7 +5,7 @@ import { xyRolling } from '../../index';
 expect.extend({ toMatchCloseTo });
 
 test('xyRolling', () => {
-  let points = {
+  const points = {
     x: [1, 2, 3, 4, 5],
     y: [10, 20, 30, 40, 50],
   };

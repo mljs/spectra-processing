@@ -22,7 +22,8 @@ export function xyMaxClosestYPoint(
   xyCheck(data);
   const { x, y } = data;
 
-  let { target, targetIndex } = options;
+  const { target } = options;
+  let { targetIndex } = options;
 
   if (targetIndex === undefined) {
     if (target !== undefined) {

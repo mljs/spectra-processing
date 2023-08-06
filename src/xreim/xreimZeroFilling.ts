@@ -10,7 +10,7 @@ export function xreimZeroFilling(
   data: DataXReIm,
   totalLength: number,
 ): DataXReIm {
-  let length = data.x.length;
+  const length = data.x.length;
   if (totalLength === 0 || length === totalLength) return data;
 
   if (length > totalLength) {

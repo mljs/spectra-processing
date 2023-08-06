@@ -12,7 +12,7 @@ export function xBoxPlot(array: DoubleArray) {
       'xBoxPlot: can not calculate info if array contains less than 5 elements',
     );
   }
-  let info = {
+  const info = {
     q1: 0,
     median: 0,
     q3: 0,
@@ -22,7 +22,7 @@ export function xBoxPlot(array: DoubleArray) {
   let q1max, q3min;
   if (array.length % 2 === 1) {
     // odd
-    let middle = (array.length - 1) / 2;
+    const middle = (array.length - 1) / 2;
     info.median = array[middle];
     q1max = middle - 1;
     q3min = middle + 1;
@@ -37,7 +37,7 @@ export function xBoxPlot(array: DoubleArray) {
     info.q3 = array[(array.length + q3min - 1) / 2];
   } else {
     info.q1 = (array[(q1max + 1) / 2] + array[(q1max - 1) / 2]) / 2;
-    let middleOver = (array.length + q3min) / 2;
+    const middleOver = (array.length + q3min) / 2;
     info.q3 = (array[middleOver] + array[middleOver - 1]) / 2;
   }
   return info;

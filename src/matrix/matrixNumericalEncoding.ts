@@ -6,15 +6,17 @@ import { matrixClone } from './matrixClone';
  * @param dictCategoricalToNumerical - dictionnary for encoding
  * @returns - dictionnary from string to number
  */
-export function matrixNumericalEncoding(matrixInitial: (string | number)[][]): {
+export function matrixNumericalEncoding(
+  matrixInitial: Array<Array<string | number>>,
+): {
   matrix: number[][];
-  dictCategoricalToNumerical: { [stringValue: string]: number };
+  dictCategoricalToNumerical: Record<string, number>;
 } {
   const matrix = matrixClone(matrixInitial);
-  let nRows = matrix.length;
-  let nColumns = matrix[0].length;
+  const nRows = matrix.length;
+  const nColumns = matrix[0].length;
 
-  let dictCategoricalToNumerical: { [stringValue: string]: number } = {};
+  const dictCategoricalToNumerical: Record<string, number> = {};
   let k = 0;
 
   for (let i = 0; i < nRows; i++) {

@@ -9,12 +9,12 @@ import { zonesNormalize } from './zonesNormalize';
  * @returns array of zones with points
  */
 export function zonesWithPoints(
-  zones: {
+  zones: Array<{
     /** start of zone*/
     from: number;
     /** end of zone */
     to: number;
-  }[] = [],
+  }> = [],
   /**
    * total number of points to distribute between zones
    * @default 10
@@ -30,19 +30,19 @@ export function zonesWithPoints(
      */
     to?: number;
   } = {},
-): { from: number; to: number; numberOfPoints?: number }[] {
+): Array<{ from: number; to: number; numberOfPoints?: number }> {
   if (zones.length === 0) return zones;
-  let returnZones = zonesNormalize(zones, options);
+  const returnZones = zonesNormalize(zones, options);
 
   const totalSize = returnZones.reduce((previous, current) => {
     return previous + (current.to - current.from);
   }, 0);
 
-  let unitsPerPoint = totalSize / numberOfPoints;
+  const unitsPerPoint = totalSize / numberOfPoints;
   let currentTotal = 0;
 
   for (let i = 0; i < returnZones.length - 1; i++) {
-    let zone: any = returnZones[i];
+    const zone: any = returnZones[i];
     zone.numberOfPoints = Math.min(
       Math.round((zone.to - zone.from) / unitsPerPoint),
       numberOfPoints - currentTotal,
@@ -50,7 +50,7 @@ export function zonesWithPoints(
     currentTotal += zone.numberOfPoints;
   }
 
-  let zone: any = returnZones[returnZones.length - 1];
+  const zone: any = returnZones[returnZones.length - 1];
   zone.numberOfPoints = numberOfPoints - currentTotal;
 
   return returnZones;

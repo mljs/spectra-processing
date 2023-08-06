@@ -1,7 +1,7 @@
 import { xMinMaxValues } from '../../index';
 
 test('xMinMaxValues', () => {
-  let typedArray = new Uint16Array(3);
+  const typedArray = new Uint16Array(3);
   typedArray[0] = 1;
   typedArray[1] = 2;
   typedArray[2] = 3;

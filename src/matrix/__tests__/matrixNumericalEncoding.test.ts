@@ -1,7 +1,7 @@
 import { matrixNumericalEncoding } from '../../index';
 
 describe('matrixNumericalEncoding', () => {
-  let dataset = [
+  const dataset = [
     [73, 'a', 'o', 152],
     [93, 'b', 'u', 185],
     [89, 'c', 'p', 180],
@@ -21,7 +21,7 @@ describe('matrixNumericalEncoding', () => {
   ];
 
   it('should return a matrix of numbers', () => {
-    let { matrix } = matrixNumericalEncoding(dataset);
+    const { matrix } = matrixNumericalEncoding(dataset);
     const nonNumbers = matrix
       .flat(2)
       .filter((value) => typeof value !== 'number');

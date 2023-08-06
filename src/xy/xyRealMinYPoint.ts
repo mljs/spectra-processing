@@ -25,10 +25,10 @@ export function xyRealMinYPoint(
     y[targetIndex] <= y[targetIndex - 1] &&
     y[targetIndex] <= y[targetIndex + 1]
   ) {
-    let alpha = 20 * Math.log10(-y[targetIndex - 1]);
-    let beta = 20 * Math.log10(-y[targetIndex]);
-    let gamma = 20 * Math.log10(-y[targetIndex + 1]);
-    let p = (0.5 * (alpha - gamma)) / (alpha - 2 * beta + gamma);
+    const alpha = 20 * Math.log10(-y[targetIndex - 1]);
+    const beta = 20 * Math.log10(-y[targetIndex]);
+    const gamma = 20 * Math.log10(-y[targetIndex + 1]);
+    const p = (0.5 * (alpha - gamma)) / (alpha - 2 * beta + gamma);
     return {
       x: x[targetIndex] + (x[targetIndex] - x[targetIndex - 1]) * p,
       y: y[targetIndex] - 0.25 * (y[targetIndex - 1] - y[targetIndex + 1]) * p,

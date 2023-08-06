@@ -1,7 +1,7 @@
 import { xyObjectMinXPoint } from '../../index';
 
 test('xyObjectMinXPoint', () => {
-  let arrayXY = [
+  const arrayXY = [
     { x: 1, y: 1 },
     { x: 3, y: 2 },
     { x: 2, y: 0 },

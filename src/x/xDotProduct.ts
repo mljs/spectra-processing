@@ -9,7 +9,7 @@ import { xMultiply } from './xMultiply';
  * @param B - Second array.
  */
 export function xDotProduct(A: DoubleArray, B: DoubleArray): number {
-  let g = xMultiply(A, B);
+  const g = xMultiply(A, B);
   let result = 0;
   for (let i = 0; i < A.length; i++) {
     result += g[i];

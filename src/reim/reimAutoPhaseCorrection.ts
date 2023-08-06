@@ -55,20 +55,20 @@ export function reimAutoPhaseCorrection(
     reverse = false,
   } = options;
 
-  let magnitudeData = magnitudeMode ? reimAbsolute(data) : re;
+  const magnitudeData = magnitudeMode ? reimAbsolute(data) : re;
 
-  let ds = holoborodko(magnitudeData);
-  let peaksDs = robustBaseLineRegionsDetection(ds, {
+  const ds = holoborodko(magnitudeData);
+  const peaksDs = robustBaseLineRegionsDetection(ds, {
     maxDistanceToJoin,
     magnitudeMode,
     factorNoise,
   });
-  let peaksSp = robustBaseLineRegionsDetection(magnitudeData, {
+  const peaksSp = robustBaseLineRegionsDetection(magnitudeData, {
     maxDistanceToJoin,
     magnitudeMode,
     factorNoise,
   });
-  let finalPeaks = new Uint8Array(length);
+  const finalPeaks = new Uint8Array(length);
   for (let i = 0; i < length; i++) {
     finalPeaks[i] = peaksSp[i] && peaksDs[i];
   }
@@ -78,11 +78,11 @@ export function reimAutoPhaseCorrection(
   const indexMask = reverse ? (i: number) => length - i : (i: number) => i;
   let i = -1;
   let x0 = 0;
-  let res = [];
+  const res = [];
   while (i < length) {
     //phase first region
-    let reTmp: DoubleArray = [];
-    let imTmp: DoubleArray = [];
+    const reTmp: DoubleArray = [];
+    const imTmp: DoubleArray = [];
 
     //Look for the first 1 in the array
     while (!finalPeaks[++i] && i < length) {
@@ -101,12 +101,12 @@ export function reimAutoPhaseCorrection(
   }
   // Still some corrections needed. In the paper they remove the outlayers interatively
   // until they can perform a regression witout bad points. Can someone help here?
-  let [ph1, ph0] = weightedLinearRegression(
+  const [ph1, ph0] = weightedLinearRegression(
     res.map((r) => r.x0 / length),
     res.map((r) => r.ph0),
     res.map((r) => r.area / 1e11),
   );
-  let phased = reimPhaseCorrection(
+  const phased = reimPhaseCorrection(
     { re, im },
     (ph0 * Math.PI) / 180,
     (ph1 * Math.PI) / 180,
@@ -134,16 +134,16 @@ function autoPhaseRegion(
 } {
   let start = -180;
   let stop = 180;
-  let nSteps = 6;
+  const nSteps = 6;
   let maxSteps = 5;
 
   let bestAng = 0;
   let minArea = Number.MAX_SAFE_INTEGER;
   while (maxSteps > 0) {
-    let dAng = (stop - start) / (nSteps + 1);
+    const dAng = (stop - start) / (nSteps + 1);
     for (let i = start; i <= stop; i += dAng) {
-      let phased = reimPhaseCorrection({ re, im }, toRadians(i), 0);
-      let negArea = getNegArea(phased.re);
+      const phased = reimPhaseCorrection({ re, im }, toRadians(i), 0);
+      const negArea = getNegArea(phased.re);
       if (negArea < minArea) {
         [minArea, bestAng] = [negArea, i];
       }
@@ -154,7 +154,7 @@ function autoPhaseRegion(
   }
 
   // Calculate the area for the best angle
-  let phased = reimPhaseCorrection({ re, im }, toRadians(bestAng), 0);
+  const phased = reimPhaseCorrection({ re, im }, toRadians(bestAng), 0);
   let area = 0;
   let sumX = 0;
   for (let j = 0; j < re.length; j++) {
@@ -172,7 +172,7 @@ function autoPhaseRegion(
  * @returns Array of float.
  */
 function holoborodko(s: DoubleArray): DoubleArray {
-  let dk = new Float64Array(s.length);
+  const dk = new Float64Array(s.length);
   for (let i = 5; i < s.length - 5; i++) {
     dk[i] =
       (42 * (s[i + 1] - s[i - 1]) +
@@ -211,15 +211,15 @@ function robustBaseLineRegionsDetection(
 ) {
   const { maxDistanceToJoin, magnitudeMode, factorNoise } = options;
 
-  let mask = new Uint8Array(s.length);
+  const mask = new Uint8Array(s.length);
   for (let i = 0; i < s.length; i++) {
     mask[i] = 0;
   }
 
   let change = true;
   while (change) {
-    let noiseLevel = xNoiseSanPlot(s, { magnitudeMode });
-    let cutOff = factorNoise * noiseLevel.positive;
+    const noiseLevel = xNoiseSanPlot(s, { magnitudeMode });
+    const cutOff = factorNoise * noiseLevel.positive;
     change = false;
     for (let i = 0; i < s.length; i++) {
       if (Math.abs(s[i]) > cutOff && !mask[i]) {
@@ -280,8 +280,8 @@ function weightedLinearRegression(
   */
 
   //Mx inverse
-  let detMx = sxtw * sw - swx * swx;
-  let inMx = [
+  const detMx = sxtw * sw - swx * swx;
+  const inMx = [
     [sw / detMx, -swx / detMx],
     [-swx / detMx, sxtw / detMx],
   ];
@@ -296,7 +296,7 @@ const toRadians = (degree: number): number => (degree * Math.PI) / 180;
 
 const getNegArea = (data: DoubleArray): number => {
   let area = 0;
-  for (let element of data) {
+  for (const element of data) {
     if (element < 0) area -= element;
   }
   return area;

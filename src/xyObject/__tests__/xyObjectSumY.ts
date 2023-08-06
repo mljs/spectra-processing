@@ -1,7 +1,7 @@
 import { xyObjectSumY } from '../../index';
 
 test('xyObjectSumY', () => {
-  let arrayXY = [
+  const arrayXY = [
     { x: 0.9, y: 1 },
     { x: 1, y: 2 },
     { x: 1.01, y: 3 },

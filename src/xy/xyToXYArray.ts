@@ -10,7 +10,7 @@ import { xyCheck } from './xyCheck';
 export function xyToXYArray(data: DataXY): DoubleArray[] {
   xyCheck(data);
   const { x, y } = data;
-  let objectArray = [];
+  const objectArray = [];
   for (let i = 0; i < x.length; i++) {
     objectArray.push([x[i], y[i]]);
   }

@@ -32,7 +32,7 @@ export function createFromToArray(
     distribution?: string;
   } = {},
 ): Float64Array {
-  let {
+  const {
     from = 0,
     to = 1,
     length = 1000,
@@ -52,7 +52,7 @@ export function createFromToArray(
     div = length + 1;
   }
 
-  let delta = (to - from) / div;
+  const delta = (to - from) / div;
   if (distribution === 'uniform') {
     if (includeFrom) {
       let index = 0;
@@ -68,8 +68,8 @@ export function createFromToArray(
       }
     }
   } else if (distribution === 'log') {
-    let base = (to / from) ** (1 / div);
-    let firstExponent = Math.log(from) / Math.log(base);
+    const base = (to / from) ** (1 / div);
+    const firstExponent = Math.log(from) / Math.log(base);
 
     if (includeFrom) {
       let index = 0;

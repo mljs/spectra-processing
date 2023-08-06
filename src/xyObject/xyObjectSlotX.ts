@@ -20,13 +20,13 @@ export function xyObjectSlotX(
   const halfSlot = slotWidth / 2;
 
   // when we join we will use the center of mass
-  let result: Point[] = [];
+  const result: Point[] = [];
   let current: Point = {
     x: Number.NEGATIVE_INFINITY,
     y: 0,
   };
-  for (let point of points) {
-    let slot = point.x - ((point.x + halfSlot) % slotWidth) + halfSlot;
+  for (const point of points) {
+    const slot = point.x - ((point.x + halfSlot) % slotWidth) + halfSlot;
     if (Math.abs(current.x - slot) > Number.EPSILON) {
       current = {
         x: slot,

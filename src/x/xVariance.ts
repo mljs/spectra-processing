@@ -30,7 +30,7 @@ export function xVariance(
   let sqrError = 0;
 
   for (let i = 0; i < values.length; i++) {
-    let x = values[i] - mean;
+    const x = values[i] - mean;
     sqrError += x * x;
   }
 

@@ -2,8 +2,8 @@ import { xyEquallySpaced } from '../../index';
 
 describe('equallySpaced', () => {
   it('testing 1 points', () => {
-    let x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    let y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     expect(() =>
       xyEquallySpaced(
@@ -16,8 +16,8 @@ describe('equallySpaced', () => {
   });
 
   it('non growing', () => {
-    let x = [0, 0, 0, 1, 1, 1, 2, 2, 2];
-    let y = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    const x = [0, 0, 0, 1, 1, 1, 2, 2, 2];
+    const y = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     expect(() =>
       xyEquallySpaced(
         { x, y },
@@ -29,8 +29,8 @@ describe('equallySpaced', () => {
   });
 
   it('equallySpaced smooth', () => {
-    let x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    let y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     let ans = xyEquallySpaced(
       { x, y },
@@ -181,8 +181,8 @@ describe('equallySpaced', () => {
   });
 
   it('changing from and to', () => {
-    let x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    let y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     expect(() => {
       xyEquallySpaced(
@@ -198,10 +198,10 @@ describe('equallySpaced', () => {
   });
 
   it('testing exclusions', () => {
-    let x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    let y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-    let ans = xyEquallySpaced(
+    const ans = xyEquallySpaced(
       { x, y },
       {
         from: 1,
@@ -219,8 +219,8 @@ describe('equallySpaced', () => {
   });
 
   it('testing inverted exclusions', () => {
-    let x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    let y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     expect(() => {
       xyEquallySpaced(
@@ -237,10 +237,10 @@ describe('equallySpaced', () => {
   });
 
   it('testing zones', () => {
-    let x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    let y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-    let ans = xyEquallySpaced(
+    const ans = xyEquallySpaced(
       { x, y },
       {
         from: 1,
@@ -261,10 +261,10 @@ describe('equallySpaced', () => {
   });
 
   it('testing one zones', () => {
-    let x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    let y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-    let ans = xyEquallySpaced(
+    const ans = xyEquallySpaced(
       { x, y },
       {
         from: 1,

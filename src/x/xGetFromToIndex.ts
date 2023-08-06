@@ -33,7 +33,8 @@ export function xGetFromToIndex(
   x: NumberArray,
   options: XGetFromToIndexOptions = {},
 ): { fromIndex: number; toIndex: number } {
-  let { fromIndex, toIndex, from, to } = options;
+  let { fromIndex, toIndex } = options;
+  const { from, to } = options;
 
   if (fromIndex === undefined) {
     if (from !== undefined) {

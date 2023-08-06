@@ -4,7 +4,7 @@ import { xMedian } from '../../index';
 
 describe('array-median', () => {
   const generator = new XSAdd(0);
-  let data: number[] = [];
+  const data: number[] = [];
   for (let i = 0; i < 1000; i++) {
     data.push(generator.random());
   }
@@ -18,7 +18,7 @@ describe('array-median', () => {
     expect(xMedian(data)).toBeCloseTo(0.5, 1);
   });
   it('should return the median with typed array', () => {
-    let array = new Uint16Array(5);
+    const array = new Uint16Array(5);
     array[0] = 4;
     array[1] = 1;
     array[2] = 2;

@@ -7,7 +7,7 @@ describe('matrixMaxAbsoluteZ', () => {
       [2, 2, 1, -3],
       [3, 1, 3, 15],
     ];
-    let result = matrixMaxAbsoluteZ(matrix);
+    const result = matrixMaxAbsoluteZ(matrix);
     expect(result).toBe(15);
   });
   it('large negative', () => {
@@ -16,7 +16,7 @@ describe('matrixMaxAbsoluteZ', () => {
       [2, 2, 1, -30],
       [3, 1, 3, 15],
     ];
-    let result = matrixMaxAbsoluteZ(matrix);
+    const result = matrixMaxAbsoluteZ(matrix);
     expect(result).toBe(30);
   });
   it('zero', () => {

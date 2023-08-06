@@ -33,7 +33,7 @@ export function xyAlign(
 } {
   const { delta = 1, common = true, x = 'x1' } = options;
 
-  let result: {
+  const result: {
     x: number[];
     y1: number[];
     y2: number[];
@@ -46,20 +46,20 @@ export function xyAlign(
   let i = 0;
   let j = 0;
 
-  let length1 = data1.x.length;
-  let length2 = data2.x.length;
+  const length1 = data1.x.length;
+  const length2 = data2.x.length;
 
   while (i < length1 && j < length2) {
     let maxDiff = 0;
 
     if (typeof delta === 'function') {
-      let mean = (data1.x[i] + data2.x[j]) / 2; // is this a good thing to do?
+      const mean = (data1.x[i] + data2.x[j]) / 2; // is this a good thing to do?
       maxDiff = delta(mean);
     } else {
       maxDiff = delta;
     }
 
-    let difference = data1.x[i] - data2.x[j];
+    const difference = data1.x[i] - data2.x[j];
 
     if (Math.abs(difference) > maxDiff) {
       if (difference > 0) {
@@ -96,7 +96,7 @@ export function xyAlign(
         i++;
       }
     } else {
-      let weightedX =
+      const weightedX =
         (data1.x[i] * data1.y[i] + data2.x[j] * data2.y[j]) /
         (data1.y[i] + data2.y[j]);
 

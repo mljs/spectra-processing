@@ -12,7 +12,7 @@ import { xyCheck } from './xyCheck';
 export function xyToXYObject(data: DataXY): Point[] {
   xyCheck(data);
   const { x, y } = data;
-  let objectArray = [];
+  const objectArray = [];
   for (let i = 0; i < x.length; i++) {
     objectArray.push({ x: x[i], y: y[i] });
   }

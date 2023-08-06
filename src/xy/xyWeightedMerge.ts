@@ -19,8 +19,8 @@ export function xyWeightedMerge(
   const { x, y } = data;
   const { groupWidth = 0.001 } = options;
 
-  let merged: { x: number[]; y: number[] } = { x: [], y: [] };
-  let weightedAbscissa: { x: number[]; y: number[] } = { x: [], y: [] };
+  const merged: { x: number[]; y: number[] } = { x: [], y: [] };
+  const weightedAbscissa: { x: number[]; y: number[] } = { x: [], y: [] };
   let size = 0;
   let index = 0;
 

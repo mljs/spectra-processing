@@ -6,7 +6,7 @@ expect.extend({ toBeDeepCloseTo });
 
 describe('createStepArray', () => {
   it('case when we specify the step', () => {
-    let result = createStepArray({
+    const result = createStepArray({
       from: 1,
       step: 10,
       length: 10,

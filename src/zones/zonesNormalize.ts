@@ -27,11 +27,9 @@ export function zonesNormalize(
     exclusions?: FromTo[];
   } = {},
 ): FromTo[] {
-  let {
-    from = Number.NEGATIVE_INFINITY,
-    to = Number.POSITIVE_INFINITY,
-    exclusions = [],
-  } = options;
+  const { exclusions = [] } = options;
+  let { from = Number.NEGATIVE_INFINITY, to = Number.POSITIVE_INFINITY } =
+    options;
 
   if (from > to) [from, to] = [to, from];
 
@@ -55,9 +53,9 @@ export function zonesNormalize(
   if (zones.length === 0) return [];
 
   let currentZone = zones[0];
-  let beforeExclusionsZones = [currentZone];
+  const beforeExclusionsZones = [currentZone];
   for (let i = 1; i < zones.length; i++) {
-    let zone = zones[i];
+    const zone = zones[i];
     if (zone.from <= currentZone.to) {
       if (currentZone.to < zone.to) {
         currentZone.to = zone.to;

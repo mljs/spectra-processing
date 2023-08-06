@@ -44,27 +44,27 @@ export function xyReduce(
 ): DataXY {
   xyCheck(data);
   const { x, y } = data;
-  let {
+  const {
     from = x[0],
     to = x[x.length - 1],
     nbPoints = 4001,
     optimize = false,
-    zones = [],
   } = options;
+  let { zones = [] } = options;
 
   zones = zonesNormalize(zones, { from, to });
   if (zones.length === 0) zones = [{ from, to }]; // we take everything
 
   // for each zone we should know the first index, the last index and the number of points
-  const internalZones: {
+  const internalZones: Array<{
     from: number;
     to: number;
     fromIndex?: number;
     toIndex?: number;
     nbPoints?: number;
-  }[] = zones;
+  }> = zones;
   let totalPoints = 0;
-  for (let zone of internalZones) {
+  for (const zone of internalZones) {
     zone.fromIndex = xFindClosestIndex(x, zone.from);
     zone.toIndex = xFindClosestIndex(x, zone.to);
     if (zone.fromIndex > 0 && x[zone.fromIndex] > zone.from) {
@@ -80,7 +80,7 @@ export function xyReduce(
   // we calculate the number of points per zone that we should keep
   if (totalPoints > nbPoints) {
     // need to xyReduce number of points
-    let ratio = nbPoints / totalPoints;
+    const ratio = nbPoints / totalPoints;
     let currentTotal = 0;
     for (let i = 0; i < internalZones.length - 1; i++) {
       const zone = internalZones[i];
@@ -89,10 +89,10 @@ export function xyReduce(
     }
     internalZones[internalZones.length - 1].nbPoints = nbPoints - currentTotal;
   } else {
-    let newX = new Float64Array(totalPoints);
-    let newY = new Float64Array(totalPoints);
+    const newX = new Float64Array(totalPoints);
+    const newY = new Float64Array(totalPoints);
     let index = 0;
-    for (let zone of internalZones) {
+    for (const zone of internalZones) {
       for (
         let i = zone.fromIndex as number;
         i < (zone.toIndex as number) + 1;
@@ -109,9 +109,9 @@ export function xyReduce(
     };
   }
 
-  let newX: number[] = [];
-  let newY: number[] = [];
-  for (let zone of internalZones) {
+  const newX: number[] = [];
+  const newY: number[] = [];
+  for (const zone of internalZones) {
     if (!zone.nbPoints) continue;
     appendFromTo(
       zone.fromIndex as number,
@@ -153,7 +153,7 @@ export function xyReduce(
 
     // we will need to make some kind of min / max because there are too many points
     // we will always keep the first point and the last point
-    let slot = (x[toIndex] - x[fromIndex]) / (zoneNbPoints - 1);
+    const slot = (x[toIndex] - x[fromIndex]) / (zoneNbPoints - 1);
     let currentX = x[fromIndex] + slot;
     let first = true;
     let minY = Number.POSITIVE_INFINITY;

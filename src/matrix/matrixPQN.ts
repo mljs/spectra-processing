@@ -31,22 +31,22 @@ export function matrixPQN(
   medianOfQuotients: DoubleArray;
 } {
   const { max = 100 } = options;
-  let matrixB = new Matrix(matrix as number[][]);
+  const matrixB = new Matrix(matrix as number[][]);
   for (let i = 0; i < matrixB.rows; i++) {
     const normalizationFactor = matrixB.getRowVector(i).norm('frobenius') / max;
     const row = matrixB.getRowVector(i).div(normalizationFactor);
     matrixB.setRow(i, row);
   }
 
-  let referenceSpectrum = [];
+  const referenceSpectrum = [];
   for (let i = 0; i < matrixB.columns; i++) {
     const currentVariable = matrixB.getColumn(i);
     referenceSpectrum.push(xMedian(currentVariable));
   }
 
-  let medianOfQuotients = [];
+  const medianOfQuotients = [];
   for (let i = 0; i < matrixB.columns; i++) {
-    let quotients = matrixB.getColumnVector(i).div(referenceSpectrum[i]);
+    const quotients = matrixB.getColumnVector(i).div(referenceSpectrum[i]);
     medianOfQuotients.push(xMedian(quotients.getColumn(0)));
   }
 

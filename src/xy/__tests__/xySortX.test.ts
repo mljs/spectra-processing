@@ -2,7 +2,7 @@ import { xySortX } from '../../index';
 
 describe('xySortX', () => {
   it('unsorted', () => {
-    let data = {
+    const data = {
       x: [5, 3, 6, 7, 1, 3, 5],
       y: [1, 2, 3, 4, 5, 6, 7],
     };
@@ -19,7 +19,7 @@ describe('xySortX', () => {
   });
 
   it('sorted', () => {
-    let data = {
+    const data = {
       x: [1, 2, 3],
       y: [1, 2, 3],
     };
@@ -36,7 +36,7 @@ describe('xySortX', () => {
   });
 
   it('sorted reverse', () => {
-    let data = {
+    const data = {
       x: [3, 2, 1],
       y: [1, 2, 3],
     };

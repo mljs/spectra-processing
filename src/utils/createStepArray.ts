@@ -21,7 +21,7 @@ export function createStepArray(
     length?: number;
   } = {},
 ): Float64Array {
-  let { from = 0, step = 1, length = 1000 } = options;
+  const { from = 0, step = 1, length = 1000 } = options;
 
   const array = new Float64Array(length);
 

@@ -62,8 +62,8 @@ export function xyEquallySpaced(
   data: DataXY,
   options: XYEquallySpacedOptions = {},
 ): DataXY {
-  let { x, y } = data;
-  let xLength = x.length;
+  const { x, y } = data;
+  const xLength = x.length;
 
   const {
     from = x[0],
@@ -93,12 +93,12 @@ export function xyEquallySpaced(
 
   let xResult: number[] = [];
   let yResult: number[] = [];
-  for (let zone of zonesWithPointsRes) {
+  for (const zone of zonesWithPointsRes) {
     if (!zone.numberOfPoints) {
       zone.numberOfPoints = 0;
     }
 
-    let zoneResult = processZone(
+    const zoneResult = processZone(
       Array.from(x),
       Array.from(y),
       zone.from,
@@ -125,7 +125,7 @@ function processZone(
   if (numberOfPoints < 1) {
     throw new RangeError('the number of points must be at least 1');
   }
-  let output =
+  const output =
     variant === 'slot'
       ? Array.from(equallySpacedSlot(x, y, from, to, numberOfPoints))
       : Array.from(equallySpacedSmooth(x, y, from, to, numberOfPoints));

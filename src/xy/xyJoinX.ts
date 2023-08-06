@@ -31,8 +31,8 @@ export function xyJoinX(
   let position = 0;
 
   for (let i = 1; i < x.length; i++) {
-    let difference = x[i] - x[i - 1];
-    let currentDelta = deltaIsFunction ? delta((x[i] + x[i - 1]) / 2) : delta;
+    const difference = x[i] - x[i - 1];
+    const currentDelta = deltaIsFunction ? delta((x[i] + x[i - 1]) / 2) : delta;
 
     if (difference <= currentDelta) {
       // we join

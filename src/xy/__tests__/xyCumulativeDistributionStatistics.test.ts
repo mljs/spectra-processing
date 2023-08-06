@@ -6,12 +6,12 @@ expect.extend({ toMatchCloseTo });
 
 describe('xyCumulativeDistributionStatistics', () => {
   it('simple case', () => {
-    let data = {
+    const data = {
       x: [0, 1, 2, 3, 4],
       y: [0, 1, 1, 1, 1],
     };
 
-    let result = xyCumulativeDistributionStatistics(data);
+    const result = xyCumulativeDistributionStatistics(data);
 
     expect(result).toStrictEqual({
       x0: 0,
@@ -25,12 +25,12 @@ describe('xyCumulativeDistributionStatistics', () => {
   });
 
   it('less simple case', () => {
-    let data = {
+    const data = {
       x: [0, 1, 2, 3, 4, 5],
       y: [1, 2, 3, 3, 2, 1],
     };
 
-    let result = xyCumulativeDistributionStatistics(data);
+    const result = xyCumulativeDistributionStatistics(data);
 
     expect(result).toStrictEqual({
       x0: 0,
@@ -44,12 +44,12 @@ describe('xyCumulativeDistributionStatistics', () => {
   });
 
   it('case with interpolate x', () => {
-    let data = {
+    const data = {
       x: [0, 1, 2, 3, 4, 5, 6],
       y: [1, 2, 2, 2, 2, 2, 1],
     };
 
-    let result = xyCumulativeDistributionStatistics(data);
+    const result = xyCumulativeDistributionStatistics(data);
 
     expect(result).toStrictEqual({
       x0: 0,
@@ -63,12 +63,12 @@ describe('xyCumulativeDistributionStatistics', () => {
   });
 
   it('case with interpolate x giving non half integer number', () => {
-    let data = {
+    const data = {
       x: [0, 1, 2, 3, 4, 5, 6],
       y: [1, 2, 2.5, 2, 1.5, 2, 1],
     };
 
-    let result = xyCumulativeDistributionStatistics(data);
+    const result = xyCumulativeDistributionStatistics(data);
 
     expect(result).toMatchCloseTo({
       x0: 0,

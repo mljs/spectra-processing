@@ -4,20 +4,20 @@ describe('xyReduce', () => {
   const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const y = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0];
   it('All', () => {
-    let expected = {
+    const expected = {
       x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       y: [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0],
     };
-    let result = xyReduce({ x, y }, { nbPoints: 20 });
+    const result = xyReduce({ x, y }, { nbPoints: 20 });
     result.x = Array.from(result.x);
     result.y = Array.from(result.y);
     expect(result).toStrictEqual(expected);
   });
 
   it('Over sized', () => {
-    let x2 = [1, 2];
-    let y2 = [2, 3];
-    let result = xyReduce({ x: x2, y: y2 }, { nbPoints: 10 });
+    const x2 = [1, 2];
+    const y2 = [2, 3];
+    const result = xyReduce({ x: x2, y: y2 }, { nbPoints: 10 });
     result.x = Array.from(result.x);
     result.y = Array.from(result.y);
     expect(result).toStrictEqual({
@@ -27,7 +27,7 @@ describe('xyReduce', () => {
   });
 
   it('Too large', () => {
-    let result = {
+    const result = {
       x: new Float64Array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
       y: new Float64Array([0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0]),
     };
@@ -37,7 +37,7 @@ describe('xyReduce', () => {
   });
 
   it('Part exact', () => {
-    let result = {
+    const result = {
       x: new Float64Array([3, 4, 5]),
       y: new Float64Array([3, 4, 5]),
     };
@@ -47,7 +47,7 @@ describe('xyReduce', () => {
   });
 
   it('Part rounded close', () => {
-    let result = {
+    const result = {
       x: new Float64Array([3, 4, 5]),
       y: new Float64Array([3, 4, 5]),
     };
@@ -57,7 +57,7 @@ describe('xyReduce', () => {
   });
 
   it('Part rounded far', () => {
-    let result = {
+    const result = {
       x: new Float64Array([3, 4, 5]),
       y: new Float64Array([3, 4, 5]),
     };
@@ -67,7 +67,7 @@ describe('xyReduce', () => {
   });
 
   it('Part rounded far 2', () => {
-    let result = xyReduce({ x, y }, { nbPoints: 5 });
+    const result = xyReduce({ x, y }, { nbPoints: 5 });
 
     expect(result).toStrictEqual({
       x: [0, 2.5, 5, 7.5, 10],
@@ -76,25 +76,25 @@ describe('xyReduce', () => {
   });
 
   it('Part rounded big data', () => {
-    let x2 = [];
-    let y2 = [];
+    const x2 = [];
+    const y2 = [];
     for (let i = 0; i < 5000000; i++) {
       x2.push(i);
       y2.push(i);
     }
-    let result = xyReduce({ x: x2, y: y2 }, { nbPoints: 4000 });
+    const result = xyReduce({ x: x2, y: y2 }, { nbPoints: 4000 });
     expect(result.x).toHaveLength(4001);
     expect(result.y).toHaveLength(4001);
   });
 
   it('Part rounded big data 2', () => {
-    let x2 = [];
-    let y2 = [];
+    const x2 = [];
+    const y2 = [];
     for (let i = 0; i < 5000000; i++) {
       x2.push(i);
       y2.push(i);
     }
-    let result = xyReduce(
+    const result = xyReduce(
       { x: x2, y: y2 },
       { nbPoints: 4000, from: 10, to: 20 },
     );
@@ -107,19 +107,19 @@ describe('xyReduce', () => {
   });
 
   it('xyCheck optimization', () => {
-    let x2 = [];
-    let y2 = [];
+    const x2 = [];
+    const y2 = [];
     for (let i = 0; i < 11; i++) {
       x2.push(i);
       y2.push(i);
     }
-    let result = xyReduce({ x: x2, y: y2 }, { nbPoints: 5, optimize: true });
+    const result = xyReduce({ x: x2, y: y2 }, { nbPoints: 5, optimize: true });
     expect(result.x).toStrictEqual([0, 5, 10]);
     expect(result.y).toStrictEqual([0, 5, 10]);
   });
 
   it('Part rounded far 2 with optimization', () => {
-    let result = xyReduce({ x, y }, { nbPoints: 5, optimize: true });
+    const result = xyReduce({ x, y }, { nbPoints: 5, optimize: true });
 
     expect(result).toStrictEqual({
       x: [0, 5, 10],
@@ -128,7 +128,7 @@ describe('xyReduce', () => {
   });
 
   it('xyReduce with zones enough points', () => {
-    let result = xyReduce(
+    const result = xyReduce(
       { x, y },
       {
         nbPoints: 5,
@@ -146,7 +146,7 @@ describe('xyReduce', () => {
   });
 
   it('xyReduce with zones not enough points edge cases', () => {
-    let result = xyReduce(
+    const result = xyReduce(
       { x, y },
       {
         nbPoints: 3,
@@ -164,7 +164,7 @@ describe('xyReduce', () => {
   });
 
   it('xyReduce with zones not enough points', () => {
-    let result = xyReduce(
+    const result = xyReduce(
       { x, y },
       {
         nbPoints: 4,
@@ -181,7 +181,7 @@ describe('xyReduce', () => {
   });
 
   it('xyReduce with one zone not enough points', () => {
-    let result = xyReduce(
+    const result = xyReduce(
       { x, y },
       {
         nbPoints: 4,

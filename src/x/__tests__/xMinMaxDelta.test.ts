@@ -1,7 +1,7 @@
 import { xMinMaxDelta } from '../../index';
 
 test('xMinMaxDelta', () => {
-  let typedArray = new Uint16Array(6);
+  const typedArray = new Uint16Array(6);
   typedArray[0] = 1;
   typedArray[1] = 2;
   typedArray[2] = 3;

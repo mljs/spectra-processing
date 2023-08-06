@@ -39,14 +39,14 @@ export function xPadding(
     }
   }
 
-  let result = new Float64Array(array.length + size * 2);
+  const result = new Float64Array(array.length + size * 2);
 
   for (let i = 0; i < array.length; i++) {
     result[i + size] = array[i];
   }
 
-  let fromEnd = size + array.length;
-  let toEnd = 2 * size + array.length;
+  const fromEnd = size + array.length;
+  const toEnd = 2 * size + array.length;
 
   switch (algorithm.toLowerCase()) {
     case 'value':

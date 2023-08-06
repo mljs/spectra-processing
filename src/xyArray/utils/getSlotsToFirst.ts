@@ -16,15 +16,15 @@ export function getSlotsToFirst(
      */
     delta?: ((arg: number) => number) | number;
   } = {},
-): { from: number; to: number; value: number }[] {
+): Array<{ from: number; to: number; value: number }> {
   const { delta = 1 } = options;
   const deltaIsFunction = typeof delta === 'function';
 
-  let firstXs = data[0].x;
-  let slots: { from: number; to: number; value: number }[] = [];
+  const firstXs = data[0].x;
+  const slots: Array<{ from: number; to: number; value: number }> = [];
   // we first create the slots based on the first spectrum
   for (const element of firstXs) {
-    let currentDelta = deltaIsFunction ? delta(element) : delta;
+    const currentDelta = deltaIsFunction ? delta(element) : delta;
     slots.push({
       from: element - currentDelta,
       to: element + currentDelta,
@@ -32,15 +32,15 @@ export function getSlotsToFirst(
     });
   }
 
-  let otherXs = xyArrayWeightedMerge(data.slice(1), options).x;
+  const otherXs = xyArrayWeightedMerge(data.slice(1), options).x;
   let currentPosition = 0;
-  for (let slot of slots) {
+  for (const slot of slots) {
     while (
       otherXs[currentPosition] < slot.to &&
       currentPosition < otherXs.length
     ) {
       if (otherXs[currentPosition] < slot.from) {
-        let currentDelta = deltaIsFunction
+        const currentDelta = deltaIsFunction
           ? delta(otherXs[currentPosition])
           : delta;
         slots.push({
@@ -53,7 +53,7 @@ export function getSlotsToFirst(
     }
   }
   for (let i = currentPosition; i < otherXs.length; i++) {
-    let currentDelta = deltaIsFunction ? delta(otherXs[i]) : delta;
+    const currentDelta = deltaIsFunction ? delta(otherXs[i]) : delta;
     slots.push({
       from: otherXs[i] - currentDelta,
       to: otherXs[i] + currentDelta,
@@ -66,7 +66,7 @@ export function getSlotsToFirst(
   // we prevent slots overlap in the first spectrum
   for (let i = 0; i < slots.length - 1; i++) {
     if (slots[i].to > slots[i + 1].from) {
-      let middle = (slots[i].value + slots[i + 1].value) / 2;
+      const middle = (slots[i].value + slots[i + 1].value) / 2;
       slots[i].to = middle;
       slots[i + 1].from = middle;
     }

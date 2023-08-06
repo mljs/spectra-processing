@@ -7,9 +7,9 @@ import { matrixClone } from './matrixClone';
  * @returns - decoded matrix
  */
 
-function swap(dictionnary: { [stringValue: string]: number }) {
-  let ret: { [numberValue: number]: string } = {};
-  for (let key in dictionnary) {
+function swap(dictionnary: Record<string, number>) {
+  const ret: Record<number, string> = {};
+  for (const key in dictionnary) {
     ret[Number(dictionnary[key])] = key;
   }
   return ret;
@@ -17,11 +17,10 @@ function swap(dictionnary: { [stringValue: string]: number }) {
 
 export function matrixNumericalDecoding(
   matrixInitial: number[][],
-  dictionnary: { [stringValue: string]: number },
-): (string | number)[][] {
+  dictionnary: Record<string, number>,
+): Array<Array<string | number>> {
   const matrix = matrixClone(matrixInitial);
-  let invertedDictionnary: { [numberValue: number]: string } =
-    swap(dictionnary);
+  const invertedDictionnary: Record<number, string> = swap(dictionnary);
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[0].length; j++) {
       if (matrix[i][j] in invertedDictionnary) {

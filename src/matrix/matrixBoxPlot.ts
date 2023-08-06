@@ -13,7 +13,7 @@ export function matrixBoxPlot(matrix: DoubleMatrix) {
     );
   }
 
-  let info = {
+  const info = {
     q1: new Float64Array(nbColumns),
     median: new Float64Array(nbColumns),
     q3: new Float64Array(nbColumns),
@@ -31,7 +31,7 @@ export function matrixBoxPlot(matrix: DoubleMatrix) {
     let q3min = 0;
     if (nbRows % 2 === 1) {
       // odd
-      let middle = (nbRows - 1) / 2;
+      const middle = (nbRows - 1) / 2;
       info.median[column] = columnArray[middle];
       q1max = middle - 1;
       q3min = middle + 1;
@@ -47,7 +47,7 @@ export function matrixBoxPlot(matrix: DoubleMatrix) {
     } else {
       info.q1[column] =
         (columnArray[(q1max + 1) / 2] + columnArray[(q1max - 1) / 2]) / 2;
-      let middleOver = (columnArray.length + q3min) / 2;
+      const middleOver = (columnArray.length + q3min) / 2;
       info.q3[column] =
         (columnArray[middleOver] + columnArray[middleOver - 1]) / 2;
     }

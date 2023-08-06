@@ -13,7 +13,7 @@ import { DoubleArray } from 'cheminfo-types';
 export function xRotate(array: DoubleArray, shift: number): DoubleArray {
   shift = shift % array.length;
   if (shift < 0) shift += array.length;
-  let result = new Float64Array(array.length);
+  const result = new Float64Array(array.length);
   result.set(array.slice(array.length - shift));
   result.set(array.slice(0, array.length - shift), shift);
   return result;

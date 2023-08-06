@@ -22,21 +22,21 @@ export function xyArrayWeightedMerge(
 ): DataXY {
   let { delta = 1 } = options;
   if (typeof delta === 'number') {
-    let deltaNumber = delta;
+    const deltaNumber = delta;
     delta = () => deltaNumber;
   }
   data = data.filter((spectrum) => spectrum.x.length > 0);
 
   if (data.length === 0) return { x: [], y: [] };
 
-  let x = [];
-  let y = [];
+  const x = [];
+  const y = [];
 
   const positions = new Array(data.length).fill(0);
   const point: Point = { x: 0, y: 0 };
 
   nextValue(data, positions, point);
-  let slot = {
+  const slot = {
     maxX: point.x + delta(point.x),
     sumY: point.y,
     sumXY: point.y * point.x,
@@ -44,7 +44,7 @@ export function xyArrayWeightedMerge(
 
   while (data.length > 0) {
     nextValue(data, positions, point);
-    let sameSlot = point.x <= slot.maxX;
+    const sameSlot = point.x <= slot.maxX;
     if (!sameSlot) {
       if (slot.sumY > 0) {
         x.push(slot.sumXY / slot.sumY);
@@ -78,7 +78,7 @@ function nextValue(data: DataXY[], positions: NumberArray, point: Point) {
   let minX = data[0].x[positions[0]];
 
   for (let i = 1; i < data.length; i++) {
-    let currentX = data[i].x[positions[i]];
+    const currentX = data[i].x[positions[i]];
     if (currentX < minX) {
       minX = currentX;
       minIndex = i;

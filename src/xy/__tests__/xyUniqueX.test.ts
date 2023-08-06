@@ -2,8 +2,8 @@ import { xyUniqueX } from '../../index';
 
 describe('xyUniqueX', () => {
   it('unsorted sum', () => {
-    let x = [0, 0, 0, 2, 4, 0, 1, 2];
-    let y = [1, 1, 1, 2, 7, 1, 9, 4];
+    const x = [0, 0, 0, 2, 4, 0, 1, 2];
+    const y = [1, 1, 1, 2, 7, 1, 9, 4];
     expect(
       xyUniqueX({ x, y }, { algorithm: 'sum', isSorted: false }),
     ).toStrictEqual({
@@ -13,16 +13,16 @@ describe('xyUniqueX', () => {
   });
 
   it('unsorted avg', () => {
-    let x = [0, 0, 0, 2, 4, 0, 1, 2];
-    let y = [1, 1, 1, 2, 7, 1, 9, 4];
+    const x = [0, 0, 0, 2, 4, 0, 1, 2];
+    const y = [1, 1, 1, 2, 7, 1, 9, 4];
     expect(
       xyUniqueX({ x, y }, { algorithm: 'average', isSorted: false }),
     ).toStrictEqual({ x: [0, 1, 2, 4], y: [1, 9, 3, 7] });
   });
 
   it('sorted sum', () => {
-    let x = [0, 0, 0, 0, 1, 2, 2, 4];
-    let y = [1, 1, 1, 1, 9, 2, 4, 7];
+    const x = [0, 0, 0, 0, 1, 2, 2, 4];
+    const y = [1, 1, 1, 1, 9, 2, 4, 7];
     expect(
       xyUniqueX({ x, y }, { algorithm: 'sum', isSorted: true }),
     ).toStrictEqual({
@@ -32,8 +32,8 @@ describe('xyUniqueX', () => {
   });
 
   it('sorted sum 2', () => {
-    let x = [0, 0, 0, 0, 1, 2, 2, 4, 4];
-    let y = [1, 1, 1, 1, 9, 2, 4, 7, 3];
+    const x = [0, 0, 0, 0, 1, 2, 2, 4, 4];
+    const y = [1, 1, 1, 1, 9, 2, 4, 7, 3];
     expect(
       xyUniqueX({ x, y }, { algorithm: 'sum', isSorted: true }),
     ).toStrictEqual({
@@ -43,8 +43,8 @@ describe('xyUniqueX', () => {
   });
 
   it('sorted avg', () => {
-    let x = [0, 0, 0, 0, 1, 2, 2, 4];
-    let y = [1, 1, 1, 1, 9, 2, 4, 7];
+    const x = [0, 0, 0, 0, 1, 2, 2, 4];
+    const y = [1, 1, 1, 1, 9, 2, 4, 7];
     expect(
       xyUniqueX({ x, y }, { algorithm: 'average', isSorted: true }),
     ).toStrictEqual({
@@ -54,8 +54,8 @@ describe('xyUniqueX', () => {
   });
 
   it('sorted avg 2', () => {
-    let x = [0, 0, 0, 0, 1, 2, 2, 4, 4];
-    let y = [1, 1, 1, 1, 9, 2, 4, 7, 11];
+    const x = [0, 0, 0, 0, 1, 2, 2, 4, 4];
+    const y = [1, 1, 1, 1, 9, 2, 4, 7, 11];
     expect(
       xyUniqueX({ x, y }, { algorithm: 'average', isSorted: true }),
     ).toStrictEqual({

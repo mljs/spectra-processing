@@ -12,10 +12,10 @@ import { xStandardDeviation } from './xStandardDeviation';
  */
 export function xParetoNormalization(array: DoubleArray): DoubleArray {
   xCheck(array);
-  let result = [];
+  const result = [];
   const sqrtSD = Math.sqrt(xStandardDeviation(array));
 
-  for (let item of array) {
+  for (const item of array) {
     result.push(item / sqrtSD);
   }
   return result;

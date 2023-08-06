@@ -2,7 +2,7 @@ import XSAdd from 'ml-xsadd';
 
 import { reimPhaseCorrection } from '../../index';
 
-let data = {
+const data = {
   x: [
     8.199734086424085, 8.199000651380036, 8.198267216335987, 8.197533781291938,
     8.196800346247889, 8.19606691120384, 8.19533347615979, 8.194600041115741,
@@ -107,19 +107,19 @@ let data = {
 };
 describe('reimPhaseCorrection', () => {
   it('test reimPhaseCorrection even', () => {
-    let re = [0, 1, 2, 3];
-    let im = [0, 1, 2, 3];
-    let result = reimPhaseCorrection({ re, im }, 0, 0);
-    let newRe = Array.from(result.re);
-    let newIm = Array.from(result.im);
+    const re = [0, 1, 2, 3];
+    const im = [0, 1, 2, 3];
+    const result = reimPhaseCorrection({ re, im }, 0, 0);
+    const newRe = Array.from(result.re);
+    const newIm = Array.from(result.im);
 
     expect({ re: newRe, im: newIm }).toStrictEqual({ re, im });
   });
   it('180 zero order phasing', () => {
     const generator = new XSAdd(0);
-    let phased = reimPhaseCorrection(data, Math.PI, 0);
-    let diff = data.re.map((e, i) => e + phased.re[i]);
-    let index = Math.floor(generator.random() * data.x.length);
+    const phased = reimPhaseCorrection(data, Math.PI, 0);
+    const diff = data.re.map((e, i) => e + phased.re[i]);
+    const index = Math.floor(generator.random() * data.x.length);
     expect(diff[index]).toBeCloseTo(0, 4);
   });
 });

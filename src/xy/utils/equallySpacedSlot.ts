@@ -20,15 +20,15 @@ export default function equallySpacedSlot(
   /** number of points */
   numberOfPoints: number,
 ) {
-  let xLength = x.length;
+  const xLength = x.length;
 
-  let step = (to - from) / (numberOfPoints > 1 ? numberOfPoints - 1 : 1);
-  let halfStep = step / 2;
-  let lastStep = x[x.length - 1] - x[x.length - 2];
+  const step = (to - from) / (numberOfPoints > 1 ? numberOfPoints - 1 : 1);
+  const halfStep = step / 2;
+  const lastStep = x[x.length - 1] - x[x.length - 2];
 
-  let start = from - halfStep;
+  const start = from - halfStep;
   // Changed Array to Float64Array
-  let output = new Float64Array(numberOfPoints);
+  const output = new Float64Array(numberOfPoints);
 
   // Init main variables
   let min = start;

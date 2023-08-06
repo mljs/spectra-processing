@@ -16,17 +16,17 @@ export function xSampling(
 ): number[] {
   const { length = 10 } = options;
 
-  let returnArray = [];
+  const returnArray = [];
   if (length > array.length) {
     throw new Error(
       'Choose sample number smaller than the number of elements in the array',
     );
   }
 
-  let clonedArray = array.slice();
+  const clonedArray = array.slice();
   returnArray.push(clonedArray[0]);
   clonedArray.shift();
-  let delta = Math.floor(clonedArray.length / (length - 1));
+  const delta = Math.floor(clonedArray.length / (length - 1));
 
   for (
     let i = delta - 1, j = 0;

@@ -6,7 +6,7 @@ expect.extend({ toBeDeepCloseTo });
 
 describe('createFromToArray', () => {
   it('case when we sample within a specific range with log distribution and include start and end points', () => {
-    let result = createFromToArray({
+    const result = createFromToArray({
       from: 2,
       to: 32,
       length: 5,
@@ -18,7 +18,7 @@ describe('createFromToArray', () => {
   });
 
   it('case when we sample within a specific range with log distribution and include start point but not end point', () => {
-    let result = createFromToArray({
+    const result = createFromToArray({
       from: 2,
       to: 32,
       length: 5,
@@ -33,7 +33,7 @@ describe('createFromToArray', () => {
   });
 
   it('case when we sample within a specific range with log distribution and include end point but not start point', () => {
-    let result = createFromToArray({
+    const result = createFromToArray({
       from: 2,
       to: 32,
       length: 5,
@@ -48,7 +48,7 @@ describe('createFromToArray', () => {
   });
 
   it('case when we sample within a speci]fic range with uniform distribution and include start and end points', () => {
-    let result = createFromToArray({
+    const result = createFromToArray({
       from: 1,
       to: 100,
       length: 10,
@@ -60,7 +60,7 @@ describe('createFromToArray', () => {
   });
 
   it('case when we sample within a specific range with uniform distribution and include start point but do not include end point', () => {
-    let result = createFromToArray({
+    const result = createFromToArray({
       from: 1,
       to: 100,
       length: 10,
@@ -74,7 +74,7 @@ describe('createFromToArray', () => {
   });
 
   it('case when we sample within a specific range with uniform distribution and include end point but do not include start point', () => {
-    let result = createFromToArray({
+    const result = createFromToArray({
       from: 1,
       to: 100,
       length: 10,
@@ -88,7 +88,7 @@ describe('createFromToArray', () => {
   });
 
   it('case when we sample within a specific range with uniform distribution and do not include start point or end point', () => {
-    let result = createFromToArray({
+    const result = createFromToArray({
       from: 1,
       to: 100,
       length: 10,

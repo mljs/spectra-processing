@@ -81,7 +81,7 @@ export function matrixHistogram(
     }
   }
 
-  let histogram = xHistogram(matrix[0], options);
+  const histogram = xHistogram(matrix[0], options);
   options.histogram = histogram;
 
   const nbRows = matrix.length;

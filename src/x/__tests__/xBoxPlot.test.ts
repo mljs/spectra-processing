@@ -2,7 +2,7 @@ import { xBoxPlot } from '../../index';
 
 describe('xBoxPlot', () => {
   it('test xBoxPlot even', () => {
-    let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+    const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     expect(xBoxPlot(array)).toStrictEqual({
       q1: 2.5,
       median: 5.5,
@@ -13,7 +13,7 @@ describe('xBoxPlot', () => {
   });
 
   it('test xBoxPlot even small', () => {
-    let array = [0, 1, 2, 3, 4, 5];
+    const array = [0, 1, 2, 3, 4, 5];
     expect(xBoxPlot(array)).toStrictEqual({
       q1: 1,
       median: 2.5,
@@ -24,7 +24,7 @@ describe('xBoxPlot', () => {
   });
 
   it('test xBoxPlot odd', () => {
-    let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     expect(xBoxPlot(array)).toStrictEqual({
       q1: 2,
       median: 5,
@@ -35,7 +35,7 @@ describe('xBoxPlot', () => {
   });
 
   it('test xBoxPlot odd small', () => {
-    let array = [0, 1, 2, 3, 4];
+    const array = [0, 1, 2, 3, 4];
     expect(xBoxPlot(array)).toStrictEqual({
       q1: 0.5,
       median: 2,
@@ -46,7 +46,7 @@ describe('xBoxPlot', () => {
   });
 
   it('test xBoxPlot too small', () => {
-    let array = [0, 1, 2, 3];
+    const array = [0, 1, 2, 3];
     expect(() => xBoxPlot(array)).toThrow(
       'xBoxPlot: can not calculate info if array contains less than 5 elements',
     );

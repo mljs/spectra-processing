@@ -57,7 +57,7 @@ export function xHistogram(
   } = {},
 ) {
   xCheck(array);
-  let histogram = options.histogram;
+  const histogram = options.histogram;
   const {
     centerX = true,
     nbSlots = histogram === undefined ? 256 : histogram.x.length,

@@ -24,7 +24,7 @@ export function xMedian(input: NumberArray) {
   let middle = 0;
   let currentLow = 0;
   let currentHigh = 0;
-  let median = calcMiddle(low, high);
+  const median = calcMiddle(low, high);
 
   while (true) {
     if (high <= low) {

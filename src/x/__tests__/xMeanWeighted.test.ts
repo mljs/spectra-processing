@@ -1,7 +1,7 @@
 import { xMeanWeighted } from '../../index';
 
 test('xMeanWeighted', () => {
-  let typedArray = new Uint16Array(5);
+  const typedArray = new Uint16Array(5);
   typedArray[0] = 1;
   typedArray[1] = 2;
   typedArray[2] = 3;

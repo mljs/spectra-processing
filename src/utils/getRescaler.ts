@@ -39,14 +39,13 @@ export interface RescalerOptions {
 }
 
 export function getRescaler(options: RescalerOptions = {}) {
-  let {
-    originalMin = 0,
-    originalMax = 1,
+  const {
     targetMin = 0,
     targetMax = 1,
     clamp = true,
     algorithmOptions = {},
   } = options;
+  let { originalMin = 0, originalMax = 1 } = options;
 
   const convert = getDataConverter(
     options.algorithm || 'linear',

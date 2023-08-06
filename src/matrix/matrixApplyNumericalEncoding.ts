@@ -9,12 +9,12 @@ import { matrixClone } from './matrixClone';
  * @returns - encoded matrix
  */
 export function matrixApplyNumericalEncoding(
-  matrixInitial: (string | number)[][],
-  dictionnary: { [nameString: string]: number },
+  matrixInitial: Array<Array<string | number>>,
+  dictionnary: Record<string, number>,
 ): number[][] {
   const matrix = matrixClone(matrixInitial);
-  let arrayOfValues = [];
-  for (let key in dictionnary) {
+  const arrayOfValues = [];
+  for (const key in dictionnary) {
     arrayOfValues.push(dictionnary[key]);
   }
   let k = xMaxValue(arrayOfValues);

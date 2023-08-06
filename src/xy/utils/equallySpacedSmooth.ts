@@ -22,16 +22,16 @@ export default function equallySpacedSmooth(
   /** number of points */
   numberOfPoints: number,
 ) {
-  let xLength = x.length;
+  const xLength = x.length;
 
-  let step = (to - from) / (numberOfPoints > 1 ? numberOfPoints - 1 : 1);
-  let halfStep = step / 2;
+  const step = (to - from) / (numberOfPoints > 1 ? numberOfPoints - 1 : 1);
+  const halfStep = step / 2;
 
   // Changed Array to Float64Array
-  let output = new Float64Array(numberOfPoints);
+  const output = new Float64Array(numberOfPoints);
 
-  let initialOriginalStep = x[1] - x[0];
-  let lastOriginalStep = x[xLength - 1] - x[xLength - 2];
+  const initialOriginalStep = x[1] - x[0];
+  const lastOriginalStep = x[xLength - 1] - x[xLength - 2];
 
   // Init main variables
   let min = from - halfStep;

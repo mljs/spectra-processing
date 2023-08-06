@@ -25,12 +25,12 @@ export function xCrossCorrelation(
     lag?: number;
   } = {},
 ): Float64Array {
-  let { tau = 1, lag = A.length - 1 } = options;
-  let result = new Float64Array(1 + (2 * lag) / tau);
+  const { tau = 1, lag = A.length - 1 } = options;
+  const result = new Float64Array(1 + (2 * lag) / tau);
   if (A.length === B.length) {
-    let n = B.length;
-    let g = new Float64Array(2 * n);
-    let q = new Float64Array(2 * n);
+    const n = B.length;
+    const g = new Float64Array(2 * n);
+    const q = new Float64Array(2 * n);
     for (let i = 0; i < n; i++) {
       q[n + i] = B[i];
     }
@@ -40,7 +40,7 @@ export function xCrossCorrelation(
         g[k] = q[j];
         k++;
       }
-      let w = [];
+      const w = [];
       for (let l = 0; l < n; l++) {
         w[l] = g[l];
       }

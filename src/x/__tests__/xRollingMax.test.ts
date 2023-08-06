@@ -5,7 +5,7 @@ import { xRollingMax } from '../../index';
 expect.extend({ toMatchCloseTo });
 
 test('xRollingMax', () => {
-  let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   expect(xRollingMax(array)).toStrictEqual([5, 6, 7, 8, 9]);
 
   expect(xRollingMax(array, { window: 3 })).toStrictEqual([

@@ -1,7 +1,7 @@
 import { xNoiseSanPlot } from '../../index';
 import { reimAbsolute } from '../../reim/reimAbsolute';
 
-let data = {
+const data = {
   x: [
     36.59931066515786, 36.62353064900578, 36.6477506328537, 36.67197061670162,
     36.69619060054954, 36.72041058439746, 36.744630568245384,
@@ -947,8 +947,8 @@ let data = {
 
 describe('xNoiseSanPlot', () => {
   it('get noise level', () => {
-    let noise = xNoiseSanPlot(data.re, { magnitudeMode: false });
-    let noiseFromMagnitude = xNoiseSanPlot(reimAbsolute(data), {
+    const noise = xNoiseSanPlot(data.re, { magnitudeMode: false });
+    const noiseFromMagnitude = xNoiseSanPlot(reimAbsolute(data), {
       magnitudeMode: true,
     });
     expect(noise.snr).toBeCloseTo(56.8, 1);

@@ -11,7 +11,7 @@ import { getSlotsToFirst } from './utils/getSlotsToFirst';
  * @param options options
  */
 export function xyArrayAlignToFirst(
-  data: Array<DataXY>,
+  data: DataXY[],
   options: {
     /**
      * The range in which the two x values of the data/spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
@@ -24,14 +24,16 @@ export function xyArrayAlignToFirst(
   ys: DoubleArray[];
 } {
   const slots = getSlotsToFirst(data, options);
-  let x = Float64Array.from(slots.map((slot) => slot.value));
-  let ys = new Array(data.length).fill(0).map(() => new Float64Array(x.length));
+  const x = Float64Array.from(slots.map((slot) => slot.value));
+  const ys = new Array(data.length)
+    .fill(0)
+    .map(() => new Float64Array(x.length));
 
-  let positions = new Uint32Array(data.length);
+  const positions = new Uint32Array(data.length);
   for (let i = 0; i < slots.length; i++) {
-    let slot = slots[i];
+    const slot = slots[i];
     for (let j = 0; j < data.length; j++) {
-      let spectrum = data[j];
+      const spectrum = data[j];
       while (
         positions[j] < spectrum.x.length &&
         spectrum.x[positions[j]] < slot.to

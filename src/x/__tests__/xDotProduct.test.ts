@@ -2,8 +2,8 @@ import { xDotProduct } from '../../index';
 
 describe('crossCorrelation', () => {
   it('cross-correlation linear and constant function', () => {
-    let linear = [0, 1, 2, 3, 4];
-    let constant = [5, 5, 5, 5, 5];
+    const linear = [0, 1, 2, 3, 4];
+    const constant = [5, 5, 5, 5, 5];
     // Scilab: constant*constant'
     expect(xDotProduct(constant, constant)).toBe(125);
     // Scilab: linear*constant'

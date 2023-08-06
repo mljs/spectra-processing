@@ -8,8 +8,8 @@ export function matrixAutoCorrelation(
   matrix: DoubleMatrix,
   index = 0,
 ): Float64Array {
-  let nbRows = matrix.length;
-  let nbColumns = matrix[0].length;
+  const nbRows = matrix.length;
+  const nbColumns = matrix[0].length;
 
   if (nbRows < 2) {
     throw new Error(
@@ -17,9 +17,9 @@ export function matrixAutoCorrelation(
     );
   }
 
-  let targetArray = new Float64Array(nbRows);
-  let sourceArray = new Float64Array(nbRows);
-  let result = new Float64Array(nbColumns);
+  const targetArray = new Float64Array(nbRows);
+  const sourceArray = new Float64Array(nbRows);
+  const result = new Float64Array(nbColumns);
   for (let j = 0; j < nbRows; j++) {
     targetArray[j] = matrix[j][index];
   }

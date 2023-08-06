@@ -11,7 +11,7 @@ export function xCumulative(array: DoubleArray): Float64Array {
     throw new TypeError('input must be an array');
   }
 
-  let newArray = new Float64Array(array.length);
+  const newArray = new Float64Array(array.length);
   if (array.length === 0) return newArray;
 
   newArray[0] = array[0];

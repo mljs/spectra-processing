@@ -19,8 +19,8 @@ export function xyMaxMerge(
   const { x, y } = data;
   const { groupWidth = 0.001 } = options;
 
-  let merged: { x: number[]; y: number[] } = { x: [], y: [] };
-  let maxAbscissa: { x: number[]; y: number[] } = { x: [], y: [] };
+  const merged: { x: number[]; y: number[] } = { x: [], y: [] };
+  const maxAbscissa: { x: number[]; y: number[] } = { x: [], y: [] };
   let size = 0;
   let index = 0;
 

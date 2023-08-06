@@ -39,11 +39,11 @@ export function xyFilterX(
     exclusions = [],
   } = options;
 
-  let normalizedZones = zonesNormalize(zones, { from, to, exclusions });
+  const normalizedZones = zonesNormalize(zones, { from, to, exclusions });
 
   let currentZoneIndex = 0;
-  let newX = [];
-  let newY = [];
+  const newX = [];
+  const newY = [];
   let position = 0;
   while (position < x.length) {
     if (

@@ -15,17 +15,17 @@ export function getSlots(
      */
     delta?: ((arg: number) => number) | number;
   } = {},
-): {
+): Array<{
   from: number;
   to: number;
   average: number;
   sum: number;
   number: number;
-}[] {
+}> {
   const { delta = 1 } = options;
   const deltaIsFunction = typeof delta === 'function';
 
-  let possibleXs = Float64Array.from(
+  const possibleXs = Float64Array.from(
     ([] as number[]).concat(...data.map((spectrum) => spectrum.x as number[])),
   ).sort();
 
@@ -40,15 +40,15 @@ export function getSlots(
     sum: possibleXs[0],
     number: 1,
   };
-  let slots: {
+  const slots: Array<{
     from: number;
     to: number;
     average: number;
     sum: number;
     number: number;
-  }[] = [currentSlot];
+  }> = [currentSlot];
   for (let i = 1; i < possibleXs.length; i++) {
-    let currentDelta = deltaIsFunction ? delta(possibleXs[i]) : delta;
+    const currentDelta = deltaIsFunction ? delta(possibleXs[i]) : delta;
     if (possibleXs[i] - currentSlot.to <= currentDelta) {
       currentSlot.to = possibleXs[i];
       currentSlot.number++;

@@ -4,7 +4,7 @@ import {
 } from '../../index';
 
 describe('matrixApplyNumericalEncoding', () => {
-  let datasetForEncoding = [
+  const datasetForEncoding = [
     [73, 'a', 'o', 152],
     [93, 'b', 'u', 185],
     [89, 'c', 'p', 180],
@@ -23,7 +23,7 @@ describe('matrixApplyNumericalEncoding', () => {
     [93, 'n', 'aa', 192],
   ];
 
-  let datasetToEncode = [
+  const datasetToEncode = [
     [78, 'o', 'ab', 147],
     [81, 'p', 'u', 183],
     [88, 'q', 's', 177],
