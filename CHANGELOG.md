@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.5.1](https://github.com/mljs/spectra-processing/compare/v12.5.0...v12.5.1) (2023-09-14)
+
+
+### Bug Fixes
+
+* add remove main, module and types properties in package.json ([af6757e](https://github.com/mljs/spectra-processing/commit/af6757ea77782398974fff3b7952b5a3bcd6bfee))
+
 ## [12.5.0](https://github.com/mljs/spectra-processing/compare/v12.4.0...v12.5.0) (2023-06-23)
 
 
