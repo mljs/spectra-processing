@@ -17,9 +17,8 @@ export interface BackwardLPOptions {
   /**
    * Output array that could be used for in-place modification.
    */
-  output?: Float64Array[]
+  output?: Float64Array;
 }
-
 
 /**
  * Predict back points by singular value decomposition.
@@ -29,11 +28,13 @@ export function xBackwardLinearPrediction(
   data: DoubleArray,
   options: BackwardLPOptions,
 ) {
-  const {
-    nbCoefficients,
-    nbInputs,
-    nbPoints,
-  } = options;
+  const { nbCoefficients, nbInputs, nbPoints } = options;
+
+  if (nbInputs > data.length - nbCoefficients - nbPoints) {
+    throw new RangeError(
+      'data length should be bigger than nbInputs + nbCoefficients + nbPoints',
+    );
+  }
 
   const lpMatrix: Float64Array[] = [];
   for (let i = 0; i < nbInputs; i++) {
@@ -48,6 +49,7 @@ export function xBackwardLinearPrediction(
   for (let i = 0; i < nbInputs; i++) {
     dataInput[i] = data[i + nbPoints];
   }
+
   const coefficients = svd
     .solve(Matrix.from1DArray(dataInput.length, 1, dataInput))
     .to1DArray();
@@ -56,8 +58,9 @@ export function xBackwardLinearPrediction(
   for (let m = 0; m < nbPoints; m++) {
     let sum = 0;
     for (let i = 0; i < coefficients.length; i++) {
-      sum += coefficients[i] * data[i + nbPoints - m];
+      sum += coefficients[i] * output[i + nbPoints - m];
     }
+
     output[nbPoints - m - 1] = sum;
   }
   return { output, predicted: output.slice(0, nbPoints) };
