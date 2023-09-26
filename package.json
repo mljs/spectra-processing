@@ -88,17 +88,17 @@
   },
   "homepage": "https://github.com/mljs/spectra-processing#readme",
   "devDependencies": {
-    "@types/jest": "^29.5.4",
+    "@types/jest": "^29.5.5",
     "cheminfo-build": "^1.2.0",
-    "eslint": "^8.49.0",
+    "eslint": "^8.50.0",
     "eslint-config-cheminfo-typescript": "^12.0.4",
     "esm": "^3.2.25",
     "jest": "^29.7.0",
     "jest-matcher-deep-close-to": "^3.0.2",
-    "jscpd": "^3.5.9",
+    "jscpd": "^3.5.10",
     "ml-spectra-fitting": "^4.2.1",
     "prettier": "^3.0.3",
-    "rimraf": "^5.0.1",
+    "rimraf": "^5.0.4",
     "ts-jest": "^29.1.1",
     "typedoc": "^0.25.1",
     "typescript": "^5.2.2"
@@ -108,7 +108,7 @@
     "cheminfo-types": "^1.7.2",
     "fft.js": "^4.0.4",
     "is-any-array": "^2.0.1",
-    "ml-matrix": "^6.10.4",
+    "ml-matrix": "^6.10.5",
     "ml-xsadd": "^2.0.0",
     "spline-interpolator": "^1.0.0"
   }
