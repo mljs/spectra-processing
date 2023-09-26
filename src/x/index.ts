@@ -54,3 +54,4 @@ export * from './xSubtract';
 export * from './xSum';
 export * from './xUniqueSorted';
 export * from './xVariance';
+export * from './xBackwardLinearPrediction';
