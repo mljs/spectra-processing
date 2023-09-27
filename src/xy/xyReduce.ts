@@ -1,9 +1,18 @@
-import { DataXY, FromTo } from 'cheminfo-types';
+/* eslint-disable max-lines-per-function */
+import { DataXY, FromTo, DoubleArray } from 'cheminfo-types';
 
 import { xFindClosestIndex } from '../x/xFindClosestIndex';
 import { zonesNormalize } from '../zones/zonesNormalize';
 
 import { xyCheck } from './xyCheck';
+
+interface InternalZone {
+  from: number;
+  to: number;
+  fromIndex?: number;
+  toIndex?: number;
+  nbPoints?: number;
+}
 
 /**
  * XyReduce the number of points while keeping visually the same noise. Practical to
@@ -56,13 +65,7 @@ export function xyReduce(
   if (zones.length === 0) zones = [{ from, to }]; // we take everything
 
   // for each zone we should know the first index, the last index and the number of points
-  const internalZones: Array<{
-    from: number;
-    to: number;
-    fromIndex?: number;
-    toIndex?: number;
-    nbPoints?: number;
-  }> = zones;
+  const internalZones: InternalZone[] = zones;
   let totalPoints = 0;
   for (const zone of internalZones) {
     zone.fromIndex = xFindClosestIndex(x, zone.from);
@@ -78,36 +81,18 @@ export function xyReduce(
     totalPoints += zone.nbPoints;
   }
   // we calculate the number of points per zone that we should keep
-  if (totalPoints > nbPoints) {
-    // need to xyReduce number of points
-    const ratio = nbPoints / totalPoints;
-    let currentTotal = 0;
-    for (let i = 0; i < internalZones.length - 1; i++) {
-      const zone = internalZones[i];
-      zone.nbPoints = Math.round((zone.nbPoints as number) * ratio);
-      currentTotal += zone.nbPoints;
-    }
-    internalZones[internalZones.length - 1].nbPoints = nbPoints - currentTotal;
-  } else {
-    const newX = new Float64Array(totalPoints);
-    const newY = new Float64Array(totalPoints);
-    let index = 0;
-    for (const zone of internalZones) {
-      for (
-        let i = zone.fromIndex as number;
-        i < (zone.toIndex as number) + 1;
-        i++
-      ) {
-        newX[index] = x[i];
-        newY[index] = y[i];
-        index++;
-      }
-    }
-    return {
-      x: newX,
-      y: newY,
-    };
+  if (totalPoints <= nbPoints) {
+    return notEnoughPoints(x, y, internalZones, totalPoints);
   }
+  // need to xyReduce number of points
+  const ratio = nbPoints / totalPoints;
+  let currentTotal = 0;
+  for (let i = 0; i < internalZones.length - 1; i++) {
+    const zone = internalZones[i];
+    zone.nbPoints = Math.round((zone.nbPoints as number) * ratio);
+    currentTotal += zone.nbPoints;
+  }
+  internalZones[internalZones.length - 1].nbPoints = nbPoints - currentTotal;
 
   const newX: number[] = [];
   const newY: number[] = [];
@@ -191,4 +176,30 @@ export function xyReduce(
       }
     }
   }
+}
+
+function notEnoughPoints(
+  x: DoubleArray,
+  y: DoubleArray,
+  internalZones: InternalZone[],
+  totalPoints: number,
+) {
+  const newX = new Float64Array(totalPoints);
+  const newY = new Float64Array(totalPoints);
+  let index = 0;
+  for (const zone of internalZones) {
+    for (
+      let i = zone.fromIndex as number;
+      i < (zone.toIndex as number) + 1;
+      i++
+    ) {
+      newX[index] = x[i];
+      newY[index] = y[i];
+      index++;
+    }
+  }
+  return {
+    x: newX,
+    y: newY,
+  };
 }

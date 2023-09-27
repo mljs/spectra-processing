@@ -42,12 +42,12 @@ export function zonesWithPoints(
   let currentTotal = 0;
 
   for (let i = 0; i < returnZones.length - 1; i++) {
-    const zone: any = returnZones[i];
-    zone.numberOfPoints = Math.min(
-      Math.round((zone.to - zone.from) / unitsPerPoint),
+    const tempZone: any = returnZones[i];
+    tempZone.numberOfPoints = Math.min(
+      Math.round((tempZone.to - tempZone.from) / unitsPerPoint),
       numberOfPoints - currentTotal,
     );
-    currentTotal += zone.numberOfPoints;
+    currentTotal += tempZone.numberOfPoints;
   }
 
   const zone: any = returnZones[returnZones.length - 1];

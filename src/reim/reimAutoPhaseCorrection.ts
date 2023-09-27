@@ -76,23 +76,23 @@ export function reimAutoPhaseCorrection(
   // Once the regions are detected, we auto phase each of them separately.
   // This part can be put inside a function
   const indexMask = reverse ? (i: number) => length - i : (i: number) => i;
-  let i = -1;
+  let counter = -1;
   let x0 = 0;
   const res = [];
-  while (i < length) {
+  while (counter < length) {
     //phase first region
     const reTmp: DoubleArray = [];
     const imTmp: DoubleArray = [];
 
     //Look for the first 1 in the array
-    while (!finalPeaks[++i] && i < length) {
+    while (!finalPeaks[++counter] && counter < length) {
       //Add some extra points(0.1 ppm) at rigth and left sides of the region.
-      x0 = indexMask(i);
+      x0 = indexMask(counter);
     }
-    for (; finalPeaks[i] && i < length; i++) {
-      reTmp.push(re[i]);
-      imTmp.push(im[i]);
-      i++;
+    for (; finalPeaks[counter] && counter < length; counter++) {
+      reTmp.push(re[counter]);
+      imTmp.push(im[counter]);
+      counter++;
     }
 
     if (reTmp.length > minRegSize) {
@@ -142,8 +142,8 @@ function autoPhaseRegion(
   while (maxSteps > 0) {
     const dAng = (stop - start) / (nSteps + 1);
     for (let i = start; i <= stop; i += dAng) {
-      const phased = reimPhaseCorrection({ re, im }, toRadians(i), 0);
-      const negArea = getNegArea(phased.re);
+      const tmpPhased = reimPhaseCorrection({ re, im }, toRadians(i), 0);
+      const negArea = getNegArea(tmpPhased.re);
       if (negArea < minArea) {
         [minArea, bestAng] = [negArea, i];
       }

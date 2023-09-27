@@ -12,7 +12,7 @@ import { xPadding } from './xPadding';
  */
 export function xRolling(
   array: DoubleArray,
-  fct?: (array: DoubleArray) => number,
+  fct?: (callbackArray: DoubleArray) => number,
   options: {
     /**
      * rolling window
