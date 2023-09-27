@@ -1,3 +1,6 @@
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
 import { xyEquallySpaced } from '../../index';
 
 describe('equallySpaced', () => {
@@ -13,6 +16,21 @@ describe('equallySpaced', () => {
         },
       ),
     ).toThrow('greater than 1');
+  });
+
+  it('large file should not be slow', () => {
+    const data = JSON.parse(
+      readFileSync(join(__dirname, 'data/77929.json'), 'utf8'),
+    );
+    const start = Date.now();
+    const result = xyEquallySpaced(data, {
+      from: 1000,
+      to: 4000,
+      numberOfPoints: 601,
+    });
+    expect(Date.now() - start).toBeLessThan(100);
+    expect(result.x).toHaveLength(601);
+    expect(result.y).toHaveLength(601);
   });
 
   it('non growing', () => {
