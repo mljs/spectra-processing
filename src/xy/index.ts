@@ -6,6 +6,7 @@ export * from './xyCumulativeDistributionStatistics';
 export * from './xyEnsureGrowingX';
 export * from './xyEquallySpaced';
 export * from './xyExtract';
+export * from './xyFilter';
 export * from './xyFilterMinYValue';
 export * from './xyFilterTopYValues';
 export * from './xyFilterX';
