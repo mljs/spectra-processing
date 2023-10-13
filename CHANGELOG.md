@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.6.0](https://github.com/mljs/spectra-processing/compare/v12.5.1...v12.6.0) (2023-10-13)
+
+
+### Features
+
+* create xyFilter ([223f6f3](https://github.com/mljs/spectra-processing/commit/223f6f3cd2b29e3c7d2bb19604c007279212bf78))
+
 ## [12.5.1](https://github.com/mljs/spectra-processing/compare/v12.5.0...v12.5.1) (2023-09-14)
 
 
