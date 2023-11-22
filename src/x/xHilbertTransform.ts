@@ -5,6 +5,8 @@ import { xCheck } from './xCheck';
 
 /**
  * Performs the Hilbert transform
+ * @link https://en.wikipedia.org/wiki/Hilbert_transform
+ * @param array - Array containing values
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  */
 
@@ -17,6 +19,12 @@ export function xHilbertTransform(array: DoubleArray) {
   }
 }
 
+/**
+ * Performs the discrete Hilbert transform using fast Fourier transform
+ * @param array - Array containing values
+ * @returns A new vector with 90 degree shift regarding the phase of the original function
+ * @see DOI: 10.1109/TAU.1970.1162139 "Discrete Hilbert transform"
+ */
 export function hilbertTransformWithFFT(array: DoubleArray) {
   const n = array.length;
   const fft = new FFT(n);
@@ -43,6 +51,11 @@ export function hilbertTransformWithFFT(array: DoubleArray) {
   return result;
 }
 
+/**
+ * Performs the discrete Hilbert transform
+ * @param array - Array containing values
+ * @returns A new vector with 90 degree shift regarding the phase of the original function
+ */
 export function hilbertTransform(
   array: DoubleArray,
   options: { inClockwise?: boolean } = {},
