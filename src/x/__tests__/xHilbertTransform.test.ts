@@ -1,4 +1,4 @@
-import { xHilbertTransform } from '../../index';
+import { xHilbertTransform, xMaxValue } from '../../index';
 
 describe('test discrete hilbert transform', () => {
   const length = 50;
@@ -58,6 +58,22 @@ describe('test fast hilbert transform', () => {
     const result = xHilbertTransform(sin);
     for (let i = 0; i < 64; i++) {
       expect(result[i]).toBeCloseTo(minusCos[i], 6);
+    }
+  });
+
+  it('test hilbert transform of squareWave function', () => {
+    const p = 2 ** 4;
+    const squareWave = new Float64Array(length);
+    for (let i = 0; i < length; i++) {
+      squareWave[i] = i % p < p / 2 ? 1 : -1;
+    }
+    const result = xHilbertTransform(squareWave);
+    const maxValue = xMaxValue(result);
+    for (let i = 0; i < length / p; i++) {
+      expect(result[i * p]).toStrictEqual(-maxValue);
+      expect(result[i * p + p * 0.5]).toStrictEqual(maxValue);
+      expect(result[i * p + p * 0.25]).toBeCloseTo(0, 10);
+      expect(result[i * p + p * 0.75]).toBeCloseTo(0, 10);
     }
   });
 });
