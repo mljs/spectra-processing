@@ -1,6 +1,6 @@
-import { xHilbertTransform } from '../../index';
+import { xHilbertTransform, xMaxValue } from '../../index';
 
-describe('test hilbert transform of cos(t)', () => {
+describe('test discrete hilbert transform', () => {
   const length = 50;
   it('test hilbert transform of cos -> sin function', () => {
     const cos = new Array(length)
@@ -29,6 +29,51 @@ describe('test hilbert transform of cos(t)', () => {
     // Excluding some points due to the edge effects
     for (let i = 15; i < 35; i++) {
       expect(result[i]).toBeCloseTo(minusCos[i], 1);
+    }
+  });
+});
+
+describe('test fast hilbert transform', () => {
+  const length = 2 ** 6;
+  it('test hilbert transform of cos -> sin function', () => {
+    const cos = new Float64Array(length).map((_, i) =>
+      Math.cos((i * Math.PI) / 32),
+    );
+    const sin = new Float64Array(length).map((_, i) =>
+      Math.sin((i * Math.PI) / 32),
+    );
+    const result = xHilbertTransform(cos);
+    for (let i = 0; i < 64; i++) {
+      expect(result[i]).toBeCloseTo(sin[i], 6);
+    }
+  });
+
+  it('test hilbert transform of sin -> -cos function', () => {
+    const minusCos = new Float64Array(length).map(
+      (_, i) => -Math.cos((i * Math.PI) / 32),
+    );
+    const sin = new Float64Array(length).map((_, i) =>
+      Math.sin((i * Math.PI) / 32),
+    );
+    const result = xHilbertTransform(sin);
+    for (let i = 0; i < 64; i++) {
+      expect(result[i]).toBeCloseTo(minusCos[i], 6);
+    }
+  });
+
+  it('test hilbert transform of squareWave function', () => {
+    const p = 2 ** 4;
+    const squareWave = new Float64Array(length);
+    for (let i = 0; i < length; i++) {
+      squareWave[i] = i % p < p / 2 ? 1 : -1;
+    }
+    const result = xHilbertTransform(squareWave);
+    const maxValue = xMaxValue(result);
+    for (let i = 0; i < length / p; i++) {
+      expect(result[i * p]).toStrictEqual(-maxValue);
+      expect(result[i * p + p * 0.5]).toStrictEqual(maxValue);
+      expect(result[i * p + p * 0.25]).toBeCloseTo(0, 10);
+      expect(result[i * p + p * 0.75]).toBeCloseTo(0, 10);
     }
   });
 });
