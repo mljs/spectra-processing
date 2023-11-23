@@ -1,5 +1,13 @@
 # Changelog
 
+## [12.7.0](https://github.com/mljs/spectra-processing/compare/v12.6.0...v12.7.0) (2023-11-23)
+
+
+### Features
+
+* add utilities isPowerOfTwo and nextPowerOfTwo ([bec701a](https://github.com/mljs/spectra-processing/commit/bec701a88d851ea6e95fa3792197ac764a729c4f))
+* enable FFT for xHilbertTransform to enhance speed for arrays with lengths that are powers of 2 ([#198](https://github.com/mljs/spectra-processing/issues/198)) ([e5677a7](https://github.com/mljs/spectra-processing/commit/e5677a7c7805f463b4efaa6c2bf28e769444ee7a))
+
 ## [12.6.0](https://github.com/mljs/spectra-processing/compare/v12.5.1...v12.6.0) (2023-10-13)
 
 
