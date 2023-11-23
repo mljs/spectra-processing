@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>xyToXYObject | ml-spectra-processing</title><meta name="description" content="Documentation for ml-spectra-processing"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"/><script src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js"></script><script>
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>hilbertTransformWithFFT | ml-spectra-processing</title><meta name="description" content="Documentation for ml-spectra-processing"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"/><script src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js"></script><script>
 					window.__typeDocPluginKatexOptions={"delimiters":[{"left":"$","right":"$","display":true}],"fleqn":"true","leqno":"false"};
 					window.addEventListener('load', () => window.renderMathInElement(document.body, window.__typeDocPluginKatexOptions));
 				</script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
@@ -16,26 +16,29 @@
 <div class="tsd-page-title">
 <ul class="tsd-breadcrumb">
 <li><a href="../modules.html">ml-spectra-processing</a></li>
-<li><a href="xyToXYObject.html">xyToXYObject</a></li></ul>
-<h1>Function xyToXYObject</h1></div>
+<li><a href="hilbertTransformWithFFT.html">hilbertTransformWithFFT</a></li></ul>
+<h1>Function hilbertTransformWithFFT</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="xyToXYObject"><span class="tsd-kind-call-signature">xy<wbr/>ToXYObject</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">data</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/Point.html" class="tsd-signature-type tsd-kind-interface">Point</a><span class="tsd-signature-symbol">[]</span><a href="#xyToXYObject" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="hilbertTransformWithFFT"><span class="tsd-kind-call-signature">hilbert<wbr/>Transform<wbr/>WithFFT</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">array</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Float64Array</span><a href="#hilbertTransformWithFFT" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>XyToXYObject.</p>
+<div class="tsd-comment tsd-typography"><p>Performs the discrete Hilbert transform using fast Fourier transform</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">data</span>: <span class="tsd-signature-type ">DataXY</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type ">DoubleArray</span><span class="tsd-signature-symbol">&gt;</span></h5>
-<div class="tsd-comment tsd-typography"><p>Array of points {x,y}.</p>
+<h5><span class="tsd-kind-parameter">array</span>: <span class="tsd-signature-type ">DoubleArray</span></h5>
+<div class="tsd-comment tsd-typography"><p>Array containing values</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></li></ul></div>
-<h4 class="tsd-returns-title">Returns <a href="../interfaces/Point.html" class="tsd-signature-type tsd-kind-interface">Point</a><span class="tsd-signature-symbol">[]</span></h4>
-<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Float64Array</span></h4><p>A new vector with 90 degree shift regarding the phase of the original function</p>
+
+<div class="tsd-comment tsd-typography">
+<h4>See</h4><p>DOI: 10.1109/TAU.1970.1162139 &quot;Discrete Hilbert transform&quot;</p>
+</div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/mljs/spectra-processing/blob/cf03423/src/xy/xyToXYObject.ts#L12">xy/xyToXYObject.ts:12</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/mljs/spectra-processing/blob/cf03423/src/x/xHilbertTransform.ts#L28">x/xHilbertTransform.ts:28</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -68,7 +71,7 @@
 <li><a href="getOutputArray.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>getOutputArray</a></li>
 <li><a href="getRescaler.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>getRescaler</a></li>
 <li><a href="hilbertTransform.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>hilbertTransform</a></li>
-<li><a href="hilbertTransformWithFFT.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>hilbertTransformWithFFT</a></li>
+<li><a href="hilbertTransformWithFFT.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>hilbertTransformWithFFT</a></li>
 <li><a href="isPowerOfTwo.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>isPowerOfTwo</a></li>
 <li><a href="matrixAbsoluteMedian.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>matrixAbsoluteMedian</a></li>
 <li><a href="matrixApplyNumericalEncoding.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>matrixApplyNumericalEncoding</a></li>
