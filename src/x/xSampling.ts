@@ -23,17 +23,15 @@ export function xSampling(
     );
   }
 
-  const clonedArray = array.slice();
-  returnArray.push(clonedArray[0]);
-  clonedArray.shift();
-  const delta = Math.floor(clonedArray.length / (length - 1));
+  returnArray.push(array[0]);
+  const delta = Math.floor((array.length - 1) / (length - 1));
 
   for (
-    let i = delta - 1, j = 0;
-    i < clonedArray.length && j < length - 1;
+    let i = delta, j = 0;
+    i < array.length && j < length - 1;
     i = i + delta, j++
   ) {
-    returnArray.push(clonedArray[i]);
+    returnArray.push(array[i]);
   }
 
   return returnArray;
