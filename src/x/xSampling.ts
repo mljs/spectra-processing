@@ -32,17 +32,16 @@ export function xSampling(
  * @return - array with evenly spaced elements
  * @link https://en.wikipedia.org/wiki/Downsampling_(signal_processing)
  */
-function downSampling(array: DoubleArray, length: number): number[] {
-  const returnArray = [];
-  returnArray.push(array[0]);
+function downSampling(array: DoubleArray, length: number) {
+  const returnArray = new Float64Array(length);
+  returnArray[0] = array[0];
   const delta = Math.floor((array.length - 1) / (length - 1));
-
   for (
     let i = delta, j = 0;
     i < array.length && j < length - 1;
     i = i + delta, j++
   ) {
-    returnArray.push(array[i]);
+    returnArray[j + 1] = array[i];
   }
 
   return returnArray;
