@@ -1,4 +1,4 @@
-import { xFindClosestIndex, xResampling, xSampling } from '../../index';
+import { xFindClosestIndex, xSampling } from '../../index';
 
 describe('test xSampling', () => {
   it('testing on array', () => {
@@ -25,9 +25,9 @@ describe('test xSampling', () => {
   }
   it('Test reducing the size of the vector to half', () => {
     const nLength = length / 2;
-    const nx = xResampling(x, nLength);
-    const ncos = xResampling(cos, nLength);
-    const nsin = xResampling(sin, nLength);
+    const nx = xSampling(x, { length: nLength });
+    const ncos = xSampling(cos, { length: nLength });
+    const nsin = xSampling(sin, { length: nLength });
     const points = [0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75];
     for (const point of points) {
       expect(cos[xFindClosestIndex(x, t * point)]).toStrictEqual(
@@ -41,9 +41,9 @@ describe('test xSampling', () => {
 
   it('Test increasing the size of the vector to twice its original size', () => {
     const nLength = length * 2;
-    const nx = xResampling(x, nLength);
-    const ncos = xResampling(cos, nLength);
-    const nsin = xResampling(sin, nLength);
+    const nx = xSampling(x, { length: nLength });
+    const ncos = xSampling(cos, { length: nLength });
+    const nsin = xSampling(sin, { length: nLength });
     for (const point of x) {
       expect(cos[xFindClosestIndex(x, t * point)]).toStrictEqual(
         ncos[xFindClosestIndex(nx, t * point)],
