@@ -12,7 +12,9 @@ describe('test xSampling', () => {
     const result = xSampling(array, { length: 4 });
     expect(Array.from(result)).toStrictEqual([0, 2, 4, 6]);
   });
+});
 
+describe('Test xSampling functionality with periodic functions', () => {
   const length = 16;
   const x = new Float64Array(length);
   const cos = new Float64Array(length);
@@ -23,6 +25,7 @@ describe('test xSampling', () => {
     cos[i] = Math.cos((i * Math.PI) / (t / 2));
     sin[i] = Math.sin((i * Math.PI) / (t / 2));
   }
+
   it('Test reducing the size of the vector to half', () => {
     const nLength = length / 2;
     const nx = xSampling(x, { length: nLength });
