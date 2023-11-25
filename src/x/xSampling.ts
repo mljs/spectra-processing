@@ -57,7 +57,7 @@ function downSampling(array: DoubleArray, length: number) {
 function resampling(array: DoubleArray, length: number) {
   xCheck(array);
   const oldLength = array.length;
-  const ratio = oldLength / length;
+  const ratio = (oldLength - 1) / (length - 1);
   const result = new Float64Array(length);
 
   let currentIndex = 0;
@@ -66,7 +66,7 @@ function resampling(array: DoubleArray, length: number) {
   let diff = currentIndex - floor;
 
   for (let i = 0; i < length; i++) {
-    result[i] = array[floor] * diff + array[ceil] * (1 - diff);
+    result[i] = array[floor] * (1 - diff) + array[ceil] * diff;
     currentIndex += ratio;
     floor = Math.floor(currentIndex);
     ceil = Math.min(Math.ceil(currentIndex), oldLength - 1);
