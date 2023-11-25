@@ -14,6 +14,40 @@ describe('test xSampling', () => {
   });
 });
 
+describe('simple test cases for upsampling', () => {
+  it('testing on array', () => {
+    expect(Array.from(xSampling([0], { length: 2 }))).toStrictEqual([0, 0]);
+    expect(Array.from(xSampling([1, 2], { length: 3 }))).toStrictEqual(
+      Array.from([1, 1.5, 2]),
+    );
+    expect(Array.from(xSampling([1, 2], { length: 5 }))).toStrictEqual([
+      1, 1.25, 1.5, 1.75, 2,
+    ]);
+    expect(Array.from(xSampling([1, 2, 3], { length: 5 }))).toStrictEqual([
+      1, 1.5, 2, 2.5, 3,
+    ]);
+    expect(Array.from(xSampling([1, 2, 4], { length: 5 }))).toStrictEqual([
+      1, 1.5, 2, 3, 4,
+    ]);
+    expect(Array.from(xSampling([1, 2, 4], { length: 7 }))).toStrictEqual([
+      1, 1.3333333333333335, 1.6666666666666665, 2, 2.6666666666666665,
+      3.333333333333333, 3.9999999999999996,
+    ]);
+    expect(Array.from(xSampling([1, 2, 3], { length: 4 }))).toStrictEqual([
+      1, 1.6666666666666665, 2.333333333333333, 3,
+    ]);
+    expect(Array.from(xSampling([1, 2, 4], { length: 4 }))).toStrictEqual([
+      1, 1.6666666666666665, 2.6666666666666665, 4,
+    ]);
+    expect(Array.from(xSampling([1, 2, 1], { length: 4 }))).toStrictEqual([
+      1, 1.6666666666666665, 1.6666666666666667, 1,
+    ]);
+    expect(Array.from(xSampling([1, 2, -1], { length: 5 }))).toStrictEqual([
+      1, 1.5, 2, 0.5, -1,
+    ]);
+  });
+});
+
 describe('Test xSampling functionality with periodic functions', () => {
   const length = 16;
   const x = new Float64Array(length);
@@ -43,7 +77,7 @@ describe('Test xSampling functionality with periodic functions', () => {
   });
 
   it('Test increasing the size of the vector to twice its original size', () => {
-    const nLength = length * 2;
+    const nLength = length * 2 - 1;
     const nx = xSampling(x, { length: nLength });
     const ncos = xSampling(cos, { length: nLength });
     const nsin = xSampling(sin, { length: nLength });
