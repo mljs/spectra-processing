@@ -19,10 +19,13 @@ export function xSampling(
   } = {},
 ) {
   const { length = 10 } = options;
-  if (length > array.length) {
+  if (length === array.length) {
+    return Float64Array.from(array);
+  } else if (length > array.length) {
     return resampling(array, length);
+  } else {
+    return downSampling(array, length);
   }
-  return downSampling(array, length);
 }
 
 /**
