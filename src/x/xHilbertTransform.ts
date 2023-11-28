@@ -19,11 +19,15 @@ export function xHilbertTransform(
 ) {
   xCheck(array);
   const { forceFFT = false } = options;
-  if (isPowerOfTwo(array.length)) {
+  const length = array.length;
+  if (isPowerOfTwo(length)) {
     return hilbertTransformWithFFT(array);
   } else if (forceFFT) {
-    return hilbertTransformWithFFT(
-      xSampling(array, { length: nextPowerOfTwo(array.length) }),
+    return xSampling(
+      hilbertTransformWithFFT(
+        xSampling(array, { length: nextPowerOfTwo(length) }),
+      ),
+      { length },
     );
   } else {
     return hilbertTransform(array);
@@ -37,26 +41,26 @@ export function xHilbertTransform(
  * @see DOI: 10.1109/TAU.1970.1162139 "Discrete Hilbert transform"
  */
 export function hilbertTransformWithFFT(array: DoubleArray) {
-  const n = array.length;
-  const fft = new FFT(n);
-  const complexSignal = new Float64Array(n * 2);
-  for (let i = 0; i < n; i++) {
+  const length = array.length;
+  const fft = new FFT(length);
+  const complexSignal = new Float64Array(length * 2);
+  for (let i = 0; i < length; i++) {
     complexSignal[i * 2] = array[i];
   }
-  const fftResult = new Float64Array(n * 2);
+  const fftResult = new Float64Array(length * 2);
   fft.transform(fftResult, complexSignal);
-  const multiplier = new Float64Array(n);
-  for (let i = 1; i < n; i++) {
-    multiplier[i] = Math.sign(n / 2 - i);
+  const multiplier = new Float64Array(length);
+  for (let i = 1; i < length; i++) {
+    multiplier[i] = Math.sign(length / 2 - i);
   }
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < length; i++) {
     fftResult[i * 2] *= multiplier[i];
     fftResult[i * 2 + 1] *= multiplier[i];
   }
-  const hilbertSignal = new Float64Array(n * 2);
+  const hilbertSignal = new Float64Array(length * 2);
   fft.inverseTransform(hilbertSignal, fftResult);
-  const result = new Float64Array(n);
-  for (let i = 0; i < n; i++) {
+  const result = new Float64Array(length);
+  for (let i = 0; i < length; i++) {
     result[i] = hilbertSignal[i * 2 + 1];
   }
   return result;
