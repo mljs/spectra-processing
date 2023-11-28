@@ -1,7 +1,10 @@
 import { DoubleArray } from 'cheminfo-types';
 import FFT from 'fft.js';
 
+import { nextPowerOfTwo, isPowerOfTwo } from '../utils';
+
 import { xCheck } from './xCheck';
+import { xSampling } from './xSampling';
 
 /**
  * Performs the Hilbert transform
@@ -10,10 +13,18 @@ import { xCheck } from './xCheck';
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  */
 
-export function xHilbertTransform(array: DoubleArray) {
+export function xHilbertTransform(
+  array: DoubleArray,
+  options: { forceFFT?: boolean } = {},
+) {
   xCheck(array);
-  if (Math.log2(array.length) % 1 === 0) {
+  const { forceFFT = false } = options;
+  if (isPowerOfTwo(array.length)) {
     return hilbertTransformWithFFT(array);
+  } else if (forceFFT) {
+    return hilbertTransformWithFFT(
+      xSampling(array, { length: nextPowerOfTwo(array.length) }),
+    );
   } else {
     return hilbertTransform(array);
   }
