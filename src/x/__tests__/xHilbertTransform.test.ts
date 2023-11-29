@@ -1,4 +1,4 @@
-import { xHilbertTransform, xMaxValue } from '../../index';
+import { xHilbertTransform, xMaxValue, xSampling } from '../..';
 
 describe('test discrete hilbert transform', () => {
   const length = 50;
@@ -74,6 +74,76 @@ describe('test fast hilbert transform', () => {
       expect(result[i * p + p * 0.5]).toStrictEqual(maxValue);
       expect(result[i * p + p * 0.25]).toBeCloseTo(0, 10);
       expect(result[i * p + p * 0.75]).toBeCloseTo(0, 10);
+    }
+  });
+});
+
+describe('test fast hilbert transform with forceFFT (array length greater than a power of 2)', () => {
+  const length = 2 ** 6;
+  const x = new Float64Array(length);
+  const cos = new Float64Array(length);
+  const sin = new Float64Array(length);
+  const minusCos = new Float64Array(length);
+  const t = length;
+  for (let i = 0; i < length; i++) {
+    x[i] = i;
+    cos[i] = Math.cos((i * Math.PI) / (t / 2));
+    sin[i] = Math.sin((i * Math.PI) / (t / 2));
+    minusCos[i] = -Math.cos((i * Math.PI) / (length / 2));
+  }
+  const diff = 10;
+  const scos = xSampling(cos, { length: length + diff });
+  const ssin = xSampling(sin, { length: length + diff });
+  const tcos = xSampling(xHilbertTransform(scos, { forceFFT: true }), {
+    length,
+  });
+  const tsin = xSampling(xHilbertTransform(ssin, { forceFFT: true }), {
+    length,
+  });
+  it('test hilbert transform of cos -> sin function', () => {
+    for (let i = 1; i < length - 1; i++) {
+      expect(tcos[i]).toBeCloseTo(sin[i], 1);
+    }
+  });
+
+  it('test hilbert transform of sin -> -cos function', () => {
+    for (let i = 1; i < length - 1; i++) {
+      expect(tsin[i]).toBeCloseTo(minusCos[i], 1);
+    }
+  });
+});
+
+describe('test fast hilbert transform with forceFFT (array length less than a power of 2)', () => {
+  const length = 2 ** 6;
+  const x = new Float64Array(length);
+  const cos = new Float64Array(length);
+  const sin = new Float64Array(length);
+  const minusCos = new Float64Array(length);
+  const t = length;
+  for (let i = 0; i < length; i++) {
+    x[i] = i;
+    cos[i] = Math.cos((i * Math.PI) / (t / 2));
+    sin[i] = Math.sin((i * Math.PI) / (t / 2));
+    minusCos[i] = -Math.cos((i * Math.PI) / (length / 2));
+  }
+  const diff = -10;
+  const scos = xSampling(cos, { length: length + diff });
+  const ssin = xSampling(sin, { length: length + diff });
+  const tcos = xSampling(xHilbertTransform(scos, { forceFFT: true }), {
+    length,
+  });
+  const tsin = xSampling(xHilbertTransform(ssin, { forceFFT: true }), {
+    length,
+  });
+  it('test hilbert transform of cos -> sin function', () => {
+    for (let i = 0; i < length; i++) {
+      expect(tcos[i]).toBeCloseTo(sin[i], 2);
+    }
+  });
+
+  it('test hilbert transform of sin -> -cos function', () => {
+    for (let i = 0; i < length; i++) {
+      expect(tsin[i]).toBeCloseTo(minusCos[i], 2);
     }
   });
 });
