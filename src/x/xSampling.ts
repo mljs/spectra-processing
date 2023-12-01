@@ -19,10 +19,11 @@ export function xSampling(
   } = {},
 ) {
   const { length = 10 } = options;
+  xCheck(array);
   if (length === array.length) {
     return Float64Array.from(array);
   } else if (length > array.length) {
-    return resampling(array, length);
+    throw new RangeError('length must be smaller than the array length');
   } else {
     return downSampling(array, length);
   }
@@ -37,44 +38,11 @@ export function xSampling(
  */
 function downSampling(array: DoubleArray, length: number) {
   const returnArray = new Float64Array(length);
-  returnArray[0] = array[0];
-  const delta = Math.floor((array.length - 1) / (length - 1));
-  for (
-    let i = delta, j = 0;
-    i < array.length && j < length - 1;
-    i = i + delta, j++
-  ) {
-    returnArray[j + 1] = array[i];
+  const delta = (array.length - 1) / (length - 1);
+
+  for (let i = 0; i < length; i++) {
+    returnArray[i] = array[Math.round(i * delta)];
   }
 
   return returnArray;
-}
-
-/**
- * Performs resampling of an input array to the desired length employing linear interpolation.
- * @param array - Array containing values.
- * @param length - The length of the resulting array.
- * @returns It returns a new array of the desired length.
- * @link https://en.wikipedia.org/wiki/Sample-rate_conversion
- */
-function resampling(array: DoubleArray, length: number) {
-  xCheck(array);
-  const oldLength = array.length;
-  const ratio = (oldLength - 1) / (length - 1);
-  const result = new Float64Array(length);
-
-  let currentIndex = 0;
-  let floor = Math.floor(currentIndex);
-  let ceil = Math.min(Math.ceil(currentIndex), oldLength - 1);
-  let diff = currentIndex - floor;
-
-  for (let i = 0; i < length; i++) {
-    result[i] = array[floor] * (1 - diff) + array[ceil] * diff;
-    currentIndex += ratio;
-    floor = Math.floor(currentIndex);
-    ceil = Math.min(Math.ceil(currentIndex), oldLength - 1);
-    diff = currentIndex - floor;
-  }
-
-  return result;
 }
