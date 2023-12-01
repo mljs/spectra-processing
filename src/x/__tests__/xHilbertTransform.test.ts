@@ -68,20 +68,19 @@ test('test fast hilbert transform with forceFFT (array length greater than a pow
   const cos = new Float64Array(length);
   const sin = new Float64Array(length);
   const minusCos = new Float64Array(length);
-  const t = length;
   for (let i = 0; i < length; i++) {
-    cos[i] = Math.cos((i * Math.PI) / (t / 2));
-    sin[i] = Math.sin((i * Math.PI) / (t / 2));
+    cos[i] = Math.cos((i * Math.PI) / (length / 2));
+    sin[i] = Math.sin((i * Math.PI) / (length / 2));
     minusCos[i] = -Math.cos((i * Math.PI) / (length / 2));
   }
   const tcos = xHilbertTransform(cos, { forceFFT: true });
   const tsin = xHilbertTransform(sin, { forceFFT: true });
   // test hilbert transform of cos -> sin function
-  for (let i = 1; i < length - 1; i++) {
+  for (let i = 0; i < length; i++) {
     expect(tcos[i]).toBeCloseTo(sin[i], 1);
   }
   // test hilbert transform of sin -> -cos function
-  for (let i = 1; i < length - 1; i++) {
+  for (let i = 0; i < length; i++) {
     expect(tsin[i]).toBeCloseTo(minusCos[i], 1);
   }
 });
@@ -92,11 +91,10 @@ test('test fast hilbert transform with forceFFT (array length less than a power 
   const cos = new Float64Array(length);
   const sin = new Float64Array(length);
   const minusCos = new Float64Array(length);
-  const t = length;
   for (let i = 0; i < length; i++) {
     x[i] = i;
-    cos[i] = Math.cos((i * Math.PI) / (t / 2));
-    sin[i] = Math.sin((i * Math.PI) / (t / 2));
+    cos[i] = Math.cos((i * Math.PI) / (length / 2));
+    sin[i] = Math.sin((i * Math.PI) / (length / 2));
     minusCos[i] = -Math.cos((i * Math.PI) / (length / 2));
   }
 
