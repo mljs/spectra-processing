@@ -4,7 +4,6 @@ import FFT from 'fft.js';
 import { nextPowerOfTwo, isPowerOfTwo } from '../utils';
 
 import { xCheck } from './xCheck';
-import { xSampling } from './xSampling';
 
 /**
  * Performs the Hilbert transform
@@ -23,11 +22,9 @@ export function xHilbertTransform(
   if (isPowerOfTwo(length)) {
     return hilbertTransformWithFFT(array);
   } else if (forceFFT) {
-    return xSampling(
-      hilbertTransformWithFFT(
-        xSampling(array, { length: nextPowerOfTwo(length) }),
-      ),
-      { length },
+    return resampling(
+      hilbertTransformWithFFT(resampling(array, nextPowerOfTwo(length))),
+      length,
     );
   } else {
     return hilbertTransform(array);
@@ -40,7 +37,7 @@ export function xHilbertTransform(
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  * @see DOI: 10.1109/TAU.1970.1162139 "Discrete Hilbert transform"
  */
-export function hilbertTransformWithFFT(array: DoubleArray) {
+function hilbertTransformWithFFT(array: DoubleArray) {
   const length = array.length;
   const fft = new FFT(length);
   const complexSignal = new Float64Array(length * 2);
@@ -71,7 +68,7 @@ export function hilbertTransformWithFFT(array: DoubleArray) {
  * @param array - Array containing values
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  */
-export function hilbertTransform(
+function hilbertTransform(
   array: DoubleArray,
   options: { inClockwise?: boolean } = {},
 ) {
@@ -92,5 +89,34 @@ export function hilbertTransform(
     }
     result[k - 1] = ((inClockwise ? 1 : -1) * (aSum + b + cSum)) / Math.PI;
   }
+  return result;
+}
+
+/**
+ * Performs resampling of an input array to the desired length employing linear interpolation.
+ * @param array - Array containing values.
+ * @param length - The length of the resulting array.
+ * @returns It returns a new array of the desired length.
+ * @link https://en.wikipedia.org/wiki/Sample-rate_conversion
+ */
+function resampling(array: DoubleArray, length: number) {
+  xCheck(array);
+  const oldLength = array.length;
+  const ratio = (oldLength - 1) / (length - 1);
+  const result = new Float64Array(length);
+
+  let currentIndex = 0;
+  let floor = Math.floor(currentIndex);
+  let ceil = Math.min(Math.ceil(currentIndex), oldLength - 1);
+  let diff = currentIndex - floor;
+
+  for (let i = 0; i < length; i++) {
+    result[i] = array[floor] * (1 - diff) + array[ceil] * diff;
+    currentIndex += ratio;
+    floor = Math.floor(currentIndex);
+    ceil = Math.min(Math.ceil(currentIndex), oldLength - 1);
+    diff = currentIndex - floor;
+  }
+
   return result;
 }
