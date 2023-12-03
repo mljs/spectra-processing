@@ -105,21 +105,22 @@ function determiningGlobalValues(
   weights: number[],
 ) {
   const [ph1, ph0] = weightedLinearRegression(x, ph0Values, weights);
-
-  const outliers: number[] = [];
+  let indexMax = -1;
+  let maxDiff = Number.MIN_SAFE_INTEGER;
   for (let i = 0; i < x.length; i++) {
     const predictedPh0 = x[i] * ph1 + ph0;
-    if (Math.abs(ph0Values[i] - predictedPh0) > 34) {
-      outliers.push(i);
+    const diff = Math.abs(ph0Values[i] - predictedPh0);
+    if (diff > 34 && maxDiff < diff) {
+      indexMax = i;
+      maxDiff = diff;
     }
   }
 
-  if (outliers.length > 0) {
-    return determiningGlobalValues(
-      x.filter((_, i) => !outliers.includes(i)),
-      ph0Values.filter((_, i) => !outliers.includes(i)),
-      weights.filter((_, i) => !outliers.includes(i)),
-    );
+  if (indexMax > -1) {
+    x.splice(indexMax, 1);
+    ph0Values.splice(indexMax, 1);
+    weights.splice(indexMax, 1);
+    return determiningGlobalValues(x, ph0Values, weights);
   }
   return { ph0, ph1 };
 }
