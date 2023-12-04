@@ -6,6 +6,34 @@ import { xNoiseSanPlot } from '../x/xNoiseSanPlot';
 import { reimAbsolute } from './reimAbsolute';
 import { reimPhaseCorrection } from './reimPhaseCorrection';
 
+export interface AutoPhaseCorrectionOptions {
+  /**
+   * if true it uses magnitude spectrum.boolean
+   * @default true
+   */
+  magnitudeMode?: boolean;
+  /**
+   * min number of points to auto phase a region
+   * @default 30
+   */
+  minRegSize?: number;
+  /**
+   * max distance between regions (in number of points) to join two regions
+   * @default 256
+   */
+  maxDistanceToJoin?: number;
+  /**
+   * scale the cutoff like factorStd * noiseLevel
+   * @default 3
+   */
+  factorNoise?: number;
+  /**
+   * Apply the phase correction from the last element of the array
+   * @default false
+   */
+  reverse?: boolean;
+}
+
 /**
  * Implementation of the algorithm for automatic phase correction: A robust, general automatic phase
  * correction algorithm for high-resolution NMR data. 10.1002/mrc.4586
@@ -16,37 +44,8 @@ import { reimPhaseCorrection } from './reimPhaseCorrection';
 
 export function reimAutoPhaseCorrection(
   data: DataReIm,
-  options: {
-    /**
-     * if true it uses magnitude spectrum.boolean
-     * @default true
-     */
-    magnitudeMode?: boolean;
-    /**
-     * min number of points to auto phase a region
-     * @default 30
-     */
-    minRegSize?: number;
-    /**
-     * max distance between regions (in number of points) to join two regions
-     * @default 256
-     */
-    maxDistanceToJoin?: number;
-    /**
-     * scale the cutoff like factorStd * noiseLevel
-     * @default 3
-     */
-    factorNoise?: number;
-    /**
-     * Apply the phase correction from the last element of the array
-     * @default false
-     */
-    reverse?: boolean;
-  } = {},
+  options: AutoPhaseCorrectionOptions = {},
 ): { data: DataReIm; ph0: number; ph1: number } {
-  const { re, im } = data;
-  const length = re.length;
-
   const {
     magnitudeMode = true,
     minRegSize = 30,
@@ -55,64 +54,93 @@ export function reimAutoPhaseCorrection(
     reverse = false,
   } = options;
 
-  const magnitudeData = magnitudeMode ? reimAbsolute(data) : re;
-
-  const ds = holoborodko(magnitudeData);
-  const peaksDs = robustBaseLineRegionsDetection(ds, {
+  const finalPeaks = detectBaselineRegions(data, {
     maxDistanceToJoin,
     magnitudeMode,
     factorNoise,
   });
-  const peaksSp = robustBaseLineRegionsDetection(magnitudeData, {
-    maxDistanceToJoin,
-    magnitudeMode,
-    factorNoise,
-  });
-  const finalPeaks = new Uint8Array(length);
-  for (let i = 0; i < length; i++) {
-    finalPeaks[i] = peaksSp[i] && peaksDs[i];
-  }
 
-  // Once the regions are detected, we auto phase each of them separately.
-  // This part can be put inside a function
-  const indexMask = reverse ? (i: number) => length - i : (i: number) => i;
-  let counter = -1;
+  const { re, im } = data;
+  const length = re.length;
+  const indexMask = reverse ? (i: number) => length - 1 - i : (i: number) => i;
   let x0 = 0;
+  let counter = -1;
   const res = [];
   while (counter < length) {
-    //phase first region
     const reTmp: DoubleArray = [];
     const imTmp: DoubleArray = [];
-
-    //Look for the first 1 in the array
-    while (!finalPeaks[++counter] && counter < length) {
+    while (!finalPeaks[indexMask(++counter)] && counter < length) {
       //Add some extra points(0.1 ppm) at rigth and left sides of the region.
-      x0 = indexMask(counter);
+      x0 = counter;
     }
-    for (; finalPeaks[counter] && counter < length; counter++) {
-      reTmp.push(re[counter]);
-      imTmp.push(im[counter]);
-      counter++;
+    for (; finalPeaks[indexMask(counter)] && counter < length; counter += 2) {
+      reTmp.push(re[indexMask(counter)]);
+      imTmp.push(im[indexMask(counter)]);
     }
 
     if (reTmp.length > minRegSize) {
       res.push(autoPhaseRegion(reTmp, imTmp, x0));
     }
   }
-  // Still some corrections needed. In the paper they remove the outlayers interatively
-  // until they can perform a regression witout bad points. Can someone help here?
-  const [ph1, ph0] = weightedLinearRegression(
+
+  const { ph1, ph0 } = determiningGlobalValues(
     res.map((r) => r.x0 / length),
     res.map((r) => r.ph0),
     res.map((r) => r.area / 1e11),
   );
+
   const phased = reimPhaseCorrection(
     { re, im },
-    (ph0 * Math.PI) / 180,
-    (ph1 * Math.PI) / 180,
+    toRadians(ph0),
+    toRadians(ph1),
     { reverse },
   );
+
   return { data: phased, ph0, ph1 };
+}
+
+function determiningGlobalValues(
+  x: number[],
+  ph0Values: number[],
+  weights: number[],
+) {
+  const [ph1, ph0] = weightedLinearRegression(x, ph0Values, weights);
+  let indexMax = -1;
+  let maxDiff = Number.MIN_SAFE_INTEGER;
+  for (let i = 0; i < x.length; i++) {
+    const predictedPh0 = x[i] * ph1 + ph0;
+    const diff = Math.abs(ph0Values[i] - predictedPh0);
+    if (diff > 34 && maxDiff < diff) {
+      indexMax = i;
+      maxDiff = diff;
+    }
+  }
+
+  if (indexMax > -1) {
+    x.splice(indexMax, 1);
+    ph0Values.splice(indexMax, 1);
+    weights.splice(indexMax, 1);
+    return determiningGlobalValues(x, ph0Values, weights);
+  }
+  return { ph0, ph1 };
+}
+
+function detectBaselineRegions(
+  data: DataReIm,
+  options: Required<
+    Pick<
+      AutoPhaseCorrectionOptions,
+      'magnitudeMode' | 'maxDistanceToJoin' | 'factorNoise'
+    >
+  >,
+) {
+  const magnitudeData = options.magnitudeMode ? reimAbsolute(data) : data.re;
+
+  const ds = holoborodko(magnitudeData);
+  const peaksDs = robustBaseLineRegionsDetection(ds, options);
+  const peaksSp = robustBaseLineRegionsDetection(magnitudeData, options);
+
+  return peaksSp.map((sp, i) => sp && peaksDs[i]);
 }
 
 /**
@@ -135,7 +163,7 @@ function autoPhaseRegion(
   let start = -180;
   let stop = 180;
   const nSteps = 6;
-  let maxSteps = 5;
+  let maxSteps = 10;
 
   let bestAng = 0;
   let minArea = Number.MAX_SAFE_INTEGER;
