@@ -1,5 +1,19 @@
 # Changelog
 
+## [12.8.0](https://github.com/mljs/spectra-processing/compare/v12.7.0...v12.8.0) (2023-12-04)
+
+
+### Features
+
+* avoid data cloning in xSampling ([6c2a8bb](https://github.com/mljs/spectra-processing/commit/6c2a8bbb48c20054836e1f6da121602b53038b22))
+* implement resampling within xSampling to handle array lengths larger than the original size ([#200](https://github.com/mljs/spectra-processing/issues/200)) ([fdeca70](https://github.com/mljs/spectra-processing/commit/fdeca70ef5452ac7cb89044aa906c1b0929aab09))
+
+
+### Bug Fixes
+
+* improve reimautophasecorrection by removing outliers ([#206](https://github.com/mljs/spectra-processing/issues/206)) ([7b00d93](https://github.com/mljs/spectra-processing/commit/7b00d93b7c3eeade9f6ac4895900808f34e46b6c))
+* xSampling when the ratio originalLength finalLength is not an integer ([041c639](https://github.com/mljs/spectra-processing/commit/041c639127a4f9fb467556cb8b203186b05482ed))
+
 ## [12.7.0](https://github.com/mljs/spectra-processing/compare/v12.6.0...v12.7.0) (2023-11-23)
 
 
