@@ -1,6 +1,7 @@
-import { reimAutoPhaseCorrection } from '../reimAutoPhaseCorrection';
-import { join } from 'path';
 import { readFileSync } from 'node:fs';
+import { join } from 'path';
+
+import { reimAutoPhaseCorrection } from '../reimAutoPhaseCorrection';
 import { reimPhaseCorrection } from '../reimPhaseCorrection';
 
 const data = JSON.parse(
