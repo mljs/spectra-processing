@@ -11,6 +11,8 @@ rules:
     - max: 60
       skipBlankLines: true
       skipComments: true
+  no-undefined:
+    - warn
 overrides:
   - files: '**/__tests__/**'
     rules:

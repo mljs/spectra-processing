@@ -258,7 +258,7 @@ function determineCutOff(
     );
     let kiSqrt = 0;
     for (const element of elementsOfCutOff) {
-      kiSqrt += Math.pow(element[1] - averageValue, 2);
+      kiSqrt += (element[1] - averageValue) ** 2;
     }
 
     if (kiSqrt < minKi) {
