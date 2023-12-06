@@ -1,6 +1,8 @@
 import { DoubleArray } from 'cheminfo-types';
 import FFT from 'fft.js';
 
+import { nextPowerOfTwo, isPowerOfTwo } from '../utils';
+
 import { xCheck } from './xCheck';
 
 /**
@@ -10,10 +12,20 @@ import { xCheck } from './xCheck';
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  */
 
-export function xHilbertTransform(array: DoubleArray) {
+export function xHilbertTransform(
+  array: DoubleArray,
+  options: { forceFFT?: boolean } = {},
+) {
   xCheck(array);
-  if (Math.log2(array.length) % 1 === 0) {
+  const { forceFFT = false } = options;
+  const length = array.length;
+  if (isPowerOfTwo(length)) {
     return hilbertTransformWithFFT(array);
+  } else if (forceFFT) {
+    return resampling(
+      hilbertTransformWithFFT(resampling(array, nextPowerOfTwo(length))),
+      length,
+    );
   } else {
     return hilbertTransform(array);
   }
@@ -25,27 +37,27 @@ export function xHilbertTransform(array: DoubleArray) {
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  * @see DOI: 10.1109/TAU.1970.1162139 "Discrete Hilbert transform"
  */
-export function hilbertTransformWithFFT(array: DoubleArray) {
-  const n = array.length;
-  const fft = new FFT(n);
-  const complexSignal = new Float64Array(n * 2);
-  for (let i = 0; i < n; i++) {
+function hilbertTransformWithFFT(array: DoubleArray) {
+  const length = array.length;
+  const fft = new FFT(length);
+  const complexSignal = new Float64Array(length * 2);
+  for (let i = 0; i < length; i++) {
     complexSignal[i * 2] = array[i];
   }
-  const fftResult = new Float64Array(n * 2);
+  const fftResult = new Float64Array(length * 2);
   fft.transform(fftResult, complexSignal);
-  const multiplier = new Float64Array(n);
-  for (let i = 1; i < n; i++) {
-    multiplier[i] = Math.sign(n / 2 - i);
+  const multiplier = new Float64Array(length);
+  for (let i = 1; i < length; i++) {
+    multiplier[i] = Math.sign(length / 2 - i);
   }
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < length; i++) {
     fftResult[i * 2] *= multiplier[i];
     fftResult[i * 2 + 1] *= multiplier[i];
   }
-  const hilbertSignal = new Float64Array(n * 2);
+  const hilbertSignal = new Float64Array(length * 2);
   fft.inverseTransform(hilbertSignal, fftResult);
-  const result = new Float64Array(n);
-  for (let i = 0; i < n; i++) {
+  const result = new Float64Array(length);
+  for (let i = 0; i < length; i++) {
     result[i] = hilbertSignal[i * 2 + 1];
   }
   return result;
@@ -56,7 +68,7 @@ export function hilbertTransformWithFFT(array: DoubleArray) {
  * @param array - Array containing values
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  */
-export function hilbertTransform(
+function hilbertTransform(
   array: DoubleArray,
   options: { inClockwise?: boolean } = {},
 ) {
@@ -77,5 +89,34 @@ export function hilbertTransform(
     }
     result[k - 1] = ((inClockwise ? 1 : -1) * (aSum + b + cSum)) / Math.PI;
   }
+  return result;
+}
+
+/**
+ * Performs resampling of an input array to the desired length employing linear interpolation.
+ * @param array - Array containing values.
+ * @param length - The length of the resulting array.
+ * @returns It returns a new array of the desired length.
+ * @link https://en.wikipedia.org/wiki/Sample-rate_conversion
+ */
+function resampling(array: DoubleArray, length: number) {
+  xCheck(array);
+  const oldLength = array.length;
+  const ratio = (oldLength - 1) / (length - 1);
+  const result = new Float64Array(length);
+
+  let currentIndex = 0;
+  let floor = Math.floor(currentIndex);
+  let ceil = Math.min(Math.ceil(currentIndex), oldLength - 1);
+  let diff = currentIndex - floor;
+
+  for (let i = 0; i < length; i++) {
+    result[i] = array[floor] * (1 - diff) + array[ceil] * diff;
+    currentIndex += ratio;
+    floor = Math.floor(currentIndex);
+    ceil = Math.min(Math.ceil(currentIndex), oldLength - 1);
+    diff = currentIndex - floor;
+  }
+
   return result;
 }
