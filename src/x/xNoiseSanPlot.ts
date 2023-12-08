@@ -1,10 +1,51 @@
 import { DataXY, FromTo, DoubleArray } from 'cheminfo-types';
+import { isAnyArray } from 'is-any-array';
 import SplineInterpolator from 'spline-interpolator';
 
 import { createFromToArray } from '../utils/createFromToArray';
 
 import erfcinv from './erfcinv';
 import rayleighCdf from './rayleighCdf';
+
+export interface XNoiseSanPlotOptions {
+  /**
+   * boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+   */
+  mask?: DoubleArray;
+  /**
+   * percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+   */
+  cutOff?: number;
+  /**
+   * true the noise level will be recalculated get out the signals using factorStd.
+   * @default true
+   */
+  refine?: boolean;
+  magnitudeMode?: boolean;
+  /**
+   * factor to scale the data input[i]*=scaleFactor.
+   * @default 1
+   */
+  scaleFactor?: number;
+  /**
+   * factor times std to determine what will be marked as signals.
+   * @default 5
+   */
+  factorStd?: number;
+  /**
+   * If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
+   * @default true
+   */
+  fixOffset?: boolean;
+  /**
+   * log scale to apply in the intensity axis in order to avoid big numbers.
+   * @default 2
+   */
+  logBaseY?: number;
+  considerList?: { from: number; step: number; to: number };
+
+  fromTo?: Record<string, FromTo>;
+}
 
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
@@ -16,82 +57,15 @@ import rayleighCdf from './rayleighCdf';
 
 export function xNoiseSanPlot(
   array: DoubleArray,
-  options: {
-    /**
-     * boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
-     */
-    mask?: DoubleArray;
-    /**
-     * percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
-     */
-    cutOff?: number;
-    /**
-     * true the noise level will be recalculated get out the signals using factorStd.
-     * @default true
-     */
-    refine?: boolean;
-    magnitudeMode?: boolean;
-    /**
-     * factor to scale the data input[i]*=scaleFactor.
-     * @default 1
-     */
-    scaleFactor?: number;
-    /**
-     * factor times std to determine what will be marked as signals.
-     * @default 5
-     */
-    factorStd?: number;
-    /**
-     * If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
-     * @default true
-     */
-    fixOffset?: boolean;
-    /**
-     * log scale to apply in the intensity axis in order to avoid big numbers.
-     * @default 2
-     */
-    logBaseY?: number;
-    considerList?: { from: number; step: number; to: number };
-
-    fromTo?: Record<string, FromTo>;
-  } = {},
+  options: XNoiseSanPlotOptions = {},
 ): {
   positive: number;
   negative: number;
   snr: number;
   sanplot: Record<string, DataXY>;
 } {
-  const {
-    mask,
-    cutOff,
-    refine = true,
-    magnitudeMode = false,
-    scaleFactor = 1,
-    factorStd = 5,
-    fixOffset = true,
-  } = options;
-
-  let input;
-  if (Array.isArray(mask) && mask.length === array.length) {
-    input = new Float64Array(array.filter((_e, i) => !mask[i]));
-  } else {
-    input = new Float64Array(array);
-  }
-
-  if (scaleFactor > 1) {
-    for (let i = 0; i < input.length; i++) {
-      input[i] *= scaleFactor;
-    }
-  }
-  input = input.sort().reverse();
-
-  if (fixOffset && !magnitudeMode) {
-    const medianIndex = Math.floor(input.length / 2);
-    const median = 0.5 * (input[medianIndex] + input[medianIndex + 1]);
-    for (let i = 0; i < input.length; i++) {
-      input[i] -= median;
-    }
-  }
+  const { refine = true, magnitudeMode } = options;
+  const input = prepareInput(array, options);
 
   const firstNegativeValueIndex =
     input[input.length - 1] >= 0 ? input.length : input.findIndex((e) => e < 0);
@@ -106,84 +80,38 @@ export function xNoiseSanPlot(
   const signPositive = input.slice(0, lastPositiveValueIndex + 1);
   const signNegative = input.slice(firstNegativeValueIndex);
 
-  const cutOffDist = cutOff || determineCutOff(signPositive, { magnitudeMode });
-
-  const pIndex = Math.floor(signPositive.length * cutOffDist);
-  let initialNoiseLevelPositive = signPositive[pIndex];
-
   const skyPoint = signPositive[0];
 
-  let initialNoiseLevelNegative;
-  if (signNegative.length > 0) {
-    const nIndex = Math.floor(signNegative.length * (1 - cutOffDist));
-    initialNoiseLevelNegative = -1 * signNegative[nIndex];
-  } else {
-    initialNoiseLevelNegative = 0;
-  }
+  const {
+    noiseLevelPositive,
+    noiseLevelNegative,
+    cutOffSignalsIndexPlus,
+    cutOffDist,
+    cloneSignPositive,
+    cloneSignNegative,
+    cutOffSignalsIndexNeg,
+    correctionFactor,
+  } = initializeValues(signPositive, signNegative, options);
 
-  let noiseLevelPositive = initialNoiseLevelPositive;
-  let noiseLevelNegative = initialNoiseLevelNegative;
-  let cloneSignPositive = signPositive.slice();
-  let cloneSignNegative = signNegative.slice();
-
-  let cutOffSignalsIndexPlus = 0;
-  let cutOffSignalsIndexNeg = 2;
-  if (refine) {
-    let cutOffSignals = noiseLevelPositive * factorStd;
-    cutOffSignalsIndexPlus = signPositive.findIndex((e) => e < cutOffSignals);
-
-    if (cutOffSignalsIndexPlus > -1) {
-      cloneSignPositive = signPositive.slice(cutOffSignalsIndexPlus);
-      noiseLevelPositive =
-        cloneSignPositive[Math.floor(cloneSignPositive.length * cutOffDist)];
-    }
-
-    cutOffSignals = noiseLevelNegative * factorStd;
-    cutOffSignalsIndexNeg = signNegative.findIndex((e) => e < cutOffSignals);
-    if (cutOffSignalsIndexNeg > -1) {
-      cloneSignNegative = signNegative.slice(cutOffSignalsIndexNeg);
-      noiseLevelNegative =
-        cloneSignPositive[
-          Math.floor(cloneSignNegative.length * (1 - cutOffDist))
-        ];
-    }
-  }
-  const correctionFactor = -simpleNormInv(cutOffDist / 2, { magnitudeMode });
-  initialNoiseLevelPositive = initialNoiseLevelPositive / correctionFactor;
-  initialNoiseLevelNegative = initialNoiseLevelNegative / correctionFactor;
-
-  let effectiveCutOffDist, refinedCorrectionFactor;
-
-  if (refine && cutOffSignalsIndexPlus > -1) {
-    effectiveCutOffDist =
-      (cutOffDist * cloneSignPositive.length + cutOffSignalsIndexPlus) /
-      (cloneSignPositive.length + cutOffSignalsIndexPlus);
-    refinedCorrectionFactor =
-      -1 *
-      (simpleNormInv(effectiveCutOffDist / 2, { magnitudeMode }) as number);
-
-    noiseLevelPositive /= refinedCorrectionFactor;
-
-    if (cutOffSignalsIndexNeg > -1) {
-      effectiveCutOffDist =
-        (cutOffDist * cloneSignNegative.length + cutOffSignalsIndexNeg) /
-        (cloneSignNegative.length + cutOffSignalsIndexNeg);
-      refinedCorrectionFactor =
-        -1 *
-        (simpleNormInv(effectiveCutOffDist / 2, { magnitudeMode }) as number);
-      if (noiseLevelNegative !== 0) {
-        noiseLevelNegative /= refinedCorrectionFactor;
-      }
-    }
-  } else {
-    noiseLevelPositive /= correctionFactor;
-    noiseLevelNegative /= correctionFactor;
-  }
+  const [positive, negative] = refineLevels(
+    noiseLevelPositive,
+    noiseLevelNegative,
+    {
+      refine,
+      magnitudeMode,
+      cutOffSignalsIndexPlus,
+      cutOffDist,
+      cloneSignPositive,
+      cloneSignNegative,
+      cutOffSignalsIndexNeg,
+      correctionFactor,
+    },
+  );
 
   return {
-    positive: noiseLevelPositive,
-    negative: noiseLevelNegative,
-    snr: skyPoint / noiseLevelPositive,
+    positive,
+    negative,
+    snr: skyPoint / positive,
     sanplot: generateSanPlot(input, {
       fromTo: {
         positive: { from: 0, to: lastPositiveValueIndex },
@@ -270,6 +198,159 @@ function determineCutOff(
   return whereToCutStat;
 }
 
+function initializeValues(
+  signPositive: Float64Array,
+  signNegative: Float64Array,
+  options: XNoiseSanPlotOptions = {},
+) {
+  const {
+    cutOff,
+    refine = true,
+    magnitudeMode = false,
+    factorStd = 5,
+  } = options;
+
+  const cutOffDist = cutOff || determineCutOff(signPositive, { magnitudeMode });
+
+  let initialNoiseLevelPositive =
+    signPositive[Math.floor(signPositive.length * cutOffDist)];
+  let initialNoiseLevelNegative =
+    signNegative.length > 0
+      ? -1 * signNegative[Math.floor(signNegative.length * (1 - cutOffDist))]
+      : 0;
+
+  let cutOffSignalsIndexPlus = 0;
+  let cutOffSignalsIndexNeg = 2;
+  let noiseLevelPositive = initialNoiseLevelPositive;
+  let noiseLevelNegative = initialNoiseLevelNegative;
+  let cloneSignPositive = signPositive.slice();
+  let cloneSignNegative = signNegative.slice();
+
+  if (refine) {
+    let cutOffSignals = noiseLevelPositive * factorStd;
+    cutOffSignalsIndexPlus = signPositive.findIndex((e) => e < cutOffSignals);
+
+    if (cutOffSignalsIndexPlus > -1) {
+      cloneSignPositive = signPositive.slice(cutOffSignalsIndexPlus);
+      noiseLevelPositive =
+        cloneSignPositive[Math.floor(cloneSignPositive.length * cutOffDist)];
+    }
+
+    cutOffSignals = noiseLevelNegative * factorStd;
+    cutOffSignalsIndexNeg = signNegative.findIndex((e) => e < cutOffSignals);
+    if (cutOffSignalsIndexNeg > -1) {
+      cloneSignNegative = signNegative.slice(cutOffSignalsIndexNeg);
+      noiseLevelNegative =
+        cloneSignPositive[
+          Math.floor(cloneSignNegative.length * (1 - cutOffDist))
+        ];
+    }
+  }
+
+  const correctionFactor = -simpleNormInv(cutOffDist / 2, { magnitudeMode });
+  initialNoiseLevelPositive = initialNoiseLevelPositive / correctionFactor;
+  initialNoiseLevelNegative = initialNoiseLevelNegative / correctionFactor;
+
+  return {
+    cutOffDist,
+    correctionFactor,
+    initialNoiseLevelPositive,
+    initialNoiseLevelNegative,
+    cutOffSignalsIndexPlus,
+    cutOffSignalsIndexNeg,
+    noiseLevelPositive,
+    noiseLevelNegative,
+    cloneSignPositive,
+    cloneSignNegative,
+  };
+}
+
+function refineLevels(
+  noiseLevelPositive: number,
+  noiseLevelNegative: number,
+  options: {
+    refine: boolean;
+    magnitudeMode?: boolean;
+    cutOffSignalsIndexPlus: number;
+    cutOffDist: number;
+    cloneSignPositive: Float64Array;
+    cloneSignNegative: Float64Array;
+    cutOffSignalsIndexNeg: number;
+    correctionFactor: number;
+  },
+) {
+  const {
+    refine,
+    magnitudeMode,
+    cutOffSignalsIndexPlus,
+    cutOffDist,
+    cloneSignPositive,
+    cloneSignNegative,
+    cutOffSignalsIndexNeg,
+    correctionFactor,
+  } = options;
+  let effectiveCutOffDist, refinedCorrectionFactor;
+  if (refine && cutOffSignalsIndexPlus > -1) {
+    effectiveCutOffDist =
+      (cutOffDist * cloneSignPositive.length + cutOffSignalsIndexPlus) /
+      (cloneSignPositive.length + cutOffSignalsIndexPlus);
+    refinedCorrectionFactor =
+      -1 *
+      (simpleNormInv(effectiveCutOffDist / 2, { magnitudeMode }) as number);
+
+    noiseLevelPositive /= refinedCorrectionFactor;
+
+    if (cutOffSignalsIndexNeg > -1) {
+      effectiveCutOffDist =
+        (cutOffDist * cloneSignNegative.length + cutOffSignalsIndexNeg) /
+        (cloneSignNegative.length + cutOffSignalsIndexNeg);
+      refinedCorrectionFactor =
+        -1 *
+        (simpleNormInv(effectiveCutOffDist / 2, { magnitudeMode }) as number);
+      if (noiseLevelNegative !== 0) {
+        noiseLevelNegative /= refinedCorrectionFactor;
+      }
+    }
+  } else {
+    noiseLevelPositive /= correctionFactor;
+    noiseLevelNegative /= correctionFactor;
+  }
+
+  return [noiseLevelPositive, noiseLevelNegative];
+}
+
+function prepareInput(array: DoubleArray, options: XNoiseSanPlotOptions = {}) {
+  const {
+    mask,
+    magnitudeMode = false,
+    scaleFactor = 1,
+    fixOffset = true,
+  } = options;
+  let input;
+
+  if (Array.isArray(mask) && mask.length === array.length) {
+    input = new Float64Array(array.filter((_e, i) => !mask[i]));
+  } else {
+    input = new Float64Array(array);
+  }
+
+  if (scaleFactor > 1) {
+    for (let i = 0; i < input.length; i++) {
+      input[i] *= scaleFactor;
+    }
+  }
+  input = input.sort().reverse();
+
+  if (fixOffset && !magnitudeMode) {
+    const medianIndex = Math.floor(input.length / 2);
+    const median = 0.5 * (input[medianIndex] + input[medianIndex + 1]);
+    for (let i = 0; i < input.length; i++) {
+      input[i] -= median;
+    }
+  }
+
+  return input;
+}
 /**
  * SimpleNormInvs.
  *
@@ -291,7 +372,7 @@ function determineCutOff(
  * @returns Result.
  */
 function simpleNormInv(
-  data: DoubleArray | number,
+  input: DoubleArray | number,
   options: {
     mask?: DoubleArray;
     cutOff?: number;
@@ -308,7 +389,7 @@ function simpleNormInv(
 ): DoubleArray | number {
   const { magnitudeMode = false } = options;
 
-  if (!Array.isArray(data)) data = [data as number];
+  const data = isAnyArray(input) ? input : [input];
 
   const from = 0;
   const to = 2;
