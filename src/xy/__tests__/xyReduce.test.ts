@@ -196,4 +196,27 @@ describe('xyReduce', () => {
       y: [3, 4, 5, 2, 3],
     });
   });
+
+  it('Large data with zones', () => {
+    const x2 = [];
+    const y2 = [];
+    for (let i = 0; i < 5000001; i++) {
+      x2.push(i);
+      y2.push(i);
+    }
+    const result = xyReduce(
+      { x: x2, y: y2 },
+      {
+        nbPoints: 6,
+        zones: [
+          { from: 0, to: 1000 },
+          { from: 1000000, to: 1001000 },
+        ],
+      },
+    );
+    expect(result).toStrictEqual({
+      x: [0, 500, 1000, 1000000, 1000500, 1001000],
+      y: [0, 1, 1000, 1000000, 1000001, 1001000],
+    });
+  });
 });
