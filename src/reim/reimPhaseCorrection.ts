@@ -29,7 +29,7 @@ export function reimPhaseCorrection(
     firstAngle += phi1;
   }
 
-  const alpha = 2 * Math.sin(delta / 2)**2;
+  const alpha = 2 * Math.sin(delta / 2) ** 2;
   const beta = Math.sin(delta);
   let cosTheta = Math.cos(firstAngle);
   let sinTheta = Math.sin(firstAngle);

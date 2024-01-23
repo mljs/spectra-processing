@@ -15,7 +15,7 @@ export function xMeanSquaredError(
   xCheckLengths(array1, array2);
   let sum = 0;
   for (let i = 0; i < array1.length; i++) {
-    sum += (array1[i] - array2[i])**2;
+    sum += (array1[i] - array2[i]) ** 2;
   }
   return sum / array1.length;
 }

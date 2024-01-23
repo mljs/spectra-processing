@@ -2,7 +2,6 @@ import { getOutputArray } from '../getOutputArray';
 
 describe('getOutputArray', () => {
   it('no output', () => {
-    // eslint-disable-next-line no-undefined
     const result = getOutputArray(undefined, 2);
     expect(result).toStrictEqual(new Float64Array([0, 0]));
     //@ts-expect-error We check that push is not defined and it is therefore a typed array and TS is aware of it
