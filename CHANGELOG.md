@@ -1,5 +1,14 @@
 # Changelog
 
+## [12.9.0](https://github.com/mljs/spectra-processing/compare/v12.8.0...v12.9.0) (2024-01-23)
+
+
+### Features
+
+* add option that allows to calculate xBoxPlot on small arrays ([960da81](https://github.com/mljs/spectra-processing/commit/960da81ffa4404b532303ae5488a82e0982fb5ff))
+* Allow xHilbertTransform to use FFT for array lengths non power of 2 through and option ([#203](https://github.com/mljs/spectra-processing/issues/203)) ([14c0dde](https://github.com/mljs/spectra-processing/commit/14c0ddeecb8af069f98db44a54465c9f05edf5a2))
+* Allow xHilbertTransform to use FFT for array lengths non power of 2 through and option ([#203](https://github.com/mljs/spectra-processing/issues/203)) ([14c0dde](https://github.com/mljs/spectra-processing/commit/14c0ddeecb8af069f98db44a54465c9f05edf5a2)), closes [#202](https://github.com/mljs/spectra-processing/issues/202)
+
 ## [12.8.0](https://github.com/mljs/spectra-processing/compare/v12.7.0...v12.8.0) (2023-12-04)
 
 
