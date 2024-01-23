@@ -12,7 +12,8 @@ export function xyFilterXPositive(data: DataXY): DataXY {
   const { x, y } = data;
   const newX: DoubleArray = [];
   const newY: DoubleArray = [];
-  if (x === undefined || y === undefined) return { x: newX, y: newY };
+  if (typeof x === 'undefined' || typeof y === 'undefined')
+    {return { x: newX, y: newY };}
   for (let i = 0; i < x.length; i++) {
     if (x[i] > 0) {
       newX.push(x[i]);

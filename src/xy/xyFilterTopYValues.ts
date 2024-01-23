@@ -9,7 +9,7 @@ import { xSortDescending } from '../x/xSort';
  * @return filtered data
  */
 export function xyFilterTopYValues(data: DataXY, nbPeaks?: number) {
-  if (nbPeaks === undefined) return data;
+  if (typeof nbPeaks === 'undefined') return data;
   if (nbPeaks > data.x.length) return data;
 
   const { x, y } = data;

@@ -63,17 +63,17 @@ export function matrixHistogram(
     );
   }
 
-  if (min === undefined || max === undefined) {
+  if (typeof min === 'undefined' || typeof max === 'undefined') {
     const minMax: { min?: number; max?: number } = absolute
       ? matrixMinMaxAbsoluteZ(matrix)
       : matrixMinMaxZ(matrix);
-    if (min === undefined) {
+    if (typeof min === 'undefined') {
       options.min =
         logBaseX && minMax.min
           ? Math.log(minMax.min) / Math.log(logBaseX)
           : minMax.min;
     }
-    if (max === undefined) {
+    if (typeof max === 'undefined') {
       options.max =
         logBaseX && minMax.max
           ? Math.log(minMax.max) / Math.log(logBaseX)

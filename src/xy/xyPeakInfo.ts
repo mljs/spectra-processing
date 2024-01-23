@@ -24,14 +24,16 @@ export function xyPeakInfo(
 ) {
   xyCheck(data);
   const { x, y } = data;
-  if (x === undefined || y === undefined || x.length < 3) return undefined;
+  if (typeof x === 'undefined' || typeof y === 'undefined' || x.length < 3) {
+    return;
+  }
   const { target } = options;
   let { targetIndex } = options;
-  if (targetIndex === undefined && target !== undefined) {
+  if (typeof targetIndex === 'undefined' && typeof target !== 'undefined') {
     targetIndex = xFindClosestIndex(x, target);
   }
 
-  if (targetIndex === undefined) {
+  if (typeof targetIndex === 'undefined') {
     throw new Error('xyPeakInfo: need to specify target or targetIndex');
   }
 

@@ -60,7 +60,7 @@ export function xHistogram(
   const histogram = options.histogram;
   const {
     centerX = true,
-    nbSlots = histogram === undefined ? 256 : histogram.x.length,
+    nbSlots = typeof histogram === 'undefined' ? 256 : histogram.x.length,
     logBaseX,
     logBaseY,
     absolute = false,
@@ -79,9 +79,10 @@ export function xHistogram(
 
   const { min = xMinValue(array), max = xMaxValue(array) } = options;
   const slotSize = (max - min) / (nbSlots + Number.EPSILON);
-  const y = histogram === undefined ? new Float64Array(nbSlots) : histogram.y;
+  const y =
+    typeof histogram === 'undefined' ? new Float64Array(nbSlots) : histogram.y;
   const x =
-    histogram === undefined
+    typeof histogram === 'undefined'
       ? Array.from(
           createFromToArray({
             from: min + (centerX ? slotSize / 2 : 0),

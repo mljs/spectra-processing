@@ -36,15 +36,15 @@ export function xGetFromToIndex(
   let { fromIndex, toIndex } = options;
   const { from, to } = options;
 
-  if (fromIndex === undefined) {
-    if (from !== undefined) {
+  if (typeof fromIndex === 'undefined') {
+    if (typeof from !== 'undefined') {
       fromIndex = xFindClosestIndex(x, from);
     } else {
       fromIndex = 0;
     }
   }
-  if (toIndex === undefined) {
-    if (to !== undefined) {
+  if (typeof toIndex === 'undefined') {
+    if (typeof to !== 'undefined') {
       toIndex = xFindClosestIndex(x, to);
     } else {
       toIndex = x.length - 1;

@@ -23,7 +23,7 @@ export function getOutputArray(
   output: NumberArray | undefined,
   length: number,
 ): NumberArray {
-  if (output !== undefined) {
+  if (typeof output !== 'undefined') {
     if (!isAnyArray(output)) {
       throw new TypeError('output option must be an array if specified');
     }

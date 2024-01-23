@@ -148,7 +148,9 @@ export function xNoiseSanPlot(
         ];
     }
   }
-  const correctionFactor = -simpleNormInv(cutOffDist / 2, { magnitudeMode });
+  const correctionFactor = -simpleNormInvNumber(cutOffDist / 2, {
+    magnitudeMode,
+  });
   initialNoiseLevelPositive = initialNoiseLevelPositive / correctionFactor;
   initialNoiseLevelNegative = initialNoiseLevelNegative / correctionFactor;
 
@@ -159,8 +161,7 @@ export function xNoiseSanPlot(
       (cutOffDist * cloneSignPositive.length + cutOffSignalsIndexPlus) /
       (cloneSignPositive.length + cutOffSignalsIndexPlus);
     refinedCorrectionFactor =
-      -1 *
-      (simpleNormInv(effectiveCutOffDist / 2, { magnitudeMode }) as number);
+      -1 * simpleNormInvNumber(effectiveCutOffDist / 2, { magnitudeMode });
 
     noiseLevelPositive /= refinedCorrectionFactor;
 
@@ -169,8 +170,7 @@ export function xNoiseSanPlot(
         (cutOffDist * cloneSignNegative.length + cutOffSignalsIndexNeg) /
         (cloneSignNegative.length + cutOffSignalsIndexNeg);
       refinedCorrectionFactor =
-        -1 *
-        (simpleNormInv(effectiveCutOffDist / 2, { magnitudeMode }) as number);
+        -1 * simpleNormInvNumber(effectiveCutOffDist / 2, { magnitudeMode });
       if (noiseLevelNegative !== 0) {
         noiseLevelNegative /= refinedCorrectionFactor;
       }
@@ -239,8 +239,7 @@ function determineCutOff(
   for (let i = 0.01; i <= 0.99; i += 0.01) {
     const index = Math.round(indexMax * i);
     const value =
-      -signPositive[index] /
-      (simpleNormInv([i / 2], { magnitudeMode }) as number);
+      -signPositive[index] / simpleNormInvNumber(i / 2, { magnitudeMode });
     cutOff.push([i, value]);
   }
 
@@ -258,7 +257,7 @@ function determineCutOff(
     );
     let kiSqrt = 0;
     for (const element of elementsOfCutOff) {
-      kiSqrt += Math.pow(element[1] - averageValue, 2);
+      kiSqrt += (element[1] - averageValue) ** 2;
     }
 
     if (kiSqrt < minKi) {
@@ -270,45 +269,62 @@ function determineCutOff(
   return whereToCutStat;
 }
 
+interface SimpleNormInvOptions {
+  /**
+   * Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+   */
+  mask?: DoubleArray;
+  /**
+   * Percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+   */
+  cutOff?: number;
+  /**
+   * If true the noise level will be recalculated get out the signals using factorStd.
+   * @default true
+   */
+  refine?: boolean;
+  magnitudeMode?: boolean;
+  /**
+   * Factor to scale the data input[i]*=scaleFactor.
+   * @default 1
+   */
+  scaleFactor?: number;
+  /**
+   * Factor times std to determine what will be marked as signals.
+   * @default 5
+   */
+  factorStd?: number;
+  /**
+   * If the baseline is correct, the midpoint of distribution should be zero. If true, the distribution will be centered.
+   * @default true
+   */
+  fixOffset?: boolean;
+  /**
+   * Log scale to apply in the intensity axis in order to avoid big numbers.
+   * @default 2
+   */
+  logBaseY?: number;
+  considerList?: { from: number; step: number; to: number };
+  fromTo?: Record<string, FromTo>;
+}
+
+function simpleNormInvNumber(
+  data: number,
+  options: SimpleNormInvOptions,
+): number {
+  return simpleNormInv([data], options)[0];
+}
+
 /**
  * SimpleNormInvs.
  *
  * @param data - Data array.
- * @param [options = {}] - Options.
- * @param [options.mask] - Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
- * @param [options.scaleFactor=1] - Factor to scale the data input[i]*=scaleFactor.
- * @param [options.cutOff] - Percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
- * @param [options.factorStd=5] - Factor times std to determine what will be marked as signals.
- * @param [options.refine=true] - If true the noise level will be recalculated get out the signals using factorStd.
- * @param [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. If true, the distribution will be centered.
- * @param [options.logBaseY=2] - Log scale to apply in the intensity axis in order to avoid big numbers.
- * @param options.magnitudeMode -
- * @param options.considerList -
- * @param options.considerList.from -
- * @param options.considerList.step -
- * @param options.considerList.to -
- * @param options.fromTo -
- * @returns Result.
  */
 function simpleNormInv(
-  data: DoubleArray | number,
-  options: {
-    mask?: DoubleArray;
-    cutOff?: number;
-    refine?: boolean;
-    magnitudeMode?: boolean;
-    scaleFactor?: number;
-    factorStd?: number;
-    fixOffset?: boolean;
-    logBaseY?: number;
-    considerList?: { from: number; step: number; to: number };
-
-    fromTo?: Record<string, FromTo>;
-  } = {},
-): DoubleArray | number {
+  data: DoubleArray,
+  options: SimpleNormInvOptions = {},
+): DoubleArray {
   const { magnitudeMode = false } = options;
-
-  if (!Array.isArray(data)) data = [data as number];
 
   const from = 0;
   const to = 2;
@@ -333,7 +349,7 @@ function simpleNormInv(
       result[i] = -1 * Math.SQRT2 * erfcinv(2 * data[i]);
     }
   }
-  return result.length === 1 ? result[0] : result;
+  return result;
 }
 
 /**

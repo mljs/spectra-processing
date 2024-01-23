@@ -11,7 +11,7 @@ export function xyObjectCheck(points: Point[] = []) {
   }
   if (
     points.length > 0 &&
-    (points[0].x === undefined || points[0].y === undefined)
+    (typeof points[0].x === 'undefined' || typeof points[0].y === 'undefined')
   ) {
     throw new Error('ArrayPoints must be an array of {x,y} object');
   }

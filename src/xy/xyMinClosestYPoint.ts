@@ -25,8 +25,8 @@ export function xyMinClosestYPoint(
   const { target } = options;
   let { targetIndex } = options;
 
-  if (targetIndex === undefined) {
-    if (target !== undefined) {
+  if (typeof targetIndex === 'undefined') {
+    if (typeof target !== 'undefined') {
       targetIndex = xFindClosestIndex(x, target);
     } else {
       targetIndex = 0;

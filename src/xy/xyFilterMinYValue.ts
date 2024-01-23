@@ -9,7 +9,7 @@ import { xMinMaxValues } from '../x/xMinMaxValues';
  * @return filtered data
  */
 export function xyFilterMinYValue(data: DataXY, minRelativeYValue?: number) {
-  if (minRelativeYValue === undefined) return data;
+  if (typeof minRelativeYValue === 'undefined') return data;
 
   const { x, y } = data;
 

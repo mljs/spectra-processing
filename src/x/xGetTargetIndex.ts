@@ -19,8 +19,8 @@ export function xGetTargetIndex(
   } = {},
 ): number {
   const { target, targetIndex } = options;
-  if (targetIndex === undefined) {
-    if (target !== undefined) {
+  if (typeof targetIndex === 'undefined') {
+    if (typeof target !== 'undefined') {
       return xFindClosestIndex(x, target);
     } else {
       return 0;

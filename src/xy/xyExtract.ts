@@ -24,8 +24,8 @@ export function xyExtract(
   zones = zonesNormalize(zones);
 
   if (
-    x === undefined ||
-    y === undefined ||
+    typeof x === 'undefined' ||
+    typeof y === 'undefined' ||
     !Array.isArray(zones) ||
     zones.length === 0
   ) {
