@@ -51,4 +51,47 @@ describe('xBoxPlot', () => {
       'xBoxPlot: can not calculate info if array contains less than 5 elements',
     );
   });
+
+  it('test xBoxPlot with one element', () => {
+    const array = [42];
+    expect(() => xBoxPlot(array)).toThrow(
+      'xBoxPlot: can not calculate info if array contains less than 5 elements',
+    );
+  });
+
+  it('test xBoxPlot with one element', () => {
+    const array = [42];
+    const result = xBoxPlot(array, { allowSmallArray: true });
+    expect(result).toStrictEqual({
+      q1: 42,
+      median: 42,
+      q3: 42,
+      min: 42,
+      max: 42,
+    });
+  });
+
+  it('test xBoxPlot with 2 elements', () => {
+    const array = [40, 44];
+    const result = xBoxPlot(array, { allowSmallArray: true });
+    expect(result).toStrictEqual({
+      q1: 40,
+      median: 42,
+      q3: 44,
+      min: 40,
+      max: 44,
+    });
+  });
+
+  it('test xBoxPlot with 3 elements', () => {
+    const array = [40, 42, 44];
+    const result = xBoxPlot(array, { allowSmallArray: true });
+    expect(result).toStrictEqual({
+      q1: 40,
+      median: 42,
+      q3: 44,
+      min: 40,
+      max: 44,
+    });
+  });
 });

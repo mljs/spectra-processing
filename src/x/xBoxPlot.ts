@@ -5,13 +5,30 @@ import { DoubleArray } from 'cheminfo-types';
  *
  * @param array - data
  */
-export function xBoxPlot(array: DoubleArray) {
+export function xBoxPlot(
+  array: DoubleArray,
+  options: {
+    /**
+     * By default there should be at least 5 elements
+     * @default false
+     */
+    allowSmallArray?: boolean;
+  } = {},
+) {
+  const { allowSmallArray = false } = options;
   array = Float64Array.from(array).sort();
   if (array.length < 5) {
-    throw new Error(
-      'xBoxPlot: can not calculate info if array contains less than 5 elements',
-    );
+    if (allowSmallArray) {
+      if (array.length < 1) {
+        throw new Error('xBoxPlot: can not calculate info if array is empty');
+      }
+    } else {
+      throw new Error(
+        'xBoxPlot: can not calculate info if array contains less than 5 elements',
+      );
+    }
   }
+
   const info = {
     q1: 0,
     median: 0,
@@ -24,8 +41,8 @@ export function xBoxPlot(array: DoubleArray) {
     // odd
     const middle = (array.length - 1) / 2;
     info.median = array[middle];
-    q1max = middle - 1;
-    q3min = middle + 1;
+    q1max = Math.max(middle - 1, 0);
+    q3min = Math.min(middle + 1, array.length - 1);
   } else {
     // even
     q3min = array.length / 2;
