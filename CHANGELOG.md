@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.10.0](https://github.com/mljs/spectra-processing/compare/v12.9.0...v12.10.0) (2024-01-26)
+
+
+### Features
+
+* add matrixSetSubMatrix ([#211](https://github.com/mljs/spectra-processing/issues/211)) ([922e2cc](https://github.com/mljs/spectra-processing/commit/922e2ccffb9c92fd39331eee574eaf236cec9572))
+
 ## [12.9.0](https://github.com/mljs/spectra-processing/compare/v12.8.0...v12.9.0) (2024-01-23)
 
 
