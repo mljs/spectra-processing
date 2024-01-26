@@ -1,5 +1,15 @@
 import { DoubleMatrix } from '..';
 
+/**
+ * Set in-place a subMatrix to matrix, the function check if the subMatrix
+ * lies into the dimensions of matrix.
+ * @param matrix - matrix that will receive the new element values.
+ * @param subMatrix - matrix with equal or less size than matrix.
+ * @param startRow - row index in matrix for the first row in subMatrix.
+ * @param startColumn - column index in matrix for the first column in subMatrix.
+ * @returns
+ */
+
 export function matrixSetSubMatrix(
   matrix: DoubleMatrix,
   subMatrix: DoubleMatrix,

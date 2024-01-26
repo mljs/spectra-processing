@@ -1,4 +1,4 @@
-import { matrixSetSubMatrix } from '../matrixSetSubMatrix';
+import { matrixSetSubMatrix } from '../../index';
 
 test('simple case', () => {
   const matrix = [
