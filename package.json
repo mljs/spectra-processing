@@ -88,7 +88,7 @@
   },
   "homepage": "https://github.com/mljs/spectra-processing#readme",
   "devDependencies": {
-    "@types/jest": "^29.5.11",
+    "@types/jest": "^29.5.12",
     "cheminfo-build": "^1.2.0",
     "eslint": "^8.56.0",
     "eslint-config-cheminfo-typescript": "^12.1.0",
@@ -97,7 +97,7 @@
     "jest-matcher-deep-close-to": "^3.0.2",
     "jscpd": "^3.5.10",
     "ml-spectra-fitting": "^4.2.1",
-    "prettier": "^3.2.4",
+    "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
     "ts-jest": "^29.1.2",
     "typedoc": "^0.25.7",
