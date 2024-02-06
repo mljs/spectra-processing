@@ -72,13 +72,11 @@ export function zonesNormalize(
 
   let currentExclusionIndex = 0;
   const results: FromTo[] = [];
-  let counter = 0;
   for (
     let zoneIndex = 0;
     zoneIndex < beforeExclusionsZones.length;
     zoneIndex++
   ) {
-    if (counter++ > 5) break;
     const zone = beforeExclusionsZones[zoneIndex];
     if (currentExclusionIndex === normalizedExclusions.length) {
       // we analysed all the exclusion zones

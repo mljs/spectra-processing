@@ -139,6 +139,33 @@ describe('zonesNormalize with exclusions', () => {
       { from: 2, to: 10 },
     ]);
   });
+
+  it('one zones with cuts', () => {
+    const result = zonesNormalize([{ from: 0, to: 10 }], {
+      exclusions: [{ from: 1, to: 2 }],
+    });
+    expect(result).toStrictEqual([
+      { from: 0, to: 1 },
+      { from: 2, to: 10 },
+    ]);
+  });
+
+  it('many exclusions', () => {
+    const exclusions = [
+      { from: 1, to: 2 },
+      { from: 3, to: 4 },
+      { from: 5, to: 6 },
+      { from: 7, to: 8 },
+      { from: 9, to: 10 },
+      { from: 11, to: 12 },
+      { from: 13, to: 14 },
+    ];
+    const result = zonesNormalize([{ from: -5, to: 15 }], {
+      exclusions,
+    });
+    expect(result).toHaveLength(8);
+  });
+
   it('exclusions after', () => {
     const zones = [
       { from: 1, to: 2 },
