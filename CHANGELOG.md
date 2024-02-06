@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.10.2](https://github.com/mljs/spectra-processing/compare/v12.10.1...v12.10.2) (2024-02-06)
+
+
+### Bug Fixes
+
+* zonesNormalize could not deal with larges arrays ([905ce05](https://github.com/mljs/spectra-processing/commit/905ce05d1ee2cea15aa2f86d566215fd89e0ceb4))
+
 ## [12.10.1](https://github.com/mljs/spectra-processing/compare/v12.10.0...v12.10.1) (2024-01-26)
 
 
