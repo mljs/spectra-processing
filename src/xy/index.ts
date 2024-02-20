@@ -16,6 +16,7 @@ export * from './xyGrowingX';
 export * from './xyIntegral';
 export * from './xyIntegration';
 export * from './xyJoinX';
+export * from './xyMassCenterVector';
 export * from './xyMaxClosestYPoint';
 export * from './xyMaximaY';
 export * from './xyMaxMerge';
