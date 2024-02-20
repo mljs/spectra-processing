@@ -1,5 +1,13 @@
 # Changelog
 
+## [12.11.0](https://github.com/mljs/spectra-processing/compare/v12.10.2...v12.11.0) (2024-02-20)
+
+
+### Features
+
+* add xyMassCenterVector ([18b314b](https://github.com/mljs/spectra-processing/commit/18b314bdf80a89f6e61c48d0cd671424bb0d37ce))
+* new function to calculate similarity between massCenter vectors ([05402c7](https://github.com/mljs/spectra-processing/commit/05402c78feefac9a14dfceb3851a45c3aa95cc02))
+
 ## [12.10.2](https://github.com/mljs/spectra-processing/compare/v12.10.1...v12.10.2) (2024-02-06)
 
 
