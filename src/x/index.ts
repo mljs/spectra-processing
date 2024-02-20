@@ -19,6 +19,7 @@ export * from './xHilbertTransform';
 export * from './xHistogram';
 export * from './xIsEquallySpaced';
 export * from './xIsMonotonic';
+export * from './xMassCenterVectorSimilarity';
 export * from './xMaxAbsoluteValue';
 export * from './xMaxIndex';
 export * from './xMaxValue';
