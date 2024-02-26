@@ -1,20 +1,26 @@
 import { DataReIm } from '../types';
 
+export interface ReimPhaseCorrectionOptions {
+  reverse?: boolean;
+}
+
 /**
- * Phase correction filter
+ * Phase correction filter.
  *
  * @param data - complex spectrum
  * @param phi0 - Angle in radians for zero order phase correction
  * @param phi1 - Angle in radians for first order phase correction
+ * @param options
  * @returns - returns a new object {re:[], im:[]}
  */
 export function reimPhaseCorrection(
   data: DataReIm,
   phi0 = 0,
   phi1 = 0,
-  options: { reverse?: boolean } = {},
-): DataReIm {
+  options: ReimPhaseCorrectionOptions = {},
+): DataReIm<Float64Array> {
   const { reverse = false } = options;
+
   phi0 = Number.isFinite(phi0) ? phi0 : 0;
   phi1 = Number.isFinite(phi1) ? phi1 : 0;
 

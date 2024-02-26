@@ -1,7 +1,7 @@
 import { DataReIm } from '../types';
 
 /**
- * Calculates reimAbsolute value of a complex spectrum
+ * Calculates reimAbsolute value of a complex spectrum.
  *
  * @param data - complex spectrum
  * @returns - reimAbsolute value

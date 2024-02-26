@@ -1,8 +1,8 @@
 import { DoubleArray } from 'cheminfo-types';
 
 /**
- * This function performs a circular shift to an array
- * Positive values of shifts will shift to the right and negative values will do to the left
+ * This function performs a circular shift to an array.
+ * Positive values of shifts will shift to the right and negative values will do to the left.
  *
  * @example xRotate([1,2,3,4],1) -> [4,1,2,3]
  * @example xRotate([1,2,3,4],-1) -> [2,3,4,1]
@@ -10,7 +10,7 @@ import { DoubleArray } from 'cheminfo-types';
  * @param shift - shift
  * @returns - rotated array
  */
-export function xRotate(array: DoubleArray, shift: number): DoubleArray {
+export function xRotate(array: DoubleArray, shift: number): Float64Array {
   shift = shift % array.length;
   if (shift < 0) shift += array.length;
   const result = new Float64Array(array.length);

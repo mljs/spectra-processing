@@ -45,7 +45,7 @@ export interface AutoPhaseCorrectionOptions {
 export function reimAutoPhaseCorrection(
   data: DataReIm,
   options: AutoPhaseCorrectionOptions = {},
-): { data: DataReIm; ph0: number; ph1: number } {
+): { data: DataReIm<Float64Array>; ph0: number; ph1: number } {
   const {
     magnitudeMode = true,
     minRegSize = 30,
@@ -70,7 +70,7 @@ export function reimAutoPhaseCorrection(
     const reTmp: DoubleArray = [];
     const imTmp: DoubleArray = [];
     while (!finalPeaks[indexMask(++counter)] && counter < length) {
-      //Add some extra points(0.1 ppm) at rigth and left sides of the region.
+      // Add some extra points(0.1 ppm) at rigth and left sides of the region.
       x0 = counter;
     }
     for (; finalPeaks[indexMask(counter)] && counter < length; counter += 2) {
@@ -103,7 +103,7 @@ function determiningGlobalValues(
   x: number[],
   ph0Values: number[],
   weights: number[],
-) {
+): { ph0: number; ph1: number } {
   const [ph1, ph0] = weightedLinearRegression(x, ph0Values, weights);
   let indexMax = -1;
   let maxDiff = Number.MIN_SAFE_INTEGER;
@@ -133,7 +133,7 @@ function detectBaselineRegions(
       'magnitudeMode' | 'maxDistanceToJoin' | 'factorNoise'
     >
   >,
-) {
+): Uint8Array {
   const magnitudeData = options.magnitudeMode ? reimAbsolute(data) : data.re;
 
   const ds = holoborodko(magnitudeData);
@@ -199,7 +199,7 @@ function autoPhaseRegion(
  * @param s - Array of float.
  * @returns Array of float.
  */
-function holoborodko(s: DoubleArray): DoubleArray {
+function holoborodko(s: DoubleArray): Float64Array {
   const dk = new Float64Array(s.length);
   for (let i = 5; i < s.length - 5; i++) {
     dk[i] =
@@ -236,7 +236,7 @@ function robustBaseLineRegionsDetection(
     maxDistanceToJoin: number;
     factorNoise: number;
   },
-) {
+): Uint8Array {
   const { maxDistanceToJoin, magnitudeMode, factorNoise } = options;
 
   const mask = new Uint8Array(s.length);
@@ -285,10 +285,10 @@ function robustBaseLineRegionsDetection(
  * @param w
  */
 function weightedLinearRegression(
-  x: number[] | Float64Array,
-  y: number[] | Float64Array,
-  w: number[] | Float64Array,
-): number[] | Float64Array {
+  x: DoubleArray,
+  y: DoubleArray,
+  w: DoubleArray,
+): [number, number] {
   let sxtw = 0;
   let swx = 0;
   let sw = 0;
@@ -320,12 +320,14 @@ function weightedLinearRegression(
   ];
 }
 
-const toRadians = (degree: number): number => (degree * Math.PI) / 180;
+function toRadians(degree: number): number {
+  return (degree * Math.PI) / 180;
+}
 
-const getNegArea = (data: DoubleArray): number => {
+function getNegArea(data: DoubleArray): number {
   let area = 0;
   for (const element of data) {
     if (element < 0) area -= element;
   }
   return area;
-};
+}

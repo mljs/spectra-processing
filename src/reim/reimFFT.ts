@@ -4,6 +4,11 @@ import FFT from 'fft.js';
 import { DataReIm } from '../types';
 import { xRotate } from '../x';
 
+export interface ReimFFTOptions {
+  inverse?: boolean;
+  applyZeroShift?: boolean;
+}
+
 /**
  * ReimFFT.
  *
@@ -13,11 +18,8 @@ import { xRotate } from '../x';
  */
 export function reimFFT(
   data: DataReIm,
-  options: {
-    inverse?: boolean;
-    applyZeroShift?: boolean;
-  } = {},
-): DataReIm {
+  options: ReimFFTOptions = {},
+): DataReIm<Float64Array> {
   const { inverse = false, applyZeroShift = false } = options;
 
   const { re, im } = data;
@@ -50,9 +52,9 @@ export function reimFFT(
   return { re: newRe, im: newIm };
 }
 
-const zeroShift = (data: DoubleArray, inverse?: boolean): DoubleArray => {
+function zeroShift(data: DoubleArray, inverse?: boolean): Float64Array {
   const middle = inverse
     ? Math.ceil(data.length / 2)
     : Math.floor(data.length / 2);
   return xRotate(data, middle);
-};
+}
