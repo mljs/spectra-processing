@@ -1,4 +1,4 @@
-import { nextPowerOfTwo } from '../..';
+import { nextPowerOfTwo } from '../nextPowerOfTwo';
 
 test('check if a power of two is next', () => {
   expect(nextPowerOfTwo(1024)).toEqual(1024);
