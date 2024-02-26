@@ -1,2 +1,2 @@
-export * from './xreimZeroFilling';
 export * from './xreimSortX';
+export * from './xreimZeroFilling';
