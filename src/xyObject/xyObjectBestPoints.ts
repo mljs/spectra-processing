@@ -3,6 +3,36 @@ import { Point } from '../types';
 import { xyObjectMaxXPoint } from './xyObjectMaxXPoint';
 import { xyObjectMinXPoint } from './xyObjectMinXPoint';
 
+export interface XYObjectBestPointsOptions {
+  /**
+   * min X value of the window to consider
+   */
+  from?: number;
+  /**
+   * max X value of the window to consider
+   */
+  to?: number;
+  /**
+   * max number of points
+   * @default 20
+   * */
+  limit?: number;
+  /**
+   * minimal intensity compare to more intense
+   * @default 0.01
+   * */
+  threshold?: number;
+  /**
+   * number of slots
+   * @default 50 */
+  numberCloseSlots?: number;
+  /**
+   * define the number of slots and indirectly the slot width
+   * @default 10
+   * */
+  numberSlots?: number;
+}
+
 /**
  * Filter the array by taking the higher points (max y value) and only.
  * Keep one per slot. There are 2 different slots, the smallest one will have the
@@ -14,34 +44,7 @@ import { xyObjectMinXPoint } from './xyObjectMinXPoint';
  */
 export function xyObjectBestPoints(
   points: Point[],
-  options: {
-    /**
-     * min X value of the window to consider
-     */
-    from?: number;
-    /**
-     * max X value of the window to consider
-     */
-    to?: number;
-    /**
-     * max number of points
-     * @default 20
-     * */
-    limit?: number;
-    /**
-     * minimal intensity compare to more intense
-     * @default 0.01
-     * */
-    threshold?: number;
-    /** number of slots
-     * @default 50 */
-    numberCloseSlots?: number;
-    /**
-     * define the number of slots and indirectly the slot width
-     * @default 10
-     * */
-    numberSlots?: number;
-  } = {},
+  options: XYObjectBestPointsOptions = {},
 ): Point[] {
   const {
     from = xyObjectMinXPoint(points).x,

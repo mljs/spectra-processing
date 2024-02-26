@@ -1,4 +1,4 @@
-import { xyObjectMaxXPoint } from '../../index';
+import { xyObjectMaxXPoint } from '../xyObjectMaxXPoint';
 
 test('xyObjectMaxXPoint', () => {
   const arrayXY = [

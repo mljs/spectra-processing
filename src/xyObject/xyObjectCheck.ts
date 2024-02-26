@@ -1,18 +1,18 @@
 import { Point } from '../types';
 
 /**
- * Throw an error in no an object of x,y arrays
+ * Throws an error in not an array of x,y objects.
  *
- * @param points - list of points
+ * @param points - List of points.
  */
-export function xyObjectCheck(points: Point[] = []) {
+export function xyObjectCheck(points?: Point[]): asserts points is Point[] {
   if (!Array.isArray(points)) {
-    throw new Error('ArrayPoints must be an array of {x,y} object');
+    throw new Error('points must be an array of {x,y} objects');
   }
   if (
     points.length > 0 &&
-    (typeof points[0].x === 'undefined' || typeof points[0].y === 'undefined')
+    (typeof points[0].x !== 'number' || typeof points[0].y !== 'number')
   ) {
-    throw new Error('ArrayPoints must be an array of {x,y} object');
+    throw new Error('points must be an array of {x,y} objects');
   }
 }
