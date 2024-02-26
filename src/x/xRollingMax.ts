@@ -1,7 +1,20 @@
 import { DoubleArray } from 'cheminfo-types';
 
 import { xMaxValue } from './xMaxValue';
+import { XPaddingOptions } from './xPadding';
 import { xRolling } from './xRolling';
+
+export interface XRollingMaxOptions {
+  /**
+   * rolling window
+   * @default 5
+   */
+  window?: number;
+  /**
+   * padding
+   */
+  padding?: XPaddingOptions;
+}
 
 /**
  * This function calculates a maximum within a rolling window
@@ -11,33 +24,7 @@ import { xRolling } from './xRolling';
  */
 export function xRollingMax(
   array: DoubleArray,
-  options: {
-    /**
-     * rolling window
-     * @default 5
-     */
-    window?: number;
-    /**
-     * padding
-     */
-    padding?: {
-      /**
-       * padding size before first element and after last element
-       * @default window-1
-       */
-      size?: number;
-      /**
-       * value to use for padding (if algorithm='value')
-       * @default 0
-       */
-      value?: number;
-      /**
-       * '', value, circular, duplicate
-       * @default ''
-       */
-      algorithm?: string;
-    };
-  } = {},
-): DoubleArray {
+  options: XRollingMaxOptions = {},
+): number[] {
   return xRolling(array, xMaxValue, options);
 }

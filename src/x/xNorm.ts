@@ -1,7 +1,7 @@
 import { DoubleArray } from 'cheminfo-types';
 
 /**
- * This function calculate the norm of a vector
+ * This function calculate the norm of a vector.
  *
  * @example xNorm([3, 4]) -> 5
  * @param array - array

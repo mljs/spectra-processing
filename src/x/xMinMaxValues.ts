@@ -3,7 +3,7 @@ import { NumberArray } from 'cheminfo-types';
 import { xCheck } from './xCheck';
 
 /**
- * Return min and max values of an array
+ * Return min and max values of an array.
  *
  * @param array - array of number
  * @returns - Object with 2 properties, min and max

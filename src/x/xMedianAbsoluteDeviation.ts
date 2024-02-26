@@ -3,7 +3,7 @@ import { DoubleArray } from 'cheminfo-types';
 import { xMedian } from './xMedian';
 
 /**
- * This function calculates the median absolute deviation (MAD)
+ * This function calculates the median absolute deviation (MAD).
  * https://en.wikipedia.org/wiki/Median_absolute_deviation
  * @param array
  */

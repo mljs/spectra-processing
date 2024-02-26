@@ -1,6 +1,6 @@
-import { xUniqueSorted } from '../../index';
+import { xUniqueSorted } from '../xUniqueSorted';
 
 test('xUniqueSorted', () => {
   const array = [-1, 2, -3, 4, -1, 2];
-  expect(Array.from(xUniqueSorted(array))).toStrictEqual([-3, -1, 2, 4]);
+  expect(xUniqueSorted(array)).toStrictEqual(Float64Array.from([-3, -1, 2, 4]));
 });

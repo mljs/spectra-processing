@@ -111,7 +111,7 @@ export function xyAlign(
           result.x.push(weightedX);
           break;
         default:
-          throw new Error(`Error: Unknown x option value: ${x}`);
+          throw new Error(`unknown x option value: ${x}`);
       }
 
       result.y1.push(data1.y[i]);

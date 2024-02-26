@@ -18,7 +18,6 @@ export function getOutputArray<T extends NumberArray = Float64Array>(
  * @param length - length of the output array
  * @returns
  */
-
 export function getOutputArray(
   output: NumberArray | undefined,
   length: number,

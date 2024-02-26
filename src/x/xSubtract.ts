@@ -15,8 +15,8 @@ export function xSubtract(
   let isConstant = false;
   let constant = 0;
   if (isAnyArray(array2)) {
-    if (array1.length !== (array2 as []).length) {
-      throw new Error('xSubtract: size of array1 and array2 must be identical');
+    if (array1.length !== array2.length) {
+      throw new Error('size of array1 and array2 must be identical');
     }
   } else {
     isConstant = true;

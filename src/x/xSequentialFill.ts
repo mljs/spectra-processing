@@ -1,42 +1,44 @@
-import { NumberArray, DoubleArray } from 'cheminfo-types';
+/* eslint-disable max-lines-per-function */
+
+import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
-/** Fill an array with sequential numbers
+export interface XSequentialFillOptions {
+  /** first value in the array
+   * @default 0
+   */
+  from?: number;
+  /** last value in the array
+   * @default 10
+   */
+  to?: number;
+  /** size of the array (if not provided calculated from step)
+   * @default input.length
+   */
+  size?: number;
+  /** if not provided calculated from size */
+  step?: number;
+}
+
+export function xSequentialFill(
+  input: NumberArray | undefined,
+  options?: XSequentialFillOptions,
+): NumberArray;
+export function xSequentialFill(options?: XSequentialFillOptions): NumberArray;
+/**
+ * Fill an array with sequential numbers
  *
  * @param input - optional destination array (if not provided a new array will be created)
  * @param options - options
  * @return array with sequential numbers
  */
-
 export function xSequentialFill(
-  input:
-    | NumberArray
-    | {
-        /** first value in the array
-         * @default 0
-         */
-        from?: number;
-        /** last value in the array
-         * @default 10
-         */
-        to?: number;
-        /** size of the array (if not provided calculated from step)
-         * @default input.length
-         */
-        size?: number;
-        /** if not provided calculated from size */
-        step?: number;
-      } = [],
-  options: { from?: number; to?: number; size?: number; step?: number } = {},
-) {
+  input: NumberArray | XSequentialFillOptions = [],
+  options: XSequentialFillOptions = {},
+): NumberArray {
   if (typeof input === 'object' && !isAnyArray(input)) {
-    options = input as {
-      from?: number;
-      to?: number;
-      size?: number;
-      step?: number;
-    };
-    input = [] as DoubleArray;
+    options = input;
+    input = [];
   }
 
   if (!isAnyArray(input)) {
@@ -99,6 +101,6 @@ export function xSequentialFill(
   return Array.isArray(input) ||
     input.constructor === Float64Array ||
     input.constructor === Uint16Array
-    ? (Array.from(input) as DoubleArray)
+    ? Array.from(input)
     : [];
 }

@@ -102,7 +102,7 @@ describe('xyAlign', () => {
     const data1 = { x: [1, 2, 3], y: [1, 1, 1] };
     const data2 = { x: [2, 3, 4], y: [1, 1, 1] };
     expect(() => xyAlign(data1, data2, { x: 'hey' })).toThrow(
-      'Error: Unknown x option value: hey',
+      'unknown x option value: hey',
     );
   });
   it('common=false', () => {

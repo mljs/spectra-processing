@@ -24,7 +24,7 @@ export function xMassCenterVectorSimilarity(
   array1: NumberArray,
   array2: NumberArray,
   options: XMassCenterVectorSimilarityOptions = {},
-) {
+): number {
   const {
     recenter = true,
     similarityFct = (a: number, b: number) => (a === b ? 1 : 0),
@@ -60,11 +60,9 @@ function shiftSubTree(
   slot: number,
   shift: number,
 ) {
-  //console.log({ depth, level, slot, shift });
   for (let currentLevel = level; currentLevel < depth; currentLevel++) {
     const levelSlotShift = slot * (1 << (currentLevel - level));
     const levelShift = (1 << currentLevel) - 1;
-    //console.log({ currentLevel, levelSlotShift, levelShift });
     const levelSlotSize = 1 << (currentLevel - level);
     for (
       let slotIndex = levelSlotShift;
@@ -72,7 +70,6 @@ function shiftSubTree(
       slotIndex++
     ) {
       const index = levelShift + slotIndex;
-      //  console.log({ currentLevel, levelIndex, index });
       array[index] += shift;
     }
   }
@@ -81,7 +78,7 @@ function shiftSubTree(
 function getDepth(array: NumberArray) {
   const depth = Math.log2(array.length + 1);
   if (depth % 1 !== 0) {
-    throw new Error('The array length is not a power of 2 minus 1');
+    throw new Error('the array length is not a power of 2 minus 1');
   }
   return depth;
 }

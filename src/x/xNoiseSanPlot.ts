@@ -1,10 +1,53 @@
+/* eslint-disable max-lines-per-function */
+
 import { DataXY, FromTo, DoubleArray } from 'cheminfo-types';
+// @ts-expect-error Missing types.
 import SplineInterpolator from 'spline-interpolator';
 
-import { createFromToArray } from '../utils/createFromToArray';
+import { createFromToArray } from '../utils';
 
-import erfcinv from './erfcinv';
-import rayleighCdf from './rayleighCdf';
+import erfcinv from './utils/erfcinv';
+import rayleighCdf from './utils/rayleighCdf';
+
+export interface XNoiseSanPlotOptions {
+  /**
+   * boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+   */
+  mask?: DoubleArray;
+  /**
+   * percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+   */
+  cutOff?: number;
+  /**
+   * true the noise level will be recalculated get out the signals using factorStd.
+   * @default true
+   */
+  refine?: boolean;
+  magnitudeMode?: boolean;
+  /**
+   * factor to scale the data input[i]*=scaleFactor.
+   * @default 1
+   */
+  scaleFactor?: number;
+  /**
+   * factor times std to determine what will be marked as signals.
+   * @default 5
+   */
+  factorStd?: number;
+  /**
+   * If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
+   * @default true
+   */
+  fixOffset?: boolean;
+  /**
+   * log scale to apply in the intensity axis in order to avoid big numbers.
+   * @default 2
+   */
+  logBaseY?: number;
+  considerList?: { from: number; step: number; to: number };
+
+  fromTo?: Record<string, FromTo>;
+}
 
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
@@ -16,45 +59,7 @@ import rayleighCdf from './rayleighCdf';
 
 export function xNoiseSanPlot(
   array: DoubleArray,
-  options: {
-    /**
-     * boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
-     */
-    mask?: DoubleArray;
-    /**
-     * percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
-     */
-    cutOff?: number;
-    /**
-     * true the noise level will be recalculated get out the signals using factorStd.
-     * @default true
-     */
-    refine?: boolean;
-    magnitudeMode?: boolean;
-    /**
-     * factor to scale the data input[i]*=scaleFactor.
-     * @default 1
-     */
-    scaleFactor?: number;
-    /**
-     * factor times std to determine what will be marked as signals.
-     * @default 5
-     */
-    factorStd?: number;
-    /**
-     * If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
-     * @default true
-     */
-    fixOffset?: boolean;
-    /**
-     * log scale to apply in the intensity axis in order to avoid big numbers.
-     * @default 2
-     */
-    logBaseY?: number;
-    considerList?: { from: number; step: number; to: number };
-
-    fromTo?: Record<string, FromTo>;
-  } = {},
+  options: XNoiseSanPlotOptions = {},
 ): {
   positive: number;
   negative: number;
@@ -361,7 +366,6 @@ function simpleNormInv(
  * @returns Array of results.
  */
 function createArray(from: number, to: number, step: number): DoubleArray {
-  // Changed Array to Float64Array
   const result = new Float64Array(Math.abs((from - to) / step + 1));
   for (let i = 0; i < result.length; i++) {
     result[i] = from + i * step;

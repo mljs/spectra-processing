@@ -1,4 +1,4 @@
-import { xSum } from '../../index';
+import { xSum } from '../xSum';
 
 test('xSum', () => {
   const typedArray = new Uint16Array(3);

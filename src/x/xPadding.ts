@@ -2,6 +2,20 @@ import { DoubleArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 
+export interface XPaddingOptions {
+  /**
+   * padding size before first element and after last element
+   * @default 0
+   */
+  size?: number;
+  /**
+   * value to use for padding (if algorithm='value')
+   * @default 0
+   */
+  value?: number;
+  algorithm?: 'value' | 'duplicate' | 'circular';
+}
+
 /**
  * This function pads an array
  *s
@@ -10,25 +24,9 @@ import { xCheck } from './xCheck';
  */
 export function xPadding(
   array: DoubleArray,
-  options: {
-    /**
-     * padding size before first element and after last element
-     * @default 0
-     */
-    size?: number;
-    /**
-     * value to use for padding (if algorithm='value')
-     * @default 0
-     */
-    value?: number;
-    /**
-     * '', value, circular, duplicate
-     * @default ''
-     */
-    algorithm?: string;
-  } = {},
+  options: XPaddingOptions = {},
 ): Float64Array {
-  const { size = 0, value = 0, algorithm = '' } = options;
+  const { size = 0, value = 0, algorithm } = options;
   xCheck(array);
 
   if (!algorithm) {
@@ -48,7 +46,7 @@ export function xPadding(
   const fromEnd = size + array.length;
   const toEnd = 2 * size + array.length;
 
-  switch (algorithm.toLowerCase()) {
+  switch (algorithm) {
     case 'value':
       for (let i = 0; i < size; i++) {
         result[i] = value;
@@ -75,7 +73,7 @@ export function xPadding(
       }
       break;
     default:
-      throw new Error('xPadding: unknown algorithm');
+      throw new Error(`unknown algorithm ${String(algorithm)}`);
   }
 
   return result;

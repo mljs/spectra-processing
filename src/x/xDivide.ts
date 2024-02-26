@@ -1,7 +1,12 @@
 import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
-import { getOutputArray } from '..';
+import { getOutputArray } from './getOutputArray';
+
+export interface XDivideOptions<ArrayType extends NumberArray = Float64Array> {
+  /** output into which the result should be placed if needed. In can be the same as array1 in order to have in-place modification */
+  output?: ArrayType;
+}
 
 /**
  * This function divide the first array by the second array or a constant value to each element of the first array
@@ -10,19 +15,16 @@ import { getOutputArray } from '..';
  * @param array2 - second array or number
  * @param options - options
  */
-export function xDivide<T extends NumberArray = Float64Array>(
+export function xDivide<ArrayType extends NumberArray = Float64Array>(
   array1: NumberArray,
   array2: NumberArray | number,
-  options: {
-    /** output into which the result should be placed if needed. In can be the same as array1 in order to have in-place modification */
-    output?: T;
-  } = {},
-): T {
+  options: XDivideOptions<ArrayType> = {},
+): ArrayType {
   let isConstant = false;
   let constant = 0;
   if (isAnyArray(array2)) {
-    if (array1.length !== (array2 as number[]).length) {
-      throw new Error('xDivide: size of array1 and array2 must be identical');
+    if (array1.length !== array2.length) {
+      throw new RangeError('size of array1 and array2 must be identical');
     }
   } else {
     isConstant = true;

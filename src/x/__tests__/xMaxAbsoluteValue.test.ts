@@ -1,4 +1,4 @@
-import { xMaxAbsoluteValue } from '../../index';
+import { xMaxAbsoluteValue } from '../xMaxAbsoluteValue';
 
 test('xMaxAbsoluteValue', () => {
   const typedArray = new Int16Array(3);

@@ -4,7 +4,7 @@ import { xCheck } from './xCheck';
 import { xGetFromToIndex, XGetFromToIndexOptions } from './xGetFromToIndex';
 
 /**
- * Computes the mean value of an array of values
+ * Computes the mean value of an array of values.
  *
  * @param array - array of numbers
  * @param options - options

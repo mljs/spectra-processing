@@ -5,13 +5,15 @@ import { DoubleArray } from 'cheminfo-types';
  * @param array - array to sort
  * @returns sorted array
  */
-export function xSortAscending(array: DoubleArray) {
+export function xSortAscending<ArrayType extends DoubleArray>(
+  array: ArrayType,
+): ArrayType {
   if (array instanceof Float64Array) {
-    return array.sort();
+    return array.sort() as ArrayType;
   } else if (Array.isArray(array)) {
-    return array.sort((a, b) => a - b);
+    return array.sort((a, b) => a - b) as ArrayType;
   }
-  throw new Error('Trying to sort non aray');
+  throw new Error('trying to sort non array');
 }
 
 /** Function that sorts arrays or Float64Arrays in descending order
@@ -19,11 +21,13 @@ export function xSortAscending(array: DoubleArray) {
  * @param array - array to sort
  * @returns sorted array
  */
-export function xSortDescending(array: DoubleArray) {
+export function xSortDescending<ArrayType extends DoubleArray>(
+  array: ArrayType,
+): ArrayType {
   if (array instanceof Float64Array) {
-    return array.sort().reverse();
+    return array.sort().reverse() as ArrayType;
   } else if (Array.isArray(array)) {
-    return array.sort((a, b) => b - a);
+    return array.sort((a, b) => b - a) as ArrayType;
   }
-  throw new Error('Trying to sort non aray');
+  throw new Error('trying to sort non array');
 }

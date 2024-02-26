@@ -9,7 +9,7 @@ export function xyGrowingX(data: DataXY): DataXY {
   const { x, y } = data;
 
   if (x.length !== y.length) {
-    throw new TypeError('sortX: length of x and y must be identical');
+    throw new TypeError('length of x and y must be identical');
   }
 
   if (x.length < 2 || x[0] < x[1]) return data;

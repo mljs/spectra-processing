@@ -1,6 +1,6 @@
 import { DoubleArray, DataXY } from 'cheminfo-types';
 
-import { createFromToArray } from '../utils/createFromToArray';
+import { createFromToArray } from '../utils';
 
 import { xAbsolute } from './xAbsolute';
 import { xCheck } from './xCheck';

@@ -1,13 +1,11 @@
-import { xCumulative } from '../../index';
+import { xCumulative } from '../xCumulative';
 
-describe('xCumulative', () => {
-  it('zero length array', () => {
-    const result = xCumulative([]);
-    expect(Array.from(result)).toStrictEqual([]);
-  });
+test('zero length array', () => {
+  const result = xCumulative([]);
+  expect(result).toStrictEqual(new Float64Array(0));
+});
 
-  it('1,2,3 array', () => {
-    const result = xCumulative([1, 2, 3]);
-    expect(Array.from(result)).toStrictEqual([1, 3, 6]);
-  });
+test('1,2,3 array', () => {
+  const result = xCumulative([1, 2, 3]);
+  expect(result).toStrictEqual(Float64Array.from([1, 3, 6]));
 });

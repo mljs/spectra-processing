@@ -1,31 +1,31 @@
-import { xPadding } from '../../index';
+import { xPadding } from '../xPadding';
 
 test('xPadding', () => {
   const array = [1, 2, 3, 4, 5];
 
-  expect(Array.from(xPadding(array))).toStrictEqual([1, 2, 3, 4, 5]);
+  expect(xPadding(array)).toStrictEqual(Float64Array.from([1, 2, 3, 4, 5]));
 
-  expect(Array.from(xPadding(array, { size: 2 }))).toStrictEqual([
-    1, 2, 3, 4, 5,
-  ]);
+  expect(xPadding(array, { size: 2 })).toStrictEqual(
+    Float64Array.from([1, 2, 3, 4, 5]),
+  );
 
-  expect(
-    Array.from(xPadding(array, { size: 2, algorithm: 'value' })),
-  ).toStrictEqual([0, 0, 1, 2, 3, 4, 5, 0, 0]);
-
-  expect(
-    Array.from(xPadding(array, { size: 2, value: 6, algorithm: 'value' })),
-  ).toStrictEqual([6, 6, 1, 2, 3, 4, 5, 6, 6]);
+  expect(xPadding(array, { size: 2, algorithm: 'value' })).toStrictEqual(
+    Float64Array.from([0, 0, 1, 2, 3, 4, 5, 0, 0]),
+  );
 
   expect(
-    Array.from(xPadding(array, { size: 2, algorithm: 'duplicate' })),
-  ).toStrictEqual([1, 1, 1, 2, 3, 4, 5, 5, 5]);
+    xPadding(array, { size: 2, value: 6, algorithm: 'value' }),
+  ).toStrictEqual(Float64Array.from([6, 6, 1, 2, 3, 4, 5, 6, 6]));
 
-  expect(
-    Array.from(xPadding(array, { size: 2, algorithm: 'circular' })),
-  ).toStrictEqual([4, 5, 1, 2, 3, 4, 5, 1, 2]);
+  expect(xPadding(array, { size: 2, algorithm: 'duplicate' })).toStrictEqual(
+    Float64Array.from([1, 1, 1, 2, 3, 4, 5, 5, 5]),
+  );
 
-  expect(
-    Array.from(xPadding(array, { size: 6, algorithm: 'circular' })),
-  ).toStrictEqual([5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]);
+  expect(xPadding(array, { size: 2, algorithm: 'circular' })).toStrictEqual(
+    Float64Array.from([4, 5, 1, 2, 3, 4, 5, 1, 2]),
+  );
+
+  expect(xPadding(array, { size: 6, algorithm: 'circular' })).toStrictEqual(
+    Float64Array.from([5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]),
+  );
 });

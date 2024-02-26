@@ -14,8 +14,8 @@ export function xAdd(
   let isConstant = false;
   let constant = 0;
   if (isAnyArray(array2)) {
-    if (array1.length !== (array2 as number[]).length) {
-      throw new Error('xAdd: size of array1 and array2 must be identical');
+    if (array1.length !== array2.length) {
+      throw new Error('size of array1 and array2 must be identical');
     }
   } else {
     isConstant = true;

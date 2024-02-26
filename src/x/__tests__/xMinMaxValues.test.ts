@@ -1,4 +1,4 @@
-import { xMinMaxValues } from '../../index';
+import { xMinMaxValues } from '../xMinMaxValues';
 
 test('xMinMaxValues', () => {
   const typedArray = new Uint16Array(3);

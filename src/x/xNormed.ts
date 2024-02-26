@@ -1,32 +1,33 @@
 import { NumberArray } from 'cheminfo-types';
 
-import { getOutputArray } from './utils/getOutputArray';
+import { getOutputArray } from './getOutputArray';
 import { xCheck } from './xCheck';
 import { xMaxValue } from './xMaxValue';
 import { xSum } from './xSum';
 
+export interface XNormedOptions<ArrayType extends NumberArray = Float64Array> {
+  /** algorithm can be 'sum' 'max' or 'absolute'
+   * @default 'absolute'
+   */
+  algorithm?: 'absolute' | 'max' | 'sum';
+  /** max or sum value
+   * @default 1
+   */
+  value?: number;
+  /** output into which the result should be placed if needed */
+  output?: ArrayType;
+}
+
 /**
  * Divides the data with either the sum, the absolute sum or the maximum of the data
- * @param array - Array containing values
+ * @param input - Array containing values
  * @param options - options
  * @returns - normalized data
  */
-
-export function xNormed<T extends NumberArray = Float64Array>(
+export function xNormed<ArrayType extends NumberArray = Float64Array>(
   input: NumberArray,
-  options: {
-    /** algorithm can be 'sum' 'max' or 'absolute'
-     * @default 'absolute'
-     */
-    algorithm?: 'absolute' | 'max' | 'sum';
-    /** max or sum value
-     * @default 1
-     */
-    value?: number;
-    /** output into which the result should be placed if needed */
-    output?: T;
-  } = {},
-): T {
+  options: XNormedOptions<ArrayType> = {},
+): ArrayType {
   const { algorithm = 'absolute', value = 1 } = options;
   xCheck(input);
 
@@ -36,11 +37,11 @@ export function xNormed<T extends NumberArray = Float64Array>(
     throw new Error('input must not be empty');
   }
 
-  switch (algorithm.toLowerCase()) {
+  switch (algorithm) {
     case 'absolute': {
       const absoluteSumValue = absoluteSum(input) / value;
       if (absoluteSumValue === 0) {
-        throw new Error('xNormed: trying to divide by 0');
+        throw new Error('trying to divide by 0');
       }
       for (let i = 0; i < input.length; i++) {
         output[i] = input[i] / absoluteSumValue;
@@ -50,7 +51,7 @@ export function xNormed<T extends NumberArray = Float64Array>(
     case 'max': {
       const currentMaxValue = xMaxValue(input);
       if (currentMaxValue === 0) {
-        throw new Error('xNormed: trying to divide by 0');
+        throw new Error('trying to divide by 0');
       }
       const factor = value / currentMaxValue;
       for (let i = 0; i < input.length; i++) {
@@ -61,7 +62,7 @@ export function xNormed<T extends NumberArray = Float64Array>(
     case 'sum': {
       const sumFactor = xSum(input) / value;
       if (sumFactor === 0) {
-        throw new Error('xNormed: trying to divide by 0');
+        throw new Error('trying to divide by 0');
       }
       for (let i = 0; i < input.length; i++) {
         output[i] = input[i] / sumFactor;
@@ -69,7 +70,7 @@ export function xNormed<T extends NumberArray = Float64Array>(
       return output;
     }
     default:
-      throw new Error(`norm: unknown algorithm: ${algorithm}`);
+      throw new Error(`unknown algorithm: ${String(algorithm)}`);
   }
 }
 

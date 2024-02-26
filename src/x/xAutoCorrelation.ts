@@ -2,6 +2,19 @@ import { DoubleArray } from 'cheminfo-types';
 
 import { xCrossCorrelation } from './xCrossCorrelation';
 
+export interface XAutoCorrelationOptions {
+  /**
+   * sweep increment size (in number of points, min=1, max=A.length)
+   * @default 1
+   */
+  tau?: number;
+  /**
+   * scalar lag parameter
+   * @default A.length-1
+   */
+  lag?: number;
+}
+
 /**
  * Calculates the auto-correlation of an array
  *
@@ -10,18 +23,7 @@ import { xCrossCorrelation } from './xCrossCorrelation';
  */
 export function xAutoCorrelation(
   A: DoubleArray,
-  options: {
-    /**
-     * sweep increment size (in number of points, min=1, max=A.length)
-     * @default 1
-     */
-    tau?: number;
-    /**
-     * scalar lag parameter
-     * @default A.length-1
-     */
-    lag?: number;
-  } = {},
-): DoubleArray {
+  options: XAutoCorrelationOptions = {},
+): Float64Array {
   return xCrossCorrelation(A, A, options);
 }

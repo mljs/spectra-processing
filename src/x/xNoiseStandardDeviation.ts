@@ -1,6 +1,6 @@
 import { DoubleArray } from 'cheminfo-types';
 
-import { xMedianAbsoluteDeviation } from '..';
+import { xMedianAbsoluteDeviation } from './xMedianAbsoluteDeviation';
 
 /**
  * Determine noise level using MAD https://en.wikipedia.org/wiki/Median_absolute_deviation

@@ -1,4 +1,4 @@
-import { xMinMaxDelta } from '../../index';
+import { xMinMaxDelta } from '../xMinMaxDelta';
 
 test('xMinMaxDelta', () => {
   const typedArray = new Uint16Array(6);

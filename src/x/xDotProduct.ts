@@ -3,7 +3,7 @@ import { DoubleArray } from 'cheminfo-types';
 import { xMultiply } from './xMultiply';
 
 /**
- * Dot product between two arrays
+ * Dot product between two arrays.
  *
  * @param A - First array.
  * @param B - Second array.

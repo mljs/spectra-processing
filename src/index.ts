@@ -2,8 +2,6 @@ export * from './reim/index';
 
 export * from './x/index';
 
-export * from './x/utils/getOutputArray';
-
 export * from './xy/index';
 
 export * from './xy2/index';

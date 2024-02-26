@@ -1,10 +1,9 @@
-import { xRollingAverage } from '../../index';
+import { xRollingAverage } from '../xRollingAverage';
 
 test('xRollingAverage', () => {
   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   expect(xRollingAverage(array)).toStrictEqual([3, 4, 5, 6, 7]);
-  // prettier-ignore
   expect(xRollingAverage(array, { window: 3 })).toStrictEqual([
     2, 3, 4, 5, 6, 7, 8,
   ]);

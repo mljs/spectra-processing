@@ -1,7 +1,20 @@
 import { DoubleArray } from 'cheminfo-types';
 
 import { xMedian } from './xMedian';
+import { XPaddingOptions } from './xPadding';
 import { xRolling } from './xRolling';
+
+export interface XRollingMedianOptions {
+  /**
+   * rolling window
+   * @default 5
+   */
+  window?: number;
+  /**
+   * padding
+   */
+  padding?: XPaddingOptions;
+}
 
 /**
  * This function calculates a rolling average
@@ -11,33 +24,7 @@ import { xRolling } from './xRolling';
  */
 export function xRollingMedian(
   array: DoubleArray,
-  options: {
-    /**
-     * rolling window
-     * @default 5
-     */
-    window?: number;
-    /**
-     * padding
-     */
-    padding?: {
-      /**
-       * padding size before first element and after last element
-       * @default window-1
-       */
-      size?: number;
-      /**
-       * value to use for padding (if algorithm='value')
-       * @default 0
-       */
-      value?: number;
-      /**
-       * '', value, circular, duplicate
-       * @default ''
-       */
-      algorithm?: string;
-    };
-  } = {},
-): DoubleArray {
+  options: XRollingMedianOptions = {},
+): number[] {
   return xRolling(array, xMedian, options);
 }

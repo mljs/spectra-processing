@@ -3,7 +3,7 @@ import { NumberArray } from 'cheminfo-types';
 import { xCheck } from './xCheck';
 
 /**
- * Returns a copy of the data as Float64
+ * Returns a copy of the data as a Float64Array.
  *
  * @param array - array of numbers
  */
