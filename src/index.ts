@@ -11,8 +11,6 @@ export * from './xreim/index';
 export * from './xyArray/index';
 export * from './xyObject/index';
 
-export * from './zone/zoneToX';
-
 export * from './zones/index';
 
 export * from './matrix/index';
