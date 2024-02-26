@@ -1,8 +1,8 @@
 import { DoubleArray } from 'cheminfo-types';
 
-export interface DataReIm {
+export interface DataReIm<ArrayType extends DoubleArray = DoubleArray> {
   /** Array of re values */
-  re: DoubleArray;
+  re: ArrayType;
   /** Array of im values */
-  im: DoubleArray;
+  im: ArrayType;
 }
