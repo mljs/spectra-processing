@@ -24,7 +24,7 @@ export function xSequentialFill(
   input: NumberArray | undefined,
   options?: XSequentialFillOptions,
 ): NumberArray;
-export function xSequentialFill(options?: XSequentialFillOptions): NumberArray;
+export function xSequentialFill(options?: XSequentialFillOptions): number[];
 /**
  * Fill an array with sequential numbers
  *
