@@ -1,5 +1,38 @@
 # Changelog
 
+## [13.0.0](https://github.com/mljs/spectra-processing/compare/v12.11.0...v13.0.0) (2024-02-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* improve types in zones functions
+* remove deprecated zoneToX function
+* improve types in xyObject functions
+* improve types in xyArray functions
+* improve types in xy functions
+* improve types in x functions
+* improve types in utils functions
+* improve types in xreim functions
+* improve types in reim functions
+* improve types in matrix functions
+
+### Bug Fixes
+
+* improve types in matrix functions ([1918fc8](https://github.com/mljs/spectra-processing/commit/1918fc850e4472a01c38d13b64d6b84103dfae57))
+* improve types in reim functions ([24a6285](https://github.com/mljs/spectra-processing/commit/24a6285f9a7378aa7e14bc3a9b01d457d5ad905d))
+* improve types in utils functions ([7476f47](https://github.com/mljs/spectra-processing/commit/7476f476fe7596f1008cf4528209765fc7048bee))
+* improve types in x functions ([bf5886e](https://github.com/mljs/spectra-processing/commit/bf5886ecde7b5995d40096c20cb5d8bba268b4b9))
+* improve types in xreim functions ([b6257b5](https://github.com/mljs/spectra-processing/commit/b6257b571990bcfee275bcf3b28884982fc72a16))
+* improve types in xy functions ([5c4a68f](https://github.com/mljs/spectra-processing/commit/5c4a68ff92193e19ab34ccbd171bd3514e965579))
+* improve types in xyArray functions ([018b825](https://github.com/mljs/spectra-processing/commit/018b82506b729339e15d622c434103e33dafca05))
+* improve types in xyObject functions ([5f0f88b](https://github.com/mljs/spectra-processing/commit/5f0f88b0a3003be0398767f2f1bc879f708cae94))
+* improve types in zones functions ([3c72b05](https://github.com/mljs/spectra-processing/commit/3c72b05feb6eb005b7e24f93c772e5aef3db748c))
+
+
+### Code Refactoring
+
+* remove deprecated zoneToX function ([034d68a](https://github.com/mljs/spectra-processing/commit/034d68ae467f06d28772173b078803f28eec5389))
+
 ## [12.11.0](https://github.com/mljs/spectra-processing/compare/v12.10.2...v12.11.0) (2024-02-20)
 
 
