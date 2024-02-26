@@ -2,6 +2,14 @@ import { DoubleArray, DataXY } from 'cheminfo-types';
 
 import { getSlotsToFirst } from './utils/getSlotsToFirst';
 
+export interface XYArrayAlignToFirstOptions {
+  /**
+   * The range in which the two x values of the data/spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+   * @default 1
+   */
+  delta?: ((arg: number) => number) | number;
+}
+
 /**
  * We align all the data/spectra to the first array of X.
  * The alignment is based on the X values of the first spectrum and the `delta` error allowed.
@@ -12,18 +20,13 @@ import { getSlotsToFirst } from './utils/getSlotsToFirst';
  */
 export function xyArrayAlignToFirst(
   data: DataXY[],
-  options: {
-    /**
-     * The range in which the two x values of the data/spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
-     * @default 1
-     */
-    delta?: ((arg: number) => number) | number;
-  } = {},
+  options: XYArrayAlignToFirstOptions = {},
 ): {
   x: DoubleArray;
   ys: DoubleArray[];
 } {
-  const slots = getSlotsToFirst(data, options);
+  const { delta = 1 } = options;
+  const slots = getSlotsToFirst(data, { delta });
   const x = Float64Array.from(slots.map((slot) => slot.value));
   const ys = new Array(data.length)
     .fill(0)

@@ -1,4 +1,4 @@
-import { xy2ToXY } from '../../index';
+import { xy2ToXY } from '../xy2ToXY';
 
 test('xy2ToXY', () => {
   expect(

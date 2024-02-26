@@ -1,8 +1,21 @@
 import { DoubleArray, DataXY } from 'cheminfo-types';
 
-import { xyJoinX } from '../xy/xyJoinX';
+import { xyJoinX } from '../xy';
 
 import { getSlots } from './utils/getSlots';
+
+export interface XYArrayAlignOptions {
+  /**
+   * The range in which the two x values of the data/spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+   * @default 1
+   */
+  delta?: ((arg: number) => number) | number;
+  /**
+   * If true, the y values must be present everywhere
+   * @default false
+   */
+  requiredY?: boolean;
+}
 
 /**
  * Aligns data, can be used for spectra
@@ -12,18 +25,7 @@ import { getSlots } from './utils/getSlots';
  */
 export function xyArrayAlign(
   data: DataXY[],
-  options: {
-    /**
-     * The range in which the two x values of the data/spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
-     * @default 1
-     */
-    delta?: ((arg: number) => number) | number;
-    /**
-     * If true, the y values must be present everywhere
-     * @default false
-     */
-    requiredY?: boolean;
-  } = {},
+  options: XYArrayAlignOptions = {},
 ): {
   x: DoubleArray;
   ys: DoubleArray[];
@@ -32,7 +34,7 @@ export function xyArrayAlign(
 
   data = data.map((spectrum) => xyJoinX(spectrum, { delta }));
 
-  const slots = getSlots(data, options);
+  const slots = getSlots(data, { delta });
   const x = Float64Array.from(slots.map((slot) => slot.average));
   const ys = new Array(data.length)
     .fill(0)
@@ -58,8 +60,8 @@ export function xyArrayAlign(
   return { x, ys };
 }
 
-function filterRequiredY(x: DoubleArray, ys: DoubleArray[]) {
-  const newX = [];
+function filterRequiredY(x: Float64Array, ys: Float64Array[]) {
+  const newX: number[] = [];
   const newYs: number[][] = new Array(ys.length).fill(0).map(() => []);
   for (let i = 0; i < x.length; i++) {
     if (ys.every((y) => y[i] !== 0)) {

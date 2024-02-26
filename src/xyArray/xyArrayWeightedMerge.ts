@@ -2,6 +2,14 @@ import { DataXY, NumberArray } from 'cheminfo-types';
 
 import { Point } from '../types';
 
+export interface XYArrayWeightedMergeOptions {
+  /**
+   * The range in which the two x values of the data must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+   * @default 1
+   */
+  delta?: ((arg: number) => number) | number;
+}
+
 /**
  * Merge DataXY
  * We have an array of DataXY and the goal is to merge all the values for which the deltaX is small or equal to delta.
@@ -12,13 +20,7 @@ import { Point } from '../types';
  */
 export function xyArrayWeightedMerge(
   data: DataXY[],
-  options: {
-    /**
-     * The range in which the two x values of the data must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
-     * @default 1
-     */
-    delta?: ((arg: number) => number) | number;
-  } = {},
+  options: XYArrayWeightedMergeOptions = {},
 ): DataXY {
   let { delta = 1 } = options;
   if (typeof delta === 'number') {
