@@ -1,43 +1,42 @@
 import XSAdd from 'ml-xsadd';
+
+export interface CreateRandomArrayOptions {
+  /**
+   * Type of random distribution.
+   * 'uniform' (true random) or 'normal' (gaussian distribution)
+   * @default 'normal'
+   */
+  distribution?: 'uniform' | 'normal';
+  /**
+   * Seed for a deterministic sequence of random numbers.
+   * @default Date.now()
+   */
+  seed?: number;
+  /**
+   * mean
+   * @default 0 */
+  mean?: number;
+  /**
+   * standardDeviation, used in case of normal distribution
+   * @default 1 */
+  standardDeviation?: number;
+  /**
+   *range, used in case of uniform distribution
+   * @default 1 */
+  range?: number;
+  /**
+   * number of points
+   * @default 1000 */
+  length?: number;
+}
+
 /**
- * Create a random array of numbers of a specific length
+ * Create a random array of numbers of a specific length.
  *
  * @return - array of random floats normally distributed
  */
-
-let spare: number;
-let hasSpare = false;
-
 export function createRandomArray(
-  options: {
-    /**
-     * Type of random distribution.
-     * 'uniform' (true random) or 'normal' (gaussian distribution)
-     * @default 'normal'
-     */
-    distribution?: 'uniform' | 'normal';
-    /**
-     * Seed for a deterministic sequence of random numbers.
-     * @default Date.now()
-     */
-    seed?: number;
-    /**
-     * mean
-     * @default 0 */
-    mean?: number;
-    /**
-     * standardDeviation, used in case of normal distribution
-     * @default 1 */
-    standardDeviation?: number;
-    /**
-     *range, used in case of uniform distribution
-     * @default 1 */
-    range?: number;
-    /**
-     * number of points
-     * @default 1000 */
-    length?: number;
-  } = {},
+  options: CreateRandomArrayOptions = {},
 ): Float64Array {
   const {
     mean = 0,
@@ -49,50 +48,68 @@ export function createRandomArray(
   } = options;
 
   const generator = new XSAdd(seed);
-
   const returnArray = new Float64Array(length);
+
   switch (distribution) {
-    case 'normal':
+    case 'normal': {
+      const gaussianGenerator = new GaussianGenerator(
+        mean,
+        standardDeviation,
+        generator,
+      );
       for (let i = 0; i < length; i++) {
-        returnArray[i] = generateGaussian(mean, standardDeviation, generator);
+        returnArray[i] = gaussianGenerator.generateGaussian();
       }
       break;
-    case 'uniform':
+    }
+    case 'uniform': {
       for (let i = 0; i < length; i++) {
         returnArray[i] = (generator.random() - 0.5) * range + mean;
       }
       break;
-    default:
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      throw new Error(`unknown distribution: ${distribution}`);
+    }
+    default: {
+      throw new Error(`unknown distribution: ${String(distribution)}`);
+    }
   }
 
   return returnArray;
 }
 
-function generateGaussian(
-  mean: number,
-  standardDeviation: number,
-  generator: XSAdd,
-): number {
-  let val, u, v, s;
+class GaussianGenerator {
+  #spare = 0;
+  #hasSpare = false;
 
-  if (hasSpare) {
-    hasSpare = false;
-    val = spare * standardDeviation + mean;
-  } else {
-    do {
-      u = generator.random() * 2 - 1;
-      v = generator.random() * 2 - 1;
+  #mean: number;
+  #standardDeviation: number;
+  #generator: XSAdd;
 
-      s = u * u + v * v;
-    } while (s >= 1 || s === 0);
-
-    s = Math.sqrt((-2 * Math.log(s)) / s);
-
-    spare = v * s;
-    hasSpare = true;
-    val = mean + standardDeviation * u * s;
+  constructor(mean: number, standardDeviation: number, generator: XSAdd) {
+    this.#mean = mean;
+    this.#standardDeviation = standardDeviation;
+    this.#generator = generator;
   }
-  return val;
+
+  generateGaussian(): number {
+    let val, u, v, s;
+
+    if (this.#hasSpare) {
+      this.#hasSpare = false;
+      val = this.#spare * this.#standardDeviation + this.#mean;
+    } else {
+      do {
+        u = this.#generator.random() * 2 - 1;
+        v = this.#generator.random() * 2 - 1;
+
+        s = u * u + v * v;
+      } while (s >= 1 || s === 0);
+
+      s = Math.sqrt((-2 * Math.log(s)) / s);
+
+      this.#spare = v * s;
+      this.#hasSpare = true;
+      val = this.#mean + this.#standardDeviation * u * s;
+    }
+    return val;
+  }
 }

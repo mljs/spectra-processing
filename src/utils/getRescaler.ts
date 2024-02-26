@@ -1,6 +1,6 @@
-type Algorithms = 'linear' | 'logarithmic' | 'power';
+export type RescalerAlgorithm = 'linear' | 'logarithmic' | 'power';
 
-export interface RescalerOptions {
+export interface GetRescalerOptions {
   /**
    * The minimum value of the original range
    * @default 0
@@ -30,7 +30,7 @@ export interface RescalerOptions {
    * The algorithm to use for the rescaling
    * @default 'linear'
    */
-  algorithm?: Algorithms;
+  algorithm?: RescalerAlgorithm;
   /**
    * Options for the algorithm
    * @default {}
@@ -38,26 +38,24 @@ export interface RescalerOptions {
   algorithmOptions?: Record<string, number>;
 }
 
-export function getRescaler(options: RescalerOptions = {}) {
+export function getRescaler(options: GetRescalerOptions = {}) {
   const {
     targetMin = 0,
     targetMax = 1,
     clamp = true,
     algorithmOptions = {},
+    algorithm = 'linear',
   } = options;
   let { originalMin = 0, originalMax = 1 } = options;
 
-  const convert = getDataConverter(
-    options.algorithm || 'linear',
-    algorithmOptions,
-  );
+  const convert = getDataConverter(algorithm, algorithmOptions);
   originalMin = convert(originalMin);
   originalMax = convert(originalMax);
 
   const originalRange = originalMax - originalMin;
   const targetRange = targetMax - targetMin;
 
-  return (value: number) => {
+  return function rescaler(value: number): number {
     value = convert(value);
     value = checkRange(value, originalMin, originalMax, clamp);
 
@@ -67,7 +65,7 @@ export function getRescaler(options: RescalerOptions = {}) {
 }
 
 function getDataConverter(
-  kind: Algorithms = 'linear',
+  kind: RescalerAlgorithm = 'linear',
   options: { power?: number } = {},
 ) {
   return (value: number) => {
@@ -79,8 +77,7 @@ function getDataConverter(
       case 'power':
         return value ** (options.power || 2);
       default:
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        throw new Error(`Unknown kind ${kind}`);
+        throw new Error(`Unknown kind ${String(kind)}`);
     }
   };
 }

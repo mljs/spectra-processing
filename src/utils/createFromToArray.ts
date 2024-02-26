@@ -1,3 +1,30 @@
+export interface CreateFromToArrayOptions {
+  /**
+   * start value of range
+   * @default 0 */
+  from?: number;
+  /**
+   * end value of range
+   * @default 1 */
+  to?: number;
+  /**
+   * number of points in range
+   * @default 1000 */
+  length?: number;
+  /**
+   * include from
+   * @default true */
+  includeFrom?: boolean;
+  /**
+   * include to
+   * @default true */
+  includeTo?: boolean;
+  /**
+   * distribution used
+   * @default uniform */
+  distribution?: 'uniform' | 'log';
+}
+
 /**
  * Create an array with numbers between "from" and "to" of length "length"
  *
@@ -5,32 +32,7 @@
  * @return - array of distributed numbers between "from" and "to"
  */
 export function createFromToArray(
-  options: {
-    /**
-     * start value of range
-     * @default 0 */
-    from?: number;
-    /**
-     * end value of range
-     * @default 1 */
-    to?: number;
-    /**
-     * number of points in range
-     * @default 1000 */
-    length?: number;
-    /**
-     * include from
-     * @default true */
-    includeFrom?: boolean;
-    /**
-     * include to
-     * @default true */
-    includeTo?: boolean;
-    /**
-     * distribution used
-     * @default uniform */
-    distribution?: string;
-  } = {},
+  options: CreateFromToArrayOptions = {},
 ): Float64Array {
   const {
     from = 0,
@@ -85,9 +87,7 @@ export function createFromToArray(
       }
     }
   } else {
-    throw new Error(
-      'Please choose for the distribution either uniform or log. By default the distribution chosen is uniform.',
-    );
+    throw new Error('distribution must be uniform or log');
   }
 
   return array;
