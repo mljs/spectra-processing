@@ -1,4 +1,4 @@
-import { xyObjectSumY } from '../../index';
+import { xyObjectSumY } from '../xyObjectSumY';
 
 test('xyObjectSumY', () => {
   const arrayXY = [

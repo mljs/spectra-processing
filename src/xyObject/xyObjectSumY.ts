@@ -3,7 +3,7 @@ import { Point } from '../types';
 import { xyObjectCheck } from './xyObjectCheck';
 
 /**
- * Calculate the sum of Y values
+ * Calculate the sum of Y values.
  *
  * @param points - Object that contains property x and y (an array)
  */

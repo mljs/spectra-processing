@@ -1,5 +1,13 @@
 import { Point } from '../types';
 
+export interface XYObjectSlotXOptions {
+  /**
+   * Limit to join the dataPoints[].
+   * @default 1
+   * */
+  slotWidth?: number;
+}
+
 /**
  * xyObjectSlotX
  *
@@ -8,13 +16,7 @@ import { Point } from '../types';
  */
 export function xyObjectSlotX(
   points: Point[],
-  options: {
-    /**
-     * Limit to join the dataPoints[].
-     * @default 1
-     * */
-    slotWidth?: number;
-  } = {},
+  options: XYObjectSlotXOptions = {},
 ): Point[] {
   const { slotWidth = 1 } = options;
   const halfSlot = slotWidth / 2;

@@ -1,5 +1,13 @@
 import { Point } from '../types';
 
+export interface XYObjectJoinXOptions {
+  /**
+   * Limit to join the data.
+   * @default Number.EPSILON
+   * */
+  xError?: number;
+}
+
 /**
  * xyObjectJoinX.
  *
@@ -8,13 +16,7 @@ import { Point } from '../types';
  */
 export function xyObjectJoinX(
   points: Point[],
-  options: {
-    /**
-     * Limit to join the data.
-     * @default Number.EPSILON
-     * */
-    xError?: number;
-  } = {},
+  options: XYObjectJoinXOptions = {},
 ): Point[] {
   const { xError = Number.EPSILON } = options;
 
