@@ -1,4 +1,21 @@
+/* eslint-disable max-lines-per-function */
+
 import { FromTo } from 'cheminfo-types';
+
+export interface ZonesNormalizeOptions {
+  /** specify min value of zones
+   * @default Number.NEGATIVE_INFINITY
+   */
+  from?: number;
+  /** specify max value of zones
+   * @default Number.POSITIVE_INFINITY
+   */
+  to?: number;
+  /**
+   * List of exclusion zones
+   */
+  exclusions?: FromTo[];
+}
 
 /**
  * Normalize an array of zones:
@@ -12,20 +29,7 @@ import { FromTo } from 'cheminfo-types';
  */
 export function zonesNormalize(
   zones: FromTo[] = [],
-  options: {
-    /** specify min value of zones
-     * @default Number.NEGATIVE_INFINITY
-     */
-    from?: number;
-    /** specify max value of zones
-     * @default Number.POSITIVE_INFINITY
-     */
-    to?: number;
-    /**
-     * List of exclusion zones
-     */
-    exclusions?: FromTo[];
-  } = {},
+  options: ZonesNormalizeOptions = {},
 ): FromTo[] {
   const { exclusions = [] } = options;
   let { from = Number.NEGATIVE_INFINITY, to = Number.POSITIVE_INFINITY } =
