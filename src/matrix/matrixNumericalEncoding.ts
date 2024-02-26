@@ -1,10 +1,9 @@
 import { matrixClone } from './matrixClone';
 
 /**
- * Numerically encodes the strings in the matrix and returns an encoding dictionnary which can be used to encode other matrices
- * @param matrix - original matrix before encoding
- * @param dictCategoricalToNumerical - dictionnary for encoding
- * @returns - dictionnary from string to number
+ * Numerically encodes the strings in the matrix and returns an encoding dictionary which can be used to encode other matrices
+ * @param matrixInitial - original matrix before encoding
+ * @returns - dictionary from string to number
  */
 export function matrixNumericalEncoding(
   matrixInitial: Array<Array<string | number>>,
@@ -16,29 +15,30 @@ export function matrixNumericalEncoding(
   const nRows = matrix.length;
   const nColumns = matrix[0].length;
 
-  const dictCategoricalToNumerical: Record<string, number> = {};
   let k = 0;
-
   for (let i = 0; i < nRows; i++) {
     for (let j = 0; j < nColumns; j++) {
-      if (typeof matrix[i][j] === 'number' && matrix[i][j] > k) {
-        k = matrix[i][j];
+      const value = matrix[i][j];
+      if (typeof value === 'number' && value > k) {
+        k = value;
       }
     }
   }
 
+  const dictCategoricalToNumerical: Record<string, number> = {};
   for (let i = 0; i < nRows; i++) {
     for (let j = 0; j < nColumns; j++) {
-      if (typeof matrix[i][j] === 'string') {
-        if (matrix[i][j] in dictCategoricalToNumerical) {
-          matrix[i][j] = dictCategoricalToNumerical[matrix[i][j]];
+      const value = matrix[i][j];
+      if (typeof value === 'string') {
+        if (value in dictCategoricalToNumerical) {
+          matrix[i][j] = dictCategoricalToNumerical[value];
         } else {
           k++;
-          dictCategoricalToNumerical[matrix[i][j]] = k;
+          dictCategoricalToNumerical[value] = k;
           matrix[i][j] = k;
         }
       }
     }
   }
-  return { matrix, dictCategoricalToNumerical };
+  return { matrix: matrix as number[][], dictCategoricalToNumerical };
 }

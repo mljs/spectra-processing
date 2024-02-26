@@ -1,8 +1,8 @@
 import { DoubleArray } from 'cheminfo-types';
 import FFT from 'fft.js';
 
-import { DataReIm } from '../types/DataReIm';
-import { xRotate } from '../x/xRotate';
+import { DataReIm } from '../types';
+import { xRotate } from '../x';
 
 /**
  * ReimFFT.

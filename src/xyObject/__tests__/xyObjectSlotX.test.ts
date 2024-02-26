@@ -1,8 +1,4 @@
-import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
-
 import { xyObjectSlotX } from '../../index';
-
-expect.extend({ toMatchCloseTo });
 
 test('xyObjectSlotX', () => {
   const arrayXY = [

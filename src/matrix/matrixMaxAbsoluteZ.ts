@@ -1,13 +1,13 @@
-import { DoubleMatrix } from '..';
+import { DoubleMatrix } from '../types';
 
 /**
- * Returns the max absolute values of Z
+ * Returns the max absolute values of Z.
  *
  * @param matrix - matrix [rows][cols].
  */
 export function matrixMaxAbsoluteZ(matrix: DoubleMatrix): number {
   if (matrix.length === 0 || matrix[0].length === 0) {
-    throw new Error('matrixMaxAbsoluteZ requires at least 1 row and 1 column');
+    throw new Error('matrix must have at least 1 row and 1 column');
   }
   const nbRows = matrix.length;
   const nbColumns = matrix[0].length;

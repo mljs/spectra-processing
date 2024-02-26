@@ -1,8 +1,4 @@
-import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
-
 import { xParetoNormalization } from '../../index';
-
-expect.extend({ toMatchCloseTo });
 
 describe('xParetoNormalization', () => {
   it('1,2,3', () => {

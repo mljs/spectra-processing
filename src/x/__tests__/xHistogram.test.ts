@@ -1,10 +1,7 @@
-import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 import XSAdd from 'ml-xsadd';
 
 import { xHistogram } from '../../index';
 import { createFromToArray } from '../../utils/createFromToArray';
-
-expect.extend({ toMatchCloseTo });
 
 describe('xHistogram', () => {
   it('simple case', () => {

@@ -1,8 +1,4 @@
-import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
-
 import { xCostMatrix } from '../../index';
-
-expect.extend({ toMatchCloseTo });
 
 describe('xCostMatrix', () => {
   const array1 = [1, 2, 3, 4, 5];

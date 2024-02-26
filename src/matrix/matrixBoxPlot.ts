@@ -1,19 +1,23 @@
-import { DoubleMatrix } from '..';
+import { DoubleMatrix } from '../types';
 
-/**
- * returns the median of the matrix
- */
+export interface MatrixBoxPlot {
+  q1: Float64Array;
+  median: Float64Array;
+  q3: Float64Array;
+  min: Float64Array;
+  max: Float64Array;
+}
 
-export function matrixBoxPlot(matrix: DoubleMatrix) {
+export function matrixBoxPlot(matrix: DoubleMatrix): MatrixBoxPlot {
   const nbRows = matrix.length;
   const nbColumns = matrix[0].length;
   if (nbRows < 5) {
     throw new Error(
-      'matrixBoxPlot: can not calculate info if matrix contains less than 5 rows',
+      'can not calculate info if matrix contains less than 5 rows',
     );
   }
 
-  const info = {
+  const info: MatrixBoxPlot = {
     q1: new Float64Array(nbColumns),
     median: new Float64Array(nbColumns),
     q3: new Float64Array(nbColumns),

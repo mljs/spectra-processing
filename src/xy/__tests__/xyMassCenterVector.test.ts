@@ -1,9 +1,6 @@
-import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
 import { SpectrumGenerator } from 'spectrum-generator';
 
 import { xyMassCenterVector } from '../../index';
-
-expect.extend({ toBeDeepCloseTo });
 
 describe('xyMassCenterVector', () => {
   it('2 points, should not crash', () => {

@@ -1,8 +1,19 @@
-import { DoubleArray } from 'cheminfo-types';
 import { Matrix } from 'ml-matrix';
 
-import { DoubleMatrix } from '..';
-import { xMedian } from '../x/xMedian';
+import { DoubleMatrix } from '../types';
+import { xMedian } from '../x';
+
+export interface MatrixPQNOptions {
+  /**
+   * Normalization integral constant.
+   * @default 100
+   * */
+  max?: number;
+  /**
+   * min
+   */
+  min?: number;
+}
 
 /**
  * Performs a Probabilistic quotient normalization (PQN) over the dataset to account dilution based in median spectrum.
@@ -15,20 +26,10 @@ import { xMedian } from '../x/xMedian';
  */
 export function matrixPQN(
   matrix: DoubleMatrix,
-  options: {
-    /**
-     * Normalization integral constant.
-     * @default 100
-     * */
-    max?: number;
-    /**
-     * min
-     */
-    min?: number;
-  } = {},
+  options: MatrixPQNOptions = {},
 ): {
-  data: DoubleMatrix;
-  medianOfQuotients: DoubleArray;
+  data: number[][];
+  medianOfQuotients: number[];
 } {
   const { max = 100 } = options;
   const matrixB = new Matrix(matrix as number[][]);
@@ -38,13 +39,13 @@ export function matrixPQN(
     matrixB.setRow(i, row);
   }
 
-  const referenceSpectrum = [];
+  const referenceSpectrum: number[] = [];
   for (let i = 0; i < matrixB.columns; i++) {
     const currentVariable = matrixB.getColumn(i);
     referenceSpectrum.push(xMedian(currentVariable));
   }
 
-  const medianOfQuotients = [];
+  const medianOfQuotients: number[] = [];
   for (let i = 0; i < matrixB.columns; i++) {
     const quotients = matrixB.getColumnVector(i).div(referenceSpectrum[i]);
     medianOfQuotients.push(xMedian(quotients.getColumn(0)));

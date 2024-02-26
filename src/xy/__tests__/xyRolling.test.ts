@@ -1,8 +1,4 @@
-import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
-
 import { xyRolling } from '../../index';
-
-expect.extend({ toMatchCloseTo });
 
 test('xyRolling', () => {
   const points = {

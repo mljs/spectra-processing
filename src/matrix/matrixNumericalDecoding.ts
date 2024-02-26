@@ -1,32 +1,32 @@
 import { matrixClone } from './matrixClone';
 
 /**
- * Numerically decodes the matrix using the dictionnary
- * @param matrixInitial - original matrix before encoding
- * @param dictionnary - dictionary against which to do the encoding
+ * Numerically decodes the matrix using the dictionary.
+ * @param matrixInitial
+ * @param dictionary - dictionary against which to do the encoding
  * @returns - decoded matrix
  */
-
-function swap(dictionnary: Record<string, number>) {
-  const ret: Record<number, string> = {};
-  for (const key in dictionnary) {
-    ret[Number(dictionnary[key])] = key;
-  }
-  return ret;
-}
-
 export function matrixNumericalDecoding(
   matrixInitial: number[][],
-  dictionnary: Record<string, number>,
+  dictionary: Record<string, number>,
 ): Array<Array<string | number>> {
-  const matrix = matrixClone(matrixInitial);
-  const invertedDictionnary: Record<number, string> = swap(dictionnary);
+  const matrix: Array<Array<string | number>> = matrixClone(matrixInitial);
+  const invertedDictionary: Record<number, string> = swap(dictionary);
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[0].length; j++) {
-      if (matrix[i][j] in invertedDictionnary) {
-        matrix[i][j] = invertedDictionnary[matrix[i][j]];
+      const value = matrix[i][j];
+      if (typeof value === 'number' && value in invertedDictionary) {
+        matrix[i][j] = invertedDictionary[value];
       }
     }
   }
   return matrix;
+}
+
+function swap(dictionary: Record<string, number>) {
+  const ret: Record<number, string> = {};
+  for (const key in dictionary) {
+    ret[dictionary[key]] = key;
+  }
+  return ret;
 }

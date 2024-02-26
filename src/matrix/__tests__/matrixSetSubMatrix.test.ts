@@ -1,4 +1,4 @@
-import { matrixSetSubMatrix } from '../../index';
+import { matrixSetSubMatrix } from '../matrixSetSubMatrix';
 
 test('simple case', () => {
   const matrix = [
@@ -22,10 +22,10 @@ test('simple case', () => {
   ]);
 
   expect(() => matrixSetSubMatrix(matrix, subMatrix, 2, 4)).toThrow(
-    'Submatrix indices are out of range',
+    'submatrix indices are out of range',
   );
 
   expect(() =>
     matrixSetSubMatrix(matrix, subMatrix.concat([0, 0]), 2, 3),
-  ).toThrow('Submatrix indices are out of range');
+  ).toThrow('submatrix indices are out of range');
 });

@@ -1,4 +1,4 @@
-import { Point } from '../types/Point';
+import { Point } from '../types';
 
 import { xyObjectMaxXPoint } from './xyObjectMaxXPoint';
 import { xyObjectMinXPoint } from './xyObjectMinXPoint';

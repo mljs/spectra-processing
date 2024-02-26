@@ -1,4 +1,4 @@
-import { DataXReIm } from '../types/DataXReIm';
+import { DataXReIm } from '../types';
 /**
  * Sort object of array, x has to be monotone.
  *

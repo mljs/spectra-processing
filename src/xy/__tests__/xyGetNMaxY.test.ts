@@ -20,7 +20,7 @@ describe('xyGetNMaxY', () => {
   it('should throw error', () => {
     const spectrum = { x: [1, 5], y: [1, 2, 3, 4] };
     expect(() => xyGetNMaxY(spectrum, 1)).toThrow(
-      'The x and y arrays must have the same length',
+      'the x and y arrays must have the same length',
     );
   });
   it('bigger spectrum', () => {

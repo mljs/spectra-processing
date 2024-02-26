@@ -1,10 +1,7 @@
 import { DataXY } from 'cheminfo-types';
-import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
 import XSAdd from 'ml-xsadd';
 
 import { xyArrayWeightedMerge } from '../../index';
-
-expect.extend({ toMatchCloseTo });
 
 describe('xyArrayWeightedMerge', () => {
   it('2 slots', () => {

@@ -1,8 +1,4 @@
-import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
-
 import { xyWeightedMerge } from '../../index';
-
-expect.extend({ toBeDeepCloseTo });
 
 const points = {
   x: [100.001, 100.002, 200.01, 200.02, 300.0001, 300.0002],

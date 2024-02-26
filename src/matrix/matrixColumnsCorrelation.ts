@@ -1,17 +1,16 @@
 import { Matrix } from 'ml-matrix';
 
-import { DoubleMatrix } from '..';
-import { xCorrelation } from '../x/xCorrelation';
+import { DoubleMatrix } from '../types';
+import { xCorrelation } from '../x';
 
 /**
- * Calculates a correlation matrix based on the columns of the initial matrix
+ * Calculates a correlation matrix based on the columns of the initial matrix.
  *
  * @param A - matrix [rows][cols]
  */
-export function matrixColumnsCorrelation(A: DoubleMatrix): DoubleMatrix {
-  let B: Matrix = new Matrix(A as Array<[]>);
-  B = B.transpose();
-  const result = [];
+export function matrixColumnsCorrelation(A: DoubleMatrix): Float64Array[] {
+  const B = new Matrix(A).transpose();
+  const result: Float64Array[] = [];
   for (let i = 0; i < B.rows; i++) {
     result.push(new Float64Array(B.rows));
   }

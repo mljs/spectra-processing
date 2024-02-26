@@ -7,6 +7,46 @@ import { xCheck } from './xCheck';
 import { xMaxValue } from './xMaxValue';
 import { xMinValue } from './xMinValue';
 
+export interface XHistogramOptions {
+  /**
+   * Center the X value. We will enlarge the first and
+   * @default true
+   * */
+  centerX?: boolean;
+  /**
+   * Previously existing histogram to continue to fill
+   * @default {x:[],y:[]}
+   * */
+  histogram?: DataXY;
+  /**
+   * Number of slots
+   * @default 256
+   * */
+  nbSlots?: number;
+  /**
+   * We can first apply a log on x axis
+   * */
+  logBaseX?: number;
+  /**
+   * We can apply a log on the resulting histogram
+   */
+  logBaseY?: number;
+  /**
+   * Take the absolute value
+   */
+  absolute?: boolean;
+  /**
+   * Maximal value to calculate used to calculate slot size
+   * @default maxValue
+   * */
+  max?: number;
+  /**
+   * Minimum value to calculate used to calculate slot size
+   * @default minValue
+   * */
+  min?: number;
+}
+
 /**
  * Calculates a histogram of defined number of slots
  *
@@ -16,45 +56,7 @@ import { xMinValue } from './xMinValue';
  */
 export function xHistogram(
   array: DoubleArray,
-  options: {
-    /**
-     * Center the X value. We will enlarge the first and
-     * @default true
-     * */
-    centerX?: boolean;
-    /**
-     * Previously existing histogram to continue to fill
-     * @default {x:[],y:[]}
-     * */
-    histogram?: DataXY;
-    /**
-     * Number of slots
-     * @default 256
-     * */
-    nbSlots?: number;
-    /**
-     * We can first apply a log on x axis
-     * */
-    logBaseX?: number;
-    /**
-     * We can apply a log on the resulting histogram
-     */
-    logBaseY?: number;
-    /**
-     * Take the absolute value
-     */
-    absolute?: boolean;
-    /**
-     * Maximal value to calculate used to calculate slot size
-     * @default maxValue
-     * */
-    max?: number;
-    /**
-     * Minimum value to calculate used to calculate slot size
-     * @default minValue
-     * */
-    min?: number;
-  } = {},
+  options: XHistogramOptions = {},
 ) {
   xCheck(array);
   const histogram = options.histogram;
