@@ -1,6 +1,6 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xGetFromToIndex } from '../x/xGetFromToIndex';
+import { xGetFromToIndex, XGetFromToIndexOptions } from '../x';
 
 import { xyCheck } from './xyCheck';
 
@@ -11,7 +11,10 @@ import { xyCheck } from './xyCheck';
  * @param options - Options
  * @returns - xyIntegration value on the specified range
  */
-export function xyIntegration(data: DataXY, options = {}): number {
+export function xyIntegration(
+  data: DataXY,
+  options: XGetFromToIndexOptions = {},
+): number {
   xyCheck(data, { minLength: 1 });
   const { x, y } = data;
   if (x.length === 1) return 0;

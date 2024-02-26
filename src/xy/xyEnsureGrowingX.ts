@@ -1,11 +1,11 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xIsMonotonic } from '../x/xIsMonotonic';
+import { xIsMonotonic } from '../x';
 
 import { xyCheck } from './xyCheck';
 
 /**
- * Filters x,y values to allow strictly growing values in x axis.
+ * Filters x,y values to allow strictly growing values in x-axis.
  *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array).
  */

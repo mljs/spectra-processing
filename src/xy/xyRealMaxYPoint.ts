@@ -1,6 +1,7 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xGetTargetIndex } from '../x/xGetTargetIndex';
+import { PointWithIndex } from '../types';
+import { xGetTargetIndex } from '../x';
 
 import { xyCheck } from './xyCheck';
 
@@ -11,10 +12,7 @@ import { xyCheck } from './xyCheck';
  * @param options - options
  * @returns - An object with the x/y value
  */
-export function xyRealMaxYPoint(
-  data: DataXY,
-  options = {},
-): { x: number; y: number; index: number } {
+export function xyRealMaxYPoint(data: DataXY, options = {}): PointWithIndex {
   xyCheck(data);
   const { x, y } = data;
   const targetIndex = xGetTargetIndex(x, options);

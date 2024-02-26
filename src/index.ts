@@ -13,7 +13,7 @@ export * from './xyObject/index';
 
 export * from './zone/zoneToX';
 
-export * from './zones/zonesNormalize';
+export * from './zones/index';
 
 export * from './matrix/index';
 export * from './utils/index';

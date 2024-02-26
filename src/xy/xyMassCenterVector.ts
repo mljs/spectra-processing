@@ -1,8 +1,12 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xFindClosestIndex } from '../x/xFindClosestIndex';
+import { xFindClosestIndex } from '../x';
 
 import { xyCheck } from './xyCheck';
+
+export interface XYMassCenterVectorOptions {
+  depth?: number;
+}
 
 /**
  * We will calculate a vector containing center of mass of DataXY as well as center of mass of both parts, etc.
@@ -10,12 +14,13 @@ import { xyCheck } from './xyCheck';
  * way to store and search similar spectra.
  *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param options
  * @returns - Array of centers of mass
  */
 export function xyMassCenterVector(
   data: DataXY,
-  options: { depth: number } = { depth: 5 },
-) {
+  options: XYMassCenterVectorOptions = {},
+): Float64Array {
   xyCheck(data, { minLength: 2 });
   const { depth = 5 } = options;
 
@@ -28,7 +33,6 @@ export function xyMassCenterVector(
 
   let index = 0;
   for (let i = 0; i < depth; i++) {
-    // const currentIntegration = totalIntegration / (1 << i);
     for (let j = 0; j < 1 << i; j++) {
       const currentBeginIndex = beginIndexes[index];
       const currentEndIndex = endIndexes[index];

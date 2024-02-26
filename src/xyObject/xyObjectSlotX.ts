@@ -1,7 +1,7 @@
 import { Point } from '../types';
 
 /**
- * XyObjectSlotX
+ * xyObjectSlotX
  *
  * @param points - Array of growing points {x,y}.
  * @param options - Options.

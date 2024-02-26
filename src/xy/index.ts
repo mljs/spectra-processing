@@ -1,6 +1,5 @@
 export * from './xyAlign';
 export * from './xyCheck';
-export * from './xyFindClosestPoint';
 export * from './xyCovariance';
 export * from './xyCumulativeDistributionStatistics';
 export * from './xyEnsureGrowingX';
@@ -11,6 +10,7 @@ export * from './xyFilterMinYValue';
 export * from './xyFilterTopYValues';
 export * from './xyFilterX';
 export * from './xyFilterXPositive';
+export * from './xyFindClosestPoint';
 export * from './xyGetNMaxY';
 export * from './xyGrowingX';
 export * from './xyIntegral';

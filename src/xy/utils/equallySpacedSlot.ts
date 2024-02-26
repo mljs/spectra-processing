@@ -1,5 +1,7 @@
+/* eslint-disable max-lines-per-function */
+
 /**
- * function that retrieves the getEquallySpacedData with the variant "slot"
+ * Function that retrieves the getEquallySpacedData with the variant "slot".
  *
  * @param x
  * @param y
@@ -19,7 +21,7 @@ export default function equallySpacedSlot(
   to: number,
   /** number of points */
   numberOfPoints: number,
-) {
+): Float64Array {
   const xLength = x.length;
 
   const step = (to - from) / (numberOfPoints > 1 ? numberOfPoints - 1 : 1);

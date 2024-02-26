@@ -1,11 +1,12 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xSortDescending } from '../x/xSort';
+import { xSortDescending } from '../x';
 
-/** Filter an array x/y based on various criteria x points are expected to be sorted
+/**
+ * Filter an array x/y based on various criteria x points are expected to be sorted
  *
  * @param data - object containing 2 properties x and y
- * @param options - options
+ * @param nbPeaks
  * @return filtered data
  */
 export function xyFilterTopYValues(data: DataXY, nbPeaks?: number) {

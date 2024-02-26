@@ -1,5 +1,13 @@
 import { DataXY } from 'cheminfo-types';
 
+interface XYMaxMergeOptions {
+  /**
+   * Window for abscissas to merge
+   * @default 0.001
+   */
+  groupWidth?: number;
+}
+
 /**
  * Merge abscissas values on similar ordinates and weight the group of abscissas
  *
@@ -9,13 +17,8 @@ import { DataXY } from 'cheminfo-types';
  */
 export function xyMaxMerge(
   data: DataXY,
-  options: {
-    /** window for abscissas to merge
-     * @default 0.001
-     */
-    groupWidth?: number;
-  } = {},
-): DataXY {
+  options: XYMaxMergeOptions = {},
+): DataXY<number[]> {
   const { x, y } = data;
   const { groupWidth = 0.001 } = options;
 

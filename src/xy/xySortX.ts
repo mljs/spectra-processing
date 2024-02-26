@@ -1,13 +1,13 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xIsMonotonic } from '../x/xIsMonotonic';
+import { xIsMonotonic } from '../x';
 
 /**
  * This function performs a quick sort of the x array while transforming the y array to preserve the coordinates.
  *
  * @param data - Object that contains property x (Array) and y (Array)
  */
-export function xySortX(data: DataXY): DataXY {
+export function xySortX(data: DataXY): DataXY<Float64Array> {
   const { x, y } = data;
 
   if (xIsMonotonic(x) && x.length > 1) {

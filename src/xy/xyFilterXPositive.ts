@@ -1,4 +1,4 @@
-import { DoubleArray, DataXY } from 'cheminfo-types';
+import { DataXY } from 'cheminfo-types';
 
 import { xyCheck } from './xyCheck';
 /**
@@ -7,11 +7,11 @@ import { xyCheck } from './xyCheck';
  * @param data - data
  * @returns - An object with the filtered data
  */
-export function xyFilterXPositive(data: DataXY): DataXY {
+export function xyFilterXPositive(data: DataXY): DataXY<number[]> {
   xyCheck(data);
   const { x, y } = data;
-  const newX: DoubleArray = [];
-  const newY: DoubleArray = [];
+  const newX: number[] = [];
+  const newY: number[] = [];
   if (typeof x === 'undefined' || typeof y === 'undefined') {
     return { x: newX, y: newY };
   }

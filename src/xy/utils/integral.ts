@@ -16,7 +16,7 @@ export default function integral(
   slope: number,
   /** intercept of the line on the y axis */
   intercept: number,
-) {
+): number {
   return (
     0.5 * slope * x1 * x1 +
     intercept * x1 -

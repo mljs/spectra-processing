@@ -6,3 +6,7 @@ export interface Point {
   /** point index */
   index?: number;
 }
+
+export interface PointWithIndex extends Point {
+  index: number;
+}

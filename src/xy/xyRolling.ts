@@ -1,7 +1,6 @@
 import { DoubleArray, DataXY } from 'cheminfo-types';
 
-import { xRolling } from '../x/xRolling';
-import { xRollingAverage } from '../x/xRollingAverage';
+import { xRolling, xRollingAverage, XRollingOptions } from '../x';
 
 /**
  * This function calculates a rolling average.
@@ -14,7 +13,7 @@ import { xRollingAverage } from '../x/xRollingAverage';
 export function xyRolling(
   data: DataXY,
   fct?: (array: DoubleArray) => number,
-  options = {},
+  options: XRollingOptions = {},
 ): DataXY {
   let { x, y } = data;
 

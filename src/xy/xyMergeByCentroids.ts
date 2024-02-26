@@ -1,5 +1,12 @@
 import { DataXY } from 'cheminfo-types';
 
+export interface XYMergeByCentroidsOptions {
+  /** window size, has to be a positive number
+   * @default 0.01
+   */
+  window?: number;
+}
+
 /**
  * Merge abscissa values if the ordinate value is in a list of centroids
  *
@@ -11,17 +18,12 @@ import { DataXY } from 'cheminfo-types';
 export function xyMergeByCentroids(
   data: DataXY,
   centroids: number[],
-  options: {
-    /** window size, has to be a positive number
-     * @default 0.01
-     */
-    window?: number;
-  } = {},
-) {
+  options: XYMergeByCentroidsOptions = {},
+): DataXY<Float64Array> {
   const { window = 0.01 } = options;
 
   const mergedPoints = {
-    x: centroids.slice(),
+    x: Float64Array.from(centroids),
     y: new Float64Array(centroids.length).fill(0),
   };
 

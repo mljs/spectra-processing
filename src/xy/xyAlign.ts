@@ -1,7 +1,33 @@
+/* eslint-disable max-lines-per-function */
+
 import { DataXY } from 'cheminfo-types';
 
+export interface XYAlignOptions {
+  /**
+   * The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+   * @default 1
+   */
+  delta?: ((arg: number) => number) | number;
+  /**
+   * If `true`, only the data considered as common to both spectra is kept. If `false`, the data y arrays are completed with zeroes where no common values are found
+   * @default true
+   */
+  common?: boolean;
+  /**
+   * Defines what x values should be kept (`x1` : spectrum 1 x values, `x2` spectrum 2 x values, `weighted`: weighted average of both spectra x values)
+   * @default "x1"
+   * */
+  x?: 'x1' | 'x2' | 'weighted';
+}
+
+export interface XYAlignResult {
+  x: number[];
+  y1: number[];
+  y2: number[];
+}
+
 /**
- * XyAlign will align data of two spectra by verifying wether x values are in a certain range (`delta`).
+ * Align data of two spectra by verifying wether x values are in a certain range (`delta`).
  * The two spectra should not have two consecutive x values which difference is
  * smaller than `delta` to achieve good results!
  *
@@ -12,32 +38,11 @@ import { DataXY } from 'cheminfo-types';
 export function xyAlign(
   data1: DataXY,
   data2: DataXY,
-  options: {
-    /**The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
-     * @default 1
-     */
-    delta?: ((arg: number) => number) | number;
-    /**If `true`, only the data considered as common to both spectra is kept. If `false`, the data y arrays are completed with zeroes where no common values are found
-     * @default true
-     */
-    common?: boolean;
-    /** Defines what x values should be kept (`x1` : spectrum 1 x values, `x2` spectrum 2 x values, `weighted`: weighted average of both spectra x values)
-     * @default "x1"
-     * */
-    x?: string;
-  } = {},
-): {
-  x: number[];
-  y1: number[];
-  y2: number[];
-} {
+  options: XYAlignOptions = {},
+): XYAlignResult {
   const { delta = 1, common = true, x = 'x1' } = options;
 
-  const result: {
-    x: number[];
-    y1: number[];
-    y2: number[];
-  } = {
+  const result: XYAlignResult = {
     x: [],
     y1: [],
     y2: [],
@@ -76,7 +81,6 @@ export function xyAlign(
             }
           }
         }
-        // console.log({ i, j }, result);
         j++;
       } else {
         if (!common) {
@@ -92,7 +96,6 @@ export function xyAlign(
             }
           }
         }
-        // console.log({ i, j }, result);
         i++;
       }
     } else {
@@ -111,13 +114,11 @@ export function xyAlign(
           result.x.push(weightedX);
           break;
         default:
-          throw new Error(`unknown x option value: ${x}`);
+          throw new Error(`unknown x option value: ${String(x)}`);
       }
 
       result.y1.push(data1.y[i]);
       result.y2.push(data2.y[j]);
-
-      // console.log({ i, j }, result);
 
       i++;
       j++;
