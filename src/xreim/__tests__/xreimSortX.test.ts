@@ -1,29 +1,27 @@
-import { xreimSortX } from '../../index';
+import { xreimSortX } from '../xreimSortX';
 
-describe('xreimSortX', () => {
-  it('test xreimSortX do nothing', () => {
-    const x = [0, 1, 2, 3];
-    const re = [0, 1, 2, 3];
-    const im = [4, 5, 6, 7];
-    const result = xreimSortX({ x, re, im });
+test('test xreimSortX do nothing', () => {
+  const x = [0, 1, 2, 3];
+  const re = [0, 1, 2, 3];
+  const im = [4, 5, 6, 7];
+  const result = xreimSortX({ x, re, im });
 
-    expect(result).toStrictEqual({
-      x: [0, 1, 2, 3],
-      re: [0, 1, 2, 3],
-      im: [4, 5, 6, 7],
-    });
+  expect(result).toStrictEqual({
+    x: [0, 1, 2, 3],
+    re: [0, 1, 2, 3],
+    im: [4, 5, 6, 7],
   });
+});
 
-  it('test xreimSortX reverse', () => {
-    const x = [3, 2, 1, 0];
-    const re = [0, 1, 2, 3];
-    const im = [4, 5, 6, 7];
-    const result = xreimSortX({ x, re, im });
+test('test xreimSortX reverse', () => {
+  const x = [3, 2, 1, 0];
+  const re = [0, 1, 2, 3];
+  const im = [4, 5, 6, 7];
+  const result = xreimSortX({ x, re, im });
 
-    expect(result).toStrictEqual({
-      x: [0, 1, 2, 3],
-      re: [3, 2, 1, 0],
-      im: [7, 6, 5, 4],
-    });
+  expect(result).toStrictEqual({
+    x: [0, 1, 2, 3],
+    re: [3, 2, 1, 0],
+    im: [7, 6, 5, 4],
   });
 });

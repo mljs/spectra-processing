@@ -1,10 +1,10 @@
 import { DoubleArray } from 'cheminfo-types';
 
-export interface DataXReIm {
+export interface DataXReIm<ArrayType extends DoubleArray = DoubleArray> {
   /** Array of x values */
-  x: DoubleArray;
+  x: ArrayType;
   /** Array of re values */
-  re: DoubleArray;
+  re: ArrayType;
   /** Array of im values */
-  im: DoubleArray;
+  im: ArrayType;
 }
