@@ -1,4 +1,5 @@
-import { xHilbertTransform, xMaxValue } from '../..';
+import { xHilbertTransform } from '../xHilbertTransform';
+import { xMaxValue } from '../xMaxValue';
 
 test('test discrete hilbert transform', () => {
   const length = 50;

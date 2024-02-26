@@ -1,35 +1,47 @@
 import { DoubleArray } from 'cheminfo-types';
 
+export interface XBoxPlotOptions {
+  /**
+   * By default there should be at least 5 elements.
+   * @default false
+   */
+  allowSmallArray?: boolean;
+}
+
+export interface XBoxPlot {
+  q1: number;
+  median: number;
+  q3: number;
+  min: number;
+  max: number;
+}
+
 /**
  * Calculating the box plot of the array
  *
  * @param array - data
+ * @param options
  */
 export function xBoxPlot(
   array: DoubleArray,
-  options: {
-    /**
-     * By default there should be at least 5 elements
-     * @default false
-     */
-    allowSmallArray?: boolean;
-  } = {},
-) {
+  options: XBoxPlotOptions = {},
+): XBoxPlot {
   const { allowSmallArray = false } = options;
-  array = Float64Array.from(array).sort();
   if (array.length < 5) {
     if (allowSmallArray) {
       if (array.length < 1) {
-        throw new Error('xBoxPlot: can not calculate info if array is empty');
+        throw new Error('can not calculate info if array is empty');
       }
     } else {
       throw new Error(
-        'xBoxPlot: can not calculate info if array contains less than 5 elements',
+        'can not calculate info if array contains less than 5 elements',
       );
     }
   }
 
-  const info = {
+  array = Float64Array.from(array).sort();
+
+  const info: XBoxPlot = {
     q1: 0,
     median: 0,
     q3: 0,

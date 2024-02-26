@@ -1,4 +1,4 @@
-import { xFindClosestIndex } from '../../index';
+import { xFindClosestIndex } from '../xFindClosestIndex';
 
 describe('Find closest index in sorted array test', () => {
   it('even', () => {

@@ -2,6 +2,14 @@ import { DoubleArray } from 'cheminfo-types';
 
 import { xFindClosestIndex } from './xFindClosestIndex';
 
+export interface XGetTargetIndexOptions {
+  target?: number;
+  /**
+   * @default 0
+   */
+  targetIndex?: number;
+}
+
 /**
  *  Returns the targetIndex
  *
@@ -10,13 +18,7 @@ import { xFindClosestIndex } from './xFindClosestIndex';
  */
 export function xGetTargetIndex(
   x: DoubleArray,
-  options: {
-    target?: number;
-    /**
-     * @default 0
-     */
-    targetIndex?: number;
-  } = {},
+  options: XGetTargetIndexOptions = {},
 ): number {
   const { target, targetIndex } = options;
   if (typeof targetIndex === 'undefined') {

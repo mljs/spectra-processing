@@ -5,17 +5,22 @@ import { nextPowerOfTwo, isPowerOfTwo } from '../utils';
 
 import { xCheck } from './xCheck';
 
+export interface XHilbertTransformOptions {
+  forceFFT?: boolean;
+}
+
 /**
  * Performs the Hilbert transform
  * @link https://en.wikipedia.org/wiki/Hilbert_transform
  * @param array - Array containing values
+ * @param options
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  */
 
 export function xHilbertTransform(
   array: DoubleArray,
-  options: { forceFFT?: boolean } = {},
-) {
+  options: XHilbertTransformOptions = {},
+): Float64Array {
   xCheck(array);
   const { forceFFT = false } = options;
   const length = array.length;
@@ -37,7 +42,7 @@ export function xHilbertTransform(
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  * @see DOI: 10.1109/TAU.1970.1162139 "Discrete Hilbert transform"
  */
-function hilbertTransformWithFFT(array: DoubleArray) {
+function hilbertTransformWithFFT(array: DoubleArray): Float64Array {
   const length = array.length;
   const fft = new FFT(length);
   const complexSignal = new Float64Array(length * 2);
@@ -66,12 +71,13 @@ function hilbertTransformWithFFT(array: DoubleArray) {
 /**
  * Performs the discrete Hilbert transform
  * @param array - Array containing values
+ * @param options
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  */
 function hilbertTransform(
   array: DoubleArray,
   options: { inClockwise?: boolean } = {},
-) {
+): Float64Array {
   const { inClockwise = true } = options;
   const input = [0, ...array, 0];
   const result = new Float64Array(array.length);
@@ -99,7 +105,7 @@ function hilbertTransform(
  * @returns It returns a new array of the desired length.
  * @link https://en.wikipedia.org/wiki/Sample-rate_conversion
  */
-function resampling(array: DoubleArray, length: number) {
+function resampling(array: DoubleArray, length: number): Float64Array {
   xCheck(array);
   const oldLength = array.length;
   const ratio = (oldLength - 1) / (length - 1);

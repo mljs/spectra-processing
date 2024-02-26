@@ -1,4 +1,4 @@
-import { xStandardDeviation } from '../../index';
+import { xStandardDeviation } from '../xStandardDeviation';
 
 const data = [15, 13, 17, 7];
 

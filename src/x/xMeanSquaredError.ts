@@ -3,7 +3,7 @@ import { DoubleArray } from 'cheminfo-types';
 import { xCheckLengths } from './xCheckLengths';
 
 /**
- * This function calculates the mean squared error
+ * This function calculates the mean squared error.
  *
  * @param array1 -first array
  * @param array2 - second array

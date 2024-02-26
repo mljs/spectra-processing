@@ -2,6 +2,19 @@
 /* eslint-disable no-new-func */
 import { DoubleArray, OneLowerCase } from 'cheminfo-types';
 
+export interface XApplyFunctionStrOptions {
+  /**
+   * @default '''
+   * The function to apply on the array as a string
+   */
+  fctString?: string;
+  /**
+   * The variable to use in the fctString (one lower case letter)
+   * @default 'x'
+   */
+  variableLabel?: OneLowerCase;
+}
+
 /**
  * Will apply a function on each element of the array described as a string
  * By default we will use as variable 'x'
@@ -13,19 +26,8 @@ import { DoubleArray, OneLowerCase } from 'cheminfo-types';
  */
 export function xApplyFunctionStr(
   array: DoubleArray,
-  options: {
-    /**
-     * @default '''
-     * The function to apply on the array as a string
-     */
-    fctString?: string;
-    /**
-     * The variable to use in the fctString (one lower case letter)
-     * @default 'x'
-     */
-    variableLabel?: OneLowerCase;
-  } = {},
-) {
+  options: XApplyFunctionStrOptions = {},
+): Float64Array {
   const { variableLabel = 'x', fctString = variableLabel } = options;
   const fct = new Function(
     variableLabel,

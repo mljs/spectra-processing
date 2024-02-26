@@ -10,9 +10,9 @@ import { xStandardDeviation } from './xStandardDeviation';
  *
  * @param array - array of number
  */
-export function xParetoNormalization(array: DoubleArray): DoubleArray {
+export function xParetoNormalization(array: DoubleArray): number[] {
   xCheck(array);
-  const result = [];
+  const result: number[] = [];
   const sqrtSD = Math.sqrt(xStandardDeviation(array));
 
   for (const item of array) {

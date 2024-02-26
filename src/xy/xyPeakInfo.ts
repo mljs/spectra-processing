@@ -34,7 +34,7 @@ export function xyPeakInfo(
   }
 
   if (typeof targetIndex === 'undefined') {
-    throw new Error('xyPeakInfo: need to specify target or targetIndex');
+    throw new Error('must specify target or targetIndex');
   }
 
   let i = targetIndex;

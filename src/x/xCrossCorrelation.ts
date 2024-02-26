@@ -2,6 +2,19 @@ import { DoubleArray } from 'cheminfo-types';
 
 import { xDotProduct } from './xDotProduct';
 
+export interface XCrossCorrelationOptions {
+  /**
+   * sweep increment size (in number of points, min=1, max=A.length)
+   * @default 1
+   * */
+  tau?: number;
+  /**
+   * scalar lag parameter
+   * @default A.length-1
+   * */
+  lag?: number;
+}
+
 /**
  * Calculates the cross-correlation between 2 arrays
  *
@@ -12,18 +25,7 @@ import { xDotProduct } from './xDotProduct';
 export function xCrossCorrelation(
   A: DoubleArray,
   B: DoubleArray,
-  options: {
-    /**
-     * sweep increment size (in number of points, min=1, max=A.length)
-     * @default 1
-     * */
-    tau?: number;
-    /**
-     * scalar lag parameter
-     * @default A.length-1
-     * */
-    lag?: number;
-  } = {},
+  options: XCrossCorrelationOptions = {},
 ): Float64Array {
   const { tau = 1, lag = A.length - 1 } = options;
   const result = new Float64Array(1 + (2 * lag) / tau);

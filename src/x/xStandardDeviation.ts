@@ -1,6 +1,6 @@
 import { NumberArray } from 'cheminfo-types';
 
-import { xVariance } from './xVariance';
+import { xVariance, XVarianceOptions } from './xVariance';
 
 /** Finds the standard deviation for the data at hand
  *
@@ -8,6 +8,9 @@ import { xVariance } from './xVariance';
  * @param options - options
  * @returns standard deviation
  */
-export function xStandardDeviation(values: NumberArray, options = {}) {
+export function xStandardDeviation(
+  values: NumberArray,
+  options: XVarianceOptions = {},
+): number {
   return Math.sqrt(xVariance(values, options));
 }

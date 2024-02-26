@@ -2,13 +2,12 @@ import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 /**
- * Calculates the median of an array
+ * Calculates the median of an array.
  *
  * @param input - Array containing values
  * @returns - median
  */
-
-export function xMedian(input: NumberArray) {
+export function xMedian(input: NumberArray): number {
   if (!isAnyArray(input)) {
     throw new TypeError('input must be an array');
   }

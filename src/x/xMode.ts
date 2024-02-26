@@ -6,8 +6,7 @@ import { NumberArray } from 'cheminfo-types';
  * @param input - Array containing values
  * @returns - mode
  */
-
-export function xMode(input: NumberArray) {
+export function xMode(input: NumberArray): number {
   if (input.length === 0) {
     throw new TypeError('input must not be empty');
   }

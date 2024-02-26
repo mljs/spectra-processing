@@ -1,8 +1,9 @@
 import { DoubleArray } from 'cheminfo-types';
 
 import { xCheckLengths } from './xCheckLengths';
+
 /**
- * This function calculates the mean absolute error
+ * This function calculates the mean absolute error.
  *
  * @param array1 - first array
  * @param array2 - second array

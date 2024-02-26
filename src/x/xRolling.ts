@@ -1,7 +1,19 @@
 import { DoubleArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
-import { xPadding } from './xPadding';
+import { xPadding, XPaddingOptions } from './xPadding';
+
+export interface XRollingOptions {
+  /**
+   * rolling window
+   * @default 5
+   */
+  window?: number;
+  /**
+   * padding
+   */
+  padding?: XPaddingOptions;
+}
 
 /**
  * This function calculates a rolling average
@@ -13,46 +25,22 @@ import { xPadding } from './xPadding';
 export function xRolling(
   array: DoubleArray,
   fct?: (callbackArray: DoubleArray) => number,
-  options: {
-    /**
-     * rolling window
-     * @default 5
-     */
-    window?: number;
-    /**
-     * padding
-     */
-    padding?: {
-      /**
-       * padding size before first element and after last element
-       * @default 0
-       */
-      size?: number;
-      /**
-       * value to use for padding (if algorithm='value')
-       * @default 0
-       */
-      value?: number;
-      /**
-       * '', value, circular, duplicate
-       * @default 'value'
-       */
-      algorithm?: string;
-    };
-  } = {},
-): DoubleArray {
+  options: XRollingOptions = {},
+): number[] {
   xCheck(array);
-  if (typeof fct !== 'function') throw new Error('fct has to be a function');
+  if (typeof fct !== 'function') {
+    throw new TypeError('fct must be a function');
+  }
 
   const { window = 5, padding = {} } = options;
   const { size = window - 1, algorithm, value } = padding;
 
-  array = xPadding(array, { size, algorithm, value }); // ensure we get a copy and it is float64
+  const padded = xPadding(array, { size, algorithm, value }); // ensure we get a copy and it is float64
 
-  const newArray = [];
-  for (let i = 0; i < array.length - window + 1; i++) {
+  const newArray: number[] = [];
+  for (let i = 0; i < padded.length - window + 1; i++) {
     // we will send a view to the original buffer
-    newArray.push(fct(array.subarray(i, i + window)));
+    newArray.push(fct(padded.subarray(i, i + window)));
   }
 
   return newArray;

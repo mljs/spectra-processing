@@ -1,6 +1,14 @@
 import { DoubleArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
+
+export interface XSamplingOptions {
+  /**
+   * number of points to sample within the array
+   * @default 10 */
+  length?: number;
+}
+
 /**
  * Sample within the array
  * @param array - array from which to sample
@@ -8,16 +16,10 @@ import { xCheck } from './xCheck';
  * @return - array with evenly spaced elements
  * @link https://en.wikipedia.org/wiki/Sampling_(signal_processing)
  */
-
 export function xSampling(
   array: DoubleArray,
-  options: {
-    /**
-     * number of points to sample within the array
-     * @default 10 */
-    length?: number;
-  } = {},
-) {
+  options: XSamplingOptions = {},
+): Float64Array {
   const { length = 10 } = options;
   xCheck(array);
   if (length === array.length) {
@@ -32,11 +34,11 @@ export function xSampling(
 /**
  * Downsample within the array
  * @param array - array from which to sample
- * @param options - options
+ * @param length
  * @return - array with evenly spaced elements
  * @link https://en.wikipedia.org/wiki/Downsampling_(signal_processing)
  */
-function downSampling(array: DoubleArray, length: number) {
+function downSampling(array: DoubleArray, length: number): Float64Array {
   const returnArray = new Float64Array(length);
   const delta = (array.length - 1) / (length - 1);
 

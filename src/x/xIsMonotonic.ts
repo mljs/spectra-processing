@@ -1,9 +1,10 @@
 import { DoubleArray } from 'cheminfo-types';
 
 /**
- * Returns true if x is monotone
+ * Returns true if x is monotonic.
  *
- * @param array - array of numbers
+ * @param array - array of numbers.
+ * @returns 1 if monotonic increasing, -1 if monotonic decreasing, 0 if not monotonic.
  */
 export function xIsMonotonic(array: DoubleArray): -1 | 0 | 1 {
   if (array.length <= 2) {

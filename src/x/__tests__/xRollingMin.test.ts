@@ -1,4 +1,4 @@
-import { xRollingMin } from '../../index';
+import { xRollingMin } from '../xRollingMin';
 
 test('xRollingMin', () => {
   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];

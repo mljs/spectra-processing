@@ -15,13 +15,14 @@ interface XCostMatrixOptions {
  * generate the cost matrix of absolute value of differences.
  * @param rowsArray - Array of values that will represent the rows of the cost matrix.
  * @param columnsArray - Array of values that will represent the columns of the cost matrix.
+ * @param options
  * @returns - A matrix instance with dimensions rowsArray.length x columnsArray.length
  */
 export function xCostMatrix(
   rowsArray: DoubleArray,
   columnsArray: DoubleArray,
   options: XCostMatrixOptions = {},
-) {
+): Matrix {
   const { fct = absDiff } = options;
 
   const nbRows = rowsArray.length;

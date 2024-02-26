@@ -2,6 +2,7 @@ import { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 import { xGetFromToIndex, XGetFromToIndexOptions } from './xGetFromToIndex';
+
 /**
  * Computes the index of the maximum of the given values
  *

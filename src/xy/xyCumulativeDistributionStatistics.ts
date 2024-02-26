@@ -17,9 +17,7 @@ export function xyCumulativeDistributionStatistics(data: DataXY) {
   xyCheck(data);
   const { x, y } = data;
   if (x.length === 0) {
-    throw new Error(
-      'xyCumulativeDistributionStatistics: Array length must be greater than 0',
-    );
+    throw new Error('array length must be greater than 0');
   }
   const cumulativeSum = xCumulative(y);
   const maxY = xMaxValue(cumulativeSum);

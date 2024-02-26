@@ -1,20 +1,23 @@
 import { DoubleArray } from 'cheminfo-types';
 
+export interface XIsEquallySpacedOptions {
+  /**
+   * The tolerance define what is the allowed difference in percent
+   * @default: 0.05
+   */
+  tolerance?: number;
+}
+
 /**
  * Check if the values are separated always by the same difference
  *
  * @param array - Monotone growing array of number
+ * @param options
  */
 export function xIsEquallySpaced(
   array: DoubleArray,
-  options: {
-    /**
-     * The tolerance define what is the allowed difference in percent
-     * @default: 0.05
-     */
-    tolerance?: number;
-  } = {},
-) {
+  options: XIsEquallySpacedOptions = {},
+): boolean {
   if (array.length < 3) return true;
   const { tolerance = 0.05 } = options;
   let maxDx = 0;
