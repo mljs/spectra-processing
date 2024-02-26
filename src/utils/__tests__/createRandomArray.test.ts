@@ -1,9 +1,6 @@
-import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
 import { optimize } from 'ml-spectra-fitting';
 
 import { createRandomArray, xHistogram } from '../../index';
-
-expect.extend({ toBeDeepCloseTo });
 
 describe('createRandomXArray', () => {
   it('normal distribution', () => {

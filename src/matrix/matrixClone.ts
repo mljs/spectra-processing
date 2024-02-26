@@ -1,6 +1,6 @@
 /**
- * Clone the matrix
+ * Clone a matrix.
  */
-export function matrixClone(matrix: any[]): any[] {
+export function matrixClone<ValueType>(matrix: ValueType[][]): ValueType[][] {
   return matrix.map((row) => row.slice(0));
 }

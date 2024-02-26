@@ -1,8 +1,12 @@
-import { DoubleMatrix } from '..';
+import { DoubleMatrix } from '../types';
 
 import { matrixCheck } from './matrixCheck';
 
-export function matrixToArray(matrix: DoubleMatrix) {
+/**
+ * Convert a matrix to a flat Float64Array.
+ * @param matrix
+ */
+export function matrixToArray(matrix: DoubleMatrix): Float64Array {
   matrixCheck(matrix);
 
   const nbColumns = matrix[0].length;

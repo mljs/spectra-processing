@@ -1,7 +1,7 @@
-import { DoubleMatrix } from '..';
+import { DoubleMatrix } from '../types';
 
 /**
- * Get min and max of the absolute values of Z
+ * Get min and max of the absolute values of Z.
  *
  * @param matrix - matrix [rows][cols].
  */

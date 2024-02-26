@@ -1,8 +1,4 @@
-import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
-
 import { createFromToArray } from '../../index';
-
-expect.extend({ toBeDeepCloseTo });
 
 describe('createFromToArray', () => {
   it('case when we sample within a specific range with log distribution and include start and end points', () => {

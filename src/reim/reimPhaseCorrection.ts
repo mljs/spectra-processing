@@ -1,4 +1,4 @@
-import { DataReIm } from '../types/DataReIm';
+import { DataReIm } from '../types';
 
 /**
  * Phase correction filter

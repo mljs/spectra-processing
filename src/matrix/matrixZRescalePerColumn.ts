@@ -1,27 +1,30 @@
-import { DoubleMatrix } from '..';
+import { DoubleMatrix } from '../types';
 
 import { matrixCreateEmpty } from './matrixCreateEmpty';
+
+export interface MatrixZRescalePerColumnOptions {
+  /**
+   * min
+   * @default 0
+   * */
+  min?: number;
+  /**
+   * max
+   * @default 1
+   * */
+  max?: number;
+}
+
 /**
- * Rescale the matrix per column for which we get the min and max values
+ * Rescale the matrix per column for which we get the min and max values.
  *
  * @param matrix - matrix [rows][cols].
- * @param options - Options
+ * @param options - Options.
  */
 export function matrixZRescalePerColumn(
   matrix: DoubleMatrix,
-  options: {
-    /**
-     * min
-     * @default 0
-     * */
-    min?: number;
-    /**
-     * max
-     * @default 1
-     * */
-    max?: number;
-  } = {},
-): DoubleMatrix {
+  options: MatrixZRescalePerColumnOptions = {},
+): Float64Array[] {
   const { min = 0, max = 1 } = options;
   const nbColumns = matrix[0].length;
   const nbRows = matrix.length;

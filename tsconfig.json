@@ -8,5 +8,5 @@
     "strict": true,
     "target": "es2020"
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*", "jest.setup.ts"]
 }

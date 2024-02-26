@@ -1,28 +1,38 @@
-import { DoubleMatrix } from '..';
+import {
+  DoubleArrayConstructor,
+  DoubleArrayType,
+  DoubleMatrix,
+} from '../types';
 
 import { matrixCreateEmpty } from './matrixCreateEmpty';
 import { matrixMaxAbsoluteZ } from './matrixMaxAbsoluteZ';
 
+export interface MatrixZPivotRescaleOptions<
+  ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,
+> {
+  /**
+   * max
+   * @default 1
+   * */
+  max?: number;
+  /**
+   * Allows to specify the type of array to use
+   */
+  ArrayConstructor?: ArrayConstructorType;
+}
+
 /**
- * Rescale a matrix around 0 taking into account the absolute max value
+ * Rescale a matrix around 0 taking into account the absolute max value.
  *
  * @param matrix - matrix [rows][cols].
- * @param options - Options
+ * @param options - Options.
  */
-export function matrixZPivotRescale(
+export function matrixZPivotRescale<
+  ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,
+>(
   matrix: DoubleMatrix,
-  options: {
-    /**
-     * max
-     * @default 1
-     * */
-    max?: number;
-    /**
-     * Allows to specify the type of array to use
-     */
-    ArrayConstructor?: any;
-  } = {},
-): DoubleMatrix {
+  options: MatrixZPivotRescaleOptions<ArrayConstructorType> = {},
+): Array<DoubleArrayType<DoubleArrayConstructor>> {
   const { max = 1, ArrayConstructor } = options;
   const nbColumns = matrix[0].length;
   const nbRows = matrix.length;

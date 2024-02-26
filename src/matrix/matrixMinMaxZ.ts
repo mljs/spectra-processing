@@ -1,9 +1,9 @@
-import { DoubleMatrix } from '..';
+import { DoubleMatrix } from '../types';
 
 import { matrixCheck } from './matrixCheck';
 
 /**
- * Get min and max Z
+ * Get min and max Z.
  *
  * @param matrix - matrix [rows][cols].
  */

@@ -1,11 +1,11 @@
-import { DoubleMatrix, xMedian } from '..';
+import { DoubleMatrix } from '../types';
+import { xMedian } from '../x';
 
 import { matrixToArray } from './matrixToArray';
 
 /**
- * returns the median of the matrix
+ * Returns the median of the matrix.
  */
-
-export function matrixMedian(matrix: DoubleMatrix) {
+export function matrixMedian(matrix: DoubleMatrix): number {
   return xMedian(matrixToArray(matrix));
 }

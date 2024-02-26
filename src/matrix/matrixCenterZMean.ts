@@ -1,12 +1,13 @@
-import { DoubleMatrix } from '..';
+import { DoubleMatrix } from '../types';
 
 import { matrixCreateEmpty } from './matrixCreateEmpty';
+
 /**
- * Center mean of columns
+ * Center mean of matrix columns.
  *
  * @param matrix - matrix [rows][cols]
  */
-export function matrixCenterZMean(matrix: DoubleMatrix): DoubleMatrix {
+export function matrixCenterZMean(matrix: DoubleMatrix): Float64Array[] {
   const nbColumns = matrix[0].length;
   const nbRows = matrix.length;
   const newMatrix = matrixCreateEmpty({ nbColumns, nbRows });

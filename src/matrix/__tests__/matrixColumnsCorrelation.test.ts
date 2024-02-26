@@ -1,8 +1,4 @@
-import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
-
-import { matrixColumnsCorrelation } from '../../index';
-
-expect.extend({ toMatchCloseTo });
+import { matrixColumnsCorrelation } from '../matrixColumnsCorrelation';
 
 test('matrixColumnsCorrelation', () => {
   const data: number[][] = [
@@ -11,13 +7,10 @@ test('matrixColumnsCorrelation', () => {
     [3, 1, 3, 1],
   ];
   const result = matrixColumnsCorrelation(data);
-  for (let i = 0; i < result.length; i++) {
-    result[i] = Array.from(result[i]);
-  }
   expect(result).toMatchCloseTo([
-    [1, -1, 1, -1],
-    [-1, 1, -1, 1],
-    [1, -1, 1, -1],
-    [-1, 1, -1, 1],
+    Float64Array.from([1, -1, 1, -1]),
+    Float64Array.from([-1, 1, -1, 1]),
+    Float64Array.from([1, -1, 1, -1]),
+    Float64Array.from([-1, 1, -1, 1]),
   ]);
 });

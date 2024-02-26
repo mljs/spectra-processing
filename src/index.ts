@@ -1,5 +1,3 @@
-import { DoubleArray } from 'cheminfo-types';
-
 export * from './reim/index';
 
 export * from './x/index';
@@ -22,8 +20,4 @@ export * from './zones/zonesNormalize';
 export * from './matrix/index';
 export * from './utils/index';
 
-export type DoubleMatrix = DoubleArray[];
-
-export * from './types/DataReIm';
-export * from './types/DataXReIm';
-export * from './types/Point';
+export * from './types/index';

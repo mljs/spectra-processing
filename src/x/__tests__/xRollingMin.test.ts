@@ -1,8 +1,4 @@
-import { toMatchCloseTo } from 'jest-matcher-deep-close-to';
-
 import { xRollingMin } from '../../index';
-
-expect.extend({ toMatchCloseTo });
 
 test('xRollingMin', () => {
   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];

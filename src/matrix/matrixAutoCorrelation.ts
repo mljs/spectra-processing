@@ -1,8 +1,5 @@
-import { DoubleMatrix, xCorrelation } from '..';
-
-/**
- * returns the median of the matrix
- */
+import { DoubleMatrix } from '../types';
+import { xCorrelation } from '../x';
 
 export function matrixAutoCorrelation(
   matrix: DoubleMatrix,
@@ -13,7 +10,7 @@ export function matrixAutoCorrelation(
 
   if (nbRows < 2) {
     throw new Error(
-      'matrixAutoCorrelation: can not calculate info if matrix contains less than 2 rows',
+      'can not calculate info if matrix contains less than 2 rows',
     );
   }
 

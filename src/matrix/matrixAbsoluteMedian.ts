@@ -1,10 +1,10 @@
-import { DoubleMatrix, xMedian } from '..';
+import { DoubleMatrix } from '../types';
+import { xMedian } from '../x';
 
 /**
- * returns the median of the absolute matrix
+ * Returns the median of the absolute matrix.
  */
-
-export function matrixAbsoluteMedian(matrix: DoubleMatrix) {
+export function matrixAbsoluteMedian(matrix: DoubleMatrix): number {
   const nbColumns = matrix[0].length;
   const flatten = new Float64Array(matrix.length * nbColumns);
   for (let row = 0; row < matrix.length; row++) {

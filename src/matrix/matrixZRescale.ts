@@ -1,33 +1,43 @@
-import { DoubleMatrix } from '..';
+import {
+  DoubleArrayConstructor,
+  DoubleArrayType,
+  DoubleMatrix,
+} from '../types';
 
 import { matrixCreateEmpty } from './matrixCreateEmpty';
 import { matrixMinMaxZ } from './matrixMinMaxZ';
 
+export interface MatrixZRescaleOptions<
+  ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,
+> {
+  /**
+   * min
+   * @default 0
+   * */
+  min?: number;
+  /**
+   * max
+   * @default 1
+   * */
+  max?: number;
+  /**
+   * Allows to specify the type of array to use.
+   */
+  ArrayConstructor?: ArrayConstructorType;
+}
+
 /**
- * Rescale a matrix between min and max values
+ * Rescale a matrix between min and max values.
  *
  * @param matrix - matrix [rows][cols].
- * @param options - Options
+ * @param options - Options.
  */
-export function matrixZRescale(
+export function matrixZRescale<
+  ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,
+>(
   matrix: DoubleMatrix,
-  options: {
-    /**
-     * min
-     * @default 0
-     * */
-    min?: number;
-    /**
-     * max
-     * @default 1
-     * */
-    max?: number;
-    /**
-     * Allows to specify the type of array to use
-     */
-    ArrayConstructor?: any;
-  } = {},
-): DoubleMatrix {
+  options: MatrixZRescaleOptions<ArrayConstructorType> = {},
+): Array<DoubleArrayType<DoubleArrayConstructor>> {
   const { min = 0, max = 1, ArrayConstructor } = options;
   const nbColumns = matrix[0].length;
   const nbRows = matrix.length;

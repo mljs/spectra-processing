@@ -1,4 +1,4 @@
-import { matrixCenterZMean } from '../../index';
+import { matrixCenterZMean } from '../matrixCenterZMean';
 
 test('matrixCenterZMean', () => {
   const data = [
@@ -6,13 +6,10 @@ test('matrixCenterZMean', () => {
     [2, 2, 1, 3],
     [3, 1, 3, 1],
   ];
-  let result = matrixCenterZMean(data);
-
-  result = result.map((row) => Array.from(row));
-
+  const result = matrixCenterZMean(data);
   expect(result).toStrictEqual([
-    [-1, 1, 0, 0],
-    [0, 0, -1, 1],
-    [1, -1, 1, -1],
+    Float64Array.from([-1, 1, 0, 0]),
+    Float64Array.from([0, 0, -1, 1]),
+    Float64Array.from([1, -1, 1, -1]),
   ]);
 });

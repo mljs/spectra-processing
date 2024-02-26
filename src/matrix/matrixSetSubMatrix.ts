@@ -1,4 +1,4 @@
-import { DoubleMatrix } from '..';
+import { DoubleMatrix } from '../types';
 
 /**
  * Set in-place a subMatrix to matrix, the function check if the subMatrix
@@ -7,15 +7,14 @@ import { DoubleMatrix } from '..';
  * @param subMatrix - matrix with equal or less size than matrix.
  * @param startRow - row index in matrix for the first row in subMatrix.
  * @param startColumn - column index in matrix for the first column in subMatrix.
- * @returns
+ * @returns The modified `matrix`.
  */
-
 export function matrixSetSubMatrix(
   matrix: DoubleMatrix,
   subMatrix: DoubleMatrix,
   startRow: number,
   startColumn: number,
-) {
+): DoubleMatrix {
   const endRow = startRow + subMatrix.length - 1;
   const endColumn = startColumn + subMatrix[0].length - 1;
   checkRange(matrix, startRow, endRow, startColumn, endColumn);
@@ -34,9 +33,6 @@ function checkRange(
   startColumn: number,
   endColumn: number,
 ) {
-  if (arguments.length !== 5) {
-    throw new RangeError('expected 4 arguments');
-  }
   if (
     startRow > endRow ||
     startColumn > endColumn ||
@@ -49,6 +45,6 @@ function checkRange(
     endColumn < 0 ||
     endColumn >= matrix[0].length
   ) {
-    throw new RangeError('Submatrix indices are out of range');
+    throw new RangeError('submatrix indices are out of range');
   }
 }
