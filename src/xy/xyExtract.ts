@@ -1,11 +1,15 @@
 import { DataXY, FromTo } from 'cheminfo-types';
 
-import { zonesNormalize } from '../zones/zonesNormalize';
+import { zonesNormalize } from '../zones';
 
 import { xyCheck } from './xyCheck';
 
+export interface XYExtractOptions {
+  zones?: FromTo[];
+}
+
 /**
- * XyExtract zones from a XY data
+ * Extract zones from a XY data.
  *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - options
@@ -13,9 +17,7 @@ import { xyCheck } from './xyCheck';
  */
 export function xyExtract(
   data: DataXY,
-  options: {
-    zones?: FromTo[];
-  } = {},
+  options: XYExtractOptions = {},
 ): DataXY {
   xyCheck(data);
   const { x, y } = data;
@@ -32,8 +34,8 @@ export function xyExtract(
     return data;
   }
 
-  const newX = [];
-  const newY = [];
+  const newX: number[] = [];
+  const newY: number[] = [];
 
   let currentZone = zones[0];
   let position = 0;

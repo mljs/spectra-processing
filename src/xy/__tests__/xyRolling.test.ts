@@ -1,4 +1,4 @@
-import { xyRolling } from '../../index';
+import { xyRolling } from '../xyRolling';
 
 test('xyRolling', () => {
   const points = {

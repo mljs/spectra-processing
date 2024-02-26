@@ -1,5 +1,7 @@
 import { DataXY } from 'cheminfo-types';
 
+import { PointWithIndex } from '../types';
+
 import { xyCheck } from './xyCheck';
 
 /**
@@ -10,10 +12,10 @@ import { xyCheck } from './xyCheck';
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @returns - Array of points
  */
-export function xyMaximaY(data: DataXY) {
+export function xyMaximaY(data: DataXY): PointWithIndex[] {
   xyCheck(data, { minLength: 2 });
   const { x, y } = data;
-  const maxima = [];
+  const maxima: PointWithIndex[] = [];
   let startEqualIndex = -1;
   for (let i = 1; i < x.length - 1; i++) {
     if (y[i - 1] < y[i] && y[i + 1] < y[i]) {

@@ -1,8 +1,21 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xFindClosestIndex } from '../x/xFindClosestIndex';
+import { xFindClosestIndex } from '../x';
 
 import { xyCheck } from './xyCheck';
+
+export interface XYPeakInfoOptions {
+  targetIndex?: number;
+  target?: number;
+}
+
+export interface XYPeakInfo {
+  inflectionAfter: { x: number; y: number };
+  inflectionBefore: { x: number; y: number };
+  width: number;
+  extrema: { x: number; y: number };
+  inflectionMiddle: { x: number; y: number };
+}
 
 /**
  * Returns an information about a signal.
@@ -20,8 +33,8 @@ import { xyCheck } from './xyCheck';
  */
 export function xyPeakInfo(
   data: DataXY,
-  options: { targetIndex?: number; target?: number } = {},
-) {
+  options: XYPeakInfoOptions = {},
+): XYPeakInfo | undefined {
   xyCheck(data);
   const { x, y } = data;
   if (typeof x === 'undefined' || typeof y === 'undefined' || x.length < 3) {

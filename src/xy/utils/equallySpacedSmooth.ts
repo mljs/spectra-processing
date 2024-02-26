@@ -1,7 +1,7 @@
 import integral from './integral';
 
 /**
- * function that retrieves the getEquallySpacedData with the variant "smooth"
+ * Function that retrieves the getEquallySpacedData with the variant "smooth".
  *
  * @param x
  * @param y
@@ -21,7 +21,7 @@ export default function equallySpacedSmooth(
   to: number,
   /** number of points */
   numberOfPoints: number,
-) {
+): Float64Array {
   const xLength = x.length;
 
   const step = (to - from) / (numberOfPoints > 1 ? numberOfPoints - 1 : 1);

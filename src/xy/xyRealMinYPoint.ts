@@ -1,19 +1,17 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xGetTargetIndex } from '../x/xGetTargetIndex';
+import { PointWithIndex } from '../types';
+import { xGetTargetIndex } from '../x';
 
 import { xyCheck } from './xyCheck';
 
 /**
- * XyRealMinYPoint.
+ * xyRealMinYPoint.
  *
  * @param data - Data.
  * @param options - Options.
  */
-export function xyRealMinYPoint(
-  data: DataXY,
-  options = {},
-): { x: number; y: number; index: number } {
+export function xyRealMinYPoint(data: DataXY, options = {}): PointWithIndex {
   xyCheck(data);
   const { x, y } = data;
 

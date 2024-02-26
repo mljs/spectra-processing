@@ -1,8 +1,34 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xGetFromToIndex } from '../x/xGetFromToIndex';
+import { xGetFromToIndex } from '../x';
 
 import { xyCheck } from './xyCheck';
+
+export interface XYIntegralOptions {
+  /**
+   * Integrate from the larger value to the smallest value
+   * @default false
+   * */
+  reverse?: boolean;
+  /**
+   * First value for xyIntegration in the X scale
+   */
+  from?: number;
+  /**
+   * First point for xyIntegration
+   * @default 0
+   * */
+  fromIndex?: number;
+  /**
+   *  Last point for xyIntegration
+   * @default x.length-1
+   * */
+  toIndex?: number;
+  /**
+   * Last value for xyIntegration in the X scale
+   */
+  to?: number;
+}
 
 /**
  * Generate a X / Y of the xyIntegral
@@ -13,32 +39,8 @@ import { xyCheck } from './xyCheck';
  */
 export function xyIntegral(
   data: DataXY,
-  options: {
-    /**
-     * Integrate from the larger value to the smallest value
-     * @default false
-     * */
-    reverse?: boolean;
-    /**
-     * First value for xyIntegration in the X scale
-     */
-    from?: number;
-    /**
-     * First point for xyIntegration
-     * @default 0
-     * */
-    fromIndex?: number;
-    /**
-     *  Last point for xyIntegration
-     * @default x.length-1
-     * */
-    toIndex?: number;
-    /**
-     * Last value for xyIntegration in the X scale
-     */
-    to?: number;
-  } = {},
-): DataXY {
+  options: XYIntegralOptions = {},
+): DataXY<number[]> {
   const { reverse = false } = options;
   xyCheck(data, { minLength: 1 });
   const { x, y } = data;

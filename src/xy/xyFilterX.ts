@@ -1,6 +1,6 @@
 import { DataXY, FromTo } from 'cheminfo-types';
 
-import { zonesNormalize } from '../zones/zonesNormalize';
+import { zonesNormalize } from '../zones';
 
 export interface XYFilterXOptions {
   /** filter from
@@ -30,7 +30,7 @@ export interface XYFilterXOptions {
 export function xyFilterX(
   data: DataXY,
   options: XYFilterXOptions = {},
-): DataXY {
+): DataXY<number[]> {
   const { x, y } = data;
   const {
     from = x[0],
@@ -42,8 +42,8 @@ export function xyFilterX(
   const normalizedZones = zonesNormalize(zones, { from, to, exclusions });
 
   let currentZoneIndex = 0;
-  const newX = [];
-  const newY = [];
+  const newX: number[] = [];
+  const newY: number[] = [];
   let position = 0;
   while (position < x.length) {
     if (

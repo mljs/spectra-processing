@@ -2,6 +2,14 @@ import { DataXY } from 'cheminfo-types';
 
 import { xyCheck } from './xyCheck';
 
+export interface XYJoinXOptions {
+  /**
+   * The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+   * @default 1
+   */
+  delta?: ((arg: number) => number) | number;
+}
+
 /**
  * Join x / y values when difference in X is closer than delta.
  * When joining, y values are summed and x values are weighted average
@@ -12,19 +20,13 @@ import { xyCheck } from './xyCheck';
  */
 export function xyJoinX(
   data: DataXY,
-  options: {
-    /**
-     * The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
-     * @default 1
-     */
-    delta?: ((arg: number) => number) | number;
-  } = {},
-): DataXY {
+  options: XYJoinXOptions = {},
+): DataXY<number[]> {
   xyCheck(data);
   const { delta = 1 } = options;
   const deltaIsFunction = typeof delta === 'function';
-  const x = Array.from(data.x as number[]);
-  const y = Array.from(data.y as number[]);
+  const x = Array.from(data.x);
+  const y = Array.from(data.y);
   if (x.length < 2) {
     return { x, y };
   }

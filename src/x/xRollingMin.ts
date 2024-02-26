@@ -1,20 +1,7 @@
 import { DoubleArray } from 'cheminfo-types';
 
 import { xMinValue } from './xMinValue';
-import { XPaddingOptions } from './xPadding';
-import { xRolling } from './xRolling';
-
-export interface XRollingMinOptions {
-  /**
-   * rolling window
-   * @default 5
-   */
-  window?: number;
-  /**
-   * padding
-   */
-  padding?: XPaddingOptions;
-}
+import { xRolling, XRollingOptions } from './xRolling';
 
 /**
  * This function calculates a minimum within a rolling window
@@ -24,7 +11,7 @@ export interface XRollingMinOptions {
  */
 export function xRollingMin(
   array: DoubleArray,
-  options: XRollingMinOptions = {},
+  options: XRollingOptions = {},
 ): number[] {
   return xRolling(array, xMinValue, options);
 }

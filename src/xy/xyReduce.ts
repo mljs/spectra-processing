@@ -1,8 +1,8 @@
 /* eslint-disable max-lines-per-function */
 import { DataXY, FromTo, DoubleArray } from 'cheminfo-types';
 
-import { xFindClosestIndex } from '../x/xFindClosestIndex';
-import { zonesNormalize } from '../zones/zonesNormalize';
+import { xFindClosestIndex } from '../x';
+import { zonesNormalize } from '../zones';
 
 import { xyCheck } from './xyCheck';
 
@@ -14,8 +14,34 @@ interface InternalZone {
   nbPoints?: number;
 }
 
+export interface XYReduceOptions {
+  /**
+   * @default x[0]
+   */
+  from?: number;
+  /**
+   * @default x[x.length-1]
+   */
+  to?: number;
+  /**
+   * Number of points
+   * @default 4001
+   * */
+  nbPoints?: number;
+  /**
+   * If optimize we may have less than nbPoints at the end
+   * @default false
+   * */
+  optimize?: boolean;
+  /**
+   * Array of zones to keep (from/to object)
+   * @default []
+   * */
+  zones?: FromTo[];
+}
+
 /**
- * XyReduce the number of points while keeping visually the same noise. Practical to
+ * Reduce the number of points while keeping visually the same noise. Practical to
  * display many spectra as SVG. If you want a similar looking spectrum you should still however generate 4x the nbPoints that is being displayed.
  * SHOULD NOT BE USED FOR DATA PROCESSING !!!
  * You should rather use ml-xy-equally-spaced to make further processing
@@ -23,34 +49,7 @@ interface InternalZone {
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - options
  */
-export function xyReduce(
-  data: DataXY,
-  options: {
-    /**
-     * @default x[0]
-     */
-    from?: number;
-    /**
-     * @default x[x.length-1]
-     */
-    to?: number;
-    /**
-     * Number of points
-     * @default 4001
-     * */
-    nbPoints?: number;
-    /**
-     * If optimize we may have less than nbPoints at the end
-     * @default false
-     * */
-    optimize?: boolean;
-    /**
-     * Array of zones to keep (from/to object)
-     * @default []
-     * */
-    zones?: FromTo[];
-  } = {},
-): DataXY {
+export function xyReduce(data: DataXY, options: XYReduceOptions = {}): DataXY {
   xyCheck(data);
   const { x, y } = data;
   const {

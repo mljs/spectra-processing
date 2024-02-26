@@ -1,8 +1,15 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xFindClosestIndex } from '../x/xFindClosestIndex';
+import { PointWithIndex } from '../types';
+import { xFindClosestIndex } from '../x';
 
 import { xyCheck } from './xyCheck';
+
+export interface XYMinClosestYPointOptions {
+  target?: number;
+  /**@default 0 */
+  targetIndex?: number;
+}
 
 /**
  * Find the closest minimum going down hill
@@ -13,12 +20,8 @@ import { xyCheck } from './xyCheck';
  */
 export function xyMinClosestYPoint(
   data: DataXY,
-  options: {
-    target?: number;
-    /**@default 0 */
-    targetIndex?: number;
-  } = {},
-) {
+  options: XYMinClosestYPointOptions = {},
+): PointWithIndex {
   xyCheck(data);
   const { x, y } = data;
 

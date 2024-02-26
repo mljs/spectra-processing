@@ -1,8 +1,7 @@
 import { DataXY, FromTo } from 'cheminfo-types';
 
-import { createFromToArray } from '../utils/createFromToArray';
-import { zonesNormalize } from '../zones/zonesNormalize';
-import { zonesWithPoints } from '../zones/zonesWithPoints';
+import { createFromToArray } from '../utils';
+import { zonesNormalize, zonesWithPoints } from '../zones';
 
 import equallySpacedSlot from './utils/equallySpacedSlot';
 import equallySpacedSmooth from './utils/equallySpacedSmooth';
@@ -61,7 +60,7 @@ export interface XYEquallySpacedOptions {
 export function xyEquallySpaced(
   data: DataXY,
   options: XYEquallySpacedOptions = {},
-): DataXY {
+): DataXY<number[]> {
   const { x, y } = data;
   const xLength = x.length;
 

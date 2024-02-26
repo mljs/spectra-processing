@@ -3,6 +3,19 @@ import { DataXY } from 'cheminfo-types';
 import { xyCheck } from './xyCheck';
 import { xySortX } from './xySortX';
 
+export interface XYUniqueXOptions {
+  /**
+   * either 'average' or 'sum'
+   * @default 'average'
+   * */
+  algorithm?: 'average' | 'sum';
+  /**
+   * if false the DataXY has to be sorted first
+   *  @default true
+   * */
+  isSorted?: boolean;
+}
+
 /**
  * Ensure x values are unique
  *
@@ -11,19 +24,8 @@ import { xySortX } from './xySortX';
  */
 export function xyUniqueX(
   data: DataXY,
-  options: {
-    /**
-     * either 'average' or 'sum'
-     * @default 'average'
-     * */
-    algorithm?: string;
-    /**
-     * if false the DataXY has to be sorted first
-     *  @default true
-     * */
-    isSorted?: boolean;
-  } = {},
-): DataXY {
+  options: XYUniqueXOptions = {},
+): DataXY<number[]> {
   xyCheck(data);
 
   const { algorithm = 'average', isSorted = true } = options;
@@ -38,7 +40,7 @@ export function xyUniqueX(
     case 'sum':
       return sum(data);
     default:
-      throw new Error(`xyUniqueX: unknown algorithm: ${algorithm}`);
+      throw new Error(`unknown algorithm: ${String(algorithm)}`);
   }
 }
 
@@ -48,9 +50,9 @@ export function xyUniqueX(
  * @param data - Input.
  * @returns Result.
  */
-function average(data: DataXY): DataXY {
-  const x = [];
-  const y = [];
+function average(data: DataXY): DataXY<number[]> {
+  const x: number[] = [];
+  const y: number[] = [];
   let cumulativeY = data.y[0];
   let divider = 1;
   for (let i = 1; i < data.x.length; i++) {
@@ -74,9 +76,9 @@ function average(data: DataXY): DataXY {
  * @param data - Input.
  * @returns Result.
  */
-function sum(data: DataXY) {
-  const x = [];
-  const y = [];
+function sum(data: DataXY): DataXY<number[]> {
+  const x: number[] = [];
+  const y: number[] = [];
   let cumulativeY = data.y[0];
   for (let i = 1; i < data.x.length; i++) {
     if (!(data.x[i] === data.x[i - 1])) {

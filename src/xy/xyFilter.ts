@@ -13,11 +13,14 @@ export interface XYFilterOptions {
  * @param options - options
  * @return filtered array
  */
-export function xyFilter(data: DataXY, options: XYFilterOptions = {}): DataXY {
+export function xyFilter(
+  data: DataXY,
+  options: XYFilterOptions = {},
+): DataXY<number[]> {
   const { x, y } = data;
   const { filter } = options;
-  const newX = [];
-  const newY = [];
+  const newX: number[] = [];
+  const newY: number[] = [];
 
   for (let i = 0; i < x.length; i++) {
     if (!filter || filter(x[i], y[i])) {

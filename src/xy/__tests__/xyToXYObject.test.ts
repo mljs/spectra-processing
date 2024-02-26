@@ -1,4 +1,4 @@
-import { xyToXYObject } from '../../index';
+import { xyToXYObject } from '../xyToXYObject';
 
 test('xyToXYObject', () => {
   expect(xyToXYObject({ x: [1, 3, 2, 0], y: [1, 3, 2, 0] })).toStrictEqual([

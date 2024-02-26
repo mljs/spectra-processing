@@ -3,7 +3,7 @@ import { DataXY } from 'cheminfo-types';
 import { Point } from '../types';
 
 /**
- * XyObjectToXY.
+ * xyObjectToXY.
  *
  * @param points - Array of points {x,y}.
  */

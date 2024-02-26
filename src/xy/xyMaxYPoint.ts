@@ -1,8 +1,30 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xGetFromToIndex } from '../x/xGetFromToIndex';
+import { PointWithIndex } from '../types';
+import { xGetFromToIndex } from '../x';
 
 import { xyCheck } from './xyCheck';
+
+export interface XYMaxYPointOptions {
+  /**
+   * First value for xyMaxYPoint in the X scale
+   */
+  from?: number;
+  /**
+   * First point for xyMaxYPoint
+   * @default 0
+   * */
+  fromIndex?: number;
+  /**
+   *  Last point for xyMaxYPoint
+   * @default x.length-1
+   * */
+  toIndex?: number;
+  /**
+   * Last value for xyMaxYPoint in the X scale
+   */
+  to?: number;
+}
 
 /**
  * Finds the max y value in a range and return a {x,y} point
@@ -12,27 +34,8 @@ import { xyCheck } from './xyCheck';
  */
 export function xyMaxYPoint(
   data: DataXY,
-  options: {
-    /**
-     * First value for xyMaxYPoint in the X scale
-     */
-    from?: number;
-    /**
-     * First point for xyMaxYPoint
-     * @default 0
-     * */
-    fromIndex?: number;
-    /**
-     *  Last point for xyMaxYPoint
-     * @default x.length-1
-     * */
-    toIndex?: number;
-    /**
-     * Last value for xyMaxYPoint in the X scale
-     */
-    to?: number;
-  } = {},
-): { x: number; y: number; index: number } {
+  options: XYMaxYPointOptions = {},
+): PointWithIndex {
   xyCheck(data, { minLength: 1 });
   const { x, y } = data;
   if (x.length === 1) {
