@@ -1,5 +1,21 @@
 import { DataXY } from 'cheminfo-types';
 
+export interface GetSlotsOptions {
+  /**
+   * The range in which the two x values of the data/spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
+   * @default 1
+   */
+  delta?: ((arg: number) => number) | number;
+}
+
+export interface Slot {
+  from: number;
+  to: number;
+  average: number;
+  sum: number;
+  number: number;
+}
+
 /**
  * GetSlots.
  *
@@ -8,45 +24,27 @@ import { DataXY } from 'cheminfo-types';
  */
 export function getSlots(
   data: DataXY[],
-  options: {
-    /**
-     * The range in which the two x values of the data/spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
-     * @default 1
-     */
-    delta?: ((arg: number) => number) | number;
-  } = {},
-): Array<{
-  from: number;
-  to: number;
-  average: number;
-  sum: number;
-  number: number;
-}> {
+  options: GetSlotsOptions = {},
+): Slot[] {
   const { delta = 1 } = options;
   const deltaIsFunction = typeof delta === 'function';
 
   const possibleXs = Float64Array.from(
-    ([] as number[]).concat(...data.map((spectrum) => spectrum.x as number[])),
+    data.map((spectrum) => spectrum.x as number[]).flat(),
   ).sort();
 
   if (possibleXs.length === 0) {
-    throw new Error('xyArrayMerge can not process empty arrays');
+    throw new Error('can not process empty arrays');
   }
 
-  let currentSlot = {
+  let currentSlot: Slot = {
     from: possibleXs[0],
     to: possibleXs[0],
     average: possibleXs[0],
     sum: possibleXs[0],
     number: 1,
   };
-  const slots: Array<{
-    from: number;
-    to: number;
-    average: number;
-    sum: number;
-    number: number;
-  }> = [currentSlot];
+  const slots: Slot[] = [currentSlot];
   for (let i = 1; i < possibleXs.length; i++) {
     const currentDelta = deltaIsFunction ? delta(possibleXs[i]) : delta;
     if (possibleXs[i] - currentSlot.to <= currentDelta) {
