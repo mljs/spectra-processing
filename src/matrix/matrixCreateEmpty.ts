@@ -23,6 +23,7 @@ export interface MatrixCreateEmptyOptions<
   nbColumns?: number;
   /**
    * Allows to specify the type of array to use
+   * @default Float64Array
    */
   ArrayConstructor?: ArrayConstructorType;
 }
