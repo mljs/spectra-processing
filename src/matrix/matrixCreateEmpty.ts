@@ -28,7 +28,8 @@ export interface MatrixCreateEmptyOptions<
 }
 
 /**
- * Create a new matrix based on the size of the current one
+ * Create a new matrix based on the size of the current one or by using specific dimensions
+ * Take care that if you specify as ArrayConstructor an Array, the matrix will be filled with 'uhdefined' and not with 0
  */
 export function matrixCreateEmpty<
   ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,
