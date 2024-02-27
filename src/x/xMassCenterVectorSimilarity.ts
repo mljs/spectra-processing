@@ -33,6 +33,11 @@ export function xMassCenterVectorSimilarity(
   const depth2 = getDepth(array2);
   const depth = Math.min(depth1, depth2);
 
+  // need to copy the array because we shift the data in place if recenter is true
+  if (recenter) {
+    array1 = array1.slice();
+  }
+
   let similarity = 0;
   // we will compare level by level
   // and recenter the array at each level

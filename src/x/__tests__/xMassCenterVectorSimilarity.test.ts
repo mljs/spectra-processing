@@ -57,10 +57,17 @@ test('a partial shift, no recenter helps in this case', () => {
 
   const vector1 = xyMassCenterVector(data1, { depth: 2 });
   const vector2 = xyMassCenterVector(data2, { depth: 2 });
+
+  const vector1clone = vector1.slice();
+  const vector2clone = vector2.slice();
+
   const similarity = xMassCenterVectorSimilarity(vector1, vector2, {
     recenter: false,
   });
   expect(similarity).toBeCloseTo(0.25);
+
+  expect(vector1).toStrictEqual(vector1clone);
+  expect(vector2).toStrictEqual(vector2clone);
 });
 
 test('a partial shift, level 3 that should match again', () => {
@@ -91,9 +98,17 @@ test('a partial shift, we have a kind function for similarity', () => {
 
   const vector1 = xyMassCenterVector(data1, { depth: 3 });
   const vector2 = xyMassCenterVector(data2, { depth: 3 });
+
+  const vector1clone = vector1.slice();
+  const vector2clone = vector2.slice();
+
   const similarity = xMassCenterVectorSimilarity(vector1, vector2, {
     similarityFct: (a: number, b: number) =>
       b - a < 0.1 ? 1 : (b - a) / (b + a),
   });
   expect(similarity).toBeCloseTo(0.53956);
+
+  // we check that we don't touch the original array
+  expect(vector1).toStrictEqual(vector1clone);
+  expect(vector2).toStrictEqual(vector2clone);
 });
