@@ -1,5 +1,13 @@
 # Changelog
 
+## [13.0.1](https://github.com/mljs/spectra-processing/compare/v13.0.0...v13.0.1) (2024-02-27)
+
+
+### Bug Fixes
+
+* return type definition of xSequentialFill ([220f6ce](https://github.com/mljs/spectra-processing/commit/220f6ce69fb0caaba131d26f1899de7b14ce5ce6))
+* xMassCenterVectorSimilarity was changing in place the arrays ([3918530](https://github.com/mljs/spectra-processing/commit/39185307f740bad3f0b30a3b7a318029623092c2))
+
 ## [13.0.0](https://github.com/mljs/spectra-processing/compare/v12.11.0...v13.0.0) (2024-02-26)
 
 
