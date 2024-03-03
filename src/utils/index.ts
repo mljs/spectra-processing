@@ -1,3 +1,4 @@
+export * from './createArray';
 export * from './createFromToArray';
 export * from './createRandomArray';
 export * from './createStepArray';

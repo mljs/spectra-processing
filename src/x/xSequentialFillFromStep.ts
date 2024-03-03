@@ -1,4 +1,8 @@
-import { NumberArrayConstructor, NumberArrayType } from '../types';
+import {
+  createNumberArray,
+  NumberArrayConstructor,
+  NumberArrayType,
+} from '../utils';
 
 export interface XSequentialFillFromStepOptions<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,
@@ -17,9 +21,9 @@ export function xSequentialFillFromStep<
   step: number,
   size: number,
   options: XSequentialFillFromStepOptions<ArrayConstructorType> = {},
-): NumberArrayType<NumberArrayConstructor> {
-  const { ArrayConstructor = Float64Array } = options;
-  const result = new ArrayConstructor(size);
+): NumberArrayType<ArrayConstructorType> {
+  const { ArrayConstructor = Float64Array as ArrayConstructorType } = options;
+  const result = createNumberArray(ArrayConstructor, size);
   for (let i = 0; i < size; i++) {
     result[i] = from + i * step;
   }

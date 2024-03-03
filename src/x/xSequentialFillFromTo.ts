@@ -1,4 +1,4 @@
-import { NumberArrayConstructor, NumberArrayType } from '../types';
+import { NumberArrayConstructor, NumberArrayType } from '../utils';
 
 import { xSequentialFillFromStep } from './xSequentialFillFromStep';
 
@@ -19,7 +19,7 @@ export function xSequentialFillFromTo<
   to: number,
   size: number,
   options: XSequentialFillFromToOptions<ArrayConstructorType> = {},
-): NumberArrayType<NumberArrayConstructor> {
+): NumberArrayType<ArrayConstructorType> {
   const step = (to - from) / (size - 1);
   return xSequentialFillFromStep(from, step, size, options);
 }

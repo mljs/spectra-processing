@@ -1,8 +1,9 @@
+import { DoubleMatrix } from '../types';
 import {
-  DoubleMatrix,
+  createDoubleArray,
   DoubleArrayConstructor,
   DoubleArrayType,
-} from '../types';
+} from '../utils';
 
 export interface MatrixCreateEmptyOptions<
   ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,
@@ -29,8 +30,7 @@ export interface MatrixCreateEmptyOptions<
 }
 
 /**
- * Create a new matrix based on the size of the current one or by using specific dimensions
- * Take care that if you specify as ArrayConstructor an Array, the matrix will be filled with 'uhdefined' and not with 0
+ * Create a new matrix based on the size of the current one or by using specific dimensions.
  */
 export function matrixCreateEmpty<
   ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,
@@ -41,14 +41,12 @@ export function matrixCreateEmpty<
     matrix,
     nbRows = matrix?.length || 1,
     nbColumns = matrix?.[0].length || 1,
-    ArrayConstructor = Float64Array,
+    ArrayConstructor = Float64Array as ArrayConstructorType,
   } = options;
 
   const newMatrix: Array<DoubleArrayType<ArrayConstructorType>> = [];
   for (let row = 0; row < nbRows; row++) {
-    newMatrix.push(
-      new ArrayConstructor(nbColumns) as DoubleArrayType<ArrayConstructorType>,
-    );
+    newMatrix.push(createDoubleArray(ArrayConstructor, nbColumns));
   }
   return newMatrix;
 }
