@@ -1,8 +1,5 @@
-import {
-  DoubleArrayConstructor,
-  DoubleArrayType,
-  DoubleMatrix,
-} from '../types';
+import { DoubleMatrix } from '../types';
+import { DoubleArrayConstructor, DoubleArrayType } from '../utils';
 
 import { matrixCreateEmpty } from './matrixCreateEmpty';
 import { matrixMinMaxZ } from './matrixMinMaxZ';

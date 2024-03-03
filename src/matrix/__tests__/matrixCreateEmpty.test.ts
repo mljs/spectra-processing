@@ -27,8 +27,8 @@ test('matrixCreateEmpty with Array constructor', () => {
   expect(matrix[0]).toBeInstanceOf(Array);
 
   expect(matrix).toEqual([
-    [undefined, undefined],
-    [undefined, undefined],
-    [undefined, undefined],
+    [0, 0],
+    [0, 0],
+    [0, 0],
   ]);
 });

@@ -16,5 +16,6 @@ test('Array', () => {
   const result = xSequentialFillFromStep(0, 2, 6, {
     ArrayConstructor: Array,
   });
+  expect(typeof result.push).toBe('function');
   expect(result).toStrictEqual([0, 2, 4, 6, 8, 10]);
 });
