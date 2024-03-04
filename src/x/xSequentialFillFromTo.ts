@@ -12,14 +12,19 @@ export interface XSequentialFillFromToOptions<
   ArrayConstructor?: ArrayConstructorType;
 }
 
+export interface XSequentialFillFromToParameters {
+  from: number;
+  to: number;
+  size: number;
+}
+
 export function xSequentialFillFromTo<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,
 >(
-  from: number,
-  to: number,
-  size: number,
+  parameters: XSequentialFillFromToParameters,
   options: XSequentialFillFromToOptions<ArrayConstructorType> = {},
 ): NumberArrayType<ArrayConstructorType> {
+  const { from, to, size } = parameters;
   const step = (to - from) / (size - 1);
-  return xSequentialFillFromStep(from, step, size, options);
+  return xSequentialFillFromStep({ from, step, size }, options);
 }
