@@ -159,5 +159,6 @@ exports[`test existence of exported functions 1`] = `
   "getRescaler",
   "isPowerOfTwo",
   "nextPowerOfTwo",
+  "stringify",
 ]
 `;
