@@ -1,5 +1,23 @@
 # Changelog
 
+## [14.0.0](https://github.com/mljs/spectra-processing/compare/v13.0.1...v14.0.0) (2024-03-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove xSequentialFill and add 2 methods xSequentialFillFromStep and xSequentialFillFromTo
+
+### Features
+
+* add utility stringify that converts typed array to nomal array ([5cac645](https://github.com/mljs/spectra-processing/commit/5cac64531ea77ee0b204c60eaca315a98e3c2c74))
+* remove xSequentialFill and add 2 methods xSequentialFillFromStep and xSequentialFillFromTo ([42d1c39](https://github.com/mljs/spectra-processing/commit/42d1c39cb889ec29c5e15c814786b0dc2cd28139))
+* use an object for parameters in xSequentialFillFromStep and xSequentialFillFromTo ([#223](https://github.com/mljs/spectra-processing/issues/223)) ([69e6897](https://github.com/mljs/spectra-processing/commit/69e689763219e94cdc929f03fe6e5f2b55f42667))
+
+
+### Documentation
+
+* specify default value of ArrayConstructor ([11ee134](https://github.com/mljs/spectra-processing/commit/11ee134cc8f94a1dcdeff926ff69e096b70196f4))
+
 ## [13.0.1](https://github.com/mljs/spectra-processing/compare/v13.0.0...v13.0.1) (2024-02-27)
 
 
