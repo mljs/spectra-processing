@@ -13,15 +13,19 @@ export interface XSequentialFillFromStepOptions<
    */
   ArrayConstructor?: ArrayConstructorType;
 }
+export interface XSequentialFillFromStepParameters {
+  from: number;
+  step: number;
+  size: number;
+}
 
 export function xSequentialFillFromStep<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,
 >(
-  from: number,
-  step: number,
-  size: number,
+  parameters: XSequentialFillFromStepParameters,
   options: XSequentialFillFromStepOptions<ArrayConstructorType> = {},
 ): NumberArrayType<ArrayConstructorType> {
+  const { from, step, size } = parameters;
   const { ArrayConstructor = Float64Array as ArrayConstructorType } = options;
   const result = createNumberArray(ArrayConstructor, size);
   for (let i = 0; i < size; i++) {
