@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.1.1](https://github.com/mljs/spectra-processing/compare/v14.1.0...v14.1.1) (2024-03-06)
+
+
+### Bug Fixes
+
+* expose xyEnsureFloat64 ([#226](https://github.com/mljs/spectra-processing/issues/226)) ([2260f3c](https://github.com/mljs/spectra-processing/commit/2260f3cdc6143e7306e9e2fff04271ef5824eef2))
+
 ## [14.1.0](https://github.com/mljs/spectra-processing/compare/v14.0.0...v14.1.0) (2024-03-06)
 
 
