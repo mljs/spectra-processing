@@ -108,6 +108,7 @@ exports[`test existence of exported functions 1`] = `
   "xyToXYObject",
   "xyUniqueX",
   "xyWeightedMerge",
+  "xyEnsureFloat64",
   "xy2ToXY",
   "xreimSortX",
   "xreimZeroFilling",
