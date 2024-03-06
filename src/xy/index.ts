@@ -38,3 +38,4 @@ export * from './xyToXYArray';
 export * from './xyToXYObject';
 export * from './xyUniqueX';
 export * from './xyWeightedMerge';
+export * from './xyEnsureFloat64';
