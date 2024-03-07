@@ -1,8 +1,9 @@
 import { DataXY } from 'cheminfo-types';
 
-import { xGetFromToIndex, XGetFromToIndexOptions } from '../x';
+import { xGetFromToIndex } from '../x';
 
 import { xyCheck } from './xyCheck';
+import { XYIntegralOptions } from './xyIntegral';
 
 /**
  * Calculate integration
@@ -13,7 +14,7 @@ import { xyCheck } from './xyCheck';
  */
 export function xyIntegration(
   data: DataXY,
-  options: XGetFromToIndexOptions = {},
+  options: XYIntegralOptions = {},
 ): number {
   xyCheck(data, { minLength: 1 });
   const { x, y } = data;
