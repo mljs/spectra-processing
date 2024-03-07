@@ -1,11 +1,11 @@
-import { DoubleMatrix } from '../types';
+import { NumberArray } from 'cheminfo-types';
 
 /**
  * Returns the max absolute values of Z.
  *
  * @param matrix - matrix [rows][cols].
  */
-export function matrixMaxAbsoluteZ(matrix: DoubleMatrix): number {
+export function matrixMaxAbsoluteZ(matrix: NumberArray[]): number {
   if (matrix.length === 0 || matrix[0].length === 0) {
     throw new Error('matrix must have at least 1 row and 1 column');
   }

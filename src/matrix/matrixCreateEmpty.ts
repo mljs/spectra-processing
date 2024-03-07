@@ -1,12 +1,12 @@
 import { DoubleMatrix } from '../types';
 import {
-  createDoubleArray,
-  DoubleArrayConstructor,
-  DoubleArrayType,
+  createNumberArray,
+  NumberArrayConstructor,
+  NumberArrayType,
 } from '../utils';
 
 export interface MatrixCreateEmptyOptions<
-  ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,
+  ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,
 > {
   /**
    * Matrix from which to extract nbRows and nbColumns
@@ -33,10 +33,10 @@ export interface MatrixCreateEmptyOptions<
  * Create a new matrix based on the size of the current one or by using specific dimensions.
  */
 export function matrixCreateEmpty<
-  ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,
+  ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,
 >(
   options: MatrixCreateEmptyOptions<ArrayConstructorType>,
-): Array<DoubleArrayType<ArrayConstructorType>> {
+): Array<NumberArrayType<ArrayConstructorType>> {
   const {
     matrix,
     nbRows = matrix?.length || 1,
@@ -44,9 +44,9 @@ export function matrixCreateEmpty<
     ArrayConstructor = Float64Array as ArrayConstructorType,
   } = options;
 
-  const newMatrix: Array<DoubleArrayType<ArrayConstructorType>> = [];
+  const newMatrix: Array<NumberArrayType<ArrayConstructorType>> = [];
   for (let row = 0; row < nbRows; row++) {
-    newMatrix.push(createDoubleArray(ArrayConstructor, nbColumns));
+    newMatrix.push(createNumberArray(ArrayConstructor, nbColumns));
   }
   return newMatrix;
 }

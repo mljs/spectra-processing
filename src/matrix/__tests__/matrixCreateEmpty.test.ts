@@ -32,3 +32,20 @@ test('matrixCreateEmpty with Array constructor', () => {
     [0, 0],
   ]);
 });
+
+test('matrixCreateEmpty with Int16Array constructor', () => {
+  const matrix = matrixCreateEmpty({
+    nbColumns: 2,
+    nbRows: 3,
+    ArrayConstructor: Int16Array,
+  });
+  expect(matrix).toHaveLength(3);
+  expect(matrix[0]).toHaveLength(2);
+  expect(matrix[0]).toBeInstanceOf(Int16Array);
+
+  expect(matrix).toStrictEqual([
+    Int16Array.from([0, 0]),
+    Int16Array.from([0, 0]),
+    Int16Array.from([0, 0]),
+  ]);
+});

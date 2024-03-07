@@ -1,11 +1,12 @@
-import { DoubleMatrix } from '../types';
-import { DoubleArrayConstructor, DoubleArrayType } from '../utils';
+import { NumberArray } from 'cheminfo-types';
+
+import { NumberArrayConstructor, NumberArrayType } from '../utils';
 
 import { matrixCreateEmpty } from './matrixCreateEmpty';
 import { matrixMaxAbsoluteZ } from './matrixMaxAbsoluteZ';
 
 export interface MatrixZPivotRescaleOptions<
-  ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,
+  ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,
 > {
   /**
    * max
@@ -26,11 +27,11 @@ export interface MatrixZPivotRescaleOptions<
  * @param options - Options.
  */
 export function matrixZPivotRescale<
-  ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,
+  ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,
 >(
-  matrix: DoubleMatrix,
+  matrix: NumberArray[],
   options: MatrixZPivotRescaleOptions<ArrayConstructorType> = {},
-): Array<DoubleArrayType<DoubleArrayConstructor>> {
+): Array<NumberArrayType<NumberArrayConstructor>> {
   const { max = 1, ArrayConstructor } = options;
   const nbColumns = matrix[0].length;
   const nbRows = matrix.length;

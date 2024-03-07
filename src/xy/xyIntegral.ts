@@ -40,7 +40,7 @@ export interface XYIntegralOptions {
 export function xyIntegral(
   data: DataXY,
   options: XYIntegralOptions = {},
-): DataXY<number[]> {
+): DataXY<Float64Array> {
   const { reverse = false } = options;
   xyCheck(data, { minLength: 1 });
   const { x, y } = data;
@@ -48,22 +48,28 @@ export function xyIntegral(
   const { fromIndex, toIndex } = xGetFromToIndex(x, options);
 
   let xyIntegration = 0;
-  let currentxyIntegral;
+  const currentxyIntegral = {
+    x: new Float64Array(toIndex - fromIndex + 1),
+    y: new Float64Array(toIndex - fromIndex + 1),
+  };
+  let index = 0;
   if (reverse) {
-    currentxyIntegral = { x: [x[toIndex]], y: [0] };
+    currentxyIntegral.y[index] = 0;
+    currentxyIntegral.x[index++] = x[toIndex];
     for (let i = toIndex; i > fromIndex; i--) {
       xyIntegration += ((x[i] - x[i - 1]) * (y[i - 1] + y[i])) / 2;
-      currentxyIntegral.x.push(x[i - 1]);
-      currentxyIntegral.y.push(xyIntegration);
+      currentxyIntegral.x[index] = x[i - 1];
+      currentxyIntegral.y[index++] = xyIntegration;
     }
     currentxyIntegral.x.reverse();
     currentxyIntegral.y.reverse();
   } else {
-    currentxyIntegral = { x: [x[fromIndex]], y: [0] };
+    currentxyIntegral.y[index] = 0;
+    currentxyIntegral.x[index++] = x[fromIndex];
     for (let i = fromIndex; i < toIndex; i++) {
       xyIntegration += ((x[i + 1] - x[i]) * (y[i + 1] + y[i])) / 2;
-      currentxyIntegral.x.push(x[i + 1]);
-      currentxyIntegral.y.push(xyIntegration);
+      currentxyIntegral.x[index] = x[i + 1];
+      currentxyIntegral.y[index++] = xyIntegration;
     }
   }
 
