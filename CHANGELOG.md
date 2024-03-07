@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.2.0](https://github.com/mljs/spectra-processing/compare/v14.1.1...v14.2.0) (2024-03-07)
+
+
+### Features
+
+* matrixZPivotRescale and matrixZPivotRescale can use any NumberArrayConstructors ([28ab4a4](https://github.com/mljs/spectra-processing/commit/28ab4a42a5300b67b8d6c71ae1d910125a5f02b8))
+
 ## [14.1.1](https://github.com/mljs/spectra-processing/compare/v14.1.0...v14.1.1) (2024-03-06)
 
 
