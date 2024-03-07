@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.2.1](https://github.com/mljs/spectra-processing/compare/v14.2.0...v14.2.1) (2024-03-07)
+
+
+### Bug Fixes
+
+* options type of xyIntegration ([c798c18](https://github.com/mljs/spectra-processing/commit/c798c189c78f760c8c08d3289b0f8b4dd21ad59f))
+
 ## [14.2.0](https://github.com/mljs/spectra-processing/compare/v14.1.1...v14.2.0) (2024-03-07)
 
 
