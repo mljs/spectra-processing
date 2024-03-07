@@ -43,7 +43,7 @@ test('matrixCreateEmpty with Int16Array constructor', () => {
   expect(matrix[0]).toHaveLength(2);
   expect(matrix[0]).toBeInstanceOf(Int16Array);
 
-  expect(matrix).toEqual([
+  expect(matrix).toStrictEqual([
     Int16Array.from([0, 0]),
     Int16Array.from([0, 0]),
     Int16Array.from([0, 0]),
