@@ -34,7 +34,7 @@ export function xyArrayWeightedMerge(
   const x = [];
   const y = [];
 
-  const positions = new Array(data.length).fill(0);
+  const positions: number[] = new Array(data.length).fill(0);
   const point: Point = { x: 0, y: 0 };
 
   nextValue(data, positions, point);

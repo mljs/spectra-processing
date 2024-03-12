@@ -1,13 +1,8 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xMedian } from './xMedian';
 
-/**
- * This function calculates the median absolute deviation (MAD).
- * https://en.wikipedia.org/wiki/Median_absolute_deviation
- * @param array
- */
-export function xMedianAbsoluteDeviation(array: DoubleArray): {
+export interface XMedianAbsoluteDeviationResult {
   /**
    * Median of the data
    */
@@ -16,7 +11,16 @@ export function xMedianAbsoluteDeviation(array: DoubleArray): {
    * Median absolute devication
    */
   mad: number;
-} {
+}
+
+/**
+ * This function calculates the median absolute deviation (MAD).
+ * https://en.wikipedia.org/wiki/Median_absolute_deviation
+ * @param array
+ */
+export function xMedianAbsoluteDeviation(
+  array: NumberArray,
+): XMedianAbsoluteDeviationResult {
   const median = xMedian(array);
   const averageDeviations = new Float64Array(array.length);
   for (let i = 0; i < array.length; i++) {

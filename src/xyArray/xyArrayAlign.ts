@@ -1,4 +1,4 @@
-import { DoubleArray, DataXY } from 'cheminfo-types';
+import { DataXY, NumberArray } from 'cheminfo-types';
 
 import { xyJoinX } from '../xy';
 
@@ -27,8 +27,8 @@ export function xyArrayAlign(
   data: DataXY[],
   options: XYArrayAlignOptions = {},
 ): {
-  x: DoubleArray;
-  ys: DoubleArray[];
+  x: NumberArray;
+  ys: NumberArray[];
 } {
   const { delta = 1, requiredY = false } = options;
 
@@ -36,9 +36,7 @@ export function xyArrayAlign(
 
   const slots = getSlots(data, { delta });
   const x = Float64Array.from(slots.map((slot) => slot.average));
-  const ys = new Array(data.length)
-    .fill(0)
-    .map(() => new Float64Array(x.length));
+  const ys = Array.from(data, () => new Float64Array(x.length));
 
   const positions = new Uint32Array(data.length);
   for (let i = 0; i < slots.length; i++) {
@@ -62,7 +60,7 @@ export function xyArrayAlign(
 
 function filterRequiredY(x: Float64Array, ys: Float64Array[]) {
   const newX: number[] = [];
-  const newYs: number[][] = new Array(ys.length).fill(0).map(() => []);
+  const newYs: number[][] = Array.from(ys, () => []);
   for (let i = 0; i < x.length; i++) {
     if (ys.every((y) => y[i] !== 0)) {
       newX.push(x[i]);

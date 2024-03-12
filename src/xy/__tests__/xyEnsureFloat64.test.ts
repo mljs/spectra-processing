@@ -1,4 +1,4 @@
-import { xyEnsureFloat64 } from '../index';
+import { xyEnsureFloat64 } from '../xyEnsureFloat64';
 
 test('normal array', () => {
   const data = {

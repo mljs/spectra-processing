@@ -1,8 +1,8 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 export interface XBoxPlotOptions {
   /**
-   * By default there should be at least 5 elements.
+   * By default, there should be at least 5 elements.
    * @default false
    */
   allowSmallArray?: boolean;
@@ -23,7 +23,7 @@ export interface XBoxPlot {
  * @param options
  */
 export function xBoxPlot(
-  array: DoubleArray,
+  array: NumberArray,
   options: XBoxPlotOptions = {},
 ): XBoxPlot {
   const { allowSmallArray = false } = options;

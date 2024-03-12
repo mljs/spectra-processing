@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 import { xPadding, XPaddingOptions } from './xPadding';
@@ -23,8 +23,8 @@ export interface XRollingOptions {
  * @param options - options
  */
 export function xRolling(
-  array: DoubleArray,
-  fct?: (callbackArray: DoubleArray) => number,
+  array: NumberArray,
+  fct?: (callbackArray: Float64Array) => number,
   options: XRollingOptions = {},
 ): number[] {
   xCheck(array);

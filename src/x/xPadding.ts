@@ -1,6 +1,7 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
+import { xEnsureFloat64 } from './xEnsureFloat64';
 
 export interface XPaddingOptions {
   /**
@@ -23,18 +24,14 @@ export interface XPaddingOptions {
  * @param options - options
  */
 export function xPadding(
-  array: DoubleArray,
+  array: NumberArray,
   options: XPaddingOptions = {},
 ): Float64Array {
   const { size = 0, value = 0, algorithm } = options;
   xCheck(array);
 
   if (!algorithm) {
-    if (array instanceof Float64Array) {
-      return array.slice();
-    } else {
-      return Float64Array.from(array);
-    }
+    return xEnsureFloat64(array);
   }
 
   const result = new Float64Array(array.length + size * 2);

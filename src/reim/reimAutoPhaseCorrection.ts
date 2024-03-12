@@ -65,10 +65,10 @@ export function reimAutoPhaseCorrection(
   const indexMask = reverse ? (i: number) => length - 1 - i : (i: number) => i;
   let x0 = 0;
   let counter = -1;
-  const res = [];
+  const res: AutoPhaseRegionResult[] = [];
   while (counter < length) {
-    const reTmp: DoubleArray = [];
-    const imTmp: DoubleArray = [];
+    const reTmp: number[] = [];
+    const imTmp: number[] = [];
     while (!finalPeaks[indexMask(++counter)] && counter < length) {
       // Add some extra points(0.1 ppm) at rigth and left sides of the region.
       x0 = counter;
@@ -143,6 +143,12 @@ function detectBaselineRegions(
   return peaksSp.map((sp, i) => sp && peaksDs[i]);
 }
 
+interface AutoPhaseRegionResult {
+  ph0: number;
+  area: number;
+  x0: number;
+}
+
 /**
  * AutoPhaseRegion.
  *
@@ -155,11 +161,7 @@ function autoPhaseRegion(
   re: DoubleArray,
   im: DoubleArray,
   x0: number,
-): {
-  ph0: number;
-  area: number;
-  x0: number;
-} {
+): AutoPhaseRegionResult {
   let start = -180;
   let stop = 180;
   const nSteps = 6;

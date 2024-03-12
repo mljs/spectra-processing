@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-implied-eval */
 /* eslint-disable no-new-func */
-import { DoubleArray, OneLowerCase } from 'cheminfo-types';
+import { NumberArray, OneLowerCase } from 'cheminfo-types';
 
 export interface XApplyFunctionStrOptions {
   /**
@@ -25,7 +25,7 @@ export interface XApplyFunctionStrOptions {
  * @returns
  */
 export function xApplyFunctionStr(
-  array: DoubleArray,
+  array: NumberArray,
   options: XApplyFunctionStrOptions = {},
 ): Float64Array {
   const { variableLabel = 'x', fctString = variableLabel } = options;

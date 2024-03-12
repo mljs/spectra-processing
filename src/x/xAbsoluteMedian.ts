@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xAbsolute } from './xAbsolute';
 import { xMedian } from './xMedian';
@@ -9,6 +9,6 @@ import { xMedian } from './xMedian';
  * @param array - the array for which we want to calculate the absolute value
  * @returns - median
  */
-export function xAbsoluteMedian(array: DoubleArray): number {
+export function xAbsoluteMedian(array: NumberArray): number {
   return xMedian(xAbsolute(array));
 }

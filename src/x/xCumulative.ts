@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 /**
@@ -6,7 +6,7 @@ import { isAnyArray } from 'is-any-array';
  *
  * @param array - initial array
  */
-export function xCumulative(array: DoubleArray): Float64Array {
+export function xCumulative(array: NumberArray): Float64Array {
   if (!isAnyArray(array)) {
     throw new TypeError('input must be an array');
   }

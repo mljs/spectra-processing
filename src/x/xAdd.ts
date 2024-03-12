@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 /**
@@ -8,8 +8,8 @@ import { isAnyArray } from 'is-any-array';
  * @param array2 - the second array or number
  */
 export function xAdd(
-  array1: DoubleArray,
-  array2: DoubleArray | number,
+  array1: NumberArray,
+  array2: NumberArray | number,
 ): Float64Array {
   let isConstant = false;
   let constant = 0;
@@ -29,7 +29,7 @@ export function xAdd(
     }
   } else {
     for (let i = 0; i < array1.length; i++) {
-      array3[i] = array1[i] + (array2 as number[])[i];
+      array3[i] = array1[i] + (array2 as NumberArray)[i];
     }
   }
 

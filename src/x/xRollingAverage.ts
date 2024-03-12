@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xMean } from './xMean';
 import { xRolling, XRollingOptions } from './xRolling';
@@ -10,7 +10,7 @@ import { xRolling, XRollingOptions } from './xRolling';
  * @param options - option
  */
 export function xRollingAverage(
-  array: DoubleArray,
+  array: NumberArray,
   options: XRollingOptions = {},
 ): number[] {
   return xRolling(array, xMean, options);

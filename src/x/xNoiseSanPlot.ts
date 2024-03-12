@@ -1,6 +1,6 @@
 /* eslint-disable max-lines-per-function */
 
-import { DataXY, FromTo, DoubleArray } from 'cheminfo-types';
+import { DataXY, FromTo, NumberArray } from 'cheminfo-types';
 // @ts-expect-error Missing types.
 import SplineInterpolator from 'spline-interpolator';
 
@@ -13,7 +13,7 @@ export interface XNoiseSanPlotOptions {
   /**
    * boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
    */
-  mask?: DoubleArray;
+  mask?: NumberArray;
   /**
    * percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
    */
@@ -49,6 +49,13 @@ export interface XNoiseSanPlotOptions {
   fromTo?: Record<string, FromTo>;
 }
 
+export interface XNoiseSanPlotResult {
+  positive: number;
+  negative: number;
+  snr: number;
+  sanplot: Record<string, DataXY>;
+}
+
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
  *
@@ -56,16 +63,10 @@ export interface XNoiseSanPlotOptions {
  * @param options - options
  * @returns noise level
  */
-
 export function xNoiseSanPlot(
-  array: DoubleArray,
+  array: NumberArray,
   options: XNoiseSanPlotOptions = {},
-): {
-  positive: number;
-  negative: number;
-  snr: number;
-  sanplot: Record<string, DataXY>;
-} {
+): XNoiseSanPlotResult {
   const {
     mask,
     cutOff,
@@ -219,9 +220,9 @@ export function xNoiseSanPlot(
  * @returns Result.
  */
 function determineCutOff(
-  signPositive: DoubleArray,
+  signPositive: NumberArray,
   options: {
-    mask?: DoubleArray;
+    mask?: NumberArray;
     cutOff?: number;
     refine?: boolean;
     magnitudeMode?: boolean;
@@ -278,7 +279,7 @@ interface SimpleNormInvOptions {
   /**
    * Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
    */
-  mask?: DoubleArray;
+  mask?: NumberArray;
   /**
    * Percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
    */
@@ -324,17 +325,18 @@ function simpleNormInvNumber(
  * SimpleNormInvs.
  *
  * @param data - Data array.
+ * @param options
  */
 function simpleNormInv(
-  data: DoubleArray,
+  data: NumberArray,
   options: SimpleNormInvOptions = {},
-): DoubleArray {
+): Float64Array {
   const { magnitudeMode = false } = options;
 
   const from = 0;
   const to = 2;
   const step = 0.01;
-  const xTraining = Array.from(createArray(from, to, step));
+  const xTraining = createArray(from, to, step);
 
   const result = new Float64Array(data.length);
   const yTraining = new Float64Array(xTraining.length);
@@ -365,10 +367,11 @@ function simpleNormInv(
  * @param step - Step.
  * @returns Array of results.
  */
-function createArray(from: number, to: number, step: number): DoubleArray {
-  const result = new Float64Array(Math.abs((from - to) / step + 1));
-  for (let i = 0; i < result.length; i++) {
-    result[i] = from + i * step;
+function createArray(from: number, to: number, step: number): number[] {
+  const length = Math.abs((from - to) / step + 1);
+  const result: number[] = [];
+  for (let i = 0; i < length; i++) {
+    result.push(from + i * step);
   }
   return result;
 }
@@ -394,9 +397,9 @@ function createArray(from: number, to: number, step: number): DoubleArray {
  * @returns Results.
  */
 function generateSanPlot(
-  array: DoubleArray,
+  array: NumberArray,
   options: {
-    mask?: DoubleArray;
+    mask?: NumberArray;
     cutOff?: number;
     refine?: boolean;
     magnitudeMode?: boolean;
@@ -448,9 +451,9 @@ function generateSanPlot(
  * @returns Results.
  */
 function scale(
-  array: DoubleArray,
+  array: NumberArray,
   options: {
-    mask?: DoubleArray;
+    mask?: NumberArray;
     cutOff?: number;
     refine?: boolean;
     magnitudeMode?: boolean;

@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xCheckLengths } from './xCheckLengths';
 
@@ -9,8 +9,8 @@ import { xCheckLengths } from './xCheckLengths';
  * @param array2 - second array
  */
 export function xMeanSquaredError(
-  array1: DoubleArray,
-  array2: DoubleArray,
+  array1: NumberArray,
+  array2: NumberArray,
 ): number {
   xCheckLengths(array1, array2);
   let sum = 0;

@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 /**
  * This function returns an array with absolute values.
@@ -6,7 +6,7 @@ import { DoubleArray } from 'cheminfo-types';
  * @param array - array of data
  * @returns - array with absolute values
  */
-export function xAbsolute<ArrayType extends DoubleArray = DoubleArray>(
+export function xAbsolute<ArrayType extends NumberArray = NumberArray>(
   array: ArrayType,
 ): ArrayType {
   const tmpArray = array.slice() as ArrayType;

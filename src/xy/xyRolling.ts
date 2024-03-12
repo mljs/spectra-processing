@@ -1,4 +1,4 @@
-import { DoubleArray, DataXY } from 'cheminfo-types';
+import { DataXY } from 'cheminfo-types';
 
 import { xRolling, xRollingAverage, XRollingOptions } from '../x';
 
@@ -12,7 +12,7 @@ import { xRolling, xRollingAverage, XRollingOptions } from '../x';
  */
 export function xyRolling(
   data: DataXY,
-  fct?: (array: DoubleArray) => number,
+  fct?: (array: Float64Array) => number,
   options: XRollingOptions = {},
 ): DataXY {
   let { x, y } = data;

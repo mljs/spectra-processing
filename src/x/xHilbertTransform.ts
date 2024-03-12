@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 import FFT from 'fft.js';
 
 import { nextPowerOfTwo, isPowerOfTwo } from '../utils';
@@ -18,7 +18,7 @@ export interface XHilbertTransformOptions {
  */
 
 export function xHilbertTransform(
-  array: DoubleArray,
+  array: NumberArray,
   options: XHilbertTransformOptions = {},
 ): Float64Array {
   xCheck(array);
@@ -42,7 +42,7 @@ export function xHilbertTransform(
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  * @see DOI: 10.1109/TAU.1970.1162139 "Discrete Hilbert transform"
  */
-function hilbertTransformWithFFT(array: DoubleArray): Float64Array {
+function hilbertTransformWithFFT(array: NumberArray): Float64Array {
   const length = array.length;
   const fft = new FFT(length);
   const complexSignal = new Float64Array(length * 2);
@@ -75,7 +75,7 @@ function hilbertTransformWithFFT(array: DoubleArray): Float64Array {
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  */
 function hilbertTransform(
-  array: DoubleArray,
+  array: NumberArray,
   options: { inClockwise?: boolean } = {},
 ): Float64Array {
   const { inClockwise = true } = options;
@@ -105,7 +105,7 @@ function hilbertTransform(
  * @returns It returns a new array of the desired length.
  * @link https://en.wikipedia.org/wiki/Sample-rate_conversion
  */
-function resampling(array: DoubleArray, length: number): Float64Array {
+function resampling(array: NumberArray, length: number): Float64Array {
   xCheck(array);
   const oldLength = array.length;
   const ratio = (oldLength - 1) / (length - 1);

@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xDotProduct } from './xDotProduct';
 
@@ -23,8 +23,8 @@ export interface XCrossCorrelationOptions {
  * @param options - Options
  */
 export function xCrossCorrelation(
-  A: DoubleArray,
-  B: DoubleArray,
+  A: NumberArray,
+  B: NumberArray,
   options: XCrossCorrelationOptions = {},
 ): Float64Array {
   const { tau = 1, lag = A.length - 1 } = options;

@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xCrossCorrelation } from './xCrossCorrelation';
 
@@ -22,7 +22,7 @@ export interface XAutoCorrelationOptions {
  * @param options - Options
  */
 export function xAutoCorrelation(
-  A: DoubleArray,
+  A: NumberArray,
   options: XAutoCorrelationOptions = {},
 ): Float64Array {
   return xCrossCorrelation(A, A, options);

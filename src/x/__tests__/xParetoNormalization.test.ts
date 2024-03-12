@@ -2,7 +2,9 @@ import { xParetoNormalization } from '../xParetoNormalization';
 
 test('1,2,3', () => {
   const array = [1, 2, 3];
-  expect(xParetoNormalization(array)).toStrictEqual([1, 2, 3]);
+  expect(xParetoNormalization(array)).toStrictEqual(
+    Float64Array.from([1, 2, 3]),
+  );
 });
 
 test('2,1,2', () => {
