@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.2.2](https://github.com/mljs/spectra-processing/compare/v14.2.1...v14.2.2) (2024-03-12)
+
+
+### Bug Fixes
+
+* improve types regarding arrays ([#231](https://github.com/mljs/spectra-processing/issues/231)) ([5cd995e](https://github.com/mljs/spectra-processing/commit/5cd995e9226968d0a117761921a9d50262ac70c0))
+
 ## [14.2.1](https://github.com/mljs/spectra-processing/compare/v14.2.0...v14.2.1) (2024-03-07)
 
 
