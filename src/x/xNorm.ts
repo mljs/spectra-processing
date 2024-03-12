@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 /**
  * This function calculate the norm of a vector.
@@ -7,7 +7,7 @@ import { DoubleArray } from 'cheminfo-types';
  * @param array - array
  * @returns - calculated norm
  */
-export function xNorm(array: DoubleArray): number {
+export function xNorm(array: NumberArray): number {
   let result = 0;
   for (const element of array) {
     result += element ** 2;

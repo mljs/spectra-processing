@@ -1,4 +1,4 @@
-import { DoubleArray, DataXY } from 'cheminfo-types';
+import { DataXY, NumberArray } from 'cheminfo-types';
 
 import { createFromToArray } from '../utils';
 
@@ -55,9 +55,9 @@ export interface XHistogramOptions {
  * @returns - result of the histogram
  */
 export function xHistogram(
-  array: DoubleArray,
+  array: NumberArray,
   options: XHistogramOptions = {},
-) {
+): DataXY {
   xCheck(array);
   const histogram = options.histogram;
   const {

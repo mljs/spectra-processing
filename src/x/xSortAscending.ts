@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 /**
  * Function that sorts arrays or Float64Arrays in ascending order in place !
@@ -8,10 +8,10 @@ import { DoubleArray } from 'cheminfo-types';
  * @returns sorted array
  */
 
-export function xSortAscending<ArrayType extends DoubleArray>(
+export function xSortAscending<ArrayType extends NumberArray>(
   array: ArrayType,
 ): ArrayType {
-  if (array instanceof Float64Array) {
+  if (ArrayBuffer.isView(array)) {
     return array.sort() as ArrayType;
   } else if (Array.isArray(array)) {
     return array.sort((a, b) => a - b) as ArrayType;

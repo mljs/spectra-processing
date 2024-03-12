@@ -1,5 +1,5 @@
 /* eslint-disable max-lines-per-function */
-import { DataXY, FromTo, DoubleArray } from 'cheminfo-types';
+import { DataXY, DoubleArray, FromTo, NumberArray } from 'cheminfo-types';
 
 import { xFindClosestIndex } from '../x';
 import { zonesNormalize } from '../zones';
@@ -49,7 +49,10 @@ export interface XYReduceOptions {
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - options
  */
-export function xyReduce(data: DataXY, options: XYReduceOptions = {}): DataXY {
+export function xyReduce(
+  data: DataXY,
+  options: XYReduceOptions = {},
+): DataXY<DoubleArray> {
   xyCheck(data);
   const { x, y } = data;
   const {
@@ -178,8 +181,8 @@ export function xyReduce(data: DataXY, options: XYReduceOptions = {}): DataXY {
 }
 
 function notEnoughPoints(
-  x: DoubleArray,
-  y: DoubleArray,
+  x: NumberArray,
+  y: NumberArray,
   internalZones: InternalZone[],
   totalPoints: number,
 ) {

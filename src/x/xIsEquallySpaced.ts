@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 export interface XIsEquallySpacedOptions {
   /**
@@ -15,7 +15,7 @@ export interface XIsEquallySpacedOptions {
  * @param options
  */
 export function xIsEquallySpaced(
-  array: DoubleArray,
+  array: NumberArray,
   options: XIsEquallySpacedOptions = {},
 ): boolean {
   if (array.length < 3) return true;

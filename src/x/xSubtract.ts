@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 /**
@@ -9,8 +9,8 @@ import { isAnyArray } from 'is-any-array';
  * @returns array after subtraction
  */
 export function xSubtract(
-  array1: DoubleArray,
-  array2: DoubleArray | number,
+  array1: NumberArray,
+  array2: NumberArray | number,
 ): Float64Array {
   let isConstant = false;
   let constant = 0;
@@ -30,7 +30,7 @@ export function xSubtract(
     }
   } else {
     for (let i = 0; i < array1.length; i++) {
-      array3[i] = array1[i] - (array2 as [])[i];
+      array3[i] = array1[i] - (array2 as NumberArray)[i];
     }
   }
 

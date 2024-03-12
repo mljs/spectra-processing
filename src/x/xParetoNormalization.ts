@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 import { xStandardDeviation } from './xStandardDeviation';
@@ -10,13 +10,13 @@ import { xStandardDeviation } from './xStandardDeviation';
  *
  * @param array - array of number
  */
-export function xParetoNormalization(array: DoubleArray): number[] {
+export function xParetoNormalization(array: NumberArray): Float64Array {
   xCheck(array);
-  const result: number[] = [];
+  const result = new Float64Array(array.length);
   const sqrtSD = Math.sqrt(xStandardDeviation(array));
 
-  for (const item of array) {
-    result.push(item / sqrtSD);
+  for (let i = 0; i < array.length; i++) {
+    result[i] = array[i] / sqrtSD;
   }
   return result;
 }

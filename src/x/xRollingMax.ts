@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import { NumberArray } from 'cheminfo-types';
 
 import { xMaxValue } from './xMaxValue';
 import { xRolling, XRollingOptions } from './xRolling';
@@ -10,7 +10,7 @@ import { xRolling, XRollingOptions } from './xRolling';
  * @param options - options
  */
 export function xRollingMax(
-  array: DoubleArray,
+  array: NumberArray,
   options: XRollingOptions = {},
 ): number[] {
   return xRolling(array, xMaxValue, options);

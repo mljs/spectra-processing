@@ -1,4 +1,3 @@
-import { DoubleArray } from 'cheminfo-types';
 import FFT from 'fft.js';
 
 import { DataReIm } from '../types';
@@ -26,14 +25,14 @@ export function reimFFT(
   const size = re.length;
   const csize = size << 1;
 
-  let complexArray: DoubleArray = new Float64Array(csize);
+  let complexArray = new Float64Array(csize);
   for (let i = 0; i < csize; i += 2) {
     complexArray[i] = re[i >>> 1];
     complexArray[i + 1] = im[i >>> 1];
   }
 
   const fft = new FFT(size);
-  let output: DoubleArray = new Float64Array(csize);
+  let output = new Float64Array(csize);
   if (inverse) {
     if (applyZeroShift) complexArray = zeroShift(complexArray, true);
     fft.inverseTransform(output, complexArray);
@@ -52,7 +51,7 @@ export function reimFFT(
   return { re: newRe, im: newIm };
 }
 
-function zeroShift(data: DoubleArray, inverse?: boolean): Float64Array {
+function zeroShift(data: Float64Array, inverse?: boolean): Float64Array {
   const middle = inverse
     ? Math.ceil(data.length / 2)
     : Math.floor(data.length / 2);

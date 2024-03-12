@@ -1,4 +1,4 @@
-import { DoubleArray, DataXY } from 'cheminfo-types';
+import { NumberArray, DataXY } from 'cheminfo-types';
 
 import { getSlotsToFirst } from './utils/getSlotsToFirst';
 
@@ -22,15 +22,13 @@ export function xyArrayAlignToFirst(
   data: DataXY[],
   options: XYArrayAlignToFirstOptions = {},
 ): {
-  x: DoubleArray;
-  ys: DoubleArray[];
+  x: NumberArray;
+  ys: NumberArray[];
 } {
   const { delta = 1 } = options;
   const slots = getSlotsToFirst(data, { delta });
   const x = Float64Array.from(slots.map((slot) => slot.value));
-  const ys = new Array(data.length)
-    .fill(0)
-    .map(() => new Float64Array(x.length));
+  const ys = Array.from(data, () => new Float64Array(x.length));
 
   const positions = new Uint32Array(data.length);
   for (let i = 0; i < slots.length; i++) {
