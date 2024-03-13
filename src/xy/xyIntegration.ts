@@ -3,7 +3,27 @@ import { DataXY } from 'cheminfo-types';
 import { xGetFromToIndex } from '../x';
 
 import { xyCheck } from './xyCheck';
-import { XYIntegralOptions } from './xyIntegral';
+
+export interface XYIntegrationOptions {
+  /**
+   * First value for xyIntegration in the X scale
+   */
+  from?: number;
+  /**
+   * First point for xyIntegration
+   * @default 0
+   * */
+  fromIndex?: number;
+  /**
+   *  Last point for xyIntegration
+   * @default x.length-1
+   * */
+  toIndex?: number;
+  /**
+   * Last value for xyIntegration in the X scale
+   */
+  to?: number;
+}
 
 /**
  * Calculate integration
@@ -14,7 +34,7 @@ import { XYIntegralOptions } from './xyIntegral';
  */
 export function xyIntegration(
   data: DataXY,
-  options: XYIntegralOptions = {},
+  options: XYIntegrationOptions = {},
 ): number {
   xyCheck(data, { minLength: 1 });
   const { x, y } = data;
