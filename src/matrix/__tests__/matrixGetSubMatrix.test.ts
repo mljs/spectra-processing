@@ -1,4 +1,4 @@
-import { matrixGetSubMatrix } from '../matrixGetSubMatrix';
+import { matrixGetSubMatrix } from '../index';
 
 describe('matrixGetSubMatrix', () => {
   const matrix = [
