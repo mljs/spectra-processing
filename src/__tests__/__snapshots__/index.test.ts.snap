@@ -152,6 +152,7 @@ exports[`test existence of exported functions 1`] = `
   "matrixZPivotRescale",
   "matrixZRescale",
   "matrixZRescalePerColumn",
+  "matrixGetSubMatrix",
   "createNumberArray",
   "createDoubleArray",
   "createFromToArray",
