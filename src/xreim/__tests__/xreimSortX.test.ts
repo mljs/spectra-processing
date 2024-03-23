@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xreimSortX } from '../xreimSortX';
 
 test('test xreimSortX do nothing', () => {

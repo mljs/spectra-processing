@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xMultiply } from '../xMultiply';
 
 test('test mul of 2 vectors', () => {

@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xIsMonotonic } from '../xIsMonotonic';
 
 test('test xIsMonotonic increasing', () => {

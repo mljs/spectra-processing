@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyMaxMerge } from '../xyMaxMerge';
 
 const points = {

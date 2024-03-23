@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyObjectToXY } from '../xyObjectToXY';
 
 test('xyObjectToXY', () => {

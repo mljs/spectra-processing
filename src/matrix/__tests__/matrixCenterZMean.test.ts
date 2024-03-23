@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { matrixCenterZMean } from '../matrixCenterZMean';
 
 test('matrixCenterZMean', () => {

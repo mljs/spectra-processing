@@ -1,3 +1,5 @@
+import { expect, it } from 'vitest';
+
 import * as SpectraProcessing from '../index';
 
 it('test existence of exported functions', () => {

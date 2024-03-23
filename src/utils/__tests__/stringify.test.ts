@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { stringify } from '../stringify';
 
 test('stringify', () => {

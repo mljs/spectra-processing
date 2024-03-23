@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xMinMaxDelta } from '../xMinMaxDelta';
 
 test('xMinMaxDelta', () => {

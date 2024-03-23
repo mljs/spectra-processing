@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyObjectSortX } from '../xyObjectSortX';
 
 test('xyObjectSortX', () => {

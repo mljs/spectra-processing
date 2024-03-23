@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyEnsureGrowingX } from '../xyEnsureGrowingX';
 
 test('skip middle', () => {

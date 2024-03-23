@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { matrixNumericalDecoding } from '../matrixNumericalDecoding';
 import { matrixNumericalEncoding } from '../matrixNumericalEncoding';
 

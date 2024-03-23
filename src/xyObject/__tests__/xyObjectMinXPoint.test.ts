@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyObjectMinXPoint } from '../xyObjectMinXPoint';
 
 test('xyObjectMinXPoint', () => {

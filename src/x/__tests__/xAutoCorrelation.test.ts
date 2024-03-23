@@ -1,4 +1,5 @@
-// Scilab: xcorr(linear)
+import { expect, test } from 'vitest'; // Scilab: xcorr(linear)
+
 import { xAutoCorrelation } from '../xAutoCorrelation';
 
 test('auto-correlation linear function', () => {

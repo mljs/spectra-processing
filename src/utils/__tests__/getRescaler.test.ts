@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { getRescaler } from '../getRescaler';
 
 test('getRescale', () => {

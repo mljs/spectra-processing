@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xSampling } from '../xSampling';
 
 test('testing on array', () => {

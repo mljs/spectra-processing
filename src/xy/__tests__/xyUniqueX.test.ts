@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyUniqueX } from '../xyUniqueX';
 
 test('unsorted sum', () => {

@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xMean } from '../xMean';
 
 test('xMean', () => {

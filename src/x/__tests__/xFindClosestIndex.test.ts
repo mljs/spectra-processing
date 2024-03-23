@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { xFindClosestIndex } from '../xFindClosestIndex';
 
 describe('Find closest index in sorted array test', () => {

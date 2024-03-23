@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { matrixCheck } from '../matrixCheck';
 
 test('should throw error', () => {

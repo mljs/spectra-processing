@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xUniqueSorted } from '../xUniqueSorted';
 
 test('xUniqueSorted', () => {

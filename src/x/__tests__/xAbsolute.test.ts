@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xAbsolute } from '../xAbsolute';
 
 test('normal array', () => {

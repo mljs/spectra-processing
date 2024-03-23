@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xSequentialFillFromTo } from '../xSequentialFillFromTo';
 
 test('Default array type (Float64Array)', () => {

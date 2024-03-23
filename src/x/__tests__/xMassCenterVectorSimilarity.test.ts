@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyMassCenterVector } from '../../xy';
 import { xMassCenterVectorSimilarity } from '../xMassCenterVectorSimilarity';
 

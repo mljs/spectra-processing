@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyObjectJoinX } from '../xyObjectJoinX';
 
 test('xyObjectJoinX', () => {

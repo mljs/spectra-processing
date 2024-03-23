@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xCheck } from '../xCheck';
 
 test('should throw on invalid value', () => {

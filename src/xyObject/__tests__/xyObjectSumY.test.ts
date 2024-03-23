@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyObjectSumY } from '../xyObjectSumY';
 
 test('xyObjectSumY', () => {

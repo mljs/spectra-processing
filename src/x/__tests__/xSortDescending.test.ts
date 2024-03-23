@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xSortDescending } from '../xSortDescending';
 
 test('xSortDescending on array', () => {

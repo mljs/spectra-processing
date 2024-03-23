@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import integral from './integral';
 
 test('should compute expect(integral with a,b, x0 and x1', () => {

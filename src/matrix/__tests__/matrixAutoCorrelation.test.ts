@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { matrixAutoCorrelation } from '../matrixAutoCorrelation';
 
 test('simple', () => {

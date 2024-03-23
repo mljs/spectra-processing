@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xDivide } from '../xDivide';
 
 test('test divide of 2 vectors', () => {

@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xRotate } from '../xRotate';
 
 test('test xRotate positive', () => {

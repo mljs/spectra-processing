@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { createStepArray } from '../createStepArray';
 
 test('case when we specify the step', () => {

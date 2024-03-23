@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { createRandomArray } from '../../utils';
 import { xMedianAbsoluteDeviation } from '../xMedianAbsoluteDeviation';
 

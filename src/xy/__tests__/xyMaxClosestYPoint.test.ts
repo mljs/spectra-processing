@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyMaxClosestYPoint } from '../xyMaxClosestYPoint';
 
 test('positive peak', () => {

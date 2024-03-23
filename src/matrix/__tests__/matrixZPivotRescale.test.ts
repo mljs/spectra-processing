@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { matrixZPivotRescale } from '../matrixZPivotRescale';
 
 test('only positive number', () => {

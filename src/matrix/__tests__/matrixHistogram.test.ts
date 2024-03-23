@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { matrixHistogram } from '../matrixHistogram';
 
 test('simple case', () => {

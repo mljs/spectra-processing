@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { matrixBoxPlot } from '../matrixBoxPlot';
 
 test('test matrixBoxPlot even', () => {

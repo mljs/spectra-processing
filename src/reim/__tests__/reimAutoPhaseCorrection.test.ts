@@ -1,6 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'path';
 
+import { expect, test } from 'vitest';
+
 import { reimAutoPhaseCorrection } from '../reimAutoPhaseCorrection';
 import { reimPhaseCorrection } from '../reimPhaseCorrection';
 

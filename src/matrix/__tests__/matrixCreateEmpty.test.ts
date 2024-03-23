@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { matrixCreateEmpty } from '../matrixCreateEmpty';
 
 test('matrixCreateEmpty with default constructor', () => {

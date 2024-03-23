@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyCheck } from '../xyCheck';
 
 test('various kind of object', () => {

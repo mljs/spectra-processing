@@ -1,5 +1,6 @@
 import { DataXY } from 'cheminfo-types';
 import XSAdd from 'ml-xsadd';
+import { expect, test } from 'vitest';
 
 import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
 

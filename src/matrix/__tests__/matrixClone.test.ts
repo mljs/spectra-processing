@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { matrixClone } from '../matrixClone';
 
 import { datasetForEncoding } from './fixtures/encoding';
