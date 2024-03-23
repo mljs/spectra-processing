@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyAlign } from '../xyAlign';
 
 test('same length spectra, integers', () => {

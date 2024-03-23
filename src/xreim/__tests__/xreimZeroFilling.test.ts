@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xreimZeroFilling } from '../xreimZeroFilling';
 
 test('test xreimZeroFilling over', () => {

@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { nextPowerOfTwo } from '../nextPowerOfTwo';
 
 test('check if a power of two is next', () => {

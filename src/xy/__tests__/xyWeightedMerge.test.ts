@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyWeightedMerge } from '../xyWeightedMerge';
 
 const points = {

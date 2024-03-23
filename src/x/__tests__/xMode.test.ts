@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xMode } from '../xMode';
 
 const typedArray = new Uint16Array(3);

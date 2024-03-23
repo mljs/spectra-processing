@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyGetNMaxY } from '../xyGetNMaxY';
 
 test('number max peaks bigger than spectrum length', () => {

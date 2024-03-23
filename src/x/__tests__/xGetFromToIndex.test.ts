@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xGetFromToIndex } from '../xGetFromToIndex';
 
 test('no from to', () => {

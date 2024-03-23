@@ -1,4 +1,5 @@
 import { FromTo } from 'cheminfo-types';
+import { expect, test } from 'vitest';
 
 import { zonesWithPoints } from '../zonesWithPoints';
 

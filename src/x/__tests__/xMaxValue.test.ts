@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xMaxValue } from '../xMaxValue';
 
 test('xMaxValue', () => {

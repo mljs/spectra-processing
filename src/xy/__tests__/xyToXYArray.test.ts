@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyToXYArray } from '../xyToXYArray';
 
 test('xyToXYArray', () => {

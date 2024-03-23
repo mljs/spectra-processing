@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyCumulativeDistributionStatistics } from '../xyCumulativeDistributionStatistics';
 
 test('simple case', () => {

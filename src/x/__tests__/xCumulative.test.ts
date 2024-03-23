@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xCumulative } from '../xCumulative';
 
 test('zero length array', () => {

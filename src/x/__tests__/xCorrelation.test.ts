@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xCorrelation } from '../xCorrelation';
 
 // wolfram alpha: xCorrelation([1,2,3],[4,5,6])

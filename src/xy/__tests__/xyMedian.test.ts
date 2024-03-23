@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyMedian } from '../xyMedian';
 
 test('check the median of four consecutive integers, should return 2.5', () => {

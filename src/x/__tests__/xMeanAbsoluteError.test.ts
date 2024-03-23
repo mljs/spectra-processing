@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xMeanAbsoluteError } from '../xMeanAbsoluteError';
 
 test('no error', () => {

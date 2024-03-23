@@ -1,4 +1,5 @@
 import { SpectrumGenerator } from 'spectrum-generator';
+import { expect, test } from 'vitest';
 
 import { xyMassCenterVector } from '../xyMassCenterVector';
 

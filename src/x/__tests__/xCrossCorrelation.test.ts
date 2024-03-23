@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xCrossCorrelation } from '../xCrossCorrelation';
 
 test('cross-correlation linear and constant function', () => {

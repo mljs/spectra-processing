@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xRollingMax } from '../xRollingMax';
 
 test('xRollingMax', () => {

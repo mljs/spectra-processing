@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xDotProduct } from '../xDotProduct';
 
 test('cross-correlation linear and constant function', () => {

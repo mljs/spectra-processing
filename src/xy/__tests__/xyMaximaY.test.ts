@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyMaximaY } from '../xyMaximaY';
 
 test('clear top', () => {

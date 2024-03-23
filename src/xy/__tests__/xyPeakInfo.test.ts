@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyPeakInfo } from '../xyPeakInfo';
 
 test('positive peak', () => {

@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xAdd } from '../xAdd';
 
 test('test xAdd of 2 vectors', () => {

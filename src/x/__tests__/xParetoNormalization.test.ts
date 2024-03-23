@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xParetoNormalization } from '../xParetoNormalization';
 
 test('1,2,3', () => {

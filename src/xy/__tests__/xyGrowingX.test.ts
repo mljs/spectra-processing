@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyGrowingX } from '../xyGrowingX';
 
 test('test xyGrowingX do nothing', () => {

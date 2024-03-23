@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { matrixZRescale } from '../matrixZRescale';
 
 test('default options', () => {

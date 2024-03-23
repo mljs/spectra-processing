@@ -1,4 +1,5 @@
 import { optimize } from 'ml-spectra-fitting';
+import { expect, test } from 'vitest';
 
 import { xHistogram } from '../../x';
 import { createRandomArray } from '../createRandomArray';

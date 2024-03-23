@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyCovariance } from '../xyCovariance';
 
 test('should yield the correct result', () => {

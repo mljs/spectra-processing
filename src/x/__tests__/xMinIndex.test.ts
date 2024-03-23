@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xMinIndex } from '../xMinIndex';
 
 test('should return the argmin', () => {

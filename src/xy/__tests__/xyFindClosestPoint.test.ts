@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyFindClosestPoint } from '../xyFindClosestPoint';
 
 test('should yield the correct result with even element array', () => {

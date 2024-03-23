@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { matrixNumericalEncoding } from '../matrixNumericalEncoding';
 
 import { datasetForEncoding } from './fixtures/encoding';

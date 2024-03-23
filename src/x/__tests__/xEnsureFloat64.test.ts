@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xEnsureFloat64 } from '../xEnsureFloat64';
 
 test('normal array', () => {

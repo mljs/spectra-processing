@@ -1,6 +1,8 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
+import { expect, test } from 'vitest';
+
 import { xyEquallySpaced } from '../xyEquallySpaced';
 
 test('testing 1 points', () => {

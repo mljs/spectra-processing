@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyMinYPoint } from '../xyMinYPoint';
 
 test('no from to', () => {

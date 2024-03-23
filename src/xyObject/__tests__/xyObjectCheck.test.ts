@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyObjectCheck } from '../xyObjectCheck';
 
 test('xyObjectCheck', () => {

@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyObjectMaxYPoint } from '../xyObjectMaxYPoint';
 
 test('xyObjectMaxYPoint', () => {

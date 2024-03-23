@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xRescale } from '../xRescale';
 
 const typedArray = new Uint16Array(3);

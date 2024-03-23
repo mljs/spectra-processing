@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xNormed } from '../xNormed';
 
 test('should return the norm', () => {

@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xCostMatrix } from '../xCostMatrix';
 
 const array1 = [1, 2, 3, 4, 5];

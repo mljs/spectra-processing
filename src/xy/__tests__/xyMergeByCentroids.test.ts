@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { xyMergeByCentroids } from '../xyMergeByCentroids';
 
 const originalPoints = {
