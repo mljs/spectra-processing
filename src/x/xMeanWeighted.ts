@@ -6,6 +6,7 @@ import { xGetFromToIndex, XGetFromToIndexOptions } from './xGetFromToIndex';
 /**
  * Computes the weighted mean value of an array of values.
  *
+ * @deprecated please use xyMassCenter
  * @param array - array of numbers
  * @param weights - array of weights
  * @param options - options
