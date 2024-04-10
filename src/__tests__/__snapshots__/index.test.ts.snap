@@ -87,6 +87,7 @@ exports[`test existence of exported functions 1`] = `
   "xyIntegral",
   "xyIntegration",
   "xyJoinX",
+  "xyMassCenter",
   "xyMassCenterVector",
   "xyMaxClosestYPoint",
   "xyMaximaY",
