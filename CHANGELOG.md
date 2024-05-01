@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.4.0](https://github.com/mljs/spectra-processing/compare/v14.3.0...v14.4.0) (2024-05-01)
+
+
+### Features
+
+* allow from / to in xyMaximaY and xyMinimaY ([#243](https://github.com/mljs/spectra-processing/issues/243)) ([d19683d](https://github.com/mljs/spectra-processing/commit/d19683da68736d2fe7e6565688139542056d58bb))
+
 ## [14.3.0](https://github.com/mljs/spectra-processing/compare/v14.2.2...v14.3.0) (2024-04-10)
 
 
