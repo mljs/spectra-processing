@@ -9,6 +9,7 @@ exports[`test existence of exported functions 1`] = `
   "getOutputArray",
   "xAbsolute",
   "xAbsoluteMedian",
+  "xAbsoluteSum",
   "xAdd",
   "xApplyFunctionStr",
   "xAutoCorrelation",

@@ -1,6 +1,7 @@
 export * from './getOutputArray';
 export * from './xAbsolute';
 export * from './xAbsoluteMedian';
+export * from './xAbsoluteSum';
 export * from './xAdd';
 export * from './xApplyFunctionStr';
 export * from './xAutoCorrelation';
