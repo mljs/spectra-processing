@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.5.0](https://github.com/mljs/spectra-processing/compare/v14.4.0...v14.5.0) (2024-05-02)
+
+
+### Features
+
+* add xAbsoluteSum method ([#245](https://github.com/mljs/spectra-processing/issues/245)) ([bd46796](https://github.com/mljs/spectra-processing/commit/bd4679631b33be189255ee64b5cf18fff38efb2b))
+
 ## [14.4.0](https://github.com/mljs/spectra-processing/compare/v14.3.0...v14.4.0) (2024-05-01)
 
 
