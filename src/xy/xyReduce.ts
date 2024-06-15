@@ -29,7 +29,7 @@ export interface XYReduceOptions {
    * */
   nbPoints?: number;
   /**
-   * If optimize we may have less than nbPoints at the end
+   * If optimize we may have less than nbPoints at the end. It should not have visible effects
    * @default false
    * */
   optimize?: boolean;
@@ -42,7 +42,9 @@ export interface XYReduceOptions {
 
 /**
  * Reduce the number of points while keeping visually the same noise. Practical to
- * display many spectra as SVG. If you want a similar looking spectrum you should still however generate 4x the nbPoints that is being displayed.
+ * display many spectra as SVG. If you want a similar looking spectrum you should still however
+ * generate at least 4x the nbPoints that is being displayed.
+ *
  * SHOULD NOT BE USED FOR DATA PROCESSING !!!
  * You should rather use ml-xy-equally-spaced to make further processing
  *
