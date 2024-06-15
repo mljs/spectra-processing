@@ -115,6 +115,29 @@ test('xyCheck optimization', () => {
   expect(result.y).toStrictEqual([0, 5, 10]);
 });
 
+test('xyCheck non-linear x', () => {
+  const xs = [];
+  const ys = [];
+  for (let i = 0; i < 11; i++) {
+    xs.push(i * 1.2 ** i);
+    ys.push(i);
+  }
+  const result = xyReduce({ x: xs, y: ys }, { nbPoints: 5 });
+  expect(result.y).toStrictEqual([0, 1, 8, 9, 10]);
+});
+
+test('xyCheck extreme non-linear x', () => {
+  const xs = [];
+  const ys = [];
+  for (let i = 0; i < 11; i++) {
+    xs.push(i * 2 ** i);
+    ys.push(i);
+  }
+  //console.log(xs, ys);
+  const result = xyReduce({ x: xs, y: ys }, { nbPoints: 5 });
+  expect(result.y).toStrictEqual([0, 1, 10]);
+});
+
 test('Part rounded far 2 with optimization', () => {
   const result = xyReduce({ x, y }, { nbPoints: 5, optimize: true });
 
