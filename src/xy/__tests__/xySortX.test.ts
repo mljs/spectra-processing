@@ -43,3 +43,19 @@ test('sorted reverse', () => {
     y: Float64Array.from([3, 2, 1]),
   });
 });
+
+test('typed XY arrays', () => {
+  const data = {
+    x: Float64Array.from([
+      1.557, 1.265, 1.535, 1.622, 2, 1.426, 1.094, 1.201, 1.825,
+    ]),
+    y: Float64Array.from([0, 1, 2, 5, 6, 7, 8, 9, 10]),
+  };
+  const result = xySortX(data);
+  expect(result).toStrictEqual({
+    x: Float64Array.from([
+      1.094, 1.201, 1.265, 1.426, 1.535, 1.557, 1.622, 1.825, 2,
+    ]),
+    y: Float64Array.from([8, 9, 1, 7, 2, 0, 5, 10, 6]),
+  });
+});
