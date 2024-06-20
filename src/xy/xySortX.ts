@@ -24,8 +24,7 @@ export function xySortX(data: DataXY): DataXY<Float64Array> {
     }
   }
 
-  const xyObject = Array.from(x)
-    .map((val, index) => ({
+  const xyObject = Array.from(x, (val, index) => ({
       x: val,
       y: y[index],
     }))
