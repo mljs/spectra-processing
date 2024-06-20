@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.5.1](https://github.com/mljs/spectra-processing/compare/v14.5.0...v14.5.1) (2024-06-20)
+
+
+### Bug Fixes
+
+* **xySortX:** avoid NaN results when X is a typedArray ([#249](https://github.com/mljs/spectra-processing/issues/249)) ([af7ca47](https://github.com/mljs/spectra-processing/commit/af7ca47921ef34c936cc970db625079a25abf6a7))
+
 ## [14.5.0](https://github.com/mljs/spectra-processing/compare/v14.4.0...v14.5.0) (2024-05-02)
 
 
