@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.5.2](https://github.com/mljs/spectra-processing/compare/v14.5.1...v14.5.2) (2024-07-30)
+
+
+### Bug Fixes
+
+* remove zone if no points in xyEquallySpaced ([443887f](https://github.com/mljs/spectra-processing/commit/443887ffbe9f9bd2b923bc2ff810405c19bf2b33))
+
 ## [14.5.1](https://github.com/mljs/spectra-processing/compare/v14.5.0...v14.5.1) (2024-06-20)
 
 
