@@ -84,11 +84,10 @@ export function xyEquallySpaced(
   }
 
   const normalizedZones = zonesNormalize(zones, { from, to, exclusions });
-
   const zonesWithPointsRes = zonesWithPoints(normalizedZones, numberOfPoints, {
     from,
     to,
-  });
+  }).filter((zone) => zone.numberOfPoints);
 
   let xResult: number[] = [];
   let yResult: number[] = [];
