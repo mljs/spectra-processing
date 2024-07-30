@@ -115,7 +115,7 @@ export function xNoiseSanPlot(
   const cutOffDist = cutOff || determineCutOff(signPositive, { magnitudeMode });
 
   const pIndex = Math.floor(signPositive.length * cutOffDist);
-  let initialNoiseLevelPositive = signPositive[pIndex];
+  const initialNoiseLevelPositive = signPositive[pIndex];
 
   const skyPoint = signPositive[0];
 
@@ -157,8 +157,6 @@ export function xNoiseSanPlot(
   const correctionFactor = -simpleNormInvNumber(cutOffDist / 2, {
     magnitudeMode,
   });
-  initialNoiseLevelPositive = initialNoiseLevelPositive / correctionFactor;
-  initialNoiseLevelNegative = initialNoiseLevelNegative / correctionFactor;
 
   let effectiveCutOffDist, refinedCorrectionFactor;
 
