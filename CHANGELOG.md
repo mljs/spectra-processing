@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.5.3](https://github.com/mljs/spectra-processing/compare/v14.5.2...v14.5.3) (2024-07-30)
+
+
+### Bug Fixes
+
+* remove unused variable assignment ([#253](https://github.com/mljs/spectra-processing/issues/253)) ([b155cd5](https://github.com/mljs/spectra-processing/commit/b155cd5d45c59a68d260087c60c5510c83ff2232))
+
 ## [14.5.2](https://github.com/mljs/spectra-processing/compare/v14.5.1...v14.5.2) (2024-07-30)
 
 
