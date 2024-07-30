@@ -3,7 +3,28 @@ import { join } from 'path';
 
 import { expect, test } from 'vitest';
 
+import { xSequentialFillFromTo } from '../../x/xSequentialFillFromTo';
 import { xyEquallySpaced } from '../xyEquallySpaced';
+
+test('one zone with zero point', () => {
+  const size = 256;
+  const x = xSequentialFillFromTo({ from: 0, to: 100, size });
+  const y = x.slice();
+
+  const from = x[size / 2];
+  const to = x[size / 2 + 1];
+  const ans = xyEquallySpaced(
+    { x, y },
+    {
+      numberOfPoints: 64,
+      zones: [
+        { from, to },
+        { from: 0, to: 50 },
+      ],
+    },
+  );
+  expect(ans.x).toHaveLength(64);
+});
 
 test('testing 1 points', () => {
   const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
