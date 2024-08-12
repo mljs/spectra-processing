@@ -2,7 +2,6 @@ import { NumberArray } from 'cheminfo-types';
 
 /**
  * Check that two arrays have the same length.
- *
  * @param array1 - First array.
  * @param array2 - Second array.
  */

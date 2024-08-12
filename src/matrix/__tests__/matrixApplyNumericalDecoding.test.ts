@@ -25,8 +25,6 @@ test('should return an array of numbers', () => {
     dictCategoricalToNumerical,
   );
 
-  const nonNumbers = matrix
-    .flat(2)
-    .filter((value) => typeof value !== 'number');
+  const nonNumbers = matrix.flat().filter((value) => typeof value !== 'number');
   expect(nonNumbers).toHaveLength(0);
 });

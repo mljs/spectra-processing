@@ -4,7 +4,6 @@ import { Point } from '../types';
 
 /**
  * xyObjectToXY.
- *
  * @param points - Array of points {x,y}.
  */
 export function xyObjectToXY(points: Point[]): DataXY<number[]> {

@@ -5,7 +5,6 @@ import { xCorrelation } from '../x';
 
 /**
  * Calculates a correlation matrix based on the columns of the initial matrix.
- *
  * @param A - matrix [rows][cols]
  */
 export function matrixColumnsCorrelation(A: DoubleMatrix): Float64Array[] {

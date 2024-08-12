@@ -12,6 +12,7 @@ export function getOutputArray<T extends NumberArray = Float64Array>(
   output: T | undefined,
   length: number,
 ): T;
+
 /**
  * This function
  * @param output - undefined or a new array
@@ -22,7 +23,7 @@ export function getOutputArray(
   output: NumberArray | undefined,
   length: number,
 ): NumberArray {
-  if (typeof output !== 'undefined') {
+  if (output !== undefined) {
     if (!isAnyArray(output)) {
       throw new TypeError('output option must be an array if specified');
     }

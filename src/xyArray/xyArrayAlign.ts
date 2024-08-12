@@ -5,11 +5,13 @@ import { xyJoinX } from '../xy';
 import { getSlots } from './utils/getSlots';
 
 export interface XYArrayAlignOptions {
+
   /**
    * The range in which the two x values of the data/spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
    * @default 1
    */
   delta?: ((arg: number) => number) | number;
+
   /**
    * If true, the y values must be present everywhere
    * @default false
@@ -19,7 +21,6 @@ export interface XYArrayAlignOptions {
 
 /**
  * Aligns data, can be used for spectra
- *
  * @param data - data
  * @param options - Options
  */

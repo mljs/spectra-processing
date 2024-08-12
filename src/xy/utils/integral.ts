@@ -5,15 +5,19 @@
  * @param x1
  * @param slope
  * @param intercept
- * @return integral value.
+ * @returns integral value.
  */
 export default function integral(
+
   /** first coordinate of point */
   x0: number,
+
   /** second coordinate of point */
   x1: number,
+
   /** slope of the line */
   slope: number,
+
   /** intercept of the line on the y axis */
   intercept: number,
 ): number {

@@ -2,7 +2,6 @@ import { NumberArray } from 'cheminfo-types';
 
 /**
  * This function returns an array with absolute values.
- *
  * @param array - array of data
  * @returns - array with absolute values
  */

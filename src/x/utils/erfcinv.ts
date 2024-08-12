@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-loss-of-precision */
 /*
 Adapted from: https://github.com/compute-io/erfcinv/blob/aa116e23883839359e310ad41a7c42f72815fc1e/lib/number.js
 
@@ -109,7 +108,6 @@ const Q5 = [
 
 /**
  * Polyval.
- *
  * @param c - Array of Number.
  * @param x - Number.
  * @returns Number.
@@ -124,7 +122,6 @@ function polyval(c: number[], x: number): number {
 
 /**
  * Calculates a rational approximation.
- *
  * @private
  * @param x - Number.
  * @param v - Number.
@@ -147,7 +144,6 @@ function calc(
 
 /**
  * Evaluates the complementary inverse error function for an input value.
- *
  * @private
  * @param x - Input value.
  * @returns Evaluated complementary inverse error function.

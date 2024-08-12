@@ -1,7 +1,9 @@
 import { DataXY } from 'cheminfo-types';
 
 export interface XYMergeByCentroidsOptions {
-  /** window size, has to be a positive number
+
+  /**
+   * window size, has to be a positive number
    * @default 0.01
    */
   window?: number;
@@ -9,11 +11,10 @@ export interface XYMergeByCentroidsOptions {
 
 /**
  * Merge abscissa values if the ordinate value is in a list of centroids
- *
  * @param data - object containing 2 properties x and y
  * @param centroids - centroids
  * @param options - options
- * @return merged points
+ * @returns merged points
  */
 export function xyMergeByCentroids(
   data: DataXY,

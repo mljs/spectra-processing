@@ -2,7 +2,6 @@ import { NumberArray } from 'cheminfo-types';
 
 /**
  * Calculates the mode of an array
- *
  * @param input - Array containing values
  * @returns - mode
  */

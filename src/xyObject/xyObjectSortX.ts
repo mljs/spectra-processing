@@ -2,7 +2,6 @@ import { Point } from '../types';
 
 /**
  * Sorts an array of points in-place.
- *
  * @param points - array of points {x,y}
  * @returns - sorted array of points {x,y}
  */

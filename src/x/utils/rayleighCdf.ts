@@ -1,6 +1,5 @@
 /**
  * RayleighCdf.
- *
  * @param x - data
  * @param sigma - standard deviation
  * @returns - rayleigh cdf

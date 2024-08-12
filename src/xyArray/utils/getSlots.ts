@@ -1,6 +1,7 @@
 import { DataXY } from 'cheminfo-types';
 
 export interface GetSlotsOptions {
+
   /**
    * The range in which the two x values of the data/spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
    * @default 1
@@ -18,7 +19,6 @@ export interface Slot {
 
 /**
  * GetSlots.
- *
  * @param data - data.
  * @param options - Options.
  */
@@ -30,7 +30,7 @@ export function getSlots(
   const deltaIsFunction = typeof delta === 'function';
 
   const possibleXs = Float64Array.from(
-    data.map((spectrum) => spectrum.x as number[]).flat(),
+    data.flatMap((spectrum) => spectrum.x as number[]),
   ).sort();
 
   if (possibleXs.length === 0) {

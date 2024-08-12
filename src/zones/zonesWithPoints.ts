@@ -3,11 +3,15 @@ import { FromTo } from 'cheminfo-types';
 import { zonesNormalize } from './zonesNormalize';
 
 export interface ZonesWithPointsOptions {
-  /** specify min value of zones
+
+  /**
+   * specify min value of zones
    * @default Number.NEGATIVE_INFINITY
    */
   from?: number;
-  /** specify max value of zones
+
+  /**
+   * specify max value of zones
    * @default Number.POSITIVE_INFINITY
    */
   to?: number;
@@ -19,7 +23,6 @@ export interface FromToWithNumberOfPoints extends FromTo {
 
 /**
  * Add the number of points per zone to reach a specified total
- *
  * @param zones - array of zones
  * @param numberOfPoints - total number of points to distribute between zones
  * @param options - options
@@ -27,6 +30,7 @@ export interface FromToWithNumberOfPoints extends FromTo {
  */
 export function zonesWithPoints(
   zones: FromTo[] = [],
+
   /**
    * total number of points to distribute between zones
    * @default 10
@@ -59,7 +63,7 @@ export function zonesWithPoints(
   }
 
   zonesWithNumberOfPoints.push({
-    ...normalizedZones[normalizedZones.length - 1],
+    ...(normalizedZones.at(-1) as FromTo),
     numberOfPoints: numberOfPoints - currentTotal,
   });
 

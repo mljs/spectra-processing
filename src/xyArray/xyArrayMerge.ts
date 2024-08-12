@@ -5,6 +5,7 @@ import { xyJoinX } from '../xy';
 import { getSlots } from './utils/getSlots';
 
 export interface XYArrayMergeOptions {
+
   /**
    * The range in which the two x values of the data/spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
    * @default 1
@@ -15,7 +16,6 @@ export interface XYArrayMergeOptions {
 /**
  * Merge DataXY
  * We have an array of DataXY and the goal is to merge all the values that are the closest possible
- *
  * @param data - data
  * @param options - Options
  */

@@ -4,6 +4,7 @@ import { xFindClosestIndex } from './xFindClosestIndex';
 
 export interface XGetTargetIndexOptions {
   target?: number;
+
   /**
    * @default 0
    */
@@ -12,7 +13,6 @@ export interface XGetTargetIndexOptions {
 
 /**
  *  Returns the targetIndex
- *
  * @param x - array of numbers
  * @param options - options
  */
@@ -21,8 +21,8 @@ export function xGetTargetIndex(
   options: XGetTargetIndexOptions = {},
 ): number {
   const { target, targetIndex } = options;
-  if (typeof targetIndex === 'undefined') {
-    if (typeof target !== 'undefined') {
+  if (targetIndex === undefined) {
+    if (target !== undefined) {
       return xFindClosestIndex(x, target);
     } else {
       return 0;

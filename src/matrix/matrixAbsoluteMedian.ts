@@ -3,6 +3,7 @@ import { xMedian } from '../x';
 
 /**
  * Returns the median of the absolute matrix.
+ * @param matrix
  */
 export function matrixAbsoluteMedian(matrix: DoubleMatrix): number {
   const nbColumns = matrix[0].length;

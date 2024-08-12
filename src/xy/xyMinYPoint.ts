@@ -6,20 +6,24 @@ import { xGetFromToIndex } from '../x';
 import { xyCheck } from './xyCheck';
 
 export interface XYMinYPointOptions {
+
   /**
    * First value for xyMinYPoint in the X scale
    */
   from?: number;
+
   /**
    * First point for xyMinYPoint
    * @default 0
-   * */
+   */
   fromIndex?: number;
+
   /**
    *  Last point for xyMinYPoint
    * @default x.length-1
-   * */
+   */
   toIndex?: number;
+
   /**
    * Last value for xyMinYPoint in the X scale
    */
@@ -28,7 +32,6 @@ export interface XYMinYPointOptions {
 
 /**
  * Finds the min y value in a range and return a {x,y} point
- *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - Options
  */

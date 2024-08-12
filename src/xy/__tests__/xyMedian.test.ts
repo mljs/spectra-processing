@@ -55,5 +55,5 @@ test('empty property x, should return NaN', () => {
     x: [],
     y: [],
   };
-  expect(xyMedian(data)).toBe(NaN);
+  expect(xyMedian(data)).toBe(Number.NaN);
 });

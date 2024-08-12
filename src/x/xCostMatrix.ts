@@ -4,6 +4,7 @@ import { Matrix } from 'ml-matrix';
 const absDiff = (a: number, b: number) => Math.abs(a - b);
 
 interface XCostMatrixOptions {
+
   /**
    * function to generate the elements of a cost matrix. The first argunment come from rowsArray input and the second argument come from columnsArray input.
    */

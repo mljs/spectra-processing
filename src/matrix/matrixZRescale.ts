@@ -7,16 +7,19 @@ import { matrixMinMaxZ } from './matrixMinMaxZ';
 export interface MatrixZRescaleOptions<
   ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,
 > {
+
   /**
    * min
    * @default 0
-   * */
+   */
   min?: number;
+
   /**
    * max
    * @default 1
-   * */
+   */
   max?: number;
+
   /**
    * Allows to specify the type of array to use.
    * @default Float64Array
@@ -26,7 +29,6 @@ export interface MatrixZRescaleOptions<
 
 /**
  * Rescale a matrix between min and max values.
- *
  * @param matrix - matrix [rows][cols].
  * @param options - Options.
  */

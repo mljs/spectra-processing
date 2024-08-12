@@ -3,6 +3,7 @@ import { DataXY } from 'cheminfo-types';
 import { xyCheck } from './xyCheck';
 
 export interface XYJoinXOptions {
+
   /**
    * The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
    * @default 1
@@ -13,7 +14,6 @@ export interface XYJoinXOptions {
 /**
  * Join x / y values when difference in X is closer than delta.
  * When joining, y values are summed and x values are weighted average
- *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - Options
  * @returns - An object with the xyIntegration function

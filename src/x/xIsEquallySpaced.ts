@@ -1,6 +1,7 @@
 import { NumberArray } from 'cheminfo-types';
 
 export interface XIsEquallySpacedOptions {
+
   /**
    * The tolerance define what is the allowed difference in percent
    * @default: 0.05
@@ -10,7 +11,6 @@ export interface XIsEquallySpacedOptions {
 
 /**
  * Check if the values are separated always by the same difference
- *
  * @param array - Monotone growing array of number
  * @param options
  */

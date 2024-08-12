@@ -3,7 +3,6 @@ import { isAnyArray } from 'is-any-array';
 
 /**
  * This function xAdd the first array by the second array or a constant value to each element of the first array
- *
  * @param array1 - the first array
  * @param array2 - the second array or number
  */

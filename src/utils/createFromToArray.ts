@@ -1,35 +1,46 @@
 export interface CreateFromToArrayOptions {
+
   /**
    * start value of range
-   * @default 0 */
+   * @default 0
+   */
   from?: number;
+
   /**
    * end value of range
-   * @default 1 */
+   * @default 1
+   */
   to?: number;
+
   /**
    * number of points in range
-   * @default 1000 */
+   * @default 1000
+   */
   length?: number;
+
   /**
    * include from
-   * @default true */
+   * @default true
+   */
   includeFrom?: boolean;
+
   /**
    * include to
-   * @default true */
+   * @default true
+   */
   includeTo?: boolean;
+
   /**
    * distribution used
-   * @default uniform */
+   * @default uniform
+   */
   distribution?: 'uniform' | 'log';
 }
 
 /**
  * Create an array with numbers between "from" and "to" of length "length"
- *
  * @param options - options
- * @return - array of distributed numbers between "from" and "to"
+ * @returns - array of distributed numbers between "from" and "to"
  */
 export function createFromToArray(
   options: CreateFromToArrayOptions = {},

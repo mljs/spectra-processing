@@ -1,7 +1,9 @@
 import { DataXY } from 'cheminfo-types';
 
 interface XYWeightedMergeOptions {
-  /** window for abscissas to merge
+
+  /**
+   * window for abscissas to merge
    * @default 0.001
    */
   groupWidth?: number;
@@ -9,10 +11,9 @@ interface XYWeightedMergeOptions {
 
 /**
  * Merge abscissas values on similar ordinates and weight the group of abscissas
- *
  * @param data - object containing 2 properties x and y
  * @param options - options
- * @return array of merged and weighted points
+ * @returns array of merged and weighted points
  */
 export function xyWeightedMerge(
   data: DataXY,

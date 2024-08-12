@@ -4,13 +4,13 @@ import { isAnyArray } from 'is-any-array';
 import { getOutputArray } from './getOutputArray';
 
 export interface XDivideOptions<ArrayType extends NumberArray = Float64Array> {
+
   /** output into which the result should be placed if needed. In can be the same as array1 in order to have in-place modification */
   output?: ArrayType;
 }
 
 /**
  * This function divide the first array by the second array or a constant value to each element of the first array
- *
  * @param array1 - first array
  * @param array2 - second array or number
  * @param options - options

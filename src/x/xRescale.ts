@@ -6,13 +6,16 @@ import { xMaxValue } from './xMaxValue';
 import { xMinValue } from './xMinValue';
 
 export interface XRescaleOptions<ArrayType extends NumberArray = Float64Array> {
+
   /** output into which to placed the data */
   output?: ArrayType;
+
   /**
    * min used for the scaling
    * @default 0
    */
   min?: number;
+
   /**
    * max used for the scaling
    * @default 1
@@ -22,7 +25,6 @@ export interface XRescaleOptions<ArrayType extends NumberArray = Float64Array> {
 
 /**
  * Function used to rescale data
- *
  * @param input - input for the rescale
  * @param options - options
  * @returns rescaled data

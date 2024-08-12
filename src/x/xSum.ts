@@ -5,7 +5,6 @@ import { xGetFromToIndex, XGetFromToIndexOptions } from './xGetFromToIndex';
 
 /**
  * Calculate the sum of the values
- *
  * @param array - Object that contains property x (an ordered increasing array) and y (an array).
  * @param options - Options.
  * @returns XSum value on the specified range.

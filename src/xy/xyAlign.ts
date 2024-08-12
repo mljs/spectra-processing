@@ -1,22 +1,23 @@
-/* eslint-disable max-lines-per-function */
-
 import { DataXY } from 'cheminfo-types';
 
 export interface XYAlignOptions {
+
   /**
    * The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
    * @default 1
    */
   delta?: ((arg: number) => number) | number;
+
   /**
    * If `true`, only the data considered as common to both spectra is kept. If `false`, the data y arrays are completed with zeroes where no common values are found
    * @default true
    */
   common?: boolean;
+
   /**
    * Defines what x values should be kept (`x1` : spectrum 1 x values, `x2` spectrum 2 x values, `weighted`: weighted average of both spectra x values)
    * @default "x1"
-   * */
+   */
   x?: 'x1' | 'x2' | 'weighted';
 }
 
@@ -30,7 +31,6 @@ export interface XYAlignResult {
  * Align data of two spectra by verifying wether x values are in a certain range (`delta`).
  * The two spectra should not have two consecutive x values which difference is
  * smaller than `delta` to achieve good results!
- *
  * @param data1 - First spectrum data
  * @param data2 - Second spectrum data
  * @param options - Options

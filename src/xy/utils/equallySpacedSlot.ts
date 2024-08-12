@@ -1,32 +1,38 @@
-/* eslint-disable max-lines-per-function */
-
 /**
  * Function that retrieves the getEquallySpacedData with the variant "slot".
- *
  * @param x
  * @param y
  * @param from
  * @param to
  * @param numberOfPoints
- * @return Array of y's equally spaced with the variant "slot"
+ * @returns Array of y's equally spaced with the variant "slot"
  */
 export default function equallySpacedSlot(
+
   /** x coordinates */
   x: number[],
+
   /** y coordinates */
   y: number[],
+
   /** from value */
   from: number,
+
   /** to value */
   to: number,
+
   /** number of points */
   numberOfPoints: number,
 ): Float64Array {
   const xLength = x.length;
 
+  if (xLength < 2) {
+    return Float64Array.from(x);
+  }
+
   const step = (to - from) / (numberOfPoints > 1 ? numberOfPoints - 1 : 1);
   const halfStep = step / 2;
-  const lastStep = x[x.length - 1] - x[x.length - 2];
+  const lastStep = (x.at(-1) as number) - (x.at(-2) as number);
 
   const start = from - halfStep;
   // Changed Array to Float64Array

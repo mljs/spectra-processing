@@ -26,7 +26,6 @@ export interface XYPeakInfo {
  * ML.ArrayPoints.uniqueX
  * ML.ArrayPoints.sortX
  * ML.ArrayPoints.equallySpaced
- *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - options
  * @returns - Information about signal
@@ -37,16 +36,16 @@ export function xyPeakInfo(
 ): XYPeakInfo | undefined {
   xyCheck(data);
   const { x, y } = data;
-  if (typeof x === 'undefined' || typeof y === 'undefined' || x.length < 3) {
+  if (x === undefined || y === undefined || x.length < 3) {
     return;
   }
   const { target } = options;
   let { targetIndex } = options;
-  if (typeof targetIndex === 'undefined' && typeof target !== 'undefined') {
+  if (targetIndex === undefined && target !== undefined) {
     targetIndex = xFindClosestIndex(x, target);
   }
 
-  if (typeof targetIndex === 'undefined') {
+  if (targetIndex === undefined) {
     throw new Error('must specify target or targetIndex');
   }
 

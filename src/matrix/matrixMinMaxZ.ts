@@ -4,7 +4,6 @@ import { matrixCheck } from './matrixCheck';
 
 /**
  * Get min and max Z.
- *
  * @param matrix - matrix [rows][cols].
  */
 export function matrixMinMaxZ(matrix: DoubleMatrix): {

@@ -4,7 +4,6 @@ import { xMultiply } from './xMultiply';
 
 /**
  * Dot product between two arrays.
- *
  * @param A - First array.
  * @param B - Second array.
  */

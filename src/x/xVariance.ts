@@ -4,18 +4,22 @@ import { isAnyArray } from 'is-any-array';
 import { xMean } from './xMean';
 
 export interface XVarianceOptions {
-  /** Unbiased option
+
+  /**
+   * Unbiased option
    * @default true
    */
   unbiased?: boolean;
-  /** Mean of the data
+
+  /**
+   * Mean of the data
    * @default mean calculated
    */
   mean?: number;
 }
 
-/** Finds the variance of the data
- *
+/**
+ * Finds the variance of the data
  * @param values - the values of the array
  * @param options - options
  * @returns variance

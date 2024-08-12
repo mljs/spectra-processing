@@ -3,10 +3,12 @@ import { NumberArray } from 'cheminfo-types';
 import { xMedian } from './xMedian';
 
 export interface XMedianAbsoluteDeviationResult {
+
   /**
    * Median of the data
    */
   median: number;
+
   /**
    * Median absolute devication
    */

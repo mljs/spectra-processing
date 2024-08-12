@@ -1,39 +1,49 @@
 import XSAdd from 'ml-xsadd';
 
 export interface CreateRandomArrayOptions {
+
   /**
    * Type of random distribution.
    * 'uniform' (true random) or 'normal' (gaussian distribution)
    * @default 'normal'
    */
   distribution?: 'uniform' | 'normal';
+
   /**
    * Seed for a deterministic sequence of random numbers.
    * @default Date.now()
    */
   seed?: number;
+
   /**
    * mean
-   * @default 0 */
+   * @default 0
+   */
   mean?: number;
+
   /**
    * standardDeviation, used in case of normal distribution
-   * @default 1 */
+   * @default 1
+   */
   standardDeviation?: number;
+
   /**
    *range, used in case of uniform distribution
-   * @default 1 */
+   * @default 1
+   */
   range?: number;
+
   /**
    * number of points
-   * @default 1000 */
+   * @default 1000
+   */
   length?: number;
 }
 
 /**
  * Create a random array of numbers of a specific length.
- *
- * @return - array of random floats normally distributed
+ * @param options
+ * @returns - array of random floats normally distributed
  */
 export function createRandomArray(
   options: CreateRandomArrayOptions = {},

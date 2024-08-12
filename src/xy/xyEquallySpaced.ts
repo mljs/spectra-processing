@@ -8,27 +8,39 @@ import equallySpacedSmooth from './utils/equallySpacedSmooth';
 import { xyCheck } from './xyCheck';
 
 export interface XYEquallySpacedOptions {
-  /** from
+
+  /**
+   * from
    * @default x[0]
    */
   from?: number;
-  /** to
+
+  /**
+   * to
    * @default x[x.length-1]
    */
   to?: number;
-  /** variant
+
+  /**
+   * variant
    * @default 'smooth'
    */
   variant?: 'slot' | 'smooth';
-  /** number of points
+
+  /**
+   * number of points
    * @default 100
    */
   numberOfPoints?: number;
-  /** array of from / to that should be skipped for the generation of the points
+
+  /**
+   * array of from / to that should be skipped for the generation of the points
    * @default []
    */
   exclusions?: FromTo[];
-  /** array of from / to that should be kept
+
+  /**
+   * array of from / to that should be kept
    * @default []
    */
   zones?: FromTo[];
@@ -51,10 +63,9 @@ export interface XYEquallySpacedOptions {
  * of the slot and divide by the step size between two points in an array.
  *
  * If exclusions zone are present, zones are ignored !
- *
  * @param data - object containing 2 properties x and y
  * @param options - options
- * @return new object with x / y array with the equally spaced data.
+ * @returns new object with x / y array with the equally spaced data.
  */
 
 export function xyEquallySpaced(

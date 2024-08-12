@@ -12,7 +12,6 @@ export interface XYMassCenterVectorOptions {
  * We will calculate a vector containing center of mass of DataXY as well as center of mass of both parts, etc.
  * This approach allows to efficiently represent spectra like XPS, NMR, etc. It should provide an extremely efficient
  * way to store and search similar spectra.
- *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options
  * @returns - Array of centers of mass
@@ -95,10 +94,11 @@ function getWeightedIntegral(data: DataXY) {
     weightedIntegral[i] = totalWeightedIntegral;
   }
   // the last point, no points after
-  const lastIntegration = (x[x.length - 1] - x[x.length - 2]) * y[y.length - 1];
+  const lastIntegration =
+    ((x.at(-1) as number) - (x.at(-2) as number)) * (y.at(-1) as number);
   totalIntegration += lastIntegration;
   integral[x.length - 1] = totalIntegration;
-  totalWeightedIntegral += lastIntegration * x[x.length - 1];
+  totalWeightedIntegral += lastIntegration * (x.at(-1) as number);
   weightedIntegral[x.length - 1] = totalWeightedIntegral;
   return { integral, weightedIntegral };
 }

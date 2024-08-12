@@ -6,16 +6,16 @@ import { xyCheck } from './xyCheck';
 import { XYIntegrationOptions } from './xyIntegration';
 
 export interface XYIntegralOptions extends XYIntegrationOptions {
+
   /**
    * Integrate from the larger value to the smallest value
    * @default false
-   * */
+   */
   reverse?: boolean;
 }
 
 /**
  * Generate a X / Y of the xyIntegral
- *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - Options
  * @returns - An object with the xyIntegration function

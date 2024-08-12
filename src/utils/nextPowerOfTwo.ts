@@ -1,5 +1,6 @@
 /**
  * Get the size of the next power of two.
+ * @param n
  */
 export function nextPowerOfTwo(n: number): number {
   if (n === 0) return 1;

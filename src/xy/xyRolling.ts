@@ -5,7 +5,6 @@ import { xRolling, xRollingAverage, XRollingOptions } from '../x';
 /**
  * This function calculates a rolling average.
  * This methods will recalculate the x values by using xRollingAverage
- *
  * @param data - array of points {x,y}
  * @param fct - callback function that from an array returns a value.
  * @param options - options

@@ -5,6 +5,7 @@ import { xSequentialFillFromStep } from './xSequentialFillFromStep';
 export interface XSequentialFillFromToOptions<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,
 > {
+
   /**
    * Allows to specify the type of array to use.
    * @default Float64Array

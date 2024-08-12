@@ -1,36 +1,43 @@
 export type RescalerAlgorithm = 'linear' | 'logarithmic' | 'power';
 
 export interface GetRescalerOptions {
+
   /**
    * The minimum value of the original range
    * @default 0
    */
   originalMin?: number;
+
   /**
    * The maximum value of the original range
    * @default 1
    */
   originalMax?: number;
+
   /**
    * The new minimum value of the target range
    * @default 0
    */
   targetMin?: number;
+
   /**
    * The new maximum value of the target range
    * @default 1
    */
   targetMax?: number;
+
   /**
    * If true, the value will be clamp to the target range
    * @default true
    */
   clamp?: boolean;
+
   /**
    * The algorithm to use for the rescaling
    * @default 'linear'
    */
   algorithm?: RescalerAlgorithm;
+
   /**
    * Options for the algorithm
    * @default {}

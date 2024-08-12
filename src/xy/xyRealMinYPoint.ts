@@ -7,7 +7,6 @@ import { xyCheck } from './xyCheck';
 
 /**
  * xyRealMinYPoint.
- *
  * @param data - Data.
  * @param options - Options.
  */

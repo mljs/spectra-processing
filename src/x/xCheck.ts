@@ -2,13 +2,13 @@ import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 export interface XCheckOptions {
+
   /** minimum length */
   minLength?: number;
 }
 
 /**
  * Checks if input is of type array.
- *
  * @param input - input
  * @param options
  */

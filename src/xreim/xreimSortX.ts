@@ -4,7 +4,6 @@ import { DataXReIm } from '../types';
 
 /**
  * Sort object of array, x has to be monotone.
- *
  * @param data - object of kind {x:[], re:[], im:[]}
  * @returns - sorted array
  */

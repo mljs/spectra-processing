@@ -4,11 +4,13 @@ import { xCheck } from './xCheck';
 import { xPadding, XPaddingOptions } from './xPadding';
 
 export interface XRollingOptions {
+
   /**
    * rolling window
    * @default 5
    */
   window?: number;
+
   /**
    * padding
    */
@@ -17,7 +19,6 @@ export interface XRollingOptions {
 
 /**
  * This function calculates a rolling average
- *
  * @param array - array
  * @param fct - callback function that from an array returns a value
  * @param options - options

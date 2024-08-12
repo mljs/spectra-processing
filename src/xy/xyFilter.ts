@@ -1,17 +1,19 @@
 import { DataXY } from 'cheminfo-types';
 
 export interface XYFilterOptions {
-  /** callback
+
+  /**
+   * callback
    * @default ()=>true
    */
   filter?: (x: number, y: number) => boolean;
 }
 
-/** Filter an array x/y based on various criteria x points are expected to be sorted
- *
+/**
+ * Filter an array x/y based on various criteria x points are expected to be sorted
  * @param data - object containing 2 properties x and y
  * @param options - options
- * @return filtered array
+ * @returns filtered array
  */
 export function xyFilter(
   data: DataXY,

@@ -1,6 +1,7 @@
 import { NumberArray } from 'cheminfo-types';
 
 export interface XBoxPlotOptions {
+
   /**
    * By default, there should be at least 5 elements.
    * @default false
@@ -18,7 +19,6 @@ export interface XBoxPlot {
 
 /**
  * Calculating the box plot of the array
- *
  * @param array - data
  * @param options
  */
@@ -29,7 +29,7 @@ export function xBoxPlot(
   const { allowSmallArray = false } = options;
   if (array.length < 5) {
     if (allowSmallArray) {
-      if (array.length < 1) {
+      if (array.length === 0) {
         throw new Error('can not calculate info if array is empty');
       }
     } else {
@@ -46,7 +46,7 @@ export function xBoxPlot(
     median: 0,
     q3: 0,
     min: array[0],
-    max: array[array.length - 1],
+    max: array.at(-1) as number,
   };
   let q1max, q3min;
   if (array.length % 2 === 1) {

@@ -3,6 +3,7 @@ import { DataXY, NumberArray } from 'cheminfo-types';
 import { Point } from '../types';
 
 export interface XYArrayWeightedMergeOptions {
+
   /**
    * The range in which the two x values of the data must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
    * @default 1
@@ -14,7 +15,6 @@ export interface XYArrayWeightedMergeOptions {
  * Merge DataXY
  * We have an array of DataXY and the goal is to merge all the values for which the deltaX is small or equal to delta.
  * X values are weighted average
- *
  * @param data - data
  * @param options - Options
  */
@@ -70,7 +70,6 @@ export function xyArrayWeightedMerge(
 
 /**
  * NextValue.
- *
  * @param data - data.
  * @param positions - Positions array.
  * @param point - Point.
