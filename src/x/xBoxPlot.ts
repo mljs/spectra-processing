@@ -6,6 +6,12 @@ export interface XBoxPlotOptions {
    * @default false
    */
   allowSmallArray?: boolean;
+
+  /**
+   * Calculate outliers (value < min-1.5IQR or value > max+1.5IQR). The min and max are recalculated without the outliers.
+   * @default false
+   */
+  calculateOutliers?: boolean;
 }
 
 export interface XBoxPlot {
@@ -14,6 +20,7 @@ export interface XBoxPlot {
   q3: number;
   min: number;
   max: number;
+  outliers: number[];
 }
 
 /**
@@ -25,7 +32,7 @@ export function xBoxPlot(
   array: NumberArray,
   options: XBoxPlotOptions = {},
 ): XBoxPlot {
-  const { allowSmallArray = false } = options;
+  const { allowSmallArray = false, calculateOutliers = false } = options;
   if (array.length < 5) {
     if (allowSmallArray) {
       if (array.length === 0) {
@@ -46,6 +53,7 @@ export function xBoxPlot(
     q3: 0,
     min: array[0],
     max: array.at(-1) as number,
+    outliers: [],
   };
   let q1max, q3min;
   if (array.length % 2 === 1) {
@@ -67,6 +75,23 @@ export function xBoxPlot(
     info.q1 = (array[(q1max + 1) / 2] + array[(q1max - 1) / 2]) / 2;
     const middleOver = (array.length + q3min) / 2;
     info.q3 = (array[middleOver] + array[middleOver - 1]) / 2;
+  }
+
+  if (calculateOutliers) {
+    const iqr = info.q3 - info.q1;
+    const min = info.q1 - 1.5 * iqr;
+    const max = info.q3 + 1.5 * iqr;
+    // we need to recalculate the min and the max because they could be outliers
+    info.min = info.median;
+    info.max = info.median;
+    for (const value of array) {
+      if (value < min || value > max) {
+        info.outliers.push(value);
+      } else {
+        if (value < info.min) info.min = value;
+        if (value > info.max) info.max = value;
+      }
+    }
   }
   return info;
 }
