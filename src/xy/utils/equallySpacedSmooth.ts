@@ -10,7 +10,6 @@ import integral from './integral';
  * @returns - Array of y's equally spaced with the variant "smooth"
  */
 export default function equallySpacedSmooth(
-
   /** x coordinates */
   x: number[],
 

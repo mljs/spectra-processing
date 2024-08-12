@@ -4,7 +4,6 @@ import { xyCheck } from './xyCheck';
 import { xySortX } from './xySortX';
 
 export interface XYUniqueXOptions {
-
   /**
    * either 'average' or 'sum'
    * @default 'average'

@@ -4,7 +4,6 @@ import { xCheck } from './xCheck';
 import { xPadding, XPaddingOptions } from './xPadding';
 
 export interface XRollingOptions {
-
   /**
    * rolling window
    * @default 5

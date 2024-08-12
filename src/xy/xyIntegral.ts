@@ -6,7 +6,6 @@ import { xyCheck } from './xyCheck';
 import { XYIntegrationOptions } from './xyIntegration';
 
 export interface XYIntegralOptions extends XYIntegrationOptions {
-
   /**
    * Integrate from the larger value to the smallest value
    * @default false

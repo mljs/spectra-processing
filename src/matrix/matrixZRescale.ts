@@ -7,7 +7,6 @@ import { matrixMinMaxZ } from './matrixMinMaxZ';
 export interface MatrixZRescaleOptions<
   ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,
 > {
-
   /**
    * min
    * @default 0

@@ -3,7 +3,6 @@ import { DataXY } from 'cheminfo-types';
 import { xyCheck } from './xyCheck';
 
 export interface XYJoinXOptions {
-
   /**
    * The range in which the two x values of the spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
    * @default 1

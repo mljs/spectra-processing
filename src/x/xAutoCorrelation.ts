@@ -3,7 +3,6 @@ import { NumberArray } from 'cheminfo-types';
 import { xCrossCorrelation } from './xCrossCorrelation';
 
 export interface XAutoCorrelationOptions {
-
   /**
    * sweep increment size (in number of points, min=1, max=A.length)
    * @default 1

@@ -7,7 +7,6 @@ import { matrixMinMaxAbsoluteZ } from './matrixMinMaxAbsoluteZ';
 import { matrixMinMaxZ } from './matrixMinMaxZ';
 
 export interface MatrixHistogramOptions {
-
   /**
    * Center the X value. We will enlarge the first and
    * @default true

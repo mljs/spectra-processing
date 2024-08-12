@@ -1,7 +1,6 @@
 import { DataXY } from 'cheminfo-types';
 
 export interface XYMergeByCentroidsOptions {
-
   /**
    * window size, has to be a positive number
    * @default 0.01

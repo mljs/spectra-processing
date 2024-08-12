@@ -1,7 +1,6 @@
 import { NumberArray } from 'cheminfo-types';
 
 export interface XBoxPlotOptions {
-
   /**
    * By default, there should be at least 5 elements.
    * @default false

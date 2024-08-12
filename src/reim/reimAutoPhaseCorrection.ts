@@ -7,7 +7,6 @@ import { reimAbsolute } from './reimAbsolute';
 import { reimPhaseCorrection } from './reimPhaseCorrection';
 
 export interface AutoPhaseCorrectionOptions {
-
   /**
    * if true it uses magnitude spectrum.boolean
    * @default true

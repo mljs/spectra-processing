@@ -5,7 +5,6 @@ import { xGetFromToIndex } from '../x';
 import { xyCheck } from './xyCheck';
 
 export interface XYIntegrationOptions {
-
   /**
    * First value for xyIntegration in the X scale
    */

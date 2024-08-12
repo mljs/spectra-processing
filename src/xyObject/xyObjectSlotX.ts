@@ -1,7 +1,6 @@
 import { Point } from '../types';
 
 export interface XYObjectSlotXOptions {
-
   /**
    * Limit to join the dataPoints[].
    * @default 1

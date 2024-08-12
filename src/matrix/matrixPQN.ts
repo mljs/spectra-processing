@@ -4,7 +4,6 @@ import { DoubleMatrix } from '../types';
 import { xMedian } from '../x';
 
 export interface MatrixPQNOptions {
-
   /**
    * Normalization integral constant.
    * @default 100

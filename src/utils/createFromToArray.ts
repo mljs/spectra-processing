@@ -1,5 +1,4 @@
 export interface CreateFromToArrayOptions {
-
   /**
    * start value of range
    * @default 0

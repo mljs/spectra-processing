@@ -1,7 +1,6 @@
 import { NumberArray } from 'cheminfo-types';
 
 export interface XIsEquallySpacedOptions {
-
   /**
    * The tolerance define what is the allowed difference in percent
    * @default: 0.05

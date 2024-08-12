@@ -1,5 +1,4 @@
 export interface Point {
-
   /** x value */
   x: number;
 

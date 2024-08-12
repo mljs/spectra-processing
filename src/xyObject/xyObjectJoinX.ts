@@ -1,7 +1,6 @@
 import { Point } from '../types';
 
 export interface XYObjectJoinXOptions {
-
   /**
    * Limit to join the data.
    * @default Number.EPSILON

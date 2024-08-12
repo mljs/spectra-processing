@@ -3,7 +3,6 @@ import { NumberArray } from 'cheminfo-types';
 import { xMedianAbsoluteDeviation } from './xMedianAbsoluteDeviation';
 
 export interface XNoiseStandardDeviationResult {
-
   /**
    * Median of the data
    */

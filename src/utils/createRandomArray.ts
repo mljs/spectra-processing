@@ -1,7 +1,6 @@
 import XSAdd from 'ml-xsadd';
 
 export interface CreateRandomArrayOptions {
-
   /**
    * Type of random distribution.
    * 'uniform' (true random) or 'normal' (gaussian distribution)

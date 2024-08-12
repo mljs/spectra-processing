@@ -3,7 +3,6 @@ import { DataXY } from 'cheminfo-types';
 import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
 
 export interface GetSlotsToFirstOptions {
-
   /**
    * The range in which the two x values of the data/spectra must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
    * @default 1

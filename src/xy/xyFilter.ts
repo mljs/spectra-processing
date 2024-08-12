@@ -1,7 +1,6 @@
 import { DataXY } from 'cheminfo-types';
 
 export interface XYFilterOptions {
-
   /**
    * callback
    * @default ()=>true

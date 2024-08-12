@@ -8,7 +8,6 @@ import { matrixMaxAbsoluteZ } from './matrixMaxAbsoluteZ';
 export interface MatrixZPivotRescaleOptions<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,
 > {
-
   /**
    * max
    * @default 1

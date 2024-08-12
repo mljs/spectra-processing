@@ -3,7 +3,6 @@ import { DataXY, FromTo } from 'cheminfo-types';
 import { zonesNormalize } from '../zones';
 
 export interface XYFilterXOptions {
-
   /**
    * filter from
    * @default x[0]

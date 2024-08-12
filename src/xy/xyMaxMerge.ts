@@ -1,7 +1,6 @@
 import { DataXY } from 'cheminfo-types';
 
 interface XYMaxMergeOptions {
-
   /**
    * Window for abscissas to merge
    * @default 0.001

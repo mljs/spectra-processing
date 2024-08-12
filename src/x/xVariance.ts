@@ -4,7 +4,6 @@ import { isAnyArray } from 'is-any-array';
 import { xMean } from './xMean';
 
 export interface XVarianceOptions {
-
   /**
    * Unbiased option
    * @default true

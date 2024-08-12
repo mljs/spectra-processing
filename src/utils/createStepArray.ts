@@ -1,5 +1,4 @@
 export interface CreateStepArrayOptions {
-
   /**
    * start value of range
    * @default 0

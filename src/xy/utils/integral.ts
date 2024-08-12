@@ -8,7 +8,6 @@
  * @returns integral value.
  */
 export default function integral(
-
   /** first coordinate of point */
   x0: number,
 

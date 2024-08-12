@@ -8,7 +8,6 @@ import {
 export interface MatrixCreateEmptyOptions<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,
 > {
-
   /**
    * Matrix from which to extract nbRows and nbColumns
    */

@@ -1,7 +1,6 @@
 export type RescalerAlgorithm = 'linear' | 'logarithmic' | 'power';
 
 export interface GetRescalerOptions {
-
   /**
    * The minimum value of the original range
    * @default 0

@@ -3,7 +3,6 @@ import { DataXY, NumberArray } from 'cheminfo-types';
 import { Point } from '../types';
 
 export interface XYArrayWeightedMergeOptions {
-
   /**
    * The range in which the two x values of the data must be to be placed on the same line. It may also be a function that allows to change `delta` depending on the X values of the spectrum
    * @default 1

@@ -2,7 +2,6 @@ import { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 export interface XCheckOptions {
-
   /** minimum length */
   minLength?: number;
 }

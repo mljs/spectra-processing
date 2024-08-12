@@ -1,7 +1,6 @@
 import { NumberArray } from 'cheminfo-types';
 
 export interface XFindClosestIndexOptions {
-
   /**
    * Is the array sorted ? This allows to make a dichotomic search that is much faster.
    * @default true

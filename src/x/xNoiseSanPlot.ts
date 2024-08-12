@@ -9,7 +9,6 @@ import rayleighCdf from './utils/rayleighCdf';
 import { xCheck } from './xCheck';
 
 export interface XNoiseSanPlotOptions {
-
   /**
    * boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
    */
@@ -282,7 +281,6 @@ function determineCutOff(
 }
 
 interface SimpleNormInvOptions {
-
   /**
    * Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
    */

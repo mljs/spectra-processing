@@ -10,7 +10,6 @@ import { isAnyArray, AnyArray } from 'is-any-array';
 export function xyCheck(
   data: unknown,
   options: {
-
     /** Minimum length. */
     minLength?: number;
   } = {},

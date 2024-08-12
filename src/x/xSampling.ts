@@ -3,7 +3,6 @@ import { NumberArray } from 'cheminfo-types';
 import { xCheck } from './xCheck';
 
 export interface XSamplingOptions {
-
   /**
    * number of points to sample within the array
    * @default 10

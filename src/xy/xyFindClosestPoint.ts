@@ -9,7 +9,6 @@ import { xFindClosestIndex } from '../x';
  * @returns - closest point
  */
 export function xyFindClosestPoint(
-
   /** points */
   data: DataXY,
   target: number,

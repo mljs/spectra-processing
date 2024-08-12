@@ -3,7 +3,6 @@ import { DoubleMatrix } from '../types';
 import { matrixCreateEmpty } from './matrixCreateEmpty';
 
 export interface MatrixZRescalePerColumnOptions {
-
   /**
    * min
    * @default 0

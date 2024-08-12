@@ -1,7 +1,6 @@
 import { NumberArray } from 'cheminfo-types';
 
 interface XMassCenterVectorSimilarityOptions {
-
   /**
    * Function that based on the difference between the two values, return a similarity score between 0 and 1
    * @default (a, b) => (a === b ? 1 : 0)

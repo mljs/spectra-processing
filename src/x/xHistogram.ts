@@ -8,7 +8,6 @@ import { xMaxValue } from './xMaxValue';
 import { xMinValue } from './xMinValue';
 
 export interface XHistogramOptions {
-
   /**
    * Center the X value. We will enlarge the first and
    * @default true

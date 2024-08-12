@@ -3,7 +3,6 @@
 import { NumberArray, OneLowerCase } from 'cheminfo-types';
 
 export interface XApplyFunctionStrOptions {
-
   /**
    * @default '''
    * The function to apply on the array as a string

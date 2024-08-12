@@ -8,7 +8,6 @@ import equallySpacedSmooth from './utils/equallySpacedSmooth';
 import { xyCheck } from './xyCheck';
 
 export interface XYEquallySpacedOptions {
-
   /**
    * from
    * @default x[0]

@@ -4,7 +4,6 @@ import { xCheck } from './xCheck';
 import { xEnsureFloat64 } from './xEnsureFloat64';
 
 export interface XPaddingOptions {
-
   /**
    * padding size before first element and after last element
    * @default 0

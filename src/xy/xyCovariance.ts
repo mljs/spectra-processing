@@ -3,7 +3,6 @@ import { DataXY } from 'cheminfo-types';
 import { xMean } from '../x';
 
 export interface XYCovarianceOptions {
-
   /**
    * if true, divide by (n-1); if false, divide by n
    * @default true

@@ -3,7 +3,6 @@ import { NumberArray } from 'cheminfo-types';
 import { xFindClosestIndex } from './xFindClosestIndex';
 
 export interface XGetFromToIndexOptions {
-
   /**
    * First point for xyIntegration
    * @default 0

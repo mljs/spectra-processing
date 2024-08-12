@@ -3,7 +3,6 @@ import { FromTo } from 'cheminfo-types';
 import { zonesNormalize } from './zonesNormalize';
 
 export interface ZonesWithPointsOptions {
-
   /**
    * specify min value of zones
    * @default Number.NEGATIVE_INFINITY

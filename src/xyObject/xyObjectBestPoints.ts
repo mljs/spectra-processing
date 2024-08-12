@@ -4,7 +4,6 @@ import { xyObjectMaxXPoint } from './xyObjectMaxXPoint';
 import { xyObjectMinXPoint } from './xyObjectMinXPoint';
 
 export interface XYObjectBestPointsOptions {
-
   /**
    * min X value of the window to consider
    */

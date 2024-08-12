@@ -8,7 +8,6 @@
  * @returns Array of y's equally spaced with the variant "slot"
  */
 export default function equallySpacedSlot(
-
   /** x coordinates */
   x: number[],
 

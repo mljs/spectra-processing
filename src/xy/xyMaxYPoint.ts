@@ -6,7 +6,6 @@ import { xGetFromToIndex } from '../x';
 import { xyCheck } from './xyCheck';
 
 export interface XYMaxYPointOptions {
-
   /**
    * First value for xyMaxYPoint in the X scale
    */

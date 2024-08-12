@@ -14,7 +14,6 @@ interface InternalZone {
 }
 
 export interface XYReduceOptions {
-
   /**
    * @default x[0]
    */
