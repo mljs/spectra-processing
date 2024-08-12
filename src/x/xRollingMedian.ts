@@ -5,7 +5,6 @@ import { xRolling, XRollingOptions } from './xRolling';
 
 /**
  * This function calculates a rolling average
- *
  * @param array - array
  * @param options - options
  */

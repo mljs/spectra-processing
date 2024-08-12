@@ -18,7 +18,6 @@ export interface Slot {
 
 /**
  * GetSlots.
- *
  * @param data - data.
  * @param options - Options.
  */
@@ -30,7 +29,7 @@ export function getSlots(
   const deltaIsFunction = typeof delta === 'function';
 
   const possibleXs = Float64Array.from(
-    data.map((spectrum) => spectrum.x as number[]).flat(),
+    data.flatMap((spectrum) => spectrum.x as number[]),
   ).sort();
 
   if (possibleXs.length === 0) {

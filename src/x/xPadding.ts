@@ -9,6 +9,7 @@ export interface XPaddingOptions {
    * @default 0
    */
   size?: number;
+
   /**
    * value to use for padding (if algorithm='value')
    * @default 0
@@ -29,7 +30,6 @@ export function xPadding(
 ): Float64Array {
   const { size = 0, value = 0, algorithm } = options;
   xCheck(array);
-
   if (!algorithm) {
     return xEnsureFloat64(array);
   }
@@ -57,7 +57,7 @@ export function xPadding(
         result[i] = array[0];
       }
       for (let i = fromEnd; i < toEnd; i++) {
-        result[i] = array[array.length - 1];
+        result[i] = array.at(-1) as number;
       }
       break;
     case 'circular':

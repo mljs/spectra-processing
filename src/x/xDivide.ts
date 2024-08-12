@@ -10,7 +10,6 @@ export interface XDivideOptions<ArrayType extends NumberArray = Float64Array> {
 
 /**
  * This function divide the first array by the second array or a constant value to each element of the first array
- *
  * @param array1 - first array
  * @param array2 - second array or number
  * @param options - options

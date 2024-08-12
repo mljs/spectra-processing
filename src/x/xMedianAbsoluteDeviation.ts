@@ -7,6 +7,7 @@ export interface XMedianAbsoluteDeviationResult {
    * Median of the data
    */
   median: number;
+
   /**
    * Median absolute devication
    */

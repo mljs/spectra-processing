@@ -9,7 +9,6 @@ import { xyCheck } from './xyCheck';
  * Finds all the min values
  * If the values are equal the middle
  * of the equal part will be the position of the signal!
- *
  * @param data - Object that contains property X (an ordered increasing array) and y (an arraY)
  * @param options - Object with from and to properties
  * @returns - Array of points.

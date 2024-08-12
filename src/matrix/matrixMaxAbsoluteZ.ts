@@ -2,7 +2,6 @@ import { NumberArray } from 'cheminfo-types';
 
 /**
  * Returns the max absolute values of Z.
- *
  * @param matrix - matrix [rows][cols].
  */
 export function matrixMaxAbsoluteZ(matrix: NumberArray[]): number {

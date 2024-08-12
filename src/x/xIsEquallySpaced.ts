@@ -10,7 +10,6 @@ export interface XIsEquallySpacedOptions {
 
 /**
  * Check if the values are separated always by the same difference
- *
  * @param array - Monotone growing array of number
  * @param options
  */

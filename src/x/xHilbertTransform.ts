@@ -72,6 +72,7 @@ function hilbertTransformWithFFT(array: NumberArray): Float64Array {
  * Performs the discrete Hilbert transform
  * @param array - Array containing values
  * @param options
+ * @param options.inClockwise
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  */
 function hilbertTransform(

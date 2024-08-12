@@ -14,7 +14,6 @@ export interface XYArrayWeightedMergeOptions {
  * Merge DataXY
  * We have an array of DataXY and the goal is to merge all the values for which the deltaX is small or equal to delta.
  * X values are weighted average
- *
  * @param data - data
  * @param options - Options
  */
@@ -70,7 +69,6 @@ export function xyArrayWeightedMerge(
 
 /**
  * NextValue.
- *
  * @param data - data.
  * @param positions - Positions array.
  * @param point - Point.

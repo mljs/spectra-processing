@@ -13,7 +13,6 @@ export interface XYJoinXOptions {
 /**
  * Join x / y values when difference in X is closer than delta.
  * When joining, y values are summed and x values are weighted average
- *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - Options
  * @returns - An object with the xyIntegration function

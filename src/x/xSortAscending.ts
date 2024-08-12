@@ -3,7 +3,6 @@ import { NumberArray } from 'cheminfo-types';
 /**
  * Function that sorts arrays or Float64Arrays in ascending order in place !
  * This method is optimized for typed arrays.
- *
  * @param array - array to sort
  * @returns sorted array
  */

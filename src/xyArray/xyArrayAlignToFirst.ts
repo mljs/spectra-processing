@@ -14,9 +14,8 @@ export interface XYArrayAlignToFirstOptions {
  * We align all the data/spectra to the first array of X.
  * The alignment is based on the X values of the first spectrum and the `delta` error allowed.
  * If some x values are missing in the first spectrum we will add them
- *
- * @param data data
- * @param options options
+ * @param data - data
+ * @param options - options
  */
 export function xyArrayAlignToFirst(
   data: DataXY[],

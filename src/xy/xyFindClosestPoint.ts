@@ -4,7 +4,6 @@ import { xFindClosestIndex } from '../x';
 
 /**
  * Finds the closest point
- *
  * @param data - x array should be sorted and ascending
  * @param target - target to search
  * @returns - closest point

@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import { DataXY, DoubleArray, FromTo, NumberArray } from 'cheminfo-types';
 
 import { xFindClosestIndex } from '../x';
@@ -19,24 +18,28 @@ export interface XYReduceOptions {
    * @default x[0]
    */
   from?: number;
+
   /**
    * @default x[x.length-1]
    */
   to?: number;
+
   /**
    * Number of points
    * @default 4001
-   * */
+   */
   nbPoints?: number;
+
   /**
    * If optimize we may have less than nbPoints at the end. It should not have visible effects
    * @default false
-   * */
+   */
   optimize?: boolean;
+
   /**
    * Array of zones to keep (from/to object)
    * @default []
-   * */
+   */
   zones?: FromTo[];
 }
 
@@ -47,7 +50,6 @@ export interface XYReduceOptions {
  *
  * SHOULD NOT BE USED FOR DATA PROCESSING !!!
  * You should rather use ml-xy-equally-spaced to make further processing
- *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - options
  */
@@ -56,10 +58,16 @@ export function xyReduce(
   options: XYReduceOptions = {},
 ): DataXY<DoubleArray> {
   xyCheck(data);
+  if (data.x.length < 2) {
+    return {
+      x: Float64Array.from(data.x),
+      y: Float64Array.from(data.y),
+    };
+  }
   const { x, y } = data;
   const {
     from = x[0],
-    to = x[x.length - 1],
+    to = x.at(-1) as number,
     nbPoints = 4001,
     optimize = false,
   } = options;
@@ -96,7 +104,7 @@ export function xyReduce(
     zone.nbPoints = Math.round((zone.nbPoints as number) * ratio);
     currentTotal += zone.nbPoints;
   }
-  internalZones[internalZones.length - 1].nbPoints = nbPoints - currentTotal;
+  (internalZones.at(-1) as InternalZone).nbPoints = nbPoints - currentTotal;
 
   const newX: number[] = [];
   const newY: number[] = [];
@@ -112,7 +120,6 @@ export function xyReduce(
 
   /**
    * AppendFromTo.
-   *
    * @param fromIndex - From.
    * @param  toIndex - To.
    * @param zoneNbPoints - NbPoints.

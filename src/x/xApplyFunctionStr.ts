@@ -8,6 +8,7 @@ export interface XApplyFunctionStrOptions {
    * The function to apply on the array as a string
    */
   fctString?: string;
+
   /**
    * The variable to use in the fctString (one lower case letter)
    * @default 'x'
@@ -32,11 +33,11 @@ export function xApplyFunctionStr(
   const fct = new Function(
     variableLabel,
     `return Number(${fctString
-      .replace(
+      .replaceAll(
         /(?<before>^|\W)(?<after>[\da-z]{2,}\()/g,
         '$<before>Math.$<after>',
       )
-      .replace(/Math\.Math/g, 'Math')})`,
+      .replaceAll('Math.Math', 'Math')})`,
   );
   const toReturn = Float64Array.from(array);
   for (let i = 0; i < array.length; i++) {

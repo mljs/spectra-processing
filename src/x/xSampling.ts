@@ -5,7 +5,8 @@ import { xCheck } from './xCheck';
 export interface XSamplingOptions {
   /**
    * number of points to sample within the array
-   * @default 10 */
+   * @default 10
+   */
   length?: number;
 }
 
@@ -13,7 +14,7 @@ export interface XSamplingOptions {
  * Sample within the array
  * @param array - array from which to sample
  * @param options - options
- * @return - array with evenly spaced elements
+ * @returns - array with evenly spaced elements
  * @link https://en.wikipedia.org/wiki/Sampling_(signal_processing)
  */
 export function xSampling(
@@ -35,7 +36,7 @@ export function xSampling(
  * Downsample within the array
  * @param array - array from which to sample
  * @param length
- * @return - array with evenly spaced elements
+ * @returns - array with evenly spaced elements
  * @link https://en.wikipedia.org/wiki/Downsampling_(signal_processing)
  */
 function downSampling(array: NumberArray, length: number): Float64Array {

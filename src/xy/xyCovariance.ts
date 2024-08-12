@@ -3,7 +3,8 @@ import { DataXY } from 'cheminfo-types';
 import { xMean } from '../x';
 
 export interface XYCovarianceOptions {
-  /** if true, divide by (n-1); if false, divide by n
+  /**
+   * if true, divide by (n-1); if false, divide by n
    * @default true
    */
   unbiased?: boolean;
@@ -11,10 +12,9 @@ export interface XYCovarianceOptions {
 
 /**
  * Finds the covariance of the points.
- *
  * @param data
  * @param options
- * @return the covariance
+ * @returns the covariance
  */
 export function xyCovariance(
   data: DataXY,

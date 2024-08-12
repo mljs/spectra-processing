@@ -12,7 +12,6 @@ export interface XMultiplyOptions<
 
 /**
  * This function xMultiply the first array by the second array or a constant value to each element of the first array
- *
  * @param array1 - first array
  * @param array2 - second array
  * @param options - options

@@ -1,4 +1,4 @@
-import { Point } from '../types';
+import { Point, PointWithClose } from '../types';
 
 import { xyObjectMaxXPoint } from './xyObjectMaxXPoint';
 import { xyObjectMinXPoint } from './xyObjectMinXPoint';
@@ -8,28 +8,34 @@ export interface XYObjectBestPointsOptions {
    * min X value of the window to consider
    */
   from?: number;
+
   /**
    * max X value of the window to consider
    */
   to?: number;
+
   /**
    * max number of points
    * @default 20
-   * */
+   */
   limit?: number;
+
   /**
    * minimal intensity compare to more intense
    * @default 0.01
-   * */
+   */
   threshold?: number;
+
   /**
    * number of slots
-   * @default 50 */
+   * @default 50
+   */
   numberCloseSlots?: number;
+
   /**
    * define the number of slots and indirectly the slot width
    * @default 10
-   * */
+   */
   numberSlots?: number;
 }
 
@@ -37,7 +43,6 @@ export interface XYObjectBestPointsOptions {
  * Filter the array by taking the higher points (max y value) and only.
  * Keep one per slot. There are 2 different slots, the smallest one will have the
  * new property `close` to true
- *
  * @param points - array of all the points
  * @param options - Options
  * @returns - copy of points with 'close' property
@@ -71,7 +76,7 @@ export function xyObjectBestPoints(
     return b.point.y - a.point.y;
   });
 
-  const toReturn: Point[] = [];
+  const toReturn: PointWithClose[] = [];
   if (selected.length === 0) return [];
   const minY = selected[0].point.y * threshold;
   peakLoop: for (const item of selected) {
@@ -91,8 +96,7 @@ export function xyObjectBestPoints(
         close = true;
       }
     }
-    const newPeak = JSON.parse(JSON.stringify(item.point));
-    newPeak.close = close;
+    const newPeak = { ...item.point, close };
     toReturn.push(newPeak);
     if (toReturn.length === limit) break;
   }

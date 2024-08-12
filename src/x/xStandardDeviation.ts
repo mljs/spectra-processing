@@ -2,8 +2,8 @@ import { NumberArray } from 'cheminfo-types';
 
 import { xVariance, XVarianceOptions } from './xVariance';
 
-/** Finds the standard deviation for the data at hand
- *
+/**
+ * Finds the standard deviation for the data at hand
  * @param values - values in the data
  * @param options - options
  * @returns standard deviation

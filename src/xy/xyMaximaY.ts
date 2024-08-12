@@ -9,7 +9,6 @@ import { xyCheck } from './xyCheck';
  * Finds all the max values
  * If the values are equal the middle
  * of the equal part will be the position of the signal!
- *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - Object with from and to properties
  * @returns - Array of points

@@ -8,7 +8,6 @@ export interface XCheckOptions {
 
 /**
  * Checks if input is of type array.
- *
  * @param input - input
  * @param options
  */

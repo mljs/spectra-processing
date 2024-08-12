@@ -4,7 +4,6 @@ import { matrixCreateEmpty } from './matrixCreateEmpty';
 
 /**
  * Center mean of matrix columns.
- *
  * @param matrix - matrix [rows][cols]
  */
 export function matrixCenterZMean(matrix: DoubleMatrix): Float64Array[] {

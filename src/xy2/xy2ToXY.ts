@@ -2,7 +2,6 @@ import { DataXY } from 'cheminfo-types';
 
 /**
  * Convert an array of XY arrays to a DataXY object containing x,y arrays
- *
  * @param data - array of arrays [[x,y],[x,y],...]
  */
 export function xy2ToXY(data: Array<[number, number]>): DataXY<number[]> {

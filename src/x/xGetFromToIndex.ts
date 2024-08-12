@@ -6,26 +6,28 @@ export interface XGetFromToIndexOptions {
   /**
    * First point for xyIntegration
    * @default 0
-   * */
+   */
   fromIndex?: number;
+
   /**
    * Last point for xyIntegration
    * @default x.length-1
-   * */
+   */
   toIndex?: number;
+
   /**
    * First value for xyIntegration in the X scale
-   * */
+   */
   from?: number;
+
   /**
    * Last value for xyIntegration in the X scale
-   * */
+   */
   to?: number;
 }
 
 /**
  * Returns an object with {fromIndex, toIndex} for a specific from / to
- *
  * @param x - array of numbers
  * @param options - Options
  */
@@ -36,15 +38,15 @@ export function xGetFromToIndex(
   let { fromIndex, toIndex } = options;
   const { from, to } = options;
 
-  if (typeof fromIndex === 'undefined') {
-    if (typeof from !== 'undefined') {
+  if (fromIndex === undefined) {
+    if (from !== undefined) {
       fromIndex = xFindClosestIndex(x, from);
     } else {
       fromIndex = 0;
     }
   }
-  if (typeof toIndex === 'undefined') {
-    if (typeof to !== 'undefined') {
+  if (toIndex === undefined) {
+    if (to !== undefined) {
       toIndex = xFindClosestIndex(x, to);
     } else {
       toIndex = x.length - 1;

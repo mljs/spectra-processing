@@ -7,18 +7,18 @@ export interface XYUniqueXOptions {
   /**
    * either 'average' or 'sum'
    * @default 'average'
-   * */
+   */
   algorithm?: 'average' | 'sum';
+
   /**
    * if false the DataXY has to be sorted first
    *  @default true
-   * */
+   */
   isSorted?: boolean;
 }
 
 /**
  * Ensure x values are unique
- *
  * @param data - Object that contains property x (Array) and y (Array)
  * @param options - Object containing a property algorithm (can be 'sum' or 'average', the latter being the default value), and a property isSorted (boolean indicating if the x-array is sorted).
  */
@@ -27,6 +27,10 @@ export function xyUniqueX(
   options: XYUniqueXOptions = {},
 ): DataXY<number[]> {
   xyCheck(data);
+
+  if (data.x.length === 0) {
+    return { x: [], y: [] };
+  }
 
   const { algorithm = 'average', isSorted = true } = options;
 
@@ -46,7 +50,6 @@ export function xyUniqueX(
 
 /**
  * Average.
- *
  * @param data - Input.
  * @returns Result.
  */
@@ -65,14 +68,13 @@ function average(data: DataXY): DataXY<number[]> {
     cumulativeY += data.y[i];
     divider++;
   }
-  x.push(data.x[data.x.length - 1]);
+  x.push(data.x.at(-1) as number);
   y.push(cumulativeY / divider);
   return { x, y };
 }
 
 /**
  * Sum.
- *
  * @param data - Input.
  * @returns Result.
  */
@@ -88,7 +90,7 @@ function sum(data: DataXY): DataXY<number[]> {
     }
     cumulativeY += data.y[i];
   }
-  x.push(data.x[data.x.length - 1]);
+  x.push(data.x.at(-1) as number);
   y.push(cumulativeY);
   return { x, y };
 }

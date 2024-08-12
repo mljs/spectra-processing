@@ -10,16 +10,19 @@ export interface XYMaxYPointOptions {
    * First value for xyMaxYPoint in the X scale
    */
   from?: number;
+
   /**
    * First point for xyMaxYPoint
    * @default 0
-   * */
+   */
   fromIndex?: number;
+
   /**
    *  Last point for xyMaxYPoint
    * @default x.length-1
-   * */
+   */
   toIndex?: number;
+
   /**
    * Last value for xyMaxYPoint in the X scale
    */
@@ -28,9 +31,8 @@ export interface XYMaxYPointOptions {
 
 /**
  * Finds the max y value in a range and return a {x,y} point
- *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
- * @param options Options
+ * @param options - Options
  */
 export function xyMaxYPoint(
   data: DataXY,

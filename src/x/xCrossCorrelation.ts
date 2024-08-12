@@ -6,18 +6,18 @@ export interface XCrossCorrelationOptions {
   /**
    * sweep increment size (in number of points, min=1, max=A.length)
    * @default 1
-   * */
+   */
   tau?: number;
+
   /**
    * scalar lag parameter
    * @default A.length-1
-   * */
+   */
   lag?: number;
 }
 
 /**
  * Calculates the cross-correlation between 2 arrays
- *
  * @param A - fixed array
  * @param B - sweeping array
  * @param options - Options

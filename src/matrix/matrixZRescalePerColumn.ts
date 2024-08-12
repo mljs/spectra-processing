@@ -6,18 +6,18 @@ export interface MatrixZRescalePerColumnOptions {
   /**
    * min
    * @default 0
-   * */
+   */
   min?: number;
+
   /**
    * max
    * @default 1
-   * */
+   */
   max?: number;
 }
 
 /**
  * Rescale the matrix per column for which we get the min and max values.
- *
  * @param matrix - matrix [rows][cols].
  * @param options - Options.
  */

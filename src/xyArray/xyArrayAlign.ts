@@ -10,6 +10,7 @@ export interface XYArrayAlignOptions {
    * @default 1
    */
   delta?: ((arg: number) => number) | number;
+
   /**
    * If true, the y values must be present everywhere
    * @default false
@@ -19,7 +20,6 @@ export interface XYArrayAlignOptions {
 
 /**
  * Aligns data, can be used for spectra
- *
  * @param data - data
  * @param options - Options
  */

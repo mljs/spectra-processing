@@ -3,7 +3,6 @@ import { isAnyArray } from 'is-any-array';
 
 /**
  * Calculates the median of an array.
- *
  * @param input - Array containing values
  * @returns - median
  */

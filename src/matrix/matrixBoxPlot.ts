@@ -1,3 +1,5 @@
+import { DoubleArray } from 'cheminfo-types';
+
 import { DoubleMatrix } from '../types';
 
 export interface MatrixBoxPlot {
@@ -22,7 +24,7 @@ export function matrixBoxPlot(matrix: DoubleMatrix): MatrixBoxPlot {
     median: new Float64Array(nbColumns),
     q3: new Float64Array(nbColumns),
     min: Float64Array.from(matrix[0]),
-    max: Float64Array.from(matrix[matrix.length - 1]),
+    max: Float64Array.from(matrix.at(-1) as DoubleArray),
   };
 
   const columnArray = new Float64Array(matrix.length);

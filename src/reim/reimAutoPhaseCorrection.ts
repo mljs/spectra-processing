@@ -12,21 +12,25 @@ export interface AutoPhaseCorrectionOptions {
    * @default true
    */
   magnitudeMode?: boolean;
+
   /**
    * min number of points to auto phase a region
    * @default 30
    */
   minRegSize?: number;
+
   /**
    * max distance between regions (in number of points) to join two regions
    * @default 256
    */
   maxDistanceToJoin?: number;
+
   /**
    * scale the cutoff like factorStd * noiseLevel
    * @default 3
    */
   factorNoise?: number;
+
   /**
    * Apply the phase correction from the last element of the array
    * @default false
@@ -37,7 +41,6 @@ export interface AutoPhaseCorrectionOptions {
 /**
  * Implementation of the algorithm for automatic phase correction: A robust, general automatic phase
  * correction algorithm for high-resolution NMR data. 10.1002/mrc.4586
- *
  * @param data - complex spectrum
  * @param options - options
  */
@@ -151,7 +154,6 @@ interface AutoPhaseRegionResult {
 
 /**
  * AutoPhaseRegion.
- *
  * @param re - Array of Number.
  * @param im - Array of Number.
  * @param x0 - Number.
@@ -197,7 +199,6 @@ function autoPhaseRegion(
 
 /**
  * Holoborodko.
- *
  * @param s - Array of float.
  * @returns Array of float.
  */
@@ -224,7 +225,6 @@ function holoborodko(s: DoubleArray): Float64Array {
 
 /**
  * RobustBaseLineRegionsDetection.
- *
  * @param s
  * @param options
  * @param options.magnitudeMode
@@ -281,7 +281,6 @@ function robustBaseLineRegionsDetection(
 
 /**
  * WeightedLinearRegression.
- *
  * @param x
  * @param y
  * @param w

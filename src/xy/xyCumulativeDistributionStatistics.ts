@@ -17,19 +17,16 @@ export interface XYCumulativeDistributionStatisticsResult {
   xMean: number;
 }
 
-/** Cumulative Distribution Statistics
- *
+/**
+ * Cumulative Distribution Statistics
  * @param data - array of points {x,y}
  * @returns x0, x25, x50, x75, x100, xMode, xMean (x for maxY)
  */
 export function xyCumulativeDistributionStatistics(
   data: DataXY,
 ): XYCumulativeDistributionStatisticsResult {
-  xyCheck(data);
+  xyCheck(data, { minLength: 1 });
   const { x, y } = data;
-  if (x.length === 0) {
-    throw new Error('array length must be greater than 0');
-  }
   const cumulativeSum = xCumulative(y);
   const maxY = xMaxValue(cumulativeSum);
   for (let i = 0; i < cumulativeSum.length; i++) {
@@ -48,7 +45,7 @@ export function xyCumulativeDistributionStatistics(
 
   // need to find the x values closest to STEPS/100
   result.x0 = x[0];
-  result.x100 = x[x.length - 1];
+  result.x100 = x.at(-1) as number;
 
   let currentStep = 0;
   breakPoint: for (let i = 1; i < cumulativeSum.length; i++) {

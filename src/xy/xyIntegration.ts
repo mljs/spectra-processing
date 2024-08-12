@@ -9,16 +9,19 @@ export interface XYIntegrationOptions {
    * First value for xyIntegration in the X scale
    */
   from?: number;
+
   /**
    * First point for xyIntegration
    * @default 0
-   * */
+   */
   fromIndex?: number;
+
   /**
    *  Last point for xyIntegration
    * @default x.length-1
-   * */
+   */
   toIndex?: number;
+
   /**
    * Last value for xyIntegration in the X scale
    */
@@ -27,7 +30,6 @@ export interface XYIntegrationOptions {
 
 /**
  * Calculate integration
- *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - Options
  * @returns - xyIntegration value on the specified range

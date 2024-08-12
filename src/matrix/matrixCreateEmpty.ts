@@ -12,16 +12,19 @@ export interface MatrixCreateEmptyOptions<
    * Matrix from which to extract nbRows and nbColumns
    */
   matrix?: DoubleMatrix;
+
   /**
    * Matrix from which to extract nbRows and nbColumns
    * @default matrix.length || 1
    */
   nbRows?: number;
+
   /**
    * Matrix from which to extract nbRows and nbColumns
    * @default matrix[0].length || 1
    */
   nbColumns?: number;
+
   /**
    * Allows to specify the type of array to use
    * @default Float64Array
@@ -31,6 +34,7 @@ export interface MatrixCreateEmptyOptions<
 
 /**
  * Create a new matrix based on the size of the current one or by using specific dimensions.
+ * @param options
  */
 export function matrixCreateEmpty<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,

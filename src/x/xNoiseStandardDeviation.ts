@@ -7,10 +7,12 @@ export interface XNoiseStandardDeviationResult {
    * Median of the data
    */
   median: number;
+
   /**
    * Median absolute deviation
    */
   mad: number;
+
   /**
    * standard deviation of the noise
    */

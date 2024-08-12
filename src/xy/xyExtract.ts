@@ -10,7 +10,6 @@ export interface XYExtractOptions {
 
 /**
  * Extract zones from a XY data.
- *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - options
  * @returns - Array of points
@@ -26,8 +25,8 @@ export function xyExtract(
   zones = zonesNormalize(zones);
 
   if (
-    typeof x === 'undefined' ||
-    typeof y === 'undefined' ||
+    x === undefined ||
+    y === undefined ||
     !Array.isArray(zones) ||
     zones.length === 0
   ) {

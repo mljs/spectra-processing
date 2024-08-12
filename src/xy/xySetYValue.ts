@@ -6,13 +6,13 @@ import { xyCheck } from './xyCheck';
 
 export interface XYSetYValueOptions {
   zones?: FromTo[];
+
   /** data contains x and y values */
   value?: number;
 }
 
 /**
  * Set a value (default 0) to specific zones.
- *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - options
  * @returns - Array of points

@@ -6,14 +6,18 @@ import { xMaxValue } from './xMaxValue';
 import { xSum } from './xSum';
 
 export interface XNormedOptions<ArrayType extends NumberArray = Float64Array> {
-  /** algorithm can be 'sum' 'max' or 'absolute'
+  /**
+   * algorithm can be 'sum' 'max' or 'absolute'
    * @default 'absolute'
    */
   algorithm?: 'absolute' | 'max' | 'sum';
-  /** max or sum value
+
+  /**
+   * max or sum value
    * @default 1
    */
   value?: number;
+
   /** output into which the result should be placed if needed */
   output?: ArrayType;
 }

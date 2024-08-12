@@ -6,6 +6,7 @@ interface XMassCenterVectorSimilarityOptions {
    * @default (a, b) => (a === b ? 1 : 0)
    */
   similarityFct?: (a: number, b: number) => number;
+
   /**
    * Should we recenter the tree ?
    * @default: true

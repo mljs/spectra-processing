@@ -4,13 +4,12 @@ export interface XYObjectSlotXOptions {
   /**
    * Limit to join the dataPoints[].
    * @default 1
-   * */
+   */
   slotWidth?: number;
 }
 
 /**
  * xyObjectSlotX
- *
  * @param points - Array of growing points {x,y}.
  * @param options - Options.
  */

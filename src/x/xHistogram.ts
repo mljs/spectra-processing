@@ -11,45 +11,51 @@ export interface XHistogramOptions {
   /**
    * Center the X value. We will enlarge the first and
    * @default true
-   * */
+   */
   centerX?: boolean;
+
   /**
    * Previously existing histogram to continue to fill
    * @default {x:[],y:[]}
-   * */
+   */
   histogram?: DataXY;
+
   /**
    * Number of slots
    * @default 256
-   * */
+   */
   nbSlots?: number;
+
   /**
    * We can first apply a log on x axis
-   * */
+   */
   logBaseX?: number;
+
   /**
    * We can apply a log on the resulting histogram
    */
   logBaseY?: number;
+
   /**
    * Take the absolute value
    */
   absolute?: boolean;
+
   /**
    * Maximal value to calculate used to calculate slot size
    * @default maxValue
-   * */
+   */
   max?: number;
+
   /**
    * Minimum value to calculate used to calculate slot size
    * @default minValue
-   * */
+   */
   min?: number;
 }
 
 /**
  * Calculates a histogram of defined number of slots
- *
  * @param array - Array containing values
  * @param options - options
  * @returns - result of the histogram
@@ -62,7 +68,7 @@ export function xHistogram(
   const histogram = options.histogram;
   const {
     centerX = true,
-    nbSlots = typeof histogram === 'undefined' ? 256 : histogram.x.length,
+    nbSlots = histogram === undefined ? 256 : histogram.x.length,
     logBaseX,
     logBaseY,
     absolute = false,
@@ -81,10 +87,9 @@ export function xHistogram(
 
   const { min = xMinValue(array), max = xMaxValue(array) } = options;
   const slotSize = (max - min) / (nbSlots + Number.EPSILON);
-  const y =
-    typeof histogram === 'undefined' ? new Float64Array(nbSlots) : histogram.y;
+  const y = histogram === undefined ? new Float64Array(nbSlots) : histogram.y;
   const x =
-    typeof histogram === 'undefined'
+    histogram === undefined
       ? Array.from(
           createFromToArray({
             from: min + (centerX ? slotSize / 2 : 0),

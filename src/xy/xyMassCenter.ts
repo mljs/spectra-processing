@@ -6,7 +6,6 @@ import { xyCheck } from '.';
 
 /**
  * Computes the weighted mean value of an array of values.
- *
  * @param data - array of DataXY
  * @param options - options
  */

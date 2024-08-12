@@ -3,7 +3,6 @@ import { NumberArray } from 'cheminfo-types';
 /**
  * Calculates the correlation between 2 vectors
  * https://en.wikipedia.org/wiki/Correlation_and_dependence
- *
  * @param A - first array
  * @param B - sencond array
  */

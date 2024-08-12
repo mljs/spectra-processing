@@ -4,13 +4,12 @@ export interface XYObjectJoinXOptions {
   /**
    * Limit to join the data.
    * @default Number.EPSILON
-   * */
+   */
   xError?: number;
 }
 
 /**
  * xyObjectJoinX.
- *
  * @param points - Array of growing points {x,y}.
  * @param options - Options.
  */

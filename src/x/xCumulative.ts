@@ -3,7 +3,6 @@ import { isAnyArray } from 'is-any-array';
 
 /**
  * Calculate an array of the same size that is the cumulative values
- *
  * @param array - initial array
  */
 export function xCumulative(array: NumberArray): Float64Array {

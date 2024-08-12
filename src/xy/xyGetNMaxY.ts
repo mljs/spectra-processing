@@ -4,7 +4,6 @@ import { xyCheck } from './xyCheck';
 
 /**
  * Returns the numberMaxPoints points with the bigger y.
- *
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param numberMaxPoints - Number of points to keep
  * @returns - The points filtered to keep the `numberMaxPoints` most intense points of the input.

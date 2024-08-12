@@ -5,7 +5,6 @@ import { xRolling, XRollingOptions } from './xRolling';
 
 /**
  * This function calculates a minimum within a rolling window
- *
  * @param array - array
  * @param options - options
  */

@@ -4,7 +4,6 @@ import { xCheck } from './xCheck';
 
 /**
  * Returns a copy of the data as a Float64Array.
- *
  * @param array - array of numbers
  */
 export function xEnsureFloat64(array: NumberArray): Float64Array {

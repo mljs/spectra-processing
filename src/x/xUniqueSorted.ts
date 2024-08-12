@@ -2,7 +2,6 @@ import { NumberArray } from 'cheminfo-types';
 
 /**
  * XUniqueSorted.
- *
  * @param array - array of numbers
  * @returns - sorted array
  */

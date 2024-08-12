@@ -1,5 +1,3 @@
-/* eslint-disable max-lines-per-function */
-
 import { DataXY, FromTo, NumberArray } from 'cheminfo-types';
 // @ts-expect-error Missing types.
 import SplineInterpolator from 'spline-interpolator';
@@ -8,37 +6,44 @@ import { createFromToArray } from '../utils';
 
 import erfcinv from './utils/erfcinv';
 import rayleighCdf from './utils/rayleighCdf';
+import { xCheck } from './xCheck';
 
 export interface XNoiseSanPlotOptions {
   /**
    * boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
    */
   mask?: NumberArray;
+
   /**
    * percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
    */
   cutOff?: number;
+
   /**
    * true the noise level will be recalculated get out the signals using factorStd.
    * @default true
    */
   refine?: boolean;
   magnitudeMode?: boolean;
+
   /**
    * factor to scale the data input[i]*=scaleFactor.
    * @default 1
    */
   scaleFactor?: number;
+
   /**
    * factor times std to determine what will be marked as signals.
    * @default 5
    */
   factorStd?: number;
+
   /**
    * If the baseline is correct, the midpoint of distribution should be zero. if true, the distribution will be centered.
    * @default true
    */
   fixOffset?: boolean;
+
   /**
    * log scale to apply in the intensity axis in order to avoid big numbers.
    * @default 2
@@ -58,7 +63,6 @@ export interface XNoiseSanPlotResult {
 
 /**
  * Determine noise level by san plot methodology (https://doi.org/10.1002/mrc.4882)
- *
  * @param array - real or magnitude spectra data.
  * @param options - options
  * @returns noise level
@@ -84,6 +88,8 @@ export function xNoiseSanPlot(
     input = new Float64Array(array);
   }
 
+  xCheck(input);
+
   if (scaleFactor > 1) {
     for (let i = 0; i < input.length; i++) {
       input[i] *= scaleFactor;
@@ -100,7 +106,9 @@ export function xNoiseSanPlot(
   }
 
   const firstNegativeValueIndex =
-    input[input.length - 1] >= 0 ? input.length : input.findIndex((e) => e < 0);
+    (input.at(-1) as number) >= 0
+      ? input.length
+      : input.findIndex((e) => e < 0);
   let lastPositiveValueIndex = firstNegativeValueIndex - 1;
   for (let i = lastPositiveValueIndex; i >= 0; i--) {
     if (input[i] > 0) {
@@ -199,7 +207,6 @@ export function xNoiseSanPlot(
 
 /**
  * DetermineCutOff.
- *
  * @param signPositive - Array of numbers.
  * @param [options = {}] - Options.
  * @param [options.mask] - Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
@@ -278,31 +285,37 @@ interface SimpleNormInvOptions {
    * Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
    */
   mask?: NumberArray;
+
   /**
    * Percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
    */
   cutOff?: number;
+
   /**
    * If true the noise level will be recalculated get out the signals using factorStd.
    * @default true
    */
   refine?: boolean;
   magnitudeMode?: boolean;
+
   /**
    * Factor to scale the data input[i]*=scaleFactor.
    * @default 1
    */
   scaleFactor?: number;
+
   /**
    * Factor times std to determine what will be marked as signals.
    * @default 5
    */
   factorStd?: number;
+
   /**
    * If the baseline is correct, the midpoint of distribution should be zero. If true, the distribution will be centered.
    * @default true
    */
   fixOffset?: boolean;
+
   /**
    * Log scale to apply in the intensity axis in order to avoid big numbers.
    * @default 2
@@ -321,7 +334,6 @@ function simpleNormInvNumber(
 
 /**
  * SimpleNormInvs.
- *
  * @param data - Data array.
  * @param options
  */
@@ -359,7 +371,6 @@ function simpleNormInv(
 
 /**
  * CreateArray.
- *
  * @param from - From.
  * @param to - To.
  * @param step - Step.
@@ -376,7 +387,6 @@ function createArray(from: number, to: number, step: number): number[] {
 
 /**
  * GenerateSanPlot.
- *
  * @param array - Array.
  * @param [options = {}] - Options.
  * @param [options.mask] - Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
@@ -430,7 +440,6 @@ function generateSanPlot(
 
 /**
  * Scale.
- *
  * @param array - Array.
  * @param [options = {}] - Options.
  * @param [options.mask] - Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.

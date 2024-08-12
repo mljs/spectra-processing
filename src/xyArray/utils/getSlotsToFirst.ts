@@ -18,7 +18,6 @@ export interface Slot {
 
 /**
  * GetSlotsToFirst.
- *
  * @param data - data.
  * @param options - Options.
  */
