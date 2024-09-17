@@ -12,11 +12,7 @@ export function xAbsoluteSum(
 
   let sum = 0;
   for (let i = fromIndex; i <= toIndex; i++) {
-    if (array[i] < 0) {
-      sum -= array[i];
-    } else {
-      sum += array[i];
-    }
+    sum += Math.abs(array[i]);
   }
 
   return sum;

@@ -15,8 +15,7 @@ export function matrixMaxAbsoluteZ(matrix: NumberArray[]): number {
 
   for (let column = 0; column < nbColumns; column++) {
     for (let row = 0; row < nbRows; row++) {
-      let value = matrix[row][column];
-      if (value < 0) value *= -1;
+      const value = Math.abs(matrix[row][column]);
       if (value > max) max = value;
     }
   }

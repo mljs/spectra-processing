@@ -12,7 +12,7 @@ export function matrixAbsoluteMedian(matrix: DoubleMatrix): number {
     const currentRow = row * nbColumns;
     for (let column = 0; column < nbColumns; column++) {
       const value = matrix[row][column];
-      flatten[currentRow + column] = value < 0 ? -value : value;
+      flatten[currentRow + column] = Math.abs(value);
     }
   }
   return xMedian(flatten);
