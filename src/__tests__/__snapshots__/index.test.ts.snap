@@ -14,6 +14,7 @@ exports[`test existence of exported functions 1`] = `
   "xApplyFunctionStr",
   "xAutoCorrelation",
   "xBoxPlot",
+  "xBoxPlotWithOutliers",
   "xCheck",
   "xCheckLengths",
   "xCorrelation",
