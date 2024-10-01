@@ -12,9 +12,11 @@ export interface XBoxPlotWithOutliers {
 }
 
 /**
- * Calculating the box plot of the array
+ * Calculating the box plot of the array with outliers
+ * Values are outliers if they are below Q1 - 1.5 * IQR or above Q3 + 1.5 * IQR
  * @param array - data
  * @param options
+ * @returns - q1, median, q3, min, max, outliers
  */
 export function xBoxPlotWithOutliers(
   array: NumberArray,
