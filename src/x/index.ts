@@ -6,6 +6,7 @@ export * from './xAdd';
 export * from './xApplyFunctionStr';
 export * from './xAutoCorrelation';
 export * from './xBoxPlot';
+export * from './xBoxPlotWithOutliers';
 export * from './xCheck';
 export * from './xCheckLengths';
 export * from './xCorrelation';

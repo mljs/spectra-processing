@@ -10,7 +10,6 @@ test('test xBoxPlot even', () => {
     q3: 8.5,
     min: 0,
     max: 11,
-    outliers: [],
   });
 });
 
@@ -22,7 +21,6 @@ test('test xBoxPlot even small', () => {
     q3: 4,
     min: 0,
     max: 5,
-    outliers: [],
   });
 });
 
@@ -34,7 +32,6 @@ test('test xBoxPlot odd', () => {
     q3: 8,
     min: 0,
     max: 10,
-    outliers: [],
   });
 });
 
@@ -46,7 +43,6 @@ test('test xBoxPlot odd small', () => {
     q3: 3.5,
     min: 0,
     max: 4,
-    outliers: [],
   });
 });
 
@@ -73,7 +69,6 @@ test('test xBoxPlot with one element', () => {
     q3: 42,
     min: 42,
     max: 42,
-    outliers: [],
   });
 });
 
@@ -86,7 +81,6 @@ test('test xBoxPlot with 2 elements', () => {
     q3: 44,
     min: 40,
     max: 44,
-    outliers: [],
   });
 });
 
@@ -99,7 +93,6 @@ test('test xBoxPlot with 3 elements', () => {
     q3: 44,
     min: 40,
     max: 44,
-    outliers: [],
   });
 });
 
@@ -111,18 +104,5 @@ test('outliers', () => {
     q3: 8,
     min: 0,
     max: 100,
-    outliers: [],
-  });
-});
-
-test('outliers', () => {
-  const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 100];
-  expect(xBoxPlot(array, { calculateOutliers: true })).toStrictEqual({
-    q1: 2,
-    median: 5,
-    q3: 8,
-    min: 0,
-    max: 9,
-    outliers: [100],
   });
 });
