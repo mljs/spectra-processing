@@ -20,6 +20,7 @@ export interface XBoxPlot {
  * Calculating the box plot of the array
  * @param array - data
  * @param options
+ * @returns - q1, median, q3, min, max
  */
 export function xBoxPlot(
   array: NumberArray,
