@@ -6,6 +6,8 @@ import { expect, test } from 'vitest';
 import { reimAutoPhaseCorrection } from '../reimAutoPhaseCorrection';
 import { reimPhaseCorrection } from '../reimPhaseCorrection';
 
+import onlyOneBaselineZone from './data/onlyOneBaselineZone.json';
+
 const data = JSON.parse(
   readFileSync(join(__dirname, 'data/perfect.json')).toString(),
 );
@@ -32,6 +34,29 @@ test('reverse true', () => {
   );
   expect(ph0 + newPh0).toBeLessThan(1);
   expect(ph1 + newPh1).toBeLessThan(1);
+});
+
+test('onlyOneBaselineZone data should not be NaN', () => {
+  const { ph0, ph1 } = reimAutoPhaseCorrection(onlyOneBaselineZone, {
+    reverse: true,
+  });
+  expect(ph0).not.toBeNaN();
+  expect(ph1).not.toBeNaN();
+});
+
+test('onlyOneBaselineZone data should not be NaN', () => {
+  const re = new Float64Array(128);
+  const im = new Float64Array(128);
+  const { ph0, ph1 } = reimAutoPhaseCorrection(
+    { re, im },
+    {
+      reverse: true,
+    },
+  );
+  expect(ph0).not.toBeNaN();
+  expect(ph1).not.toBeNaN();
+  expect(ph0).toBe(0);
+  expect(ph1).toBe(0);
 });
 
 test('reverse true with outlier', () => {
