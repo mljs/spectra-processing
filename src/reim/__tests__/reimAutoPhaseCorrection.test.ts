@@ -6,10 +6,12 @@ import { expect, test } from 'vitest';
 import { reimAutoPhaseCorrection } from '../reimAutoPhaseCorrection';
 import { reimPhaseCorrection } from '../reimPhaseCorrection';
 
-import onlyOneBaselineZone from './data/onlyOneBaselineZone.json';
-
 const data = JSON.parse(
   readFileSync(join(__dirname, 'data/perfect.json')).toString(),
+);
+
+const onlyOneBaselineZone = JSON.parse(
+  readFileSync(join(__dirname, 'data/onlyOneBaselineZone.json')).toString(),
 );
 
 test('reverse true', () => {
