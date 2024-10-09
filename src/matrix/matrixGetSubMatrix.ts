@@ -1,23 +1,35 @@
 import { DoubleMatrix } from '../types';
-import { matrixCreateEmpty } from './matrixCreateEmpty';
-import { matrixCheckRanges } from './matrixCheckRanges';
 
+import { matrixCheckRanges } from './matrixCheckRanges';
+import { matrixCreateEmpty } from './matrixCreateEmpty';
+
+export interface MatrixGetSubMatrixOptions {
+  /**
+   * row index in matrix for the first row in subMatrix.
+   */
+  startRow: number;
+  /**
+   * column index in matrix for the first column in subMatrix.
+   */
+  startColumn: number;
+  /**
+   * row index in matrix for the last row in subMatrix.
+   */
+  endRow: number;
+  /**
+   * column index in matrix for the last column in subMatrix.
+   */
+  endColumn: number;
+}
 /**
  * Get a subMatrix from matrix, the function check if the subMatrix
  * lies into the dimensions of matrix.
  * @param matrix - matrix that will receive the new element values.
- * @param startRow - row index in matrix for the first row in subMatrix.
- * @param startColumn - column index in matrix for the first column in subMatrix.
- * @returns The modified `matrix`.
+ * @returns The sub `matrix`.
  */
 export function matrixGetSubMatrix(
   matrix: DoubleMatrix,
-  options: {
-    startRow: number;
-    startColumn: number;
-    endRow: number;
-    endColumn: number;
-  },
+  options: MatrixGetSubMatrixOptions,
 ): Float64Array[] {
   matrixCheckRanges(matrix, options);
   const { startRow, endRow, startColumn, endColumn } = options;
