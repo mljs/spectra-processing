@@ -107,6 +107,11 @@ function determiningGlobalValues(
   ph0Values: number[],
   weights: number[],
 ): { ph0: number; ph1: number } {
+  if (x.length === 0) {
+    return { ph0: 0, ph1: 0 };
+  } else if (x.length === 1) {
+    return { ph0: ph0Values[0], ph1: 0 };
+  }
   const [ph1, ph0] = weightedLinearRegression(x, ph0Values, weights);
   let indexMax = -1;
   let maxDiff = Number.MIN_SAFE_INTEGER;
