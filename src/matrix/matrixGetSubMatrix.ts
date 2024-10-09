@@ -18,7 +18,7 @@ export function matrixGetSubMatrix(
     endRow: number;
     endColumn: number;
   },
-): DoubleMatrix {
+): Float64Array[] {
   matrixCheckRanges(matrix, options);
   const { startRow, endRow, startColumn, endColumn } = options;
   const nbColumns = endColumn - startColumn + 1;
