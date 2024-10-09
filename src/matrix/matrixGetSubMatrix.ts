@@ -1,5 +1,5 @@
 import { DoubleMatrix } from '../types';
-import { matrixCreateEmpty } from './index';
+import { matrixCreateEmpty } from './matrixCreateEmpty';
 import { matrixCheckRanges } from './matrixCheckRanges';
 
 /**
