@@ -6,18 +6,22 @@ import { matrixCreateEmpty } from './matrixCreateEmpty';
 export interface MatrixGetSubMatrixOptions {
   /**
    * row index in matrix for the first row in subMatrix.
+   * @default 0
    */
   startRow: number;
   /**
    * column index in matrix for the first column in subMatrix.
+   * @default 0
    */
   startColumn: number;
   /**
    * row index in matrix for the last row in subMatrix.
+   * @default matrix.length - 1
    */
   endRow: number;
   /**
    * column index in matrix for the last column in subMatrix.
+   * @default matrix[0].length - 1
    */
   endColumn: number;
 }
@@ -31,8 +35,13 @@ export function matrixGetSubMatrix(
   matrix: DoubleMatrix,
   options: MatrixGetSubMatrixOptions,
 ): Float64Array[] {
-  matrixCheckRanges(matrix, options);
-  const { startRow, endRow, startColumn, endColumn } = options;
+  const {
+    startRow = 0,
+    endRow = matrix.length - 1,
+    startColumn = 0,
+    endColumn = matrix[0].length - 1,
+  } = options;
+  matrixCheckRanges(matrix, { startColumn, startRow, endColumn, endRow });
   const nbColumns = endColumn - startColumn + 1;
   const nbRows = endRow - startRow + 1;
 
