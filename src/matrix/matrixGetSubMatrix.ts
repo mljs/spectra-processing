@@ -1,7 +1,4 @@
-import { DoubleMatrix } from '../types';
-
 import { matrixCheckRanges } from './matrixCheckRanges';
-import { matrixCreateEmpty } from './matrixCreateEmpty';
 
 export interface MatrixGetSubMatrixOptions {
   /**
@@ -24,6 +21,11 @@ export interface MatrixGetSubMatrixOptions {
    * @default matrix[0].length - 1
    */
   endColumn: number;
+  /**
+   * duplicate the data
+   * @default false
+   */
+  duplicate?: boolean;
 }
 /**
  * Get a subMatrix from matrix, the function check if the subMatrix
@@ -32,7 +34,7 @@ export interface MatrixGetSubMatrixOptions {
  * @returns The sub `matrix`.
  */
 export function matrixGetSubMatrix(
-  matrix: DoubleMatrix,
+  matrix: Float64Array[],
   options: MatrixGetSubMatrixOptions,
 ): Float64Array[] {
   const {
@@ -40,16 +42,16 @@ export function matrixGetSubMatrix(
     endRow = matrix.length - 1,
     startColumn = 0,
     endColumn = matrix[0].length - 1,
+    duplicate = false,
   } = options;
   matrixCheckRanges(matrix, { startColumn, startRow, endColumn, endRow });
-  const nbColumns = endColumn - startColumn + 1;
   const nbRows = endRow - startRow + 1;
 
-  const subMatrix = matrixCreateEmpty({ nbColumns, nbRows });
+  const method = duplicate ? 'slice' : 'subarray';
+  const subMatrix: Float64Array[] = [];
   for (let i = 0; i < nbRows; i++) {
-    for (let j = 0; j < nbColumns; j++) {
-      subMatrix[i][j] = matrix[startRow + i][startColumn + j];
-    }
+    subMatrix.push(matrix[startRow + i][method](startColumn, endColumn + 1));
   }
+
   return subMatrix;
 }
