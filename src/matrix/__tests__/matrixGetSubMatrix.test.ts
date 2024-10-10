@@ -1,12 +1,11 @@
 import { matrixGetSubMatrix } from '../matrixGetSubMatrix';
 
-const matrix = [
-  new Float64Array([1, 2, 3]),
-  new Float64Array([4, 5, 6]),
-  new Float64Array([7, 8, 9]),
-];
-
 test('should extract submatrix correctly', () => {
+  const matrix = [
+    new Float64Array([1, 2, 3]),
+    new Float64Array([4, 5, 6]),
+    new Float64Array([7, 8, 9]),
+  ];
   const options = {
     startRow: 0,
     startColumn: 1,
@@ -20,6 +19,11 @@ test('should extract submatrix correctly', () => {
 });
 
 test('should throw RangeError for out-of-range indices', () => {
+  const matrix = [
+    new Float64Array([1, 2, 3]),
+    new Float64Array([4, 5, 6]),
+    new Float64Array([7, 8, 9]),
+  ];
   const options = {
     startRow: 0,
     startColumn: 1,
