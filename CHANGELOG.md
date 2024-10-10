@@ -1,5 +1,18 @@
 # Changelog
 
+## [14.6.0](https://github.com/mljs/spectra-processing/compare/v14.5.3...v14.6.0) (2024-10-09)
+
+
+### Features
+
+* add xBoxPlotWithOutliers mehtod to deal with possible outliers ([#260](https://github.com/mljs/spectra-processing/issues/260)) ([985caee](https://github.com/mljs/spectra-processing/commit/985caeef2e4ea0a4b5fbfa5e04be503a3c42e403))
+* xBoxPlot has an option to calculate outliers ([#256](https://github.com/mljs/spectra-processing/issues/256)) ([69cb82c](https://github.com/mljs/spectra-processing/commit/69cb82cf039fc56f04f2c17fe91d372c17c5c205))
+
+
+### Bug Fixes
+
+* **auto phase:** avoid NaN phase correction value ([#262](https://github.com/mljs/spectra-processing/issues/262)) ([eef13cd](https://github.com/mljs/spectra-processing/commit/eef13cd8798237de40cb654a3c1c2414099ab2f2))
+
 ## [14.5.3](https://github.com/mljs/spectra-processing/compare/v14.5.2...v14.5.3) (2024-07-30)
 
 
