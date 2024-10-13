@@ -11,6 +11,7 @@ test('should extract submatrix correctly without duplication', () => {
     startColumn: 1,
     endRow: 1,
     endColumn: 2,
+    duplicate: false,
   };
 
   const subMatrix = matrixGetSubMatrix(matrix, options);

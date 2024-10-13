@@ -23,7 +23,7 @@ export interface MatrixGetSubMatrixOptions {
   endColumn: number;
   /**
    * duplicate the data
-   * @default false
+   * @default true
    */
   duplicate?: boolean;
 }
@@ -42,15 +42,20 @@ export function matrixGetSubMatrix(
     endRow = matrix.length - 1,
     startColumn = 0,
     endColumn = matrix[0].length - 1,
-    duplicate = false,
+    duplicate = true,
   } = options;
   matrixCheckRanges(matrix, { startColumn, startRow, endColumn, endRow });
   const nbRows = endRow - startRow + 1;
 
-  const method = duplicate ? 'slice' : 'subarray';
   const subMatrix: Float64Array[] = [];
-  for (let i = 0; i < nbRows; i++) {
-    subMatrix.push(matrix[startRow + i][method](startColumn, endColumn + 1));
+  if (duplicate) {
+    for (let i = 0; i < nbRows; i++) {
+      subMatrix.push(matrix[startRow + i].slice(startColumn, endColumn + 1));
+    }
+  } else {
+    for (let i = 0; i < nbRows; i++) {
+      subMatrix.push(matrix[startRow + i].subarray(startColumn, endColumn + 1));
+    }
   }
 
   return subMatrix;
