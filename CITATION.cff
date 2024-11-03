@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: 'Spectra-Processing: A JavaScript Library for Spectroscopic Data Analysis and Manipulation'
+abstract: 'Spectra-Processing is an open-source JavaScript library designed for scientists and developers working with scientific data. Part of the mljs suite, this library provides a comprehensive set of tools for processing and analyzing spectral data, including methods for data smoothing, baseline correction, peak picking, and normalization. Its JavaScript foundation allows easy integration into web-based and Node.js environments, empowering developers to build accessible, browser-friendly applications for scientific analysis.'
+repository-artifact: http://mljs.github.io/spectra-processing/
+repository-code: https://github.com/mljs/psectra-processing
+authors:
+  - family-names: 'Patiny'
+    given-names: 'Luc'
+    affiliation: 'Zakodium Sàrl, Switzerland'
+    orcid: 'https://orcid.org/0000-0002-4943-2643'
+  - family-names: 'Zasso'
+    given-names: 'Michaël'
+    affiliation: 'Zakodium Sàrl, Switzerland'
+    orcid: 'https://orcid.org/0000-0001-5295-2159'
+  - family-names: 'Bolaños'
+    given-names: 'Alejandro'
+    affiliation: 'Universidad del Valle, Cali, Colombia'
+    orcid: 'https://orcid.org/0000-0001-5933-5524'
+license: MIT
+keywords:
+  - Javascript
+  - Array manipulation
+  - Array pure functions
+doi: 10.5281/zenodo.13913283
