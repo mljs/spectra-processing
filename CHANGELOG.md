@@ -1,5 +1,13 @@
 # Changelog
 
+## [14.6.1](https://github.com/mljs/spectra-processing/compare/v14.6.0...v14.6.1) (2024-11-03)
+
+
+### Bug Fixes
+
+* add CITATION.cff ([#265](https://github.com/mljs/spectra-processing/issues/265)) ([fc43a05](https://github.com/mljs/spectra-processing/commit/fc43a0541f6ef9e4f8c47e11dc091f4f2de03308))
+* check first and last point for xyGrowingX ([#264](https://github.com/mljs/spectra-processing/issues/264)) ([e5a832f](https://github.com/mljs/spectra-processing/commit/e5a832f3a0f554bfde13c9780fc942920eb85425))
+
 ## [14.6.0](https://github.com/mljs/spectra-processing/compare/v14.5.3...v14.6.0) (2024-10-09)
 
 
