@@ -29,10 +29,10 @@ export interface ZonesNormalizeOptions {
  * @param options - options
  * @returns array of zones
  */
-export function zonesNormalize(
-  zones: FromTo[] = [],
+export function zonesNormalize<Zone extends FromTo = FromTo>(
+  zones: Zone[] = [],
   options: ZonesNormalizeOptions = {},
-): FromTo[] {
+): Zone[] {
   const { exclusions = [] } = options;
   let { from = Number.NEGATIVE_INFINITY, to = Number.POSITIVE_INFINITY } =
     options;
@@ -40,16 +40,15 @@ export function zonesNormalize(
   if (from > to) [from, to] = [to, from];
 
   zones = zones
-    .map((zone: FromTo) =>
-      zone.from > zone.to ? { from: zone.to, to: zone.from } : { ...zone },
+    .map((zone: Zone) =>
+      zone.from > zone.to
+        ? { ...zone, from: zone.to, to: zone.from }
+        : { ...zone },
     )
     .sort((a, b) => {
       if (a.from !== b.from) return a.from - b.from;
       return a.to - b.to;
     });
-  if (zones.length === 0) {
-    zones.push({ from, to });
-  }
 
   for (const zone of zones) {
     if (from > zone.from) zone.from = from;
@@ -78,7 +77,7 @@ export function zonesNormalize(
   const normalizedExclusions = zonesNormalize(exclusions);
 
   let currentExclusionIndex = 0;
-  const results: FromTo[] = [];
+  const results: Zone[] = [];
   for (
     let zoneIndex = 0;
     zoneIndex < beforeExclusionsZones.length;
@@ -112,6 +111,7 @@ export function zonesNormalize(
         continue;
       }
       results.push({
+        ...zone,
         from: normalizedExclusions[currentExclusionIndex].to,
         to: zone.to,
       });
@@ -119,6 +119,7 @@ export function zonesNormalize(
     // we cut in the middle, we need to create more zones, annoying !
     if (normalizedExclusions[currentExclusionIndex].from > zone.from) {
       results.push({
+        ...zone,
         from: zone.from,
         to: normalizedExclusions[currentExclusionIndex].from,
       });
