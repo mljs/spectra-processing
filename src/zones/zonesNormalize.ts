@@ -50,6 +50,10 @@ export function zonesNormalize<Zone extends FromTo = FromTo>(
       return a.to - b.to;
     });
 
+  if (zones.length === 0) {
+    zones.push({ from, to } as Zone);
+  }
+
   for (const zone of zones) {
     if (from > zone.from) zone.from = from;
     if (to < zone.to) zone.to = to;
