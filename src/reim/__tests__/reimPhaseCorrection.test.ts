@@ -1,4 +1,4 @@
-import XSAdd from 'ml-xsadd';
+import { XSadd } from 'ml-XSadd';
 import { expect, test } from 'vitest';
 
 import { reimPhaseCorrection } from '../reimPhaseCorrection';
@@ -117,7 +117,7 @@ test('test reimPhaseCorrection even', () => {
 });
 
 test('180 zero order phasing', () => {
-  const generator = new XSAdd(0);
+  const generator = new XSadd(0);
   const phased = reimPhaseCorrection(data, Math.PI, 0);
   const diff = data.re.map((e, i) => e + phased.re[i]);
   const index = Math.floor(generator.random() * data.x.length);

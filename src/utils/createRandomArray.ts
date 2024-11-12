@@ -1,4 +1,4 @@
-import XSAdd from 'ml-xsadd';
+import { XSadd } from 'ml-xsadd';
 
 export interface CreateRandomArrayOptions {
   /**
@@ -56,7 +56,7 @@ export function createRandomArray(
     distribution = 'normal',
   } = options;
 
-  const generator = new XSAdd(seed);
+  const generator = new XSadd(seed);
   const returnArray = new Float64Array(length);
 
   switch (distribution) {
@@ -91,9 +91,9 @@ class GaussianGenerator {
 
   #mean: number;
   #standardDeviation: number;
-  #generator: XSAdd;
+  #generator: XSadd;
 
-  constructor(mean: number, standardDeviation: number, generator: XSAdd) {
+  constructor(mean: number, standardDeviation: number, generator: XSadd) {
     this.#mean = mean;
     this.#standardDeviation = standardDeviation;
     this.#generator = generator;
