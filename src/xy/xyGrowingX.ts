@@ -11,7 +11,7 @@ export function xyGrowingX(data: DataXY): DataXY {
     throw new TypeError('length of x and y must be identical');
   }
 
-  if (x.length < 2 || x[0] < x[x.at(-1) as number]) return data;
+  if (x.length < 2 || ((x[0] < x.at(-1)) as number)) return data;
 
   return {
     x: x.slice(0).reverse(),
