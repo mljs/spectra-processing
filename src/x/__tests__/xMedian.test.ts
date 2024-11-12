@@ -1,4 +1,4 @@
-import { XSadd } from 'ml-XSadd';
+import { XSadd } from 'ml-xsadd';
 import { expect, test } from 'vitest';
 
 import { xMedian } from '../xMedian';
