@@ -16,7 +16,7 @@ export interface ZonesWithPointsOptions {
   to?: number;
 }
 
-export interface FromToWithNumberOfPoints extends FromTo {
+export interface ZoneWithNumberOfPoints extends FromTo {
   numberOfPoints: number;
 }
 
@@ -27,8 +27,8 @@ export interface FromToWithNumberOfPoints extends FromTo {
  * @param options - options
  * @returns array of zones with points
  */
-export function zonesWithPoints(
-  zones: FromTo[] = [],
+export function zonesWithPoints<Zone extends FromTo = FromTo>(
+  zones: Zone[] = [],
 
   /**
    * total number of points to distribute between zones
@@ -36,10 +36,10 @@ export function zonesWithPoints(
    */
   numberOfPoints = 10,
   options: ZonesWithPointsOptions = {},
-): FromToWithNumberOfPoints[] {
+): ZoneWithNumberOfPoints[] {
   if (zones.length === 0) return [];
   const normalizedZones = zonesNormalize(zones, options);
-  const zonesWithNumberOfPoints: FromToWithNumberOfPoints[] = [];
+  const zonesWithNumberOfPoints: ZoneWithNumberOfPoints[] = [];
 
   const totalSize = normalizedZones.reduce((previous, current) => {
     return previous + (current.to - current.from);
