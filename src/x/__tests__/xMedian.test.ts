@@ -1,9 +1,9 @@
-import XSAdd from 'ml-xsadd';
+import { XSadd } from 'ml-xsadd';
 import { expect, test } from 'vitest';
 
 import { xMedian } from '../xMedian';
 
-const generator = new XSAdd(0);
+const generator = new XSadd(0);
 const data: number[] = [];
 for (let i = 0; i < 1000; i++) {
   data.push(generator.random());

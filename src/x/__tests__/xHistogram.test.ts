@@ -1,4 +1,4 @@
-import XSAdd from 'ml-xsadd';
+import { XSadd } from 'ml-xsadd';
 import { expect, test } from 'vitest';
 
 import { createFromToArray } from '../../utils';
@@ -88,7 +88,7 @@ test('simple y log case', () => {
 });
 
 test('256 slots', () => {
-  const generator = new XSAdd(0);
+  const generator = new XSadd(0);
   const array = new Float64Array(10000).map(() => generator.random());
   const histogram = xHistogram(array);
   expect(histogram.y).toHaveLength(256);
@@ -98,7 +98,7 @@ test('256 slots', () => {
 });
 
 test('10 slots', () => {
-  const generator = new XSAdd(0);
+  const generator = new XSadd(0);
   const array = new Float64Array(100000).map(() => generator.random() * 900);
   const histogram = xHistogram(array, { nbSlots: 10, centerX: false });
   expect(histogram.x).toMatchCloseTo(
@@ -114,7 +114,7 @@ test('10 slots', () => {
 });
 
 test('11 slots center X', () => {
-  const generator = new XSAdd(0);
+  const generator = new XSadd(0);
   const array = new Float64Array(110000).map(
     () => generator.random() * 1100 - 50,
   );
@@ -131,7 +131,7 @@ test('11 slots center X', () => {
 });
 
 test('min -10, max 10', () => {
-  const generator = new XSAdd(0);
+  const generator = new XSadd(0);
   const array = new Float64Array(10000).map(() => generator.random());
   const histogram = xHistogram(array, { nbSlots: 20, min: -10, max: 10 });
   expect(histogram.y).toStrictEqual(

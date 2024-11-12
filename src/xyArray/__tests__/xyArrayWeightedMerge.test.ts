@@ -1,5 +1,5 @@
 import { DataXY } from 'cheminfo-types';
-import XSAdd from 'ml-xsadd';
+import { XSadd } from 'ml-xsadd';
 import { expect, test } from 'vitest';
 
 import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
@@ -82,7 +82,7 @@ test('empty data', () => {
 test('large Data Set', () => {
   const data = [];
   const arraySize = 1e5;
-  const generator = new XSAdd(0);
+  const generator = new XSadd(0);
   for (let dataset = 0; dataset < 20; dataset++) {
     const datum = {
       x: new Float64Array(arraySize),
