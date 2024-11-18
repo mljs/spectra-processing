@@ -29,6 +29,14 @@ test('no join', () => {
   });
 });
 
+test('join 0.1', () => {
+  const data = { x: [0.2, 0.25, 1], y: [1, 1, 1] };
+  expect(xyJoinX(data, { delta: 0.2 })).toStrictEqual({
+    x: [0.225, 1],
+    y: [2, 1],
+  });
+});
+
 test('full join', () => {
   const data = { x: [2, 4, 6], y: [1, 1, 1] };
   expect(xyJoinX(data, { delta: 5 })).toStrictEqual({
