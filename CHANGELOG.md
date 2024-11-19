@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.6.2](https://github.com/mljs/spectra-processing/compare/v14.6.1...v14.6.2) (2024-11-12)
+
+
+### Bug Fixes
+
+* xyGrowingX bug ([#268](https://github.com/mljs/spectra-processing/issues/268)) ([bb00293](https://github.com/mljs/spectra-processing/commit/bb0029302a15371c1d676e9c164247f7fdc89683))
+
 ## [14.6.1](https://github.com/mljs/spectra-processing/compare/v14.6.0...v14.6.1) (2024-11-03)
 
 
