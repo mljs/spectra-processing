@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.7.0](https://github.com/mljs/spectra-processing/compare/v14.6.2...v14.7.0) (2024-11-22)
+
+
+### Features
+
+* add xyReduceNonContinuous ([22a6640](https://github.com/mljs/spectra-processing/commit/22a6640a11dc518c8e02d7b973ec71da9247f688))
+
 ## [14.6.2](https://github.com/mljs/spectra-processing/compare/v14.6.1...v14.6.2) (2024-11-12)
 
 
