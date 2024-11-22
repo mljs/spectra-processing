@@ -8,9 +8,9 @@ import { xyCheck } from './xyCheck';
 interface InternalZone {
   from: number;
   to: number;
-  fromIndex?: number;
-  toIndex?: number;
-  nbPoints?: number;
+  fromIndex: number;
+  toIndex: number;
+  nbPoints: number;
 }
 
 export interface XYReduceOptions {
@@ -52,12 +52,14 @@ export interface XYReduceOptions {
  * You should rather use ml-xy-equally-spaced to make further processing
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - options
+ * @returns Object with x and y arrays
  */
 export function xyReduce(
   data: DataXY,
   options: XYReduceOptions = {},
 ): DataXY<DoubleArray> {
   xyCheck(data);
+  // todo we should check that the single point is really in the range and the zones
   if (data.x.length < 2) {
     return {
       x: Float64Array.from(data.x),
@@ -76,22 +78,8 @@ export function xyReduce(
   zones = zonesNormalize(zones, { from, to });
   if (zones.length === 0) zones = [{ from, to }]; // we take everything
 
-  // for each zone we should know the first index, the last index and the number of points
-  const internalZones: InternalZone[] = zones;
-  let totalPoints = 0;
-  for (const zone of internalZones) {
-    zone.fromIndex = xFindClosestIndex(x, zone.from);
-    zone.toIndex = xFindClosestIndex(x, zone.to);
-    if (zone.fromIndex > 0 && x[zone.fromIndex] > zone.from) {
-      zone.fromIndex--;
-    }
-    if (zone.toIndex < x.length - 1 && x[zone.toIndex] < zone.to) {
-      zone.toIndex++;
-    }
+  const { internalZones, totalPoints } = getInternalZones(zones, x);
 
-    zone.nbPoints = zone.toIndex - zone.fromIndex + 1;
-    totalPoints += zone.nbPoints;
-  }
   // we calculate the number of points per zone that we should keep
   if (totalPoints <= nbPoints) {
     return notEnoughPoints(x, y, internalZones, totalPoints);
@@ -101,7 +89,7 @@ export function xyReduce(
   let currentTotal = 0;
   for (let i = 0; i < internalZones.length - 1; i++) {
     const zone = internalZones[i];
-    zone.nbPoints = Math.round((zone.nbPoints as number) * ratio);
+    zone.nbPoints = Math.round(zone.nbPoints * ratio);
     currentTotal += zone.nbPoints;
   }
   (internalZones.at(-1) as InternalZone).nbPoints = nbPoints - currentTotal;
@@ -110,11 +98,7 @@ export function xyReduce(
   const newY: number[] = [];
   for (const zone of internalZones) {
     if (!zone.nbPoints) continue;
-    appendFromTo(
-      zone.fromIndex as number,
-      zone.toIndex as number,
-      zone.nbPoints,
-    );
+    appendFromTo(zone.fromIndex, zone.toIndex, zone.nbPoints);
   }
   return { x: newX, y: newY };
 
@@ -189,7 +173,7 @@ export function xyReduce(
   }
 }
 
-function notEnoughPoints(
+export function notEnoughPoints(
   x: NumberArray,
   y: NumberArray,
   internalZones: InternalZone[],
@@ -199,11 +183,7 @@ function notEnoughPoints(
   const newY = new Float64Array(totalPoints);
   let index = 0;
   for (const zone of internalZones) {
-    for (
-      let i = zone.fromIndex as number;
-      i < (zone.toIndex as number) + 1;
-      i++
-    ) {
+    for (let i = zone.fromIndex; i < zone.toIndex + 1; i++) {
       newX[index] = x[i];
       newY[index] = y[i];
       index++;
@@ -213,4 +193,30 @@ function notEnoughPoints(
     x: newX,
     y: newY,
   };
+}
+
+export function getInternalZones(zones: FromTo[], x: NumberArray) {
+  // for each zone we should know the first index, the last index and the number of points
+  const internalZones: InternalZone[] = [];
+  let totalPoints = 0;
+  for (const zone of zones) {
+    let fromIndex = xFindClosestIndex(x, zone.from);
+    let toIndex = xFindClosestIndex(x, zone.to);
+    if (fromIndex > 0 && x[fromIndex] > zone.from) {
+      fromIndex--;
+    }
+    if (toIndex < x.length - 1 && x[toIndex] < zone.to) {
+      toIndex++;
+    }
+    const nbPoints = toIndex - fromIndex + 1;
+    internalZones.push({
+      from: zone.from,
+      to: zone.to,
+      fromIndex,
+      toIndex,
+      nbPoints,
+    });
+    totalPoints += nbPoints;
+  }
+  return { internalZones, totalPoints };
 }

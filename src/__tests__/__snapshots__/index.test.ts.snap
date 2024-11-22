@@ -105,6 +105,7 @@ exports[`test existence of exported functions 1`] = `
   "xyRealMaxYPoint",
   "xyRealMinYPoint",
   "xyReduce",
+  "xyReduceNonContinuous",
   "xyRolling",
   "xySetYValue",
   "xySortX",
