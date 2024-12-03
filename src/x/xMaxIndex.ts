@@ -1,7 +1,8 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
-import { xGetFromToIndex, XGetFromToIndexOptions } from './xGetFromToIndex';
+import type { XGetFromToIndexOptions } from './xGetFromToIndex';
+import { xGetFromToIndex } from './xGetFromToIndex';
 
 /**
  * Computes the index of the maximum of the given values

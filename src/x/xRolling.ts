@@ -1,7 +1,8 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
-import { xPadding, XPaddingOptions } from './xPadding';
+import type { XPaddingOptions } from './xPadding';
+import { xPadding } from './xPadding';
 
 export interface XRollingOptions {
   /**

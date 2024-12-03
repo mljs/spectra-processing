@@ -1,4 +1,4 @@
-import { DataXY } from 'cheminfo-types';
+import type { DataXY } from 'cheminfo-types';
 
 /**
  * Convert an array of XY arrays to a DataXY object containing x,y arrays

@@ -1,4 +1,4 @@
-import { DoubleMatrix } from '../types';
+import type { DoubleMatrix } from '../types';
 import { xNoiseStandardDeviation } from '../x';
 
 import { matrixToArray } from './matrixToArray';

@@ -1,7 +1,8 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 
 import { xMaxValue } from './xMaxValue';
-import { xRolling, XRollingOptions } from './xRolling';
+import type { XRollingOptions } from './xRolling';
+import { xRolling } from './xRolling';
 
 /**
  * This function calculates a maximum within a rolling window

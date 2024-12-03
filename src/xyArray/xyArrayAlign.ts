@@ -1,4 +1,4 @@
-import { DataXY, NumberArray } from 'cheminfo-types';
+import type { DataXY, NumberArray } from 'cheminfo-types';
 
 import { xyJoinX } from '../xy';
 

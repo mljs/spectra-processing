@@ -1,4 +1,4 @@
-import { DataXY, PointXY } from 'cheminfo-types';
+import type { DataXY, PointXY } from 'cheminfo-types';
 
 import { xFindClosestIndex } from '../x';
 

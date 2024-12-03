@@ -1,4 +1,4 @@
-import { DataXY } from 'cheminfo-types';
+import type { DataXY } from 'cheminfo-types';
 
 /**
  * Finds the median x value for an object with properties x and y (arrays of the same length)

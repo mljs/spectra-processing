@@ -1,7 +1,8 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
-import { XGetFromToIndexOptions, xGetFromToIndex } from './xGetFromToIndex';
+import type { XGetFromToIndexOptions } from './xGetFromToIndex';
+import { xGetFromToIndex } from './xGetFromToIndex';
 
 export function xAbsoluteSum(
   array: NumberArray,

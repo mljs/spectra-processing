@@ -1,7 +1,8 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 
 import { xMinValue } from './xMinValue';
-import { xRolling, XRollingOptions } from './xRolling';
+import type { XRollingOptions } from './xRolling';
+import { xRolling } from './xRolling';
 
 /**
  * This function calculates a minimum within a rolling window

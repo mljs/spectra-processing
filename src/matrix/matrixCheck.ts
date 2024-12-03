@@ -1,4 +1,4 @@
-import { DoubleMatrix } from '../types';
+import type { DoubleMatrix } from '../types';
 
 export function matrixCheck(data: DoubleMatrix): void {
   if (data.length === 0 || data[0].length === 0) {

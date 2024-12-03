@@ -1,4 +1,4 @@
-import { DataReIm } from '../types';
+import type { DataReIm } from '../types';
 
 export interface ReimPhaseCorrectionOptions {
   reverse?: boolean;

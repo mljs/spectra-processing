@@ -1,6 +1,7 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 
-import { xVariance, XVarianceOptions } from './xVariance';
+import type { XVarianceOptions } from './xVariance';
+import { xVariance } from './xVariance';
 
 /**
  * Finds the standard deviation for the data at hand

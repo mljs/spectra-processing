@@ -1,4 +1,4 @@
-import { NumberArray, DataXY } from 'cheminfo-types';
+import type { NumberArray, DataXY } from 'cheminfo-types';
 
 import { getSlotsToFirst } from './utils/getSlotsToFirst';
 

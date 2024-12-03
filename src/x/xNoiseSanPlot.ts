@@ -1,4 +1,4 @@
-import { DataXY, FromTo, NumberArray } from 'cheminfo-types';
+import type { DataXY, FromTo, NumberArray } from 'cheminfo-types';
 // @ts-expect-error Missing types.
 import SplineInterpolator from 'spline-interpolator';
 

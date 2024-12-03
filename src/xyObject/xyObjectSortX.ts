@@ -1,4 +1,4 @@
-import { Point } from '../types';
+import type { Point } from '../types';
 
 /**
  * Sorts an array of points in-place.

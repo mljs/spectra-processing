@@ -1,4 +1,4 @@
-import { DataXY, DoubleArray, FromTo } from 'cheminfo-types';
+import type { DataXY, DoubleArray, FromTo } from 'cheminfo-types';
 
 import { zonesNormalize } from '../zones';
 
