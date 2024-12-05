@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.8.0](https://github.com/mljs/spectra-processing/compare/v14.7.0...v14.8.0) (2024-12-05)
+
+
+### Features
+
+* add recursiveResolve ([#274](https://github.com/mljs/spectra-processing/issues/274)) ([9005fc2](https://github.com/mljs/spectra-processing/commit/9005fc2f5222c3c96ee3b67ca8134690185d33ae))
+
 ## [14.7.0](https://github.com/mljs/spectra-processing/compare/v14.6.2...v14.7.0) (2024-11-22)
 
 
