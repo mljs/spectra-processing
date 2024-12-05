@@ -1,11 +1,11 @@
 import { expect, test } from 'vitest';
 
-import { resursiveResolve } from '../resursiveResolve';
+import { recursiveResolve } from '../recursiveResolve';
 
 test('primitive', async () => {
-  expect(await resursiveResolve(1)).toBe(1);
-  expect(await resursiveResolve({})).toStrictEqual({});
-  expect(await resursiveResolve(true)).toBeTruthy();
+  expect(await recursiveResolve(1)).toBe(1);
+  expect(await recursiveResolve({})).toStrictEqual({});
+  expect(await recursiveResolve(true)).toBeTruthy();
 });
 
 test('simple object', async () => {
@@ -17,7 +17,7 @@ test('simple object', async () => {
     },
   };
 
-  expect(await resursiveResolve(object)).toStrictEqual({
+  expect(await recursiveResolve(object)).toStrictEqual({
     a: {
       b: {
         c: 1,
@@ -35,7 +35,7 @@ test('with array', async () => {
     },
   };
 
-  expect(await resursiveResolve(object)).toStrictEqual({
+  expect(await recursiveResolve(object)).toStrictEqual({
     a: {
       b: {
         c: [1, 2],
