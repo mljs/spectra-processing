@@ -1,7 +1,6 @@
 /**
- * wait recursively so that all promises are resolved
- * need to go through all the nested objects and check if it is a promise
- * if it is a promise, then await it
+ * Resolves all promises in an object recursively. The promise with be replaced by the resolved value.
+ * The changes are therefore done in-place !
  * @param object
  * @returns
  */
