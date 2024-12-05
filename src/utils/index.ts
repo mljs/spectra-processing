@@ -5,4 +5,5 @@ export * from './createStepArray';
 export * from './getRescaler';
 export * from './isPowerOfTwo';
 export * from './nextPowerOfTwo';
+export * from './recursiveResolve';
 export * from './stringify';
