@@ -1,4 +1,4 @@
-import { DoubleMatrix } from '../types';
+import type { DoubleMatrix } from '../types';
 
 /**
  * Set in-place a subMatrix to matrix, the function check if the subMatrix

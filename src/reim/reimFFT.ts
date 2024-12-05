@@ -1,6 +1,6 @@
 import FFT from 'fft.js';
 
-import { DataReIm } from '../types';
+import type { DataReIm } from '../types';
 import { xRotate } from '../x';
 
 export interface ReimFFTOptions {

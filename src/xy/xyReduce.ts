@@ -1,4 +1,4 @@
-import { DataXY, DoubleArray, FromTo, NumberArray } from 'cheminfo-types';
+import type { DataXY, DoubleArray, FromTo, NumberArray } from 'cheminfo-types';
 
 import { xFindClosestIndex } from '../x';
 import { zonesNormalize } from '../zones';

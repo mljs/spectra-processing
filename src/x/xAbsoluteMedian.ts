@@ -1,4 +1,4 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 
 import { xAbsolute } from './xAbsolute';
 import { xMedian } from './xMedian';

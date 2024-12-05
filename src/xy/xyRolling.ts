@@ -1,6 +1,7 @@
-import { DataXY } from 'cheminfo-types';
+import type { DataXY } from 'cheminfo-types';
 
-import { xRolling, xRollingAverage, XRollingOptions } from '../x';
+import type { XRollingOptions } from '../x';
+import { xRolling, xRollingAverage } from '../x';
 
 /**
  * This function calculates a rolling average.

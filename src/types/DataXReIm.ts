@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import type { DoubleArray } from 'cheminfo-types';
 
 export interface DataXReIm<ArrayType extends DoubleArray = DoubleArray> {
   /** Array of x values */

@@ -1,8 +1,5 @@
-import {
-  createNumberArray,
-  NumberArrayConstructor,
-  NumberArrayType,
-} from '../utils';
+import type { NumberArrayConstructor, NumberArrayType } from '../utils';
+import { createNumberArray } from '../utils';
 
 export interface XSequentialFillFromStepOptions<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,

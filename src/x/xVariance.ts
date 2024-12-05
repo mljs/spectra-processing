@@ -1,4 +1,4 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 import { xMean } from './xMean';

@@ -1,6 +1,6 @@
-import { DoubleArray } from 'cheminfo-types';
+import type { DoubleArray } from 'cheminfo-types';
 
-import { DataXReIm } from '../types';
+import type { DataXReIm } from '../types';
 
 /**
  * Sort object of array, x has to be monotone.

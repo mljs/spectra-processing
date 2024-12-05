@@ -1,4 +1,4 @@
-import { NumberArrayConstructor, NumberArrayType } from '../utils';
+import type { NumberArrayConstructor, NumberArrayType } from '../utils';
 
 import { xSequentialFillFromStep } from './xSequentialFillFromStep';
 

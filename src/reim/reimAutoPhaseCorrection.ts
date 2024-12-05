@@ -1,6 +1,6 @@
-import { DoubleArray } from 'cheminfo-types';
+import type { DoubleArray } from 'cheminfo-types';
 
-import { DataReIm } from '../types';
+import type { DataReIm } from '../types';
 import { xNoiseSanPlot } from '../x';
 
 import { reimAbsolute } from './reimAbsolute';

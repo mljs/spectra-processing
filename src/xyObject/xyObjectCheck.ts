@@ -1,4 +1,4 @@
-import { Point } from '../types';
+import type { Point } from '../types';
 
 /**
  * Throws an error in not an array of x,y objects.

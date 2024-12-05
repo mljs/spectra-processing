@@ -1,7 +1,8 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 
 import { xMedian } from './xMedian';
-import { xRolling, XRollingOptions } from './xRolling';
+import type { XRollingOptions } from './xRolling';
+import { xRolling } from './xRolling';
 
 /**
  * This function calculates a rolling average

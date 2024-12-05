@@ -1,4 +1,4 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 import { Matrix } from 'ml-matrix';
 
 const absDiff = (a: number, b: number) => Math.abs(a - b);

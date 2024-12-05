@@ -1,4 +1,4 @@
-import { DataXY } from 'cheminfo-types';
+import type { DataXY } from 'cheminfo-types';
 import { XSadd } from 'ml-xsadd';
 import { expect, test } from 'vitest';
 

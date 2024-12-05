@@ -1,4 +1,4 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 export function getOutputArray<T extends NumberArray = Float64Array>(
