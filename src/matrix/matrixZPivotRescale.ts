@@ -1,6 +1,6 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 
-import { NumberArrayConstructor, NumberArrayType } from '../utils';
+import type { NumberArrayConstructor, NumberArrayType } from '../utils';
 
 import { matrixCreateEmpty } from './matrixCreateEmpty';
 import { matrixMaxAbsoluteZ } from './matrixMaxAbsoluteZ';

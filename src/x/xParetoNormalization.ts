@@ -1,4 +1,4 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
 import { xStandardDeviation } from './xStandardDeviation';

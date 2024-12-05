@@ -1,9 +1,6 @@
-import { DoubleMatrix } from '../types';
-import {
-  createNumberArray,
-  NumberArrayConstructor,
-  NumberArrayType,
-} from '../utils';
+import type { DoubleMatrix } from '../types';
+import type { NumberArrayConstructor, NumberArrayType } from '../utils';
+import { createNumberArray } from '../utils';
 
 export interface MatrixCreateEmptyOptions<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,

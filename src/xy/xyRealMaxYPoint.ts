@@ -1,6 +1,6 @@
-import { DataXY } from 'cheminfo-types';
+import type { DataXY } from 'cheminfo-types';
 
-import { PointWithIndex } from '../types';
+import type { PointWithIndex } from '../types';
 import { xGetTargetIndex } from '../x';
 
 import { xyCheck } from './xyCheck';

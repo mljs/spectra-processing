@@ -1,4 +1,4 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 import FFT from 'fft.js';
 
 import { nextPowerOfTwo, isPowerOfTwo } from '../utils';

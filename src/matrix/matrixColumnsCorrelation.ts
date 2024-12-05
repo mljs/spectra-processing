@@ -1,6 +1,6 @@
 import { Matrix } from 'ml-matrix';
 
-import { DoubleMatrix } from '../types';
+import type { DoubleMatrix } from '../types';
 import { xCorrelation } from '../x';
 
 /**

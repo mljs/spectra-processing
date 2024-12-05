@@ -1,4 +1,5 @@
-import { isAnyArray, AnyArray } from 'is-any-array';
+import type { AnyArray } from 'is-any-array';
+import { isAnyArray } from 'is-any-array';
 
 /**
  * Verify that `data` is an object of x,y arrays.

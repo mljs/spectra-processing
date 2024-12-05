@@ -1,6 +1,6 @@
-import { DataXY } from 'cheminfo-types';
+import type { DataXY } from 'cheminfo-types';
 
-import { DoubleMatrix, XHistogramOptions } from '..';
+import type { DoubleMatrix, XHistogramOptions } from '..';
 import { xHistogram } from '../x';
 
 import { matrixMinMaxAbsoluteZ } from './matrixMinMaxAbsoluteZ';

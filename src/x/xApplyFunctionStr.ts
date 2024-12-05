@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-implied-eval */
 /* eslint-disable no-new-func */
-import { NumberArray, OneLowerCase } from 'cheminfo-types';
+import type { NumberArray, OneLowerCase } from 'cheminfo-types';
 
 export interface XApplyFunctionStrOptions {
   /**

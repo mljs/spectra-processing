@@ -1,7 +1,8 @@
-import { NumberArray } from 'cheminfo-types';
+import type { NumberArray } from 'cheminfo-types';
 
 import { xCheck } from './xCheck';
-import { xGetFromToIndex, XGetFromToIndexOptions } from './xGetFromToIndex';
+import type { XGetFromToIndexOptions } from './xGetFromToIndex';
+import { xGetFromToIndex } from './xGetFromToIndex';
 
 /**
  * Computes the weighted mean value of an array of values.

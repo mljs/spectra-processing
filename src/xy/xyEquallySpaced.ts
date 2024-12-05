@@ -1,4 +1,4 @@
-import { DataXY, FromTo } from 'cheminfo-types';
+import type { DataXY, FromTo } from 'cheminfo-types';
 
 import { createFromToArray } from '../utils';
 import { zonesNormalize, zonesWithPoints } from '../zones';
