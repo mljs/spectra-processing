@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.9.0](https://github.com/mljs/spectra-processing/compare/v14.8.0...v14.9.0) (2024-12-16)
+
+
+### Features
+
+* add xyObjectMinMaxValues function ([#279](https://github.com/mljs/spectra-processing/issues/279)) ([dd09ee3](https://github.com/mljs/spectra-processing/commit/dd09ee3cab362b68cdaafeb2e9edbb9ec0d08c54))
+
 ## [14.8.0](https://github.com/mljs/spectra-processing/compare/v14.7.0...v14.8.0) (2024-12-05)
 
 
