@@ -2,14 +2,18 @@ import type { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
 export interface XCheckOptions {
-  /** minimum length */
+  /**
+   * Minimum length
+   * @default 1
+   */
   minLength?: number;
 }
 
 /**
- * Checks if input is of type array.
- * @param input - input
- * @param options
+ * Checks if the input is a non-empty array of numbers.
+ * Only checks the first element.
+ * @param input - Array to check.
+ * @param options - Additional checks.
  */
 export function xCheck(
   input?: NumberArray,
