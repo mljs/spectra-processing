@@ -3,6 +3,7 @@ export * from './xyObjectCheck';
 export * from './xyObjectJoinX';
 export * from './xyObjectMaxXPoint';
 export * from './xyObjectMaxYPoint';
+export * from './xyObjectMinMaxValues';
 export * from './xyObjectMinXPoint';
 export * from './xyObjectMinYPoint';
 export * from './xyObjectSlotX';

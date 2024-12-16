@@ -125,6 +125,7 @@ exports[`test existence of exported functions 1`] = `
   "xyObjectJoinX",
   "xyObjectMaxXPoint",
   "xyObjectMaxYPoint",
+  "xyObjectMinMaxValues",
   "xyObjectMinXPoint",
   "xyObjectMinYPoint",
   "xyObjectSlotX",
