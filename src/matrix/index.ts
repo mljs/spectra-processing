@@ -7,6 +7,7 @@ export * from './matrixCheck';
 export * from './matrixClone';
 export * from './matrixColumnsCorrelation';
 export * from './matrixCreateEmpty';
+export * from './matrixGetSubMatrix';
 export * from './matrixHistogram';
 export * from './matrixMaxAbsoluteZ';
 export * from './matrixMedian';
