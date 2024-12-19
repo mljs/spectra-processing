@@ -15,8 +15,10 @@ export async function recursiveResolve(object: unknown) {
 function appendPromises(object: any, promises: Array<Promise<unknown>>) {
   if (typeof object !== 'object') return object;
   for (const key in object) {
-    if (object[key] instanceof Promise) {
-      promises.push(object[key].then((value) => (object[key] = value)));
+    if (typeof object[key].then === 'function') {
+      promises.push(
+        object[key].then((value: unknown) => (object[key] = value)),
+      );
     } else if (typeof object[key] === 'object') {
       appendPromises(object[key], promises);
     }
