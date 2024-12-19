@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.9.1](https://github.com/mljs/spectra-processing/compare/v14.9.0...v14.9.1) (2024-12-19)
+
+
+### Bug Fixes
+
+* use thenable in recursiveResolve ([#282](https://github.com/mljs/spectra-processing/issues/282)) ([a675766](https://github.com/mljs/spectra-processing/commit/a67576664236b9feb3b1bf6c0798c2f99df7a68f))
+
 ## [14.9.0](https://github.com/mljs/spectra-processing/compare/v14.8.0...v14.9.0) (2024-12-16)
 
 
