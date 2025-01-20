@@ -45,12 +45,10 @@ export function xHilbertTransform(
 function hilbertTransformWithFFT(array: NumberArray): Float64Array {
   const length = array.length;
   const fft = new FFT(length);
-  const complexSignal = new Float64Array(length * 2);
-  for (let i = 0; i < length; i++) {
-    complexSignal[i * 2] = array[i];
-  }
+
   const fftResult = new Float64Array(length * 2);
-  fft.transform(fftResult, complexSignal);
+  fft.realTransform(fftResult, array);
+  fft.completeSpectrum(fftResult);
   const multiplier = new Float64Array(length);
   for (let i = 1; i < length; i++) {
     multiplier[i] = Math.sign(length / 2 - i);
