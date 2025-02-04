@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.9.2](https://github.com/mljs/spectra-processing/compare/v14.9.1...v14.9.2) (2025-02-04)
+
+
+### Bug Fixes
+
+* remove circular dependency ([8698ea8](https://github.com/mljs/spectra-processing/commit/8698ea8aa5a6f6a0007d25ad2c537673a6d3caf6))
+
 ## [14.9.1](https://github.com/mljs/spectra-processing/compare/v14.9.0...v14.9.1) (2024-12-19)
 
 
