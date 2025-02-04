@@ -3,7 +3,7 @@ import type { DataXY } from 'cheminfo-types';
 import type { XGetFromToIndexOptions } from '../x/xGetFromToIndex';
 import { xGetFromToIndex } from '../x/xGetFromToIndex';
 
-import { xyCheck } from '.';
+import { xyCheck } from './xyCheck';
 
 /**
  * Computes the weighted mean value of an array of values.
