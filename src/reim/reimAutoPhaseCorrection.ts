@@ -43,6 +43,7 @@ export interface AutoPhaseCorrectionOptions {
  * correction algorithm for high-resolution NMR data. 10.1002/mrc.4586
  * @param data - complex spectrum
  * @param options - options
+ * @returns phased spectrum and the phase correction values
  */
 
 export function reimAutoPhaseCorrection(
@@ -235,6 +236,7 @@ function holoborodko(s: DoubleArray): Float64Array {
  * @param options.magnitudeMode
  * @param options.maxDistanceToJoin
  * @param options.factorNoise
+ * @returns Uint8Array
  */
 function robustBaseLineRegionsDetection(
   s: DoubleArray,
@@ -286,9 +288,10 @@ function robustBaseLineRegionsDetection(
 
 /**
  * WeightedLinearRegression.
- * @param x
- * @param y
- * @param w
+ * @param x - Array of Number.
+ * @param y - Array of Number.
+ * @param w - Array of Number.
+ * @returns Array of Number.
  */
 function weightedLinearRegression(
   x: DoubleArray,

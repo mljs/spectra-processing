@@ -13,10 +13,11 @@ export interface XYArrayMergeOptions {
 }
 
 /**
- * Merge DataXY
+ * Merges multiple DataXY objects into a single DataXY object.
  * We have an array of DataXY and the goal is to merge all the values that are the closest possible
- * @param data - data
- * @param options - Options
+ * @param data - An array of DataXY objects to merge.
+ * @param options - Optional settings for the merge operation.
+ * @returns A single DataXY object with merged X and Y values.
  */
 export function xyArrayMerge(
   data: DataXY[],

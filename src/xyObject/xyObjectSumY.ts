@@ -5,6 +5,7 @@ import { xyObjectCheck } from './xyObjectCheck';
 /**
  * Calculate the sum of Y values.
  * @param points - Object that contains property x and y (an array)
+ * @returns - The sum of Y values.
  */
 export function xyObjectSumY(points: Point[] = []): number {
   xyObjectCheck(points);

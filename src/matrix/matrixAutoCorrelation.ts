@@ -1,6 +1,13 @@
 import type { DoubleMatrix } from '../types';
 import { xCorrelation } from '../x';
 
+/**
+ * Computes the auto-correlation of a matrix along a specified column index.
+ * @param matrix - The input matrix of type DoubleMatrix.
+ * @param index - The column index to use for auto-correlation (default is 0).
+ * @returns A Float64Array containing the auto-correlation values for each column.
+ * @throws Will throw an error if the matrix contains less than 2 rows.
+ */
 export function matrixAutoCorrelation(
   matrix: DoubleMatrix,
   index = 0,

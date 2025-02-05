@@ -11,11 +11,12 @@ export interface XYArrayWeightedMergeOptions {
 }
 
 /**
- * Merge DataXY
+ * Merges multiple DataXY objects into a single DataXY object using a weighted average approach.
  * We have an array of DataXY and the goal is to merge all the values for which the deltaX is small or equal to delta.
  * X values are weighted average
- * @param data - data
- * @param options - Options
+ * @param data - An array of DataXY objects to be merged.
+ * @param options - Optional settings for the merge operation.
+ * @returns A DataXY object containing the merged x and y arrays.
  */
 export function xyArrayWeightedMerge(
   data: DataXY[],

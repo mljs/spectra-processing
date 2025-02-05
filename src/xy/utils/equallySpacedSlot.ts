@@ -1,11 +1,12 @@
 /**
  * Function that retrieves the getEquallySpacedData with the variant "slot".
- * @param x
- * @param y
- * @param from
- * @param to
- * @param numberOfPoints
- * @returns Array of y's equally spaced with the variant "slot"
+ * @param x - x coordinates
+ * @param y - y coordinates
+ * @param from - starting value of the range
+ * @param to - ending value of the range
+ * @param numberOfPoints - number of points in the output array
+ * @returns A Float64Array containing the equally spaced slot representation of the input data
+ * @throws Error if the x coordinates are not in a strictly increasing order
  */
 export default function equallySpacedSlot(
   /** x coordinates */

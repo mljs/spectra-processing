@@ -9,9 +9,10 @@ export interface XYObjectJoinXOptions {
 }
 
 /**
- * xyObjectJoinX.
- * @param points - Array of growing points {x,y}.
- * @param options - Options.
+ * Joins points with similar x-values into a single point using the center of mass.
+ * @param points - Array of points to be joined.
+ * @param options - Options for joining points.
+ * @returns Array of points after joining.
  */
 export function xyObjectJoinX(
   points: Point[],

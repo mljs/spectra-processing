@@ -12,6 +12,7 @@ export interface XYObjectSlotXOptions {
  * xyObjectSlotX
  * @param points - Array of growing points {x,y}.
  * @param options - Options.
+ * @returns Array of points {x,y}.
  */
 export function xyObjectSlotX(
   points: Point[],

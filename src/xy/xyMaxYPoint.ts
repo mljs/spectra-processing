@@ -33,6 +33,7 @@ export interface XYMaxYPointOptions {
  * Finds the max y value in a range and return a {x,y} point
  * @param data - Object that contains property x (an ordered increasing array) and y (an array)
  * @param options - Options
+ * @returns - Point with index
  */
 export function xyMaxYPoint(
   data: DataXY,

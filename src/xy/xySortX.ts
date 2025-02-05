@@ -5,6 +5,7 @@ import { xIsMonotonic } from '../x';
 /**
  * This function performs a quick sort of the x array while transforming the y array to preserve the coordinates.
  * @param data - Object that contains property x (Array) and y (Array)
+ * @returns Object that contains property x (Float64Array) and y (Float64Array)
  */
 export function xySortX(data: DataXY): DataXY<Float64Array> {
   const { x, y } = data;

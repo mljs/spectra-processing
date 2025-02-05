@@ -2,11 +2,11 @@ import integral from './integral';
 
 /**
  * Function that retrieves the getEquallySpacedData with the variant "smooth".
- * @param x
- * @param y
- * @param from
- * @param to
- * @param numberOfPoints
+ * @param x - x coordinates
+ * @param y - y coordinates
+ * @param from - starting value of the range
+ * @param to - ending value of the range
+ * @param numberOfPoints - number of points in the output array
  * @returns - Array of y's equally spaced with the variant "smooth"
  */
 export default function equallySpacedSmooth(

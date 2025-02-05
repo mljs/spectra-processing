@@ -16,6 +16,7 @@ export interface XYArrayAlignToFirstOptions {
  * If some x values are missing in the first spectrum we will add them
  * @param data - data
  * @param options - options
+ * @returns - x and ys
  */
 export function xyArrayAlignToFirst(
   data: DataXY[],

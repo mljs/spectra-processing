@@ -9,6 +9,7 @@ import { xyCheck } from './xyCheck';
  * xyRealMinYPoint.
  * @param data - Data.
  * @param options - Options.
+ * @returns - Point with index.
  */
 export function xyRealMinYPoint(data: DataXY, options = {}): PointWithIndex {
   xyCheck(data);

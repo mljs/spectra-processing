@@ -12,8 +12,8 @@ export interface XYCovarianceOptions {
 
 /**
  * Finds the covariance of the points.
- * @param data
- * @param options
+ * @param data - object containing the x and y arrays
+ * @param options - object containing the unbiased boolean
  * @returns the covariance
  */
 export function xyCovariance(

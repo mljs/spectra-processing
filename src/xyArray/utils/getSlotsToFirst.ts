@@ -20,6 +20,7 @@ export interface Slot {
  * GetSlotsToFirst.
  * @param data - data.
  * @param options - Options.
+ * @returns Slots.
  */
 export function getSlotsToFirst(
   data: DataXY[],

@@ -7,6 +7,7 @@ import { xyCheck } from './xyCheck';
 /**
  * xyToXYObject.
  * @param data - Array of points {x,y}.
+ * @returns DataXY object.
  */
 export function xyToXYObject(data: DataXY): Point[] {
   xyCheck(data);
