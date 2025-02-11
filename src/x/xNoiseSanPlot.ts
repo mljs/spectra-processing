@@ -1,11 +1,8 @@
 import type { DataXY, FromTo, NumberArray } from 'cheminfo-types';
-// @ts-expect-error Missing types.
-import SplineInterpolator from 'spline-interpolator';
 
 import { createFromToArray } from '../utils';
 
-import erfcinv from './utils/erfcinv';
-import rayleighCdf from './utils/rayleighCdf';
+import { simpleNormInvNumber } from './utils/simpleNormInv';
 import { xCheck } from './xCheck';
 
 export interface XNoiseSanPlotOptions {
@@ -80,7 +77,6 @@ export function xNoiseSanPlot(
     factorStd = 5,
     fixOffset = true,
   } = options;
-
   let input;
   if (Array.isArray(mask) && mask.length === array.length) {
     input = new Float64Array(array.filter((_e, i) => !mask[i]));
@@ -95,7 +91,7 @@ export function xNoiseSanPlot(
       input[i] *= scaleFactor;
     }
   }
-  input = input.sort().reverse();
+  input = input.sort((a, b) => b - a);
 
   if (fixOffset && !magnitudeMode) {
     const medianIndex = Math.floor(input.length / 2);
@@ -162,10 +158,10 @@ export function xNoiseSanPlot(
         ];
     }
   }
+
   const correctionFactor = -simpleNormInvNumber(cutOffDist / 2, {
     magnitudeMode,
   });
-
   let effectiveCutOffDist, refinedCorrectionFactor;
 
   if (refine && cutOffSignalsIndexPlus > -1) {
@@ -278,111 +274,6 @@ function determineCutOff(
   }
 
   return whereToCutStat;
-}
-
-interface SimpleNormInvOptions {
-  /**
-   * Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
-   */
-  mask?: NumberArray;
-
-  /**
-   * Percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
-   */
-  cutOff?: number;
-
-  /**
-   * If true the noise level will be recalculated get out the signals using factorStd.
-   * @default true
-   */
-  refine?: boolean;
-  magnitudeMode?: boolean;
-
-  /**
-   * Factor to scale the data input[i]*=scaleFactor.
-   * @default 1
-   */
-  scaleFactor?: number;
-
-  /**
-   * Factor times std to determine what will be marked as signals.
-   * @default 5
-   */
-  factorStd?: number;
-
-  /**
-   * If the baseline is correct, the midpoint of distribution should be zero. If true, the distribution will be centered.
-   * @default true
-   */
-  fixOffset?: boolean;
-
-  /**
-   * Log scale to apply in the intensity axis in order to avoid big numbers.
-   * @default 2
-   */
-  logBaseY?: number;
-  considerList?: { from: number; step: number; to: number };
-  fromTo?: Record<string, FromTo>;
-}
-
-function simpleNormInvNumber(
-  data: number,
-  options: SimpleNormInvOptions,
-): number {
-  return simpleNormInv([data], options)[0];
-}
-
-/**
- * SimpleNormInvs.
- * @param data - Data array.
- * @param options
- */
-function simpleNormInv(
-  data: NumberArray,
-  options: SimpleNormInvOptions = {},
-): Float64Array {
-  const { magnitudeMode = false } = options;
-
-  const from = 0;
-  const to = 2;
-  const step = 0.01;
-  const xTraining = createArray(from, to, step);
-
-  const result = new Float64Array(data.length);
-  const yTraining = new Float64Array(xTraining.length);
-  if (magnitudeMode) {
-    const factor = 1;
-    for (let i = 0; i < yTraining.length; i++) {
-      const finalInput = xTraining[i] * factor;
-      yTraining[i] = 1 - rayleighCdf(finalInput);
-    }
-    const interp = new SplineInterpolator(xTraining, yTraining);
-    for (let i = 0; i < result.length; i++) {
-      const yValue = 2 * data[i];
-      result[i] = -1 * interp.interpolate(yValue);
-    }
-  } else {
-    for (let i = 0; i < result.length; i++) {
-      result[i] = -1 * Math.SQRT2 * erfcinv(2 * data[i]);
-    }
-  }
-  return result;
-}
-
-/**
- * CreateArray.
- * @param from - From.
- * @param to - To.
- * @param step - Step.
- * @returns Array of results.
- */
-function createArray(from: number, to: number, step: number): number[] {
-  const length = Math.abs((from - to) / step + 1);
-  const result: number[] = [];
-  for (let i = 0; i < length; i++) {
-    result.push(from + i * step);
-  }
-  return result;
 }
 
 /**

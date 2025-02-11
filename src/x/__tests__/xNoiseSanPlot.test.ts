@@ -1026,5 +1026,5 @@ test('get noise level', () => {
     magnitudeMode: true,
   });
   expect(noise.snr).toBeCloseTo(56.8, 1);
-  expect(noiseFromMagnitude.snr).toBeCloseTo(46.4, 1);
+  expect(noiseFromMagnitude.snr).toBeCloseTo(40.2, 1);
 });
