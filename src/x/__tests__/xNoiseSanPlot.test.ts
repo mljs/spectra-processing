@@ -1021,10 +1021,18 @@ test('get noise level', () => {
     ],
   };
 
-  const noise = xNoiseSanPlot(data.re, { magnitudeMode: false, mask: [] });
+  const noise = xNoiseSanPlot(data.re);
   const noiseFromMagnitude = xNoiseSanPlot(reimAbsolute(data), {
     magnitudeMode: true,
   });
   expect(noise.snr).toBeCloseTo(56.8, 1);
   expect(noiseFromMagnitude.snr).toBeCloseTo(40.2, 1);
+
+  const noiseScaled = xNoiseSanPlot(data.re, {
+    scaleFactor: 2,
+  });
+  // the positive and negative noise level should be twice
+  expect(noiseScaled.positive).toBeCloseTo(noise.positive * 2, 1);
+  //the signal to noise ratio should the same
+  expect(noiseScaled.snr).toBeCloseTo(noise.snr, 1);
 });
