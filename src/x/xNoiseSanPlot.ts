@@ -9,11 +9,13 @@ import { xEnsureFloat64 } from './xEnsureFloat64';
 export interface XNoiseSanPlotOptions {
   /**
    * array to filter data, if the i-th element is different to zero then the i-th element of the distribution will be ignored.
+   * @default undefined
    */
   mask?: NumberArray;
 
   /**
    * percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
+   * @default: will be calculated from the data.
    */
   cutOff?: number;
 
@@ -22,6 +24,11 @@ export interface XNoiseSanPlotOptions {
    * @default true
    */
   refine?: boolean;
+  /**
+   * If true the returns values will be calculated from the Rayleigh inverse cumulative distribution.
+   * it returns
+   * @default false
+   */
   magnitudeMode?: boolean;
 
   /**
