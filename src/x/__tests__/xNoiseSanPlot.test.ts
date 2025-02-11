@@ -1021,7 +1021,7 @@ test('get noise level', () => {
     ],
   };
 
-  const noise = xNoiseSanPlot(data.re, { magnitudeMode: false });
+  const noise = xNoiseSanPlot(data.re, { magnitudeMode: false, mask: [] });
   const noiseFromMagnitude = xNoiseSanPlot(reimAbsolute(data), {
     magnitudeMode: true,
   });

@@ -1,13 +1,14 @@
 import type { DataXY, FromTo, NumberArray } from 'cheminfo-types';
+import { isAnyArray } from 'is-any-array';
 
 import { createFromToArray } from '../utils';
 
 import { simpleNormInvNumber } from './utils/simpleNormInv';
-import { xCheck } from './xCheck';
+import { xEnsureFloat64 } from './xEnsureFloat64';
 
 export interface XNoiseSanPlotOptions {
   /**
-   * boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
+   * array to filter data, if the i-th element is different to zero then the i-th element of the distribution will be ignored.
    */
   mask?: NumberArray;
 
@@ -78,13 +79,11 @@ export function xNoiseSanPlot(
     fixOffset = true,
   } = options;
   let input;
-  if (Array.isArray(mask) && mask.length === array.length) {
-    input = new Float64Array(array.filter((_e, i) => !mask[i]));
+  if (isAnyArray(mask) && mask.length === array.length) {
+    input = xEnsureFloat64(array.filter((_e, i) => !mask[i]));
   } else {
-    input = new Float64Array(array);
+    input = xEnsureFloat64(array);
   }
-
-  xCheck(input);
 
   if (scaleFactor > 1) {
     for (let i = 0; i < input.length; i++) {
