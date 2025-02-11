@@ -91,7 +91,7 @@ export function xNoiseSanPlot(
       input[i] *= scaleFactor;
     }
   }
-  input = input.sort((a, b) => b - a);
+  input = input.sort().reverse();
 
   if (fixOffset && !magnitudeMode) {
     const medianIndex = Math.floor(input.length / 2);
