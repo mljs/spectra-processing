@@ -65,6 +65,7 @@ export interface XNoiseSanPlotResult {
  * @param options - options
  * @returns noise level
  */
+
 export function xNoiseSanPlot(
   array: NumberArray,
   options: XNoiseSanPlotOptions = {},
@@ -78,19 +79,8 @@ export function xNoiseSanPlot(
     factorStd = 5,
     fixOffset = true,
   } = options;
-  let input;
-  if (isAnyArray(mask) && mask.length === array.length) {
-    input = xEnsureFloat64(array.filter((_e, i) => !mask[i]));
-  } else {
-    input = xEnsureFloat64(array);
-  }
 
-  if (scaleFactor > 1) {
-    for (let i = 0; i < input.length; i++) {
-      input[i] *= scaleFactor;
-    }
-  }
-  input = input.sort().reverse();
+  const input = prepareData(array, { scaleFactor, mask });
 
   if (fixOffset && !magnitudeMode) {
     const medianIndex = Math.floor(input.length / 2);
@@ -380,4 +370,25 @@ function scale(
   });
 
   return { x: xAxis, y: array };
+}
+
+function prepareData(
+  array: NumberArray,
+  options: { scaleFactor: number; mask?: NumberArray },
+): Float64Array {
+  const { scaleFactor, mask } = options;
+
+  const input = xEnsureFloat64(
+    isAnyArray(mask) && mask.length === array.length
+      ? array.filter((_e, i) => !mask[i])
+      : array,
+  );
+
+  if (scaleFactor > 1) {
+    for (let i = 0; i < input.length; i++) {
+      input[i] *= scaleFactor;
+    }
+  }
+
+  return input.sort().reverse();
 }
