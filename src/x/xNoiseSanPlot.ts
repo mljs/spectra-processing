@@ -91,7 +91,11 @@ export function xNoiseSanPlot(
 
   if (fixOffset && !magnitudeMode) {
     const medianIndex = Math.floor(input.length / 2);
-    const median = 0.5 * (input[medianIndex] + input[medianIndex + 1]);
+    const median =
+      input.length % 2 === 0
+        ? 0.5 * (input[medianIndex - 1] + input[medianIndex])
+        : input[medianIndex];
+
     for (let i = 0; i < input.length; i++) {
       input[i] -= median;
     }
@@ -198,38 +202,21 @@ export function xNoiseSanPlot(
 }
 
 /**
- * DetermineCutOff.
- * @param signPositive - Array of numbers.
- * @param [options = {}] - Options.
- * @param [options.mask] - Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
- * @param [options.scaleFactor=1] - Factor to scale the data input[i]*=scaleFactor.
- * @param [options.cutOff] - Percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
- * @param [options.factorStd=5] - Factor times std to determine what will be marked as signals.
- * @param [options.refine=true] - If true the noise level will be recalculated get out the signals using factorStd.
- * @param [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. If true, the distribution will be centered.
- * @param [options.logBaseY=2] - Log scale to apply in the intensity axis in order to avoid big numbers.
- * @param options.magnitudeMode -
- * @param options.considerList -
- * @param options.considerList.from -
- * @param options.considerList.step -
- * @param options.considerList.to -
- * @param options.fromTo -
- * @returns Result.
+ * Determines the optimal cut-off point for a given array of positive numbers.
+ * @param signPositive - An array of positive numbers.
+ * @param options - Optional parameters to configure the cut-off determination.
+ * @param options.magnitudeMode - If true, uses magnitude mode for normalization. Default is false.
+ * @param options.considerList - An object specifying the range and step for consideration.
+ * @param options.considerList.from - The starting point of the range. Default is 0.5.
+ * @param options.considerList.step - The step size for the range. Default is 0.1.
+ * @param options.considerList.to - The ending point of the range. Default is 0.9.
+ * @returns The optimal cut-off point as a number.
  */
 function determineCutOff(
   signPositive: NumberArray,
   options: {
-    mask?: NumberArray;
-    cutOff?: number;
-    refine?: boolean;
     magnitudeMode?: boolean;
-    scaleFactor?: number;
-    factorStd?: number;
-    fixOffset?: boolean;
-    logBaseY?: number;
     considerList?: { from: number; step: number; to: number };
-
-    fromTo?: Record<string, FromTo>;
   } = {},
 ): number {
   const {
@@ -254,10 +241,10 @@ function determineCutOff(
     const floor = i - delta;
     const top = i + delta;
     const elementsOfCutOff = cutOff.filter((e) => e[0] < top && e[0] > floor);
-    const averageValue = elementsOfCutOff.reduce(
-      (a, b) => a + Math.abs(b[1]),
-      0,
-    );
+    let averageValue = 0;
+    for (const element of elementsOfCutOff) {
+      averageValue += Math.abs(element[1]);
+    }
     let kiSqrt = 0;
     for (const element of elementsOfCutOff) {
       kiSqrt += (element[1] - averageValue) ** 2;
@@ -273,37 +260,17 @@ function determineCutOff(
 }
 
 /**
- * GenerateSanPlot.
- * @param array - Array.
- * @param [options = {}] - Options.
- * @param [options.mask] - Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
- * @param [options.scaleFactor=1] - Factor to scale the data input[i]*=scaleFactor.
- * @param [options.cutOff] - Percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
- * @param [options.factorStd=5] - Factor times std to determine what will be marked as signals.
- * @param [options.refine=true] - If true the noise level will be recalculated get out the signals using factorStd.
- * @param [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. If true, the distribution will be centered.
- * @param [options.logBaseY=2] - Log scale to apply in the intensity axis in order to avoid big numbers.
- * @param options.magnitudeMode -
- * @param options.considerList -
- * @param options.considerList.from -
- * @param options.considerList.step -
- * @param options.considerList.to -
- * @param options.fromTo -
- * @returns Results.
+ * Generates a SAN plot from the given array based on the specified options.
+ * @param array - The input array of numbers to be processed.
+ * @param options - An optional object containing configuration options.
+ * @param options.logBaseY - The logarithmic base for the Y-axis. Defaults to 2.
+ * @param options.fromTo - An object specifying the range for each key. Each key maps to an object with `from` and `to` properties.
+ * @returns An object where each key maps to a DataXY object containing the processed data.
  */
 function generateSanPlot(
   array: NumberArray,
   options: {
-    mask?: NumberArray;
-    cutOff?: number;
-    refine?: boolean;
-    magnitudeMode?: boolean;
-    scaleFactor?: number;
-    factorStd?: number;
-    fixOffset?: boolean;
     logBaseY?: number;
-    considerList?: { from: number; step: number; to: number };
-
     fromTo?: Record<string, FromTo>;
   } = {},
 ) {
@@ -326,44 +293,22 @@ function generateSanPlot(
 }
 
 /**
- * Scale.
- * @param array - Array.
- * @param [options = {}] - Options.
- * @param [options.mask] - Boolean array to filter data, if the i-th element is true then the i-th element of the distribution will be ignored.
- * @param [options.scaleFactor=1] - Factor to scale the data input[i]*=scaleFactor.
- * @param [options.cutOff] - Percent of positive signal distribution where the noise level will be determined, if it is not defined the program calculate it.
- * @param [options.factorStd=5] - Factor times std to determine what will be marked as signals.
- * @param [options.refine=true] - If true the noise level will be recalculated get out the signals using factorStd.
- * @param [options.fixOffset=true] - If the baseline is correct, the midpoint of distribution should be zero. If true, the distribution will be centered.
- * @param [options.logBaseY=2] - Log scale to apply in the intensity axis in order to avoid big numbers.
- * @param options.magnitudeMode -
- * @param options.considerList -
- * @param options.considerList.from -
- * @param options.considerList.step -
- * @param options.considerList.to -
- * @param options.fromTo -
- * @returns Results.
+ * Scales the input array based on the provided options.
+ * @param array - The input array to be scaled.
+ * @param options - An optional object containing scaling options.
+ * @param options.logBaseY - If provided, the array values will be scaled using the logarithm of this base.
+ * @returns An object containing the scaled x and y arrays.
  */
 function scale(
   array: NumberArray,
   options: {
-    mask?: NumberArray;
-    cutOff?: number;
-    refine?: boolean;
-    magnitudeMode?: boolean;
-    scaleFactor?: number;
-    factorStd?: number;
-    fixOffset?: boolean;
     logBaseY?: number;
-    considerList?: { from: number; step: number; to: number };
-
-    fromTo?: Record<string, FromTo>;
   } = {},
 ) {
   const { log10, abs } = Math;
   const { logBaseY } = options;
   if (logBaseY) {
-    array = array.slice();
+    array = array.slice(0);
     const logOfBase = log10(logBaseY);
     for (let i = 0; i < array.length; i++) {
       array[i] = log10(abs(array[i])) / logOfBase;
@@ -379,6 +324,18 @@ function scale(
   return { x: xAxis, y: array };
 }
 
+/**
+ * Prepares and processes the input data array based on the provided options.
+ * @param array - The input array of numbers to be processed.
+ * @param options - An object containing the following properties:
+ *   - scaleFactor: A number by which to scale each element of the array.
+ *   - mask: An optional array of the same length as the input array, where
+ *           elements corresponding to `true` values will be excluded from processing.
+ * @param options.scaleFactor
+ * @param options.mask
+ * @returns A new Float64Array containing the processed data, scaled by the
+ *          scaleFactor and sorted in descending order.
+ */
 function prepareData(
   array: NumberArray,
   options: { scaleFactor: number; mask?: NumberArray },
