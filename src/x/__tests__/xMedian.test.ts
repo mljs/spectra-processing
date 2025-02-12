@@ -28,6 +28,16 @@ test('should return the median with typed array', () => {
   expect(xMedian(array)).toBe(2);
 });
 
+test('even test case', () => {
+  const array = new Uint16Array(6);
+  array[0] = 4;
+  array[1] = 1;
+  array[2] = 2;
+  array[3] = 3;
+  array[4] = 0;
+  array[5] = 5;
+  expect(xMedian(array)).toBe(2.5);
+});
 test('should throw on invalid value', () => {
   expect(() => xMedian([])).toThrow(/input must not be empty/);
 });
