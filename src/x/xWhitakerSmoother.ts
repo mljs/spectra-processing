@@ -1,7 +1,7 @@
 import type { NumberArray } from 'cheminfo-types';
 
 import { matrixCholeskySolver } from '../matrix/matrixCholeskySolver';
-import { updateSystemMatrix } from '../utils';
+import { addWeights } from '../utils';
 import { createSystemMatrix } from '../utils/createSystemMatrix';
 import { updateWeights } from '../utils/updateWeights';
 
@@ -75,7 +75,7 @@ export function xWhitakerSmoother(
   const { lowerTriangularNonZeros, permutationEncodedArray } =
     createSystemMatrix(size, lambda);
   while (iteration < maxIterations && delta > tolerance) {
-    const [leftHandSide, rightHandSide] = updateSystemMatrix(
+    const [leftHandSide, rightHandSide] = addWeights(
       lowerTriangularNonZeros,
       yData,
       weights,

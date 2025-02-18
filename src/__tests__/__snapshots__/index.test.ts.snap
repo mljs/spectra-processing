@@ -170,7 +170,7 @@ exports[`test existence of exported functions 1`] = `
   "nextPowerOfTwo",
   "recursiveResolve",
   "stringify",
-  "updateSystemMatrix",
+  "addWeights",
   "updateWeights",
 ]
 `;
