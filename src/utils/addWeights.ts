@@ -1,14 +1,14 @@
 import type { NumberArray } from 'cheminfo-types';
 
 /**
- * Updates the given system matrix (lD'D) in the triplet form, and y data with the provided weights.
+ * Updates the given system matrix (lD'D) in the triplet form and y data with the provided weights.
  * It simulates the matrix operation and W + lD'D
  * @param matrix - The original system matrix to be updated, a lower triangular non-zeros of the system matrix (lambda D'D).
  * @param y - The original vector to be updated.
  * @param weights - The weights to apply to the system matrix and vector.
  * @returns A tuple containing the updated system matrix and vector.
  */
-export function updateSystemMatrix(
+export function addWeights(
   matrix: number[][],
   y: NumberArray,
   weights: NumberArray,
