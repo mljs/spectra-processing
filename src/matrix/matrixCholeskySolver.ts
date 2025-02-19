@@ -44,7 +44,8 @@ export function matrixCholeskySolver(
     }
     const mt: NumberArray[] = new Array(nonZerosArray.length);
     for (let a = 0; a < nonZerosArray.length; ++a) {
-      const [ar, ac, value] = nonZerosArray[a];
+      const [r, c, value] = nonZerosArray[a];
+      const [ar, ac] = [pinv[r], pinv[c]];
       mt[a] = ac < ar ? [ac, ar, value] : [ar, ac, value];
     }
     nonZerosArray = mt;
