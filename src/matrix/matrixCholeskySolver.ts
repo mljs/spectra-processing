@@ -42,19 +42,10 @@ export function matrixCholeskySolver(
     for (let k = 0; k < dimension; k++) {
       pinv[permutationEncoded[k]] = k;
     }
-    const mt: NumberArray[] = [];
+    const mt: NumberArray[] = new Array(nonZerosArray.length);
     for (let a = 0; a < nonZerosArray.length; ++a) {
-      let ar = pinv[nonZerosArray[a][0]];
-      let ac = pinv[nonZerosArray[a][1]];
-      if (ac < ar) {
-        const t = ac;
-        ac = ar;
-        ar = t;
-      }
-      mt[a] = [];
-      mt[a][0] = ar;
-      mt[a][1] = ac;
-      mt[a][2] = nonZerosArray[a][2];
+      const [ar, ac, value] = nonZerosArray[a];
+      mt[a] = ac < ar ? [ac, ar, value] : [ar, ac, value];
     }
     nonZerosArray = mt;
   } else {
@@ -148,20 +139,18 @@ function ldlSymbolic(
   lnz: NumberArray,
   flag: NumberArray,
 ): void {
-  let i, k, permutationEncoded, kk, p2;
-
-  for (k = 0; k < dimension; k++) {
+  for (let k = 0; k < dimension; k++) {
     parent[k] = -1;
     flag[k] = k;
     lnz[k] = 0;
-    kk = k;
-    p2 = ap[kk + 1];
+    const kk = k;
+    const p2 = ap[kk + 1];
     for (
-      permutationEncoded = ap[kk];
+      let permutationEncoded = ap[kk];
       permutationEncoded < p2;
       permutationEncoded++
     ) {
-      i = ai[permutationEncoded];
+      let i = ai[permutationEncoded];
       if (i < k) {
         for (; flag[i] !== k; i = parent[i]) {
           if (parent[i] === -1) parent[i] = k;
@@ -172,7 +161,7 @@ function ldlSymbolic(
     }
   }
   lp[0] = 0;
-  for (k = 0; k < dimension; k++) {
+  for (let k = 0; k < dimension; k++) {
     lp[k + 1] = lp[k] + lnz[k];
   }
 }
@@ -262,8 +251,7 @@ function ldlLsolve(
 }
 
 function ldlDsolve(dimension: number, x: NumberArray, d: NumberArray): void {
-  let j;
-  for (j = 0; j < dimension; j++) {
+  for (let j = 0; j < dimension; j++) {
     x[j] /= d[j];
   }
 }
