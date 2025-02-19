@@ -7,5 +7,4 @@ export * from './isPowerOfTwo';
 export * from './nextPowerOfTwo';
 export * from './recursiveResolve';
 export * from './stringify';
-export * from './addWeights';
 export * from './updateWeights';
