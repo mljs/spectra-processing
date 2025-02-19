@@ -1,14 +1,14 @@
 import type { NumberArray } from 'cheminfo-types';
 
 import { matrixCholeskySolver } from '../matrix/matrixCholeskySolver';
-import { addWeights } from '../utils';
+import { addWeights } from '../utils/addWeights';
 import { createSystemMatrix } from '../utils/createSystemMatrix';
 import { updateWeights } from '../utils/updateWeights';
 
 import { xEnsureFloat64 } from './xEnsureFloat64';
 import { xMultiply } from './xMultiply';
 
-interface BaselineOptions extends ControlPointsOptions {
+interface XWhitakerSmootherOptions extends ControlPointsOptions {
   /**
    * Factor of weights matrix in -> [I + lambda D'D]z = x
    * @default 100
@@ -53,7 +53,7 @@ interface BaselineOptions extends ControlPointsOptions {
  */
 export function xWhitakerSmoother(
   yData: NumberArray,
-  options: BaselineOptions = {},
+  options: XWhitakerSmootherOptions = {},
 ) {
   const {
     lambda = 100,
@@ -72,20 +72,15 @@ export function xWhitakerSmoother(
   let iteration = 0;
   let delta = Infinity;
   let baseline = yData.slice();
-  const { lowerTriangularNonZeros, permutationEncodedArray } =
-    createSystemMatrix(size, lambda);
+  const upperTriangularNonZeros = createSystemMatrix(size, lambda);
   while (iteration < maxIterations && delta > tolerance) {
-    const [leftHandSide, rightHandSide] = addWeights(
-      lowerTriangularNonZeros,
+    const { leftHandSide, rightHandSide } = addWeights(
+      upperTriangularNonZeros,
       yData,
       weights,
     );
 
-    const cho = matrixCholeskySolver(
-      leftHandSide,
-      size,
-      permutationEncodedArray,
-    );
+    const cho = matrixCholeskySolver(leftHandSide, size);
 
     if (!cho) {
       return baseline;
