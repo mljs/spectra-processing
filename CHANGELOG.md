@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.9.3](https://github.com/mljs/spectra-processing/compare/v14.9.2...v14.9.3) (2025-02-19)
+
+
+### Bug Fixes
+
+* **xNoiseSanplot:** use analytical expression for Raylegh inverse CDF ([#289](https://github.com/mljs/spectra-processing/issues/289)) ([bd9dc3e](https://github.com/mljs/spectra-processing/commit/bd9dc3e716f0722a0bb4e222840e418cd905df55))
+
 ## [14.9.2](https://github.com/mljs/spectra-processing/compare/v14.9.1...v14.9.2) (2025-02-04)
 
 
