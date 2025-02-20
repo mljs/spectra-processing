@@ -2,14 +2,17 @@ import type { NumberArray } from 'cheminfo-types';
 
 import { matrixCholeskySolver } from '../matrix/matrixCholeskySolver';
 import { addWeights } from '../utils/addWeights';
+import type {
+  UpdateWeightsOptions,
+  WeightsAndControlPoints,
+} from '../utils/calculateAdaptiveWeights';
+import { calculateAdaptiveWeights } from '../utils/calculateAdaptiveWeights';
 import { createSystemMatrix } from '../utils/createSystemMatrix';
-import type { WeightsAndControlPoints } from '../utils/updateWeights';
-import { updateWeights } from '../utils/updateWeights';
 
 import { xEnsureFloat64 } from './xEnsureFloat64';
 import { xMultiply } from './xMultiply';
 
-interface XWhitakerSmootherOptions extends WeightsAndControlPoints {
+interface XWhitakerSmootherOptions extends UpdateWeightsOptions {
   /**
    * Factor of weights matrix in -> [I + lambda D'D]z = x
    * @default 100
@@ -26,12 +29,6 @@ interface XWhitakerSmootherOptions extends WeightsAndControlPoints {
    * @default 1e-6
    */
   tolerance?: number;
-
-  /**
-   * Factor used to calculate the residuals for weight updates.
-   * @default 3
-   */
-  residualFactor?: number;
 
   /**
    * Learning rate for weight updates.
@@ -60,14 +57,15 @@ export function xWhitakerSmoother(
     lambda = 100,
     maxIterations = 100,
     tolerance = 1e-6,
-    residualFactor = 3,
+    factorStd = 3,
     learningRate = 0.5,
     minWeight = 0.01,
   } = options;
 
   const size = yData.length;
 
-  const { controlPoints, weights } = getWeightsAndControlPoints(yData, options);
+  // eslint-disable-next-line prefer-const
+  let { controlPoints, weights } = getWeightsAndControlPoints(yData, options);
   const prevBaseline: Float64Array = new Float64Array(size);
 
   let iteration = 0;
@@ -89,11 +87,11 @@ export function xWhitakerSmoother(
 
     const newBaseline = cho(rightHandSide);
 
-    updateWeights(yData, newBaseline, weights, {
+    weights = calculateAdaptiveWeights(yData, newBaseline, weights, {
       controlPoints,
       minWeight,
       learningRate,
-      residualFactor,
+      factorStd,
     });
 
     delta = calculateDelta(newBaseline, prevBaseline, size);
@@ -128,7 +126,7 @@ function calculateDelta(
  * Retrieves the control points and weights for the given data, the weights are modified multiplication of controlPoints if it exists.
  * @param  y - The input data array.
  * @param  options - The options for control points and weights.
- * @returns - The control points and weights.
+ * @returns - The control points and modified weights.
  */
 function getWeightsAndControlPoints(
   y: NumberArray,
