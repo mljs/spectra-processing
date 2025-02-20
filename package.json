@@ -108,7 +108,6 @@
     "fft.js": "^4.0.4",
     "is-any-array": "^2.0.1",
     "ml-matrix": "^6.12.0",
-    "ml-xsadd": "^3.0.1",
-    "spline-interpolator": "^1.0.0"
+    "ml-xsadd": "^3.0.1"
   }
 }
