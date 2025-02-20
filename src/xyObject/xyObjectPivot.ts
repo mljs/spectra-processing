@@ -1,13 +1,18 @@
-import type { FromTo, PointXY } from 'cheminfo-types';
+import type { PointXY } from 'cheminfo-types';
 
 import { xyObjectMinMaxValues } from './xyObjectMinMaxValues';
 
 interface XYObjectPivotOptions {
   /**
-   * An object specifying the range { from, to } within which to search for the peak.
-   * @default { from: minX, to: maxX }
+   * lower extremity to search the pivot
+   * @default minX
    */
-  fromTo?: FromTo;
+  from?: number;
+  /**
+   * upper extremity to search the pivot
+   * @default maxX
+   */
+  to?: number;
   /**
    * A factor to determine the threshold for peak detection based on the maximum y value.
    * @default 0.2
@@ -16,38 +21,35 @@ interface XYObjectPivotOptions {
 }
 
 /**
- * Finds the index of the peak in an array of points (x, y) based on a threshold factor in Y values and a specified range in X values.
- * @param arr - Array of points where each point is an object with x and y properties.
- * @param options - Optional parameters to configure the pivot search.
- * @param options.fromTo - An object specifying the range { from, to } within which to search for the peak. Defaults to the range of x values in the array.
- * @param options.thresholdFactor - A factor to determine the threshold for peak detection based on the maximum y value. Defaults to 0.2.
- * @returns The index of the peak point in the array. If no peak is found, returns -1.
+ * Finds the pivot point in an array of points based on specified options.
+ * @param points - An array of points where each point is an object with `x` and `y` properties.
+ * @param options - Optional parameters to customize the pivot point selection.
+ * @returns The pivot point object with `x` and `y` properties, or `null` if no suitable point is found.
  */
 export function xyObjectPivot(
-  arr: PointXY[],
+  points: PointXY[],
   options: XYObjectPivotOptions = {},
-): number {
-  if (arr.length === 0) return -1;
+) {
+  if (points.length === 0) return null;
 
-  const { minX, maxX, maxY } = xyObjectMinMaxValues(arr);
-
-  const { thresholdFactor = 0.2, fromTo = { from: minX, to: maxX } } = options;
-  let { from, to } = fromTo;
+  const { minX, maxX, maxY } = xyObjectMinMaxValues(points);
+  const { thresholdFactor = 0.2 } = options;
+  let { from = minX, to = maxX } = options;
 
   if (from > to) [from, to] = [to, from];
 
-  let peakIndex = -1;
+  let pointIndex = -1;
   const threshold = thresholdFactor * maxY;
   let minDistance = Number.MAX_SAFE_INTEGER;
 
-  for (let i = 0; i < arr.length; i++) {
-    const { x, y } = arr[i];
+  for (let i = 0; i < points.length; i++) {
+    const { x, y } = points[i];
     const distance = Math.min(Math.abs(x - from), Math.abs(x - to));
     if (y >= threshold && distance < minDistance) {
-      peakIndex = i;
+      pointIndex = i;
       minDistance = distance;
     }
   }
 
-  return peakIndex;
+  return points[pointIndex] ?? null;
 }
