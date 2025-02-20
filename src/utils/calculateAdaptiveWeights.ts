@@ -22,38 +22,43 @@ export interface UpdateWeightsOptions extends WeightsAndControlPoints {
    * A value between 0 and 1, where higher values mean faster updates.
    * @default 0.5
    */
-  learningRate: number;
+  learningRate?: number;
   /**
    * The minimum allowed weight value to prevent weights from becoming too small.
    * @default 0.01
    */
-  minWeight: number;
+  minWeight?: number;
   /**
    * Factor used to calculate the threshold for determining outliers in the residuals.
    * Higher values mean more tolerance for outliers. The default value is based on noise follow the normal distribution
    * values over 3 times the standard-deviation could be marked as signals or outliers.
    * @default 3
    */
-  factorStd: number;
+  factorStd?: number;
 }
 
 /**
- * Update the weights based on the residuals between the original data and the new baseline.
+ * Calculate the weights based on the control points and the absolute residuals between the original data and the new baseline.
  * @param yData - The original data.
- * @param newBaseline - The new baseline calculated.
+ * @param baseline - The new baseline calculated.
  * @param weights - The current weights to be updated.
- * @param options - Options for updating weights in the Whittaker smoothing algorithm.
- * @returns The updated weights.
+ * @param options - Options for updating weights.
+ * @returns new array of weights.
  */
 
-export function updateWeights(
+export function calculateAdaptiveWeights(
   yData: NumberArray,
-  newBaseline: NumberArray,
+  baseline: NumberArray,
   weights: NumberArray,
   options: UpdateWeightsOptions,
 ) {
-  const { controlPoints, factorStd, learningRate, minWeight } = options;
-  const absResiduals = xAbsolute(xSubtract(yData, newBaseline));
+  const {
+    controlPoints,
+    factorStd = 3,
+    learningRate = 0.5,
+    minWeight = 0.01,
+  } = options;
+  const absResiduals = xAbsolute(xSubtract(yData, baseline));
 
   const medAbsRes = xMedian(absResiduals);
   const mad = 1.4826 * medAbsRes;
@@ -65,18 +70,19 @@ export function updateWeights(
   }
 
   let maxWeight = Number.MIN_SAFE_INTEGER;
-  for (let i = 0; i < weights.length; i++) {
+  const newWeights = Float64Array.from(weights);
+  const oneMinusLearningRate = 1 - learningRate;
+  for (let i = 0; i < newWeights.length; i++) {
     if (controlPoints && controlPoints[i] > 0) continue;
-    weights[i] = Math.max(
+    const weight = Math.max(
       minWeight,
-      (1 - learningRate) * weights[i] + learningRate * rawWeights[i],
+      oneMinusLearningRate * weights[i] + learningRate * rawWeights[i],
     );
-    if (maxWeight < weights[i]) {
-      maxWeight = weights[i];
-    }
+    newWeights[i] = weight;
+    maxWeight = Math.max(maxWeight, weight);
   }
-  weights[0] = maxWeight;
-  weights[weights.length - 1] = maxWeight;
+  newWeights[0] = maxWeight;
+  newWeights[weights.length - 1] = maxWeight;
 
-  return weights;
+  return newWeights;
 }
