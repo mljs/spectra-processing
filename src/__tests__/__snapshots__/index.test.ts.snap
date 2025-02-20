@@ -128,6 +128,7 @@ exports[`test existence of exported functions 1`] = `
   "xyObjectMinMaxValues",
   "xyObjectMinXPoint",
   "xyObjectMinYPoint",
+  "xyObjectPivot",
   "xyObjectSlotX",
   "xyObjectSortX",
   "xyObjectSumY",
