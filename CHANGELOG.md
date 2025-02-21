@@ -1,5 +1,17 @@
 # Changelog
 
+## [14.10.0](https://github.com/mljs/spectra-processing/compare/v14.9.2...v14.10.0) (2025-02-21)
+
+
+### Features
+
+* add option to get exact xMedian ([d98821b](https://github.com/mljs/spectra-processing/commit/d98821b602262b3d6980f4d621fba9e1081c658f))
+
+
+### Bug Fixes
+
+* **xNoiseSanplot:** use analytical expression for Raylegh inverse CDF ([#289](https://github.com/mljs/spectra-processing/issues/289)) ([bd9dc3e](https://github.com/mljs/spectra-processing/commit/bd9dc3e716f0722a0bb4e222840e418cd905df55))
+
 ## [14.9.2](https://github.com/mljs/spectra-processing/compare/v14.9.1...v14.9.2) (2025-02-04)
 
 
