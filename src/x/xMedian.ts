@@ -1,12 +1,25 @@
 import type { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
+interface XMedianOptions {
+  /**
+   * If true, the function will return the average of the two middle values.
+   * If false, the function will return the lower index of the two middle values.
+   * @default false
+   */
+  exact?: boolean;
+}
+
 /**
  * Calculates the median of an array.
  * @param input - Array containing values
+ * @param options
  * @returns - median
  */
-export function xMedian(input: NumberArray): number {
+export function xMedian(
+  input: NumberArray,
+  options: XMedianOptions = {},
+): number {
   if (!isAnyArray(input)) {
     throw new TypeError('input must be an array');
   }
@@ -15,25 +28,35 @@ export function xMedian(input: NumberArray): number {
     throw new TypeError('input must not be empty');
   }
 
+  const { exact = false } = options || {};
   const array = input.slice();
 
+  const middleIndex = calcMiddle(0, array.length - 1);
+
+  const median = quickSelect(array, middleIndex);
+  if (array.length % 2 === 1 || !exact) {
+    return median;
+  }
+  const medianNext = quickSelect(array, middleIndex + 1);
+  return (median + medianNext) / 2;
+}
+
+function quickSelect(array: NumberArray, middleIndex: number) {
   let low = 0;
   let high = array.length - 1;
   let middle = 0;
   let currentLow = 0;
   let currentHigh = 0;
-  const median = calcMiddle(low, high);
-
   while (true) {
     if (high <= low) {
-      return array[median];
+      return array[middleIndex];
     }
 
     if (high === low + 1) {
       if (array[low] > array[high]) {
         swap(array, low, high);
       }
-      return array[median];
+      return array[middleIndex];
     }
 
     // Find median of low, middle and high items; swap into position low
@@ -65,10 +88,10 @@ export function xMedian(input: NumberArray): number {
     swap(array, low, currentHigh);
 
     // Re-set active partition
-    if (currentHigh <= median) {
+    if (currentHigh <= middleIndex) {
       low = currentLow;
     }
-    if (currentHigh >= median) {
+    if (currentHigh >= middleIndex) {
       high = currentHigh - 1;
     }
   }

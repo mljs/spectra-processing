@@ -16,15 +16,16 @@ test('should return the median', () => {
   expect(xMedian([1, 2, 1])).toBe(1);
   expect(xMedian([3, 2, 1])).toBe(2);
   expect(xMedian(data)).toBeCloseTo(0.5, 1);
+  expect(xMedian([3, 2, 1, 4, 5])).toBe(3);
+  expect(xMedian([3, 2, 1, 6, 4, 5])).toBe(3);
+  expect(xMedian([3, 2, 1, 6, 4, 5], { exact: false })).toBe(3);
+  expect(xMedian([3, 2, 1, 6, 4, 5], { exact: true })).toBe(3.5);
+  expect(xMedian([1, 2, 4, 6, 3, 5], { exact: true })).toBe(3.5);
+  expect(xMedian([3, 2, 1, 4, 5], { exact: true })).toBe(3);
 });
 
 test('should return the median with typed array', () => {
-  const array = new Uint16Array(5);
-  array[0] = 4;
-  array[1] = 1;
-  array[2] = 2;
-  array[3] = 3;
-  array[4] = 0;
+  const array = Uint16Array.from([4, 1, 2, 3, 0]);
   expect(xMedian(array)).toBe(2);
 });
 
