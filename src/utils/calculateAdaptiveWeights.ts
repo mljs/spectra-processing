@@ -38,7 +38,10 @@ export interface UpdateWeightsOptions extends WeightsAndControlPoints {
 }
 
 /**
- * Calculate the weights based on the control points and the absolute residuals between the original data and the new baseline.
+ * Calculate the weights based on the control points and the MAD between the original data and the new baseline.
+ * MAD (Median Absolute Deviation) is more robust to outliers and
+ * the factor (1.4826) makes MAD scaled to be equivalent to the standard deviation for
+ * normal distributions. {@link https://en.m.wikipedia.org/wiki/Median_absolute_deviation}.
  * @param yData - The original data.
  * @param baseline - The new baseline calculated.
  * @param weights - The current weights to be updated.
