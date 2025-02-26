@@ -3,7 +3,7 @@ import type { NumberArray } from 'cheminfo-types';
 import { matrixCholeskySolver } from '../matrix/matrixCholeskySolver';
 import { addWeights } from '../utils/addWeights';
 import type {
-  UpdateWeightsOptions,
+  CalculateAdaptiveWeightsOptions,
   WeightsAndControlPoints,
 } from '../utils/calculateAdaptiveWeights';
 import { calculateAdaptiveWeights } from '../utils/calculateAdaptiveWeights';
@@ -12,7 +12,7 @@ import { createSystemMatrix } from '../utils/createSystemMatrix';
 import { xEnsureFloat64 } from './xEnsureFloat64';
 import { xMultiply } from './xMultiply';
 
-interface XWhitakerSmootherOptions extends UpdateWeightsOptions {
+interface XWhitakerSmootherOptions extends CalculateAdaptiveWeightsOptions {
   /**
    * Factor of weights matrix in -> [I + lambda D'D]z = x
    * @default 100

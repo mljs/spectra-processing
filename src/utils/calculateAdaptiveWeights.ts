@@ -16,7 +16,8 @@ export interface WeightsAndControlPoints {
   weights?: NumberArray;
 }
 
-export interface CalculateAdaptiveWeightsOptions extends WeightsAndControlPoints {
+export interface CalculateAdaptiveWeightsOptions
+  extends WeightsAndControlPoints {
   /**
    * Factor that determines how quickly the weights are updated in each iteration.
    * A value between 0 and 1, where higher values mean faster updates.
@@ -53,7 +54,7 @@ export function calculateAdaptiveWeights(
   yData: NumberArray,
   baseline: NumberArray,
   weights: NumberArray,
-  options: UpdateWeightsOptions,
+  options: CalculateAdaptiveWeightsOptions,
 ) {
   const {
     controlPoints,
