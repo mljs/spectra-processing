@@ -28,10 +28,11 @@ export interface MatrixGetSubMatrixOptions {
   duplicate?: boolean;
 }
 /**
- * Get a subMatrix from matrix, the function check if the subMatrix
- * lies into the dimensions of matrix.
- * @param matrix - matrix that will receive the new element values.
- * @returns The sub `matrix`.
+ * Get a subMatrix from matrix, the function checks if the subMatrix
+ * lies within the dimensions of the matrix.
+ * @param matrix - The original matrix from which the subMatrix will be extracted.
+ * @param options - Options to define the subMatrix boundaries and duplication behavior.
+ * @returns The subMatrix extracted from the original matrix.
  */
 export function matrixGetSubMatrix(
   matrix: Float64Array[],
