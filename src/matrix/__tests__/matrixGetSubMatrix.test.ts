@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { matrixGetSubMatrix } from '../matrixGetSubMatrix';
 
 test('should extract submatrix correctly without duplication', () => {

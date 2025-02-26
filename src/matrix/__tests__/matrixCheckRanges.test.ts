@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest';
+
 import { matrixCheckRanges } from '../matrixCheckRanges';
 
 test('should not throw error for valid indices', () => {
