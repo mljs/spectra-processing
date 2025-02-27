@@ -146,6 +146,7 @@ exports[`test existence of exported functions 1`] = `
   "matrixColumnsCorrelation",
   "matrixCreateEmpty",
   "matrixCuthillMckee",
+  "matrixGetSubMatrix",
   "matrixHistogram",
   "matrixMaxAbsoluteZ",
   "matrixMedian",

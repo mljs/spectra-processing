@@ -1,5 +1,7 @@
 import type { DoubleMatrix } from '../types';
 
+import { matrixCheckRanges } from './matrixCheckRanges';
+
 /**
  * Set in-place a subMatrix to matrix, the function check if the subMatrix
  * lies into the dimensions of matrix.
@@ -17,34 +19,11 @@ export function matrixSetSubMatrix(
 ): DoubleMatrix {
   const endRow = startRow + subMatrix.length - 1;
   const endColumn = startColumn + subMatrix[0].length - 1;
-  checkRange(matrix, startRow, endRow, startColumn, endColumn);
+  matrixCheckRanges(matrix, { startRow, endRow, startColumn, endColumn });
   for (let i = 0; i < subMatrix.length; i++) {
     for (let j = 0; j < subMatrix[0].length; j++) {
       matrix[startRow + i][startColumn + j] = subMatrix[i][j];
     }
   }
   return matrix;
-}
-
-function checkRange(
-  matrix: DoubleMatrix,
-  startRow: number,
-  endRow: number,
-  startColumn: number,
-  endColumn: number,
-) {
-  if (
-    startRow > endRow ||
-    startColumn > endColumn ||
-    startRow < 0 ||
-    startRow >= matrix.length ||
-    endRow < 0 ||
-    endRow >= matrix.length ||
-    startColumn < 0 ||
-    startColumn >= matrix[0].length ||
-    endColumn < 0 ||
-    endColumn >= matrix[0].length
-  ) {
-    throw new RangeError('submatrix indices are out of range');
-  }
 }
