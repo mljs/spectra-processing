@@ -70,6 +70,7 @@ exports[`test existence of exported functions 1`] = `
   "xSum",
   "xUniqueSorted",
   "xVariance",
+  "xWhitakerSmoother",
   "xyAlign",
   "xyCheck",
   "xyCovariance",
@@ -140,9 +141,11 @@ exports[`test existence of exported functions 1`] = `
   "matrixBoxPlot",
   "matrixCenterZMean",
   "matrixCheck",
+  "matrixCholeskySolver",
   "matrixClone",
   "matrixColumnsCorrelation",
   "matrixCreateEmpty",
+  "matrixCuthillMckee",
   "matrixGetSubMatrix",
   "matrixHistogram",
   "matrixMaxAbsoluteZ",
@@ -168,5 +171,6 @@ exports[`test existence of exported functions 1`] = `
   "nextPowerOfTwo",
   "recursiveResolve",
   "stringify",
+  "calculateAdaptiveWeights",
 ]
 `;
