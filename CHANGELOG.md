@@ -1,5 +1,23 @@
 # Changelog
 
+## [14.10.0](https://github.com/mljs/spectra-processing/compare/v14.9.2...v14.10.0) (2025-02-27)
+
+
+### Features
+
+* add matrixGetSubMatrix function ([#236](https://github.com/mljs/spectra-processing/issues/236)) ([ab8f02a](https://github.com/mljs/spectra-processing/commit/ab8f02a7049109fc6d2076ddd97ebc016ad385e2))
+* add option to get exact xMedian ([d98821b](https://github.com/mljs/spectra-processing/commit/d98821b602262b3d6980f4d621fba9e1081c658f))
+* add sparse cholesky solver and cuthill-mckee ([8c9e233](https://github.com/mljs/spectra-processing/commit/8c9e233e51038690decbb432a816f48f4c6110b6))
+* add utilities to build a weighted least squared fit/smooth of 1D data ([8c9e233](https://github.com/mljs/spectra-processing/commit/8c9e233e51038690decbb432a816f48f4c6110b6))
+* add xWhitakerSmoother ([8c9e233](https://github.com/mljs/spectra-processing/commit/8c9e233e51038690decbb432a816f48f4c6110b6))
+* implement Whitaker smoother and all the utilities to be used outside ([#292](https://github.com/mljs/spectra-processing/issues/292)) ([8c9e233](https://github.com/mljs/spectra-processing/commit/8c9e233e51038690decbb432a816f48f4c6110b6))
+
+
+### Bug Fixes
+
+* improve speed in hilbert transform by FFT ([#284](https://github.com/mljs/spectra-processing/issues/284)) ([fc7dfd6](https://github.com/mljs/spectra-processing/commit/fc7dfd6b856e3f9e9c2006e4367cc9f928413417))
+* **xNoiseSanplot:** use analytical expression for Raylegh inverse CDF ([#289](https://github.com/mljs/spectra-processing/issues/289)) ([bd9dc3e](https://github.com/mljs/spectra-processing/commit/bd9dc3e716f0722a0bb4e222840e418cd905df55))
+
 ## [14.9.2](https://github.com/mljs/spectra-processing/compare/v14.9.1...v14.9.2) (2025-02-04)
 
 
