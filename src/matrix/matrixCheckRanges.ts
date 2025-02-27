@@ -1,13 +1,33 @@
-import { DoubleMatrix } from '../types';
+import type { DoubleMatrix } from '../types';
 
+export interface SubmatrixBoundaries {
+  /**
+   * The starting row index of the submatrix.
+   */
+  startRow: number;
+  /**
+   * The ending row index of the submatrix.
+   */
+  endRow: number;
+  /**
+   * The starting column index of the submatrix.
+   */
+  startColumn: number;
+  /**
+   * The ending column index of the submatrix.
+   */
+  endColumn: number;
+}
+
+/**
+ * Checks if the specified submatrix boundaries are within the valid range of the given matrix.
+ * @param matrix - The matrix to check the boundaries against.
+ * @param boundaries - The boundaries of the submatrix.
+ * @throws {RangeError} If any of the specified boundaries are out of the matrix's range.
+ */
 export function matrixCheckRanges(
   matrix: DoubleMatrix,
-  boundaries: {
-    startRow: number;
-    endRow: number;
-    startColumn: number;
-    endColumn: number;
-  },
+  boundaries: SubmatrixBoundaries,
 ) {
   const { startRow, endRow, startColumn, endColumn } = boundaries;
   if (
