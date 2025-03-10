@@ -1,6 +1,7 @@
 import cheminfo from 'eslint-config-cheminfo-typescript';
+import { defineConfig } from 'eslint/config';
 
-export default [
+export default defineConfig([
   ...cheminfo,
   {
     languageOptions: {},
@@ -18,4 +19,4 @@ export default [
       ],
     },
   },
-];
+]);
