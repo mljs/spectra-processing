@@ -6,5 +6,6 @@ export * from './getRescaler';
 export * from './isPowerOfTwo';
 export * from './nextPowerOfTwo';
 export * from './recursiveResolve';
+export * from './recursiveUntypeArrays';
 export * from './stringify';
 export * from './calculateAdaptiveWeights';
