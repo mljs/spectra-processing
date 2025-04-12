@@ -4,18 +4,18 @@ import { xStandardDeviation } from '../xStandardDeviation';
 
 test('standard deviation', () => {
   const data = [15, 13, 17, 7];
-  const s = xStandardDeviation(data);
-  expect(s).toBeCloseTo(Math.sqrt(18.667), 3);
-  expect(xStandardDeviation(data, { unbiased: true })).toBe(s);
+  const sd = xStandardDeviation(data);
+  expect(sd).toBeCloseTo(Math.sqrt(18.667), 3);
+  expect(xStandardDeviation(data, { unbiased: true })).toBe(sd);
   expect(xStandardDeviation(data, { unbiased: false })).toBe(Math.sqrt(14));
 });
 
 test('standard deviation of typed array', () => {
   const data = [15, 13, 17, 7];
   const typedArray = Uint16Array.from(data);
-  const s = xStandardDeviation(typedArray);
-  expect(s).toBeCloseTo(Math.sqrt(18.667), 3);
-  expect(xStandardDeviation(data, { unbiased: true })).toBe(s);
+  const sd = xStandardDeviation(typedArray);
+  expect(sd).toBeCloseTo(Math.sqrt(18.667), 3);
+  expect(xStandardDeviation(data, { unbiased: true })).toBe(sd);
   expect(xStandardDeviation(data, { unbiased: false })).toBe(Math.sqrt(14));
 });
 
