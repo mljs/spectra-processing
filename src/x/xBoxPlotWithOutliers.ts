@@ -1,6 +1,5 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import type { XBoxPlotOptions } from './xBoxPlot';
 import { xBoxPlot } from './xBoxPlot';
 
 export interface XBoxPlotWithOutliers {
@@ -16,15 +15,11 @@ export interface XBoxPlotWithOutliers {
  * Calculating the box plot of the array with outliers
  * Values are outliers if they are below Q1 - 1.5 * IQR or above Q3 + 1.5 * IQR
  * @param array - data
- * @param options
  * @returns - q1, median, q3, min, max, outliers
  */
-export function xBoxPlotWithOutliers(
-  array: NumberArray,
-  options: XBoxPlotOptions = {},
-): XBoxPlotWithOutliers {
+export function xBoxPlotWithOutliers(array: NumberArray): XBoxPlotWithOutliers {
   const info: XBoxPlotWithOutliers = {
-    ...xBoxPlot(array, options),
+    ...xBoxPlot(array),
     outliers: [],
   };
 
