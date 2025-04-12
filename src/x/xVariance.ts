@@ -11,7 +11,7 @@ export interface XVarianceOptions {
   unbiased?: boolean;
 
   /**
-   * Mean of the data
+   * Precalculated mean of the data. If undefined it will be recalculated internally
    * @default mean calculated
    */
   mean?: number;
