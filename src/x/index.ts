@@ -13,6 +13,7 @@ export * from './xCorrelation';
 export * from './xCostMatrix';
 export * from './xCrossCorrelation';
 export * from './xCumulative';
+export * from './xDistributionStats';
 export * from './xDivide';
 export * from './xDotProduct';
 export * from './xEnsureFloat64';

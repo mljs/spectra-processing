@@ -21,6 +21,7 @@ exports[`test existence of exported functions 1`] = `
   "xCostMatrix",
   "xCrossCorrelation",
   "xCumulative",
+  "xDistributionStats",
   "xDivide",
   "xDotProduct",
   "xEnsureFloat64",
