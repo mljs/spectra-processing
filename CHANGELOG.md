@@ -1,5 +1,17 @@
 # Changelog
 
+## [14.11.0](https://github.com/mljs/spectra-processing/compare/v14.10.0...v14.11.0) (2025-04-12)
+
+
+### Features
+
+* add xDistributionStats ([3a51a97](https://github.com/mljs/spectra-processing/commit/3a51a971f6cee7bb2bedf45161c6edd867fd265e))
+
+
+### Bug Fixes
+
+* xBoxPlot implement consistently inclusive interpolate algorithm ([2ef1edb](https://github.com/mljs/spectra-processing/commit/2ef1edb3f9dd6ae4475fff8abb399635129469a2))
+
 ## [14.10.0](https://github.com/mljs/spectra-processing/compare/v14.9.2...v14.10.0) (2025-02-27)
 
 
