@@ -1,15 +1,17 @@
 import { expect, test } from 'vitest';
 
-import { xDistributionStats } from '../xDistributionStats';
+import { xRobustDistributionStats } from '../xRobustDistributionStats';
 
 test('empty array', () => {
   const data: number[] = [];
-  expect(() => xDistributionStats(data)).toThrow('input must not be empty');
+  expect(() => xRobustDistributionStats(data)).toThrow(
+    'input must not be empty',
+  );
 });
 
 test('one element', () => {
   const data = [15];
-  const stats = xDistributionStats(data);
+  const stats = xRobustDistributionStats(data);
   expect(stats).toStrictEqual({
     min: 15,
     q1: 15,
@@ -30,7 +32,7 @@ test('one element', () => {
 
 test('4 elements', () => {
   const data = [15, 13, 17, 7];
-  const stats = xDistributionStats(data);
+  const stats = xRobustDistributionStats(data);
   expect(stats).toBeDeepCloseTo({
     min: 7,
     q1: 11.5,
@@ -51,7 +53,7 @@ test('4 elements', () => {
 
 test('5 elements', () => {
   const data = [1, 2, 3, 4, 5];
-  const stats = xDistributionStats(data);
+  const stats = xRobustDistributionStats(data);
   expect(stats).toBeDeepCloseTo({
     min: 1,
     q1: 2,
@@ -72,7 +74,7 @@ test('5 elements', () => {
 
 test('6 elements with outlier', () => {
   const data = [1, 2, 3, 4, 5, 10];
-  const stats = xDistributionStats(data);
+  const stats = xRobustDistributionStats(data);
   expect(stats).toBeDeepCloseTo({
     min: 1,
     q1: 2.25,
@@ -85,16 +87,16 @@ test('6 elements with outlier', () => {
     maxWhisker: 5,
     iqr: 2.5,
     outliers: [10],
-    mean: 4.166666666666667,
-    sd: 3.1885210782848317,
-    nb: 6,
+    mean: 3,
+    sd: 1.5811388300841898,
+    nb: 5,
   });
 });
 
 test('typed array', () => {
   const data = [15, 13, 17, 7];
   const typedArray = Uint16Array.from(data);
-  expect(xDistributionStats(typedArray)).toStrictEqual(
-    xDistributionStats(data),
+  expect(xRobustDistributionStats(typedArray)).toStrictEqual(
+    xRobustDistributionStats(data),
   );
 });
