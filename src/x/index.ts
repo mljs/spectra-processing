@@ -46,6 +46,7 @@ export * from './xNorm';
 export * from './xNormed';
 export * from './xPadding';
 export * from './xParetoNormalization';
+export * from './xRemoveOutliersIQR';
 export * from './xRescale';
 export * from './xRolling';
 export * from './xRollingAverage';
