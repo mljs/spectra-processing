@@ -54,6 +54,7 @@ exports[`test existence of exported functions 1`] = `
   "xNormed",
   "xPadding",
   "xParetoNormalization",
+  "xRemoveOutliersIQR",
   "xRescale",
   "xRolling",
   "xRollingAverage",
