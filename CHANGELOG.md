@@ -1,5 +1,19 @@
 # Changelog
 
+## [14.12.0](https://github.com/mljs/spectra-processing/compare/v14.11.0...v14.12.0) (2025-04-27)
+
+
+### Features
+
+* add xRemoveOutliersIQR ([b9c1166](https://github.com/mljs/spectra-processing/commit/b9c1166521d74b7a22a030512c63ded8d1172fbf))
+* add xRobustDistributionStats ([2173ee8](https://github.com/mljs/spectra-processing/commit/2173ee867997fcf5d775024a747f4df0134634c7))
+* xDistributionStats deals with outliers ([0c5ff63](https://github.com/mljs/spectra-processing/commit/0c5ff63ff5456289e70fed1ae7072de2850aa3c7))
+
+
+### Bug Fixes
+
+* xBoxPlotWithOutliers calculate more parameters and fix min / max values ([d6eebd7](https://github.com/mljs/spectra-processing/commit/d6eebd76b3860833b4ffc75db8449756529ee99a))
+
 ## [14.11.0](https://github.com/mljs/spectra-processing/compare/v14.10.0...v14.11.0) (2025-04-12)
 
 
