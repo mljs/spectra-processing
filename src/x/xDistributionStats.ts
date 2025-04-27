@@ -1,16 +1,12 @@
 import type { NumberArray } from 'cheminfo-types';
 
+import type { XBoxPlotWithOutliers } from './xBoxPlotWithOutliers';
 import { xBoxPlotWithOutliers } from './xBoxPlotWithOutliers';
 import { xMean } from './xMean';
 import { xStandardDeviation } from './xStandardDeviation';
 
-export interface XDistributionStats {
+export interface XDistributionStats extends XBoxPlotWithOutliers {
   mean: number;
-  min: number;
-  q1: number;
-  median: number;
-  q3: number;
-  max: number;
   sd: number;
   nb: number;
 }
