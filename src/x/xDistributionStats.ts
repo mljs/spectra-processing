@@ -1,6 +1,6 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xBoxPlot } from './xBoxPlot';
+import { xBoxPlotWithOutliers } from './xBoxPlotWithOutliers';
 import { xMean } from './xMean';
 import { xStandardDeviation } from './xStandardDeviation';
 
@@ -26,7 +26,7 @@ export interface XDistributionStats {
  */
 export function xDistributionStats(array: NumberArray): XDistributionStats {
   return {
-    ...xBoxPlot(array),
+    ...xBoxPlotWithOutliers(array),
     mean: xMean(array),
     sd: xStandardDeviation(array),
     nb: array.length,
