@@ -3,11 +3,49 @@ import type { NumberArray } from 'cheminfo-types';
 import { xBoxPlot } from './xBoxPlot';
 
 export interface XBoxPlotWithOutliers {
-  q1: number;
-  median: number;
-  q3: number;
+  /**
+   * The minimum value of the number array
+   */
   min: number;
+  /**
+   * q1 - 1.5 * IQR
+   */
+  lowerWhisker: number;
+  /**
+   * The minimum value of the number array that is not an outlier
+   */
+  minWhisker: number;
+  /**
+   * The first quartile of the number array
+   */
+  q1: number;
+  /**
+   * The median of the number array
+   */
+  median: number;
+  /**
+   * The third quartile of the number array
+   */
+  q3: number;
+  /**
+   * q3 + 1.5 * IQR
+   */
+  maxWhisker: number;
+  /**
+   * The maximal value of the number array that is not an outlier
+   */
+  upperWhisker: number;
+  /**
+   * The maximum value of the number array
+   */
   max: number;
+  /**
+   * q3 - q1
+   */
+  iqr: number;
+  /**
+   * The outliers of the number array based on 1.5 * IQR
+   */
   outliers: number[];
 }
 
@@ -18,24 +56,33 @@ export interface XBoxPlotWithOutliers {
  * @returns - q1, median, q3, min, max, outliers
  */
 export function xBoxPlotWithOutliers(array: NumberArray): XBoxPlotWithOutliers {
-  const info: XBoxPlotWithOutliers = {
-    ...xBoxPlot(array),
-    outliers: [],
-  };
+  const boxPlot = xBoxPlot(array);
 
-  const iqr = info.q3 - info.q1;
-  const min = info.q1 - 1.5 * iqr;
-  const max = info.q3 + 1.5 * iqr;
-  // we need to recalculate the min and the max because they could be outliers
-  info.min = info.median;
-  info.max = info.median;
+  const iqr = boxPlot.q3 - boxPlot.q1;
+  const lowerWhisker = boxPlot.q1 - 1.5 * iqr;
+  const upperWhisker = boxPlot.q3 + 1.5 * iqr;
+
+  const outliers = [];
+  let minWhisker = boxPlot.median;
+  let maxWhisker = boxPlot.median;
   for (const value of array) {
-    if (value < min || value > max) {
-      info.outliers.push(value);
+    if (value < lowerWhisker || value > upperWhisker) {
+      outliers.push(value);
     } else {
-      if (value < info.min) info.min = value;
-      if (value > info.max) info.max = value;
+      if (value < minWhisker) minWhisker = value;
+      if (value > maxWhisker) maxWhisker = value;
     }
   }
+
+  const info: XBoxPlotWithOutliers = {
+    ...boxPlot,
+    lowerWhisker,
+    upperWhisker,
+    minWhisker,
+    maxWhisker,
+    iqr,
+    outliers,
+  };
+
   return info;
 }
