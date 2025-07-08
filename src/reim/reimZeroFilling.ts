@@ -1,4 +1,4 @@
-import type { DataReIm, DataXReIm } from '../types';
+import type { DataReIm } from '../types';
 
 /**
  * This function make a zero filling to re and im part.
