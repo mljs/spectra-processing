@@ -1,0 +1,1 @@
+export interface Coordinates { r: number, c: number };
