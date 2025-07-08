@@ -6,6 +6,7 @@ exports[`test existence of exported functions 1`] = `
   "reimAutoPhaseCorrection",
   "reimFFT",
   "reimPhaseCorrection",
+  "reimZeroFilling",
   "getOutputArray",
   "xAbsolute",
   "xAbsoluteMedian",
@@ -176,5 +177,8 @@ exports[`test existence of exported functions 1`] = `
   "recursiveUntypeArrays",
   "stringify",
   "calculateAdaptiveWeights",
+  "matrix3DToStocsy",
+  "matrix3DTranspose",
+  "matrix3DTransposedToStocsy",
 ]
 `;
