@@ -1,5 +1,17 @@
 # Changelog
 
+## [14.13.0](https://github.com/mljs/spectra-processing/compare/v14.12.0...v14.13.0) (2025-07-09)
+
+
+### Features
+
+* implement reimZeroFilling function ([#306](https://github.com/mljs/spectra-processing/issues/306)) ([9f02d91](https://github.com/mljs/spectra-processing/commit/9f02d9130e243e4948c718931e26771df7d1105e))
+
+
+### Bug Fixes
+
+* remove non-existent "zone" export ([#308](https://github.com/mljs/spectra-processing/issues/308)) ([d1d5777](https://github.com/mljs/spectra-processing/commit/d1d57776170777bcb5c79f924efff523f16720a7))
+
 ## [14.12.0](https://github.com/mljs/spectra-processing/compare/v14.11.0...v14.12.0) (2025-04-27)
 
 
