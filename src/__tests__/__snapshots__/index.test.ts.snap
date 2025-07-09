@@ -6,6 +6,7 @@ exports[`test existence of exported functions 1`] = `
   "reimAutoPhaseCorrection",
   "reimFFT",
   "reimPhaseCorrection",
+  "reimZeroFilling",
   "getOutputArray",
   "xAbsolute",
   "xAbsoluteMedian",

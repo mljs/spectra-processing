@@ -1,3 +1,4 @@
+import { reimZeroFilling } from '../reim';
 import type { DataXReIm } from '../types';
 
 /**
@@ -10,30 +11,21 @@ export function xreimZeroFilling(
   data: DataXReIm,
   totalLength: number,
 ): DataXReIm {
-  const length = data.x.length;
+  const { x, re, im } = data;
+  const length = x.length;
   if (totalLength === 0 || length === totalLength) return data;
 
   if (length > totalLength) {
     return {
-      x: data.x.slice(0, totalLength),
-      re: data.re.slice(0, totalLength),
-      im: data.im.slice(0, totalLength),
+      x: x.slice(0, totalLength),
+      re: re.slice(0, totalLength),
+      im: im.slice(0, totalLength),
     };
   }
 
-  const x = data.x;
-  const re = data.re;
-  const im = data.im;
-
   const newX = new Float64Array(totalLength);
-  const newRE = new Float64Array(totalLength);
-  const newIM = new Float64Array(totalLength);
 
-  for (let i = 0; i < length; i++) {
-    newX[i] = x[i];
-    newRE[i] = re[i];
-    newIM[i] = im[i];
-  }
+  newX.set(x);
   const deltaX = ((x.at(-1) as number) - x[0]) / (length - 1);
   for (let i = length; i < totalLength; i++) {
     newX[i] = newX[i - 1] + deltaX;
@@ -41,7 +33,6 @@ export function xreimZeroFilling(
 
   return {
     x: newX,
-    re: newRE,
-    im: newIM,
+    ...reimZeroFilling({ re, im }, totalLength),
   };
 }
