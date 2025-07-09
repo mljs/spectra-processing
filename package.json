@@ -46,10 +46,6 @@
       "node": "./lib/xyObject/index.js",
       "default": "./lib-esm/xyObject/index.js"
     },
-    "./zone": {
-      "node": "./lib/zone/index.js",
-      "default": "./lib-esm/zone/index.js"
-    },
     "./zones": {
       "node": "./lib/zones/index.js",
       "default": "./lib-esm/zones/index.js"
