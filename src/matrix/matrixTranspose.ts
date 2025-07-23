@@ -1,4 +1,5 @@
 import type { NumberArrayConstructor } from '../utils';
+import { matrixCheck } from './matrixCheck';
 
 import { matrixCreateEmpty } from './matrixCreateEmpty';
 
@@ -18,6 +19,7 @@ export function matrixTranspose<
   matrix: number[][],
   options: MatrixTransposeOptions<ArrayConstructorType> = {},
 ) {
+  matrixCheck(matrix);
   const { ArrayConstructor } = options;
   const nbRows = matrix.length;
   const nbColumns = matrix[0].length;
