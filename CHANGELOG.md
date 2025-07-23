@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.14.0](https://github.com/mljs/spectra-processing/compare/v14.13.0...v14.14.0) (2025-07-23)
+
+
+### Features
+
+* add matrixTranspose function ([#309](https://github.com/mljs/spectra-processing/issues/309)) ([0b00126](https://github.com/mljs/spectra-processing/commit/0b001263d25ca966a676360f7e54807232b6cc02))
+
 ## [14.13.0](https://github.com/mljs/spectra-processing/compare/v14.12.0...v14.13.0) (2025-07-09)
 
 
