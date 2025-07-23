@@ -24,3 +24,4 @@ export * from './matrixToArray';
 export * from './matrixZPivotRescale';
 export * from './matrixZRescale';
 export * from './matrixZRescalePerColumn';
+export * from './matrixTranspose';
