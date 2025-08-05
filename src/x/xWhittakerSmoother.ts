@@ -70,7 +70,7 @@ export function xWhittakerSmoother(
 
   let iteration = 0;
   let delta = Infinity;
-  let baseline = yData.slice();
+  let baseline = xEnsureFloat64(yData);
   const upperTriangularNonZeros = createSystemMatrix(size, lambda);
   while (iteration < maxIterations && delta > tolerance) {
     const { leftHandSide, rightHandSide } = addWeights(
