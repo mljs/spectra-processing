@@ -12,7 +12,7 @@ import { createSystemMatrix } from '../utils/createSystemMatrix';
 import { xEnsureFloat64 } from './xEnsureFloat64';
 import { xMultiply } from './xMultiply';
 
-interface XWhitakerSmootherOptions extends CalculateAdaptiveWeightsOptions {
+interface XWhittakerSmootherOptions extends CalculateAdaptiveWeightsOptions {
   /**
    * Factor of weights matrix in -> [I + lambda D'D]z = x
    * @default 100
@@ -49,9 +49,9 @@ interface XWhitakerSmootherOptions extends CalculateAdaptiveWeightsOptions {
  * @param options - The options for baseline computation.
  * @returns - The computed baseline points.
  */
-export function xWhitakerSmoother(
+export function xWhittakerSmoother(
   yData: NumberArray,
-  options: XWhitakerSmootherOptions = {},
+  options: XWhittakerSmootherOptions = {},
 ) {
   const {
     lambda = 100,

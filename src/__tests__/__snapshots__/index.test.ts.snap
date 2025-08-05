@@ -74,7 +74,7 @@ exports[`test existence of exported functions 1`] = `
   "xSum",
   "xUniqueSorted",
   "xVariance",
-  "xWhitakerSmoother",
+  "xWhittakerSmoother",
   "xyReduce",
   "xyAlign",
   "xyCheck",

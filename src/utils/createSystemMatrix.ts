@@ -1,6 +1,6 @@
 /**
  * Generates a lower triangular non-zeros of the first order smoother matrix (lambda D'D) where D is the derivate of the identity matrix
- * this function in combination with addWeights function can obtain (Q = W + lambda D'D) a penalized least square of Whitaker smoother,
+ * this function in combination with addWeights function can obtain (Q = W + lambda D'D) a penalized least square of Whittaker smoother,
  * it also generates a permutation encoded array.
  * @param dimension - The number of points in the matrix.
  * @param lambda - The factor of smoothness .
