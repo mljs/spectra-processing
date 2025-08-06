@@ -24,7 +24,7 @@ export interface MatrixZRescalePerColumnOptions {
 export function matrixZRescalePerColumn(
   matrix: DoubleMatrix,
   options: MatrixZRescalePerColumnOptions = {},
-): Float64Array[] {
+): Array<Float64Array<ArrayBuffer>> {
   const { min = 0, max = 1 } = options;
   const nbColumns = matrix[0].length;
   const nbRows = matrix.length;

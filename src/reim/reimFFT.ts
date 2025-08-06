@@ -50,7 +50,10 @@ export function reimFFT(
   return { re: newRe, im: newIm };
 }
 
-function zeroShift(data: Float64Array, inverse?: boolean): Float64Array {
+function zeroShift(
+  data: Float64Array,
+  inverse?: boolean,
+): Float64Array<ArrayBuffer> {
   const middle = inverse
     ? Math.ceil(data.length / 2)
     : Math.floor(data.length / 2);

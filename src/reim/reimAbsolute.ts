@@ -5,7 +5,7 @@ import type { DataReIm } from '../types';
  * @param data - complex spectrum
  * @returns - reimAbsolute value
  */
-export function reimAbsolute(data: DataReIm): Float64Array {
+export function reimAbsolute(data: DataReIm): Float64Array<ArrayBuffer> {
   const length = data.re.length;
   const re = data.re;
   const im = data.im;

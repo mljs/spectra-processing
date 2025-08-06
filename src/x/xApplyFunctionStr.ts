@@ -28,7 +28,7 @@ export interface XApplyFunctionStrOptions {
 export function xApplyFunctionStr(
   array: NumberArray,
   options: XApplyFunctionStrOptions = {},
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   const { variableLabel = 'x', fctString = variableLabel } = options;
   const fct = new Function(
     variableLabel,

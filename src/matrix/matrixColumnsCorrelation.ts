@@ -7,9 +7,11 @@ import { xCorrelation } from '../x';
  * Calculates a correlation matrix based on the columns of the initial matrix.
  * @param A - matrix [rows][cols]
  */
-export function matrixColumnsCorrelation(A: DoubleMatrix): Float64Array[] {
+export function matrixColumnsCorrelation(
+  A: DoubleMatrix,
+): Array<Float64Array<ArrayBuffer>> {
   const B = new Matrix(A).transpose();
-  const result: Float64Array[] = [];
+  const result: Array<Float64Array<ArrayBuffer>> = [];
   for (let i = 0; i < B.rows; i++) {
     result.push(new Float64Array(B.rows));
   }

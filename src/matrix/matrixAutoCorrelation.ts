@@ -4,7 +4,7 @@ import { xCorrelation } from '../x';
 export function matrixAutoCorrelation(
   matrix: DoubleMatrix,
   index = 0,
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   const nbRows = matrix.length;
   const nbColumns = matrix[0].length;
 

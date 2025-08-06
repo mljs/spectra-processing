@@ -6,7 +6,7 @@ import { matrixCheck } from './matrixCheck';
  * Convert a matrix to a flat Float64Array.
  * @param matrix
  */
-export function matrixToArray(matrix: DoubleMatrix): Float64Array {
+export function matrixToArray(matrix: DoubleMatrix): Float64Array<ArrayBuffer> {
   matrixCheck(matrix);
 
   const nbColumns = matrix[0].length;

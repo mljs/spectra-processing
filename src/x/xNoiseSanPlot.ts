@@ -339,7 +339,7 @@ function scale(
 function prepareData(
   array: NumberArray,
   options: { scaleFactor: number; mask?: NumberArray },
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   const { scaleFactor, mask } = options;
 
   const input = xEnsureFloat64(

@@ -207,7 +207,7 @@ function autoPhaseRegion(
  * @param s - Array of float.
  * @returns Array of float.
  */
-function holoborodko(s: DoubleArray): Float64Array {
+function holoborodko(s: DoubleArray): Float64Array<ArrayBuffer> {
   const dk = new Float64Array(s.length);
   for (let i = 5; i < s.length - 5; i++) {
     dk[i] =

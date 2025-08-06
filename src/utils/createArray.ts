@@ -13,30 +13,30 @@ export type NumberArrayConstructor =
 export type NumberArrayType<
   ArrayConstructorType extends NumberArrayConstructor,
 > = ArrayConstructorType extends Float64ArrayConstructor
-  ? Float64Array
+  ? Float64Array<ArrayBuffer>
   : ArrayConstructorType extends Float32ArrayConstructor
-    ? Float32Array
+    ? Float32Array<ArrayBuffer>
     : ArrayConstructorType extends Int32ArrayConstructor
-      ? Int32Array
+      ? Int32Array<ArrayBuffer>
       : ArrayConstructorType extends Int16ArrayConstructor
-        ? Int16Array
+        ? Int16Array<ArrayBuffer>
         : ArrayConstructorType extends Int8ArrayConstructor
-          ? Int8Array
+          ? Int8Array<ArrayBuffer>
           : ArrayConstructorType extends Uint32ArrayConstructor
-            ? Uint32Array
+            ? Uint32Array<ArrayBuffer>
             : ArrayConstructorType extends Uint16ArrayConstructor
-              ? Uint16Array
+              ? Uint16Array<ArrayBuffer>
               : ArrayConstructorType extends Uint8ArrayConstructor
-                ? Uint8Array
+                ? Uint8Array<ArrayBuffer>
                 : ArrayConstructorType extends Uint8ClampedArrayConstructor
-                  ? Uint8ClampedArray
+                  ? Uint8ClampedArray<ArrayBuffer>
                   : number[];
 
 export type DoubleArrayConstructor = ArrayConstructor | Float64ArrayConstructor;
 export type DoubleArrayType<
   ArrayConstructorType extends DoubleArrayConstructor,
 > = ArrayConstructorType extends Float64ArrayConstructor
-  ? Float64Array
+  ? Float64Array<ArrayBuffer>
   : number[];
 
 export function createNumberArray<

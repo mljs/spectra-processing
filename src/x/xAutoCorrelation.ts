@@ -24,6 +24,6 @@ export interface XAutoCorrelationOptions {
 export function xAutoCorrelation(
   A: NumberArray,
   options: XAutoCorrelationOptions = {},
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   return xCrossCorrelation(A, A, options);
 }

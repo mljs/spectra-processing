@@ -9,7 +9,9 @@ import { xStandardDeviation } from './xStandardDeviation';
  * DOI: 10.1016/j.molstruc.2007.12.026
  * @param array - array of number
  */
-export function xParetoNormalization(array: NumberArray): Float64Array {
+export function xParetoNormalization(
+  array: NumberArray,
+): Float64Array<ArrayBuffer> {
   xCheck(array);
   const result = new Float64Array(array.length);
   const sqrtSD = Math.sqrt(xStandardDeviation(array));
