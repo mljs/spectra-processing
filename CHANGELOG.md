@@ -1,5 +1,14 @@
 # Changelog
 
+## [14.14.1](https://github.com/mljs/spectra-processing/compare/v14.14.0...v14.14.1) (2025-08-06)
+
+
+### Bug Fixes
+
+* support TypeScript 5.9 TypedArray changes ([18ac5a6](https://github.com/mljs/spectra-processing/commit/18ac5a6a003506ee47d20d9b8cb8f3c4fd215e7a))
+* **xWhittakerSmoother:** ensure baseline is initialized as Float64Array ([18ac5a6](https://github.com/mljs/spectra-processing/commit/18ac5a6a003506ee47d20d9b8cb8f3c4fd215e7a))
+* **xWhittakerSmoother:** use correct name to whittaker smoother ([#311](https://github.com/mljs/spectra-processing/issues/311)) ([18ac5a6](https://github.com/mljs/spectra-processing/commit/18ac5a6a003506ee47d20d9b8cb8f3c4fd215e7a))
+
 ## [14.14.0](https://github.com/mljs/spectra-processing/compare/v14.13.0...v14.14.0) (2025-07-23)
 
 
