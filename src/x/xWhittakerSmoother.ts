@@ -12,7 +12,8 @@ import { createSystemMatrix } from '../utils/createSystemMatrix';
 import { xEnsureFloat64 } from './xEnsureFloat64';
 import { xMultiply } from './xMultiply';
 
-interface XWhittakerSmootherOptions extends CalculateAdaptiveWeightsOptions {
+export interface XWhittakerSmootherOptions
+  extends CalculateAdaptiveWeightsOptions {
   /**
    * Factor of weights matrix in -> [I + lambda D'D]z = x
    * @default 100
@@ -147,3 +148,9 @@ function getWeightsAndControlPoints(
     controlPoints,
   };
 }
+
+/**
+ * @deprecated Use xWhittakerSmoother instead.
+ * TODO: Remove in next major version.
+ */
+export const xWhitakerSmoother = xWhittakerSmoother;
