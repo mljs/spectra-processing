@@ -24,7 +24,7 @@ export default function equallySpacedSmooth(
 
   /** number of points */
   numberOfPoints: number,
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   const xLength = x.length;
 
   const step = (to - from) / (numberOfPoints > 1 ? numberOfPoints - 1 : 1);

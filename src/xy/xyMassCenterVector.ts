@@ -19,7 +19,7 @@ export interface XYMassCenterVectorOptions {
 export function xyMassCenterVector(
   data: DataXY,
   options: XYMassCenterVectorOptions = {},
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   xyCheck(data, { minLength: 2 });
   const { depth = 5 } = options;
 

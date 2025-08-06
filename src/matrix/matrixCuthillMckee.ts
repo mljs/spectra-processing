@@ -34,7 +34,7 @@
 export function matrixCuthillMckee(
   list: number[][],
   dimension: number,
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   const adj: number[][] = new Array(dimension);
   const visited: boolean[] = new Array(dimension).fill(false);
   for (let i = 0; i < dimension; ++i) {

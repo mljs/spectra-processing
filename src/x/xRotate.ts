@@ -9,7 +9,10 @@ import type { NumberArray } from 'cheminfo-types';
  * @param shift - shift
  * @returns - rotated array
  */
-export function xRotate(array: NumberArray, shift: number): Float64Array {
+export function xRotate(
+  array: NumberArray,
+  shift: number,
+): Float64Array<ArrayBuffer> {
   shift = shift % array.length;
   if (shift < 0) shift += array.length;
   const result = new Float64Array(array.length);

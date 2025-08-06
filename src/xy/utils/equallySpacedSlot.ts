@@ -22,7 +22,7 @@ export default function equallySpacedSlot(
 
   /** number of points */
   numberOfPoints: number,
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   const xLength = x.length;
 
   if (xLength < 2) {

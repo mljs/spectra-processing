@@ -46,7 +46,7 @@ export interface CreateRandomArrayOptions {
  */
 export function createRandomArray(
   options: CreateRandomArrayOptions = {},
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   const {
     mean = 0,
     standardDeviation = 1,

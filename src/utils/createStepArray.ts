@@ -25,7 +25,7 @@ export interface CreateStepArrayOptions {
  */
 export function createStepArray(
   options: CreateStepArrayOptions = {},
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   const { from = 0, step = 1, length = 1000 } = options;
 
   const array = new Float64Array(length);

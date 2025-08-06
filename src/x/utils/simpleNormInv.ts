@@ -20,7 +20,7 @@ interface SimpleNormInvOptions {
 export function simpleNormInv(
   data: NumberArray,
   options: SimpleNormInvOptions = {},
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   const { magnitudeMode = false } = options;
 
   const result = new Float64Array(data.length);

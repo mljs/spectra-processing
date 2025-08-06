@@ -10,7 +10,7 @@ import { isAnyArray } from 'is-any-array';
 export function xAdd(
   array1: NumberArray,
   array2: NumberArray | number,
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   let isConstant = false;
   let constant = 0;
   if (isAnyArray(array2)) {
