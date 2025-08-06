@@ -6,7 +6,10 @@ export function getOutputArray<T extends NumberArray = Float64Array>(
   length: number,
 ): T;
 
-export function getOutputArray(output: undefined, length: number): Float64Array;
+export function getOutputArray(
+  output: undefined,
+  length: number,
+): Float64Array<ArrayBuffer>;
 
 export function getOutputArray<T extends NumberArray = Float64Array>(
   output: T | undefined,

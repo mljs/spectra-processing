@@ -12,7 +12,8 @@ import { createSystemMatrix } from '../utils/createSystemMatrix';
 import { xEnsureFloat64 } from './xEnsureFloat64';
 import { xMultiply } from './xMultiply';
 
-interface XWhitakerSmootherOptions extends CalculateAdaptiveWeightsOptions {
+export interface XWhittakerSmootherOptions
+  extends CalculateAdaptiveWeightsOptions {
   /**
    * Factor of weights matrix in -> [I + lambda D'D]z = x
    * @default 100
@@ -49,9 +50,9 @@ interface XWhitakerSmootherOptions extends CalculateAdaptiveWeightsOptions {
  * @param options - The options for baseline computation.
  * @returns - The computed baseline points.
  */
-export function xWhitakerSmoother(
+export function xWhittakerSmoother(
   yData: NumberArray,
-  options: XWhitakerSmootherOptions = {},
+  options: XWhittakerSmootherOptions = {},
 ) {
   const {
     lambda = 100,
@@ -70,7 +71,7 @@ export function xWhitakerSmoother(
 
   let iteration = 0;
   let delta = Infinity;
-  let baseline = yData.slice();
+  let baseline = xEnsureFloat64(yData);
   const upperTriangularNonZeros = createSystemMatrix(size, lambda);
   while (iteration < maxIterations && delta > tolerance) {
     const { leftHandSide, rightHandSide } = addWeights(
@@ -147,3 +148,9 @@ function getWeightsAndControlPoints(
     controlPoints,
   };
 }
+
+/**
+ * @deprecated Use xWhittakerSmoother instead.
+ * TODO: Remove in next major version.
+ */
+export const xWhitakerSmoother = xWhittakerSmoother;

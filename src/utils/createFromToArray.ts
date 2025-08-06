@@ -43,7 +43,7 @@ export interface CreateFromToArrayOptions {
  */
 export function createFromToArray(
   options: CreateFromToArrayOptions = {},
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   const {
     from = 0,
     to = 1,

@@ -5,6 +5,6 @@ import type { NumberArray } from 'cheminfo-types';
  * @param array - array of numbers
  * @returns - sorted array
  */
-export function xUniqueSorted(array: NumberArray): Float64Array {
+export function xUniqueSorted(array: NumberArray): Float64Array<ArrayBuffer> {
   return Float64Array.from(new Set(array)).sort();
 }

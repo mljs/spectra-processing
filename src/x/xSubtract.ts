@@ -10,7 +10,7 @@ import { isAnyArray } from 'is-any-array';
 export function xSubtract(
   array1: NumberArray,
   array2: NumberArray | number,
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   let isConstant = false;
   let constant = 0;
   if (isAnyArray(array2)) {
@@ -19,7 +19,7 @@ export function xSubtract(
     }
   } else {
     isConstant = true;
-    constant = Number(array2);
+    constant = array2;
   }
 
   const array3 = new Float64Array(array1.length);

@@ -1,6 +1,6 @@
 import type { NumberArrayConstructor } from '../utils';
-import { matrixCheck } from './matrixCheck';
 
+import { matrixCheck } from './matrixCheck';
 import { matrixCreateEmpty } from './matrixCreateEmpty';
 
 export interface MatrixTransposeOptions<

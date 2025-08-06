@@ -27,7 +27,7 @@ export interface XPaddingOptions {
 export function xPadding(
   array: NumberArray,
   options: XPaddingOptions = {},
-): Float64Array {
+): Float64Array<ArrayBuffer> {
   const { size = 0, value = 0, algorithm } = options;
   xCheck(array);
   if (!algorithm) {
