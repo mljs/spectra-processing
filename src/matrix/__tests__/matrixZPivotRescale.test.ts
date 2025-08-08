@@ -11,6 +11,7 @@ test('only positive number', () => {
   let result = matrixZPivotRescale(data, { max: 30 });
 
   result = result.map((row) => Array.from(row));
+
   expect(result).toStrictEqual([
     [10, 30, 20, 20],
     [20, 20, 10, 30],
@@ -27,6 +28,7 @@ test('with negative larger number', () => {
   let result = matrixZPivotRescale(data, { max: 30 });
 
   result = result.map((row) => Array.from(row));
+
   expect(result).toStrictEqual([
     [-10, -30, 20, 20],
     [20, 20, 10, -30],

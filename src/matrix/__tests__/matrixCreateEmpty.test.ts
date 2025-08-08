@@ -7,6 +7,7 @@ test('matrixCreateEmpty with default constructor', () => {
     nbColumns: 2,
     nbRows: 3,
   });
+
   expect(matrix).toHaveLength(3);
   expect(matrix[0]).toHaveLength(2);
   expect(matrix[0]).toBeInstanceOf(Float64Array);
@@ -24,11 +25,12 @@ test('matrixCreateEmpty with Array constructor', () => {
     nbRows: 3,
     ArrayConstructor: Array,
   });
+
   expect(matrix).toHaveLength(3);
   expect(matrix[0]).toHaveLength(2);
   expect(matrix[0]).toBeInstanceOf(Array);
 
-  expect(matrix).toEqual([
+  expect(matrix).toStrictEqual([
     [0, 0],
     [0, 0],
     [0, 0],
@@ -41,6 +43,7 @@ test('matrixCreateEmpty with Int16Array constructor', () => {
     nbRows: 3,
     ArrayConstructor: Int16Array,
   });
+
   expect(matrix).toHaveLength(3);
   expect(matrix[0]).toHaveLength(2);
   expect(matrix[0]).toBeInstanceOf(Int16Array);

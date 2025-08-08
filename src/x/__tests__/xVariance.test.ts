@@ -5,6 +5,7 @@ import { xVariance } from '../xVariance';
 test('array', () => {
   const data = [15, 13, 17, 7];
   const v = xVariance(data);
+
   expect(v).toBeCloseTo(18.667, 3);
   expect(xVariance(data, { unbiased: true })).toBe(v);
   expect(xVariance(data, { unbiased: false })).toBe(14);
@@ -18,6 +19,7 @@ test('typed array', () => {
   typedArray[3] = 7;
 
   const v = xVariance(typedArray);
+
   expect(v).toBeCloseTo(18.667, 3);
   expect(xVariance(typedArray, { unbiased: true })).toBe(v);
   expect(xVariance(typedArray, { unbiased: false })).toBe(14);

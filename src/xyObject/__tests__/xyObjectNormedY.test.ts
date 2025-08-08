@@ -10,6 +10,7 @@ test('xyObjectNormedY', () => {
     { x: 4, y: 4 },
   ];
   const result = xyObjectNormedY(arrayXY, { algorithm: 'max', value: 100 });
+
   expect(result).toStrictEqual([
     { x: 1, y: 25 },
     { x: 2, y: 50 },

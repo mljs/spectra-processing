@@ -23,6 +23,7 @@ test('one zone with zero point', () => {
       ],
     },
   );
+
   expect(ans.x).toHaveLength(64);
 });
 
@@ -50,6 +51,7 @@ test('large file should not be slow', () => {
     to: 4000,
     numberOfPoints: 601,
   });
+
   expect(Date.now() - start).toBeLessThan(100);
   expect(result.x).toHaveLength(601);
   expect(result.y).toHaveLength(601);
@@ -58,6 +60,7 @@ test('large file should not be slow', () => {
 test('non growing', () => {
   const x = [0, 0, 0, 1, 1, 1, 2, 2, 2];
   const y = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
   expect(() =>
     xyEquallySpaced(
       { x, y },
@@ -190,6 +193,7 @@ test('equallySpaced slot', () => {
 
   x = [10, 5, 0];
   y = [10, 5, 0];
+
   expect(() => {
     xyEquallySpaced(
       { x, y },
@@ -314,6 +318,7 @@ test('testing one zones', () => {
       zones: [{ from: -5, to: 4 }],
     },
   );
+
   expect(ans).toStrictEqual({
     x: [1, 2, 3, 4],
     y: [1, 2, 3, 4],

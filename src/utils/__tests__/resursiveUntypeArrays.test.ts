@@ -3,8 +3,8 @@ import { expect, test } from 'vitest';
 import { recursiveUntypeArrays } from '../recursiveUntypeArrays';
 
 test('basic cases', () => {
-  expect(recursiveUntypeArrays(1)).toStrictEqual(1);
-  expect(recursiveUntypeArrays('a')).toStrictEqual('a');
+  expect(recursiveUntypeArrays(1)).toBe(1);
+  expect(recursiveUntypeArrays('a')).toBe('a');
   expect(recursiveUntypeArrays({})).toStrictEqual({});
   expect(recursiveUntypeArrays([])).toStrictEqual([]);
   expect(recursiveUntypeArrays([1, 2, 3])).toStrictEqual([1, 2, 3]);

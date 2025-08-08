@@ -26,6 +26,7 @@ test('should return the median', () => {
 
 test('should return the median with typed array', () => {
   const array = Uint16Array.from([4, 1, 2, 3, 0]);
+
   expect(xMedian(array)).toBe(2);
 });
 

@@ -9,6 +9,7 @@ test('mixed example with delta: 0.25', () => {
     { x: [2.05, 3.9, 4.1, 4.9, 5.1], y: [1, 1, 1, 1, 3] },
   ];
   const result = xyArrayAlignToFirst(data, { delta: 0.25 });
+
   expect(result).toStrictEqual({
     x: Float64Array.from([0.1, 1, 1.1, 2, 3, 4, 5.05]),
     ys: [
@@ -26,6 +27,7 @@ test('mixed example with delta a callback', () => {
     { x: [2.05, 3.9, 4.1, 4.9, 5.1], y: [1, 1, 1, 1, 3] },
   ];
   const result = xyArrayAlignToFirst(data, { delta: () => 0.25 });
+
   expect(result).toStrictEqual({
     x: Float64Array.from([0.1, 1, 1.1, 2, 3, 4, 5.05]),
     ys: [

@@ -25,6 +25,7 @@ test('simple no merge', () => {
     { x: [50, 80], y: [5, 8] },
   ];
   const result = xyArrayWeightedMerge(data, { delta: 2 });
+
   expect(result).toStrictEqual({
     x: [10, 20, 30, 40, 50, 60, 70, 80],
     y: [1, 2, 3, 4, 5, 6, 7, 8],
@@ -39,6 +40,7 @@ test('simple full merge', () => {
     { x: [5, 8], y: [5, 8] },
   ];
   const result = xyArrayWeightedMerge(data);
+
   expect(result).toMatchCloseTo({ x: [5.666666666666667], y: [36] });
 });
 
@@ -61,6 +63,7 @@ test('large slot', () => {
     { x: [101, 102, 103, 300], y: [30, 10, 40, 50] },
   ];
   const result = xyArrayWeightedMerge(data, { delta: 100 });
+
   expect(result).toMatchCloseTo({ x: [174.76470588235293], y: [340] });
 });
 
@@ -70,12 +73,14 @@ test('function merge', () => {
     { x: [101, 102, 103, 300], y: [30, 10, 40, 50] },
   ];
   const result = xyArrayWeightedMerge(data, { delta: (x) => x * x });
+
   expect(result).toMatchCloseTo({ x: [174.76470588235293], y: [340] });
 });
 
 test('empty data', () => {
   const data: DataXY[] = [];
   const result = xyArrayWeightedMerge(data, { delta: 2 });
+
   expect(result).toMatchCloseTo({ x: [], y: [] });
 });
 
@@ -99,8 +104,11 @@ test('large Data Set', () => {
   }
   const start = Date.now();
   const result = xyArrayWeightedMerge(data, { delta: 2 });
+
   expect(result.x).toHaveLength(101);
   expect(result.y).toHaveLength(101);
+
   const elapsed = Date.now() - start;
+
   expect(elapsed).toBeLessThanOrEqual(5000);
 });

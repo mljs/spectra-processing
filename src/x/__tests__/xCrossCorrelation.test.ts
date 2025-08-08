@@ -7,6 +7,7 @@ test('cross-correlation linear and constant function', () => {
   const constant = [5, 5, 5, 5, 5];
   const result1 = Float64Array.from([0, 5, 15, 30, 50, 50, 45, 35, 20]);
   const result2 = Float64Array.from([20, 35, 45, 50, 50, 30, 15, 5, 0]);
+
   // Scilab: xcorr(linear, constant)
   expect(xCrossCorrelation(linear, constant)).toStrictEqual(result1);
   // Scilab: xcorr(constant, linear)
@@ -20,6 +21,7 @@ test('lag and tau options', () => {
   const result1 = Float64Array.from([0, 15, 50, 45, 20]);
   const result2 = Float64Array.from([35, 45, 50, 50, 30, 15, 5]);
   const result3 = Float64Array.from([45, 50, 50, 30, 15]);
+
   expect(xCrossCorrelation(linear, constant, { tau: 2 })).toStrictEqual(
     result1,
   );

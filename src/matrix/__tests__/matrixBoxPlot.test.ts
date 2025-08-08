@@ -17,6 +17,7 @@ test('test matrixBoxPlot even', () => {
     [10, 100],
     [11, 110],
   ];
+
   expect(matrixBoxPlot(matrix)).toStrictEqual({
     q1: Float64Array.from([2.5, 25]),
     median: Float64Array.from([5.5, 55]),
@@ -28,6 +29,7 @@ test('test matrixBoxPlot even', () => {
 
 test('test matrixBoxPlot even small', () => {
   const matrix = [[0], [1], [2], [3], [4], [5]];
+
   expect(matrixBoxPlot(matrix)).toStrictEqual({
     q1: Float64Array.from([1]),
     median: Float64Array.from([2.5]),
@@ -39,6 +41,7 @@ test('test matrixBoxPlot even small', () => {
 
 test('test matrixBoxPlot odd', () => {
   const matrix = [[0], [1], [2], [3], [4], [5], [6], [7], [8], [9], [10]];
+
   expect(matrixBoxPlot(matrix)).toStrictEqual({
     q1: Float64Array.from([2]),
     median: Float64Array.from([5]),
@@ -50,6 +53,7 @@ test('test matrixBoxPlot odd', () => {
 
 test('test matrixBoxPlot odd small', () => {
   const matrix = [[0], [1], [2], [3], [4]];
+
   expect(matrixBoxPlot(matrix)).toStrictEqual({
     q1: Float64Array.from([0.5]),
     median: Float64Array.from([2]),
@@ -61,6 +65,7 @@ test('test matrixBoxPlot odd small', () => {
 
 test('test matrixBoxPlot too small', () => {
   const matrix = [[0], [1], [2], [4]];
+
   expect(() => matrixBoxPlot(matrix)).toThrow(
     'can not calculate info if matrix contains less than 5 rows',
   );

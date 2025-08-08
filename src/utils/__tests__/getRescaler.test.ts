@@ -11,6 +11,7 @@ test('getRescale', () => {
   });
 
   const rescaledArray = array.map(rescaler);
+
   expect(rescaledArray).toStrictEqual([
     0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1,
   ]);
@@ -25,6 +26,7 @@ test('getRescale with wrong min / max', () => {
   });
 
   const rescaledArray = array.map(rescaler);
+
   expect(rescaledArray).toStrictEqual([0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
 });
 
@@ -34,7 +36,8 @@ test('getRescale with wrong min / max, no clamp', () => {
     originalMax: 1,
     clamp: false,
   });
-  expect(() => rescaler(2)).toThrowError('Value 2 is out of range [0, 1]');
+
+  expect(() => rescaler(2)).toThrow('Value 2 is out of range [0, 1]');
 });
 
 test('getRescale with wrong min / max and logartihmic', () => {
@@ -47,6 +50,7 @@ test('getRescale with wrong min / max and logartihmic', () => {
   });
 
   const rescaledArray = array.map(rescaler);
+
   expect(rescaledArray).toStrictEqual([0, 0.5, 1, 1]);
 });
 
@@ -63,5 +67,6 @@ test('getRescale with square root', () => {
   });
 
   const rescaledArray = array.map(rescaler);
+
   expect(rescaledArray).toStrictEqual([10, 30, 50]);
 });

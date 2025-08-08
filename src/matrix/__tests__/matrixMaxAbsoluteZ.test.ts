@@ -9,6 +9,7 @@ test('basic', () => {
     [3, 1, 3, 15],
   ];
   const result = matrixMaxAbsoluteZ(matrix);
+
   expect(result).toBe(15);
 });
 
@@ -19,6 +20,7 @@ test('large negative', () => {
     [3, 1, 3, 15],
   ];
   const result = matrixMaxAbsoluteZ(matrix);
+
   expect(result).toBe(30);
 });
 

@@ -106,6 +106,7 @@ const data = {
     45004027,
   ],
 };
+
 test('test reimPhaseCorrection even', () => {
   const re = [0, 1, 2, 3];
   const im = [0, 1, 2, 3];
@@ -121,5 +122,6 @@ test('180 zero order phasing', () => {
   const phased = reimPhaseCorrection(data, Math.PI, 0);
   const diff = data.re.map((e, i) => e + phased.re[i]);
   const index = Math.floor(generator.random() * data.x.length);
+
   expect(diff[index]).toBeCloseTo(0, 4);
 });

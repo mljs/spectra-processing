@@ -5,6 +5,7 @@ import { zonesNormalize } from '../zonesNormalize';
 describe('zonesNormalize', () => {
   it('no zones', () => {
     const result = zonesNormalize([]);
+
     expect(result).toStrictEqual([
       { from: Number.NEGATIVE_INFINITY, to: Number.POSITIVE_INFINITY },
     ]);
@@ -12,6 +13,7 @@ describe('zonesNormalize', () => {
 
   it('no zones but from to', () => {
     const result = zonesNormalize([], { from: 0, to: 10 });
+
     expect(result).toStrictEqual([{ from: 0, to: 10 }]);
   });
 
@@ -25,6 +27,7 @@ describe('zonesNormalize', () => {
     ];
 
     const result = zonesNormalize(zones);
+
     expect(result).toStrictEqual([
       { from: 1, to: 4 },
       { from: 5, to: 7 },
@@ -39,6 +42,7 @@ describe('zonesNormalize', () => {
     ];
 
     const result = zonesNormalize(zones);
+
     expect(result).toStrictEqual([
       { from: 1, to: 2 },
       { from: 3, to: 4 },
@@ -54,6 +58,7 @@ describe('zonesNormalize', () => {
     ];
 
     const result = zonesNormalize(zones, { from: 10, to: 5 });
+
     expect(result).toStrictEqual([{ from: 6, to: 7 }]);
   });
 
@@ -65,6 +70,7 @@ describe('zonesNormalize', () => {
     ];
 
     const result = zonesNormalize(zones, { from: 10, to: 12 });
+
     expect(result).toStrictEqual([]);
   });
 
@@ -76,6 +82,7 @@ describe('zonesNormalize', () => {
     ];
 
     const result = zonesNormalize(zones, { from: -1, to: -5 });
+
     expect(result).toStrictEqual([]);
   });
 
@@ -87,12 +94,14 @@ describe('zonesNormalize', () => {
     ];
 
     const result = zonesNormalize(zones, { from: 1.5, to: 6.5 });
+
     expect(result).toStrictEqual([
       { from: 1.5, to: 2 },
       { from: 3, to: 4 },
       { from: 6, to: 6.5 },
     ]);
   });
+
   it('test normalize small zones with big fractions that combined into one zone from 1 to 8', () => {
     const zones = [
       {
@@ -117,6 +126,7 @@ describe('zonesNormalize', () => {
       },
     ];
     const result = zonesNormalize(zones);
+
     expect(result).toStrictEqual([{ from: 1.4, to: 8.9 }]);
   });
 });
@@ -124,6 +134,7 @@ describe('zonesNormalize', () => {
 describe('zonesNormalize with exclusions', () => {
   it('no zones', () => {
     const result = zonesNormalize([], { exclusions: [{ from: 1, to: 2 }] });
+
     expect(result).toStrictEqual([
       { from: Number.NEGATIVE_INFINITY, to: 1 },
       { from: 2, to: Number.POSITIVE_INFINITY },
@@ -136,6 +147,7 @@ describe('zonesNormalize with exclusions', () => {
       to: 10,
       exclusions: [{ from: 1, to: 2 }],
     });
+
     expect(result).toStrictEqual([
       { from: 0, to: 1 },
       { from: 2, to: 10 },
@@ -146,6 +158,7 @@ describe('zonesNormalize with exclusions', () => {
     const result = zonesNormalize([{ from: 0, to: 10 }], {
       exclusions: [{ from: 1, to: 2 }],
     });
+
     expect(result).toStrictEqual([
       { from: 0, to: 1 },
       { from: 2, to: 10 },
@@ -165,6 +178,7 @@ describe('zonesNormalize with exclusions', () => {
     const result = zonesNormalize([{ from: -5, to: 15 }], {
       exclusions,
     });
+
     expect(result).toHaveLength(8);
   });
 
@@ -181,6 +195,7 @@ describe('zonesNormalize with exclusions', () => {
         { from: 20, to: 40 },
       ],
     });
+
     expect(result).toStrictEqual([
       { from: 1, to: 4 },
       { from: 6, to: 7 },
@@ -200,6 +215,7 @@ describe('zonesNormalize with exclusions', () => {
         { from: -2, to: 0 },
       ],
     });
+
     expect(result).toStrictEqual([
       { from: 1, to: 4 },
       { from: 6, to: 7 },
@@ -219,6 +235,7 @@ describe('zonesNormalize with exclusions', () => {
         { from: 2, to: 4 },
       ],
     });
+
     expect(result).toStrictEqual([{ from: 6, to: 7 }]);
   });
 
@@ -234,6 +251,7 @@ describe('zonesNormalize with exclusions', () => {
         { from: 5, to: 6 },
       ],
     });
+
     expect(result).toStrictEqual([]);
   });
 
@@ -247,6 +265,7 @@ describe('zonesNormalize with exclusions', () => {
     const result = zonesNormalize(zones, {
       exclusions: [{ from: 1, to: 6 }],
     });
+
     expect(result).toStrictEqual([{ from: 7, to: 8 }]);
   });
 
@@ -260,6 +279,7 @@ describe('zonesNormalize with exclusions', () => {
     const result = zonesNormalize(zones, {
       exclusions: [{ from: 5, to: 6 }],
     });
+
     expect(result).toStrictEqual([
       { from: 1, to: 4 },
       { from: 7, to: 8 },
@@ -276,6 +296,7 @@ describe('zonesNormalize with exclusions', () => {
     const result = zonesNormalize(zones, {
       exclusions: [{ from: 4.5, to: 6.5 }],
     });
+
     expect(result).toStrictEqual([
       { from: 1, to: 4 },
       { from: 7, to: 8 },
@@ -291,6 +312,7 @@ describe('zonesNormalize with exclusions', () => {
         { from: 5, to: 6 },
       ],
     });
+
     expect(result).toStrictEqual([
       { from: 1, to: 2 },
       { from: 3, to: 5 },
@@ -304,6 +326,7 @@ describe('zonesNormalize with exclusions', () => {
     const result = zonesNormalize(zones, {
       exclusions: [{ from: -2, to: 3 }],
     });
+
     expect(result).toStrictEqual([{ from: 3, to: 10 }]);
   });
 
@@ -321,6 +344,7 @@ describe('zonesNormalize with exclusions', () => {
         { from: 15, to: 16 },
       ],
     });
+
     expect(result).toStrictEqual([
       { from: 3, to: 5 },
       { from: 10, to: 10 },

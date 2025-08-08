@@ -8,5 +8,6 @@ test('matrixAbsoluteMedian', () => {
     [1, 2, 3],
   ];
   const absoluteMedian = matrixAbsoluteMedian(matrix);
+
   expect(absoluteMedian).toBe(2);
 });

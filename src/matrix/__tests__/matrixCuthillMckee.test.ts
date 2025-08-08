@@ -34,6 +34,7 @@ test('permutation to reduce bandwidth', () => {
     permutationEncodedArray,
     dimension,
   );
+
   expect(bandwidth(reducedBandwidthMatrix)).toBeLessThan(bandwidth(matrix));
 });
 
