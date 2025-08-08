@@ -91,7 +91,7 @@
     "eslint-config-cheminfo-typescript": "^19.0.0",
     "jest-matcher-deep-close-to": "^3.0.2",
     "jscpd": "^4.0.5",
-    "ml-spectra-fitting": "^5.0.1",
+    "ml-spectra-fitting": "^4.2.4",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
     "spectrum-generator": "^8.1.0",
