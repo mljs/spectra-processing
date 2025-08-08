@@ -1,7 +1,7 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xBoxPlotWithOutliers } from './xBoxPlotWithOutliers';
 import type { XBoxPlotWithOutliers } from './xBoxPlotWithOutliers';
+import { xBoxPlotWithOutliers } from './xBoxPlotWithOutliers';
 import { xMean } from './xMean';
 import { xStandardDeviation } from './xStandardDeviation';
 

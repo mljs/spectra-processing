@@ -11,6 +11,7 @@ test('case when we sample within a specific range with log distribution and incl
     includeTo: true,
     distribution: 'log',
   });
+
   expect(result).toBeDeepCloseTo([2, 4, 8, 16, 32]);
 });
 
@@ -23,6 +24,7 @@ test('case when we sample within a specific range with log distribution and incl
     includeTo: false,
     distribution: 'log',
   });
+
   expect(result).toBeDeepCloseTo([
     2, 3.4822022531844965, 6.062866266041592, 10.556063286183154,
     18.379173679952558,
@@ -38,6 +40,7 @@ test('case when we sample within a specific range with log distribution and incl
     includeTo: true,
     distribution: 'log',
   });
+
   expect(result).toBeDeepCloseTo([
     3.4822022531844965, 6.062866266041592, 10.556063286183154,
     18.379173679952558, 32,
@@ -53,6 +56,7 @@ test('case when we sample within a speci]fic range with uniform distribution and
     includeTo: true,
     distribution: 'uniform',
   });
+
   expect(result).toBeDeepCloseTo([1, 12, 23, 34, 45, 56, 67, 78, 89, 100]);
 });
 
@@ -65,6 +69,7 @@ test('case when we sample within a specific range with uniform distribution and 
     includeTo: false,
     distribution: 'uniform',
   });
+
   expect(result).toBeDeepCloseTo([
     1, 10.9, 20.8, 30.7, 40.6, 50.5, 60.4, 70.3, 80.2, 90.1,
   ]);
@@ -79,6 +84,7 @@ test('case when we sample within a specific range with uniform distribution and 
     includeTo: true,
     distribution: 'uniform',
   });
+
   expect(result).toBeDeepCloseTo([
     10.9, 20.8, 30.7, 40.6, 50.5, 60.4, 70.3, 80.2, 90.1, 100,
   ]);

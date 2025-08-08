@@ -11,6 +11,7 @@ test('normal distribution', () => {
     length: 5,
     seed: 0,
   });
+
   expect(array).toBeDeepCloseTo([10, 10, 10, 10, 10], 1);
 });
 
@@ -20,6 +21,7 @@ test('normal distribution default mean (0)', () => {
     length: 10000,
     seed: 0,
   });
+
   expect(Math.min(...array)).toBeCloseTo(-3.7159385968751244);
   expect(Math.max(...array)).toBeCloseTo(3.606967549040919);
   expect(
@@ -38,6 +40,7 @@ test('uniform distribution', () => {
   const histogram = xHistogram(array, { nbSlots: 10 });
   for (let i = 0; i < histogram.x.length; i++) {
     const slot = 9 + 0.1 + i * 0.2;
+
     expect(histogram.x[i]).toBeCloseTo(slot);
   }
   for (const y of histogram.y) {
@@ -58,6 +61,7 @@ test('Testing in conjunction with spectra-fitting', () => {
   const fittedPeaks = optimize(histogram, [{ x: 10, y: 0.1 }], {
     shape: { kind: 'gaussian', fwhm: 2 },
   });
+
   expect(fittedPeaks.peaks[0].x).toBeDeepCloseTo(10, 2);
   expect(fittedPeaks.peaks[0].shape.fwhm).toBeDeepCloseTo(
     2 * Math.sqrt(2 * Math.log(2)),

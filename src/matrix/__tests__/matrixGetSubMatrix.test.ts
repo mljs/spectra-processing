@@ -18,9 +18,11 @@ test('should extract submatrix correctly without duplication', () => {
 
   const subMatrix = matrixGetSubMatrix(matrix, options);
   const expectedResult = [new Float64Array([2, 3]), new Float64Array([5, 6])];
-  expect(subMatrix).toEqual(expectedResult);
+
+  expect(subMatrix).toStrictEqual(expectedResult);
 
   subMatrix[0][0] = 10;
+
   expect(matrix[0][1]).toBe(10);
 });
 
@@ -40,9 +42,11 @@ test('should extract submatrix correctly with duplication', () => {
 
   const subMatrix = matrixGetSubMatrix(matrix, options);
   const expectedResult = [new Float64Array([2, 3]), new Float64Array([5, 6])];
-  expect(subMatrix).toEqual(expectedResult);
+
+  expect(subMatrix).toStrictEqual(expectedResult);
 
   subMatrix[0][0] = 10;
+
   expect(matrix[0][1]).toBe(2);
 });
 

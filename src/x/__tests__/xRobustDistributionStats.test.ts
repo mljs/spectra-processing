@@ -4,6 +4,7 @@ import { xRobustDistributionStats } from '../xRobustDistributionStats';
 
 test('empty array', () => {
   const data: number[] = [];
+
   expect(() => xRobustDistributionStats(data)).toThrow(
     'input must not be empty',
   );
@@ -12,6 +13,7 @@ test('empty array', () => {
 test('one element', () => {
   const data = [15];
   const stats = xRobustDistributionStats(data);
+
   expect(stats).toStrictEqual({
     min: 15,
     q1: 15,
@@ -33,6 +35,7 @@ test('one element', () => {
 test('4 elements', () => {
   const data = [15, 13, 17, 7];
   const stats = xRobustDistributionStats(data);
+
   expect(stats).toBeDeepCloseTo({
     min: 7,
     q1: 11.5,
@@ -54,6 +57,7 @@ test('4 elements', () => {
 test('5 elements', () => {
   const data = [1, 2, 3, 4, 5];
   const stats = xRobustDistributionStats(data);
+
   expect(stats).toBeDeepCloseTo({
     min: 1,
     q1: 2,
@@ -75,6 +79,7 @@ test('5 elements', () => {
 test('6 elements with outlier', () => {
   const data = [1, 2, 3, 4, 5, 10];
   const stats = xRobustDistributionStats(data);
+
   expect(stats).toBeDeepCloseTo({
     min: 1,
     q1: 2.25,
@@ -96,6 +101,7 @@ test('6 elements with outlier', () => {
 test('typed array', () => {
   const data = [15, 13, 17, 7];
   const typedArray = Uint16Array.from(data);
+
   expect(xRobustDistributionStats(typedArray)).toStrictEqual(
     xRobustDistributionStats(data),
   );

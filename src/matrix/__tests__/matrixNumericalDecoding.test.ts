@@ -12,5 +12,6 @@ test('The encoded and decoded dataset should equal the original dataset', () => 
     matrix,
     dictCategoricalToNumerical,
   );
+
   expect(decodedMatrix).toStrictEqual(datasetForEncoding);
 });

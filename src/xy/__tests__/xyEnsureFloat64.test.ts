@@ -9,6 +9,7 @@ test('normal array', () => {
   };
   const float64 = xyEnsureFloat64(data);
   float64.x[0] = 0;
+
   expect(float64.x).toBeInstanceOf(Float64Array);
   expect(float64.y).toBeInstanceOf(Float64Array);
   expect(data.x).toStrictEqual([-1, 2, -3, 4]);
@@ -23,6 +24,7 @@ test('typed array', () => {
   };
   const float64 = xyEnsureFloat64(data);
   float64.x[0] = 0;
+
   expect(float64.x).toBeInstanceOf(Float64Array);
   expect(float64.y).toBeInstanceOf(Float64Array);
   expect(data.x).toStrictEqual(Float64Array.from([-1, 2, -3, 4]));

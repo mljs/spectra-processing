@@ -11,6 +11,7 @@ test('default options', () => {
   let result = matrixZRescale(data);
 
   result = result.map((row) => Array.from(row));
+
   expect(result).toStrictEqual([
     [0, 1, 0.5, 0.5],
     [0.5, 0.5, 0, 1],
@@ -27,6 +28,7 @@ test('min: -2, max: 3', () => {
   let result = matrixZRescale(data, { min: -3, max: 3 });
 
   result = result.map((row) => Array.from(row));
+
   expect(result).toStrictEqual([
     [-3, -1, 1, 3],
     [-3, -1, 1, 3],

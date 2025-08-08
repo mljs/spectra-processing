@@ -9,11 +9,13 @@ test('basic', () => {
     [3, 1, 3, 15],
   ];
   const result = matrixMinMaxAbsoluteZ(matrix);
+
   expect(result).toStrictEqual({ min: 1, max: 15 });
 });
 
 test('zero', () => {
   const matrix = [[]];
+
   expect(() => {
     matrixMinMaxAbsoluteZ(matrix);
   }).toThrow('matrixMinMaxAbsoluteZ requires at least 1 row and 1 column');

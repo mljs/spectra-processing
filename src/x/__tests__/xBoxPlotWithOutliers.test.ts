@@ -5,6 +5,7 @@ import { xBoxPlotWithOutliers } from '../xBoxPlotWithOutliers';
 test('test xBoxPlotWithOutliers even', () => {
   const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
   const result = xBoxPlotWithOutliers(array);
+
   expect(result).toStrictEqual({
     min: 0,
     minWhisker: 0,
@@ -23,6 +24,7 @@ test('test xBoxPlotWithOutliers even', () => {
 test('outliers', () => {
   const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 100];
   const result = xBoxPlotWithOutliers(array);
+
   expect(result).toStrictEqual({
     min: 0,
     q1: 2.5,

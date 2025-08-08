@@ -9,6 +9,7 @@ test('basic', () => {
     [3, 1, 3, 15],
   ];
   const result = matrixMinMaxZ(matrix);
+
   expect(result).toStrictEqual({ min: -3, max: 15 });
 });
 

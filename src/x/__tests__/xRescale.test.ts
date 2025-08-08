@@ -24,6 +24,7 @@ test('should fill the provided output', () => {
   const array = [0, 1, 2, 3, 4];
   const output = new Array(5);
   xRescale(array, { output });
+
   expect(output).toStrictEqual([0, 0.25, 0.5, 0.75, 1]);
   expect(array).toStrictEqual([0, 1, 2, 3, 4]);
 });
@@ -31,6 +32,7 @@ test('should fill the provided output', () => {
 test('should work in-place', () => {
   const array = [0, 1, 2, 3, 4];
   xRescale(array, { output: array });
+
   expect(array).toStrictEqual([0, 0.25, 0.5, 0.75, 1]);
 });
 

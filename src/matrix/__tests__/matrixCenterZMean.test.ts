@@ -9,6 +9,7 @@ test('matrixCenterZMean', () => {
     [3, 1, 3, 1],
   ];
   const result = matrixCenterZMean(data);
+
   expect(result).toStrictEqual([
     Float64Array.from([-1, 1, 0, 0]),
     Float64Array.from([0, 0, -1, 1]),

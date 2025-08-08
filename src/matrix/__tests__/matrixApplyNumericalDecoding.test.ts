@@ -26,5 +26,6 @@ test('should return an array of numbers', () => {
   );
 
   const nonNumbers = matrix.flat().filter((value) => typeof value !== 'number');
+
   expect(nonNumbers).toHaveLength(0);
 });
