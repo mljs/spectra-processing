@@ -7,6 +7,7 @@ const y = [10, 8, 6, 4, 2, 10, 2, 4, 6, 8, 10];
 
 test('no limits', () => {
   const results = xyFilterTopYValues({ x, y });
+
   expect(results).toStrictEqual({ x, y });
   expect(results.x).toBe(x);
   expect(results.y).toBe(y);

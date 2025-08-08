@@ -1025,17 +1025,20 @@ test('get noise level', () => {
   const noiseFromMagnitude = xNoiseSanPlot(reimAbsolute(data), {
     magnitudeMode: true,
   });
+
   expect(noise.snr).toBeCloseTo(56.85, 1);
   expect(noiseFromMagnitude.snr).toBeCloseTo(40.2, 1);
 
   const noiseScaled = xNoiseSanPlot(data.re, {
     scaleFactor: 2,
   });
+
   // the positive and negative noise level should be twice
   expect(noiseScaled.positive).toBeCloseTo(noise.positive * 2, 0);
   expect(noiseScaled.negative).toBeCloseTo(noise.negative * 2, 0);
   //the signal to noise ratio should the same
   expect(noiseScaled.snr).toBeCloseTo(noise.snr, 1);
+
   //use a mask to ignore the bigger peak
   const length = data.re.length;
   const mask = Float64Array.from({ length }).fill(0);
@@ -1044,6 +1047,7 @@ test('get noise level', () => {
     mask,
     fixOffset: true,
   });
+
   //the SNR should be less because the biggest peak is not present.
   expect(noiseWithoutBigPeaks.snr).toBeLessThan(noise.snr);
 });

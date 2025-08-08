@@ -16,6 +16,7 @@ test('xyObjectSlotX', () => {
   expect(xyObjectSlotX(arrayXY)).toStrictEqual(expected);
 
   const result = xyObjectSlotX(arrayXY, { slotWidth: 0.05 });
+
   expect(result[0]).toStrictEqual({ x: 0.9, y: 1 });
   expect(result[1]).toStrictEqual({ x: 1, y: 5 });
   expect(result[2]).toMatchCloseTo({ x: 1.9, y: 4 }, 4);

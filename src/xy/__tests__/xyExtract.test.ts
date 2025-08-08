@@ -11,6 +11,7 @@ test('All', () => {
     y: [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0],
   };
   const result = xyExtract({ x, y });
+
   expect(result).toStrictEqual(expected);
 });
 
@@ -20,6 +21,7 @@ test('one zone', () => {
     y: [0, 1, 2],
   };
   const result = xyExtract({ x, y }, { zones: [{ from: -1, to: 2 }] });
+
   expect(result).toStrictEqual(expected);
 });
 
@@ -37,6 +39,7 @@ test('two zones', () => {
       ],
     },
   );
+
   expect(result).toStrictEqual(expected);
 });
 
@@ -55,5 +58,6 @@ test('three zones', () => {
       ],
     },
   );
+
   expect(result).toStrictEqual(expected);
 });

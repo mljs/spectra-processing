@@ -8,6 +8,7 @@ import { matrixCholeskySolver } from '../matrixCholeskySolver';
 import { matrixCuthillMckee } from '../matrixCuthillMckee';
 
 type Func = (b: NumberArray) => NumberArray;
+
 test('solve a least square system', () => {
   const x = xSequentialFillFromTo({ from: 0, to: Math.PI, size: 101 });
   const noise = x.map(() => Math.random() * 0.1 - 0.05);
@@ -22,8 +23,11 @@ test('solve a least square system', () => {
   const weighted = addWeights(upperTriangularNonZeros, y, weights);
 
   const cho = matrixCholeskySolver(weighted.leftHandSide, dimension) as Func;
+
   expect(cho).not.toBeNull();
+
   const smoothed = cho(weighted.rightHandSide);
+
   expect(smoothed[50]).toBeLessThan(0.2);
   expect(smoothed[50]).toBeGreaterThan(-0.2);
 
@@ -31,8 +35,11 @@ test('solve a least square system', () => {
   weights[50] = 0;
   const weighted2 = addWeights(upperTriangularNonZeros, y, weights);
   const cho2 = matrixCholeskySolver(weighted.leftHandSide, dimension) as Func;
+
   expect(cho2).not.toBeNull();
+
   const smoothed2 = cho2(weighted2.rightHandSide);
+
   expect(smoothed2[50]).toBeLessThan(smoothed[50]);
 
   const permutationEncodedArray = matrixCuthillMckee(
@@ -46,6 +53,8 @@ test('solve a least square system', () => {
   ) as Func;
 
   expect(cho3).not.toBeNull();
+
   const smoothed3 = cho2(weighted2.rightHandSide);
-  expect(smoothed3[50]).toEqual(smoothed3[50]);
+
+  expect(smoothed3[50]).toStrictEqual(smoothed3[50]);
 });

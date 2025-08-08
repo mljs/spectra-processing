@@ -1,7 +1,7 @@
 import type { NumberArray } from 'cheminfo-types';
 import FFT from 'fft.js';
 
-import { nextPowerOfTwo, isPowerOfTwo } from '../utils';
+import { isPowerOfTwo, nextPowerOfTwo } from '../utils';
 
 import { xCheck } from './xCheck';
 

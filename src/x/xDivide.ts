@@ -27,7 +27,7 @@ export function xDivide<ArrayType extends NumberArray = Float64Array>(
     }
   } else {
     isConstant = true;
-    constant = Number(array2);
+    constant = array2;
   }
 
   const array3 = getOutputArray(options.output, array1.length);

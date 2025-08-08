@@ -9,6 +9,7 @@ const points = {
 
 test('default value', () => {
   const merged = xyWeightedMerge(points);
+
   expect(merged.x).toBeDeepCloseTo(
     [
       (100.002 * 10 + 100.001 * 11) / 21,
@@ -23,6 +24,7 @@ test('default value', () => {
 
 test('custom value', () => {
   const merged = xyWeightedMerge(points, { groupWidth: 0.010001 });
+
   expect(merged.x).toBeDeepCloseTo(
     [
       (100.002 * 10 + 100.001 * 11) / 21,

@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 
 import { xyGrowingX } from '../xyGrowingX';
 
-test('test xyGrowingX do nothing', () => {
+test('test xyGrowingX do nothing with 0 value', () => {
   const x = [0, 1, 2, 3];
   const y = [0, 1, 2, 3];
   const result = xyGrowingX({ x, y });

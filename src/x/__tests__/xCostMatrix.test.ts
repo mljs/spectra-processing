@@ -7,6 +7,7 @@ const array2 = [5, 4, 3, 2, 1];
 
 test('default function', () => {
   const result = xCostMatrix(array1, array2);
+
   expect(result.to2DArray()).toMatchCloseTo([
     [4, 3, 2, 1, 0],
     [3, 2, 1, 0, 1],
@@ -18,6 +19,7 @@ test('default function', () => {
 
 test('diff function', () => {
   const result = xCostMatrix(array1, array2, { fct: (a, b) => a - b });
+
   expect(result.to2DArray()).toMatchCloseTo([
     [-4, -3, -2, -1, 0],
     [-3, -2, -1, 0, 1],

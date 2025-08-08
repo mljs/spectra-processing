@@ -3,9 +3,9 @@ import { expect, test } from 'vitest';
 import { recursiveResolve } from '../recursiveResolve';
 
 test('primitive', async () => {
-  expect(await recursiveResolve(1)).toBe(1);
-  expect(await recursiveResolve({})).toStrictEqual({});
-  expect(await recursiveResolve(true)).toBeTruthy();
+  await expect(recursiveResolve(1)).resolves.toBe(1);
+  await expect(recursiveResolve({})).resolves.toStrictEqual({});
+  await expect(recursiveResolve(true)).resolves.toBe(true);
 });
 
 test('simple object', async () => {
@@ -17,7 +17,7 @@ test('simple object', async () => {
     },
   };
 
-  expect(await recursiveResolve(object)).toStrictEqual({
+  await expect(recursiveResolve(object)).resolves.toStrictEqual({
     a: {
       b: {
         c: 1,
@@ -35,7 +35,7 @@ test('with array', async () => {
     },
   };
 
-  expect(await recursiveResolve(object)).toStrictEqual({
+  await expect(recursiveResolve(object)).resolves.toStrictEqual({
     a: {
       b: {
         c: [1, 2],

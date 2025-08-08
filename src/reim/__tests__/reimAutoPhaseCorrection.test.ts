@@ -34,6 +34,7 @@ test('reverse true', () => {
       reverse,
     },
   );
+
   expect(ph0 + newPh0).toBeLessThan(1);
   expect(ph1 + newPh1).toBeLessThan(1);
 });
@@ -42,11 +43,12 @@ test('onlyOneBaselineZone data should not be NaN', () => {
   const { ph0, ph1 } = reimAutoPhaseCorrection(onlyOneBaselineZone, {
     reverse: true,
   });
+
   expect(ph0).not.toBeNaN();
   expect(ph1).not.toBeNaN();
 });
 
-test('onlyOneBaselineZone data should not be NaN', () => {
+test('onlyOneBaselineZone data should not be NaN, 128 zero points', () => {
   const re = new Float64Array(128);
   const im = new Float64Array(128);
   const { ph0, ph1 } = reimAutoPhaseCorrection(
@@ -55,6 +57,7 @@ test('onlyOneBaselineZone data should not be NaN', () => {
       reverse: true,
     },
   );
+
   expect(ph0).not.toBeNaN();
   expect(ph1).not.toBeNaN();
   expect(ph0).toBe(0);
@@ -124,6 +127,7 @@ test('reverse false', () => {
       reverse,
     },
   );
+
   expect(ph0 + newPh0).toBeLessThan(1);
   expect(ph1 + newPh1).toBeLessThan(1);
 });

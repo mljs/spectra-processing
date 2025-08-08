@@ -12,6 +12,7 @@ test('basic', () => {
   const vector1 = xyMassCenterVector(data);
   const vector2 = xyMassCenterVector(data);
   const similarity = xMassCenterVectorSimilarity(vector1, vector2);
+
   expect(similarity).toBeCloseTo(1);
 });
 
@@ -28,6 +29,7 @@ test('a global shift, only penality at the first level', () => {
   const vector1 = xyMassCenterVector(data1, { depth: 2 });
   const vector2 = xyMassCenterVector(data2, { depth: 2 });
   const similarity = xMassCenterVectorSimilarity(vector1, vector2);
+
   expect(similarity).toBeCloseTo(0.5);
 });
 
@@ -44,6 +46,7 @@ test('a partial shift, this leads to no similarity', () => {
   const vector1 = xyMassCenterVector(data1, { depth: 2 });
   const vector2 = xyMassCenterVector(data2, { depth: 2 });
   const similarity = xMassCenterVectorSimilarity(vector1, vector2);
+
   expect(similarity).toBeCloseTo(0);
 });
 
@@ -66,6 +69,7 @@ test('a partial shift, no recenter helps in this case', () => {
   const similarity = xMassCenterVectorSimilarity(vector1, vector2, {
     recenter: false,
   });
+
   expect(similarity).toBeCloseTo(0.25);
 
   expect(vector1).toStrictEqual(vector1clone);
@@ -85,6 +89,7 @@ test('a partial shift, level 3 that should match again', () => {
   const vector1 = xyMassCenterVector(data1, { depth: 3 });
   const vector2 = xyMassCenterVector(data2, { depth: 3 });
   const similarity = xMassCenterVectorSimilarity(vector1, vector2);
+
   expect(similarity).toBeCloseTo(0.333333);
 });
 
@@ -108,6 +113,7 @@ test('a partial shift, we have a kind function for similarity', () => {
     similarityFct: (a: number, b: number) =>
       b - a < 0.1 ? 1 : (b - a) / (b + a),
   });
+
   expect(similarity).toBeCloseTo(0.53956);
 
   // we check that we don't touch the original array

@@ -12,6 +12,7 @@ const points = [
 
 test('default options', () => {
   const result = xyObjectBestPoints(points);
+
   expect(result).toStrictEqual([
     { x: 1, y: 1, close: false },
     { x: 2, y: 4, close: false },
@@ -26,6 +27,7 @@ test('custom options', () => {
     numberSlots: 3,
     numberCloseSlots: 6,
   });
+
   expect(result).toStrictEqual([
     { close: true, x: 1, y: 1 },
     { close: false, x: 2, y: 4 },
@@ -37,6 +39,7 @@ test('custom options', () => {
 
 test('custom options threshold', () => {
   const result = xyObjectBestPoints(points, { threshold: 0.5 });
+
   expect(result).toStrictEqual([
     { close: false, x: 2, y: 4 },
     { close: false, x: 4, y: 5 },

@@ -31,6 +31,7 @@ test('no join', () => {
 
 test('join 0.1', () => {
   const data = { x: [0.2, 0.25, 1], y: [1, 1, 1] };
+
   expect(xyJoinX(data, { delta: 0.2 })).toStrictEqual({
     x: [0.225, 1],
     y: [2, 1],
@@ -39,6 +40,7 @@ test('join 0.1', () => {
 
 test('full join', () => {
   const data = { x: [2, 4, 6], y: [1, 1, 1] };
+
   expect(xyJoinX(data, { delta: 5 })).toStrictEqual({
     x: [4],
     y: [3],
@@ -47,6 +49,7 @@ test('full join', () => {
 
 test('full join 2', () => {
   const data = { x: [2, 4, 6], y: [1, 1, 1] };
+
   expect(xyJoinX(data, { delta: 2.5 })).toStrictEqual({
     x: [4],
     y: [3],
@@ -55,6 +58,7 @@ test('full join 2', () => {
 
 test('partial join', () => {
   const data = { x: [2, 3, 6], y: [1, 1, 1] };
+
   expect(xyJoinX(data)).toStrictEqual({
     x: [2.5, 6],
     y: [2, 1],
@@ -63,6 +67,7 @@ test('partial join', () => {
 
 test('join with 0', () => {
   const data = { x: [2, 3, 6], y: [0, 0, 0] };
+
   expect(xyJoinX(data)).toStrictEqual({
     x: [2, 6],
     y: [0, 0],
@@ -71,6 +76,7 @@ test('join with 0', () => {
 
 test('delta callback', () => {
   const data = { x: [2, 3, 4, 100, 1000], y: [1, 1, 1, 2, 3] };
+
   expect(xyJoinX(data, { delta: (x) => x / 1.5 })).toStrictEqual({
     x: [3, 100, 1000],
     y: [3, 2, 3],

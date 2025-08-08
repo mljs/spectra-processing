@@ -11,6 +11,7 @@ test('simple case', () => {
   ];
   const histogram = matrixHistogram(matrix, { nbSlots: 10, centerX: false });
   histogram.y = Array.from(histogram.y);
+
   expect(histogram.x).toStrictEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   expect(histogram.y).toStrictEqual([1, 1, 2, 3, 3, 3, 3, 2, 1, 1]);
 });
@@ -26,6 +27,7 @@ test('absolute values', () => {
     absolute: true,
   });
   histogram.y = Array.from(histogram.y);
+
   expect(histogram.x).toStrictEqual([0, 1, 2, 3, 4]);
   expect(histogram.y).toStrictEqual([2, 2, 2, 2, 2]);
 });
@@ -42,6 +44,7 @@ test('logBaseX', () => {
     absolute: true,
   });
   histogram.y = Array.from(histogram.y);
+
   expect(histogram.x).toStrictEqual([1, 2, 3, 4, 5]);
   expect(histogram.y).toStrictEqual([2, 2, 2, 2, 2]);
 });
@@ -58,6 +61,7 @@ test('simple y log case', () => {
     centerX: false,
   });
   histogram.y = Array.from(histogram.y);
+
   expect(histogram.x).toStrictEqual([1, 2, 3, 4, 5, 6]);
   expect(histogram.y).toMatchCloseTo([
     1, 0.3010299956639812, 0.3010299956639812, 0.3010299956639812, 0,

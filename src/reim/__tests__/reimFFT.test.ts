@@ -10,5 +10,6 @@ test('test reimFFT', () => {
     inverse: true,
     applyZeroShift: true,
   });
+
   expect(inverse.re).toStrictEqual(re);
 });

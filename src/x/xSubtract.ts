@@ -19,7 +19,7 @@ export function xSubtract(
     }
   } else {
     isConstant = true;
-    constant = Number(array2);
+    constant = array2;
   }
 
   const array3 = new Float64Array(array1.length);
