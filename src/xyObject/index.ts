@@ -6,6 +6,7 @@ export * from './xyObjectMaxYPoint';
 export * from './xyObjectMinMaxValues';
 export * from './xyObjectMinXPoint';
 export * from './xyObjectMinYPoint';
+export * from './xyObjectNormedY';
 export * from './xyObjectSlotX';
 export * from './xyObjectSortX';
 export * from './xyObjectSumY';
