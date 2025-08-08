@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.15.0](https://github.com/mljs/spectra-processing/compare/v14.14.1...v14.15.0) (2025-08-08)
+
+
+### Features
+
+* add xyObjectNormedY ([cc50b98](https://github.com/mljs/spectra-processing/commit/cc50b98505c713728fb2784f6f211bc1e244f0fe))
+
 ## [14.14.1](https://github.com/mljs/spectra-processing/compare/v14.14.0...v14.14.1) (2025-08-06)
 
 
