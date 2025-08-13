@@ -9,3 +9,4 @@ export * from './recursiveResolve';
 export * from './recursiveUntypeArrays';
 export * from './stringify';
 export * from './calculateAdaptiveWeights';
+export * from './recursiveRemoveEmptyAndNull';
