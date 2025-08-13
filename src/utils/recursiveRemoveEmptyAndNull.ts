@@ -27,12 +27,50 @@
  * SOFTWARE.
  */
 
+interface RecursiveRemoveEmptyAndNullOptions {
+  /**
+   * Whether to remove empty arrays and objects.
+   * @default true
+   */
+  removeEmptyArrayAndObject?: boolean;
+  /**
+   * A list of properties that should be removed from the object.
+   * By default we only remove empty properties
+   * @default []
+   */
+  propertiesToRemove?: string[];
+}
+
 /**
- * cleanCyclicObject :: Removes any undefined, null, or empty strings, arrays, or objects from `object`.
+ * Recursively removes empty values from an object. This will also remove empty object or empty array.
+ * @param object - the object being cleaned
+ * @param propertiesToRemove - A string or array of strings of key(s) for key-value pair(s) to be cleaned from `object`
+ * @param options - Optional object with options for cleaning
+ * @returns the cleaned object
+ */
+export function recursiveRemoveEmptyAndNull(
+  object: unknown,
+  options: RecursiveRemoveEmptyAndNullOptions = {},
+): unknown {
+  const { propertiesToRemove = [], ...otherOptions } = options;
+
+  if (propertiesToRemove.length > 0) {
+    for (const removeProperty of propertiesToRemove) {
+      cleanCyclicObject(object, removeProperty, otherOptions);
+    }
+  } else {
+    cleanCyclicObject(object, '', otherOptions);
+  }
+
+  return object;
+}
+
+/**
+ * cleanCyclicObject Removes any undefined, null, or empty strings, arrays, or objects from `object`.
  *    Uses a `WeakMap` to keep track of objects that have been visited while recursively cleaning
  *    an object to prevent infinite recursive calls.
- * @param object - :: the object to be cleaned
- * @param target - :: Optional key to remove from `object`. If not specified, the default
+ * @param object - the object to be cleaned
+ * @param propertiesToRemove - Optional key to remove from `object`. If not specified, the default
  *    behavior is to remove "empty" values from `object`. A value is considered to be empty if it
  *    is one of the following:
  *      - empty strings
@@ -40,11 +78,12 @@
  *      - empty objects
  *      - values that are null
  *      - values that are undefined
+ * @param removeProperty
  * @param options
  */
 function cleanCyclicObject(
   object: any,
-  target: string | string[] | null = null,
+  removeProperty: string,
   options: RecursiveRemoveEmptyAndNullOptions = {},
 ) {
   const visitedObjects = new WeakMap();
@@ -55,14 +94,17 @@ function cleanCyclicObject(
       visitedObjects.set(object, null);
 
       for (const key of Reflect.ownKeys(object)) {
-        if ((target && key === target) || (!target && isEmpty(object[key]))) {
+        if (
+          (removeProperty && key === removeProperty) ||
+          (!removeProperty && isEmpty(object[key]))
+        ) {
           Reflect.deleteProperty(object, key);
         } else {
           recursiveClean(object[key], object, key);
         }
       }
 
-      if (!target && isEmpty(object) && parent) {
+      if (!removeProperty && isEmpty(object) && parent) {
         Reflect.deleteProperty(parent, parentKey);
       }
     } else if (isArray(object)) {
@@ -89,7 +131,10 @@ function cleanCyclicObject(
       for (const key of Reflect.ownKeys(object)) {
         const isIndex = typeof key === 'string' && /^\d+$/.test(key);
         if (!isIndex) {
-          if ((target && key === target) || (!target && isEmpty(object[key]))) {
+          if (
+            (removeProperty && key === removeProperty) ||
+            (!removeProperty && isEmpty(object[key]))
+          ) {
             Reflect.deleteProperty(object, key);
           } else {
             recursiveClean(object[key], object, key);
@@ -98,7 +143,7 @@ function cleanCyclicObject(
       }
 
       if (
-        !target &&
+        !removeProperty &&
         object.length === 0 &&
         parent &&
         options?.removeEmptyArrayAndObject
@@ -112,104 +157,63 @@ function cleanCyclicObject(
 }
 
 /**
- * removeKeyLoop :: does the same thing as `removeKey()` but with multiple keys.
- * @param object - :: the object being cleaned
- * @param keys - :: an array containing keys to be cleaned from `object`
- * @param options - :: Optional object with options for cleaning
- */
-function removeKeyLoop(
-  object: any,
-  keys: string[],
-  options?: RecursiveRemoveEmptyAndNullOptions,
-) {
-  for (const key of keys) {
-    cleanCyclicObject(object, key, options);
-  }
-}
-
-interface RecursiveRemoveEmptyAndNullOptions {
-  removeEmptyArrayAndObject?: boolean;
-}
-
-/**
- * Recursively removes empty values from an object. This will also remove empty object or empty array.
- * @param object - the object being cleaned
- * @param target - A string or array of strings of key(s) for key-value pair(s) to be cleaned from `object`
- * @param options - Optional object with options for cleaning
- * @returns :: the cleaned object
- */
-export function recursiveRemoveEmptyAndNull(
-  object: unknown,
-  target?: string | string[],
-  options?: RecursiveRemoveEmptyAndNullOptions,
-): unknown {
-  if (isArray(target)) {
-    removeKeyLoop(object, target as string[], options);
-  } else {
-    cleanCyclicObject(object, target, options);
-  }
-
-  return object;
-}
-
-/**
- * repr :: gets the string representation of `arg`
- * @param {} arg - :: unknown function argument
- * @returns :: a string representation of `arg`
+ * repr gets the string representation of `arg`
+ * @param {} arg - unknown function argument
+ * @returns a string representation of `arg`
  */
 function repr(arg: unknown): string {
   return Object.prototype.toString.call(arg);
 }
 
 /**
- * isArray
- * @param {} arg - :: unknown function argument
- * @returns :: returns true if `arg` is an Array, false otherwise
+ * Check if the argument is an array
+ * @param {} arg - unknown function argument
+ * @returns returns true if `arg` is an Array, false otherwise
  */
 function isArray(arg: unknown): boolean {
   return Array.isArray ? Array.isArray(arg) : repr(arg) === '[object Array]';
 }
 
 /**
- * isObject :: checks if `arg` is an object.
- * @param {} arg - :: unknown function argument
- * @returns :: returns true if `arg` is an object.
+ * Check if the argument is an object
+ * @param {} arg - unknown function argument
+ * @returns returns true if `arg` is an object.
  */
 function isObject(arg: unknown): boolean {
   return repr(arg) === '[object Object]';
 }
 
 /**
- * isString :: checks if `arg` is a string.
- * @param {} arg - :: unknown function argument
- * @returns :: returns true if `arg` is a String, false otherwise
+ * Check if the argument is a string
+ * @param {} arg - unknown function argument
+ * @returns returns true if `arg` is a String, false otherwise
  */
 function isString(arg: unknown): boolean {
   return repr(arg) === '[object String]';
 }
 
 /**
- * isNull :: checks if `arg` is null.
- * @param {} arg - :: unknown function argument
- * @returns :: returns true if `arg` is of type Null, false otherwise
+ * Check if the argument is null.
+ * @param {} arg - unknown function argument
+ * @returns returns true if `arg` is of type Null, false otherwise
  */
 function isNull(arg: unknown): boolean {
   return repr(arg) === '[object Null]';
 }
 
 /**
- * isUndefined :: checks if `arg` is undefined.
- * @param {} arg - :: unknown function argument
- * @returns :: Returns true if `arg` is of type Undefined, false otherwise
+ * Check if the argument is undefined.
+ * @param {} arg - unknown function argument
+ * @returns Returns true if `arg` is of type Undefined, false otherwise
  */
 function isUndefined(arg: unknown): boolean {
   return arg === undefined;
 }
 
 /**
- * isEmpty :: Checks if `arg` is an empty string, array, or object.
- * @param {} arg - :: unknown function argument
- * @returns :: Returns true if `arg` is an empty string,
+ * Check if the argument is null, undefined, an empty string, array, or object.
+ * @param {} arg - unknown function argument
+ * @returns Returns true if `arg` is an empty string,
  *  array, or object. Also returns true is `arg` is null or
  *  undefined. Returns true otherwise.
  */
@@ -218,7 +222,7 @@ function isEmpty(arg: unknown): boolean {
     isUndefined(arg) ||
     isNull(arg) ||
     (isString(arg) && (arg as string).length === 0) ||
-    (isArray(arg) && (arg as any[]).length === 0) ||
+    (isArray(arg) && (arg as unknown[]).length === 0) ||
     (isObject(arg) && Object.keys(arg as object).length === 0)
   );
 }

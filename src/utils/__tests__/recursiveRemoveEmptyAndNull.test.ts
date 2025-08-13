@@ -18,7 +18,7 @@ describe('Basic empty value removal', () => {
       nonEmptyArray: [1, 2, 3],
       nonEmptyObject: { key: 'value' },
     };
-    recursiveRemoveEmptyAndNull(object, undefined, {
+    recursiveRemoveEmptyAndNull(object, {
       removeEmptyArrayAndObject: true,
     });
 
@@ -170,7 +170,7 @@ describe('Basic empty value removal', () => {
       },
     };
 
-    recursiveRemoveEmptyAndNull(object, undefined, {
+    recursiveRemoveEmptyAndNull(object, {
       removeEmptyArrayAndObject: true,
     });
 
@@ -335,7 +335,7 @@ describe('Array handling', () => {
       ],
     };
 
-    recursiveRemoveEmptyAndNull(object, undefined, {
+    recursiveRemoveEmptyAndNull(object, {
       removeEmptyArrayAndObject: false,
     });
 
@@ -350,7 +350,7 @@ describe('Array handling', () => {
       arrayWithEmpty: [1, [], 3],
     };
 
-    recursiveRemoveEmptyAndNull(object, undefined, {
+    recursiveRemoveEmptyAndNull(object, {
       removeEmptyArrayAndObject: false,
     });
 
@@ -387,7 +387,7 @@ describe('Specific key removal', () => {
       ],
     };
 
-    recursiveRemoveEmptyAndNull(object, 'dirty');
+    recursiveRemoveEmptyAndNull(object, { propertiesToRemove: ['dirty'] });
 
     expect(object).toStrictEqual({
       A: {
@@ -446,7 +446,7 @@ describe('Specific key removal', () => {
       B: [{ a: 'value' }, [{ a: 'value' }, { a: 'value' }]],
     };
 
-    recursiveRemoveEmptyAndNull(object, ['b', 'c']);
+    recursiveRemoveEmptyAndNull(object, { propertiesToRemove: ['b', 'c'] });
 
     expect(object).toStrictEqual(expected);
   });
@@ -457,7 +457,9 @@ describe('Specific key removal', () => {
       b: 'value',
     };
 
-    recursiveRemoveEmptyAndNull(object, 'nonexistent');
+    recursiveRemoveEmptyAndNull(object, {
+      propertiesToRemove: ['nonexistent'],
+    });
 
     expect(object).toStrictEqual({
       a: 'value',
@@ -504,7 +506,9 @@ describe('Circular reference handling', () => {
     };
     object.recursiveDefinition = object;
 
-    recursiveRemoveEmptyAndNull(object, 'recursiveDefinition');
+    recursiveRemoveEmptyAndNull(object, {
+      propertiesToRemove: ['recursiveDefinition'],
+    });
 
     expect(object).toStrictEqual({ keep: 'value' });
   });
@@ -532,7 +536,8 @@ describe('Circular reference handling', () => {
     };
     expected.grault.plugh = expected;
 
-    recursiveRemoveEmptyAndNull(object, ['foo', 'baz', 'recursiveDefinition'], {
+    recursiveRemoveEmptyAndNull(object, {
+      propertiesToRemove: ['foo', 'baz', 'recursiveDefinition'],
       removeEmptyArrayAndObject: false,
     });
 
