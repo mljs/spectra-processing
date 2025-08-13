@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.16.0](https://github.com/mljs/spectra-processing/compare/v14.15.0...v14.16.0) (2025-08-13)
+
+
+### Features
+
+* added recursiveRemoveEmptyAndNull ([#316](https://github.com/mljs/spectra-processing/issues/316)) ([131f751](https://github.com/mljs/spectra-processing/commit/131f7511ed9cccbf982dc28a9686867404b9d32e))
+
 ## [14.15.0](https://github.com/mljs/spectra-processing/compare/v14.14.1...v14.15.0) (2025-08-08)
 
 
