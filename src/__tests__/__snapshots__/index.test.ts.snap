@@ -180,5 +180,6 @@ exports[`test existence of exported functions 1`] = `
   "recursiveUntypeArrays",
   "stringify",
   "calculateAdaptiveWeights",
+  "recursiveRemoveEmptyAndNull",
 ]
 `;
