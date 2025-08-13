@@ -1,5 +1,5 @@
 /*
- * This file includes code from "deep-cleaner" by darksinge
+ * This file is based on the code from "deep-cleaner" by darksinge
  * https://github.com/darksinge/deep-cleaner
  *
  * The following license applies:
@@ -28,7 +28,7 @@
  */
 
 /**
- * cleanCyclicObject :: Removes any undefined, null, or empty strings, arrays, or objects from `obj`.
+ * cleanCyclicObject :: Removes any undefined, null, or empty strings, arrays, or objects from `object`.
  *    Uses a `WeakMap` to keep track of objects that have been visited while recursively cleaning
  *    an object to prevent infinite recursive calls.
  * @param object - :: the object to be cleaned
@@ -45,59 +45,64 @@
 function cleanCyclicObject(
   object: any,
   target: string | string[] | null = null,
-  options: DeepCleanerOptions = {},
+  options: RecursiveRemoveEmptyAndNullOptions = {},
 ) {
   const visitedObjects = new WeakMap();
 
-  function recursiveClean(obj: any, parent?: any, parentKey?: any) {
-    if (isObject(obj)) {
-      if (visitedObjects.has(obj)) return;
-      visitedObjects.set(obj, null);
+  function recursiveClean(object: any, parent?: any, parentKey?: any) {
+    if (isObject(object)) {
+      if (visitedObjects.has(object)) return;
+      visitedObjects.set(object, null);
 
-      for (const key of Reflect.ownKeys(obj)) {
-        if ((target && key === target) || (!target && isEmpty(obj[key]))) {
-          Reflect.deleteProperty(obj, key);
+      for (const key of Reflect.ownKeys(object)) {
+        if ((target && key === target) || (!target && isEmpty(object[key]))) {
+          Reflect.deleteProperty(object, key);
         } else {
-          recursiveClean(obj[key], obj, key);
+          recursiveClean(object[key], object, key);
         }
       }
 
-      if (!target && isEmpty(obj) && parent) {
+      if (!target && isEmpty(object) && parent) {
         Reflect.deleteProperty(parent, parentKey);
       }
-    } else if (isArray(obj)) {
-      if (visitedObjects.has(obj)) return;
-      visitedObjects.set(obj, null);
+    } else if (isArray(object)) {
+      if (visitedObjects.has(object)) return;
+      visitedObjects.set(object, null);
 
-      for (let i = 0; i < obj.length; i++) {
-        recursiveClean(obj[i], obj, i);
+      for (let i = 0; i < object.length; i++) {
+        recursiveClean(object[i], object, i);
       }
 
-      for (let i = obj.length - 1; i >= 0; i--) {
+      for (let i = object.length - 1; i >= 0; i--) {
         if (
-          isEmpty(obj[i]) &&
+          isEmpty(object[i]) &&
           !(
-            isArray(obj[i]) &&
-            obj[i].length === 0 &&
-            options?.removeEmptyArrays === false
+            isArray(object[i]) &&
+            object[i].length === 0 &&
+            options?.removeEmptyArrayAndObject === false
           )
         ) {
-          obj.splice(i, 1);
+          object.splice(i, 1);
         }
       }
 
-      for (const key of Reflect.ownKeys(obj)) {
+      for (const key of Reflect.ownKeys(object)) {
         const isIndex = typeof key === 'string' && /^\d+$/.test(key);
         if (!isIndex) {
-          if ((target && key === target) || (!target && isEmpty(obj[key]))) {
-            Reflect.deleteProperty(obj, key);
+          if ((target && key === target) || (!target && isEmpty(object[key]))) {
+            Reflect.deleteProperty(object, key);
           } else {
-            recursiveClean(obj[key], obj, key);
+            recursiveClean(object[key], object, key);
           }
         }
       }
 
-      if (!target && obj.length === 0 && parent && options?.removeEmptyArrays) {
+      if (
+        !target &&
+        object.length === 0 &&
+        parent &&
+        options?.removeEmptyArrayAndObject
+      ) {
         Reflect.deleteProperty(parent, parentKey);
       }
     }
@@ -108,39 +113,43 @@ function cleanCyclicObject(
 
 /**
  * removeKeyLoop :: does the same thing as `removeKey()` but with multiple keys.
- * @param obj - :: the object being cleaned
- * @param keys - :: an array containing keys to be cleaned from `obj`
+ * @param object - :: the object being cleaned
+ * @param keys - :: an array containing keys to be cleaned from `object`
  * @param options - :: Optional object with options for cleaning
  */
-function removeKeyLoop(obj, keys, options) {
+function removeKeyLoop(
+  object: any,
+  keys: string[],
+  options?: RecursiveRemoveEmptyAndNullOptions,
+) {
   for (const key of keys) {
-    cleanCyclicObject(obj, key, options);
+    cleanCyclicObject(object, key, options);
   }
 }
 
-interface DeepCleanerOptions {
-  removeEmptyArrays?: boolean;
+interface RecursiveRemoveEmptyAndNullOptions {
+  removeEmptyArrayAndObject?: boolean;
 }
 
 /**
- * deepCleaner
- * @param obj - :: the object being cleaned
- * @param target - :: A string or array of strings of key(s) for key-value pair(s) to be cleaned from `obj`
- * @param options - :: Optional object with options for cleaning
+ * Recursively removes empty values from an object. This will also remove empty object or empty array.
+ * @param object - the object being cleaned
+ * @param target - A string or array of strings of key(s) for key-value pair(s) to be cleaned from `object`
+ * @param options - Optional object with options for cleaning
  * @returns :: the cleaned object
  */
 export function recursiveRemoveEmptyAndNull(
-  obj: any[] | object,
+  object: unknown,
   target?: string | string[],
-  options?: DeepCleanerOptions,
-): any {
+  options?: RecursiveRemoveEmptyAndNullOptions,
+): unknown {
   if (isArray(target)) {
-    removeKeyLoop(obj, target, options);
+    removeKeyLoop(object, target as string[], options);
   } else {
-    cleanCyclicObject(obj, target, options);
+    cleanCyclicObject(object, target, options);
   }
 
-  return obj;
+  return object;
 }
 
 /**
@@ -148,7 +157,7 @@ export function recursiveRemoveEmptyAndNull(
  * @param {} arg - :: unknown function argument
  * @returns :: a string representation of `arg`
  */
-function repr(arg) {
+function repr(arg: unknown): string {
   return Object.prototype.toString.call(arg);
 }
 
@@ -157,7 +166,7 @@ function repr(arg) {
  * @param {} arg - :: unknown function argument
  * @returns :: returns true if `arg` is an Array, false otherwise
  */
-function isArray(arg) {
+function isArray(arg: unknown): boolean {
   return Array.isArray ? Array.isArray(arg) : repr(arg) === '[object Array]';
 }
 
@@ -166,7 +175,7 @@ function isArray(arg) {
  * @param {} arg - :: unknown function argument
  * @returns :: returns true if `arg` is an object.
  */
-function isObject(arg) {
+function isObject(arg: unknown): boolean {
   return repr(arg) === '[object Object]';
 }
 
@@ -175,7 +184,7 @@ function isObject(arg) {
  * @param {} arg - :: unknown function argument
  * @returns :: returns true if `arg` is a String, false otherwise
  */
-function isString(arg) {
+function isString(arg: unknown): boolean {
   return repr(arg) === '[object String]';
 }
 
@@ -184,7 +193,7 @@ function isString(arg) {
  * @param {} arg - :: unknown function argument
  * @returns :: returns true if `arg` is of type Null, false otherwise
  */
-function isNull(arg) {
+function isNull(arg: unknown): boolean {
   return repr(arg) === '[object Null]';
 }
 
@@ -193,16 +202,8 @@ function isNull(arg) {
  * @param {} arg - :: unknown function argument
  * @returns :: Returns true if `arg` is of type Undefined, false otherwise
  */
-function isUndefined(arg) {
-  try {
-    return arg === undefined;
-  } catch (error) {
-    if (error instanceof ReferenceError) {
-      return true;
-    }
-
-    throw error;
-  }
+function isUndefined(arg: unknown): boolean {
+  return arg === undefined;
 }
 
 /**
@@ -212,12 +213,12 @@ function isUndefined(arg) {
  *  array, or object. Also returns true is `arg` is null or
  *  undefined. Returns true otherwise.
  */
-function isEmpty(arg) {
+function isEmpty(arg: unknown): boolean {
   return (
     isUndefined(arg) ||
     isNull(arg) ||
-    (isString(arg) && arg.length === 0) ||
-    (isArray(arg) && arg.length === 0) ||
-    (isObject(arg) && Object.keys(arg).length === 0)
+    (isString(arg) && (arg as string).length === 0) ||
+    (isArray(arg) && (arg as any[]).length === 0) ||
+    (isObject(arg) && Object.keys(arg as object).length === 0)
   );
 }

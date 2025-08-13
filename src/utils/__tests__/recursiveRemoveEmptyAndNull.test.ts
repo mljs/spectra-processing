@@ -4,736 +4,738 @@ import { describe, expect, it } from 'vitest';
 
 import { recursiveRemoveEmptyAndNull } from '../recursiveRemoveEmptyAndNull';
 
-const func = () => 'test';
-
-describe('recursiveRemoveEmptyAndNull', () => {
-  describe('Basic empty value removal', () => {
-    it('should remove empty values from an object', () => {
-      const obj = {
-        emptyArray: [],
-        emptyObject: {},
-        nonEmptyArray: [1, 2, 3],
-        nonEmptyObject: { key: 'value' },
-        arrayToBeRemoved: [null, undefined, '', {}, []],
-        objecttToBeRemoved: { a: null, b: undefined, c: '', d: {}, e: [] },
-      };
-      const expected = {
-        nonEmptyArray: [1, 2, 3],
-        nonEmptyObject: { key: 'value' },
-      };
-      recursiveRemoveEmptyAndNull(obj, undefined, { removeEmptyArrays: true });
-
-      expect(obj).toStrictEqual(expected);
+describe('Basic empty value removal', () => {
+  it('should remove empty values from an object', () => {
+    const object = {
+      emptyArray: [],
+      emptyObject: {},
+      nonEmptyArray: [1, 2, 3],
+      nonEmptyObject: { key: 'value' },
+      arrayToBeRemoved: [null, undefined, '', {}, []],
+      objecttToBeRemoved: { a: null, b: undefined, c: '', d: {}, e: [] },
+    };
+    const expected = {
+      nonEmptyArray: [1, 2, 3],
+      nonEmptyObject: { key: 'value' },
+    };
+    recursiveRemoveEmptyAndNull(object, undefined, {
+      removeEmptyArrayAndObject: true,
     });
 
-    it('creators test', () => {
-      const obj = {
-        metadata: {
-          resource_type: {
-            id: 'dataset',
-            title: {
-              de: 'Datensatz',
-              en: 'Dataset',
-            },
-          },
-          creators: [
-            {
-              person_or_org: {
-                family_name: 'Lupin',
-                given_name: 'Arsène',
-                identifiers: [
-                  {
-                    identifier: '0009-0002-9377-2271',
-                  },
-                ],
-                type: 'personal',
-              },
-              affiliations: [
-                {
-                  name: 'Swiss Federal Institute of Technology in Lausanne',
-                },
-              ],
-              role: {
-                id: 'researcher',
-              },
-            },
-            {
-              person_or_org: {
-                family_name: 'test',
-                given_name: '',
-                identifiers: [
-                  {
-                    identifier: '',
-                  },
-                ],
-                type: '',
-              },
-              affiliations: [
-                {
-                  name: '',
-                },
-              ],
-              role: {
-                id: 'researcher',
-              },
-            },
-          ],
-          rights: [
-            {
-              id: 'cc0-1.0',
-            },
-          ],
-          contributors: [
-            {
-              person_or_org: {
-                family_name: 'Test',
-                given_name: 'test',
-                identifiers: [
-                  {
-                    identifier: '',
-                  },
-                ],
-                type: 'personal',
-              },
-              affiliations: [
-                {
-                  name: 'test',
-                },
-              ],
-              role: {
-                id: 'researcher',
-              },
-            },
-            {
-              person_or_org: {
-                family_name: 'test2',
-                given_name: '',
-                identifiers: [
-                  {
-                    identifier: '',
-                  },
-                ],
-                type: '',
-              },
-              affiliations: [
-                {
-                  name: '',
-                },
-              ],
-              role: {
-                id: 'researcher',
-              },
-            },
-          ],
-        },
-      };
-
-      const expected = {
-        metadata: {
-          resource_type: {
-            id: 'dataset',
-            title: { de: 'Datensatz', en: 'Dataset' },
-          },
-          creators: [
-            {
-              person_or_org: {
-                family_name: 'Lupin',
-                given_name: 'Arsène',
-                identifiers: [{ identifier: '0009-0002-9377-2271' }],
-                type: 'personal',
-              },
-              affiliations: [
-                { name: 'Swiss Federal Institute of Technology in Lausanne' },
-              ],
-              role: { id: 'researcher' },
-            },
-            {
-              person_or_org: { family_name: 'test' },
-              role: { id: 'researcher' },
-            },
-          ],
-          rights: [{ id: 'cc0-1.0' }],
-          contributors: [
-            {
-              person_or_org: {
-                family_name: 'Test',
-                given_name: 'test',
-                type: 'personal',
-              },
-              affiliations: [{ name: 'test' }],
-              role: { id: 'researcher' },
-            },
-            {
-              person_or_org: { family_name: 'test2' },
-              role: { id: 'researcher' },
-            },
-          ],
-        },
-      };
-
-      recursiveRemoveEmptyAndNull(obj, undefined, { removeEmptyArrays: true });
-
-      expect(obj).toStrictEqual(expected);
-    });
-
-    it('should remove null, undefined, empty strings, arrays, and objects', () => {
-      const obj = {
-        notEmptyString: 'string',
-        emptyString: '',
-        notEmptyArray: [1, 2, 3],
-        emptyArray: [],
-        notEmptyObject: { aKey: 'a value' },
-        emptyObject: {},
-        thisIsTrue: true,
-        thisIsFalse: false,
-        thisIsNull: null,
-        thisIsUndefined: undefined,
-        notANumber: Number.NaN,
-        zero: 0,
-        negativeNumber: -1,
-        positiveNumber: 42,
-      };
-
-      recursiveRemoveEmptyAndNull(obj);
-
-      // Should exist
-      expect(obj.notEmptyString).toBeDefined();
-      expect(obj.notEmptyArray).toBeDefined();
-      expect(obj.notEmptyObject).toBeDefined();
-      expect(obj.thisIsTrue).toBeDefined();
-      expect(obj.thisIsFalse).toBeDefined();
-      expect(obj.notANumber).toBeDefined();
-      expect(obj.zero).toBeDefined();
-      expect(obj.negativeNumber).toBeDefined();
-      expect(obj.positiveNumber).toBeDefined();
-
-      // Should not exist
-      expect(obj.emptyString).toBeUndefined();
-      expect(obj.emptyArray).toBeUndefined();
-      expect(obj.emptyObject).toBeUndefined();
-      expect(obj.thisIsNull).toBeUndefined();
-      expect(obj.thisIsUndefined).toBeUndefined();
-    });
-
-    it('should preserve falsy but meaningful values', () => {
-      const obj = {
-        zero: 0,
-        false: false,
-        emptyString: '',
-        null: null,
-        undefined,
-      };
-
-      recursiveRemoveEmptyAndNull(obj);
-
-      expect(obj.zero).toBe(0);
-      expect(obj.false).toBe(false);
-      expect(obj.emptyString).toBeUndefined();
-      expect(obj.null).toBeUndefined();
-      expect(obj.undefined).toBeUndefined();
-    });
+    expect(object).toStrictEqual(expected);
   });
 
-  describe('Nested object cleaning', () => {
-    it('should clean nested objects recursively', () => {
-      const obj = {
-        level1: {
-          keep: 'value',
-          remove: null,
-          level2: {
-            keep: 'nested',
-            remove: undefined,
-            emptyArray: [],
-            level3: {
-              keep: 'deep',
-              emptyObject: {},
-            },
+  it('creators test of zenodo metadata', () => {
+    const object = {
+      metadata: {
+        resource_type: {
+          id: 'dataset',
+          title: {
+            de: 'Datensatz',
+            en: 'Dataset',
           },
         },
-      };
-
-      recursiveRemoveEmptyAndNull(obj);
-
-      expect(obj).toStrictEqual({
-        level1: {
-          keep: 'value',
-          level2: {
-            keep: 'nested',
-            level3: {
-              keep: 'deep',
+        creators: [
+          {
+            person_or_org: {
+              family_name: 'Lupin',
+              given_name: 'Arsène',
+              identifiers: [
+                {
+                  identifier: '0009-0002-9377-2271',
+                },
+              ],
+              type: 'personal',
+            },
+            affiliations: [
+              {
+                name: 'Swiss Federal Institute of Technology in Lausanne',
+              },
+            ],
+            role: {
+              id: 'researcher',
             },
           },
+          {
+            person_or_org: {
+              family_name: 'test',
+              given_name: '',
+              identifiers: [
+                {
+                  identifier: '',
+                },
+              ],
+              type: '',
+            },
+            affiliations: [
+              {
+                name: '',
+              },
+            ],
+            role: {
+              id: 'researcher',
+            },
+          },
+        ],
+        rights: [
+          {
+            id: 'cc0-1.0',
+          },
+        ],
+        contributors: [
+          {
+            person_or_org: {
+              family_name: 'Test',
+              given_name: 'test',
+              identifiers: [
+                {
+                  identifier: '',
+                },
+              ],
+              type: 'personal',
+            },
+            affiliations: [
+              {
+                name: 'test',
+              },
+            ],
+            role: {
+              id: 'researcher',
+            },
+          },
+          {
+            person_or_org: {
+              family_name: 'test2',
+              given_name: '',
+              identifiers: [
+                {
+                  identifier: '',
+                },
+              ],
+              type: '',
+            },
+            affiliations: [
+              {
+                name: '',
+              },
+            ],
+            role: {
+              id: 'researcher',
+            },
+          },
+        ],
+      },
+    };
+
+    const expected = {
+      metadata: {
+        resource_type: {
+          id: 'dataset',
+          title: { de: 'Datensatz', en: 'Dataset' },
         },
-      });
+        creators: [
+          {
+            person_or_org: {
+              family_name: 'Lupin',
+              given_name: 'Arsène',
+              identifiers: [{ identifier: '0009-0002-9377-2271' }],
+              type: 'personal',
+            },
+            affiliations: [
+              { name: 'Swiss Federal Institute of Technology in Lausanne' },
+            ],
+            role: { id: 'researcher' },
+          },
+          {
+            person_or_org: { family_name: 'test' },
+            role: { id: 'researcher' },
+          },
+        ],
+        rights: [{ id: 'cc0-1.0' }],
+        contributors: [
+          {
+            person_or_org: {
+              family_name: 'Test',
+              given_name: 'test',
+              type: 'personal',
+            },
+            affiliations: [{ name: 'test' }],
+            role: { id: 'researcher' },
+          },
+          {
+            person_or_org: { family_name: 'test2' },
+            role: { id: 'researcher' },
+          },
+        ],
+      },
+    };
+
+    recursiveRemoveEmptyAndNull(object, undefined, {
+      removeEmptyArrayAndObject: true,
     });
 
-    it('should handle mixed data types in nested structures', () => {
-      const obj = {
-        mixed: {
-          string: 'keep',
-          emptyString: '',
-          number: 42,
-          zero: 0,
-          boolean: true,
-          falseBool: false,
-          nullValue: null,
-          undefinedValue: undefined,
-          array: [1, 2, 3],
+    expect(object).toStrictEqual(expected);
+  });
+
+  it('should remove null, undefined, empty strings, arrays, and objects', () => {
+    const object = {
+      notEmptyString: 'string',
+      emptyString: '',
+      notEmptyArray: [1, 2, 3],
+      emptyArray: [],
+      notEmptyObject: { aKey: 'a value' },
+      emptyObject: {},
+      thisIsTrue: true,
+      thisIsFalse: false,
+      thisIsNull: null,
+      thisIsUndefined: undefined,
+      notANumber: Number.NaN,
+      zero: 0,
+      negativeNumber: -1,
+      positiveNumber: 42,
+    };
+
+    recursiveRemoveEmptyAndNull(object);
+
+    // Should exist
+    expect(object.notEmptyString).toBeDefined();
+    expect(object.notEmptyArray).toBeDefined();
+    expect(object.notEmptyObject).toBeDefined();
+    expect(object.thisIsTrue).toBeDefined();
+    expect(object.thisIsFalse).toBeDefined();
+    expect(object.notANumber).toBeDefined();
+    expect(object.zero).toBeDefined();
+    expect(object.negativeNumber).toBeDefined();
+    expect(object.positiveNumber).toBeDefined();
+
+    // Should not exist
+    expect(object.emptyString).toBeUndefined();
+    expect(object.emptyArray).toBeUndefined();
+    expect(object.emptyObject).toBeUndefined();
+    expect(object.thisIsNull).toBeUndefined();
+    expect(object.thisIsUndefined).toBeUndefined();
+  });
+
+  it('should preserve falsy but meaningful values', () => {
+    const object = {
+      zero: 0,
+      false: false,
+      emptyString: '',
+      null: null,
+      undefined,
+    };
+
+    recursiveRemoveEmptyAndNull(object);
+
+    expect(object.zero).toBe(0);
+    expect(object.false).toBe(false);
+    expect(object.emptyString).toBeUndefined();
+    expect(object.null).toBeUndefined();
+    expect(object.undefined).toBeUndefined();
+  });
+});
+
+describe('Nested object cleaning', () => {
+  it('should clean nested objects recursively', () => {
+    const object = {
+      level1: {
+        keep: 'value',
+        remove: null,
+        level2: {
+          keep: 'nested',
+          remove: undefined,
           emptyArray: [],
-          object: { nested: 'value' },
-          emptyObject: {},
+          level3: {
+            keep: 'deep',
+            emptyObject: {},
+          },
         },
-      };
+      },
+    };
 
-      recursiveRemoveEmptyAndNull(obj);
+    recursiveRemoveEmptyAndNull(object);
 
-      expect(obj).toStrictEqual({
-        mixed: {
-          string: 'keep',
-          number: 42,
-          zero: 0,
-          boolean: true,
-          falseBool: false,
-          array: [1, 2, 3],
-          object: { nested: 'value' },
+    expect(object).toStrictEqual({
+      level1: {
+        keep: 'value',
+        level2: {
+          keep: 'nested',
+          level3: {
+            keep: 'deep',
+          },
         },
-      });
+      },
     });
   });
 
-  describe('Array handling', () => {
-    it('should clean objects within arrays', () => {
-      const obj = {
-        arrayOfObjects: [
-          { keep: 'value', remove: null },
-          { keep: 'another', empty: '', undefined },
-          { nested: { keep: 'deep', remove: [] } },
-        ],
-      };
-
-      recursiveRemoveEmptyAndNull(obj);
-
-      expect(obj).toStrictEqual({
-        arrayOfObjects: [
-          { keep: 'value' },
-          { keep: 'another' },
-          { nested: { keep: 'deep' } },
-        ],
-      });
-    });
-
-    it('should handle nested arrays', () => {
-      const obj = {
-        nestedArrays: [
-          [1, 2, 3],
-          [],
-          [
-            { keep: 'value', remove: null },
-            { another: 'value', empty: {} },
-          ],
-        ],
-      };
-
-      recursiveRemoveEmptyAndNull(obj, undefined, { removeEmptyArrays: false });
-
-      expect(obj).toStrictEqual({
-        nestedArrays: [
-          [1, 2, 3],
-          [],
-          [{ keep: 'value' }, { another: 'value' }],
-        ],
-      });
-    });
-
-    it('should preserve empty arrays when they are direct values', () => {
-      const obj = {
+  it('should handle mixed data types in nested structures', () => {
+    const object = {
+      mixed: {
+        string: 'keep',
+        emptyString: '',
+        number: 42,
+        zero: 0,
+        boolean: true,
+        falseBool: false,
+        nullValue: null,
+        undefinedValue: undefined,
+        array: [1, 2, 3],
         emptyArray: [],
-        arrayWithEmpty: [1, [], 3],
-      };
+        object: { nested: 'value' },
+        emptyObject: {},
+      },
+    };
 
-      recursiveRemoveEmptyAndNull(obj, undefined, { removeEmptyArrays: false });
+    recursiveRemoveEmptyAndNull(object);
 
-      expect(obj).toStrictEqual({
-        arrayWithEmpty: [1, [], 3],
-      });
+    expect(object).toStrictEqual({
+      mixed: {
+        string: 'keep',
+        number: 42,
+        zero: 0,
+        boolean: true,
+        falseBool: false,
+        array: [1, 2, 3],
+        object: { nested: 'value' },
+      },
+    });
+  });
+});
+
+describe('Array handling', () => {
+  it('should clean objects within arrays', () => {
+    const object = {
+      arrayOfObjects: [
+        { keep: 'value', remove: null },
+        { keep: 'another', empty: '', undefined },
+        { nested: { keep: 'deep', remove: [] } },
+      ],
+    };
+
+    recursiveRemoveEmptyAndNull(object);
+
+    expect(object).toStrictEqual({
+      arrayOfObjects: [
+        { keep: 'value' },
+        { keep: 'another' },
+        { nested: { keep: 'deep' } },
+      ],
     });
   });
 
-  describe('Specific key removal', () => {
-    it('should remove specific key from all nested levels', () => {
-      const obj = {
+  it('should handle nested arrays', () => {
+    const object = {
+      nestedArrays: [
+        [1, 2, 3],
+        [],
+        [
+          { keep: 'value', remove: null },
+          { another: 'value', empty: {} },
+        ],
+      ],
+    };
+
+    recursiveRemoveEmptyAndNull(object, undefined, {
+      removeEmptyArrayAndObject: false,
+    });
+
+    expect(object).toStrictEqual({
+      nestedArrays: [[1, 2, 3], [], [{ keep: 'value' }, { another: 'value' }]],
+    });
+  });
+
+  it('should preserve empty arrays when they are direct values', () => {
+    const object = {
+      emptyArray: [],
+      arrayWithEmpty: [1, [], 3],
+    };
+
+    recursiveRemoveEmptyAndNull(object, undefined, {
+      removeEmptyArrayAndObject: false,
+    });
+
+    expect(object).toStrictEqual({
+      arrayWithEmpty: [1, [], 3],
+    });
+  });
+});
+
+describe('Specific key removal', () => {
+  it('should remove specific key from all nested levels', () => {
+    const object = {
+      dirty: 'value',
+      A: {
         dirty: 'value',
-        A: {
+        clean: 'value',
+        emptyNull: null,
+        emptyUndefined: undefined,
+        emptyArray: [],
+        emptyObject: {},
+        a: {
+          dirty: 'value',
+        },
+      },
+      B: [
+        {
           dirty: 'value',
           clean: 'value',
-          emptyNull: null,
-          emptyUndefined: undefined,
-          emptyArray: [],
-          emptyObject: {},
           a: {
             dirty: 'value',
+            clean: 'value',
           },
         },
-        B: [
-          {
-            dirty: 'value',
-            clean: 'value',
-            a: {
-              dirty: 'value',
-              clean: 'value',
-            },
-          },
-        ],
-      };
+      ],
+    };
 
-      recursiveRemoveEmptyAndNull(obj, 'dirty');
+    recursiveRemoveEmptyAndNull(object, 'dirty');
 
-      expect(obj).toStrictEqual({
-        A: {
+    expect(object).toStrictEqual({
+      A: {
+        clean: 'value',
+        emptyNull: null,
+        emptyUndefined: undefined,
+        emptyArray: [],
+        emptyObject: {},
+        a: {},
+      },
+      B: [
+        {
           clean: 'value',
-          emptyNull: null,
-          emptyUndefined: undefined,
-          emptyArray: [],
-          emptyObject: {},
-          a: {},
+          a: { clean: 'value' },
         },
-        B: [
-          {
-            clean: 'value',
-            a: { clean: 'value' },
-          },
-        ],
-      });
+      ],
     });
+  });
 
-    it('should remove multiple specific keys', () => {
-      const obj = {
-        A: {
+  it('should remove multiple specific keys', () => {
+    const object = {
+      A: {
+        a: 'value',
+        b: 'value',
+        c: {
           a: 'value',
           b: 'value',
-          c: {
-            a: 'value',
-            b: 'value',
-            c: 'value',
-          },
+          c: 'value',
         },
-        B: [
+      },
+      B: [
+        {
+          a: 'value',
+          b: 'value',
+          c: 'value',
+        },
+        [
           {
             a: 'value',
             b: 'value',
             c: 'value',
           },
-          [
-            {
-              a: 'value',
-              b: 'value',
-              c: 'value',
-            },
-            {
-              a: 'value',
-              b: 'value',
-              c: 'value',
-            },
-          ],
+          {
+            a: 'value',
+            b: 'value',
+            c: 'value',
+          },
         ],
-      };
+      ],
+    };
 
-      const expected = {
-        A: {
-          a: 'value',
-        },
-        B: [{ a: 'value' }, [{ a: 'value' }, { a: 'value' }]],
-      };
-
-      recursiveRemoveEmptyAndNull(obj, ['b', 'c']);
-
-      expect(obj).toStrictEqual(expected);
-    });
-
-    it('should handle non-existent keys gracefully', () => {
-      const obj = {
+    const expected = {
+      A: {
         a: 'value',
-        b: 'value',
-      };
+      },
+      B: [{ a: 'value' }, [{ a: 'value' }, { a: 'value' }]],
+    };
 
-      recursiveRemoveEmptyAndNull(obj, 'nonexistent');
+    recursiveRemoveEmptyAndNull(object, ['b', 'c']);
 
-      expect(obj).toStrictEqual({
-        a: 'value',
-        b: 'value',
-      });
-    });
+    expect(object).toStrictEqual(expected);
   });
 
-  describe('Circular reference handling', () => {
-    it('should clean an object with a circular reference', () => {
-      const obj = {
-        recursiveDefinition: null as any,
-        foo: [],
-        bar: [1, 2, 3],
-        baz: {
-          anotherRecursion: null as any,
-        },
-        grault: null,
-        plugh: undefined,
-        qux: '',
-      };
-      obj.recursiveDefinition = obj;
-      obj.baz.anotherRecursion = obj;
+  it('should handle non-existent keys gracefully', () => {
+    const object = {
+      a: 'value',
+      b: 'value',
+    };
 
-      const expected = {
-        recursiveDefinition: null as any,
-        bar: [1, 2, 3],
-        baz: {
-          anotherRecursion: null as any,
-        },
-      };
-      expected.recursiveDefinition = expected;
-      expected.baz.anotherRecursion = expected;
+    recursiveRemoveEmptyAndNull(object, 'nonexistent');
 
-      recursiveRemoveEmptyAndNull(obj);
-
-      expect(obj).toStrictEqual(expected);
-    });
-
-    it('should clean a key from an object with a circular reference', () => {
-      const obj = {
-        recursiveDefinition: null as any,
-        keep: 'value',
-      };
-      obj.recursiveDefinition = obj;
-
-      recursiveRemoveEmptyAndNull(obj, 'recursiveDefinition');
-
-      expect(obj).toStrictEqual({ keep: 'value' });
-    });
-
-    it('should clean multiple keys from an object with circular references', () => {
-      const obj = {
-        recursiveDefinition: null as any,
-        foo: [],
-        bar: [1, 2, 3, null],
-        baz: {
-          anotherRecursion: null as any,
-        },
-        grault: {
-          plugh: null as any,
-        },
-      };
-
-      obj.recursiveDefinition = obj;
-      obj.baz.anotherRecursion = obj;
-      obj.grault.plugh = obj;
-
-      const expected = {
-        bar: [1, 2, 3],
-        grault: { plugh: null as any },
-      };
-      expected.grault.plugh = expected;
-
-      recursiveRemoveEmptyAndNull(obj, ['foo', 'baz', 'recursiveDefinition'], {
-        removeEmptyArrays: false,
-      });
-
-      expect(obj).toStrictEqual(expected);
-    });
-
-    it('should handle complex circular references in arrays', () => {
-      const obj = {
-        data: [
-          { ref: null as any, value: 'keep' },
-          { ref: null as any, empty: null },
-        ],
-      };
-      obj.data[0].ref = obj;
-      obj.data[1].ref = obj.data[0];
-
-      recursiveRemoveEmptyAndNull(obj);
-
-      expect(obj.data[0]).toHaveProperty('ref');
-      expect(obj.data[0]).toHaveProperty('value', 'keep');
-      expect(obj.data[1]).toHaveProperty('ref');
-      expect(obj.data[1]).not.toHaveProperty('empty');
+    expect(object).toStrictEqual({
+      a: 'value',
+      b: 'value',
     });
   });
+});
 
-  describe('Edge cases', () => {
-    it('should handle empty input objects', () => {
-      const obj = {};
-      recursiveRemoveEmptyAndNull(obj);
+describe('Circular reference handling', () => {
+  it('should clean an object with a circular reference', () => {
+    const object = {
+      recursiveDefinition: null as any,
+      foo: [],
+      bar: [1, 2, 3],
+      baz: {
+        anotherRecursion: null as any,
+      },
+      grault: null,
+      plugh: undefined,
+      qux: '',
+    };
+    object.recursiveDefinition = object;
+    object.baz.anotherRecursion = object;
 
-      expect(obj).toStrictEqual({});
+    const expected = {
+      recursiveDefinition: null as any,
+      bar: [1, 2, 3],
+      baz: {
+        anotherRecursion: null as any,
+      },
+    };
+    expected.recursiveDefinition = expected;
+    expected.baz.anotherRecursion = expected;
+
+    recursiveRemoveEmptyAndNull(object);
+
+    expect(object).toStrictEqual(expected);
+  });
+
+  it('should clean a key from an object with a circular reference', () => {
+    const object = {
+      recursiveDefinition: null as any,
+      keep: 'value',
+    };
+    object.recursiveDefinition = object;
+
+    recursiveRemoveEmptyAndNull(object, 'recursiveDefinition');
+
+    expect(object).toStrictEqual({ keep: 'value' });
+  });
+
+  it('should clean multiple keys from an object with circular references', () => {
+    const object = {
+      recursiveDefinition: null as any,
+      foo: [],
+      bar: [1, 2, 3, null],
+      baz: {
+        anotherRecursion: null as any,
+      },
+      grault: {
+        plugh: null as any,
+      },
+    };
+
+    object.recursiveDefinition = object;
+    object.baz.anotherRecursion = object;
+    object.grault.plugh = object;
+
+    const expected = {
+      bar: [1, 2, 3],
+      grault: { plugh: null as any },
+    };
+    expected.grault.plugh = expected;
+
+    recursiveRemoveEmptyAndNull(object, ['foo', 'baz', 'recursiveDefinition'], {
+      removeEmptyArrayAndObject: false,
     });
 
-    it('should handle null input', () => {
-      expect(() => recursiveRemoveEmptyAndNull(null)).not.toThrow();
-    });
+    expect(object).toStrictEqual(expected);
+  });
 
-    it('should handle undefined input', () => {
-      expect(() => recursiveRemoveEmptyAndNull(undefined)).not.toThrow();
-    });
+  it('should handle complex circular references in arrays', () => {
+    const object = {
+      data: [
+        { ref: null as any, value: 'keep' },
+        { ref: null as any, empty: null },
+      ],
+    };
+    object.data[0].ref = object;
+    object.data[1].ref = object.data[0];
 
-    it('should handle objects with only empty values', () => {
-      const obj = {
-        empty1: null,
-        empty2: undefined,
-        empty3: '',
-        empty4: [],
-        empty5: {},
-      };
+    recursiveRemoveEmptyAndNull(object);
 
-      recursiveRemoveEmptyAndNull(obj);
+    expect(object.data[0]).toHaveProperty('ref');
+    expect(object.data[0]).toHaveProperty('value', 'keep');
+    expect(object.data[1]).toHaveProperty('ref');
+    expect(object.data[1]).not.toHaveProperty('empty');
+  });
+});
 
-      expect(obj).toStrictEqual({});
-    });
+describe('Edge cases', () => {
+  it('should handle empty input objects', () => {
+    const object = {};
+    recursiveRemoveEmptyAndNull(object);
 
-    it('should handle deeply nested empty structures', () => {
-      const obj = {
-        level1: {
-          level2: {
-            level3: {
-              level4: {
-                empty: null,
-                alsoEmpty: undefined,
-              },
+    expect(object).toStrictEqual({});
+  });
+
+  it('should handle null input', () => {
+    expect(recursiveRemoveEmptyAndNull(null)).toBeNull();
+  });
+
+  it('should handle undefined input', () => {
+    expect(recursiveRemoveEmptyAndNull(undefined)).toBeUndefined();
+  });
+
+  it('should handle objects with only empty values', () => {
+    const object = {
+      empty1: null,
+      empty2: undefined,
+      empty3: '',
+      empty4: [],
+      empty5: {},
+    };
+
+    recursiveRemoveEmptyAndNull(object);
+
+    expect(object).toStrictEqual({});
+  });
+
+  it('should handle deeply nested empty structures', () => {
+    const object = {
+      level1: {
+        level2: {
+          level3: {
+            level4: {
+              empty: null,
+              alsoEmpty: undefined,
             },
           },
         },
-      };
+      },
+    };
 
-      recursiveRemoveEmptyAndNull(obj);
+    recursiveRemoveEmptyAndNull(object);
 
-      expect(obj).toStrictEqual({});
-    });
-
-    it('should preserve Date objects', () => {
-      const date = new Date();
-      const obj = {
-        date,
-        empty: null,
-      };
-
-      recursiveRemoveEmptyAndNull(obj);
-
-      expect(obj).toStrictEqual({ date });
-    });
-
-    it('should preserve RegExp objects', () => {
-      const regex = /test/g;
-      const obj = { regex, empty: null };
-      recursiveRemoveEmptyAndNull(obj);
-
-      expect(obj).toStrictEqual({ regex });
-    });
-
-    it('should handle functions', () => {
-      const obj = { func, empty: null };
-      recursiveRemoveEmptyAndNull(obj);
-
-      expect(obj).toStrictEqual({ func });
-    });
-
-    it('should handle symbols', () => {
-      const sym = Symbol('test');
-      const obj = {
-        [sym]: 'value',
-        empty: null,
-      };
-
-      recursiveRemoveEmptyAndNull(obj);
-
-      expect(obj[sym]).toBe('value');
-      expect(obj.empty).toBeUndefined();
-    });
+    expect(object).toStrictEqual({});
   });
 
-  describe('Return value', () => {
-    it('should return the modified object', () => {
-      const obj = { keep: 'value', remove: null };
-      const result = recursiveRemoveEmptyAndNull(obj);
+  it('should preserve Date objects', () => {
+    const date = new Date();
+    const object = {
+      date,
+      empty: null,
+    };
 
-      expect(result).toBe(obj); // Should return the same object reference
-      expect(result).toStrictEqual({ keep: 'value' });
-    });
+    recursiveRemoveEmptyAndNull(object);
 
-    it('should modify the original object in place', () => {
-      const obj = { keep: 'value', remove: null };
-      const originalRef = obj;
-
-      recursiveRemoveEmptyAndNull(obj);
-
-      expect(obj).toBe(originalRef); // Same reference
-      expect(obj).toStrictEqual({ keep: 'value' });
-    });
+    expect(object).toStrictEqual({ date });
   });
 
-  describe('Type preservation', () => {
-    it('should preserve all non-empty primitive types', () => {
-      const obj = {
-        string: 'test',
-        number: 42,
-        boolean: true,
-        falsyBoolean: false,
-        zero: 0,
-        bigint: BigInt(123),
-        symbol: Symbol('test'),
-      };
+  it('should preserve RegExp objects', () => {
+    const regex = /test/g;
+    const object = { regex, empty: null };
+    recursiveRemoveEmptyAndNull(object);
 
-      recursiveRemoveEmptyAndNull(obj);
-
-      expect(typeof obj.string).toBe('string');
-      expect(typeof obj.number).toBe('number');
-      expect(typeof obj.boolean).toBe('boolean');
-      expect(typeof obj.falsyBoolean).toBe('boolean');
-      expect(typeof obj.zero).toBe('number');
-      expect(typeof obj.bigint).toBe('bigint');
-      expect(typeof obj.symbol).toBe('symbol');
-    });
-
-    it('should handle special number values', () => {
-      const obj = {
-        nan: Number.NaN,
-        infinity: Infinity,
-        negativeInfinity: -Infinity,
-        empty: null,
-      };
-
-      recursiveRemoveEmptyAndNull(obj);
-
-      expect(obj).toHaveProperty('nan');
-      expect(obj).toHaveProperty('infinity');
-      expect(obj).toHaveProperty('negativeInfinity');
-      expect(obj).not.toHaveProperty('empty');
-    });
+    expect(object).toStrictEqual({ regex });
   });
 
-  describe('Array-specific edge cases', () => {
-    it('should handle sparse arrays', () => {
-      const obj = {
-        sparse: new Array(5),
-      };
-      obj.sparse[0] = 'first';
-      obj.sparse[4] = 'last';
+  it('should handle functions', () => {
+    // eslint-disable-next-line unicorn/consistent-function-scoping
+    const func = () => 'test';
+    const object = { func, empty: null };
+    recursiveRemoveEmptyAndNull(object);
 
-      recursiveRemoveEmptyAndNull(obj);
+    expect(object).toStrictEqual({ func });
+  });
 
-      expect(obj.sparse).toHaveLength(2);
-      expect(obj.sparse[0]).toBe('first');
-      expect(obj.sparse[1]).toBe('last');
-    });
+  it('should handle symbols', () => {
+    const sym = Symbol('test');
+    const object = {
+      [sym]: 'value',
+      empty: null,
+    };
 
-    it('should handle arrays with object properties', () => {
-      const arr: any = [1, 2, 3];
-      arr.customProp = 'value';
-      arr.emptyProp = null;
+    recursiveRemoveEmptyAndNull(object);
 
-      const obj = { arr };
+    expect(object[sym]).toBe('value');
+    expect(object.empty).toBeUndefined();
+  });
+});
 
-      recursiveRemoveEmptyAndNull(obj);
+describe('Return value', () => {
+  it('should return the modified object', () => {
+    const object = { keep: 'value', remove: null };
+    const result = recursiveRemoveEmptyAndNull(object);
 
-      expect(obj.arr).toHaveLength(3);
-      expect(obj.arr.customProp).toBe('value');
-      expect(obj.arr).not.toHaveProperty('emptyProp');
-    });
+    expect(result).toBe(object); // Should return the same object reference
+    expect(result).toStrictEqual({ keep: 'value' });
+  });
+
+  it('should modify the original object in place', () => {
+    const object = { keep: 'value', remove: null };
+    const originalRef = object;
+
+    recursiveRemoveEmptyAndNull(object);
+
+    expect(object).toBe(originalRef); // Same reference
+    expect(object).toStrictEqual({ keep: 'value' });
+  });
+});
+
+describe('Type preservation', () => {
+  it('should preserve all non-empty primitive types', () => {
+    const object = {
+      string: 'test',
+      number: 42,
+      boolean: true,
+      falsyBoolean: false,
+      zero: 0,
+      bigint: BigInt(123),
+      symbol: Symbol('test'),
+    };
+
+    recursiveRemoveEmptyAndNull(object);
+
+    expect(typeof object.string).toBe('string');
+    expect(typeof object.number).toBe('number');
+    expect(typeof object.boolean).toBe('boolean');
+    expect(typeof object.falsyBoolean).toBe('boolean');
+    expect(typeof object.zero).toBe('number');
+    expect(typeof object.bigint).toBe('bigint');
+    expect(typeof object.symbol).toBe('symbol');
+  });
+
+  it('should handle special number values', () => {
+    const object = {
+      nan: Number.NaN,
+      infinity: Infinity,
+      negativeInfinity: -Infinity,
+      empty: null,
+    };
+
+    recursiveRemoveEmptyAndNull(object);
+
+    expect(object).toHaveProperty('nan');
+    expect(object).toHaveProperty('infinity');
+    expect(object).toHaveProperty('negativeInfinity');
+    expect(object).not.toHaveProperty('empty');
+  });
+});
+
+describe('Array-specific edge cases', () => {
+  it('should handle sparse arrays', () => {
+    const object = {
+      sparse: new Array(5),
+    };
+    object.sparse[0] = 'first';
+    object.sparse[4] = 'last';
+
+    recursiveRemoveEmptyAndNull(object);
+
+    expect(object.sparse).toHaveLength(2);
+    expect(object.sparse[0]).toBe('first');
+    expect(object.sparse[1]).toBe('last');
+  });
+
+  it('should handle arrays with object properties', () => {
+    const arr: any = [1, 2, 3];
+    arr.customProp = 'value';
+    arr.emptyProp = null;
+
+    const object = { arr };
+
+    recursiveRemoveEmptyAndNull(object);
+
+    expect(object.arr).toHaveLength(3);
+    expect(object.arr.customProp).toBe('value');
+    expect(object.arr).not.toHaveProperty('emptyProp');
   });
 });
