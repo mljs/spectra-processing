@@ -627,7 +627,6 @@ describe('recursiveRemoveEmptyAndNull', () => {
     });
 
     it('should handle functions', () => {
-      const func = () => 'test';
       const obj = { func, empty: null };
       recursiveRemoveEmptyAndNull(obj);
 

@@ -45,7 +45,7 @@
 function cleanCyclicObject(
   object: any,
   target: string | string[] | null = null,
-  options: RecursiveRemoveEmptyAndNullOptions = {},
+  options: DeepCleanerOptions = {},
 ) {
   const visitedObjects = new WeakMap();
 
@@ -118,7 +118,7 @@ function removeKeyLoop(obj, keys, options) {
   }
 }
 
-interface RecursiveRemoveEmptyAndNullOptions {
+interface DeepCleanerOptions {
   removeEmptyArrays?: boolean;
 }
 
@@ -129,10 +129,10 @@ interface RecursiveRemoveEmptyAndNullOptions {
  * @param options - :: Optional object with options for cleaning
  * @returns :: the cleaned object
  */
-export function recursiveRemoveEmptyAndNull(
+export function deepCleaner(
   obj: any[] | object,
   target?: string | string[],
-  options?: RecursiveRemoveEmptyAndNullOptions,
+  options?: DeepCleanerOptions,
 ): any {
   if (isArray(target)) {
     removeKeyLoop(obj, target, options);
@@ -168,24 +168,6 @@ function isArray(arg) {
  */
 function isObject(arg) {
   return repr(arg) === '[object Object]';
-}
-
-/**
- * isTruthyish :: checks if `arg` is not null or undefined.
- *
- * for example, statements like `!""`, `!0`, `!null`, or `!undefined`
- * evaluate to `true`. However, sometimes deep-cleaner is only interested
- * if something is null or undefined, so `isTruthyish("")` and
- * `isTruthyish(0)` evaluate to `true`, while `isTruthyish(null)` and
- * `isTruthyish(undefined)` still evaluate to `false`.
- * @param {} arg - :: unknown function argument.
- * @returns :: returns true if `arg` is not null or undefined,
- */
-function isTruthyish(arg) {
-  if (arg === false) {
-    return false;
-  }
-  return !(isNull(arg) || isUndefined(arg));
 }
 
 /**
