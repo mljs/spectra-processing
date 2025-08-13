@@ -129,7 +129,7 @@ interface DeepCleanerOptions {
  * @param options - :: Optional object with options for cleaning
  * @returns :: the cleaned object
  */
-export function deepCleaner(
+export function recursiveRemoveEmptyAndNull(
   obj: any[] | object,
   target?: string | string[],
   options?: DeepCleanerOptions,
