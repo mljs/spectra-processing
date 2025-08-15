@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyObjectBestPoints } from '../xyObjectBestPoints';
+import { xyObjectBestPoints } from '../xyObjectBestPoints.ts';
 
 const points = [
   { x: 1, y: 1 },

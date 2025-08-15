@@ -1,9 +1,9 @@
 import type { DataXY } from 'cheminfo-types';
 
-import type { PointWithIndex } from '../types';
-import { xFindClosestIndex } from '../x';
+import type { PointWithIndex } from '../types/index.ts';
+import { xFindClosestIndex } from '../x/index.ts';
 
-import { xyCheck } from './xyCheck';
+import { xyCheck } from './xyCheck.ts';
 
 export interface XYMinClosestYPointOptions {
   target?: number;

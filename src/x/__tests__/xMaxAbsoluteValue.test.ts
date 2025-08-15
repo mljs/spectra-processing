@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xMaxAbsoluteValue } from '../xMaxAbsoluteValue';
+import { xMaxAbsoluteValue } from '../xMaxAbsoluteValue.ts';
 
 test('xMaxAbsoluteValue', () => {
   const typedArray = new Int16Array(3);

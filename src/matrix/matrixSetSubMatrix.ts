@@ -1,6 +1,6 @@
-import type { DoubleMatrix } from '../types';
+import type { DoubleMatrix } from '../types/index.ts';
 
-import { matrixCheckRanges } from './matrixCheckRanges';
+import { matrixCheckRanges } from './matrixCheckRanges.ts';
 
 /**
  * Set in-place a subMatrix to matrix, the function check if the subMatrix

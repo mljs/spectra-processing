@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyObjectSlotX } from '../xyObjectSlotX';
+import { xyObjectSlotX } from '../xyObjectSlotX.ts';
 
 test('xyObjectSlotX', () => {
   const arrayXY = [

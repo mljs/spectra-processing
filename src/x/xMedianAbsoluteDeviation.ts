@@ -1,6 +1,6 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xMedian } from './xMedian';
+import { xMedian } from './xMedian.ts';
 
 export interface XMedianAbsoluteDeviationResult {
   /**

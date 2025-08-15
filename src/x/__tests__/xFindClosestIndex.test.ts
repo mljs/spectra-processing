@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { xFindClosestIndex } from '../xFindClosestIndex';
+import { xFindClosestIndex } from '../xFindClosestIndex.ts';
 
 describe('Find closest index in sorted array test', () => {
   it('even', () => {

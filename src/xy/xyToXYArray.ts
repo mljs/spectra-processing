@@ -1,6 +1,6 @@
 import type { DataXY } from 'cheminfo-types';
 
-import { xyCheck } from './xyCheck';
+import { xyCheck } from './xyCheck.ts';
 
 /**
  * Convert a DataXY to an array of array containing x,y.

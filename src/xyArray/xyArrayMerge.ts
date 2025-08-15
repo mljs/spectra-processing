@@ -1,8 +1,8 @@
 import type { DataXY } from 'cheminfo-types';
 
-import { xyJoinX } from '../xy';
+import { xyJoinX } from '../xy/index.ts';
 
-import { getSlots } from './utils/getSlots';
+import { getSlots } from './utils/getSlots.ts';
 
 export interface XYArrayMergeOptions {
   /**

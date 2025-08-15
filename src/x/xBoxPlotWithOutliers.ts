@@ -1,6 +1,6 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xBoxPlot } from './xBoxPlot';
+import { xBoxPlot } from './xBoxPlot.ts';
 
 export interface XBoxPlotWithOutliers {
   /**

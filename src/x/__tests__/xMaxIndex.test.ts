@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xMaxIndex } from '../xMaxIndex';
+import { xMaxIndex } from '../xMaxIndex.ts';
 
 test('should return the argmax', () => {
   const typedArray = new Uint16Array(3);

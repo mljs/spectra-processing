@@ -15,8 +15,7 @@ export function xMode(input: NumberArray): number {
   let count = 0;
   const counts: Record<number, number> = {};
 
-  for (let i = 0; i < input.length; ++i) {
-    const element = input[i];
+  for (const element of input) {
     count = counts[element];
     if (count) {
       counts[element]++;
@@ -28,7 +27,7 @@ export function xMode(input: NumberArray): number {
 
     if (count > maxCount) {
       maxCount = count;
-      maxValue = input[i];
+      maxValue = element;
     }
   }
 

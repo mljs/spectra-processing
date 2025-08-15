@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xIsMonotonic } from '../xIsMonotonic';
+import { xIsMonotonic } from '../xIsMonotonic.ts';
 
 test('test xIsMonotonic increasing', () => {
   const array = [1, 2, 3, 4, 5];

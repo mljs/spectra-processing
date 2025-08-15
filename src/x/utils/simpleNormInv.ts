@@ -1,6 +1,6 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import erfcinv from './erfcinv';
+import erfcinv from './erfcinv.ts';
 
 interface SimpleNormInvOptions {
   /**

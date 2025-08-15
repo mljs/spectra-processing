@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyMaximaY } from '../xyMaximaY';
+import { xyMaximaY } from '../xyMaximaY.ts';
 
 test('clear top', () => {
   const x = [1, 2, 3, 4, 5, 6];

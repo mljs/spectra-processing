@@ -1,4 +1,4 @@
-import type { Point } from '../types';
+import type { Point } from '../types/index.ts';
 
 export interface XYObjectCheckOptions {
   /**

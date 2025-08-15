@@ -1,6 +1,6 @@
-import type { Point } from '../types';
-import type { XNormedOptions } from '../x/xNormed';
-import { xNormed } from '../x/xNormed';
+import type { Point } from '../types/index.ts';
+import type { XNormedOptions } from '../x/xNormed.ts';
+import { xNormed } from '../x/xNormed.ts';
 
 /**
  * Resize the Y values of the points to be normalized.

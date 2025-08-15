@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyCheck } from '../xyCheck';
+import { xyCheck } from '../xyCheck.ts';
 
 test('various kind of object', () => {
   //@ts-expect-error We are testing that it throws correctly an error

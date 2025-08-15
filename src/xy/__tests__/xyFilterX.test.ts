@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyFilterX } from '../xyFilterX';
+import { xyFilterX } from '../xyFilterX.ts';
 
 const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const y = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];

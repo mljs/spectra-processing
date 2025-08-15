@@ -1,9 +1,9 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { getOutputArray } from './getOutputArray';
-import { xCheck } from './xCheck';
-import { xMaxValue } from './xMaxValue';
-import { xMinValue } from './xMinValue';
+import { getOutputArray } from './getOutputArray.ts';
+import { xCheck } from './xCheck.ts';
+import { xMaxValue } from './xMaxValue.ts';
+import { xMinValue } from './xMinValue.ts';
 
 export interface XRescaleOptions<ArrayType extends NumberArray = Float64Array> {
   /** output into which to placed the data */

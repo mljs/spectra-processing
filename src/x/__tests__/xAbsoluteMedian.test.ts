@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xAbsoluteMedian } from '../xAbsoluteMedian';
+import { xAbsoluteMedian } from '../xAbsoluteMedian.ts';
 
 test('positive values', () => {
   const array = [1, 2, 3, 4, 5];

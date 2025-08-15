@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { reimAbsolute } from '../reimAbsolute';
+import { reimAbsolute } from '../reimAbsolute.ts';
 
 test('test reimAbsolute', () => {
   const re = [0, 3, 6];

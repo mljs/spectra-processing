@@ -1,4 +1,4 @@
-import integral from './integral';
+import integral from './integral.ts';
 
 /**
  * Function that retrieves the getEquallySpacedData with the variant "smooth".

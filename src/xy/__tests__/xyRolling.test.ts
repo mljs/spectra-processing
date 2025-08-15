@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyRolling } from '../xyRolling';
+import { xyRolling } from '../xyRolling.ts';
 
 test('xyRolling', () => {
   const points = {

@@ -1,9 +1,9 @@
 import type { DataXY } from 'cheminfo-types';
 
-import { xCumulative, xMaxValue } from '../x';
+import { xCumulative, xMaxValue } from '../x/index.ts';
 
-import { xyCheck } from './xyCheck';
-import { xyMaxYPoint } from './xyMaxYPoint';
+import { xyCheck } from './xyCheck.ts';
+import { xyMaxYPoint } from './xyMaxYPoint.ts';
 
 const STEPS = [0.25, 0.5, 0.75] as const;
 

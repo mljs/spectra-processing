@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyObjectJoinX } from '../xyObjectJoinX';
+import { xyObjectJoinX } from '../xyObjectJoinX.ts';
 
 test('xyObjectJoinX', () => {
   const arrayXY = [

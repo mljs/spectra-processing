@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xCheck } from '../xCheck';
+import { xCheck } from '../xCheck.ts';
 
 test('should throw on invalid value', () => {
   expect(() => xCheck()).toThrow(/input must be an array/);

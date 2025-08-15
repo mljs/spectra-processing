@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixColumnsCorrelation } from '../matrixColumnsCorrelation';
+import { matrixColumnsCorrelation } from '../matrixColumnsCorrelation.ts';
 
 test('matrixColumnsCorrelation', () => {
   const data: number[][] = [

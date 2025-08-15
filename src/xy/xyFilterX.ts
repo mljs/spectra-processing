@@ -1,6 +1,6 @@
 import type { DataXY, FromTo } from 'cheminfo-types';
 
-import { zonesNormalize } from '../zones';
+import { zonesNormalize } from '../zones/index.ts';
 
 export interface XYFilterXOptions {
   /**

@@ -1,10 +1,10 @@
 import type { DataXY } from 'cheminfo-types';
 
-import type { PointWithIndex } from '../types';
-import type { XGetFromToIndexOptions } from '../x/xGetFromToIndex';
-import { xGetFromToIndex } from '../x/xGetFromToIndex';
+import type { PointWithIndex } from '../types/index.ts';
+import type { XGetFromToIndexOptions } from '../x/xGetFromToIndex.ts';
+import { xGetFromToIndex } from '../x/xGetFromToIndex.ts';
 
-import { xyCheck } from './xyCheck';
+import { xyCheck } from './xyCheck.ts';
 
 /**
  * Finds all the min values

@@ -1,6 +1,6 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xCheck } from './xCheck';
+import { xCheck } from './xCheck.ts';
 
 export interface XSamplingOptions {
   /**

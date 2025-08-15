@@ -1,6 +1,6 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xCrossCorrelation } from './xCrossCorrelation';
+import { xCrossCorrelation } from './xCrossCorrelation.ts';
 
 export interface XAutoCorrelationOptions {
   /**

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyArrayAlign } from '../xyArrayAlign';
+import { xyArrayAlign } from '../xyArrayAlign.ts';
 
 test('same length spectra, simple integers', () => {
   const data = [

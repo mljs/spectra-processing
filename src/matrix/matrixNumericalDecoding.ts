@@ -1,4 +1,4 @@
-import { matrixClone } from './matrixClone';
+import { matrixClone } from './matrixClone.ts';
 
 /**
  * Numerically decodes the matrix using the dictionary.
@@ -12,11 +12,11 @@ export function matrixNumericalDecoding(
 ): Array<Array<string | number>> {
   const matrix: Array<Array<string | number>> = matrixClone(matrixInitial);
   const invertedDictionary: Record<number, string> = swap(dictionary);
-  for (let i = 0; i < matrix.length; i++) {
+  for (const row of matrix) {
     for (let j = 0; j < matrix[0].length; j++) {
-      const value = matrix[i][j];
+      const value = row[j];
       if (typeof value === 'number' && value in invertedDictionary) {
-        matrix[i][j] = invertedDictionary[value];
+        row[j] = invertedDictionary[value];
       }
     }
   }

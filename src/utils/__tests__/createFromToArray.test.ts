@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { createFromToArray } from '../createFromToArray';
+import { createFromToArray } from '../createFromToArray.ts';
 
 test('case when we sample within a specific range with log distribution and include start and end points', () => {
   const result = createFromToArray({

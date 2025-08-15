@@ -1,6 +1,6 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xCheckLengths } from './xCheckLengths';
+import { xCheckLengths } from './xCheckLengths.ts';
 
 /**
  * This function calculates the mean absolute error.

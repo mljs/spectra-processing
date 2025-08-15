@@ -1,6 +1,6 @@
 import type { DataXY } from 'cheminfo-types';
 
-import { xyCheck } from './xyCheck';
+import { xyCheck } from './xyCheck.ts';
 
 export interface XYJoinXOptions {
   /**

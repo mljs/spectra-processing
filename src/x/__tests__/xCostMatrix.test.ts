@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xCostMatrix } from '../xCostMatrix';
+import { xCostMatrix } from '../xCostMatrix.ts';
 
 const array1 = [1, 2, 3, 4, 5];
 const array2 = [5, 4, 3, 2, 1];

@@ -1,7 +1,7 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xCheck } from './xCheck';
-import { xEnsureFloat64 } from './xEnsureFloat64';
+import { xCheck } from './xCheck.ts';
+import { xEnsureFloat64 } from './xEnsureFloat64.ts';
 
 export interface XPaddingOptions {
   /**

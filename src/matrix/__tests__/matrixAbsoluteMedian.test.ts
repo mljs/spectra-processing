@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixAbsoluteMedian } from '../matrixAbsoluteMedian';
+import { matrixAbsoluteMedian } from '../matrixAbsoluteMedian.ts';
 
 test('matrixAbsoluteMedian', () => {
   const matrix = [

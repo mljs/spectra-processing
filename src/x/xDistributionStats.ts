@@ -1,9 +1,9 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import type { XBoxPlotWithOutliers } from './xBoxPlotWithOutliers';
-import { xBoxPlotWithOutliers } from './xBoxPlotWithOutliers';
-import { xMean } from './xMean';
-import { xStandardDeviation } from './xStandardDeviation';
+import type { XBoxPlotWithOutliers } from './xBoxPlotWithOutliers.ts';
+import { xBoxPlotWithOutliers } from './xBoxPlotWithOutliers.ts';
+import { xMean } from './xMean.ts';
+import { xStandardDeviation } from './xStandardDeviation.ts';
 
 export interface XDistributionStats extends XBoxPlotWithOutliers {
   mean: number;

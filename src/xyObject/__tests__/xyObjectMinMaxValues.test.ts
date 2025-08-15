@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyObjectMinMaxValues } from '../xyObjectMinMaxValues';
+import { xyObjectMinMaxValues } from '../xyObjectMinMaxValues.ts';
 
 test('one element', () => {
   expect(xyObjectMinMaxValues([{ x: 1, y: 2 }])).toStrictEqual({

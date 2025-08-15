@@ -1,6 +1,6 @@
 import type { DoubleArray } from 'cheminfo-types';
 
-import type { DoubleMatrix } from '../types';
+import type { DoubleMatrix } from '../types/index.ts';
 
 export interface MatrixBoxPlot {
   q1: Float64Array;

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixToArray } from '../matrixToArray';
+import { matrixToArray } from '../matrixToArray.ts';
 
 test('matrixToArray', () => {
   const matrix = [

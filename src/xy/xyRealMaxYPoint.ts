@@ -1,9 +1,9 @@
 import type { DataXY } from 'cheminfo-types';
 
-import type { PointWithIndex } from '../types';
-import { xGetTargetIndex } from '../x';
+import type { PointWithIndex } from '../types/index.ts';
+import { xGetTargetIndex } from '../x/index.ts';
 
-import { xyCheck } from './xyCheck';
+import { xyCheck } from './xyCheck.ts';
 
 /**
  * Find the closest minimum going down hill

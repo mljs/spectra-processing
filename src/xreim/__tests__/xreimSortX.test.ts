@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xreimSortX } from '../xreimSortX';
+import { xreimSortX } from '../xreimSortX.ts';
 
 test('test xreimSortX do nothing', () => {
   const x = [0, 1, 2, 3];

@@ -1,8 +1,8 @@
 import { expect, test } from 'vitest';
 
-import { matrixNumericalEncoding } from '../matrixNumericalEncoding';
+import { matrixNumericalEncoding } from '../matrixNumericalEncoding.ts';
 
-import { datasetForEncoding } from './fixtures/encoding';
+import { datasetForEncoding } from './fixtures/encoding.ts';
 
 test('should return a matrix of numbers', () => {
   const { matrix } = matrixNumericalEncoding(datasetForEncoding);

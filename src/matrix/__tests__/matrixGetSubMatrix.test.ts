@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixGetSubMatrix } from '../matrixGetSubMatrix';
+import { matrixGetSubMatrix } from '../matrixGetSubMatrix.ts';
 
 test('should extract submatrix correctly without duplication', () => {
   const matrix = [

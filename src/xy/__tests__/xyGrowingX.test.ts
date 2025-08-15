@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyGrowingX } from '../xyGrowingX';
+import { xyGrowingX } from '../xyGrowingX.ts';
 
 test('test xyGrowingX do nothing with zero first value', () => {
   const x = [0, 1, 2, 3];

@@ -14,7 +14,7 @@ export function xyGrowingX(data: DataXY): DataXY {
   if (x.length < 2 || x[0] < (x.at(-1) as number)) return data;
 
   return {
-    x: x.slice(0).reverse(),
-    y: y.slice(0).reverse(),
+    x: x.toReversed(),
+    y: y.toReversed(),
   };
 }

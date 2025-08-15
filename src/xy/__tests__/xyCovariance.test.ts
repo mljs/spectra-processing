@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyCovariance } from '../xyCovariance';
+import { xyCovariance } from '../xyCovariance.ts';
 
 test('should yield the correct result', () => {
   const x = [1, 2, 3, 4, 5, 6];

@@ -1,6 +1,6 @@
 import type { FromTo } from 'cheminfo-types';
 
-import { zonesNormalize } from './zonesNormalize';
+import { zonesNormalize } from './zonesNormalize.ts';
 
 export interface ZonesWithPointsOptions {
   /**

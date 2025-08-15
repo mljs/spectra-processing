@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { zonesNormalize } from '../zonesNormalize';
+import { zonesNormalize } from '../zonesNormalize.ts';
 
 describe('zonesNormalize', () => {
   it('no zones', () => {

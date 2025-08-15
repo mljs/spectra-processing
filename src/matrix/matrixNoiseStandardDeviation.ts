@@ -1,7 +1,7 @@
-import type { DoubleMatrix } from '../types';
-import { xNoiseStandardDeviation } from '../x';
+import type { DoubleMatrix } from '../types/index.ts';
+import { xNoiseStandardDeviation } from '../x/index.ts';
 
-import { matrixToArray } from './matrixToArray';
+import { matrixToArray } from './matrixToArray.ts';
 
 /**
  * Determine noise level using MAD https://en.wikipedia.org/wiki/Median_absolute_deviation

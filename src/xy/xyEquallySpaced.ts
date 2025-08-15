@@ -1,11 +1,11 @@
 import type { DataXY, FromTo } from 'cheminfo-types';
 
-import { createFromToArray } from '../utils';
-import { zonesNormalize, zonesWithPoints } from '../zones';
+import { createFromToArray } from '../utils/index.ts';
+import { zonesNormalize, zonesWithPoints } from '../zones/index.ts';
 
-import equallySpacedSlot from './utils/equallySpacedSlot';
-import equallySpacedSmooth from './utils/equallySpacedSmooth';
-import { xyCheck } from './xyCheck';
+import equallySpacedSlot from './utils/equallySpacedSlot.ts';
+import equallySpacedSmooth from './utils/equallySpacedSmooth.ts';
+import { xyCheck } from './xyCheck.ts';
 
 export interface XYEquallySpacedOptions {
   /**

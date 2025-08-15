@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyObjectCheck } from '../xyObjectCheck';
+import { xyObjectCheck } from '../xyObjectCheck.ts';
 
 test('xyObjectCheck', () => {
   expect(xyObjectCheck([{ x: 0, y: 1 }])).toBeUndefined();

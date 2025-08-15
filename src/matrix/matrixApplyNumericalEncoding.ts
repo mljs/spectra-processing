@@ -1,6 +1,6 @@
-import { xMaxValue } from '../x';
+import { xMaxValue } from '../x/index.ts';
 
-import { matrixCreateEmpty } from './matrixCreateEmpty';
+import { matrixCreateEmpty } from './matrixCreateEmpty.ts';
 
 /**
  * Numerically encodes the strings in the matrix with an encoding dictionary.
@@ -24,15 +24,15 @@ export function matrixApplyNumericalEncoding(
   }
 
   let k = xMaxValue(arrayOfValues);
-  for (let i = 0; i < matrix.length; i++) {
+  for (const row of matrix) {
     for (let j = 0; j < matrix[0].length; j++) {
-      if (typeof matrix[i][j] === 'string') {
-        if (matrix[i][j] in dictionary) {
-          matrix[i][j] = dictionary[matrix[i][j]];
+      if (typeof row[j] === 'string') {
+        if (row[j] in dictionary) {
+          row[j] = dictionary[row[j]];
         } else {
           k++;
-          dictionary[matrix[i][j]] = k;
-          matrix[i][j] = k;
+          dictionary[row[j]] = k;
+          row[j] = k;
         }
       }
     }

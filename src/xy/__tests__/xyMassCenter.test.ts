@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyMassCenter } from '../xyMassCenter';
+import { xyMassCenter } from '../xyMassCenter.ts';
 
 test('xyMassCenter', () => {
   const typedArray = Uint16Array.from([1, 2, 3, 4, 5]);

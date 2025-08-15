@@ -1,4 +1,4 @@
-import type { DataReIm } from '../types';
+import type { DataReIm } from '../types/index.ts';
 
 /**
  * This function make a zero filling to re and im part.

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyObjectMinYPoint } from '../xyObjectMinYPoint';
+import { xyObjectMinYPoint } from '../xyObjectMinYPoint.ts';
 
 test('xyObjectMinYPoint', () => {
   const arrayXY = [

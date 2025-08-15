@@ -1,7 +1,7 @@
 import type { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
-import { getOutputArray } from './getOutputArray';
+import { getOutputArray } from './getOutputArray.ts';
 
 export interface XMultiplyOptions<
   ArrayType extends NumberArray = Float64Array,

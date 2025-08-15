@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xCumulative } from '../xCumulative';
+import { xCumulative } from '../xCumulative.ts';
 
 test('zero length array', () => {
   const result = xCumulative([]);

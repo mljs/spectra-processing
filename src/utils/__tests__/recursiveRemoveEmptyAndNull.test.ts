@@ -2,7 +2,7 @@
 
 import { describe, expect, it } from 'vitest';
 
-import { recursiveRemoveEmptyAndNull } from '../recursiveRemoveEmptyAndNull';
+import { recursiveRemoveEmptyAndNull } from '../recursiveRemoveEmptyAndNull.ts';
 
 describe('Basic empty value removal', () => {
   it('should remove empty values from an object', () => {

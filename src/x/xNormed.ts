@@ -1,9 +1,9 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { getOutputArray } from './getOutputArray';
-import { xCheck } from './xCheck';
-import { xMaxValue } from './xMaxValue';
-import { xSum } from './xSum';
+import { getOutputArray } from './getOutputArray.ts';
+import { xCheck } from './xCheck.ts';
+import { xMaxValue } from './xMaxValue.ts';
+import { xSum } from './xSum.ts';
 
 export interface XNormedOptions<ArrayType extends NumberArray = Float64Array> {
   /**
@@ -80,8 +80,8 @@ export function xNormed<ArrayType extends NumberArray = Float64Array>(
 
 function absoluteSum(input: NumberArray) {
   let sumValue = 0;
-  for (let i = 0; i < input.length; i++) {
-    sumValue += Math.abs(input[i]);
+  for (const value of input) {
+    sumValue += Math.abs(value);
   }
   return sumValue;
 }

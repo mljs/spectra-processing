@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xEnsureFloat64 } from '../xEnsureFloat64';
+import { xEnsureFloat64 } from '../xEnsureFloat64.ts';
 
 test('normal array', () => {
   const array = [-1, 2, -3, 4];

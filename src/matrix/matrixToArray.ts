@@ -1,6 +1,6 @@
-import type { DoubleMatrix } from '../types';
+import type { DoubleMatrix } from '../types/index.ts';
 
-import { matrixCheck } from './matrixCheck';
+import { matrixCheck } from './matrixCheck.ts';
 
 /**
  * Convert a matrix to a flat Float64Array.

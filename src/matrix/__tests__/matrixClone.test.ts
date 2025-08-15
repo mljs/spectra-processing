@@ -1,8 +1,8 @@
 import { expect, test } from 'vitest';
 
-import { matrixClone } from '../matrixClone';
+import { matrixClone } from '../matrixClone.ts';
 
-import { datasetForEncoding } from './fixtures/encoding';
+import { datasetForEncoding } from './fixtures/encoding.ts';
 
 test('should return an array of numbers', () => {
   const matrix = matrixClone(datasetForEncoding);

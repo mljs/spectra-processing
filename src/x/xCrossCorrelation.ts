@@ -1,6 +1,6 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xDotProduct } from './xDotProduct';
+import { xDotProduct } from './xDotProduct.ts';
 
 export interface XCrossCorrelationOptions {
   /**

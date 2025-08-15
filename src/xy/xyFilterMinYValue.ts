@@ -1,6 +1,6 @@
 import type { DataXY } from 'cheminfo-types';
 
-import { xMinMaxValues } from '../x';
+import { xMinMaxValues } from '../x/index.ts';
 
 /**
  * Filter an array x/y based on various criteria x points are expected to be sorted

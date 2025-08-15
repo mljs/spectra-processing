@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { reimFFT } from '../reimFFT';
+import { reimFFT } from '../reimFFT.ts';
 
 test('test reimFFT', () => {
   const re = Float64Array.from([0, 3, 6, 5]);

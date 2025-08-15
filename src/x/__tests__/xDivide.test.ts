@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xDivide } from '../xDivide';
+import { xDivide } from '../xDivide.ts';
 
 test('test divide of 2 vectors', () => {
   const array1 = [10, 15, 20, 25, 30];

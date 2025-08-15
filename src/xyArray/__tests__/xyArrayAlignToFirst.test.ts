@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyArrayAlignToFirst } from '../xyArrayAlignToFirst';
+import { xyArrayAlignToFirst } from '../xyArrayAlignToFirst.ts';
 
 test('mixed example with delta: 0.25', () => {
   const data = [

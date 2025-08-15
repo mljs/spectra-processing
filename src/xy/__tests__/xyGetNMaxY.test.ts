@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyGetNMaxY } from '../xyGetNMaxY';
+import { xyGetNMaxY } from '../xyGetNMaxY.ts';
 
 test('number max peaks bigger than spectrum length', () => {
   const spectrum = { x: [1, 2, 3, 4], y: [1, 2, 3, 4] };

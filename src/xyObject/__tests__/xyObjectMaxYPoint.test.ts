@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyObjectMaxXPoint } from '../xyObjectMaxXPoint';
+import { xyObjectMaxXPoint } from '../xyObjectMaxXPoint.ts';
 
 test('xyObjectMaxXPoint', () => {
   const arrayXY = [

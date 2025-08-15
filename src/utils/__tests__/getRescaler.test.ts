@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { getRescaler } from '../getRescaler';
+import { getRescaler } from '../getRescaler.ts';
 
 test('getRescale', () => {
   const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

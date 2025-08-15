@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xNoiseStandardDeviation } from '../xNoiseStandardDeviation';
+import { xNoiseStandardDeviation } from '../xNoiseStandardDeviation.ts';
 
 test('xNoiseStandardDeviation', () => {
   const result = xNoiseStandardDeviation([1, 1, 2, 2, 4, 6, 9]);

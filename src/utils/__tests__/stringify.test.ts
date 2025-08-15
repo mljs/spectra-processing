@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { stringify } from '../stringify';
+import { stringify } from '../stringify.ts';
 
 test('stringify', () => {
   const object = {

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyRealMinYPoint } from '../xyRealMinYPoint';
+import { xyRealMinYPoint } from '../xyRealMinYPoint.ts';
 
 test('positive symmetric peak', () => {
   const xy = {

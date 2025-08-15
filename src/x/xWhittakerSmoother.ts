@@ -1,16 +1,16 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { matrixCholeskySolver } from '../matrix/matrixCholeskySolver';
-import { addWeights } from '../utils/addWeights';
+import { matrixCholeskySolver } from '../matrix/index.ts';
+import { addWeights } from '../utils/addWeights.ts';
+import { createSystemMatrix } from '../utils/createSystemMatrix.ts';
 import type {
   CalculateAdaptiveWeightsOptions,
   WeightsAndControlPoints,
-} from '../utils/calculateAdaptiveWeights';
-import { calculateAdaptiveWeights } from '../utils/calculateAdaptiveWeights';
-import { createSystemMatrix } from '../utils/createSystemMatrix';
+} from '../utils/index.ts';
+import { calculateAdaptiveWeights } from '../utils/index.ts';
 
-import { xEnsureFloat64 } from './xEnsureFloat64';
-import { xMultiply } from './xMultiply';
+import { xEnsureFloat64 } from './xEnsureFloat64.ts';
+import { xMultiply } from './xMultiply.ts';
 
 export interface XWhittakerSmootherOptions
   extends CalculateAdaptiveWeightsOptions {

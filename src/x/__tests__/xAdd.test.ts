@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xAdd } from '../xAdd';
+import { xAdd } from '../xAdd.ts';
 
 test('test xAdd of 2 vectors', () => {
   const array1 = [10, 11, 12, 13, 14];

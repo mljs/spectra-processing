@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import * as SpectraProcessing from '../index';
+import * as SpectraProcessing from '../index.ts';
 
 test('test existence of exported functions', () => {
   const exports = Object.keys(SpectraProcessing);

@@ -1,8 +1,8 @@
 import type { DataXY, FromTo } from 'cheminfo-types';
 
-import { zonesNormalize } from '../zones';
+import { zonesNormalize } from '../zones/index.ts';
 
-import { xyCheck } from './xyCheck';
+import { xyCheck } from './xyCheck.ts';
 
 export interface XYExtractOptions {
   zones?: FromTo[];

@@ -1,6 +1,6 @@
-import type { Point } from '../types';
+import type { Point } from '../types/index.ts';
 
-import { xyObjectCheck } from './xyObjectCheck';
+import { xyObjectCheck } from './xyObjectCheck.ts';
 
 /**
  * Calculate the sum of Y values.

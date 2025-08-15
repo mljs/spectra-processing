@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyCumulativeDistributionStatistics } from '../xyCumulativeDistributionStatistics';
+import { xyCumulativeDistributionStatistics } from '../xyCumulativeDistributionStatistics.ts';
 
 test('simple case', () => {
   const data = {

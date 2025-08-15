@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xSortDescending } from '../xSortDescending';
+import { xSortDescending } from '../xSortDescending.ts';
 
 test('xSortDescending on array', () => {
   const array = [3, 1, 2];

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xRotate } from '../xRotate';
+import { xRotate } from '../xRotate.ts';
 
 test('test xRotate positive', () => {
   const array = [10, 11, 12, 13, 14];

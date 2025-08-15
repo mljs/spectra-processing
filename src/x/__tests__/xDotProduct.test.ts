@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xDotProduct } from '../xDotProduct';
+import { xDotProduct } from '../xDotProduct.ts';
 
 test('cross-correlation linear and constant function', () => {
   const linear = [0, 1, 2, 3, 4];

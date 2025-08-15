@@ -1,6 +1,6 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xMedianAbsoluteDeviation } from './xMedianAbsoluteDeviation';
+import { xMedianAbsoluteDeviation } from './xMedianAbsoluteDeviation.ts';
 
 export interface XNoiseStandardDeviationResult {
   /**

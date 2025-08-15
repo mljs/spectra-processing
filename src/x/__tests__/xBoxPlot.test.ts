@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xBoxPlot } from '../xBoxPlot';
+import { xBoxPlot } from '../xBoxPlot.ts';
 
 test('basic', () => {
   const array = [1, 2, 3, 4, 5];

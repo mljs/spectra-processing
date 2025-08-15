@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyIntegration } from '../xyIntegration';
+import { xyIntegration } from '../xyIntegration.ts';
 
 test('zero element', () => {
   const x: number[] = [];

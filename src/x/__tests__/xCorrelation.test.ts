@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xCorrelation } from '../xCorrelation';
+import { xCorrelation } from '../xCorrelation.ts';
 
 // wolfram alpha: xCorrelation([1,2,3],[4,5,6])
 test('2 correlated vectors', () => {

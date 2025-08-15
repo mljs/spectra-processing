@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xNorm } from '../xNorm';
+import { xNorm } from '../xNorm.ts';
 
 test('Should return the norm of the vector', () => {
   expect(xNorm([3, 4])).toBe(5);

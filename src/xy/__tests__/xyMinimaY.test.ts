@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyMinimaY } from '../xyMinimaY';
+import { xyMinimaY } from '../xyMinimaY.ts';
 
 test('clear bottom', () => {
   const x = [1, 2, 3, 4, 5, 6];

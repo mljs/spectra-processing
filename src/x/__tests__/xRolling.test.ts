@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xRolling } from '../xRolling';
+import { xRolling } from '../xRolling.ts';
 
 test('xRolling', () => {
   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];

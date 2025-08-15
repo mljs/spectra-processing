@@ -1,6 +1,6 @@
 import type { DataXY, NumberArray } from 'cheminfo-types';
 
-import { getSlotsToFirst } from './utils/getSlotsToFirst';
+import { getSlotsToFirst } from './utils/getSlotsToFirst.ts';
 
 export interface XYArrayAlignToFirstOptions {
   /**

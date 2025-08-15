@@ -1,6 +1,6 @@
-import type { DoubleMatrix } from '../types';
+import type { DoubleMatrix } from '../types/index.ts';
 
-import { matrixCreateEmpty } from './matrixCreateEmpty';
+import { matrixCreateEmpty } from './matrixCreateEmpty.ts';
 
 export interface MatrixZRescalePerColumnOptions {
   /**

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyFilterXPositive } from '../xyFilterXPositive';
+import { xyFilterXPositive } from '../xyFilterXPositive.ts';
 
 test('xyFilterXPositive', () => {
   const data = {

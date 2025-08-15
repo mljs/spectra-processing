@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyFindClosestPoint } from '../xyFindClosestPoint';
+import { xyFindClosestPoint } from '../xyFindClosestPoint.ts';
 
 test('should yield the correct result with even element array', () => {
   const x = [-1, 0, 1, 2, 3, 4, 5, 6];

@@ -1,11 +1,11 @@
 import type { NumberArray } from 'cheminfo-types';
 import { expect, test } from 'vitest';
 
-import { addWeights } from '../../utils/addWeights';
-import { createSystemMatrix } from '../../utils/createSystemMatrix';
-import { xSequentialFillFromTo } from '../../x';
-import { matrixCholeskySolver } from '../matrixCholeskySolver';
-import { matrixCuthillMckee } from '../matrixCuthillMckee';
+import { addWeights } from '../../utils/addWeights.ts';
+import { createSystemMatrix } from '../../utils/createSystemMatrix.ts';
+import { xSequentialFillFromTo } from '../../x/index.ts';
+import { matrixCholeskySolver } from '../matrixCholeskySolver.ts';
+import { matrixCuthillMckee } from '../matrixCuthillMckee.ts';
 
 type Func = (b: NumberArray) => NumberArray;
 

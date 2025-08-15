@@ -1,4 +1,4 @@
-import { matrixCheckRanges } from './matrixCheckRanges';
+import { matrixCheckRanges } from './matrixCheckRanges.ts';
 
 export interface MatrixGetSubMatrixOptions {
   /**

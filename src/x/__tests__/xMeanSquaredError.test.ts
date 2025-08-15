@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xMeanSquaredError } from '../xMeanSquaredError';
+import { xMeanSquaredError } from '../xMeanSquaredError.ts';
 
 test('no error', () => {
   const array1 = [1, 1, 1, 1];

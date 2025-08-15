@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xRollingMedian } from '../xRollingMedian';
+import { xRollingMedian } from '../xRollingMedian.ts';
 
 test('xRollingMedian', () => {
   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];

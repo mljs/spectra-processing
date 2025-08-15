@@ -1,10 +1,10 @@
 import type { DataXY, FromTo, NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
-import { createFromToArray } from '../utils';
+import { createFromToArray } from '../utils/index.ts';
 
-import { simpleNormInvNumber } from './utils/simpleNormInv';
-import { xEnsureFloat64 } from './xEnsureFloat64';
+import { simpleNormInvNumber } from './utils/simpleNormInv.ts';
+import { xEnsureFloat64 } from './xEnsureFloat64.ts';
 
 export interface XNoiseSanPlotOptions {
   /**
@@ -354,5 +354,7 @@ function prepareData(
     }
   }
 
-  return input.sort().reverse();
+  input.sort().reverse();
+
+  return input;
 }

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'; // Scilab: xcorr(linear)
 
-import { xAutoCorrelation } from '../xAutoCorrelation';
+import { xAutoCorrelation } from '../xAutoCorrelation.ts';
 
 test('auto-correlation linear function', () => {
   const linear = [0, 1, 2, 3, 4];

@@ -1,7 +1,7 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xCheck } from './xCheck';
-import { xStandardDeviation } from './xStandardDeviation';
+import { xCheck } from './xCheck.ts';
+import { xStandardDeviation } from './xStandardDeviation.ts';
 
 /**
  * Pareto scaling, which uses the square root of standard deviation as the scaling factor, circumvents the amplification of noise by retaining a small portion of magnitude information.

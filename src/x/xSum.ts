@@ -1,8 +1,8 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xCheck } from './xCheck';
-import type { XGetFromToIndexOptions } from './xGetFromToIndex';
-import { xGetFromToIndex } from './xGetFromToIndex';
+import { xCheck } from './xCheck.ts';
+import type { XGetFromToIndexOptions } from './xGetFromToIndex.ts';
+import { xGetFromToIndex } from './xGetFromToIndex.ts';
 
 /**
  * Calculate the sum of the values

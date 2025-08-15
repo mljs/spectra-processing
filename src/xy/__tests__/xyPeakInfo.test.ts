@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyPeakInfo } from '../xyPeakInfo';
+import { xyPeakInfo } from '../xyPeakInfo.ts';
 
 test('positive peak', () => {
   const x = [0, 1, 2, 3, 4, 5, 6];

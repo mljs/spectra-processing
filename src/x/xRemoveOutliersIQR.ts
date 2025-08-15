@@ -1,7 +1,7 @@
 import type { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
-import { xBoxPlot } from './xBoxPlot';
+import { xBoxPlot } from './xBoxPlot.ts';
 
 /**
  * Remove the outliers from the array

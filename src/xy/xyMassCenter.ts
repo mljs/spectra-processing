@@ -1,9 +1,9 @@
 import type { DataXY } from 'cheminfo-types';
 
-import type { XGetFromToIndexOptions } from '../x/xGetFromToIndex';
-import { xGetFromToIndex } from '../x/xGetFromToIndex';
+import type { XGetFromToIndexOptions } from '../x/xGetFromToIndex.ts';
+import { xGetFromToIndex } from '../x/xGetFromToIndex.ts';
 
-import { xyCheck } from './xyCheck';
+import { xyCheck } from './xyCheck.ts';
 
 /**
  * Computes the weighted mean value of an array of values.

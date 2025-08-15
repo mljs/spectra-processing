@@ -1,4 +1,4 @@
-import { matrixClone } from './matrixClone';
+import { matrixClone } from './matrixClone.ts';
 
 /**
  * Numerically encodes the strings in the matrix and returns an encoding dictionary which can be used to encode other matrices

@@ -1,6 +1,6 @@
-import type { Point } from '../types';
+import type { Point } from '../types/index.ts';
 
-import { xyObjectCheck } from './xyObjectCheck';
+import { xyObjectCheck } from './xyObjectCheck.ts';
 
 /**
  * Returns all min and max values of an array of points.

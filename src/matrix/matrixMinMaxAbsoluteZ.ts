@@ -1,4 +1,4 @@
-import type { DoubleMatrix } from '../types';
+import type { DoubleMatrix } from '../types/index.ts';
 
 /**
  * Get min and max of the absolute values of Z.

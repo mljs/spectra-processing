@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xSubtract } from '../xSubtract';
+import { xSubtract } from '../xSubtract.ts';
 
 test('test xSubtract of 2 vectors', () => {
   const array1 = [10, 11, 12, 13, 14];
