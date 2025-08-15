@@ -1,4 +1,4 @@
-import type { DataReIm } from '../types';
+import type { DataReIm } from '../types/index.ts';
 
 /**
  * Calculates reimAbsolute value of a complex spectrum.

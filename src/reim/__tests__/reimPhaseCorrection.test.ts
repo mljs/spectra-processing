@@ -1,7 +1,7 @@
 import { XSadd } from 'ml-xsadd';
 import { expect, test } from 'vitest';
 
-import { reimPhaseCorrection } from '../reimPhaseCorrection';
+import { reimPhaseCorrection } from '../reimPhaseCorrection.ts';
 
 const data = {
   x: [

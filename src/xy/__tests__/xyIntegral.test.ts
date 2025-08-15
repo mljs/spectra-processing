@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 
-import { xyEnsureFloat64 } from '../xyEnsureFloat64';
-import { xyIntegral } from '../xyIntegral';
+import { xyEnsureFloat64 } from '../xyEnsureFloat64.ts';
+import { xyIntegral } from '../xyIntegral.ts';
 
 test('zero element', () => {
   const x: number[] = [];

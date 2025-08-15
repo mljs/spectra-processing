@@ -3,8 +3,8 @@ import { join } from 'node:path';
 
 import { expect, test } from 'vitest';
 
-import { xSequentialFillFromTo } from '../../x/xSequentialFillFromTo';
-import { xyEquallySpaced } from '../xyEquallySpaced';
+import { xSequentialFillFromTo } from '../../x/xSequentialFillFromTo.ts';
+import { xyEquallySpaced } from '../xyEquallySpaced.ts';
 
 test('one zone with zero point', () => {
   const size = 256;

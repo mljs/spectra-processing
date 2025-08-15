@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixAutoCorrelation } from '../matrixAutoCorrelation';
+import { matrixAutoCorrelation } from '../matrixAutoCorrelation.ts';
 
 test('simple', () => {
   const matrix = [

@@ -1,4 +1,4 @@
-import type { DoubleMatrix } from '../types';
+import type { DoubleMatrix } from '../types/index.ts';
 
 export interface SubmatrixBoundaries {
   /**

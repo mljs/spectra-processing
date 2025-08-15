@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyEnsureGrowingX } from '../xyEnsureGrowingX';
+import { xyEnsureGrowingX } from '../xyEnsureGrowingX.ts';
 
 test('skip middle', () => {
   const x = [100, 200, 1, 2, 300];

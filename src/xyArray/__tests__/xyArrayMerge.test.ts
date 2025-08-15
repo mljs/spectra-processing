@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyArrayMerge } from '../xyArrayMerge';
+import { xyArrayMerge } from '../xyArrayMerge.ts';
 
 test('same length spectra, simple integers', () => {
   const data = [

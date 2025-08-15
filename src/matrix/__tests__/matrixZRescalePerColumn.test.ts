@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixZRescalePerColumn } from '../../index';
+import { matrixZRescalePerColumn } from '../../index.ts';
 
 test('default options', () => {
   const data = [

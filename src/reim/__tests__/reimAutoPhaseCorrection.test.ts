@@ -3,8 +3,8 @@ import { join } from 'node:path';
 
 import { expect, test } from 'vitest';
 
-import { reimAutoPhaseCorrection } from '../reimAutoPhaseCorrection';
-import { reimPhaseCorrection } from '../reimPhaseCorrection';
+import { reimAutoPhaseCorrection } from '../reimAutoPhaseCorrection.ts';
+import { reimPhaseCorrection } from '../reimPhaseCorrection.ts';
 
 const data = JSON.parse(
   readFileSync(join(__dirname, 'data/perfect.json')).toString(),

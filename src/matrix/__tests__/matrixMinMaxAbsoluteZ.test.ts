@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixMinMaxAbsoluteZ } from '../matrixMinMaxAbsoluteZ';
+import { matrixMinMaxAbsoluteZ } from '../matrixMinMaxAbsoluteZ.ts';
 
 test('basic', () => {
   const matrix = [

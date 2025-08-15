@@ -1,7 +1,7 @@
 import type { NumberArray } from 'cheminfo-types';
 import { expect, test } from 'vitest';
 
-import { matrixCuthillMckee } from '../matrixCuthillMckee';
+import { matrixCuthillMckee } from '../matrixCuthillMckee.ts';
 
 test('permutation to reduce bandwidth', () => {
   const dimension = 10;

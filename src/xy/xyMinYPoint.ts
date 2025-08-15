@@ -1,9 +1,9 @@
 import type { DataXY } from 'cheminfo-types';
 
-import type { PointWithIndex } from '../types';
-import { xGetFromToIndex } from '../x';
+import type { PointWithIndex } from '../types/index.ts';
+import { xGetFromToIndex } from '../x/index.ts';
 
-import { xyCheck } from './xyCheck';
+import { xyCheck } from './xyCheck.ts';
 
 export interface XYMinYPointOptions {
   /**

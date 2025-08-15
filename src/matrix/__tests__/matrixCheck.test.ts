@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixCheck } from '../matrixCheck';
+import { matrixCheck } from '../matrixCheck.ts';
 
 test('should throw error', () => {
   const wrongMatrix = [

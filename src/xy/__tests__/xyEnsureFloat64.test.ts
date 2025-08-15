@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyEnsureFloat64 } from '../xyEnsureFloat64';
+import { xyEnsureFloat64 } from '../xyEnsureFloat64.ts';
 
 test('normal array', () => {
   const data = {

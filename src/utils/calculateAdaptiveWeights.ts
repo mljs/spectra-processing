@@ -1,8 +1,8 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xAbsolute } from '../x/xAbsolute';
-import { xMedian } from '../x/xMedian';
-import { xSubtract } from '../x/xSubtract';
+import { xAbsolute } from '../x/xAbsolute.ts';
+import { xMedian } from '../x/xMedian.ts';
+import { xSubtract } from '../x/xSubtract.ts';
 
 export interface WeightsAndControlPoints {
   /**

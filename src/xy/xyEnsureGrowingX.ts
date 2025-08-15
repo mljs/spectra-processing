@@ -1,8 +1,8 @@
 import type { DataXY } from 'cheminfo-types';
 
-import { xIsMonotonic } from '../x';
+import { xIsMonotonic } from '../x/index.ts';
 
-import { xyCheck } from './xyCheck';
+import { xyCheck } from './xyCheck.ts';
 
 /**
  * Filters x,y values to allow strictly growing values in x-axis.

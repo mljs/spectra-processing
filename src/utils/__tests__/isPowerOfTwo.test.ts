@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { isPowerOfTwo } from '../isPowerOfTwo';
+import { isPowerOfTwo } from '../isPowerOfTwo.ts';
 
 test('check if a power of two is next', () => {
   expect(isPowerOfTwo(1024)).toBe(true);

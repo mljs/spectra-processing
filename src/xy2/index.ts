@@ -1,1 +1,1 @@
-export * from './xy2ToXY';
+export * from './xy2ToXY.ts';

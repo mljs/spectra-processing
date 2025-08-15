@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixBoxPlot } from '../matrixBoxPlot';
+import { matrixBoxPlot } from '../matrixBoxPlot.ts';
 
 test('test matrixBoxPlot even', () => {
   const matrix = [

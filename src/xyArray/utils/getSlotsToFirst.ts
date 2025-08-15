@@ -1,6 +1,6 @@
 import type { DataXY } from 'cheminfo-types';
 
-import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
+import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge.ts';
 
 export interface GetSlotsToFirstOptions {
   /**

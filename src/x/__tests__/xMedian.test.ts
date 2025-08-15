@@ -1,7 +1,7 @@
 import { XSadd } from 'ml-xsadd';
 import { expect, test } from 'vitest';
 
-import { xMedian } from '../xMedian';
+import { xMedian } from '../xMedian.ts';
 
 const generator = new XSadd(0);
 const data: number[] = [];

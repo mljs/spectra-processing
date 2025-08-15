@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyJoinX } from '../xyJoinX';
+import { xyJoinX } from '../xyJoinX.ts';
 
 test('empty', () => {
   const data = { x: [], y: [] };

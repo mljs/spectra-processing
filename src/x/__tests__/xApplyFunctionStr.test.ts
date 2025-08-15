@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xApplyFunctionStr } from '../xApplyFunctionStr';
+import { xApplyFunctionStr } from '../xApplyFunctionStr.ts';
 
 test('xApplyFunctionStr', () => {
   expect(xApplyFunctionStr([3, 4])).toStrictEqual(Float64Array.from([3, 4]));

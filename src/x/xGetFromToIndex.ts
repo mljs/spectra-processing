@@ -1,6 +1,6 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xFindClosestIndex } from './xFindClosestIndex';
+import { xFindClosestIndex } from './xFindClosestIndex.ts';
 
 export interface XGetFromToIndexOptions {
   /**

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixZPivotRescale } from '../matrixZPivotRescale';
+import { matrixZPivotRescale } from '../matrixZPivotRescale.ts';
 
 test('only positive number', () => {
   const data = [

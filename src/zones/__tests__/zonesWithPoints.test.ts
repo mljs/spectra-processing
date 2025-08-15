@@ -1,7 +1,7 @@
 import type { FromTo } from 'cheminfo-types';
 import { expect, test } from 'vitest';
 
-import { zonesWithPoints } from '../zonesWithPoints';
+import { zonesWithPoints } from '../zonesWithPoints.ts';
 
 test('no zones', () => {
   const zones: FromTo[] = [];

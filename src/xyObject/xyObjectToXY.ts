@@ -1,6 +1,6 @@
 import type { DataXY } from 'cheminfo-types';
 
-import type { Point } from '../types';
+import type { Point } from '../types/index.ts';
 
 /**
  * xyObjectToXY.

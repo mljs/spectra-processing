@@ -1,9 +1,9 @@
 import type { DoubleArray } from 'cheminfo-types';
 
-import type { DataXReIm } from '../types';
+import type { DataXReIm } from '../types/index.ts';
 
 /**
- * Sort object of array, x has to be monotone.
+ * Sort object of arrays, x has to be monotone.
  * @param data - object of kind {x:[], re:[], im:[]}
  * @returns - sorted array
  */
@@ -19,8 +19,8 @@ export function xreimSortX<ArrayType extends DoubleArray = DoubleArray>(
   if (x.length < 2 || x[0] < x[1]) return data;
 
   return {
-    x: x.slice(0).reverse() as ArrayType,
-    re: re.slice(0).reverse() as ArrayType,
-    im: im.slice(0).reverse() as ArrayType,
+    x: x.toReversed() as ArrayType,
+    re: re.toReversed() as ArrayType,
+    im: im.toReversed() as ArrayType,
   };
 }

@@ -1,7 +1,7 @@
 import { Matrix } from 'ml-matrix';
 
-import type { DoubleMatrix } from '../types';
-import { xMedian } from '../x';
+import type { DoubleMatrix } from '../types/index.ts';
+import { xMedian } from '../x/index.ts';
 
 export interface MatrixPQNOptions {
   /**

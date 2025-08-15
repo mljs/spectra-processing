@@ -1,6 +1,6 @@
 import type { DataXY, NumberArray } from 'cheminfo-types';
 
-import type { Point } from '../types';
+import type { Point } from '../types/index.ts';
 
 export interface XYArrayWeightedMergeOptions {
   /**

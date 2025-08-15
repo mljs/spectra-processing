@@ -1,8 +1,8 @@
 import type { DataXY } from 'cheminfo-types';
 
-import { xGetFromToIndex } from '../x';
+import { xGetFromToIndex } from '../x/index.ts';
 
-import { xyCheck } from './xyCheck';
+import { xyCheck } from './xyCheck.ts';
 
 export interface XYIntegrationOptions {
   /**

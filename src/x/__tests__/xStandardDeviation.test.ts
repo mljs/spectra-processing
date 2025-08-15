@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xStandardDeviation } from '../xStandardDeviation';
+import { xStandardDeviation } from '../xStandardDeviation.ts';
 
 test('standard deviation', () => {
   const data = [15, 13, 17, 7];

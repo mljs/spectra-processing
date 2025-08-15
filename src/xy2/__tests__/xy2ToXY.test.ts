@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xy2ToXY } from '../xy2ToXY';
+import { xy2ToXY } from '../xy2ToXY.ts';
 
 test('xy2ToXY', () => {
   expect(

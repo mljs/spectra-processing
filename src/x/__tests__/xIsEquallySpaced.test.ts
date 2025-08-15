@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xIsEquallySpaced } from '../xIsEquallySpaced';
+import { xIsEquallySpaced } from '../xIsEquallySpaced.ts';
 
 test('empty', () => {
   const array: number[] = [];

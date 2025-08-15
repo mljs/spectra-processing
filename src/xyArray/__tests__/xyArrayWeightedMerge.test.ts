@@ -2,7 +2,7 @@ import type { DataXY } from 'cheminfo-types';
 import { XSadd } from 'ml-xsadd';
 import { expect, test } from 'vitest';
 
-import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge';
+import { xyArrayWeightedMerge } from '../xyArrayWeightedMerge.ts';
 
 test('2 slots', () => {
   const data = [

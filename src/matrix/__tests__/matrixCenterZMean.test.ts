@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixCenterZMean } from '../matrixCenterZMean';
+import { matrixCenterZMean } from '../matrixCenterZMean.ts';
 
 test('matrixCenterZMean', () => {
   const data = [

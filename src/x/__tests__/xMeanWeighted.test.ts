@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xMeanWeighted } from '../xMeanWeighted';
+import { xMeanWeighted } from '../xMeanWeighted.ts';
 
 test('xMeanWeighted', () => {
   const typedArray = new Uint16Array(5);

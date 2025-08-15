@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xDistributionStats } from '../xDistributionStats';
+import { xDistributionStats } from '../xDistributionStats.ts';
 
 test('empty array', () => {
   const data: number[] = [];

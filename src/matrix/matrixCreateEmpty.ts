@@ -1,6 +1,9 @@
-import type { DoubleMatrix } from '../types';
-import type { NumberArrayConstructor, NumberArrayType } from '../utils';
-import { createNumberArray } from '../utils';
+import type { DoubleMatrix } from '../types/index.ts';
+import type {
+  NumberArrayConstructor,
+  NumberArrayType,
+} from '../utils/index.ts';
+import { createNumberArray } from '../utils/index.ts';
 
 export interface MatrixCreateEmptyOptions<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,

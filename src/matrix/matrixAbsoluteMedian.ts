@@ -1,5 +1,5 @@
-import type { DoubleMatrix } from '../types';
-import { xMedian } from '../x';
+import type { DoubleMatrix } from '../types/index.ts';
+import { xMedian } from '../x/index.ts';
 
 /**
  * Returns the median of the absolute matrix.

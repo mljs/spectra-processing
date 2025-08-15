@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 
-import { createRandomArray } from '../../utils';
-import { xMedianAbsoluteDeviation } from '../xMedianAbsoluteDeviation';
+import { createRandomArray } from '../../utils/index.ts';
+import { xMedianAbsoluteDeviation } from '../xMedianAbsoluteDeviation.ts';
 
 test('basic example', () => {
   const result = xMedianAbsoluteDeviation([1, 1, 2, 2, 4, 6, 9]);

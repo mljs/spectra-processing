@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xMinIndex } from '../xMinIndex';
+import { xMinIndex } from '../xMinIndex.ts';
 
 test('should return the argmin', () => {
   const typedArray = new Uint16Array(3);

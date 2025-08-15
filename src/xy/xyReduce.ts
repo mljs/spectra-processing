@@ -1,9 +1,9 @@
 import type { DataXY, DoubleArray, FromTo, NumberArray } from 'cheminfo-types';
 
-import { xFindClosestIndex } from '../x';
-import { zonesNormalize } from '../zones';
+import { xFindClosestIndex } from '../x/index.ts';
+import { zonesNormalize } from '../zones/index.ts';
 
-import { xyCheck } from './xyCheck';
+import { xyCheck } from './xyCheck.ts';
 
 interface InternalZone {
   from: number;

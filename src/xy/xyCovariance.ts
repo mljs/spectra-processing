@@ -1,6 +1,6 @@
 import type { DataXY } from 'cheminfo-types';
 
-import { xMean } from '../x';
+import { xMean } from '../x/index.ts';
 
 export interface XYCovarianceOptions {
   /**

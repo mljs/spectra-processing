@@ -1,10 +1,11 @@
 import type { DataXY } from 'cheminfo-types';
 
-import type { DoubleMatrix, XHistogramOptions } from '..';
-import { xHistogram } from '../x';
+import type { DoubleMatrix } from '../types/index.js';
+import type { XHistogramOptions } from '../x/index.ts';
+import { xHistogram } from '../x/index.ts';
 
-import { matrixMinMaxAbsoluteZ } from './matrixMinMaxAbsoluteZ';
-import { matrixMinMaxZ } from './matrixMinMaxZ';
+import { matrixMinMaxAbsoluteZ } from './matrixMinMaxAbsoluteZ.ts';
+import { matrixMinMaxZ } from './matrixMinMaxZ.ts';
 
 export interface MatrixHistogramOptions {
   /**

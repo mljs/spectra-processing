@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xreimZeroFilling } from '../xreimZeroFilling';
+import { xreimZeroFilling } from '../xreimZeroFilling.ts';
 
 test('test xreimZeroFilling over', () => {
   const x = [0, 0.1, 0.2, 0.3];

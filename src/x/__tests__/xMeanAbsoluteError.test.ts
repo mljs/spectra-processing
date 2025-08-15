@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xMeanAbsoluteError } from '../xMeanAbsoluteError';
+import { xMeanAbsoluteError } from '../xMeanAbsoluteError.ts';
 
 test('no error', () => {
   const array1 = [1, 1, 1, 1];

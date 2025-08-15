@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 
-import { reimAbsolute } from '../../reim';
-import { xNoiseSanPlot } from '../xNoiseSanPlot';
+import { reimAbsolute } from '../../reim/index.ts';
+import { xNoiseSanPlot } from '../xNoiseSanPlot.ts';
 
 test('get noise level', () => {
   const data = {

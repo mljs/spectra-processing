@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xRemoveOutliersIQR } from '../xRemoveOutliersIQR';
+import { xRemoveOutliersIQR } from '../xRemoveOutliersIQR.ts';
 
 test('[]', () => {
   expect(xRemoveOutliersIQR([])).toStrictEqual([]);

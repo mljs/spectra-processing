@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixSetSubMatrix } from '../matrixSetSubMatrix';
+import { matrixSetSubMatrix } from '../matrixSetSubMatrix.ts';
 
 test('simple case', () => {
   const matrix = [

@@ -1,7 +1,7 @@
 import { Matrix } from 'ml-matrix';
 
-import type { DoubleMatrix } from '../types';
-import { xCorrelation } from '../x';
+import type { DoubleMatrix } from '../types/index.ts';
+import { xCorrelation } from '../x/index.ts';
 
 /**
  * Calculates a correlation matrix based on the columns of the initial matrix.

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyMedian } from '../xyMedian';
+import { xyMedian } from '../xyMedian.ts';
 
 test('check the median of four consecutive integers, should return 2.5', () => {
   const data = {

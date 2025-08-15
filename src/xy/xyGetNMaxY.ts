@@ -1,6 +1,6 @@
 import type { DataXY } from 'cheminfo-types';
 
-import { xyCheck } from './xyCheck';
+import { xyCheck } from './xyCheck.ts';
 
 /**
  * Returns the numberMaxPoints points with the bigger y.
@@ -16,10 +16,9 @@ export function xyGetNMaxY(data: DataXY, numberMaxPoints: number): DataXY {
     const newX = new Float64Array(numberMaxPoints);
     const newY = new Float64Array(numberMaxPoints);
 
-    // slice() is used to make a copy of the array, because sort() is IPM
-    const threshold = Float64Array.from(data.y).sort().reverse()[
-      numberMaxPoints - 1
-    ];
+    const floatY = Float64Array.from(data.y);
+    floatY.sort().reverse();
+    const threshold = floatY[numberMaxPoints - 1];
 
     let index = 0;
     for (let i = 0; i < data.x.length; i++) {

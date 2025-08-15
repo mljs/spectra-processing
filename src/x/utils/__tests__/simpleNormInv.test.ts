@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { simpleNormInvNumber } from '../simpleNormInv';
+import { simpleNormInvNumber } from '../simpleNormInv.ts';
 
 describe('simpleNormInvNumber', () => {
   it('should handle normal mode correctly', () => {

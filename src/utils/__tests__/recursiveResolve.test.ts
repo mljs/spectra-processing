@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { recursiveResolve } from '../recursiveResolve';
+import { recursiveResolve } from '../recursiveResolve.ts';
 
 test('primitive', async () => {
   await expect(recursiveResolve(1)).resolves.toBe(1);

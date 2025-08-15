@@ -1,7 +1,7 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xAbsolute } from './xAbsolute';
-import { xMedian } from './xMedian';
+import { xAbsolute } from './xAbsolute.ts';
+import { xMedian } from './xMedian.ts';
 
 /**
  * This function calculates the median after taking the xAbsolute values of the points.

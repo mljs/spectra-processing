@@ -1,5 +1,5 @@
-import type { DoubleMatrix } from '../types';
-import { xCorrelation } from '../x';
+import type { DoubleMatrix } from '../types/index.ts';
+import { xCorrelation } from '../x/index.ts';
 
 export function matrixAutoCorrelation(
   matrix: DoubleMatrix,

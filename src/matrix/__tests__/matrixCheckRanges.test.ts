@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixCheckRanges } from '../matrixCheckRanges';
+import { matrixCheckRanges } from '../matrixCheckRanges.ts';
 
 test('should not throw error for valid indices', () => {
   // Define a sample matrix

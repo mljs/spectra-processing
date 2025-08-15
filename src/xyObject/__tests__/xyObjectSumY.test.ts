@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyObjectSumY } from '../xyObjectSumY';
+import { xyObjectSumY } from '../xyObjectSumY.ts';
 
 test('xyObjectSumY', () => {
   const arrayXY = [

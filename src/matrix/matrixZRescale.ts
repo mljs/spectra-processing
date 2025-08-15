@@ -1,8 +1,11 @@
-import type { DoubleMatrix } from '../types';
-import type { DoubleArrayConstructor, DoubleArrayType } from '../utils';
+import type { DoubleMatrix } from '../types/index.ts';
+import type {
+  DoubleArrayConstructor,
+  DoubleArrayType,
+} from '../utils/index.ts';
 
-import { matrixCreateEmpty } from './matrixCreateEmpty';
-import { matrixMinMaxZ } from './matrixMinMaxZ';
+import { matrixCreateEmpty } from './matrixCreateEmpty.ts';
+import { matrixMinMaxZ } from './matrixMinMaxZ.ts';
 
 export interface MatrixZRescaleOptions<
   ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,

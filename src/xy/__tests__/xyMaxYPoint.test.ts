@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyMaxYPoint } from '../xyMaxYPoint';
+import { xyMaxYPoint } from '../xyMaxYPoint.ts';
 
 test('no from to', () => {
   const x = [0, 1, 2, 3];

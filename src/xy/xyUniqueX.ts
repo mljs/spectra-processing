@@ -1,7 +1,7 @@
 import type { DataXY } from 'cheminfo-types';
 
-import { xyCheck } from './xyCheck';
-import { xySortX } from './xySortX';
+import { xyCheck } from './xyCheck.ts';
+import { xySortX } from './xySortX.ts';
 
 export interface XYUniqueXOptions {
   /**

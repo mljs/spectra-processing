@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixHistogram } from '../matrixHistogram';
+import { matrixHistogram } from '../matrixHistogram.ts';
 
 test('simple case', () => {
   const matrix = [

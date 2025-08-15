@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import integral from '../integral';
+import integral from '../integral.ts';
 
 test('should compute expect(integral with a,b, x0 and x1', () => {
   expect(integral(0, 1, 1, 0)).toBe(0.5);

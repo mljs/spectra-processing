@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixTranspose } from '../matrixTranspose';
+import { matrixTranspose } from '../matrixTranspose.ts';
 
 test('should transpose a square matrix', () => {
   const matrix = [

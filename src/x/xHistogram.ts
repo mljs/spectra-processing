@@ -1,11 +1,11 @@
 import type { DataXY, NumberArray } from 'cheminfo-types';
 
-import { createFromToArray } from '../utils';
+import { createFromToArray } from '../utils/index.ts';
 
-import { xAbsolute } from './xAbsolute';
-import { xCheck } from './xCheck';
-import { xMaxValue } from './xMaxValue';
-import { xMinValue } from './xMinValue';
+import { xAbsolute } from './xAbsolute.ts';
+import { xCheck } from './xCheck.ts';
+import { xMaxValue } from './xMaxValue.ts';
+import { xMinValue } from './xMinValue.ts';
 
 export interface XHistogramOptions {
   /**

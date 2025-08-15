@@ -1,7 +1,7 @@
 import { SpectrumGenerator } from 'spectrum-generator';
 import { expect, test } from 'vitest';
 
-import { xyMassCenterVector } from '../xyMassCenterVector';
+import { xyMassCenterVector } from '../xyMassCenterVector.ts';
 
 test('2 points, should not crash', () => {
   const data = { x: [1, 2], y: [1, 1] };

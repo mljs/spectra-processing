@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xSequentialFillFromTo } from '../xSequentialFillFromTo';
+import { xSequentialFillFromTo } from '../xSequentialFillFromTo.ts';
 
 test('Default array type (Float64Array)', () => {
   const result = xSequentialFillFromTo({ from: 0, to: 10, size: 6 }, {});

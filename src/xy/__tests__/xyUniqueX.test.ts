@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyUniqueX } from '../xyUniqueX';
+import { xyUniqueX } from '../xyUniqueX.ts';
 
 test('unsorted sum', () => {
   const x = [0, 0, 0, 2, 4, 0, 1, 2];

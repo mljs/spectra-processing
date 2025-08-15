@@ -1,6 +1,6 @@
 import type { DataXY } from 'cheminfo-types';
 
-import { xyCheck } from './xyCheck';
+import { xyCheck } from './xyCheck.ts';
 
 /**
  * Filter out all the points for which x <= 0. Useful to display log scale data

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyReduce } from '../xyReduce';
+import { xyReduce } from '../xyReduce.ts';
 
 const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const y = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0];

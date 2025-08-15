@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { getOutputArray } from '../getOutputArray';
+import { getOutputArray } from '../getOutputArray.ts';
 
 test('no output', () => {
   const result = getOutputArray(undefined, 2);

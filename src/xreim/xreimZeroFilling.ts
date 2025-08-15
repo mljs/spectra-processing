@@ -1,8 +1,8 @@
-import { reimZeroFilling } from '../reim';
-import type { DataXReIm } from '../types';
+import { reimZeroFilling } from '../reim/index.ts';
+import type { DataXReIm } from '../types/index.ts';
 
 /**
- * This function make a zero filling to re and im part.
+ * This function makes a zero filling to re and im part.
  * @param data - object of kind {x:[], re:[], im:[]}
  * @param totalLength - final number of points
  * @returns - data.

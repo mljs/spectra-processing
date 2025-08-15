@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyWeightedMerge } from '../xyWeightedMerge';
+import { xyWeightedMerge } from '../xyWeightedMerge.ts';
 
 const points = {
   x: [100.001, 100.002, 200.01, 200.02, 300.0001, 300.0002],

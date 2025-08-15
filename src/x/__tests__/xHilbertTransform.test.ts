@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 
-import { xHilbertTransform } from '../xHilbertTransform';
-import { xMaxValue } from '../xMaxValue';
+import { xHilbertTransform } from '../xHilbertTransform.ts';
+import { xMaxValue } from '../xMaxValue.ts';
 
 test('test discrete hilbert transform', () => {
   const length = 50;

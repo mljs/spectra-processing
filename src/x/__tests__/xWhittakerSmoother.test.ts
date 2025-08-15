@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 
-import { xSequentialFillFromTo } from '../xSequentialFillFromTo';
-import { xWhittakerSmoother } from '../xWhittakerSmoother';
+import { xSequentialFillFromTo } from '../xSequentialFillFromTo.ts';
+import { xWhittakerSmoother } from '../xWhittakerSmoother.ts';
 
 test('two peaks with sine baseline', () => {
   const x = xSequentialFillFromTo({ from: 0, to: Math.PI, size: 101 });

@@ -1,6 +1,9 @@
-import type { NumberArrayConstructor, NumberArrayType } from '../utils';
+import type {
+  NumberArrayConstructor,
+  NumberArrayType,
+} from '../utils/index.ts';
 
-import { xSequentialFillFromStep } from './xSequentialFillFromStep';
+import { xSequentialFillFromStep } from './xSequentialFillFromStep.ts';
 
 export interface XSequentialFillFromToOptions<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,

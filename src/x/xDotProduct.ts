@@ -1,6 +1,6 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xMultiply } from './xMultiply';
+import { xMultiply } from './xMultiply.ts';
 
 /**
  * Dot product between two arrays.

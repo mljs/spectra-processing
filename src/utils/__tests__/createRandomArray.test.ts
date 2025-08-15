@@ -1,8 +1,8 @@
 import { optimize } from 'ml-spectra-fitting';
 import { expect, test } from 'vitest';
 
-import { xHistogram } from '../../x';
-import { createRandomArray } from '../createRandomArray';
+import { xHistogram } from '../../x/index.ts';
+import { createRandomArray } from '../createRandomArray.ts';
 
 test('normal distribution', () => {
   const array = createRandomArray({

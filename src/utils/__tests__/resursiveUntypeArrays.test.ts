@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { recursiveUntypeArrays } from '../recursiveUntypeArrays';
+import { recursiveUntypeArrays } from '../recursiveUntypeArrays.ts';
 
 test('basic cases', () => {
   expect(recursiveUntypeArrays(1)).toBe(1);

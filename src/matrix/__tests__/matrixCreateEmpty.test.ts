@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixCreateEmpty } from '../matrixCreateEmpty';
+import { matrixCreateEmpty } from '../matrixCreateEmpty.ts';
 
 test('matrixCreateEmpty with default constructor', () => {
   const matrix = matrixCreateEmpty({

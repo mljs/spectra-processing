@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xGetFromToIndex } from '../xGetFromToIndex';
+import { xGetFromToIndex } from '../xGetFromToIndex.ts';
 
 test('no from to', () => {
   const array = [2, 3, 4, 5, 6];

@@ -1,7 +1,7 @@
-import type { NumberArrayConstructor } from '../utils';
+import type { NumberArrayConstructor } from '../utils/index.ts';
 
-import { matrixCheck } from './matrixCheck';
-import { matrixCreateEmpty } from './matrixCreateEmpty';
+import { matrixCheck } from './matrixCheck.ts';
+import { matrixCreateEmpty } from './matrixCreateEmpty.ts';
 
 export interface MatrixTransposeOptions<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,

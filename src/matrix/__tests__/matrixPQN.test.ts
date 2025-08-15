@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { matrixPQN } from '../matrixPQN';
+import { matrixPQN } from '../matrixPQN.ts';
 
 test('Probabilistic quotient normalization method', () => {
   const data = [

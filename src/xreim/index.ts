@@ -1,2 +1,2 @@
-export * from './xreimSortX';
-export * from './xreimZeroFilling';
+export * from './xreimSortX.ts';
+export * from './xreimZeroFilling.ts';

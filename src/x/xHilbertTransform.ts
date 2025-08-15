@@ -1,9 +1,9 @@
 import type { NumberArray } from 'cheminfo-types';
 import FFT from 'fft.js';
 
-import { isPowerOfTwo, nextPowerOfTwo } from '../utils';
+import { isPowerOfTwo, nextPowerOfTwo } from '../utils/index.ts';
 
-import { xCheck } from './xCheck';
+import { xCheck } from './xCheck.ts';
 
 export interface XHilbertTransformOptions {
   forceFFT?: boolean;

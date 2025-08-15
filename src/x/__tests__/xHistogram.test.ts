@@ -1,8 +1,8 @@
 import { XSadd } from 'ml-xsadd';
 import { expect, test } from 'vitest';
 
-import { createFromToArray } from '../../utils';
-import { xHistogram } from '../xHistogram';
+import { createFromToArray } from '../../utils/index.ts';
+import { xHistogram } from '../xHistogram.ts';
 
 test('simple case', () => {
   const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];

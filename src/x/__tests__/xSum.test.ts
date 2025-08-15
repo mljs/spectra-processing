@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xSum } from '../xSum';
+import { xSum } from '../xSum.ts';
 
 test('xSum', () => {
   const typedArray = new Uint16Array(3);

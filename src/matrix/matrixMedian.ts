@@ -1,7 +1,7 @@
-import type { DoubleMatrix } from '../types';
-import { xMedian } from '../x';
+import type { DoubleMatrix } from '../types/index.ts';
+import { xMedian } from '../x/index.ts';
 
-import { matrixToArray } from './matrixToArray';
+import { matrixToArray } from './matrixToArray.ts';
 
 /**
  * Returns the median of the matrix.

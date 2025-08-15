@@ -1,9 +1,12 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import type { NumberArrayConstructor, NumberArrayType } from '../utils';
+import type {
+  NumberArrayConstructor,
+  NumberArrayType,
+} from '../utils/index.ts';
 
-import { matrixCreateEmpty } from './matrixCreateEmpty';
-import { matrixMaxAbsoluteZ } from './matrixMaxAbsoluteZ';
+import { matrixCreateEmpty } from './matrixCreateEmpty.ts';
+import { matrixMaxAbsoluteZ } from './matrixMaxAbsoluteZ.ts';
 
 export interface MatrixZPivotRescaleOptions<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,

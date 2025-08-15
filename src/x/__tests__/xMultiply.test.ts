@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xMultiply } from '../xMultiply';
+import { xMultiply } from '../xMultiply.ts';
 
 test('test mul of 2 vectors', () => {
   const array1 = [10, 11, 12, 13, 14];

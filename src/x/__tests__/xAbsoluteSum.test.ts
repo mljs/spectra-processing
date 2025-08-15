@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xAbsoluteSum } from '../index';
+import { xAbsoluteSum } from '../index.ts';
 
 test('normal array', () => {
   const array = [-1, 2, -3, 4];

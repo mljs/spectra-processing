@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xPadding } from '../xPadding';
+import { xPadding } from '../xPadding.ts';
 
 test('xPadding', () => {
   const array = [1, 2, 3, 4, 5];

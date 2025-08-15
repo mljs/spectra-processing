@@ -1,7 +1,7 @@
-import type { Point, PointWithClose } from '../types';
+import type { Point, PointWithClose } from '../types/index.ts';
 
-import { xyObjectMaxXPoint } from './xyObjectMaxXPoint';
-import { xyObjectMinXPoint } from './xyObjectMinXPoint';
+import { xyObjectMaxXPoint } from './xyObjectMaxXPoint.ts';
+import { xyObjectMinXPoint } from './xyObjectMinXPoint.ts';
 
 export interface XYObjectBestPointsOptions {
   /**

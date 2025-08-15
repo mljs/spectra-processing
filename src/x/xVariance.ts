@@ -1,7 +1,7 @@
 import type { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
-import { xMean } from './xMean';
+import { xMean } from './xMean.ts';
 
 export interface XVarianceOptions {
   /**
@@ -31,8 +31,8 @@ export function xVariance(values: NumberArray, options: XVarianceOptions = {}) {
   const { unbiased = true, mean = xMean(values) } = options;
   let sqrError = 0;
 
-  for (let i = 0; i < values.length; i++) {
-    const x = values[i] - mean;
+  for (const value of values) {
+    const x = value - mean;
     sqrError += x * x;
   }
 

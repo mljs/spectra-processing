@@ -1,19 +1,19 @@
 # ml-spectra-processing
 
-[![NPM version][npm-image]][npm-url]
-[![build status][ci-image]][ci-url]
-[![Test coverage][codecov-image]][codecov-url]
-[![npm download][download-image]][download-url]
+[![NPM version](https://img.shields.io/npm/v/ml-spectra-processing.svg)](https://www.npmjs.com/package/ml-spectra-processing)
+[![npm download](https://img.shields.io/npm/dm/ml-spectra-processing.svg)](https://www.npmjs.com/package/ml-spectra-processing)
+[![test coverage](https://img.shields.io/codecov/c/github/mljs/spectra-processing.svg)](https://codecov.io/gh/mljs/spectra-processing)
+[![license](https://img.shields.io/npm/l/ml-spectra-processing.svg)](https://github.com/mljs/spectra-processing/blob/main/LICENSE)
 [![DOI](https://www.zenodo.org/badge/196417515.svg)](https://www.zenodo.org/badge/latestdoi/196417515)
 
 Various functions to process spectra. Those are `pure` functions.
 
 They are sorted in various categories:
 
-- matrix: functions on ml-matrix instances (or array or array)
+- matrix: functions on ml-matrix instances (or array of arrays)
 - x: functions that apply on a 1D array
 - xy: functions that apply on an object `{x: [], y:[]}`
-- xy2: functions that apply on an array of array of 2 numbers `[[x,y], [x,y]]`
+- xy2: functions that apply on an array of arrays of 2 numbers `[[x,y], [x,y]]`
 - xyArray: functions that apply on an array of objects `{x: [], y:[]}`
 - xyObject: functions that apply on an array of point `[{x,y}]`
 - xreim: functions that apply on an object `{x: [], re:[], im:[]}`
@@ -25,7 +25,9 @@ The name of the functions start with the first argument on which they apply.
 
 ## Installation
 
-`$ npm i ml-spectra-processing`
+```console
+npm install ml-spectra-processing
+```
 
 ## Usage
 
@@ -42,12 +44,3 @@ console.log(result);
 ## License
 
 [MIT](./LICENSE)
-
-[npm-image]: https://img.shields.io/npm/v/ml-spectra-processing.svg
-[npm-url]: https://www.npmjs.com/package/ml-spectra-processing
-[ci-image]: https://github.com/mljs/spectra-processing/actions/workflows/nodejs.yml/badge.svg
-[ci-url]: https://github.com/mljs/spectra-processing/actions/workflows/nodejs.yml
-[codecov-image]: https://img.shields.io/codecov/c/github/mljs/spectra-processing.svg
-[codecov-url]: https://codecov.io/gh/mljs/spectra-processing
-[download-image]: https://img.shields.io/npm/dm/ml-spectra-processing.svg
-[download-url]: https://www.npmjs.com/package/ml-spectra-processing

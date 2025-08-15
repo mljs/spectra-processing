@@ -1,10 +1,10 @@
 import type { DoubleArray } from 'cheminfo-types';
 
-import type { DataReIm } from '../types';
-import { xNoiseSanPlot } from '../x';
+import type { DataReIm } from '../types/index.ts';
+import { xNoiseSanPlot } from '../x/index.ts';
 
-import { reimAbsolute } from './reimAbsolute';
-import { reimPhaseCorrection } from './reimPhaseCorrection';
+import { reimAbsolute } from './reimAbsolute.ts';
+import { reimPhaseCorrection } from './reimPhaseCorrection.ts';
 
 export interface AutoPhaseCorrectionOptions {
   /**

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xyToXYObject } from '../xyToXYObject';
+import { xyToXYObject } from '../xyToXYObject.ts';
 
 test('xyToXYObject', () => {
   expect(xyToXYObject({ x: [1, 3, 2, 0], y: [1, 3, 2, 0] })).toStrictEqual([

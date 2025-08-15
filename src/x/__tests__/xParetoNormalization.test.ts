@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xParetoNormalization } from '../xParetoNormalization';
+import { xParetoNormalization } from '../xParetoNormalization.ts';
 
 test('1,2,3', () => {
   const array = [1, 2, 3];

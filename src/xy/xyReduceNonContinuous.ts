@@ -1,9 +1,9 @@
 import type { DataXY, DoubleArray, FromTo } from 'cheminfo-types';
 
-import { zonesNormalize } from '../zones';
+import { zonesNormalize } from '../zones/index.ts';
 
-import { xyCheck } from './xyCheck';
-import { getInternalZones, notEnoughPoints } from './xyReduce';
+import { xyCheck } from './xyCheck.ts';
+import { getInternalZones, notEnoughPoints } from './xyReduce.ts';
 
 export interface XYReduceOptions {
   /**

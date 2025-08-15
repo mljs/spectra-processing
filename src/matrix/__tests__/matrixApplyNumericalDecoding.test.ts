@@ -1,9 +1,9 @@
 import { expect, test } from 'vitest';
 
-import { matrixApplyNumericalEncoding } from '../matrixApplyNumericalEncoding';
-import { matrixNumericalEncoding } from '../matrixNumericalEncoding';
+import { matrixApplyNumericalEncoding } from '../matrixApplyNumericalEncoding.ts';
+import { matrixNumericalEncoding } from '../matrixNumericalEncoding.ts';
 
-import { datasetForEncoding } from './fixtures/encoding';
+import { datasetForEncoding } from './fixtures/encoding.ts';
 
 const datasetToEncode = [
   [78, 'o', 'ab', 147],

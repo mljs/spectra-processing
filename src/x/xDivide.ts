@@ -1,7 +1,7 @@
 import type { NumberArray } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 
-import { getOutputArray } from './getOutputArray';
+import { getOutputArray } from './getOutputArray.ts';
 
 export interface XDivideOptions<ArrayType extends NumberArray = Float64Array> {
   /** output into which the result should be placed if needed. In can be the same as array1 in order to have in-place modification */

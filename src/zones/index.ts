@@ -1,2 +1,2 @@
-export * from './zonesNormalize';
-export * from './zonesWithPoints';
+export * from './zonesNormalize.ts';
+export * from './zonesWithPoints.ts';

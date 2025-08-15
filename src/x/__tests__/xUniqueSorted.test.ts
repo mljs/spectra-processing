@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xUniqueSorted } from '../xUniqueSorted';
+import { xUniqueSorted } from '../xUniqueSorted.ts';
 
 test('xUniqueSorted', () => {
   const array = [-1, 2, -3, 4, -1, 2];

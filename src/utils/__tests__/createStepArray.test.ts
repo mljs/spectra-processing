@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { createStepArray } from '../createStepArray';
+import { createStepArray } from '../createStepArray.ts';
 
 test('case when we specify the step', () => {
   const result = createStepArray({

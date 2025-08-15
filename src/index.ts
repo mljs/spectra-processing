@@ -1,19 +1,19 @@
-export * from './reim/index';
+export * from './reim/index.ts';
 
-export * from './x/index';
+export * from './x/index.ts';
 
-export * from './xy/index';
+export * from './xy/index.ts';
 
-export * from './xy2/index';
+export * from './xy2/index.ts';
 
-export * from './xreim/index';
+export * from './xreim/index.ts';
 
-export * from './xyArray/index';
-export * from './xyObject/index';
+export * from './xyArray/index.ts';
+export * from './xyObject/index.ts';
 
-export * from './zones/index';
+export * from './zones/index.ts';
 
-export * from './matrix/index';
-export * from './utils/index';
+export * from './matrix/index.ts';
+export * from './utils/index.ts';
 
-export * from './types/index';
+export * from './types/index.ts';

@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 
-import { xyMassCenterVector } from '../../xy';
-import { xMassCenterVectorSimilarity } from '../xMassCenterVectorSimilarity';
+import { xyMassCenterVector } from '../../xy/index.ts';
+import { xMassCenterVectorSimilarity } from '../xMassCenterVectorSimilarity.ts';
 
 test('basic', () => {
   const data = {

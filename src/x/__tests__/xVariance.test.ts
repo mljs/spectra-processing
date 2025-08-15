@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { xVariance } from '../xVariance';
+import { xVariance } from '../xVariance.ts';
 
 test('array', () => {
   const data = [15, 13, 17, 7];
