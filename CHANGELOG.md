@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.17.0](https://github.com/mljs/spectra-processing/compare/v14.16.1...v14.17.0) (2025-08-15)
+
+
+### Features
+
+* migrate fully to ESM ([#321](https://github.com/mljs/spectra-processing/issues/321)) ([054e0f3](https://github.com/mljs/spectra-processing/commit/054e0f3bfd8a5b6b52c87ba9e402e889ab86162d))
+
 ## [14.16.1](https://github.com/mljs/spectra-processing/compare/v14.16.0...v14.16.1) (2025-08-13)
 
 
