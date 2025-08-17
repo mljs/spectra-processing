@@ -44,7 +44,6 @@ interface RecursiveRemoveEmptyAndNullOptions {
 /**
  * Recursively removes empty values from an object. This will also remove empty object or empty array.
  * @param object - the object being cleaned
- * @param propertiesToRemove - A string or array of strings of key(s) for key-value pair(s) to be cleaned from `object`
  * @param options - Optional object with options for cleaning
  * @returns the cleaned object
  */
@@ -116,11 +115,12 @@ function cleanCyclicObject(
       }
 
       for (let i = object.length - 1; i >= 0; i--) {
+        const arrayElement = object[i];
         if (
-          isEmpty(object[i]) &&
+          isEmpty(arrayElement) &&
           !(
-            isArray(object[i]) &&
-            object[i].length === 0 &&
+            isArray(arrayElement) &&
+            arrayElement.length === 0 &&
             options?.removeEmptyArrayAndObject === false
           )
         ) {
@@ -131,13 +131,14 @@ function cleanCyclicObject(
       for (const key of Reflect.ownKeys(object)) {
         const isIndex = typeof key === 'string' && /^\d+$/.test(key);
         if (!isIndex) {
+          const value = object[key as any];
           if (
             (removeProperty && key === removeProperty) ||
-            (!removeProperty && isEmpty(object[key]))
+            (!removeProperty && isEmpty(value))
           ) {
             Reflect.deleteProperty(object, key);
           } else {
-            recursiveClean(object[key], object, key);
+            recursiveClean(value, object, key);
           }
         }
       }
@@ -170,7 +171,7 @@ function repr(arg: unknown): string {
  * @param {} arg - unknown function argument
  * @returns returns true if `arg` is an Array, false otherwise
  */
-function isArray(arg: unknown): boolean {
+function isArray(arg: unknown): arg is unknown[] {
   return Array.isArray ? Array.isArray(arg) : repr(arg) === '[object Array]';
 }
 
@@ -179,7 +180,7 @@ function isArray(arg: unknown): boolean {
  * @param {} arg - unknown function argument
  * @returns returns true if `arg` is an object.
  */
-function isObject(arg: unknown): boolean {
+function isObject(arg: unknown): arg is Record<string | symbol, unknown> {
   return repr(arg) === '[object Object]';
 }
 
@@ -188,7 +189,7 @@ function isObject(arg: unknown): boolean {
  * @param {} arg - unknown function argument
  * @returns returns true if `arg` is a String, false otherwise
  */
-function isString(arg: unknown): boolean {
+function isString(arg: unknown): arg is string {
   return repr(arg) === '[object String]';
 }
 
@@ -197,7 +198,7 @@ function isString(arg: unknown): boolean {
  * @param {} arg - unknown function argument
  * @returns returns true if `arg` is of type Null, false otherwise
  */
-function isNull(arg: unknown): boolean {
+function isNull(arg: unknown): arg is null {
   return repr(arg) === '[object Null]';
 }
 
@@ -206,7 +207,7 @@ function isNull(arg: unknown): boolean {
  * @param {} arg - unknown function argument
  * @returns Returns true if `arg` is of type Undefined, false otherwise
  */
-function isUndefined(arg: unknown): boolean {
+function isUndefined(arg: unknown): arg is undefined {
   return arg === undefined;
 }
 
@@ -221,8 +222,8 @@ function isEmpty(arg: unknown): boolean {
   return (
     isUndefined(arg) ||
     isNull(arg) ||
-    (isString(arg) && (arg as string).length === 0) ||
-    (isArray(arg) && (arg as unknown[]).length === 0) ||
-    (isObject(arg) && Object.keys(arg as object).length === 0)
+    (isString(arg) && arg.length === 0) ||
+    (isArray(arg) && arg.length === 0) ||
+    (isObject(arg) && Object.keys(arg).length === 0)
   );
 }
