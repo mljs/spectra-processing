@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.17.1](https://github.com/mljs/spectra-processing/compare/v14.17.0...v14.17.1) (2025-08-23)
+
+
+### Bug Fixes
+
+* xBoxPlot deals correctly with very close numbers ([4161e77](https://github.com/mljs/spectra-processing/commit/4161e775b45db6475edfa2732e5b6810593b4bf9))
+
 ## [14.17.0](https://github.com/mljs/spectra-processing/compare/v14.16.1...v14.17.0) (2025-08-15)
 
 
