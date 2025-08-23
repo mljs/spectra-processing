@@ -32,6 +32,28 @@ test('one element', () => {
   });
 });
 
+test('two close elements', () => {
+  const data = [1.4029999999999998, 1.403];
+  const stats = xRobustDistributionStats(data);
+
+  expect(stats).toStrictEqual({
+    min: 1.4029999999999998,
+    q1: 1.403,
+    median: 1.403,
+    q3: 1.403,
+    max: 1.403,
+    lowerWhisker: 1.4029999999999998,
+    upperWhisker: 1.403,
+    minWhisker: 1.4029999999999998,
+    maxWhisker: 1.403,
+    iqr: 0,
+    outliers: [],
+    mean: 1.403,
+    nb: 2,
+    sd: 0,
+  });
+});
+
 test('4 elements', () => {
   const data = [15, 13, 17, 7];
   const stats = xRobustDistributionStats(data);

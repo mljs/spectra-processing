@@ -58,6 +58,18 @@ export interface XBoxPlotWithOutliers {
 export function xBoxPlotWithOutliers(array: NumberArray): XBoxPlotWithOutliers {
   const boxPlot = xBoxPlot(array);
 
+  if (boxPlot.max - boxPlot.min <= Number.EPSILON) {
+    return {
+      ...boxPlot,
+      lowerWhisker: boxPlot.min,
+      upperWhisker: boxPlot.max,
+      minWhisker: boxPlot.min,
+      maxWhisker: boxPlot.max,
+      iqr: 0,
+      outliers: [],
+    };
+  }
+
   const iqr = boxPlot.q3 - boxPlot.q1;
   const lowerWhisker = boxPlot.q1 - 1.5 * iqr;
   const upperWhisker = boxPlot.q3 + 1.5 * iqr;

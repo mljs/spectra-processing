@@ -144,3 +144,16 @@ test('outliers', () => {
     max: 100,
   });
 });
+
+test('close values', () => {
+  const array = [1.4029999999999998, 1.403];
+  const result = xBoxPlot(array);
+
+  expect(result).toStrictEqual({
+    min: 1.4029999999999998,
+    q1: 1.403,
+    median: 1.403,
+    q3: 1.403,
+    max: 1.403,
+  });
+});

@@ -26,6 +26,16 @@ export function xRobustDistributionStats(
 ): XRobustDistributionStats {
   const boxPlot = xBoxPlotWithOutliers(array);
   let filteredArray: NumberArray;
+
+  if (boxPlot.max - boxPlot.min <= Number.EPSILON) {
+    return {
+      ...boxPlot,
+      mean: boxPlot.median,
+      sd: array.length === 1 ? Number.NaN : 0,
+      nb: array.length,
+    };
+  }
+
   if (boxPlot.outliers.length === 0) {
     filteredArray = array;
   } else {
