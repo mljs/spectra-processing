@@ -39,3 +39,22 @@ test('outliers', () => {
     outliers: [100],
   });
 });
+
+test('close values', () => {
+  const array = [1.4029999999999998, 1.403];
+  const result = xBoxPlotWithOutliers(array);
+
+  expect(result).toStrictEqual({
+    min: 1.4029999999999998,
+    q1: 1.403,
+    median: 1.403,
+    q3: 1.403,
+    max: 1.403,
+    lowerWhisker: 1.4029999999999998,
+    upperWhisker: 1.403,
+    minWhisker: 1.4029999999999998,
+    maxWhisker: 1.403,
+    iqr: 0,
+    outliers: [],
+  });
+});

@@ -32,12 +32,28 @@ export function xBoxPlot(array: NumberArray): XBoxPlot {
   // and sort typed array that is much faster than sorting a normal array
   array = Float64Array.from(array).sort();
 
+  // need to deal with very close points otherwise it yields to incorrect results
+  if ((array.at(-1) as number) - array[0] <= Number.EPSILON) {
+    // if one of the 2 numbers is an integer let's take this one
+    const shortTestNumber =
+      String(array[0]).length < String(array.at(-1)).length
+        ? array[0]
+        : (array.at(-1) as number);
+    return {
+      min: array[0],
+      q1: shortTestNumber,
+      median: shortTestNumber,
+      q3: shortTestNumber,
+      max: array.at(-1) as number,
+    };
+  }
   const posQ1 = (array.length - 1) / 4;
   const posQ3 = (array.length - 1) * (3 / 4);
   const medianPos = (array.length - 1) / 2;
 
   const q1MinProportion = posQ1 % 1;
   const q3MinProportion = posQ3 % 1;
+
   const medianMinProportion = medianPos % 1;
   return {
     min: array[0],
