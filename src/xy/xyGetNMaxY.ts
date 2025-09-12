@@ -17,7 +17,8 @@ export function xyGetNMaxY(data: DataXY, numberMaxPoints: number): DataXY {
     const newY = new Float64Array(numberMaxPoints);
 
     const floatY = Float64Array.from(data.y);
-    floatY.sort().reverse();
+    floatY.sort();
+    floatY.reverse();
     const threshold = floatY[numberMaxPoints - 1];
 
     let index = 0;

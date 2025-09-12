@@ -39,14 +39,13 @@ export function zonesNormalize(
 
   if (from > to) [from, to] = [to, from];
 
-  zones = zones
-    .map((zone: FromTo) =>
-      zone.from > zone.to ? { from: zone.to, to: zone.from } : { ...zone },
-    )
-    .sort((a, b) => {
-      if (a.from !== b.from) return a.from - b.from;
-      return a.to - b.to;
-    });
+  zones = zones.map((zone: FromTo) =>
+    zone.from > zone.to ? { from: zone.to, to: zone.from } : { ...zone },
+  );
+  zones.sort((a, b) => {
+    if (a.from !== b.from) return a.from - b.from;
+    return a.to - b.to;
+  });
   if (zones.length === 0) {
     zones.push({ from, to });
   }

@@ -30,7 +30,8 @@ export function xBoxPlot(array: NumberArray): XBoxPlot {
 
   // duplicate the array to avoid modifying the original one
   // and sort typed array that is much faster than sorting a normal array
-  array = Float64Array.from(array).sort();
+  array = Float64Array.from(array);
+  array.sort();
 
   // need to deal with very close points otherwise it yields to incorrect results
   if ((array.at(-1) as number) - array[0] <= Number.EPSILON) {

@@ -683,7 +683,7 @@ describe('Type preservation', () => {
       boolean: true,
       falsyBoolean: false,
       zero: 0,
-      bigint: BigInt(123),
+      bigint: 123n,
       symbol: Symbol('test'),
     };
 

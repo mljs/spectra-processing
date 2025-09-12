@@ -61,7 +61,7 @@ export function xyObjectBestPoints(
   } = options;
   const slot = (to - from) / numberSlots;
   const closeSlot = (to - from) / numberCloseSlots;
-  let selected = points
+  const selected = points
     .filter((point) => point.x >= from && point.x <= to)
     .map((point) => {
       return {
@@ -70,7 +70,7 @@ export function xyObjectBestPoints(
       };
     });
 
-  selected = selected.sort((a, b) => {
+  selected.sort((a, b) => {
     if (a.monoisotopic && !b.monoisotopic) return -1;
     if (b.monoisotopic && !a.monoisotopic) return 1;
     return b.point.y - a.point.y;
@@ -100,5 +100,6 @@ export function xyObjectBestPoints(
     toReturn.push(newPeak);
     if (toReturn.length === limit) break;
   }
-  return toReturn.sort((a, b) => a.x - b.x);
+  toReturn.sort((a, b) => a.x - b.x);
+  return toReturn;
 }

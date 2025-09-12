@@ -30,7 +30,8 @@ export function getSlots(
 
   const possibleXs = Float64Array.from(
     data.flatMap((spectrum) => spectrum.x as number[]),
-  ).sort();
+  );
+  possibleXs.sort();
 
   if (possibleXs.length === 0) {
     throw new Error('can not process empty arrays');
