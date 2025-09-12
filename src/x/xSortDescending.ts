@@ -9,7 +9,8 @@ export function xSortDescending<ArrayType extends NumberArray>(
   array: ArrayType,
 ): ArrayType {
   if (ArrayBuffer.isView(array)) {
-    array.sort().reverse();
+    array.sort();
+    array.reverse();
     return array;
   } else if (Array.isArray(array)) {
     array.sort((a, b) => b - a);

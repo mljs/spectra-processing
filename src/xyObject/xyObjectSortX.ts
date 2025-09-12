@@ -6,5 +6,6 @@ import type { Point } from '../types/index.ts';
  * @returns - sorted array of points {x,y}
  */
 export function xyObjectSortX(points: Point[]): Point[] {
-  return points.sort((a, b) => a.x - b.x);
+  points.sort((a, b) => a.x - b.x);
+  return points;
 }

@@ -56,7 +56,8 @@ export function matrixCuthillMckee(
     visited[i] = true;
     while (ptr < eol) {
       const v = toVisit[ptr++];
-      const nbhd = Float64Array.from(adj[v]).sort();
+      const nbhd = Float64Array.from(adj[v]);
+      nbhd.sort();
       for (const u of nbhd) {
         if (visited[u]) {
           continue;

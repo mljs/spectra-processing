@@ -354,7 +354,8 @@ function prepareData(
     }
   }
 
-  input.sort().reverse();
+  input.sort();
+  input.reverse();
 
   return input;
 }

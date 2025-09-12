@@ -11,9 +11,11 @@ export function xSortAscending<ArrayType extends NumberArray>(
   array: ArrayType,
 ): ArrayType {
   if (ArrayBuffer.isView(array)) {
-    return array.sort() as ArrayType;
+    array.sort();
+    return array;
   } else if (Array.isArray(array)) {
-    return array.sort((a, b) => a - b) as ArrayType;
+    array.sort((a, b) => a - b);
+    return array;
   }
   throw new Error('trying to sort non array');
 }
