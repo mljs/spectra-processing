@@ -77,3 +77,23 @@ test('wrong position', () => {
     xyRollingCircleTransform(data, { position: 'middle' as 'top' });
   }).toThrow('Invalid position: middle');
 });
+
+test('two peaks', () => {
+  const data: DataXY<number[]> = {
+    x: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+    y: [0, 1, 2, 1, 0, 1, 2, 1, 0],
+  };
+
+  const result = xyRollingCircleTransform(data, {
+    shifted: false,
+    radius: 5,
+  });
+
+  expect(result).toStrictEqual(
+    Float64Array.from([
+      1.5825756949558398, 1.8989794855663558, 2, 1.8989794855663558,
+      1.5825756949558398, 1.8989794855663558, 2, 1.8989794855663558,
+      1.5825756949558398,
+    ]),
+  );
+});
