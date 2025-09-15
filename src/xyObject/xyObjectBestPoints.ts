@@ -66,13 +66,10 @@ export function xyObjectBestPoints(
     .map((point) => {
       return {
         point,
-        monoisotopic: false,
       };
     });
 
   selected.sort((a, b) => {
-    if (a.monoisotopic && !b.monoisotopic) return -1;
-    if (b.monoisotopic && !a.monoisotopic) return 1;
     return b.point.y - a.point.y;
   });
 
@@ -81,11 +78,7 @@ export function xyObjectBestPoints(
   const minY = selected[0].point.y * threshold;
   peakLoop: for (const item of selected) {
     if (item.point.y < minY) {
-      if (item.monoisotopic) {
-        continue;
-      } else {
-        break;
-      }
+      break;
     }
     let close = false;
     for (const existing of toReturn) {
