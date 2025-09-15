@@ -1,6 +1,7 @@
 /**
  *
  * Dong, Jian, et al. "An algorithm of filtering noises in multi-beam data based on rolling circle transform." 2019 2nd International Conference on Sustainable Energy, Environment and Information Engineering (SEEIE 2019). Atlantis Press, 2019.
+ * DONG Jian, PENG Rencan, ZHANG Lihua, WANG Zhijun. An Algorithm of Filtering Noises in Multi-beam Data Based on Rolling Circle Transform[J]. Geomatics and Information Science of Wuhan University, 2016, 41(1): 86-92. DOI: 10.13203/j.whugis20130757
  * @param data
  * @param options
  */
@@ -38,7 +39,7 @@ export function xyRollingCircleTransform(
   const { radius = 1, position = 'top', shifted = true } = options;
 
   if (position !== 'top' && position !== 'bottom') {
-    throw new Error(`Invalid position: ${position}`);
+    throw new Error(`Invalid position: ${String(position)}`);
   }
 
   if (position === 'bottom') {
