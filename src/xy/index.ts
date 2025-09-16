@@ -35,6 +35,7 @@ export * from './xyRealMinYPoint.ts';
 export { xyReduce } from './xyReduce.ts';
 export * from './xyReduceNonContinuous.ts';
 export * from './xyRolling.ts';
+export * from './xyRollingCircleTransform.ts';
 export * from './xySetYValue.ts';
 export * from './xySortX.ts';
 export * from './xyToXYArray.ts';
