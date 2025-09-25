@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.18.0](https://github.com/mljs/spectra-processing/compare/v14.17.1...v14.18.0) (2025-09-25)
+
+
+### Features
+
+* add xyRollingCircleTransform ([be9b34a](https://github.com/mljs/spectra-processing/commit/be9b34ae1c479adf9579e69e5a561945d262300c))
+
 ## [14.17.1](https://github.com/mljs/spectra-processing/compare/v14.17.0...v14.17.1) (2025-08-23)
 
 
