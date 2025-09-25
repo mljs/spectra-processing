@@ -45,7 +45,7 @@ test('bigger spectrum', () => {
   });
 });
 
-test('test repeating values', () => {
+test('repeating values', () => {
   const spectrum = {
     x: [1, 5, 7, 3, 1, 8, 9, 13, 40, 3, 4],
     y: [1, 5, 7, 3, 1, 40, 51, 40, 40, 3, 4],

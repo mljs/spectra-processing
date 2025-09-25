@@ -3,7 +3,7 @@ import { expect, test } from 'vitest';
 import { xHilbertTransform } from '../xHilbertTransform.ts';
 import { xMaxValue } from '../xMaxValue.ts';
 
-test('test discrete hilbert transform', () => {
+test('discrete hilbert transform', () => {
   const length = 50;
   const cos = new Float64Array(length);
   const sin = new Float64Array(length);
@@ -26,7 +26,7 @@ test('test discrete hilbert transform', () => {
   }
 });
 
-test('test fast hilbert transform', () => {
+test('fast hilbert transform', () => {
   const length = 64;
   const cos = new Float64Array(length);
   const sin = new Float64Array(length);
@@ -49,7 +49,7 @@ test('test fast hilbert transform', () => {
   }
 });
 
-test('test fast hilbert transform of squareWave function', () => {
+test('fast hilbert transform of squareWave function', () => {
   const length = 64;
   const p = 16;
   const squareWave = new Float64Array(length);
@@ -66,7 +66,7 @@ test('test fast hilbert transform of squareWave function', () => {
   }
 });
 
-test('test fast hilbert transform with forceFFT (array length greater than a power of 2)', () => {
+test('fast hilbert transform with forceFFT (array length greater than a power of 2)', () => {
   const length = 74;
   const cos = new Float64Array(length);
   const sin = new Float64Array(length);
@@ -88,7 +88,7 @@ test('test fast hilbert transform with forceFFT (array length greater than a pow
   }
 });
 
-test('test fast hilbert transform with forceFFT (array length less than a power of 2)', () => {
+test('fast hilbert transform with forceFFT (array length less than a power of 2)', () => {
   const length = 54;
   const x = new Float64Array(length);
   const cos = new Float64Array(length);

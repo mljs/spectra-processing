@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 
 import { matrixBoxPlot } from '../matrixBoxPlot.ts';
 
-test('test matrixBoxPlot even', () => {
+test('matrixBoxPlot even', () => {
   const matrix = [
     [0, 0],
     [1, 10],
@@ -27,7 +27,7 @@ test('test matrixBoxPlot even', () => {
   });
 });
 
-test('test matrixBoxPlot even small', () => {
+test('matrixBoxPlot even small', () => {
   const matrix = [[0], [1], [2], [3], [4], [5]];
 
   expect(matrixBoxPlot(matrix)).toStrictEqual({
@@ -39,7 +39,7 @@ test('test matrixBoxPlot even small', () => {
   });
 });
 
-test('test matrixBoxPlot odd', () => {
+test('matrixBoxPlot odd', () => {
   const matrix = [[0], [1], [2], [3], [4], [5], [6], [7], [8], [9], [10]];
 
   expect(matrixBoxPlot(matrix)).toStrictEqual({
@@ -51,7 +51,7 @@ test('test matrixBoxPlot odd', () => {
   });
 });
 
-test('test matrixBoxPlot odd small', () => {
+test('matrixBoxPlot odd small', () => {
   const matrix = [[0], [1], [2], [3], [4]];
 
   expect(matrixBoxPlot(matrix)).toStrictEqual({
@@ -63,7 +63,7 @@ test('test matrixBoxPlot odd small', () => {
   });
 });
 
-test('test matrixBoxPlot too small', () => {
+test('matrixBoxPlot too small', () => {
   const matrix = [[0], [1], [2], [4]];
 
   expect(() => matrixBoxPlot(matrix)).toThrow(

@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 
 import { xDivide } from '../xDivide.ts';
 
-test('test divide of 2 vectors', () => {
+test('divide of 2 vectors', () => {
   const array1 = [10, 15, 20, 25, 30];
   const array2 = [2, 3, 4, 5, 6];
 
@@ -11,7 +11,7 @@ test('test divide of 2 vectors', () => {
   );
 });
 
-test('test divide of Array and FloatArray', () => {
+test('divide of Array and FloatArray', () => {
   const array1 = [10, 15, 20, 25, 30];
   const array2 = new Float64Array([2, 3, 4, 5, 6]);
 
@@ -20,7 +20,7 @@ test('test divide of Array and FloatArray', () => {
   );
 });
 
-test('test mul of 2 a constant', () => {
+test('mul of 2 a constant', () => {
   const array1 = [10, 15, 20, 25, 30];
 
   expect(xDivide(array1, 5)).toStrictEqual(Float64Array.from([2, 3, 4, 5, 6]));

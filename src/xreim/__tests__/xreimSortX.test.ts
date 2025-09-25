@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 
 import { xreimSortX } from '../xreimSortX.ts';
 
-test('test xreimSortX do nothing', () => {
+test('xreimSortX do nothing', () => {
   const x = [0, 1, 2, 3];
   const re = [0, 1, 2, 3];
   const im = [4, 5, 6, 7];
@@ -15,7 +15,7 @@ test('test xreimSortX do nothing', () => {
   });
 });
 
-test('test xreimSortX reverse', () => {
+test('xreimSortX reverse', () => {
   const x = [3, 2, 1, 0];
   const re = [0, 1, 2, 3];
   const im = [4, 5, 6, 7];

@@ -41,7 +41,7 @@ test('basic even', () => {
   });
 });
 
-test('test xBoxPlot even', () => {
+test('xBoxPlot even', () => {
   const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   expect(xBoxPlot(array)).toStrictEqual({
@@ -53,7 +53,7 @@ test('test xBoxPlot even', () => {
   });
 });
 
-test('test xBoxPlot even small', () => {
+test('xBoxPlot even small', () => {
   const array = [0, 1, 2, 3, 4, 5];
 
   expect(xBoxPlot(array)).toStrictEqual({
@@ -65,7 +65,7 @@ test('test xBoxPlot even small', () => {
   });
 });
 
-test('test xBoxPlot odd', () => {
+test('xBoxPlot odd', () => {
   const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   expect(xBoxPlot(array)).toStrictEqual({
@@ -77,7 +77,7 @@ test('test xBoxPlot odd', () => {
   });
 });
 
-test('test xBoxPlot odd small', () => {
+test('xBoxPlot odd small', () => {
   const array = [0, 1, 2, 3, 4];
 
   expect(xBoxPlot(array)).toStrictEqual({
@@ -89,13 +89,13 @@ test('test xBoxPlot odd small', () => {
   });
 });
 
-test('test xBoxPlot too small', () => {
+test('xBoxPlot too small', () => {
   const array: number[] = [];
 
   expect(() => xBoxPlot(array)).toThrow('input must not be empty');
 });
 
-test('test xBoxPlot with one element', () => {
+test('xBoxPlot with one element', () => {
   const array = [42];
 
   expect(xBoxPlot(array)).toStrictEqual({
@@ -107,7 +107,7 @@ test('test xBoxPlot with one element', () => {
   });
 });
 
-test('test xBoxPlot with 2 elements', () => {
+test('xBoxPlot with 2 elements', () => {
   const array = [40, 44];
   const result = xBoxPlot(array);
 
@@ -120,7 +120,7 @@ test('test xBoxPlot with 2 elements', () => {
   });
 });
 
-test('test xBoxPlot with 3 elements', () => {
+test('xBoxPlot with 3 elements', () => {
   const array = [44, 40, 42];
   const result = xBoxPlot(array);
 

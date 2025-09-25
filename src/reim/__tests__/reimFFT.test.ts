@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 
 import { reimFFT } from '../reimFFT.ts';
 
-test('test reimFFT', () => {
+test('reimFFT', () => {
   const re = Float64Array.from([0, 3, 6, 5]);
   const im = Float64Array.from([0, 4, 8, 3]);
   const transformed = reimFFT({ re, im }, { applyZeroShift: true });

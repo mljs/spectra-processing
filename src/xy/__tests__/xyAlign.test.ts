@@ -14,7 +14,7 @@ test('same length spectra, integers', () => {
   });
 });
 
-test('test permutability (should not be equal)', () => {
+test('permutability (should not be equal)', () => {
   const data1 = { x: [1, 2, 3], y: [1, 1, 1] };
   const data2 = { x: [2, 3, 4], y: [1, 1, 1] };
   const result = xyAlign(data2, data1);
@@ -190,7 +190,7 @@ test('options.delta=2', () => {
   });
 });
 
-test('test options.delta as a function', () => {
+test('options.delta as a function', () => {
   const data1 = { x: [0, 3, 5, 7], y: [1, 1, 1, 1] };
   const data2 = { x: [2, 3], y: [1, 1] };
   const result = xyAlign(data1, data2, {
@@ -206,7 +206,7 @@ test('test options.delta as a function', () => {
   });
 });
 
-test('test options.delta as a function: (x) => x', () => {
+test('options.delta as a function: (x) => x', () => {
   const data1 = { x: [0, 1, 2, 3], y: [1, 1, 1, 1] };
   const data2 = { x: [2, 3, 5], y: [1, 1, 1] };
   const result = xyAlign(data1, data2, {

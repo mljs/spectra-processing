@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 
 import { xAdd } from '../xAdd.ts';
 
-test('test xAdd of 2 vectors', () => {
+test('xAdd of 2 vectors', () => {
   const array1 = [10, 11, 12, 13, 14];
   const array2 = [5, 4, 3, 2, 1];
 
@@ -11,7 +11,7 @@ test('test xAdd of 2 vectors', () => {
   );
 });
 
-test('test xAdd of 2 a constant', () => {
+test('xAdd of 2 a constant', () => {
   const array1 = [10, 11, 12, 13, 14];
 
   expect(xAdd(array1, 5)).toStrictEqual(
@@ -19,7 +19,7 @@ test('test xAdd of 2 a constant', () => {
   );
 });
 
-test('test xAdd of array and floatarray', () => {
+test('xAdd of array and floatarray', () => {
   const array1 = [10, 11, 12, 13, 14];
   const array2 = new Float64Array([5, 4, 3, 2, 1]);
 

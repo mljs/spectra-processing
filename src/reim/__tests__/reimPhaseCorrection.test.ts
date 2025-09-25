@@ -107,7 +107,7 @@ const data = {
   ],
 };
 
-test('test reimPhaseCorrection even', () => {
+test('reimPhaseCorrection even', () => {
   const re = [0, 1, 2, 3];
   const im = [0, 1, 2, 3];
   const result = reimPhaseCorrection({ re, im }, 0, 0);

@@ -14,7 +14,7 @@ test('simple', () => {
   expect(result[1]).toBeCloseTo(-1, 10);
 });
 
-test('test matrixAutoCorrelation too small', () => {
+test('matrixAutoCorrelation too small', () => {
   const matrix = [[0]];
 
   expect(() => matrixAutoCorrelation(matrix)).toThrow(

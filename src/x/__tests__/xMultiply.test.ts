@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 
 import { xMultiply } from '../xMultiply.ts';
 
-test('test mul of 2 vectors', () => {
+test('mul of 2 vectors', () => {
   const array1 = [10, 11, 12, 13, 14];
   const array2 = [5, 4, 3, 2, 1];
 
@@ -11,7 +11,7 @@ test('test mul of 2 vectors', () => {
   );
 });
 
-test('test mul of array and floatarray', () => {
+test('mul of array and floatarray', () => {
   const array1 = [10, 11, 12, 13, 14];
   const array2 = new Float64Array([5, 4, 3, 2, 1]);
 
@@ -20,7 +20,7 @@ test('test mul of array and floatarray', () => {
   );
 });
 
-test('test mul of 2 a constant', () => {
+test('mul of 2 a constant', () => {
   const array1 = [10, 11, 12, 13, 14];
 
   expect(xMultiply(array1, 5)).toStrictEqual(

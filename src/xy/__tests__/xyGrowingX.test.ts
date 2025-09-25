@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 
 import { xyGrowingX } from '../xyGrowingX.ts';
 
-test('test xyGrowingX do nothing with zero first value', () => {
+test('xyGrowingX do nothing with zero first value', () => {
   const x = [0, 1, 2, 3];
   const y = [0, 1, 2, 3];
   const result = xyGrowingX({ x, y });
@@ -13,7 +13,7 @@ test('test xyGrowingX do nothing with zero first value', () => {
   });
 });
 
-test('test xyGrowingX do nothing', () => {
+test('xyGrowingX do nothing', () => {
   const x = [1, 2, 3];
   const y = [1, 2, 3];
   const result = xyGrowingX({ x, y });
@@ -24,7 +24,7 @@ test('test xyGrowingX do nothing', () => {
   });
 });
 
-test('test xyGrowingX reverse', () => {
+test('xyGrowingX reverse', () => {
   const x = [3, 2, 1, 0];
   const y = [0, 1, 2, 3];
   const result = xyGrowingX({ x, y });
