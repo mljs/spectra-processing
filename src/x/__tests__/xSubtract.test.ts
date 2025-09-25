@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 
 import { xSubtract } from '../xSubtract.ts';
 
-test('test xSubtract of 2 vectors', () => {
+test('xSubtract of 2 vectors', () => {
   const array1 = [10, 11, 12, 13, 14];
   const array2 = [5, 4, 3, 2, 1];
 
@@ -11,7 +11,7 @@ test('test xSubtract of 2 vectors', () => {
   );
 });
 
-test('test xSubtract of 2 a constant', () => {
+test('xSubtract of 2 a constant', () => {
   const array1 = [10, 11, 12, 13, 14];
 
   expect(xSubtract(array1, 5)).toStrictEqual(
@@ -19,7 +19,7 @@ test('test xSubtract of 2 a constant', () => {
   );
 });
 
-test('test xSubtract of array and floatarray', () => {
+test('xSubtract of array and floatarray', () => {
   const array1 = new Float64Array([10, 11, 12, 13, 14]);
   const array2 = [5, 4, 3, 2, 1];
 

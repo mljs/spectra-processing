@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 
 import { reimAbsolute } from '../reimAbsolute.ts';
 
-test('test reimAbsolute', () => {
+test('reimAbsolute', () => {
   const re = [0, 3, 6];
   const im = [0, 4, 8];
   const result = reimAbsolute({ re, im });

@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 
 import { xRotate } from '../xRotate.ts';
 
-test('test xRotate positive', () => {
+test('xRotate positive', () => {
   const array = [10, 11, 12, 13, 14];
 
   expect(xRotate(array, 0)).toStrictEqual(
@@ -19,7 +19,7 @@ test('test xRotate positive', () => {
   );
 });
 
-test('test xRotate negative', () => {
+test('xRotate negative', () => {
   const array = [10, 11, 12, 13, 14];
 
   expect(xRotate(array, -2)).toStrictEqual(

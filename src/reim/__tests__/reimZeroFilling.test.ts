@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 
 import { reimZeroFilling } from '../reimZeroFilling.ts';
 
-test('test xreimZeroFilling over', () => {
+test('xreimZeroFilling over', () => {
   const re = [0, 1, 2, 3];
   const im = [4, 5, 6, 7];
   const result = reimZeroFilling({ re, im }, 6);
@@ -16,7 +16,7 @@ test('test xreimZeroFilling over', () => {
   });
 });
 
-test('test xreimZeroFilling equal', () => {
+test('xreimZeroFilling equal', () => {
   const re = [0, 1, 2, 3];
   const im = [4, 5, 6, 7];
   const result = reimZeroFilling({ re, im }, 4);
@@ -29,7 +29,7 @@ test('test xreimZeroFilling equal', () => {
   });
 });
 
-test('test xreimZeroFilling under', () => {
+test('xreimZeroFilling under', () => {
   const re = [0, 1, 2, 3];
   const im = [4, 5, 6, 7];
   const result = reimZeroFilling({ re, im }, 2);
