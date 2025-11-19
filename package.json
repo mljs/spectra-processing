@@ -6,6 +6,7 @@
   "keywords": [],
   "author": "Luc Patiny",
   "type": "module",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": "./lib/index.js",
     "./matrix": "./lib/matrix/index.js",
