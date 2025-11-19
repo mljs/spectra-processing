@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.18.1](https://github.com/mljs/spectra-processing/compare/v14.18.0...v14.18.1) (2025-11-19)
+
+
+### Bug Fixes
+
+* add "types" field to package.json ([#333](https://github.com/mljs/spectra-processing/issues/333)) ([fa77eb0](https://github.com/mljs/spectra-processing/commit/fa77eb06e2825b6ffca7715779ccdfd5640acc52))
+
 ## [14.18.0](https://github.com/mljs/spectra-processing/compare/v14.17.1...v14.18.0) (2025-09-25)
 
 
