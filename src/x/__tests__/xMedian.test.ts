@@ -31,5 +31,5 @@ test('should return the median with typed array', () => {
 });
 
 test('should throw on invalid value', () => {
-  expect(() => xMedian([])).toThrow(/input must not be empty/);
+  expect(() => xMedian([])).toThrowError(/input must not be empty/);
 });

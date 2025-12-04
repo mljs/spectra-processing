@@ -27,7 +27,7 @@ test('should return one peak', () => {
 test('should throw error', () => {
   const spectrum = { x: [1, 5], y: [1, 2, 3, 4] };
 
-  expect(() => xyGetNMaxY(spectrum, 1)).toThrow(
+  expect(() => xyGetNMaxY(spectrum, 1)).toThrowError(
     'the x and y arrays must have the same length',
   );
 });

@@ -30,8 +30,8 @@ test('xreimZeroFilling equal', () => {
 });
 
 test('xreimZeroFilling under', () => {
-  const re = [0, 1, 2, 3];
-  const im = [4, 5, 6, 7];
+  const re = new Float64Array([0, 1, 2, 3]);
+  const im = new Float64Array([4, 5, 6, 7]);
   const result = reimZeroFilling({ re, im }, 2);
   const newRe = Array.from(result.re);
   const newIm = Array.from(result.im);

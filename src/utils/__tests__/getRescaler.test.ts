@@ -37,7 +37,7 @@ test('getRescale with wrong min / max, no clamp', () => {
     clamp: false,
   });
 
-  expect(() => rescaler(2)).toThrow('Value 2 is out of range [0, 1]');
+  expect(() => rescaler(2)).toThrowError('Value 2 is out of range [0, 1]');
 });
 
 test('getRescale with wrong min / max and logartihmic', () => {

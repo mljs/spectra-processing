@@ -18,5 +18,5 @@ test('should return the mode', () => {
 });
 
 test('should throw on invalid value', () => {
-  expect(() => xMode([])).toThrow(/input must not be empty/);
+  expect(() => xMode([])).toThrowError(/input must not be empty/);
 });

@@ -21,5 +21,5 @@ test('different length', () => {
 
   expect(() => {
     return xMeanAbsoluteError(array1, array2);
-  }).toThrow(/length of array1 and array2 must be identical/);
+  }).toThrowError(/length of array1 and array2 must be identical/);
 });
