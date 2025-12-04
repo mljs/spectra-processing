@@ -1,3 +1,5 @@
+import type { DoubleArray } from 'cheminfo-types';
+
 import type { DataReIm } from '../types/index.ts';
 
 /**
@@ -8,7 +10,10 @@ import type { DataReIm } from '../types/index.ts';
  * truncated arrays if totalLength is smaller current length or
  * the same input if totalLength is equal that current length
  */
-export function reimZeroFilling(data: DataReIm, totalLength: number): DataReIm {
+export function reimZeroFilling<ArrayType extends DoubleArray>(
+  data: DataReIm<ArrayType>,
+  totalLength: number,
+): DataReIm<ArrayType | Float64Array<ArrayBuffer>> {
   if (!Number.isInteger(totalLength) || totalLength < 0) {
     throw new RangeError('totalLength must be a non-negative integer');
   }
@@ -20,8 +25,8 @@ export function reimZeroFilling(data: DataReIm, totalLength: number): DataReIm {
 
   if (length > totalLength) {
     return {
-      re: re.slice(0, totalLength),
-      im: im.slice(0, totalLength),
+      re: re.slice(0, totalLength) as ArrayType,
+      im: im.slice(0, totalLength) as ArrayType,
     };
   }
 
