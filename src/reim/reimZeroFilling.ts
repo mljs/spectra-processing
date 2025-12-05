@@ -1,6 +1,8 @@
 import type { DoubleArray } from 'cheminfo-types';
 
 import type { DataReIm } from '../types/index.ts';
+import type { DoubleArrayConstructor } from '../utils/createArray.ts';
+import { createDoubleArray } from '../utils/createArray.ts';
 
 /**
  * This function make a zero filling to re and im part.
@@ -13,7 +15,7 @@ import type { DataReIm } from '../types/index.ts';
 export function reimZeroFilling<ArrayType extends DoubleArray>(
   data: DataReIm<ArrayType>,
   totalLength: number,
-): DataReIm<ArrayType | Float64Array<ArrayBuffer>> {
+): DataReIm<ArrayType> {
   if (!Number.isInteger(totalLength) || totalLength < 0) {
     throw new RangeError('totalLength must be a non-negative integer');
   }
@@ -30,14 +32,22 @@ export function reimZeroFilling<ArrayType extends DoubleArray>(
     };
   }
 
-  const newRE = new Float64Array(totalLength);
-  const newIM = new Float64Array(totalLength);
+  const newRE = createDoubleArray(
+    re.constructor as DoubleArrayConstructor,
+    totalLength,
+  );
+  const newIM = createDoubleArray(
+    im.constructor as DoubleArrayConstructor,
+    totalLength,
+  );
 
-  newRE.set(re);
-  newIM.set(im);
+  for (let i = 0; i < re.length; i++) {
+    newRE[i] = re[i];
+    newIM[i] = im[i];
+  }
 
   return {
-    re: newRE,
-    im: newIM,
+    re: newRE as ArrayType,
+    im: newIM as ArrayType,
   };
 }
