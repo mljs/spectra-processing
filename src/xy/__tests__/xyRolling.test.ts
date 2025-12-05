@@ -8,7 +8,7 @@ test('xyRolling', () => {
     y: [10, 20, 30, 40, 50],
   };
 
-  expect(() => xyRolling(points)).toThrow('fct must be a function');
+  expect(() => xyRolling(points)).toThrowError('fct must be a function');
 
   expect(xyRolling(points, () => 1, { window: 3 })).toStrictEqual({
     x: [2, 3, 4],

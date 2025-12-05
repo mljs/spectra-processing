@@ -64,5 +64,5 @@ test('should throw RangeError for out-of-range indices', () => {
     duplicate: true,
   };
 
-  expect(() => matrixGetSubMatrix(matrix, options)).toThrow(RangeError);
+  expect(() => matrixGetSubMatrix(matrix, options)).toThrowError(RangeError);
 });

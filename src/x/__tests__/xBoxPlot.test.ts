@@ -92,7 +92,7 @@ test('xBoxPlot odd small', () => {
 test('xBoxPlot too small', () => {
   const array: number[] = [];
 
-  expect(() => xBoxPlot(array)).toThrow('input must not be empty');
+  expect(() => xBoxPlot(array)).toThrowError('input must not be empty');
 });
 
 test('xBoxPlot with one element', () => {

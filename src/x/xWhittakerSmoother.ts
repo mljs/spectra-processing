@@ -12,8 +12,7 @@ import { calculateAdaptiveWeights } from '../utils/index.ts';
 import { xEnsureFloat64 } from './xEnsureFloat64.ts';
 import { xMultiply } from './xMultiply.ts';
 
-export interface XWhittakerSmootherOptions
-  extends CalculateAdaptiveWeightsOptions {
+export interface XWhittakerSmootherOptions extends CalculateAdaptiveWeightsOptions {
   /**
    * Factor of weights matrix in -> [I + lambda D'D]z = x
    * @default 100

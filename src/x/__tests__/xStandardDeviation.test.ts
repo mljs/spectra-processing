@@ -31,5 +31,7 @@ test('one element', () => {
 test('empty array', () => {
   const data: number[] = [];
 
-  expect(() => xStandardDeviation(data)).toThrow('input must not be empty');
+  expect(() => xStandardDeviation(data)).toThrowError(
+    'input must not be empty',
+  );
 });

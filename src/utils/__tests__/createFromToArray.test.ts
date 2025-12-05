@@ -112,5 +112,5 @@ test('case when we choose a distribution other than uniform or log', () => {
       // @ts-expect-error Testing bad argument.
       distribution: 'other',
     });
-  }).toThrow(Error);
+  }).toThrowError(Error);
 });
