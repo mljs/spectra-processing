@@ -15,9 +15,8 @@ test('xreimZeroFilling over', () => {
     im: [4, 5, 6, 7, 0, 0],
   });
 
-  result.re.splice(0, 1, 1);
-
-  expect(Array.from(result.re)).toStrictEqual([1, 1, 2, 3, 0, 0]);
+  expect(result.re).toBeInstanceOf(Array);
+  expect(result.im).toBeInstanceOf(Array);
 });
 
 test('xreimZeroFilling over with Float64', () => {
@@ -33,9 +32,8 @@ test('xreimZeroFilling over with Float64', () => {
     im: [4, 5, 6, 7, 0, 0],
   });
 
-  result.re.set([1], 0);
-
-  expect(Array.from(result.re)).toStrictEqual([1, 1, 2, 3, 0, 0]);
+  expect(result.re).toBeInstanceOf(Float64Array);
+  expect(result.im).toBeInstanceOf(Float64Array);
 });
 
 test('xreimZeroFilling equal', () => {
