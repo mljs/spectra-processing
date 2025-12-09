@@ -17,7 +17,7 @@ test('simple', () => {
 test('matrixAutoCorrelation too small', () => {
   const matrix = [[0]];
 
-  expect(() => matrixAutoCorrelation(matrix)).toThrow(
+  expect(() => matrixAutoCorrelation(matrix)).toThrowError(
     'can not calculate info if matrix contains less than 2 rows',
   );
 });

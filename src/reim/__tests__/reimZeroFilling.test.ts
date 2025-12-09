@@ -14,6 +14,26 @@ test('xreimZeroFilling over', () => {
     re: [0, 1, 2, 3, 0, 0],
     im: [4, 5, 6, 7, 0, 0],
   });
+
+  expect(result.re).toBeInstanceOf(Array);
+  expect(result.im).toBeInstanceOf(Array);
+});
+
+test('xreimZeroFilling over with Float64', () => {
+  const re = new Float64Array([0, 1, 2, 3]);
+  const im = new Float64Array([4, 5, 6, 7]);
+  const result = reimZeroFilling({ re, im }, 6);
+
+  const newRe = Array.from(result.re);
+  const newIm = Array.from(result.im);
+
+  expect({ re: newRe, im: newIm }).toStrictEqual({
+    re: [0, 1, 2, 3, 0, 0],
+    im: [4, 5, 6, 7, 0, 0],
+  });
+
+  expect(result.re).toBeInstanceOf(Float64Array);
+  expect(result.im).toBeInstanceOf(Float64Array);
 });
 
 test('xreimZeroFilling equal', () => {
@@ -30,8 +50,8 @@ test('xreimZeroFilling equal', () => {
 });
 
 test('xreimZeroFilling under', () => {
-  const re = [0, 1, 2, 3];
-  const im = [4, 5, 6, 7];
+  const re = new Float64Array([0, 1, 2, 3]);
+  const im = new Float64Array([4, 5, 6, 7]);
   const result = reimZeroFilling({ re, im }, 2);
   const newRe = Array.from(result.re);
   const newIm = Array.from(result.im);

@@ -5,7 +5,7 @@ import { xRobustDistributionStats } from '../xRobustDistributionStats.ts';
 test('empty array', () => {
   const data: number[] = [];
 
-  expect(() => xRobustDistributionStats(data)).toThrow(
+  expect(() => xRobustDistributionStats(data)).toThrowError(
     'input must not be empty',
   );
 });

@@ -15,7 +15,7 @@ test('should return a rescaled array', () => {
 });
 
 test('should throw min == max', () => {
-  expect(() => xRescale([1, 1])).toThrow(
+  expect(() => xRescale([1, 1])).toThrowError(
     /minimum and maximum input values are equal\. Cannot rescale a constant array/,
   );
 });
@@ -58,19 +58,19 @@ test('should work with custom min/max', () => {
 });
 
 test('should throw on bad inputs', () => {
-  expect(() => xRescale([0, 1, 2], { min: 2 })).toThrow(
+  expect(() => xRescale([0, 1, 2], { min: 2 })).toThrowError(
     /min option must be smaller than max option/,
   );
-  expect(() => xRescale([0, 1, 2], { max: -1 })).toThrow(
+  expect(() => xRescale([0, 1, 2], { max: -1 })).toThrowError(
     /min option must be smaller than max option/,
   );
-  expect(() => xRescale([0, 1, 2], { min: 2, max: 0 })).toThrow(
+  expect(() => xRescale([0, 1, 2], { min: 2, max: 0 })).toThrowError(
     /min option must be smaller than max option/,
   );
-  expect(() => xRescale([0, 1, 2], { min: 1, max: 1 })).toThrow(
+  expect(() => xRescale([0, 1, 2], { min: 1, max: 1 })).toThrowError(
     /min option must be smaller than max option/,
   );
-  expect(() => xRescale([], { min: 0, max: 1 })).toThrow(
+  expect(() => xRescale([], { min: 0, max: 1 })).toThrowError(
     /input must not be empty/,
   );
 });

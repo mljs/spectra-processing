@@ -119,7 +119,7 @@ test('should throw unknown option x', () => {
   const data2 = { x: [2, 3, 4], y: [1, 1, 1] };
 
   // @ts-expect-error Testing wrong option.
-  expect(() => xyAlign(data1, data2, { x: 'hey' })).toThrow(
+  expect(() => xyAlign(data1, data2, { x: 'hey' })).toThrowError(
     'unknown x option value: hey',
   );
 });

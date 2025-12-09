@@ -30,10 +30,10 @@ test('xMeanWeighted', () => {
     xMeanWeighted([3, 2, 1], [1, 1, 1], { fromIndex: 1, toIndex: 1 }),
   ).toBe(2);
   // expect to throw an error if the length of the arrays are not the same
-  expect(() => xMeanWeighted([1, 2, 3], [1, 1])).toThrow(
+  expect(() => xMeanWeighted([1, 2, 3], [1, 1])).toThrowError(
     'array and weights must have the same length',
   );
-  expect(() => xMeanWeighted([1, 2, 3], [0, 0, 0])).toThrow(
+  expect(() => xMeanWeighted([1, 2, 3], [0, 0, 0])).toThrowError(
     'sum of weights must be > 0',
   );
 });

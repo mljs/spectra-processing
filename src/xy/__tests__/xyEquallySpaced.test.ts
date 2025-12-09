@@ -38,7 +38,7 @@ test('testing 1 points', () => {
         numberOfPoints: 1,
       },
     ),
-  ).toThrow('greater than 1');
+  ).toThrowError('greater than 1');
 });
 
 test('large file should not be slow', () => {
@@ -68,7 +68,7 @@ test('non growing', () => {
         numberOfPoints: 5,
       },
     ),
-  ).toThrow('x must be a growing series');
+  ).toThrowError('x must be a growing series');
 });
 
 test('equallySpaced smooth', () => {
@@ -204,7 +204,7 @@ test('equallySpaced slot', () => {
         variant: 'slot',
       },
     );
-  }).toThrow('x must be a growing series');
+  }).toThrowError('x must be a growing series');
 
   x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   y = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0];
@@ -238,7 +238,7 @@ test('changing from and to', () => {
         variant: 'smooth',
       },
     );
-  }).toThrow('from should be larger than to');
+  }).toThrowError('from should be larger than to');
 });
 
 test('testing exclusions', () => {
@@ -277,7 +277,7 @@ test('testing inverted exclusions', () => {
         exclusions: [{ from: 7, to: 2 }],
       },
     );
-  }).toThrow('from should be larger than to');
+  }).toThrowError('from should be larger than to');
 });
 
 test('testing zones', () => {

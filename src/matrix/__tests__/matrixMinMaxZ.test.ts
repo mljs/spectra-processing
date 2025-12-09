@@ -16,5 +16,5 @@ test('basic', () => {
 test('zero', () => {
   expect(() => {
     matrixMinMaxZ([[]]);
-  }).toThrow('matrix must contain data');
+  }).toThrowError('matrix must contain data');
 });
