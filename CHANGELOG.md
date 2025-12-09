@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.18.2](https://github.com/mljs/spectra-processing/compare/v14.18.1...v14.18.2) (2025-12-09)
+
+
+### Bug Fixes
+
+* keep input type in reimZeroFilling ([#336](https://github.com/mljs/spectra-processing/issues/336)) ([df54ad6](https://github.com/mljs/spectra-processing/commit/df54ad6e4944ca85542066ad28743c756168a273))
+
 ## [14.18.1](https://github.com/mljs/spectra-processing/compare/v14.18.0...v14.18.1) (2025-11-19)
 
 
