@@ -1,4 +1,5 @@
-import type { DoubleMatrix } from '../types/index.ts';
+import type { DoubleMatrix } from 'cheminfo-types';
+
 import { xCorrelation } from '../x/index.ts';
 
 export function matrixAutoCorrelation(

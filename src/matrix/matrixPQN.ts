@@ -1,6 +1,6 @@
+import type { DoubleMatrix } from 'cheminfo-types';
 import { Matrix } from 'ml-matrix';
 
-import type { DoubleMatrix } from '../types/index.ts';
 import { xMedian } from '../x/index.ts';
 
 export interface MatrixPQNOptions {

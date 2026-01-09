@@ -1,4 +1,4 @@
-import type { DoubleMatrix } from '../types/index.ts';
+import type { DoubleMatrix } from 'cheminfo-types';
 
 import { matrixCheck } from './matrixCheck.ts';
 

@@ -1,6 +1,5 @@
-import type { DataXY } from 'cheminfo-types';
+import type { DataXY, DoubleMatrix } from 'cheminfo-types';
 
-import type { DoubleMatrix } from '../types/index.js';
 import type { XHistogramOptions } from '../x/index.ts';
 import { xHistogram } from '../x/index.ts';
 

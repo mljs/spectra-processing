@@ -1,5 +1,4 @@
-import type { DoubleMatrix } from '../types/index.ts';
-
+import type { DoubleMatrix } from 'cheminfo-types';
 /**
  * Get min and max of the absolute values of Z.
  * @param matrix - matrix [rows][cols].

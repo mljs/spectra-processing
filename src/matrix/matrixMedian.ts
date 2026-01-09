@@ -1,4 +1,5 @@
-import type { DoubleMatrix } from '../types/index.ts';
+import type { DoubleMatrix } from 'cheminfo-types';
+
 import { xMedian } from '../x/index.ts';
 
 import { matrixToArray } from './matrixToArray.ts';

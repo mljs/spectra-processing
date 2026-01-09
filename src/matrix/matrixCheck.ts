@@ -1,4 +1,4 @@
-import type { DoubleMatrix } from '../types/index.ts';
+import type { DoubleMatrix } from 'cheminfo-types';
 
 export function matrixCheck(data: DoubleMatrix): void {
   if (data.length === 0 || data[0].length === 0) {
