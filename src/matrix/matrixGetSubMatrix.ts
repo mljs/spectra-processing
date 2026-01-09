@@ -39,10 +39,10 @@ export function matrixGetSubMatrix(
   options: MatrixGetSubMatrixOptions,
 ): Float64Array[] {
   const {
-    startRow = 0,
-    endRow = matrix.length - 1,
-    startColumn = 0,
-    endColumn = matrix[0].length - 1,
+    startRow,
+    endRow,
+    startColumn,
+    endColumn,
     duplicate = true,
   } = options;
   matrixCheckRanges(matrix, { startColumn, startRow, endColumn, endRow });
