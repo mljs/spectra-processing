@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.19.0](https://github.com/mljs/spectra-processing/compare/v14.18.2...v14.19.0) (2026-01-09)
+
+
+### Features
+
+* improve type of xyEnsureGrowingX and xyGrowingX ([95f8b73](https://github.com/mljs/spectra-processing/commit/95f8b73f2d1e711ad0ac0969b01867e693cc1aab))
+
 ## [14.18.2](https://github.com/mljs/spectra-processing/compare/v14.18.1...v14.18.2) (2025-12-09)
 
 
