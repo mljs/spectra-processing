@@ -10,8 +10,7 @@ test('xyObjectSlotX', () => {
     { x: 1.9, y: 4 },
   ];
 
-  const expected = [];
-  expected.push({ x: 1, y: 6 }, { x: 2, y: 4 });
+  const expected = [ { x: 1, y: 6 }, { x: 2, y: 4 }];
 
   expect(xyObjectSlotX(arrayXY)).toStrictEqual(expected);
 

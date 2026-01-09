@@ -34,18 +34,16 @@ export function xyCumulativeDistributionStatistics(
   }
 
   const result: XYCumulativeDistributionStatisticsResult = {
-    x0: 0,
+    x0: x[0],
     x25: 0,
     x50: 0,
     x75: 0,
-    x100: 0,
+    x100: x.at(-1) as number,
     xMode: 0,
     xMean: 0,
   };
 
   // need to find the x values closest to STEPS/100
-  result.x0 = x[0];
-  result.x100 = x.at(-1) as number;
 
   let currentStep = 0;
   breakPoint: for (let i = 1; i < cumulativeSum.length; i++) {
