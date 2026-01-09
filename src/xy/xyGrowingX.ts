@@ -1,10 +1,12 @@
-import type { DataXY } from 'cheminfo-types';
+import type { DataXY, NumberArray } from 'cheminfo-types';
 
 /**
  * Order object of array, x has to be monotone. Ensure x is growing
  * @param data - Object of kind {x:[], y:[]}.
  */
-export function xyGrowingX(data: DataXY): DataXY {
+export function xyGrowingX<DataType extends NumberArray = NumberArray>(
+  data: DataXY<DataType>,
+): DataXY<DataType> {
   const { x, y } = data;
 
   if (x.length !== y.length) {
@@ -14,7 +16,7 @@ export function xyGrowingX(data: DataXY): DataXY {
   if (x.length < 2 || x[0] < (x.at(-1) as number)) return data;
 
   return {
-    x: x.toReversed(),
-    y: y.toReversed(),
+    x: x.toReversed() as DataType,
+    y: y.toReversed() as DataType,
   };
 }
