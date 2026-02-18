@@ -5,11 +5,11 @@ import { xRotate } from '../x/index.ts';
 
 let output: Float64Array | undefined;
 let complexArray: Float64Array | undefined;
+let fft: FFT | undefined;
 export interface ReimFFTOptions {
   inverse?: boolean;
   applyZeroShift?: boolean;
   inPlace?: boolean;
-  fft?: FFT;
 }
 
 /**
@@ -26,12 +26,9 @@ export function reimFFT(
   const size = re.length;
   const csize = size << 1;
 
-  const {
-    inPlace = false,
-    fft = new FFT(size),
-    inverse = false,
-    applyZeroShift = false,
-  } = options;
+  const { inPlace = false, inverse = false, applyZeroShift = false } = options;
+
+  if (fft?.size !== size) fft = new FFT(size);
 
   if (complexArray?.length !== csize) complexArray = new Float64Array(csize);
   for (let i = 0; i < csize; i += 2) {
@@ -74,3 +71,5 @@ function zeroShift(
     : Math.floor(data.length / 2);
   return xRotate(data, middle);
 }
+
+export { default as FFT } from 'fft.js';
