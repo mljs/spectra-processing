@@ -12,4 +12,17 @@ test('reimFFT', () => {
   });
 
   expect(inverse.re).toStrictEqual(re);
+  expect(inverse.im).toStrictEqual(im);
+  // check pointer are different
+  expect(inverse.re).not.toBe(re);
+  expect(inverse.im).not.toBe(im);
+
+  const transformed2 = reimFFT({ re, im }, { inPlace: true });
+  const inverse2 = reimFFT(transformed2, { inverse: true, inPlace: true });
+
+  expect(inverse2.re).toStrictEqual(re);
+  expect(inverse2.im).toStrictEqual(im);
+  // check pointer are the same
+  expect(inverse2.re).toBe(re);
+  expect(inverse2.im).toBe(im);
 });
