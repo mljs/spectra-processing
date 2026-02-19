@@ -1,5 +1,6 @@
 export * from './reim/index.ts';
 export * from './reimArray/index.ts';
+export * from './reimMatrix/index.ts';
 
 export * from './x/index.ts';
 
