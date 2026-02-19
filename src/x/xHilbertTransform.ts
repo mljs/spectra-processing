@@ -42,29 +42,39 @@ export function xHilbertTransform(
  * @returns A new vector with 90 degree shift regarding the phase of the original function
  * @see DOI: 10.1109/TAU.1970.1162139 "Discrete Hilbert transform"
  */
-function hilbertTransformWithFFT(
-  array: NumberArray,
-): Float64Array<ArrayBuffer> {
+function hilbertTransformWithFFT(array: NumberArray) {
   const length = array.length;
   const fft = new FFT(length);
 
-  const fftResult = new Float64Array(length * 2);
-  fft.realTransform(fftResult, array);
-  fft.completeSpectrum(fftResult);
-  const multiplier = new Float64Array(length);
-  for (let i = 1; i < length; i++) {
-    multiplier[i] = Math.sign(length / 2 - i);
+  // Single reusable buffer for FFT spectrum
+  const spectrum = new Float64Array(length * 2);
+
+  // Forward FFT
+  fft.realTransform(spectrum, array);
+  fft.completeSpectrum(spectrum);
+
+  const half = length >> 1;
+
+  // Zero Nyquist
+  const j = half << 1;
+  spectrum[j] = 0;
+  spectrum[j + 1] = 0;
+
+  // Negate negative frequencies
+  for (let j = (half + 1) << 1; j < spectrum.length; j += 2) {
+    spectrum[j] = -spectrum[j];
+    spectrum[j + 1] = -spectrum[j + 1];
   }
-  for (let i = 0; i < length; i++) {
-    fftResult[i * 2] *= multiplier[i];
-    fftResult[i * 2 + 1] *= multiplier[i];
-  }
+
   const hilbertSignal = new Float64Array(length * 2);
-  fft.inverseTransform(hilbertSignal, fftResult);
+  fft.inverseTransform(hilbertSignal, spectrum);
+
+  // Extract imaginary part directly into output
   const result = new Float64Array(length);
   for (let i = 0; i < length; i++) {
     result[i] = hilbertSignal[i * 2 + 1];
   }
+
   return result;
 }
 
