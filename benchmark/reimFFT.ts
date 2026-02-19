@@ -18,7 +18,9 @@ const spectra = Array.from({ length: count }, () => {
 
 // Warmup
 for (const s of spectra) reimFFT(s);
+for (const s of spectra) reimFFT(s, { inPlace: true });
 reimArrayFFT(spectra);
+reimArrayFFT(spectra, { inPlace: true });
 
 const targetMs = 5000;
 
@@ -41,6 +43,25 @@ const targetMs = 5000;
 
 console.log('');
 
+// --- reimFFT inPlace (loop over each spectrum individually) ---
+{
+  let iterations = 0;
+  const start = performance.now();
+  console.time('reimFFT inPlace (loop)');
+  while (performance.now() - start < targetMs) {
+    for (const s of spectra) reimFFT(s, { inPlace: true });
+    iterations++;
+  }
+  const elapsed = performance.now() - start;
+  console.timeEnd('reimFFT inPlace (loop)');
+  console.log(
+    `  ${iterations * count} total FFTs, ${count} spectra × ${iterations} rounds`,
+  );
+  console.log(`  ${(elapsed / (iterations * count)).toFixed(3)} ms per FFT`);
+}
+
+console.log('');
+
 // --- reimArrayFFT (single call for the whole array) ---
 {
   let iterations = 0;
@@ -52,6 +73,25 @@ console.log('');
   }
   const elapsed = performance.now() - start;
   console.timeEnd('reimArrayFFT');
+  console.log(
+    `  ${iterations * count} total FFTs, ${count} spectra × ${iterations} rounds`,
+  );
+  console.log(`  ${(elapsed / (iterations * count)).toFixed(3)} ms per FFT`);
+}
+
+console.log('');
+
+// --- reimArrayFFT inPlace (single call for the whole array) ---
+{
+  let iterations = 0;
+  const start = performance.now();
+  console.time('reimArrayFFT inPlace');
+  while (performance.now() - start < targetMs) {
+    reimArrayFFT(spectra, { inPlace: true });
+    iterations++;
+  }
+  const elapsed = performance.now() - start;
+  console.timeEnd('reimArrayFFT inPlace');
   console.log(
     `  ${iterations * count} total FFTs, ${count} spectra × ${iterations} rounds`,
   );
