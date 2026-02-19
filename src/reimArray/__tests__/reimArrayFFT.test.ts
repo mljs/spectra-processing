@@ -125,8 +125,14 @@ test('reimArrayFFT: throws RangeError indicating which element has the wrong len
 
 test('reimArrayFFT inPlace: result shares re/im references with input', () => {
   const spectra = [
-    { re: Float64Array.from([1, 0, 0, 0]), im: Float64Array.from([0, 0, 0, 0]) },
-    { re: Float64Array.from([0, 3, 6, 5]), im: Float64Array.from([0, 4, 8, 3]) },
+    {
+      re: Float64Array.from([1, 0, 0, 0]),
+      im: Float64Array.from([0, 0, 0, 0]),
+    },
+    {
+      re: Float64Array.from([0, 3, 6, 5]),
+      im: Float64Array.from([0, 4, 8, 3]),
+    },
   ];
 
   const results = reimArrayFFT(spectra, { inPlace: true });
@@ -139,8 +145,14 @@ test('reimArrayFFT inPlace: result shares re/im references with input', () => {
 
 test('reimArrayFFT inPlace: round-trip restores original values', () => {
   const spectra = [
-    { re: Float64Array.from([0, 3, 6, 5]), im: Float64Array.from([0, 4, 8, 3]) },
-    { re: Float64Array.from([1, 2, 3, 4]), im: Float64Array.from([0, 1, 0, 1]) },
+    {
+      re: Float64Array.from([0, 3, 6, 5]),
+      im: Float64Array.from([0, 4, 8, 3]),
+    },
+    {
+      re: Float64Array.from([1, 2, 3, 4]),
+      im: Float64Array.from([0, 1, 0, 1]),
+    },
   ];
   const originals = spectra.map((s) => ({
     re: Float64Array.from(s.re),
