@@ -10,6 +10,7 @@ export * from './matrixColumnsCorrelation.ts';
 export * from './matrixCreateEmpty.ts';
 export * from './matrixCuthillMckee.ts';
 export * from './matrixGetSubMatrix.ts';
+export * from './matrixHilbertTransform.ts';
 export * from './matrixHistogram.ts';
 export * from './matrixMaxAbsoluteZ.ts';
 export * from './matrixMedian.ts';
