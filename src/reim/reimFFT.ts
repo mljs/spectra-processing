@@ -1,7 +1,8 @@
 import FFT from 'fft.js';
 
 import type { DataReIm } from '../types/index.ts';
-import { xRotate } from '../x/index.ts';
+
+import { zeroShift } from './zeroShift.ts';
 
 export interface ReimFFTOptions {
   inverse?: boolean;
@@ -48,14 +49,4 @@ export function reimFFT(
   }
 
   return { re: newRe, im: newIm };
-}
-
-function zeroShift(
-  data: Float64Array,
-  inverse?: boolean,
-): Float64Array<ArrayBuffer> {
-  const middle = inverse
-    ? Math.ceil(data.length / 2)
-    : Math.floor(data.length / 2);
-  return xRotate(data, middle);
 }
