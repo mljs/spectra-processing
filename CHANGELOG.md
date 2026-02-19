@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.21.0](https://github.com/mljs/spectra-processing/compare/v14.20.0...v14.21.0) (2026-02-19)
+
+
+### Features
+
+* add reimMatrixFFT ([f9a140e](https://github.com/mljs/spectra-processing/commit/f9a140e492c23b7b0ba94f88152384bafe684aa9))
+
 ## [14.20.0](https://github.com/mljs/spectra-processing/compare/v14.19.0...v14.20.0) (2026-02-19)
 
 
