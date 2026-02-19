@@ -122,3 +122,36 @@ test('reimArrayFFT: throws RangeError indicating which element has the wrong len
 
   expect(() => reimArrayFFT(spectra)).toThrowError(/element 2/);
 });
+
+test('reimArrayFFT inPlace: result shares re/im references with input', () => {
+  const spectra = [
+    { re: Float64Array.from([1, 0, 0, 0]), im: Float64Array.from([0, 0, 0, 0]) },
+    { re: Float64Array.from([0, 3, 6, 5]), im: Float64Array.from([0, 4, 8, 3]) },
+  ];
+
+  const results = reimArrayFFT(spectra, { inPlace: true });
+
+  expect(results[0].re).toBe(spectra[0].re);
+  expect(results[0].im).toBe(spectra[0].im);
+  expect(results[1].re).toBe(spectra[1].re);
+  expect(results[1].im).toBe(spectra[1].im);
+});
+
+test('reimArrayFFT inPlace: round-trip restores original values', () => {
+  const spectra = [
+    { re: Float64Array.from([0, 3, 6, 5]), im: Float64Array.from([0, 4, 8, 3]) },
+    { re: Float64Array.from([1, 2, 3, 4]), im: Float64Array.from([0, 1, 0, 1]) },
+  ];
+  const originals = spectra.map((s) => ({
+    re: Float64Array.from(s.re),
+    im: Float64Array.from(s.im),
+  }));
+
+  reimArrayFFT(spectra, { inPlace: true, applyZeroShift: true });
+  reimArrayFFT(spectra, { inPlace: true, inverse: true, applyZeroShift: true });
+
+  for (let i = 0; i < spectra.length; i++) {
+    expect(spectra[i].re).toStrictEqual(originals[i].re);
+    expect(spectra[i].im).toStrictEqual(originals[i].im);
+  }
+});

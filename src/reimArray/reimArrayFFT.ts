@@ -6,6 +6,11 @@ import type { DataReIm } from '../types/index.ts';
 export interface ReimArrayFFTOptions {
   inverse?: boolean;
   applyZeroShift?: boolean;
+  /**
+   * Write the result back into the input arrays instead of allocating new ones.
+   * @default false
+   */
+  inPlace?: boolean;
 }
 
 /**
@@ -22,7 +27,7 @@ export function reimArrayFFT(
 ): Array<DataReIm<Float64Array>> {
   if (data.length === 0) return [];
 
-  const { inverse = false, applyZeroShift = false } = options;
+  const { inverse = false, applyZeroShift = false, inPlace = false } = options;
 
   const size = data[0].re.length;
   const csize = size << 1;
@@ -50,8 +55,8 @@ export function reimArrayFFT(
       complexArray[i + 1] = im[i >>> 1];
     }
 
-    const newRe = new Float64Array(size);
-    const newIm = new Float64Array(size);
+    const outRe = inPlace ? re : new Float64Array(size);
+    const outIm = inPlace ? im : new Float64Array(size);
 
     if (inverse) {
       const input = applyZeroShift
@@ -59,19 +64,19 @@ export function reimArrayFFT(
         : complexArray;
       fft.inverseTransform(output, input);
       for (let i = 0; i < csize; i += 2) {
-        newRe[i >>> 1] = output[i];
-        newIm[i >>> 1] = output[i + 1];
+        outRe[i >>> 1] = output[i];
+        outIm[i >>> 1] = output[i + 1];
       }
     } else {
       fft.transform(output, complexArray);
       const source = applyZeroShift ? zeroShift(output) : output;
       for (let i = 0; i < csize; i += 2) {
-        newRe[i >>> 1] = source[i];
-        newIm[i >>> 1] = source[i + 1];
+        outRe[i >>> 1] = source[i];
+        outIm[i >>> 1] = source[i + 1];
       }
     }
 
-    results[j] = { re: newRe, im: newIm };
+    results[j] = { re: outRe as Float64Array, im: outIm as Float64Array };
   }
 
   return results;
