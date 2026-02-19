@@ -1,5 +1,14 @@
 # Changelog
 
+## [14.20.0](https://github.com/mljs/spectra-processing/compare/v14.19.0...v14.20.0) (2026-02-19)
+
+
+### Features
+
+* add inPlace for reimArrayFFT and reimFFT ([9cda6b5](https://github.com/mljs/spectra-processing/commit/9cda6b501601bb3c190f47f342766a9563d6f6f2))
+* add reimArrayFFT ([9cda6b5](https://github.com/mljs/spectra-processing/commit/9cda6b501601bb3c190f47f342766a9563d6f6f2))
+* add reimArrayFFT ([9cda6b5](https://github.com/mljs/spectra-processing/commit/9cda6b501601bb3c190f47f342766a9563d6f6f2))
+
 ## [14.19.0](https://github.com/mljs/spectra-processing/compare/v14.18.2...v14.19.0) (2026-01-09)
 
 
