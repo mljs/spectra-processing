@@ -1,11 +1,17 @@
 import FFT from 'fft.js';
 
 import type { DataReIm } from '../types/index.ts';
-import { xRotate } from '../x/index.ts';
+
+import { zeroShift } from './zeroShift.ts';
 
 export interface ReimFFTOptions {
   inverse?: boolean;
   applyZeroShift?: boolean;
+  /**
+   * Write the result back into the input arrays instead of allocating new ones.
+   * @default false
+   */
+  inPlace?: boolean;
 }
 
 /**
@@ -18,7 +24,7 @@ export function reimFFT(
   data: DataReIm,
   options: ReimFFTOptions = {},
 ): DataReIm<Float64Array> {
-  const { inverse = false, applyZeroShift = false } = options;
+  const { inverse = false, applyZeroShift = false, inPlace = false } = options;
 
   const { re, im } = data;
   const size = re.length;
@@ -40,6 +46,14 @@ export function reimFFT(
     if (applyZeroShift) output = zeroShift(output);
   }
 
+  if (inPlace) {
+    for (let i = 0; i < csize; i += 2) {
+      re[i >>> 1] = output[i];
+      im[i >>> 1] = output[i + 1];
+    }
+    return data as DataReIm<Float64Array>;
+  }
+
   const newRe = new Float64Array(size);
   const newIm = new Float64Array(size);
   for (let i = 0; i < csize; i += 2) {
@@ -48,14 +62,4 @@ export function reimFFT(
   }
 
   return { re: newRe, im: newIm };
-}
-
-function zeroShift(
-  data: Float64Array,
-  inverse?: boolean,
-): Float64Array<ArrayBuffer> {
-  const middle = inverse
-    ? Math.ceil(data.length / 2)
-    : Math.floor(data.length / 2);
-  return xRotate(data, middle);
 }
