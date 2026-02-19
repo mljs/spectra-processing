@@ -2,12 +2,13 @@ import FFT from 'fft.js';
 
 import { isPowerOfTwo } from '../utils/index.ts';
 
+import { matrixCreateEmpty } from './matrixCreateEmpty.ts';
+
 export interface MatrixHilbertTransformOptions {
   /**
-   * Write the result back into the input arrays instead of allocating new ones.
-   * @default false
+   * Float64Array[] variable to store the result of hilbert transform
    */
-  inPlace?: boolean;
+  output?: Float64Array[];
 }
 
 /**
@@ -24,8 +25,6 @@ export function matrixHilbertTransform(
   options: MatrixHilbertTransformOptions = {},
 ): Float64Array[] {
   if (rows.length === 0) return [];
-
-  const { inPlace = false } = options;
 
   const size = rows[0].length;
 
@@ -51,7 +50,12 @@ export function matrixHilbertTransform(
   const fftResult = new Float64Array(size * 2);
   const hilbertSignal = new Float64Array(size * 2);
 
-  const results = new Array<Float64Array>(rows.length);
+  const {
+    output = matrixCreateEmpty({
+      nbRows: rows.length,
+      nbColumns: size,
+    }),
+  } = options;
 
   for (let j = 0; j < rows.length; j++) {
     const row = rows[j];
@@ -64,20 +68,18 @@ export function matrixHilbertTransform(
     fftResult[idx + 1] = 0;
 
     // Negate negative frequencies
-    for (let j = (half + 1) << 1; j < fftResult.length; j += 2) {
-      fftResult[j] = -fftResult[j];
-      fftResult[j + 1] = -fftResult[j + 1];
+    for (let c = (half + 1) << 1; c < fftResult.length; c += 2) {
+      fftResult[c] = -fftResult[c];
+      fftResult[c + 1] = -fftResult[c + 1];
     }
 
     fft.inverseTransform(hilbertSignal, fftResult);
 
-    const output = inPlace ? row : new Float64Array(size);
+    const result = output[j];
     for (let i = 0; i < size; i++) {
-      output[i] = hilbertSignal[i * 2 + 1];
+      result[i] = hilbertSignal[i * 2 + 1];
     }
-
-    results[j] = output;
   }
 
-  return results;
+  return output;
 }

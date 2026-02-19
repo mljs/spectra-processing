@@ -45,7 +45,7 @@ test('matrixHilbertTransform: throws RangeError when rows have different lengths
 
 test('matrixHilbertTransform inPlace: result shares references with input', () => {
   const rows = [Float64Array.from(row0), Float64Array.from(row1)];
-  const result = matrixHilbertTransform(rows, { inPlace: true });
+  const result = matrixHilbertTransform(rows, { output: rows });
 
   expect(result[0]).toBe(rows[0]);
   expect(result[1]).toBe(rows[1]);
@@ -54,7 +54,7 @@ test('matrixHilbertTransform inPlace: result shares references with input', () =
 test('matrixHilbertTransform inPlace: produces same values as out-of-place', () => {
   const rowsCopy = [Float64Array.from(row0), Float64Array.from(row1)];
   const outOfPlace = matrixHilbertTransform([row0, row1]);
-  matrixHilbertTransform(rowsCopy, { inPlace: true });
+  matrixHilbertTransform(rowsCopy, { output: rowsCopy });
 
   expect(rowsCopy[0]).toStrictEqual(outOfPlace[0]);
   expect(rowsCopy[1]).toStrictEqual(outOfPlace[1]);
