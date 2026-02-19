@@ -71,5 +71,3 @@ function zeroShift(
     : Math.floor(data.length / 2);
   return xRotate(data, middle);
 }
-
-export { default as FFT } from 'fft.js';
