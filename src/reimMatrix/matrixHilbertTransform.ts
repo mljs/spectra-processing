@@ -45,10 +45,7 @@ export function matrixHilbertTransform(
   const fft = new FFT(size);
 
   // Multiplier computed once — identical for every row of the same length
-  const multiplier = new Float64Array(size);
-  for (let i = 1; i < size; i++) {
-    multiplier[i] = Math.sign(size / 2 - i);
-  }
+  const half = size >> 1;
 
   // Shared working buffers reused across all rows
   const fftResult = new Float64Array(size * 2);
@@ -62,9 +59,14 @@ export function matrixHilbertTransform(
     fft.realTransform(fftResult, row);
     fft.completeSpectrum(fftResult);
 
-    for (let i = 0; i < size; i++) {
-      fftResult[i * 2] *= multiplier[i];
-      fftResult[i * 2 + 1] *= multiplier[i];
+    const idx = half << 1;
+    fftResult[idx] = 0;
+    fftResult[idx + 1] = 0;
+
+    // Negate negative frequencies
+    for (let j = (half + 1) << 1; j < fftResult.length; j += 2) {
+      fftResult[j] = -fftResult[j];
+      fftResult[j + 1] = -fftResult[j + 1];
     }
 
     fft.inverseTransform(hilbertSignal, fftResult);
