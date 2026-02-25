@@ -9,3 +9,12 @@ test('reimAbsolute', () => {
 
   expect(result).toStrictEqual(Float64Array.from([0, 5, 10]));
 });
+
+test('reimAbsolute inplace on re', () => {
+  const re = [0, 3, 6];
+  const im = [0, 4, 8];
+  const result = reimAbsolute({ re, im }, { output: re });
+
+  expect(result).toStrictEqual([0, 5, 10]);
+  expect(re).toStrictEqual([0, 5, 10]);
+});

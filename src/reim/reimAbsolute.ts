@@ -1,18 +1,25 @@
+import type { DoubleArray } from 'cheminfo-types';
+
 import type { DataReIm } from '../types/index.ts';
 
 /**
  * Calculates reimAbsolute value of a complex spectrum.
  * @param data - complex spectrum
+ * @param options
+ * @param options.output
  * @returns - reimAbsolute value
  */
-export function reimAbsolute(data: DataReIm): Float64Array<ArrayBuffer> {
+export function reimAbsolute(
+  data: DataReIm,
+  options: { output?: DoubleArray } = {},
+): DoubleArray {
   const length = data.re.length;
+  const { output = new Float64Array(length) } = options;
   const re = data.re;
   const im = data.im;
-  const newArray = new Float64Array(length);
   for (let i = 0; i < length; i++) {
-    newArray[i] = Math.hypot(re[i], im[i]);
+    output[i] = Math.hypot(re[i], im[i]);
   }
 
-  return newArray;
+  return output;
 }
