@@ -23,11 +23,7 @@ export interface CalculateAdaptiveWeightsOptions extends WeightsAndControlPoints
    * @default 0.5
    */
   learningRate?: number;
-  /**
-   * The minimum allowed weight value to prevent weights from becoming too small.
-   * @default 0.01
-   */
-  minWeight?: number;
+
   /**
    * Factor used to calculate the threshold for determining outliers in the residuals.
    * Higher values mean more tolerance for outliers. The default value is based on noise follow the normal distribution
@@ -55,12 +51,7 @@ export function calculateAdaptiveWeights(
   weights: NumberArray,
   options: CalculateAdaptiveWeightsOptions,
 ) {
-  const {
-    controlPoints,
-    factorStd = 3,
-    learningRate = 0.5,
-    minWeight = 0.01,
-  } = options;
+  const { controlPoints, factorStd = 3, learningRate = 0.5 } = options;
 
   if (learningRate === 0) {
     return weights;
@@ -86,7 +77,7 @@ export function calculateAdaptiveWeights(
       weight *= 4;
     }
 
-    weights[i] = Math.max(weight, minWeight);
+    weights[i] = weight;
   }
   weights[0] = 1;
   weights[weights.length - 1] = 1;

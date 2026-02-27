@@ -35,12 +35,6 @@ export interface XWhittakerSmootherOptions extends CalculateAdaptiveWeightsOptio
    * @default 0.5
    */
   learningRate?: number;
-
-  /**
-   * Minimum weight value to avoid division by zero or extremely small weights.
-   * @default 0.01
-   */
-  minWeight?: number;
 }
 
 /**
@@ -59,7 +53,6 @@ export function xWhittakerSmoother(
     tolerance = 1e-6,
     factorStd = 3,
     learningRate = 0.5,
-    minWeight = 0.01,
   } = options;
 
   const size = yData.length;
@@ -89,7 +82,6 @@ export function xWhittakerSmoother(
 
     weights = calculateAdaptiveWeights(yData, newBaseline, weights, {
       controlPoints,
-      minWeight,
       learningRate,
       factorStd,
     });
