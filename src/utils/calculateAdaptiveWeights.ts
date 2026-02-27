@@ -61,7 +61,7 @@ export function calculateAdaptiveWeights(
 
   const medAbsRes = xMedian(absResiduals);
   const mad = 1.4826 * medAbsRes;
-  const threshold = factorStd * mad;
+  const threshold = mad > 0 ? factorStd * mad : 1;
 
   const rawWeights = new Float64Array(absResiduals.length);
   for (let i = 0; i < absResiduals.length; i++) {
@@ -81,6 +81,5 @@ export function calculateAdaptiveWeights(
   }
   weights[0] = 1;
   weights[weights.length - 1] = 1;
-
   return weights;
 }
