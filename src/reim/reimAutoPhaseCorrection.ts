@@ -36,6 +36,11 @@ export interface AutoPhaseCorrectionOptions {
    * @default false
    */
   reverse?: boolean;
+  /**
+   * Apply the phase correction directly in the input data
+   * @default false
+   */
+  inPlace?: boolean;
 }
 
 /**
@@ -48,13 +53,14 @@ export interface AutoPhaseCorrectionOptions {
 export function reimAutoPhaseCorrection(
   data: DataReIm,
   options: AutoPhaseCorrectionOptions = {},
-): { data: DataReIm<Float64Array>; ph0: number; ph1: number } {
+): { data: DataReIm; ph0: number; ph1: number } {
   const {
     magnitudeMode = true,
     minRegSize = 30,
     factorNoise = 3,
     maxDistanceToJoin = 256,
     reverse = false,
+    inPlace = false,
   } = options;
 
   const finalPeaks = detectBaselineRegions(data, {
@@ -96,7 +102,7 @@ export function reimAutoPhaseCorrection(
     { re, im },
     toRadians(ph0),
     toRadians(ph1),
-    { reverse },
+    { reverse, inPlace },
   );
 
   return { data: phased, ph0, ph1 };

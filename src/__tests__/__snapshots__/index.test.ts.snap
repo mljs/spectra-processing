@@ -9,6 +9,8 @@ exports[`existence of exported functions 1`] = `
   "reimZeroFilling",
   "reimArrayFFT",
   "reimMatrixFFT",
+  "reimMatrixFFTByColumns",
+  "reimMatrixPhaseCorrection",
   "getOutputArray",
   "xAbsolute",
   "xAbsoluteMedian",

@@ -125,3 +125,105 @@ test('180 zero order phasing', () => {
 
   expect(diff[index]).toBeCloseTo(0, 4);
 });
+
+test('inPlace option: false (default) should create new arrays', () => {
+  const re = new Float64Array([0, 1, 2, 3]);
+  const im = new Float64Array([0, 1, 2, 3]);
+  const originalRe = Array.from(re);
+  const originalIm = Array.from(im);
+
+  const result = reimPhaseCorrection({ re, im }, Math.PI / 4, 0, {
+    inPlace: false,
+  });
+
+  // Input arrays should not be modified
+  expect(Array.from(re)).toStrictEqual(originalRe);
+  expect(Array.from(im)).toStrictEqual(originalIm);
+
+  // Result should be different objects
+  expect(result.re).not.toBe(re);
+  expect(result.im).not.toBe(im);
+
+  // Result should have correct values
+  expect(result.re).toHaveLength(4);
+  expect(result.im).toHaveLength(4);
+});
+
+test('inPlace option: true should modify input arrays', () => {
+  const re = new Float64Array([0, 1, 2, 3]);
+  const im = new Float64Array([0, 1, 2, 3]);
+
+  const result = reimPhaseCorrection({ re, im }, Math.PI / 4, 0, {
+    inPlace: true,
+  });
+
+  // Result should reference the same arrays
+  expect(result.re).toBe(re);
+  expect(result.im).toBe(im);
+
+  // Input arrays should be modified
+  expect(Array.from(re)).not.toStrictEqual([0, 1, 2, 3]);
+  expect(Array.from(im)).not.toStrictEqual([0, 1, 2, 3]);
+});
+
+test('inPlace option: true and false should produce same values', () => {
+  const phi0 = Math.PI / 3;
+  const phi1 = Math.PI / 6;
+
+  const re1 = new Float64Array([1, 2, 3, 4, 5]);
+  const im1 = new Float64Array([1, 2, 3, 4, 5]);
+  const result1 = reimPhaseCorrection({ re: re1, im: im1 }, phi0, phi1, {
+    inPlace: false,
+  });
+
+  const re2 = new Float64Array([1, 2, 3, 4, 5]);
+  const im2 = new Float64Array([1, 2, 3, 4, 5]);
+  const result2 = reimPhaseCorrection({ re: re2, im: im2 }, phi0, phi1, {
+    inPlace: true,
+  });
+
+  // Values should be the same regardless of inPlace option
+  for (let i = 0; i < result1.re.length; i++) {
+    expect(result1.re[i]).toBeCloseTo(result2.re[i], 10);
+    expect(result1.im[i]).toBeCloseTo(result2.im[i], 10);
+  }
+});
+
+test('inPlace option with reverse flag', () => {
+  const re1 = new Float64Array([1, 2, 3, 4]);
+  const im1 = new Float64Array([1, 2, 3, 4]);
+  const result1 = reimPhaseCorrection({ re: re1, im: im1 }, Math.PI / 4, 0.5, {
+    inPlace: false,
+    reverse: true,
+  });
+
+  const re2 = new Float64Array([1, 2, 3, 4]);
+  const im2 = new Float64Array([1, 2, 3, 4]);
+  const result2 = reimPhaseCorrection({ re: re2, im: im2 }, Math.PI / 4, 0.5, {
+    inPlace: true,
+    reverse: true,
+  });
+
+  // Result should reference the same arrays when inPlace: true
+  expect(result2.re).toBe(re2);
+  expect(result2.im).toBe(im2);
+
+  // Values should be identical
+  for (let i = 0; i < result1.re.length; i++) {
+    expect(result1.re[i]).toBeCloseTo(result2.re[i], 10);
+    expect(result1.im[i]).toBeCloseTo(result2.im[i], 10);
+  }
+});
+
+test('inPlace option with zero phase correction', () => {
+  const re = new Float64Array([1, 2, 3]);
+  const im = new Float64Array([1, 2, 3]);
+
+  const result = reimPhaseCorrection({ re, im }, 0, 0, { inPlace: true });
+
+  // With zero phase correction, values should remain unchanged
+  expect(result.re).toBe(re);
+  expect(result.im).toBe(im);
+  expect(Array.from(result.re)).toStrictEqual([1, 2, 3]);
+  expect(Array.from(result.im)).toStrictEqual([1, 2, 3]);
+});
