@@ -1,5 +1,17 @@
 # Changelog
 
+## [14.22.0](https://github.com/mljs/spectra-processing/compare/v14.21.0...v14.22.0) (2026-03-05)
+
+
+### Features
+
+* add inplace fft matrix by columns, phase correction  and reimAbsolute ([#348](https://github.com/mljs/spectra-processing/issues/348)) ([f4af49f](https://github.com/mljs/spectra-processing/commit/f4af49f0ca9a87196fbab115c497258c1d2df5a5))
+
+
+### Bug Fixes
+
+* update weights in control points zones ([#350](https://github.com/mljs/spectra-processing/issues/350)) ([b9169dd](https://github.com/mljs/spectra-processing/commit/b9169dd80260b591f61ed7d40ce3bea4b04e39cd))
+
 ## [14.21.0](https://github.com/mljs/spectra-processing/compare/v14.20.0...v14.21.0) (2026-02-19)
 
 
