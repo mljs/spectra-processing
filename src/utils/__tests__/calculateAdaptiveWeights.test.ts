@@ -10,7 +10,7 @@ test('basic functionality with default options', () => {
   const result = calculateAdaptiveWeights(yData, baseline, weights, {});
 
   expect(result).toBeInstanceOf(Float64Array);
-  expect(result.length).toBe(5);
+  expect(result).toHaveLength(5);
   // First and last weights should be 1
   expect(result[0]).toBe(1);
   expect(result[4]).toBe(1);
@@ -29,7 +29,7 @@ test('learning rate = 0 returns same weights', () => {
     learningRate: 0,
   });
 
-  expect(result).toEqual(weights);
+  expect(result).toStrictEqual(weights);
 });
 
 test('high learning rate affects weights more', () => {
@@ -66,6 +66,7 @@ test('custom factorStd affects weight threshold', () => {
       break;
     }
   }
+
   expect(different).toBe(true);
 });
 
@@ -97,6 +98,7 @@ test('perfect fit (baseline equals yData)', () => {
   expect(result).toBeInstanceOf(Float64Array);
   expect(result[0]).toBe(1);
   expect(result[4]).toBe(1);
+
   // With perfect fit, weights should be high (close to 1 after normalization)
   for (let i = 1; i < 4; i++) {
     expect(result[i]).toBeGreaterThan(0.2);
@@ -124,7 +126,7 @@ test('modifies input weights array', () => {
   const result = calculateAdaptiveWeights(yData, baseline, weights, {});
 
   // Should return the same array (modified in place)
-  expect(result).toBe(weights);
+  expect(result).toStrictEqual(weights);
 });
 
 test('works with different array types', () => {
