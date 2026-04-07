@@ -25,6 +25,8 @@ export * from './xyMaxMerge.ts';
 export * from './xyMaxY.ts';
 export * from './xyMaxYPoint.ts';
 export * from './xyMedian.ts';
+export * from './xyMedianY.ts';
+export * from './xyMedianYAtXs.ts';
 export * from './xyMergeByCentroids.ts';
 export * from './xyMinClosestYPoint.ts';
 export * from './xyMinimaY.ts';

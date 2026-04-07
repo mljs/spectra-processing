@@ -108,6 +108,8 @@ exports[`existence of exported functions 1`] = `
   "xyMaxY",
   "xyMaxYPoint",
   "xyMedian",
+  "xyMedianY",
+  "xyMedianYAtXs",
   "xyMergeByCentroids",
   "xyMinClosestYPoint",
   "xyMinimaY",
