@@ -8,7 +8,7 @@ test('should throw error', () => {
     [3, 2, 3],
   ];
 
-  expect(() => matrixCheck(wrongMatrix)).toThrowError(
+  expect(() => matrixCheck(wrongMatrix)).toThrow(
     'all rows must has the same length',
   );
 });

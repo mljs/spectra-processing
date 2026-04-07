@@ -66,7 +66,7 @@ test('matrixBoxPlot odd small', () => {
 test('matrixBoxPlot too small', () => {
   const matrix = [[0], [1], [2], [4]];
 
-  expect(() => matrixBoxPlot(matrix)).toThrowError(
+  expect(() => matrixBoxPlot(matrix)).toThrow(
     'can not calculate info if matrix contains less than 5 rows',
   );
 });

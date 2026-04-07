@@ -5,11 +5,11 @@ import { xyObjectCheck } from '../xyObjectCheck.ts';
 test('xyObjectCheck', () => {
   expect(xyObjectCheck([{ x: 0, y: 1 }])).toBeUndefined();
   // @ts-expect-error this is a testcase
-  expect(() => xyObjectCheck([{ x: 0, y: 'a' }])).toThrowError(
+  expect(() => xyObjectCheck([{ x: 0, y: 'a' }])).toThrow(
     'points must be an array of {x,y} objects',
   );
   // @ts-expect-error this is a testcase
-  expect(() => xyObjectCheck('a')).toThrowError(
+  expect(() => xyObjectCheck('a')).toThrow(
     'points must be an array of {x,y} objects',
   );
   expect(
@@ -21,7 +21,7 @@ test('xyObjectCheck', () => {
       { minLength: 2 },
     ),
   ).toBeUndefined();
-  expect(() => xyObjectCheck([{ x: 0, y: 1 }], { minLength: 2 })).toThrowError(
+  expect(() => xyObjectCheck([{ x: 0, y: 1 }], { minLength: 2 })).toThrow(
     'points must have a length of at least 2',
   );
 });

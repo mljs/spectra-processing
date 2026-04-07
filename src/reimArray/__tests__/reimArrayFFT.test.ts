@@ -101,7 +101,7 @@ test('reimArrayFFT: throws RangeError when elements have different lengths', () 
     },
   ];
 
-  expect(() => reimArrayFFT(spectra)).toThrowError(RangeError);
+  expect(() => reimArrayFFT(spectra)).toThrow(RangeError);
 });
 
 test('reimArrayFFT: throws RangeError indicating which element has the wrong length', () => {
@@ -120,7 +120,7 @@ test('reimArrayFFT: throws RangeError indicating which element has the wrong len
     },
   ];
 
-  expect(() => reimArrayFFT(spectra)).toThrowError(/element 2/);
+  expect(() => reimArrayFFT(spectra)).toThrow(/element 2/);
 });
 
 test('reimArrayFFT inPlace: result shares re/im references with input', () => {
