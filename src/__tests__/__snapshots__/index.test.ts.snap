@@ -148,6 +148,7 @@ exports[`existence of exported functions 1`] = `
   "xyObjectToXY",
   "zonesNormalize",
   "zonesWithPoints",
+  "zonesToXEquallySpaced",
   "matrixAbsoluteMedian",
   "matrixApplyNumericalEncoding",
   "matrixAutoCorrelation",
