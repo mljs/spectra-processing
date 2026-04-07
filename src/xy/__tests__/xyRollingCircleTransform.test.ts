@@ -75,7 +75,7 @@ test('wrong position', () => {
 
   expect(() => {
     xyRollingCircleTransform(data, { position: 'middle' as 'top' });
-  }).toThrow('Invalid position: middle');
+  }).toThrowError('Invalid position: middle');
 });
 
 test('two peaks', () => {

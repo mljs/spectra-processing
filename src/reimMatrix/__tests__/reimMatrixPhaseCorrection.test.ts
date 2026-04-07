@@ -286,7 +286,7 @@ test('reimMatrixPhaseCorrection: throws RangeError when rows have different leng
     ],
   };
 
-  expect(() => reimMatrixPhaseCorrection(data, Math.PI / 4, 0)).toThrow(
+  expect(() => reimMatrixPhaseCorrection(data, Math.PI / 4, 0)).toThrowError(
     RangeError,
   );
 });
@@ -305,7 +305,7 @@ test('reimMatrixPhaseCorrection: throws RangeError indicating which row has the 
     ],
   };
 
-  expect(() => reimMatrixPhaseCorrection(data, Math.PI / 4, 0)).toThrow(
+  expect(() => reimMatrixPhaseCorrection(data, Math.PI / 4, 0)).toThrowError(
     /row 2/,
   );
 });

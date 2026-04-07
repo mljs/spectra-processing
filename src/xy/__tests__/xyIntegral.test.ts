@@ -7,7 +7,7 @@ test('zero element', () => {
   const x: number[] = [];
   const y: number[] = [];
 
-  expect(() => xyIntegral({ x, y })).toThrow(
+  expect(() => xyIntegral({ x, y })).toThrowError(
     'data.x must have a length of at least 1',
   );
 });

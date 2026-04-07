@@ -24,11 +24,11 @@ test('simple case', () => {
     [3, 4, 5, 0, 0],
   ]);
 
-  expect(() => matrixSetSubMatrix(matrix, subMatrix, 2, 4)).toThrow(
+  expect(() => matrixSetSubMatrix(matrix, subMatrix, 2, 4)).toThrowError(
     'submatrix indices are out of range',
   );
 
   expect(() =>
     matrixSetSubMatrix(matrix, subMatrix.concat([0, 0]), 2, 3),
-  ).toThrow('submatrix indices are out of range');
+  ).toThrowError('submatrix indices are out of range');
 });

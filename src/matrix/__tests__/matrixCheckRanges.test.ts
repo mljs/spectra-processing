@@ -18,7 +18,7 @@ test('should not throw error for valid indices', () => {
     endColumn: 2,
   };
 
-  expect(() => matrixCheckRanges(matrix, options)).not.toThrow();
+  expect(() => matrixCheckRanges(matrix, options)).not.toThrowError();
 });
 
 test('should throw RangeError for out-of-range indices', () => {
@@ -38,5 +38,5 @@ test('should throw RangeError for out-of-range indices', () => {
   };
 
   // Call the function and expect test to throw RangeError
-  expect(() => matrixCheckRanges(matrix, options)).toThrow(RangeError);
+  expect(() => matrixCheckRanges(matrix, options)).toThrowError(RangeError);
 });

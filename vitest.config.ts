@@ -4,6 +4,7 @@ export default defineConfig({
   test: {
     coverage: {
       include: ['src/**'],
+      exclude: ['**/__tests__/data/**'],
     },
     setupFiles: ['vitest.setup.ts'],
   },

@@ -18,5 +18,5 @@ test('zero', () => {
 
   expect(() => {
     matrixMinMaxAbsoluteZ(matrix);
-  }).toThrow('matrixMinMaxAbsoluteZ requires at least 1 row and 1 column');
+  }).toThrowError('matrixMinMaxAbsoluteZ requires at least 1 row and 1 column');
 });

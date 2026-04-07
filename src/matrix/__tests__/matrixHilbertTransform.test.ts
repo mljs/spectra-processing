@@ -32,15 +32,15 @@ test('matrixHilbertTransform: output arrays are independent (no shared buffers)'
 test('matrixHilbertTransform: throws RangeError when length is not a power of two', () => {
   const rows = [Float64Array.from([1, 2, 3, 4, 5, 6])];
 
-  expect(() => matrixHilbertTransform(rows)).toThrow(RangeError);
-  expect(() => matrixHilbertTransform(rows)).toThrow(/power of two/);
+  expect(() => matrixHilbertTransform(rows)).toThrowError(RangeError);
+  expect(() => matrixHilbertTransform(rows)).toThrowError(/power of two/);
 });
 
 test('matrixHilbertTransform: throws RangeError when rows have different lengths', () => {
   const rows = [row0, Float64Array.from([1, 2, 3, 4])];
 
-  expect(() => matrixHilbertTransform(rows)).toThrow(RangeError);
-  expect(() => matrixHilbertTransform(rows)).toThrow(/row 1/);
+  expect(() => matrixHilbertTransform(rows)).toThrowError(RangeError);
+  expect(() => matrixHilbertTransform(rows)).toThrowError(/row 1/);
 });
 
 test('matrixHilbertTransform inPlace: result shares references with input', () => {
