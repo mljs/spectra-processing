@@ -1,5 +1,13 @@
 # Changelog
 
+## [14.23.0](https://github.com/mljs/spectra-processing/compare/v14.22.0...v14.23.0) (2026-04-07)
+
+
+### Features
+
+* add xyMedianY and xyMedianYAtXs methods ([33e68a1](https://github.com/mljs/spectra-processing/commit/33e68a13f5e1dab171edb2e4c9717fadde17e3c2))
+* Implement zonesToXEquallySpaced ([#356](https://github.com/mljs/spectra-processing/issues/356)) ([9c9e5a1](https://github.com/mljs/spectra-processing/commit/9c9e5a16b50480c310f9cbf0670845ef6b31416c))
+
 ## [14.22.0](https://github.com/mljs/spectra-processing/compare/v14.21.0...v14.22.0) (2026-03-05)
 
 
