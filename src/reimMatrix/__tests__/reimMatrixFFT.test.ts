@@ -89,7 +89,7 @@ test('reimMatrixFFT: throws RangeError when rows have different lengths', () => 
     ],
   };
 
-  expect(() => reimMatrixFFT(data)).toThrowError(RangeError);
+  expect(() => reimMatrixFFT(data)).toThrow(RangeError);
 });
 
 test('reimMatrixFFT: throws RangeError indicating which row has the wrong length', () => {
@@ -106,7 +106,7 @@ test('reimMatrixFFT: throws RangeError indicating which row has the wrong length
     ],
   };
 
-  expect(() => reimMatrixFFT(data)).toThrowError(/row 2/);
+  expect(() => reimMatrixFFT(data)).toThrow(/row 2/);
 });
 
 test('reimMatrixFFT inPlace: result shares re/im references with input', () => {

@@ -24,7 +24,7 @@ test('multiple elements', () => {
 });
 
 test('throws error if array is empty', () => {
-  expect(() => xyObjectMinMaxValues([])).toThrowError(
+  expect(() => xyObjectMinMaxValues([])).toThrow(
     'points must have a length of at least 1',
   );
 });

@@ -5,7 +5,7 @@ import { xDistributionStats } from '../xDistributionStats.ts';
 test('empty array', () => {
   const data: number[] = [];
 
-  expect(() => xDistributionStats(data)).toThrowError(
+  expect(() => xDistributionStats(data)).toThrow(
     'input must not be empty',
   );
 });

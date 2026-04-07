@@ -27,5 +27,5 @@ test('large negative', () => {
 test('zero', () => {
   expect(() => {
     matrixMaxAbsoluteZ([[]]);
-  }).toThrowError('matrix must have at least 1 row and 1 column');
+  }).toThrow('matrix must have at least 1 row and 1 column');
 });

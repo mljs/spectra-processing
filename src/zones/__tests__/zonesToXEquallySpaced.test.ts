@@ -44,7 +44,7 @@ describe('zonesToXEquallySpaced', () => {
   });
 
   it('should throw error if zones array is empty', () => {
-    expect(() => zonesToXEquallySpaced([], 10)).toThrowError(
+    expect(() => zonesToXEquallySpaced([], 10)).toThrow(
       'zones array must not be empty',
     );
   });
@@ -52,7 +52,7 @@ describe('zonesToXEquallySpaced', () => {
   it('should throw error if numberOfPoints is less than 1', () => {
     const zones = [{ from: 0, to: 10 }];
 
-    expect(() => zonesToXEquallySpaced(zones, 0)).toThrowError(
+    expect(() => zonesToXEquallySpaced(zones, 0)).toThrow(
       "'numberOfPoints' must be greater than 0",
     );
   });
@@ -60,7 +60,7 @@ describe('zonesToXEquallySpaced', () => {
   it('should throw error if from is greater than to', () => {
     const zones = [{ from: 10, to: 0 }];
 
-    expect(() => zonesToXEquallySpaced(zones, 10)).toThrowError(
+    expect(() => zonesToXEquallySpaced(zones, 10)).toThrow(
       'from should be less than or equal to to',
     );
   });

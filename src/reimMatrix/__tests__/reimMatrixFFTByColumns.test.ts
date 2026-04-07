@@ -130,7 +130,7 @@ test('reimMatrixFFTByColumns: throws RangeError when rows have different lengths
     ],
   };
 
-  expect(() => reimMatrixFFTByColumns(data)).toThrowError(RangeError);
+  expect(() => reimMatrixFFTByColumns(data)).toThrow(RangeError);
 });
 
 test('reimMatrixFFTByColumns: throws RangeError indicating which row has the wrong length', () => {
@@ -149,7 +149,7 @@ test('reimMatrixFFTByColumns: throws RangeError indicating which row has the wro
     ],
   };
 
-  expect(() => reimMatrixFFTByColumns(data)).toThrowError(/row 2/);
+  expect(() => reimMatrixFFTByColumns(data)).toThrow(/row 2/);
 });
 
 test('reimMatrixFFTByColumns inPlace: result shares re/im references with input', () => {
@@ -317,5 +317,5 @@ test('reimMatrixFFTByColumns: throws error for matrices with mismatched column c
     ],
   };
 
-  expect(() => reimMatrixFFTByColumns(data)).toThrowError(RangeError);
+  expect(() => reimMatrixFFTByColumns(data)).toThrow(RangeError);
 });

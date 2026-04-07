@@ -32,13 +32,13 @@ test('xyMassCenter', () => {
   expect(
     xyMassCenter({ x: [3, 2, 1], y: [1, 1, 1] }, { fromIndex: 1, toIndex: 1 }),
   ).toBe(2);
-  expect(() => xyMassCenter({ x: [], y: [] })).toThrowError(
+  expect(() => xyMassCenter({ x: [], y: [] })).toThrow(
     'data.x must have a length of at least',
   );
-  expect(() => xyMassCenter({ x: [1], y: [] })).toThrowError(
+  expect(() => xyMassCenter({ x: [1], y: [] })).toThrow(
     'the x and y arrays must have the same',
   );
-  expect(() => xyMassCenter({ x: [1, 2, 3], y: [0, 0, 0] })).toThrowError(
+  expect(() => xyMassCenter({ x: [1, 2, 3], y: [0, 0, 0] })).toThrow(
     'Sum of Ys can not be zero.',
   );
 });
