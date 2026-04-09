@@ -18,7 +18,7 @@ test('solve a least square system', () => {
 
   const lambda = 20;
   const dimension = x.length;
-  const upperTriangularNonZeros = createSystemMatrix(dimension, lambda);
+  const { upperTriangularNonZeros } = createSystemMatrix(dimension, lambda);
 
   const weighted = addWeights(upperTriangularNonZeros, y, weights);
 

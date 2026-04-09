@@ -43,8 +43,7 @@ export interface XWhittakerSmootherOptions extends CalculateAdaptiveWeightsOptio
    * - `'thomas'` — use a tridiagonal formulation and solve with the Thomas
    *   algorithm (specialised tridiagonal solver). Lower memory usage and
    *   faster for large inputs when the system is tridiagonal.
-   *
-   * Default: `'cholesky'`.
+   * @default 'cholesky'
    */
   algorithm?: 'cholesky' | 'thomas';
 }
@@ -74,7 +73,7 @@ export const xWhitakerSmoother = xWhittakerSmoother;
  * @param options - The options for baseline computation.
  * @returns - The computed baseline points.
  */
-export function whittakerByCholesky(
+function whittakerByCholesky(
   yData: NumberArray,
   options: XWhittakerSmootherOptions = {},
 ) {
@@ -89,13 +88,14 @@ export function whittakerByCholesky(
   const size = yData.length;
 
   // eslint-disable-next-line prefer-const
-  let { controlPoints, weights } = getWeightsAndControlPoints(yData, options);
+  const { controlPoints, weights } = getWeightsAndControlPoints(yData, options);
   const prevBaseline: Float64Array = new Float64Array(size);
 
   let iteration = 0;
   let delta = Infinity;
   let baseline = xEnsureFloat64(yData);
-  const upperTriangularNonZeros = createSystemMatrix(size, lambda);
+  const { upperTriangularNonZeros, permutationEncodedArray } =
+    createSystemMatrix(size, lambda);
   while (iteration < maxIterations && delta > tolerance) {
     const { leftHandSide, rightHandSide } = addWeights(
       upperTriangularNonZeros,
@@ -103,7 +103,11 @@ export function whittakerByCholesky(
       weights,
     );
 
-    const cho = matrixCholeskySolver(leftHandSide, size);
+    const cho = matrixCholeskySolver(
+      leftHandSide,
+      size,
+      permutationEncodedArray,
+    );
 
     if (!cho) {
       return baseline;
@@ -111,7 +115,8 @@ export function whittakerByCholesky(
 
     const newBaseline = cho(rightHandSide);
 
-    weights = calculateAdaptiveWeights(yData, newBaseline, weights, {
+    //weights is updated inplace
+    calculateAdaptiveWeights(yData, newBaseline, weights, {
       controlPoints,
       learningRate,
       factorStd,
@@ -185,15 +190,16 @@ function whittakerByThomas(
 
   const n = yData.length;
   const y = xEnsureFloat64(yData);
-  let { controlPoints, weights } = getWeightsAndControlPoints(yData, options);
+  const { controlPoints, weights } = getWeightsAndControlPoints(yData, options);
 
   const prevBaseline = new Float64Array(n);
   let baseline = xEnsureFloat64(yData);
 
   // Precompute base diagonal and constant off-diagonals (−lambda)
   const baseDiag = new Float64Array(n);
-  if (n === 1) baseDiag[0] = lambda;
-  else {
+  if (n === 1) {
+    baseDiag[0] = lambda;
+  } else {
     baseDiag[0] = lambda;
     for (let i = 1; i < n - 1; i++) baseDiag[i] = 2 * lambda;
     baseDiag[n - 1] = lambda;
@@ -226,7 +232,6 @@ function whittakerByThomas(
    * It is more memory-efficient for large inputs because it avoids forming
    * the full banded matrix, but both implementations aim to produce the same
    * baseline result.
-   *
    * @param yData - input signal/spectrum
    * @param options - smoothing options (supports `lambda`, `maxIterations`,
    *                  `tolerance`, `factorStd`, `learningRate`, and optional
@@ -245,7 +250,7 @@ function whittakerByThomas(
     // Solve tridiagonal system in-place into `solution`
     solveTridiagonalFloat64(lower, main, upper, rhs, solution, workC, workD);
 
-    weights = calculateAdaptiveWeights(y, solution, weights, {
+    calculateAdaptiveWeights(y, solution, weights, {
       controlPoints,
       learningRate,
       factorStd,

@@ -1,3 +1,9 @@
+import { matrixCuthillMckee } from '../matrix/matrixCuthillMckee.ts';
+
+export interface SystemMatrix {
+  upperTriangularNonZeros: number[][];
+  permutationEncodedArray: Float64Array;
+}
 /**
  * Generates a lower triangular non-zeros of the first order smoother matrix (lambda D'D) where D is the derivate of the identity matrix
  * this function in combination with addWeights function can obtain (Q = W + lambda D'D) a penalized least square of Whittaker smoother,
@@ -12,7 +18,7 @@
 export function createSystemMatrix(
   dimension: number,
   lambda: number,
-): number[][] {
+): SystemMatrix {
   const upperTriangularNonZeros: number[][] = [];
   const last = dimension - 1;
   for (let i = 0; i < last; i++) {
@@ -20,5 +26,9 @@ export function createSystemMatrix(
   }
   upperTriangularNonZeros[0][2] = lambda;
   upperTriangularNonZeros.push([last, last, lambda]);
-  return upperTriangularNonZeros;
+  const permutationEncodedArray = matrixCuthillMckee(
+    upperTriangularNonZeros,
+    dimension,
+  );
+  return { upperTriangularNonZeros, permutationEncodedArray };
 }
