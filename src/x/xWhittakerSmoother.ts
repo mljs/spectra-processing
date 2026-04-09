@@ -43,7 +43,7 @@ export interface XWhittakerSmootherOptions extends CalculateAdaptiveWeightsOptio
    * - `'thomas'` — use a tridiagonal formulation and solve with the Thomas
    *   algorithm (specialised tridiagonal solver). Lower memory usage and
    *   faster for large inputs when the system is tridiagonal.
-   * @default 'cholesky'
+   * @default 'thomas'
    */
   algorithm?: 'cholesky' | 'thomas';
 }
@@ -52,7 +52,7 @@ export function xWhittakerSmoother(
   yData: NumberArray,
   options: XWhittakerSmootherOptions = {},
 ) {
-  const { algorithm = 'cholesky', ...restOptions } = options;
+  const { algorithm = 'thomas', ...restOptions } = options;
 
   if (algorithm === 'thomas') {
     return whittakerByThomas(yData, restOptions);
@@ -87,7 +87,6 @@ function whittakerByCholesky(
 
   const size = yData.length;
 
-  // eslint-disable-next-line prefer-const
   const { controlPoints, weights } = getWeightsAndControlPoints(yData, options);
   const prevBaseline: Float64Array = new Float64Array(size);
 

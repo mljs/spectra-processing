@@ -54,7 +54,7 @@ test('solve a least square system', () => {
 
   expect(cho3).not.toBeNull();
 
-  const smoothed3 = cho2(weighted2.rightHandSide);
+  const smoothed3 = cho3(weighted2.rightHandSide);
 
   expect(smoothed3[50]).toStrictEqual(smoothed3[50]);
 });
