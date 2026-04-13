@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.24.0](https://github.com/mljs/spectra-processing/compare/v14.23.0...v14.24.0) (2026-04-13)
+
+
+### Features
+
+* add getCombinations and getCombinationsIterator ([f63b393](https://github.com/mljs/spectra-processing/commit/f63b393dad148398438c3dc4d0f1af3fb629f6b9))
+
 ## [14.23.0](https://github.com/mljs/spectra-processing/compare/v14.22.0...v14.23.0) (2026-04-07)
 
 
