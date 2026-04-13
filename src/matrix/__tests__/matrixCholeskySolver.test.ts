@@ -18,7 +18,7 @@ test('solve a least square system', () => {
 
   const lambda = 20;
   const dimension = x.length;
-  const upperTriangularNonZeros = createSystemMatrix(dimension, lambda);
+  const { upperTriangularNonZeros } = createSystemMatrix(dimension, lambda);
 
   const weighted = addWeights(upperTriangularNonZeros, y, weights);
 
@@ -54,7 +54,7 @@ test('solve a least square system', () => {
 
   expect(cho3).not.toBeNull();
 
-  const smoothed3 = cho2(weighted2.rightHandSide);
+  const smoothed3 = cho3(weighted2.rightHandSide);
 
   expect(smoothed3[50]).toStrictEqual(smoothed3[50]);
 });
