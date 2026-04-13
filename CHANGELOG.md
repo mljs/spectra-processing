@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.25.0](https://github.com/mljs/spectra-processing/compare/v14.24.0...v14.25.0) (2026-04-13)
+
+
+### Features
+
+* improve speed Whittaker smoother ([#358](https://github.com/mljs/spectra-processing/issues/358)) ([c736e4c](https://github.com/mljs/spectra-processing/commit/c736e4c64ada715498131cb7f96331eabd806549))
+
 ## [14.24.0](https://github.com/mljs/spectra-processing/compare/v14.23.0...v14.24.0) (2026-04-13)
 
 
