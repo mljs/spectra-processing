@@ -5,6 +5,7 @@ export * from './xAbsoluteSum.ts';
 export * from './xAdd.ts';
 export * from './xApplyFunctionStr.ts';
 export * from './xAutoCorrelation.ts';
+export * from './xBinning.ts';
 export * from './xBoxPlot.ts';
 export * from './xBoxPlotWithOutliers.ts';
 export * from './xCheck.ts';
