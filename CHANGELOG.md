@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.27.0](https://github.com/mljs/spectra-processing/compare/v14.26.0...v14.27.0) (2026-04-14)
+
+
+### Features
+
+* add options in xBinning ([fe93b24](https://github.com/mljs/spectra-processing/commit/fe93b24a7032680d93ecad3c399924960c67b7ee))
+
 ## [14.26.0](https://github.com/mljs/spectra-processing/compare/v14.25.0...v14.26.0) (2026-04-14)
 
 
