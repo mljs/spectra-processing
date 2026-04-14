@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.26.0](https://github.com/mljs/spectra-processing/compare/v14.25.0...v14.26.0) (2026-04-14)
+
+
+### Features
+
+* add xBinning and xyInterpolateLinear ([dbbaf2c](https://github.com/mljs/spectra-processing/commit/dbbaf2cc4e075430a858671a22563a6236790d8d))
+
 ## [14.25.0](https://github.com/mljs/spectra-processing/compare/v14.24.0...v14.25.0) (2026-04-13)
 
 
