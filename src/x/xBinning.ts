@@ -118,11 +118,6 @@ function binByNumberOfPoints(
     }
     const innerLength = length - 2;
     const innerBins = numberOfPoints - 2;
-    if (innerBins > innerLength) {
-      throw new RangeError(
-        'numberOfPoints is too large for the given array length with keepFirstAndLast',
-      );
-    }
     for (let j = 0; j < innerBins; j++) {
       const start = 1 + Math.floor((j * innerLength) / innerBins);
       const end = 1 + Math.floor(((j + 1) * innerLength) / innerBins);

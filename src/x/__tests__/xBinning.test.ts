@@ -131,3 +131,24 @@ test('binSize and numberOfPoints are mutually exclusive', () => {
     xBinning([1, 2, 3, 4], { binSize: 2, numberOfPoints: 2 }),
   ).toThrow(/mutually exclusive/);
 });
+
+test('numberOfPoints=2 with keepFirstAndLast returns endpoints', () => {
+  expect(xBinning([1, 2, 3, 4, 5], { numberOfPoints: 2 })).toStrictEqual(
+    Float64Array.from([1, 5]),
+  );
+});
+
+test('numberOfPoints < 2 with keepFirstAndLast throws', () => {
+  expect(() => xBinning([1, 2, 3], { numberOfPoints: 1 })).toThrow(
+    /numberOfPoints must be >= 2 when keepFirstAndLast is true/,
+  );
+});
+
+test('numberOfPoints=1 with keepFirstAndLast=false averages entire array', () => {
+  expect(
+    xBinning([1, 2, 3, 4, 5], {
+      numberOfPoints: 1,
+      keepFirstAndLast: false,
+    }),
+  ).toStrictEqual(Float64Array.from([3]));
+});
