@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.28.0](https://github.com/mljs/spectra-processing/compare/v14.27.0...v14.28.0) (2026-04-15)
+
+
+### Features
+
+* implementation of xyBinning ([#367](https://github.com/mljs/spectra-processing/issues/367)) ([927c149](https://github.com/mljs/spectra-processing/commit/927c149d84097a0de8bdd016c95b438e9cadfe42))
+
 ## [14.27.0](https://github.com/mljs/spectra-processing/compare/v14.26.0...v14.27.0) (2026-04-14)
 
 
