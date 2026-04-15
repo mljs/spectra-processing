@@ -37,10 +37,15 @@ export function matrixCholeskySolver(
   dimension: number,
   permutationEncoded?: NumberArray,
 ): ((b: NumberArray) => NumberArray) | null {
+  let permutation: Int32Array;
   if (permutationEncoded) {
+    permutation = new Int32Array(dimension);
+    for (let k = 0; k < dimension; k++) {
+      permutation[k] = permutationEncoded[k];
+    }
     const pinv = new Int32Array(dimension);
     for (let k = 0; k < dimension; k++) {
-      pinv[permutationEncoded[k]] = k;
+      pinv[permutation[k]] = k;
     }
     // Build a permuted copy (kept as plain arrays for compatibility)
     const mt: NumberArray[] = new Array(nonZerosArray.length);
@@ -52,12 +57,10 @@ export function matrixCholeskySolver(
     }
     nonZerosArray = mt;
   } else {
-    // use a typed identity permutation
-    const p = new Int32Array(dimension);
+    permutation = new Int32Array(dimension);
     for (let i = 0; i < dimension; ++i) {
-      p[i] = i;
+      permutation[i] = i;
     }
-    permutationEncoded = p;
   }
 
   const nnz = nonZerosArray.length;
@@ -120,11 +123,11 @@ export function matrixCholeskySolver(
 
   if (result === dimension) {
     return (b: NumberArray) => {
-      ldlPerm(dimension, bp1, b, permutationEncoded);
+      ldlPerm(dimension, bp1, b, permutation);
       ldlLsolve(dimension, bp1, lp, li, lx);
       ldlDsolve(dimension, bp1, d);
       ldlLTsolve(dimension, bp1, lp, li, lx);
-      ldlPermt(dimension, x, bp1, permutationEncoded);
+      ldlPermt(dimension, x, bp1, permutation);
       return x;
     };
   } else {
@@ -134,31 +137,26 @@ export function matrixCholeskySolver(
 
 function ldlSymbolic(
   dimension: number,
-  ap: NumberArray,
-  ai: NumberArray,
-  lp: NumberArray,
-  parent: NumberArray,
-  lnz: NumberArray,
-  flag: NumberArray,
+  ap: Int32Array,
+  ai: Int32Array,
+  lp: Int32Array,
+  parent: Int32Array,
+  lnz: Int32Array,
+  flag: Int32Array,
 ): void {
-  const apLoc = ap as Int32Array;
-  const aiLoc = ai as Int32Array;
-  const parentLoc = parent as Int32Array;
-  const lnzLoc = lnz as Int32Array;
-  const flagLoc = flag as Int32Array;
   for (let k = 0; k < dimension; k++) {
-    parentLoc[k] = -1;
-    flagLoc[k] = k;
-    lnzLoc[k] = 0;
+    parent[k] = -1;
+    flag[k] = k;
+    lnz[k] = 0;
     const kk = k;
-    const p2 = apLoc[kk + 1];
-    for (let p = apLoc[kk]; p < p2; p++) {
-      let i = aiLoc[p];
+    const p2 = ap[kk + 1];
+    for (let p = ap[kk]; p < p2; p++) {
+      let i = ai[p];
       if (i < k) {
-        for (; flagLoc[i] !== k; i = parentLoc[i]) {
-          if (parentLoc[i] === -1) parentLoc[i] = k;
-          lnzLoc[i]++;
-          flagLoc[i] = k;
+        for (; flag[i] !== k; i = parent[i]) {
+          if (parent[i] === -1) parent[i] = k;
+          lnz[i]++;
+          flag[i] = k;
         }
       }
     }
@@ -171,144 +169,115 @@ function ldlSymbolic(
 
 function ldlNumeric(
   dimension: number,
-  ap: NumberArray,
-  ai: NumberArray,
-  ax: NumberArray,
-  lp: NumberArray,
-  parent: NumberArray,
-  lnz: NumberArray,
-  li: NumberArray,
-  lx: NumberArray,
-  d: NumberArray,
-  y: NumberArray,
-  pattern: NumberArray,
-  flag: NumberArray,
+  ap: Int32Array,
+  ai: Int32Array,
+  ax: Float64Array,
+  lp: Int32Array,
+  parent: Int32Array,
+  lnz: Int32Array,
+  li: Int32Array,
+  lx: Float64Array,
+  d: Float64Array,
+  y: Float64Array,
+  pattern: Int32Array,
+  flag: Int32Array,
 ): number {
-  const apLoc = ap as Int32Array;
-  const aiLoc = ai as Int32Array;
-  const axLoc = ax as Float64Array;
-  const lpLoc = lp as Int32Array;
-  const parentLoc = parent as Int32Array;
-  const lnzLoc = lnz as Int32Array;
-  const liLoc = li as Int32Array;
-  const lxLoc = lx as Float64Array;
-  const dLoc = d as Float64Array;
-  const yLoc = y as Float64Array;
-  const patternLoc = pattern as Int32Array;
-  const flagLoc = flag as Int32Array;
-
   let yi: number, lKi: number;
   for (let k = 0; k < dimension; k++) {
-    yLoc[k] = 0;
+    y[k] = 0;
     let top = dimension;
-    flagLoc[k] = k;
-    lnzLoc[k] = 0;
+    flag[k] = k;
+    lnz[k] = 0;
     const kk = k;
-    const p2col = apLoc[kk + 1];
-    for (let p = apLoc[kk]; p < p2col; p++) {
-      let i = aiLoc[p];
+    const p2col = ap[kk + 1];
+    for (let p = ap[kk]; p < p2col; p++) {
+      let i = ai[p];
       if (i <= k) {
-        yLoc[i] += axLoc[p];
+        y[i] += ax[p];
         let len = 0;
-        for (; flagLoc[i] !== k; i = parentLoc[i]) {
-          patternLoc[len++] = i;
-          flagLoc[i] = k;
+        for (; flag[i] !== k; i = parent[i]) {
+          pattern[len++] = i;
+          flag[i] = k;
         }
-        while (len > 0) patternLoc[--top] = patternLoc[--len];
+        while (len > 0) pattern[--top] = pattern[--len];
       }
     }
-    dLoc[k] = yLoc[k];
-    yLoc[k] = 0;
+    d[k] = y[k];
+    y[k] = 0;
     for (; top < dimension; top++) {
-      const i = patternLoc[top];
-      yi = yLoc[i];
-      yLoc[i] = 0;
-      const p2 = lpLoc[i] + lnzLoc[i];
+      const i = pattern[top];
+      yi = y[i];
+      y[i] = 0;
+      const p2 = lp[i] + lnz[i];
       let p;
-      for (p = lpLoc[i]; p < p2; p++) {
-        yLoc[liLoc[p]] -= lxLoc[p] * yi;
+      for (p = lp[i]; p < p2; p++) {
+        y[li[p]] -= lx[p] * yi;
       }
-      lKi = yi / dLoc[i];
-      dLoc[k] -= lKi * yi;
-      liLoc[p] = k;
-      lxLoc[p] = lKi;
-      lnzLoc[i]++;
+      lKi = yi / d[i];
+      d[k] -= lKi * yi;
+      li[p] = k;
+      lx[p] = lKi;
+      lnz[i]++;
     }
-    if (dLoc[k] === 0) return k;
+    if (d[k] === 0) return k;
   }
   return dimension;
 }
 
 function ldlLsolve(
   dimension: number,
-  x: NumberArray,
-  lp: NumberArray,
-  li: NumberArray,
-  lx: NumberArray,
+  x: Float64Array,
+  lp: Int32Array,
+  li: Int32Array,
+  lx: Float64Array,
 ): void {
-  const lpLoc = lp as Int32Array;
-  const liLoc = li as Int32Array;
-  const lxLoc = lx as Float64Array;
-  const xLoc = x as Float64Array;
   for (let j = 0; j < dimension; j++) {
-    const p2 = lpLoc[j + 1];
-    for (let p = lpLoc[j]; p < p2; p++) {
-      xLoc[liLoc[p]] -= lxLoc[p] * xLoc[j];
+    const p2 = lp[j + 1];
+    for (let p = lp[j]; p < p2; p++) {
+      x[li[p]] -= lx[p] * x[j];
     }
   }
 }
 
-function ldlDsolve(dimension: number, x: NumberArray, d: NumberArray): void {
-  const xLoc = x as Float64Array;
-  const dLoc = d as Float64Array;
+function ldlDsolve(dimension: number, x: Float64Array, d: Float64Array): void {
   for (let j = 0; j < dimension; j++) {
-    xLoc[j] /= dLoc[j];
+    x[j] /= d[j];
   }
 }
 
 function ldlLTsolve(
   dimension: number,
-  x: NumberArray,
-  lp: NumberArray,
-  li: NumberArray,
-  lx: NumberArray,
+  x: Float64Array,
+  lp: Int32Array,
+  li: Int32Array,
+  lx: Float64Array,
 ): void {
-  const lpLoc = lp as Int32Array;
-  const liLoc = li as Int32Array;
-  const lxLoc = lx as Float64Array;
-  const xLoc = x as Float64Array;
   for (let j = dimension - 1; j >= 0; j--) {
-    const p2 = lpLoc[j + 1];
-    for (let p = lpLoc[j]; p < p2; p++) {
-      xLoc[j] -= lxLoc[p] * xLoc[liLoc[p]];
+    const p2 = lp[j + 1];
+    for (let p = lp[j]; p < p2; p++) {
+      x[j] -= lx[p] * x[li[p]];
     }
   }
 }
 
 function ldlPerm(
   dimension: number,
-  x: NumberArray,
+  x: Float64Array,
   b: NumberArray,
-  permutationEncoded: NumberArray,
+  permutationEncoded: Int32Array,
 ): void {
-  const perm = permutationEncoded as Int32Array;
-  const xLoc = x as Float64Array;
-  const bLoc = b as Float64Array;
   for (let j = 0; j < dimension; j++) {
-    xLoc[j] = bLoc[perm[j]];
+    x[j] = b[permutationEncoded[j]];
   }
 }
 
 function ldlPermt(
   dimension: number,
-  x: NumberArray,
-  b: NumberArray,
-  permutationEncoded: NumberArray,
+  x: Float64Array,
+  b: Float64Array,
+  permutationEncoded: Int32Array,
 ): void {
-  const perm = permutationEncoded as Int32Array;
-  const xLoc = x as Float64Array;
-  const bLoc = b as Float64Array;
   for (let j = 0; j < dimension; j++) {
-    xLoc[perm[j]] = bLoc[j];
+    x[permutationEncoded[j]] = b[j];
   }
 }
