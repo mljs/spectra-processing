@@ -43,7 +43,7 @@
     "cheminfo-types": "^1.15.0",
     "fft.js": "^4.0.4",
     "is-any-array": "^3.0.0",
-    "ml-matrix": "^6.12.1",
+    "ml-matrix": "^6.12.2",
     "ml-xsadd": "^3.0.1"
   },
   "devDependencies": {
