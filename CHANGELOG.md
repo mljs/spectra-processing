@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.28.1](https://github.com/mljs/spectra-processing/compare/v14.28.0...v14.28.1) (2026-04-16)
+
+
+### Bug Fixes
+
+* update ml-matrix dependency ([#369](https://github.com/mljs/spectra-processing/issues/369)) ([f305c39](https://github.com/mljs/spectra-processing/commit/f305c3960137252c5298ad1d9d697eb27aeea710))
+
 ## [14.28.0](https://github.com/mljs/spectra-processing/compare/v14.27.0...v14.28.0) (2026-04-15)
 
 
