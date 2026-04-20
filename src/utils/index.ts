@@ -2,6 +2,8 @@ export * from './createArray.ts';
 export * from './createFromToArray.ts';
 export * from './createRandomArray.ts';
 export * from './createStepArray.ts';
+export * from './getCombinations.ts';
+export * from './getCombinationsIterator.ts';
 export * from './getRescaler.ts';
 export * from './isPowerOfTwo.ts';
 export * from './nextPowerOfTwo.ts';

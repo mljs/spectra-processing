@@ -16,6 +16,7 @@ export * from './xyGetNMaxY.ts';
 export * from './xyGrowingX.ts';
 export * from './xyIntegral.ts';
 export * from './xyIntegration.ts';
+export * from './xyInterpolateLinear.ts';
 export * from './xyJoinX.ts';
 export * from './xyMassCenter.ts';
 export * from './xyMassCenterVector.ts';

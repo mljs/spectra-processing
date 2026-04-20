@@ -1,5 +1,47 @@
 # Changelog
 
+## [14.28.1](https://github.com/mljs/spectra-processing/compare/v14.28.0...v14.28.1) (2026-04-16)
+
+
+### Bug Fixes
+
+* update ml-matrix dependency ([#369](https://github.com/mljs/spectra-processing/issues/369)) ([f305c39](https://github.com/mljs/spectra-processing/commit/f305c3960137252c5298ad1d9d697eb27aeea710))
+
+## [14.28.0](https://github.com/mljs/spectra-processing/compare/v14.27.0...v14.28.0) (2026-04-15)
+
+
+### Features
+
+* implementation of xyBinning ([#367](https://github.com/mljs/spectra-processing/issues/367)) ([927c149](https://github.com/mljs/spectra-processing/commit/927c149d84097a0de8bdd016c95b438e9cadfe42))
+
+## [14.27.0](https://github.com/mljs/spectra-processing/compare/v14.26.0...v14.27.0) (2026-04-14)
+
+
+### Features
+
+* add options in xBinning ([fe93b24](https://github.com/mljs/spectra-processing/commit/fe93b24a7032680d93ecad3c399924960c67b7ee))
+
+## [14.26.0](https://github.com/mljs/spectra-processing/compare/v14.25.0...v14.26.0) (2026-04-14)
+
+
+### Features
+
+* add xBinning and xyInterpolateLinear ([dbbaf2c](https://github.com/mljs/spectra-processing/commit/dbbaf2cc4e075430a858671a22563a6236790d8d))
+
+## [14.25.0](https://github.com/mljs/spectra-processing/compare/v14.24.0...v14.25.0) (2026-04-13)
+
+
+### Features
+
+* improve speed Whittaker smoother ([#358](https://github.com/mljs/spectra-processing/issues/358)) ([c736e4c](https://github.com/mljs/spectra-processing/commit/c736e4c64ada715498131cb7f96331eabd806549))
+
+## [14.24.0](https://github.com/mljs/spectra-processing/compare/v14.23.0...v14.24.0) (2026-04-13)
+
+
+### Features
+
+* add getCombinations and getCombinationsIterator ([f63b393](https://github.com/mljs/spectra-processing/commit/f63b393dad148398438c3dc4d0f1af3fb629f6b9))
+
 ## [14.23.0](https://github.com/mljs/spectra-processing/compare/v14.22.0...v14.23.0) (2026-04-07)
 
 
