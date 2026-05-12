@@ -7,10 +7,10 @@ import { xyCheck } from './xyCheck.ts';
  * @param data - DataXY object with x and y arrays.
  * @returns Flat array alternating x and y values.
  */
-export function xyToInterleaved(data: DataXY): number[] {
+export function xyToInterleaved(data: DataXY): Float64Array {
   xyCheck(data);
   const { x, y } = data;
-  const result: number[] = new Array(x.length * 2);
+  const result = new Float64Array(x.length * 2);
   for (let i = 0; i < x.length; i++) {
     result[2 * i] = x[i];
     result[2 * i + 1] = y[i];

@@ -7,10 +7,10 @@ import type { DataXY } from 'cheminfo-types';
  */
 export function xyFromInterleaved(
   data: number[] | Float64Array,
-): DataXY<number[]> {
+): DataXY<Float64Array> {
   const length = data.length / 2;
-  const x: number[] = new Array(length);
-  const y: number[] = new Array(length);
+  const x = new Float64Array(length);
+  const y = new Float64Array(length);
   for (let i = 0; i < length; i++) {
     x[i] = data[2 * i];
     y[i] = data[2 * i + 1];
