@@ -69,7 +69,7 @@ export function xyReduce(
   const { x, y } = data;
   const {
     from = x[0],
-    to = x.at(-1) as number,
+    to = x.at(-1),
     nbPoints = 4001,
     optimize = false,
   } = options;

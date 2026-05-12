@@ -134,12 +134,7 @@ test('works with different array types', () => {
   const baseline = [1.1, 2.1, 3.1, 4.1, 5.1];
   const weights = [1, 1, 1, 1, 1];
 
-  const result = calculateAdaptiveWeights(
-    yData as any,
-    baseline as any,
-    weights as any,
-    {},
-  );
+  const result = calculateAdaptiveWeights(yData, baseline, weights, {});
 
   expect(result).toBeDefined();
   expect(result[0]).toBe(1);

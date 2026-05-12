@@ -51,11 +51,7 @@ export function xyReduceNonContinuous(
     };
   }
   const { x, y } = data;
-  const {
-    from = x[0],
-    to = x.at(-1) as number,
-    maxApproximateNbPoints = 4001,
-  } = options;
+  const { from = x[0], to = x.at(-1), maxApproximateNbPoints = 4001 } = options;
   let { zones = [] } = options;
 
   zones = zonesNormalize(zones, { from, to });
