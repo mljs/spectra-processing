@@ -32,7 +32,7 @@ export function matrixPQN(
   medianOfQuotients: number[];
 } {
   const { max = 100 } = options;
-  const matrixB = new Matrix(matrix as number[][]);
+  const matrixB = new Matrix(matrix);
   for (let i = 0; i < matrixB.rows; i++) {
     const normalizationFactor = matrixB.getRowVector(i).norm('frobenius') / max;
     const row = matrixB.getRowVector(i).div(normalizationFactor);

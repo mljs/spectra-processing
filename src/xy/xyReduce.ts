@@ -69,13 +69,14 @@ export function xyReduce(
   const { x, y } = data;
   const {
     from = x[0],
-    to = x.at(-1) as number,
+    to = x.at(-1),
     nbPoints = 4001,
     optimize = false,
   } = options;
   let { zones = [] } = options;
 
   zones = zonesNormalize(zones, { from, to });
+  // @ts-expect-error -- x.at(-1) returns number | undefined but array is guaranteed non-empty here
   if (zones.length === 0) zones = [{ from, to }]; // we take everything
 
   const { internalZones, totalPoints } = getInternalZones(zones, x);

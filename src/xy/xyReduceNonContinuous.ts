@@ -51,14 +51,11 @@ export function xyReduceNonContinuous(
     };
   }
   const { x, y } = data;
-  const {
-    from = x[0],
-    to = x.at(-1) as number,
-    maxApproximateNbPoints = 4001,
-  } = options;
+  const { from = x[0], to = x.at(-1), maxApproximateNbPoints = 4001 } = options;
   let { zones = [] } = options;
 
   zones = zonesNormalize(zones, { from, to });
+  // @ts-expect-error -- x.at(-1) returns number | undefined but array is guaranteed non-empty here
   if (zones.length === 0) zones = [{ from, to }]; // we take everything
 
   const { internalZones, totalPoints } = getInternalZones(zones, x);
@@ -68,6 +65,7 @@ export function xyReduceNonContinuous(
     return notEnoughPoints(x, y, internalZones, totalPoints);
   }
 
+  // @ts-expect-error -- x.at(-1) returns number | undefined but array is guaranteed non-empty here
   const deltaX = (to - from) / (maxApproximateNbPoints - 1);
   const newX: number[] = [];
   const newY: number[] = [];
