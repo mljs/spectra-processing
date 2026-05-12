@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.29.0](https://github.com/mljs/spectra-processing/compare/v14.28.1...v14.29.0) (2026-05-12)
+
+
+### Features
+
+* add xyFromInterleaved and xyToInterleaved ([#371](https://github.com/mljs/spectra-processing/issues/371)) ([48da090](https://github.com/mljs/spectra-processing/commit/48da090a70f41fe216e5047302e3f879e898a380))
+
 ## [14.28.1](https://github.com/mljs/spectra-processing/compare/v14.28.0...v14.28.1) (2026-04-16)
 
 
