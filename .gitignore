@@ -44,3 +44,4 @@ dist
 
 .DS_Store
 .eslintcache
+.claude
