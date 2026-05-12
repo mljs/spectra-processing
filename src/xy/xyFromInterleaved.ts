@@ -8,6 +8,11 @@ import type { DataXY } from 'cheminfo-types';
 export function xyFromInterleaved(
   data: number[] | Float64Array,
 ): DataXY<Float64Array> {
+  if (data.length % 2 !== 0) {
+    throw new RangeError(
+      `xyFromInterleaved: data length must be even, got ${data.length}`,
+    );
+  }
   const length = data.length / 2;
   const x = new Float64Array(length);
   const y = new Float64Array(length);

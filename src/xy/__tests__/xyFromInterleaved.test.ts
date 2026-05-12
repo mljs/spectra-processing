@@ -22,3 +22,9 @@ test('empty array', () => {
     y: new Float64Array(0),
   });
 });
+
+test('odd length throws', () => {
+  expect(() => xyFromInterleaved([1, 2, 3])).toThrow(
+    /data length must be even/,
+  );
+});
