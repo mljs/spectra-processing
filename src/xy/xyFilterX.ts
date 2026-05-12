@@ -52,6 +52,7 @@ export function xyFilterX(
     exclusions = [],
   } = options;
 
+  // @ts-expect-error -- x.at(-1) returns number | undefined but array is guaranteed non-empty here
   const normalizedZones = zonesNormalize(zones, { from, to, exclusions });
 
   let currentZoneIndex = 0;
