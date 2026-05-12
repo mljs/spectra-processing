@@ -14,6 +14,7 @@ test('empty', () => {
 
 test('round-trip with xyFromInterleaved', () => {
   const interleaved = new Float64Array([1, 10, 2, 20, 3, 30]);
+
   expect(xyToInterleaved(xyFromInterleaved(interleaved))).toStrictEqual(
     interleaved,
   );
