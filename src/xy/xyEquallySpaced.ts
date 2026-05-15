@@ -9,19 +9,19 @@ import { xyCheck } from './xyCheck.ts';
 
 export interface XYEquallySpacedOptions {
   /**
-   * from
+   * Start of the output x range.
    * @default x[0]
    */
   from?: number;
 
   /**
-   * to
+   * End of the output x range.
    * @default x[x.length-1]
    */
   to?: number;
 
   /**
-   * variant
+   * `slot` averages y values within each bin; `smooth` uses the trapezoidal integral divided by the step size.
    * @default 'smooth'
    */
   variant?: 'slot' | 'smooth';
@@ -46,25 +46,11 @@ export interface XYEquallySpacedOptions {
 }
 
 /**
- * Function that returns a Number array of equally spaced numberOfPoints
- * containing a representation of intensities of the spectra arguments x
- * and y.
- *
- * The options parameter contains an object in the following form:
- * from: starting point
- * to: last point
- * numberOfPoints: number of points between from and to
- * variant: "slot" or "smooth" - smooth is the default option
- *
- * The slot variant consist that each point in an array is calculated
- * averaging the existing points between the slot that belongs to the current
- * value. The smooth variant is the same but takes the integral of the range
- * of the slot and divide by the step size between two points in an array.
- *
- * If exclusions zone are present, zones are ignored !
- * @param data - object containing 2 properties x and y
+ * Resample a spectrum to equally spaced x points.
+ * When `exclusions` are provided they take precedence and `zones` is ignored.
+ * @param data - object containing x and y arrays
  * @param options - options
- * @returns new object with x / y array with the equally spaced data.
+ * @returns resampled spectrum with equally spaced x values
  */
 
 export function xyEquallySpaced(

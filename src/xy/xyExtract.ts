@@ -5,6 +5,10 @@ import { zonesNormalize } from '../zones/index.ts';
 import { xyCheck } from './xyCheck.ts';
 
 export interface XYExtractOptions {
+  /**
+   * Ranges to keep; points outside all zones are discarded.
+   * @default []
+   */
   zones?: FromTo[];
 }
 
