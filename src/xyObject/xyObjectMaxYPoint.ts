@@ -4,8 +4,8 @@ import { xyObjectCheck } from './xyObjectCheck.ts';
 
 /**
  * Finds the max y value and return a {x,y,index} point
- * @param points - Object that contains property x (an ordered increasing array) and y (an array)
- * @returns max point
+ * @param points - object that contains property x (an ordered increasing array) and y (an array).
+ * @returns max point.
  */
 export function xyObjectMaxYPoint(points: Point[] = []): Point {
   xyObjectCheck(points);

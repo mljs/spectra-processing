@@ -16,10 +16,10 @@ interface XMassCenterVectorSimilarityOptions {
 
 /**
  * Check the similarity between array created by xyMassCenterVector
- * @param array1
- * @param array2
- * @param options
- * @returns
+ * @param array1 - first mass center vector.
+ * @param array2 - second mass center vector.
+ * @param options - options.
+ * @returns similarity score between 0 and 1.
  */
 export function xMassCenterVectorSimilarity(
   array1: NumberArray,

@@ -2,8 +2,8 @@ import type { NumberArray } from 'cheminfo-types';
 
 /**
  * Calculates the mode of an array
- * @param input - Array containing values
- * @returns - mode
+ * @param input - array containing values.
+ * @returns mode.
  */
 export function xMode(input: NumberArray): number {
   if (input.length === 0) {

@@ -12,9 +12,9 @@ export interface XYMassCenterVectorOptions {
  * We will calculate a vector containing center of mass of DataXY as well as center of mass of both parts, etc.
  * This approach allows to efficiently represent spectra like XPS, NMR, etc. It should provide an extremely efficient
  * way to store and search similar spectra.
- * @param data - Object that contains property x (an ordered increasing array) and y (an array)
- * @param options
- * @returns - Array of centers of mass
+ * @param data - object that contains property x (an ordered increasing array) and y (an array).
+ * @param options - options.
+ * @returns array of centers of mass.
  */
 export function xyMassCenterVector(
   data: DataXY,

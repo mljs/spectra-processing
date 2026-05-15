@@ -30,9 +30,9 @@ export interface XYMaxYOptions {
 
 /**
  * Finds the max value in a zone
- * @param data - Object that contains property x (an ordered increasing array) and y (an array)
- * @param options - Options
- * @returns - Max y on the specified range
+ * @param data - object that contains property x (an ordered increasing array) and y (an array).
+ * @param options - options.
+ * @returns max y on the specified range.
  */
 
 export function xyMaxY(data: DataXY, options: XYMaxYOptions = {}): number {

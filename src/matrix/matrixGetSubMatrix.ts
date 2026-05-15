@@ -30,9 +30,9 @@ export interface MatrixGetSubMatrixOptions {
 /**
  * Get a subMatrix from matrix, the function checks if the subMatrix
  * lies within the dimensions of the matrix.
- * @param matrix - The original matrix from which the subMatrix will be extracted.
- * @param options - Options to define the subMatrix boundaries and duplication behavior.
- * @returns The subMatrix extracted from the original matrix.
+ * @param matrix - the original matrix from which the subMatrix will be extracted.
+ * @param options - options to define the subMatrix boundaries and duplication behavior.
+ * @returns the subMatrix extracted from the original matrix.
  */
 export function matrixGetSubMatrix(
   matrix: Float64Array[],

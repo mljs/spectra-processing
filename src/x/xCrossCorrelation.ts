@@ -20,7 +20,7 @@ export interface XCrossCorrelationOptions {
  * Calculates the cross-correlation between 2 arrays
  * @param A - fixed array
  * @param B - sweeping array
- * @param options - Options
+ * @param options - options.
  */
 export function xCrossCorrelation(
   A: NumberArray,

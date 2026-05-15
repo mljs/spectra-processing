@@ -4,7 +4,7 @@ import { xyObjectCheck } from './xyObjectCheck.ts';
 
 /**
  * Calculate the sum of Y values.
- * @param points - Object that contains property x and y (an array)
+ * @param points - object that contains property x and y (an array).
  */
 export function xyObjectSumY(points: Point[] = []): number {
   xyObjectCheck(points);

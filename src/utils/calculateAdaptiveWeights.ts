@@ -38,10 +38,10 @@ export interface CalculateAdaptiveWeightsOptions extends WeightsAndControlPoints
  * MAD (Median Absolute Deviation) is more robust to outliers and
  * the factor (1.4826) makes MAD scaled to be equivalent to the standard deviation for
  * normal distributions. {@link https://en.m.wikipedia.org/wiki/Median_absolute_deviation}.
- * @param yData - The original data.
- * @param baseline - The new baseline calculated.
- * @param weights - The current weights to be updated.
- * @param options - Options for updating weights.
+ * @param yData - the original data.
+ * @param baseline - the new baseline calculated.
+ * @param weights - the current weights to be updated.
+ * @param options - options for updating weights.
  * @returns new array of weights.
  */
 

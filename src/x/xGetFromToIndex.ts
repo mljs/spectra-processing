@@ -31,7 +31,7 @@ export interface XGetFromToIndexOptions {
 /**
  * Returns an object with {fromIndex, toIndex} for a specific from / to
  * @param x - array of numbers
- * @param options - Options
+ * @param options - options.
  */
 export function xGetFromToIndex(
   x: NumberArray,

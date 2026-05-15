@@ -12,8 +12,8 @@ export interface XCheckOptions {
 /**
  * Checks if the input is a non-empty array of numbers.
  * Only checks the first element.
- * @param input - Array to check.
- * @param options - Additional checks.
+ * @param input - array to check.
+ * @param options - additional checks.
  */
 export function xCheck(
   input?: NumberArray,

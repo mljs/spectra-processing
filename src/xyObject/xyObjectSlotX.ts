@@ -9,9 +9,9 @@ export interface XYObjectSlotXOptions {
 }
 
 /**
- * xyObjectSlotX
- * @param points - Array of growing points {x,y}.
- * @param options - Options.
+ * Slots growing points into fixed-width buckets and sums their y values.
+ * @param points - array of growing points {x,y}.
+ * @param options - options.
  */
 export function xyObjectSlotX(
   points: Point[],

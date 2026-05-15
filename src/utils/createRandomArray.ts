@@ -41,8 +41,8 @@ export interface CreateRandomArrayOptions {
 
 /**
  * Create a random array of numbers of a specific length.
- * @param options
- * @returns - array of random floats normally distributed
+ * @param options - options.
+ * @returns array of random floats normally distributed.
  */
 export function createRandomArray(
   options: CreateRandomArrayOptions = {},

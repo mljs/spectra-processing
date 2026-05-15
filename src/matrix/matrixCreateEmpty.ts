@@ -35,7 +35,7 @@ export interface MatrixCreateEmptyOptions<
 
 /**
  * Create a new matrix based on the size of the current one or by using specific dimensions.
- * @param options
+ * @param options - options.
  */
 export function matrixCreateEmpty<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,

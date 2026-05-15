@@ -203,14 +203,14 @@ export function xNoiseSanPlot(
 
 /**
  * Determines the optimal cut-off point for a given array of positive numbers.
- * @param signPositive - An array of positive numbers.
- * @param options - Optional parameters to configure the cut-off determination.
+ * @param signPositive - an array of positive numbers.
+ * @param options - optional parameters to configure the cut-off determination.
  * @param options.magnitudeMode - If true, uses magnitude mode for normalization. Default is false.
  * @param options.considerList - An object specifying the range and step for consideration.
  * @param options.considerList.from - The starting point of the range. Default is 0.5.
  * @param options.considerList.step - The step size for the range. Default is 0.1.
  * @param options.considerList.to - The ending point of the range. Default is 0.9.
- * @returns The optimal cut-off point as a number.
+ * @returns the optimal cut-off point as a number.
  */
 function determineCutOff(
   signPositive: NumberArray,
@@ -261,8 +261,8 @@ function determineCutOff(
 
 /**
  * Generates a SAN plot from the given array based on the specified options.
- * @param array - The input array of numbers to be processed.
- * @param options - An optional object containing configuration options.
+ * @param array - the input array of numbers to be processed.
+ * @param options - an optional object containing configuration options.
  * @param options.logBaseY - The logarithmic base for the Y-axis. Defaults to 2.
  * @param options.fromTo - An object specifying the range for each key. Each key maps to an object with `from` and `to` properties.
  * @returns An object where each key maps to a DataXY object containing the processed data.
@@ -294,10 +294,10 @@ function generateSanPlot(
 
 /**
  * Scales the input array based on the provided options.
- * @param array - The input array to be scaled.
- * @param options - An optional object containing scaling options.
- * @param options.logBaseY - If provided, the array values will be scaled using the logarithm of this base.
- * @returns An object containing the scaled x and y arrays.
+ * @param array - the input array to be scaled.
+ * @param options - an optional object containing scaling options.
+ * @param options.logBaseY - if provided, the array values will be scaled using the logarithm of this base.
+ * @returns an object containing the scaled x and y arrays.
  */
 function scale(
   array: NumberArray,
@@ -326,8 +326,8 @@ function scale(
 
 /**
  * Prepares and processes the input data array based on the provided options.
- * @param array - The input array of numbers to be processed.
- * @param options - An object containing the following properties:
+ * @param array - the input array of numbers to be processed.
+ * @param options - an object containing the following properties:
  *   - scaleFactor: A number by which to scale each element of the array.
  *   - mask: An optional array of the same length as the input array, where
  *           elements corresponding to `true` values will be excluded from processing.

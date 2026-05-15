@@ -44,8 +44,8 @@ interface RecursiveRemoveEmptyAndNullOptions {
 /**
  * Recursively removes empty values from an object. This will also remove empty object or empty array.
  * @param object - the object being cleaned
- * @param options - Optional object with options for cleaning
- * @returns the cleaned object
+ * @param options - optional object with options for cleaning.
+ * @returns the cleaned object.
  */
 export function recursiveRemoveEmptyAndNull(
   object: unknown,
@@ -69,7 +69,7 @@ export function recursiveRemoveEmptyAndNull(
  *    Uses a `WeakMap` to keep track of objects that have been visited while recursively cleaning
  *    an object to prevent infinite recursive calls.
  * @param object - the object to be cleaned
- * @param propertiesToRemove - Optional key to remove from `object`. If not specified, the default
+ * @param propertiesToRemove - optional key to remove from `object`. If not specified, the default
  *    behavior is to remove "empty" values from `object`. A value is considered to be empty if it
  *    is one of the following:
  *      - empty strings
@@ -77,8 +77,8 @@ export function recursiveRemoveEmptyAndNull(
  *      - empty objects
  *      - values that are null
  *      - values that are undefined
- * @param removeProperty
- * @param options
+ * @param removeProperty - key to remove from the object.
+ * @param options - options.
  */
 function cleanCyclicObject(
   object: any,
@@ -205,7 +205,7 @@ function isNull(arg: unknown): arg is null {
 /**
  * Check if the argument is undefined.
  * @param {} arg - unknown function argument
- * @returns Returns true if `arg` is of type Undefined, false otherwise
+ * @returns returns true if `arg` is of type Undefined, false otherwise.
  */
 function isUndefined(arg: unknown): arg is undefined {
   return arg === undefined;
@@ -214,9 +214,9 @@ function isUndefined(arg: unknown): arg is undefined {
 /**
  * Check if the argument is null, undefined, an empty string, array, or object.
  * @param {} arg - unknown function argument
- * @returns Returns true if `arg` is an empty string,
+ * @returns returns true if `arg` is an empty string,
  *  array, or object. Also returns true is `arg` is null or
- *  undefined. Returns true otherwise.
+ *  undefined. Returns false otherwise.
  */
 function isEmpty(arg: unknown): boolean {
   return (

@@ -38,8 +38,8 @@ export interface CreateFromToArrayOptions {
 
 /**
  * Create an array with numbers between "from" and "to" of length "length"
- * @param options - options
- * @returns - array of distributed numbers between "from" and "to"
+ * @param options - options.
+ * @returns array of distributed numbers between "from" and "to".
  */
 export function createFromToArray(
   options: CreateFromToArrayOptions = {},

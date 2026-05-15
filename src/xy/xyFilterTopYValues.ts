@@ -4,9 +4,9 @@ import { xSortDescending } from '../x/index.ts';
 
 /**
  * Filter an array x/y based on various criteria x points are expected to be sorted
- * @param data - object containing 2 properties x and y
- * @param nbPeaks
- * @returns filtered data
+ * @param data - object containing 2 properties x and y.
+ * @param nbPeaks - number of top peaks to keep.
+ * @returns filtered data.
  */
 export function xyFilterTopYValues(data: DataXY, nbPeaks?: number) {
   if (nbPeaks === undefined) return data;

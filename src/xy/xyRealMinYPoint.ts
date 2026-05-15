@@ -6,9 +6,9 @@ import { xGetTargetIndex } from '../x/index.ts';
 import { xyCheck } from './xyCheck.ts';
 
 /**
- * xyRealMinYPoint.
- * @param data - Data.
- * @param options - Options.
+ * Finds the real minimum y point using parabolic interpolation when possible.
+ * @param data - data.
+ * @param options - options.
  */
 export function xyRealMinYPoint(data: DataXY, options = {}): PointWithIndex {
   xyCheck(data);

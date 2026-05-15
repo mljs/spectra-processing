@@ -12,9 +12,9 @@ export interface XSamplingOptions {
 
 /**
  * Sample within the array
- * @param array - array from which to sample
- * @param options - options
- * @returns - array with evenly spaced elements
+ * @param array - array from which to sample.
+ * @param options - options.
+ * @returns array with evenly spaced elements.
  * @link https://en.wikipedia.org/wiki/Sampling_(signal_processing)
  */
 export function xSampling(
@@ -34,9 +34,9 @@ export function xSampling(
 
 /**
  * Downsample within the array
- * @param array - array from which to sample
- * @param length
- * @returns - array with evenly spaced elements
+ * @param array - array from which to sample.
+ * @param length - target number of elements.
+ * @returns array with evenly spaced elements.
  * @link https://en.wikipedia.org/wiki/Downsampling_(signal_processing)
  */
 function downSampling(

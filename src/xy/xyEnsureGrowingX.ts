@@ -6,7 +6,7 @@ import { xyCheck } from './xyCheck.ts';
 
 /**
  * Filters x,y values to allow strictly growing values in x-axis.
- * @param data - Object that contains property x (an ordered increasing array) and y (an array).
+ * @param data - object that contains property x (an ordered increasing array) and y (an array).
  */
 export function xyEnsureGrowingX<DataType extends NumberArray = NumberArray>(
   data: DataXY<DataType>,
