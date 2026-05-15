@@ -4,24 +4,26 @@ import { xFindClosestIndex } from './xFindClosestIndex.ts';
 
 export interface XGetFromToIndexOptions {
   /**
-   * First point for xyIntegration
+   * Start index (0-based, clamped to array bounds). Takes precedence over `from`.
    * @default 0
    */
   fromIndex?: number;
 
   /**
-   * Last point for xyIntegration
+   * End index (0-based, clamped to array bounds). Takes precedence over `to`.
    * @default x.length-1
    */
   toIndex?: number;
 
   /**
-   * First value for xyIntegration in the X scale
+   * Start value in the x scale; resolved to the nearest index.
+   * @default x[0]
    */
   from?: number;
 
   /**
-   * Last value for xyIntegration in the X scale
+   * End value in the x scale; resolved to the nearest index.
+   * @default x[x.length-1]
    */
   to?: number;
 }

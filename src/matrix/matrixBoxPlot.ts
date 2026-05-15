@@ -1,13 +1,25 @@
 import type { DoubleArray, DoubleMatrix } from 'cheminfo-types';
 
 export interface MatrixBoxPlot {
+  /** First quartile for each column. */
   q1: Float64Array;
+  /** Median for each column. */
   median: Float64Array;
+  /** Third quartile for each column. */
   q3: Float64Array;
+  /** Minimum value for each column (taken from the first row of the sorted matrix). */
   min: Float64Array;
+  /** Maximum value for each column (taken from the last row of the sorted matrix). */
   max: Float64Array;
 }
 
+/**
+ * Computes per-column box-plot statistics (min, Q1, median, Q3, max) for a matrix.
+ * The matrix rows must be sorted in ascending order — results will be wrong otherwise.
+ * Requires at least 5 rows.
+ * @param matrix - 2D matrix whose rows are sorted in ascending order
+ * @returns per-column box-plot statistics
+ */
 export function matrixBoxPlot(matrix: DoubleMatrix): MatrixBoxPlot {
   const nbRows = matrix.length;
   const nbColumns = matrix[0].length;

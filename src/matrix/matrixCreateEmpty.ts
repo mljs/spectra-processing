@@ -10,18 +10,18 @@ export interface MatrixCreateEmptyOptions<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,
 > {
   /**
-   * Matrix from which to extract nbRows and nbColumns
+   * Reference matrix used to derive default row and column counts.
    */
   matrix?: DoubleMatrix;
 
   /**
-   * Matrix from which to extract nbRows and nbColumns
+   * Number of rows in the new matrix.
    * @default matrix.length || 1
    */
   nbRows?: number;
 
   /**
-   * Matrix from which to extract nbRows and nbColumns
+   * Number of columns in the new matrix.
    * @default matrix[0].length || 1
    */
   nbColumns?: number;

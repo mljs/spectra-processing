@@ -9,7 +9,7 @@ import { xMinValue } from './xMinValue.ts';
 
 export interface XHistogramOptions {
   /**
-   * Center the X value. We will enlarge the first and
+   * Center each slot's x value at the mid-point of the bin rather than at the left edge.
    * @default true
    */
   centerX?: boolean;
@@ -27,17 +27,20 @@ export interface XHistogramOptions {
   nbSlots?: number;
 
   /**
-   * We can first apply a log on x axis
+   * Apply log base transformation to input x values before binning.
+   * @default undefined
    */
   logBaseX?: number;
 
   /**
-   * We can apply a log on the resulting histogram
+   * Apply log base transformation to the resulting histogram y counts.
+   * @default undefined
    */
   logBaseY?: number;
 
   /**
-   * Take the absolute value
+   * Take the absolute value of each input element before binning.
+   * @default false
    */
   absolute?: boolean;
 

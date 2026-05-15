@@ -15,14 +15,18 @@ export interface XPaddingOptions {
    * @default 0
    */
   value?: number;
+  /**
+   * Padding strategy: `value` fills with a constant, `duplicate` repeats the first/last element, `circular` wraps the array.
+   * @default undefined
+   */
   algorithm?: 'value' | 'duplicate' | 'circular';
 }
 
 /**
- * This function pads an array
- *s
+ * Pads an array symmetrically on both sides.
  * @param array - the array that will be padded
  * @param options - options
+ * @returns padded Float64Array
  */
 export function xPadding(
   array: NumberArray,

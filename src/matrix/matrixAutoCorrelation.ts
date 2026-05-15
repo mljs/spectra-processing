@@ -2,6 +2,12 @@ import type { DoubleMatrix } from 'cheminfo-types';
 
 import { xCorrelation } from '../x/index.ts';
 
+/**
+ * Correlates every column of a matrix against a single reference column.
+ * @param matrix - 2D matrix with at least 2 rows
+ * @param index - column index used as the reference signal. Defaults to `0`.
+ * @returns array of Pearson correlations, one value per column
+ */
 export function matrixAutoCorrelation(
   matrix: DoubleMatrix,
   index = 0,

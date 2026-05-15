@@ -8,7 +8,7 @@ import { reimPhaseCorrection } from './reimPhaseCorrection.ts';
 
 export interface AutoPhaseCorrectionOptions {
   /**
-   * if true it uses magnitude spectrum.boolean
+   * If true, uses the magnitude spectrum to detect baseline regions.
    * @default true
    */
   magnitudeMode?: boolean;
@@ -48,6 +48,7 @@ export interface AutoPhaseCorrectionOptions {
  * correction algorithm for high-resolution NMR data. 10.1002/mrc.4586
  * @param data - complex spectrum
  * @param options - options
+ * @returns phased spectrum together with the zero- and first-order correction angles (ph0, ph1) in degrees
  */
 
 export function reimAutoPhaseCorrection(
