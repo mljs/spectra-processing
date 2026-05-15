@@ -4,10 +4,10 @@ import type { DataReIm } from '../types/index.ts';
 
 /**
  * Calculates reimAbsolute value of a complex spectrum.
- * @param data - complex spectrum.
- * @param options - options.
- * @param options.output - optional output array.
- * @returns absolute value array.
+ * @param data - complex spectrum
+ * @param options
+ * @param options.output
+ * @returns - reimAbsolute value
  */
 export function reimAbsolute(
   data: DataReIm,

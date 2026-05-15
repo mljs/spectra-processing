@@ -3,8 +3,8 @@ import type { DataXY } from 'cheminfo-types';
 import type { Point } from '../types/index.ts';
 
 /**
- * Converts an array of {x,y} point objects to a DataXY object.
- * @param points - array of {x,y} point objects.
+ * xyObjectToXY.
+ * @param points - Array of points {x,y}.
  */
 export function xyObjectToXY(points: Point[]): DataXY<number[]> {
   return {

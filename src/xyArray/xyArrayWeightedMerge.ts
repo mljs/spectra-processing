@@ -15,7 +15,7 @@ export interface XYArrayWeightedMergeOptions {
  * We have an array of DataXY and the goal is to merge all the values for which the deltaX is small or equal to delta.
  * X values are weighted average
  * @param data - data
- * @param options - options.
+ * @param options - Options
  */
 export function xyArrayWeightedMerge(
   data: DataXY[],
@@ -68,10 +68,10 @@ export function xyArrayWeightedMerge(
 }
 
 /**
- * Finds the next minimum x value across all spectra and advances the corresponding position pointer.
+ * NextValue.
  * @param data - data.
- * @param positions - positions array.
- * @param point - point.
+ * @param positions - Positions array.
+ * @param point - Point.
  */
 function nextValue(data: DataXY[], positions: NumberArray, point: Point) {
   let minIndex = 0;

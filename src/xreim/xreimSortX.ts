@@ -5,7 +5,7 @@ import type { DataXReIm } from '../types/index.ts';
 /**
  * Sort object of arrays, x has to be monotone.
  * @param data - object of kind {x:[], re:[], im:[]}
- * @returns sorted DataXReIm object.
+ * @returns - sorted array
  */
 export function xreimSortX<ArrayType extends DoubleArray = DoubleArray>(
   data: DataXReIm<ArrayType>,

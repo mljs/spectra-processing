@@ -4,8 +4,8 @@ import { xyObjectCheck } from './xyObjectCheck.ts';
 
 /**
  * Returns all min and max values of an array of points.
- * @param points - array of points {x,y}.
- * @returns object with the 4 extrema.
+ * @param points - Array of points {x,y}.
+ * @returns - Object with the 4 extrema.
  */
 export function xyObjectMinMaxValues(points: Point[]): {
   minX: number;

@@ -13,10 +13,10 @@ interface XCostMatrixOptions {
 /**
  * Generate a cost matrix from two set of values using the function passed. by default it
  * generate the cost matrix of absolute value of differences.
- * @param rowsArray - array of values that will represent the rows of the cost matrix.
- * @param columnsArray - array of values that will represent the columns of the cost matrix.
- * @param options - options.
- * @returns a matrix instance with dimensions rowsArray.length x columnsArray.length.
+ * @param rowsArray - Array of values that will represent the rows of the cost matrix.
+ * @param columnsArray - Array of values that will represent the columns of the cost matrix.
+ * @param options
+ * @returns - A matrix instance with dimensions rowsArray.length x columnsArray.length
  */
 export function xCostMatrix(
   rowsArray: NumberArray,

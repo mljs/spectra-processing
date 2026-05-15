@@ -20,8 +20,8 @@ export interface CreateStepArrayOptions {
 
 /**
  * Create an array with numbers starting from "from" with step "step" of length "length".
- * @param options - options.
- * @returns array of distributed numbers with step "step" from "from".
+ * @param options - options
+ * @returns - array of distributed numbers with step "step" from "from"
  */
 export function createStepArray(
   options: CreateStepArrayOptions = {},

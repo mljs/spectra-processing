@@ -50,9 +50,9 @@ export interface XYReduceOptions {
  *
  * SHOULD NOT BE USED FOR DATA PROCESSING !!!
  * You should rather use ml-xy-equally-spaced to make further processing
- * @param data - object that contains property x (an ordered increasing array) and y (an array).
- * @param options - options.
- * @returns object with x and y arrays.
+ * @param data - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param options - options
+ * @returns Object with x and y arrays
  */
 export function xyReduce(
   data: DataXY,
@@ -104,10 +104,10 @@ export function xyReduce(
   return { x: newX, y: newY };
 
   /**
-   * Appends reduced x/y values for a zone to the output arrays.
-   * @param fromIndex - start index in the input arrays.
-   * @param  toIndex - end index in the input arrays.
-   * @param zoneNbPoints - target number of points to keep in this zone.
+   * AppendFromTo.
+   * @param fromIndex - From.
+   * @param  toIndex - To.
+   * @param zoneNbPoints - NbPoints.
    */
   function appendFromTo(
     fromIndex: number,

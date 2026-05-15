@@ -19,8 +19,8 @@ export interface XYUniqueXOptions {
 
 /**
  * Ensure x values are unique
- * @param data - object that contains property x (Array) and y (Array).
- * @param options - object containing a property algorithm (can be 'sum' or 'average', the latter being the default value), and a property isSorted (boolean indicating if the x-array is sorted).
+ * @param data - Object that contains property x (Array) and y (Array)
+ * @param options - Object containing a property algorithm (can be 'sum' or 'average', the latter being the default value), and a property isSorted (boolean indicating if the x-array is sorted).
  */
 export function xyUniqueX(
   data: DataXY,
@@ -49,9 +49,9 @@ export function xyUniqueX(
 }
 
 /**
- * Averages duplicate x values by averaging their y values.
- * @param data - input.
- * @returns result.
+ * Average.
+ * @param data - Input.
+ * @returns Result.
  */
 function average(data: DataXY): DataXY<number[]> {
   const x: number[] = [];
@@ -74,9 +74,9 @@ function average(data: DataXY): DataXY<number[]> {
 }
 
 /**
- * Merges duplicate x values by summing their y values.
- * @param data - input.
- * @returns result.
+ * Sum.
+ * @param data - Input.
+ * @returns Result.
  */
 function sum(data: DataXY): DataXY<number[]> {
   const x: number[] = [];

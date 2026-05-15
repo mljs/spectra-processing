@@ -5,7 +5,7 @@ import { xyCheck } from './xyCheck.ts';
 /**
  * Convert a DataXY object to a flat interleaved array [x, y, x, y, ...].
  * @param data - DataXY object with x and y arrays.
- * @returns flat array alternating x and y values.
+ * @returns Flat array alternating x and y values.
  */
 export function xyToInterleaved(data: DataXY): Float64Array {
   xyCheck(data);

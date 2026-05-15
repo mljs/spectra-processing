@@ -8,7 +8,7 @@ import { createDoubleArray } from '../utils/createArray.ts';
  * This function make a zero filling to re and im part.
  * @param data - object of kind {re:[], im:[]}
  * @param totalLength - final number of points
- * @returns new DataReIm object with zero-filled,
+ * @returns - New DataReIm object with zero-filled,
  * truncated arrays if totalLength is smaller current length or
  * the same input if totalLength is equal that current length
  */

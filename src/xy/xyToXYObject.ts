@@ -5,8 +5,8 @@ import type { Point } from '../types/index.ts';
 import { xyCheck } from './xyCheck.ts';
 
 /**
- * Converts a DataXY object to an array of {x,y} point objects.
- * @param data - array of points {x,y}.
+ * xyToXYObject.
+ * @param data - Array of points {x,y}.
  */
 export function xyToXYObject(data: DataXY): Point[] {
   xyCheck(data);

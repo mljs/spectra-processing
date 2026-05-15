@@ -19,7 +19,7 @@ export interface XAutoCorrelationOptions {
 /**
  * Calculates the auto-correlation of an array
  * @param A - the array for which to calculate the auto-correlation
- * @param options - options.
+ * @param options - Options
  */
 export function xAutoCorrelation(
   A: NumberArray,

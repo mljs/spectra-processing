@@ -2,7 +2,7 @@ import type { DataXY } from 'cheminfo-types';
 
 /**
  * Convert a flat interleaved array [x, y, x, y, ...] to a DataXY object.
- * @param data - flat array alternating x and y values.
+ * @param data - Flat array alternating x and y values.
  * @returns DataXY object with separate x and y arrays.
  */
 export function xyFromInterleaved(

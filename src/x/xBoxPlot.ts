@@ -21,8 +21,9 @@ export interface XBoxPlot {
 /**
  * Calculating the box plot of the array
  * This function will interpolate the values and use the inclusive algorithm
- * @param array - data.
- * @returns q1, median, q3, min, max.
+ * @param array - data
+ * @param options
+ * @returns - q1, median, q3, min, max
  */
 export function xBoxPlot(array: NumberArray): XBoxPlot {
   xCheck(array);

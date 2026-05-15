@@ -17,9 +17,9 @@ export interface Slot {
 }
 
 /**
- * Computes common x slots from multiple DataXY spectra by grouping nearby x values.
+ * GetSlots.
  * @param data - data.
- * @param options - options.
+ * @param options - Options.
  */
 export function getSlots(
   data: DataXY[],

@@ -109,10 +109,10 @@ const Q5 = [
 ];
 
 /**
- * Evaluates a polynomial at x using Horner's method.
- * @param c - array of polynomial coefficients.
- * @param x - evaluation point.
- * @returns polynomial value.
+ * Polyval.
+ * @param c - Array of Number.
+ * @param x - Number.
+ * @returns Number.
  */
 function polyval(c: number[], x: number): number {
   let p = 0;
@@ -125,12 +125,12 @@ function polyval(c: number[], x: number): number {
 /**
  * Calculates a rational approximation.
  * @private
- * @param x - input value.
- * @param v - shift value.
- * @param P - array of numerator polynomial coefficients.
- * @param Q - array of denominator polynomial coefficients.
- * @param Y - scale factor.
- * @returns rational approximation.
+ * @param x - Number.
+ * @param v - Number.
+ * @param P - Array of polynomial coefficients.
+ * @param Q - Array of polynomial coefficients.
+ * @param Y - Number.
+ * @returns Rational approximation.
  */
 function calc(
   x: number,
@@ -147,8 +147,8 @@ function calc(
 /**
  * Evaluates the complementary inverse error function for an input value.
  * @private
- * @param x - input value.
- * @returns evaluated complementary inverse error function.
+ * @param x - Input value.
+ * @returns Evaluated complementary inverse error function.
  */
 export default function erfcinv(x: number): number {
   let sign = false;

@@ -9,9 +9,9 @@ export interface XYObjectJoinXOptions {
 }
 
 /**
- * Joins points whose x values are within xError of each other using weighted averaging.
- * @param points - array of growing points {x,y}.
- * @param options - options.
+ * xyObjectJoinX.
+ * @param points - Array of growing points {x,y}.
+ * @param options - Options.
  */
 export function xyObjectJoinX(
   points: Point[],

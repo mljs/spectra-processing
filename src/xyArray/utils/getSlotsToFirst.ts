@@ -17,9 +17,9 @@ export interface Slot {
 }
 
 /**
- * Computes slots aligned to the first spectrum's x values, adding slots for any x values not covered.
+ * GetSlotsToFirst.
  * @param data - data.
- * @param options - options.
+ * @param options - Options.
  */
 export function getSlotsToFirst(
   data: DataXY[],

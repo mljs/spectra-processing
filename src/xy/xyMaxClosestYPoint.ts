@@ -13,9 +13,9 @@ export interface XYMaxClosestYPointOptions {
 
 /**
  * Find the closest maximum going up hill
- * @param data - object that contains property x (an ordered increasing array) and y (an array).
- * @param options - options.
- * @returns an object with the x/y value.
+ * @param data - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param options - options
+ * @returns - An object with the x/y value
  */
 export function xyMaxClosestYPoint(
   data: DataXY,

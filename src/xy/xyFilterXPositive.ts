@@ -5,7 +5,7 @@ import { xyCheck } from './xyCheck.ts';
 /**
  * Filter out all the points for which x <= 0. Useful to display log scale data
  * @param data - data
- * @returns an object with the filtered data.
+ * @returns - An object with the filtered data
  */
 export function xyFilterXPositive(data: DataXY): DataXY<number[]> {
   xyCheck(data);

@@ -30,9 +30,9 @@ export interface XYIntegrationOptions {
 
 /**
  * Calculate integration
- * @param data - object that contains property x (an ordered increasing array) and y (an array).
- * @param options - options.
- * @returns integration value on the specified range.
+ * @param data - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param options - Options
+ * @returns - xyIntegration value on the specified range
  */
 export function xyIntegration(
   data: DataXY,

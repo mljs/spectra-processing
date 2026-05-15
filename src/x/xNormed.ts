@@ -24,9 +24,9 @@ export interface XNormedOptions<ArrayType extends NumberArray = Float64Array> {
 
 /**
  * Divides the data with either the sum, the absolute sum or the maximum of the data
- * @param input - array containing values.
- * @param options - options.
- * @returns normalized data.
+ * @param input - Array containing values
+ * @param options - options
+ * @returns - normalized data
  */
 export function xNormed<ArrayType extends NumberArray = Float64Array>(
   input: NumberArray,

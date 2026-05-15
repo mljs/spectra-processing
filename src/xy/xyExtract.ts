@@ -14,9 +14,9 @@ export interface XYExtractOptions {
 
 /**
  * Extract zones from a XY data.
- * @param data - object that contains property x (an ordered increasing array) and y (an array).
- * @param options - options.
- * @returns extracted DataXY containing only the points within the specified zones.
+ * @param data - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param options - options
+ * @returns - Array of points
  */
 export function xyExtract(
   data: DataXY,

@@ -12,9 +12,9 @@ export interface XYMedianYAtXsOptions {
  * Computes the median of Y values in a sliding window around each target x position.
  * For each value in xValues, the closest index in data.x is found and the median
  * of the surrounding y values (within the window) is returned.
- * @param data - object with x (sorted in increasing order) and y arrays of the same length.
- * @param xValues - array of x positions at which to compute the median.
- * @param options - options for the median computation.
+ * @param data - Object with x (sorted in increasing order) and y arrays of the same length.
+ * @param xValues - Array of x positions at which to compute the median.
+ * @param options - Options for the median computation.
  * @returns A new DataXY with x = xValues and y = computed medians.
  */
 export function xyMedianYAtXs(

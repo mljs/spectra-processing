@@ -9,8 +9,8 @@ export interface XYMedianYOptions {
 
 /**
  * Computes the median of Y values in a sliding window around each point.
- * @param data - object with x and y arrays of the same length.
- * @param options - options for the median computation.
+ * @param data - Object with x and y arrays of the same length.
+ * @param options - Options for the median computation.
  * @returns A new DataXY with the same x values and smoothed y values.
  */
 export function xyMedianY(

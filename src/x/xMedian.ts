@@ -12,9 +12,9 @@ interface XMedianOptions {
 
 /**
  * Calculates the median of an array.
- * @param input - array containing values.
- * @param options - options.
- * @returns median.
+ * @param input - Array containing values
+ * @param options
+ * @returns - median
  */
 export function xMedian(
   input: NumberArray,

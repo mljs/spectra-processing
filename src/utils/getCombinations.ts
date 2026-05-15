@@ -1,8 +1,8 @@
 /**
  * Generate all combinations of choosing k items from n items.
- * @param n - total number of items.
- * @param k - number of items to choose.
- * @returns array of combinations, where each combination is an array of indices.
+ * @param n - Total number of items.
+ * @param k - Number of items to choose.
+ * @returns Array of combinations, where each combination is an array of indices.
  */
 export function getCombinations(n: number, k: number): number[][] {
   if (k === 0) return [[]];

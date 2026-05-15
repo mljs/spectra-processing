@@ -165,11 +165,11 @@ interface AutoPhaseRegionResult {
 }
 
 /**
- * Finds the best phase angle for a region by minimizing the negative area.
- * @param re - array of number.
- * @param im - array of number.
- * @param x0 - number.
- * @returns region.
+ * AutoPhaseRegion.
+ * @param re - Array of Number.
+ * @param im - Array of Number.
+ * @param x0 - Number.
+ * @returns Region.
  */
 function autoPhaseRegion(
   re: DoubleArray,
@@ -210,9 +210,9 @@ function autoPhaseRegion(
 }
 
 /**
- * Applies the Holoborodko smoothing derivative filter.
- * @param s - array of float.
- * @returns array of float.
+ * Holoborodko.
+ * @param s - Array of float.
+ * @returns Array of float.
  */
 function holoborodko(s: DoubleArray): Float64Array<ArrayBuffer> {
   const dk = new Float64Array(s.length);
@@ -236,12 +236,12 @@ function holoborodko(s: DoubleArray): Float64Array<ArrayBuffer> {
 }
 
 /**
- * Detects baseline regions using robust iterative noise estimation.
- * @param s - input signal array.
- * @param options - detection options.
- * @param options.magnitudeMode - whether to use magnitude mode.
- * @param options.maxDistanceToJoin - max distance to join nearby regions.
- * @param options.factorNoise - noise factor for cutoff.
+ * RobustBaseLineRegionsDetection.
+ * @param s
+ * @param options
+ * @param options.magnitudeMode
+ * @param options.maxDistanceToJoin
+ * @param options.factorNoise
  */
 function robustBaseLineRegionsDetection(
   s: DoubleArray,
@@ -292,10 +292,10 @@ function robustBaseLineRegionsDetection(
 }
 
 /**
- * Computes a weighted linear regression and returns [slope, intercept].
- * @param x - x values.
- * @param y - y values.
- * @param w - weights.
+ * WeightedLinearRegression.
+ * @param x
+ * @param y
+ * @param w
  */
 function weightedLinearRegression(
   x: DoubleArray,

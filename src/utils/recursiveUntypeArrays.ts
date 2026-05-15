@@ -3,8 +3,8 @@ import type { NumberArray } from 'cheminfo-types';
 /**
  * Recursively change the typed arrays to normal arrays
  * The changes are done in-place !
- * @param object - object to transform.
- * @returns the transformed object.
+ * @param object
+ * @returns
  */
 export function recursiveUntypeArrays(object: unknown) {
   if (typeof object !== 'object') return object;

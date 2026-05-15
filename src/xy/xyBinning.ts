@@ -9,9 +9,9 @@ import { xyCheck } from './xyCheck.ts';
  * Downsample x and y by averaging consecutive non-overlapping points.
  * Both arrays are binned with the same partitioning, so the resulting x
  * is the mean x of each bin.
- * @param data - object that contains x and y arrays.
- * @param options - binning options (same as xBinning).
- * @returns downsampled x and y arrays.
+ * @param data - Object that contains x and y arrays.
+ * @param options - Binning options (same as xBinning).
+ * @returns Downsampled x and y arrays.
  */
 export function xyBinning(
   data: DataXY,

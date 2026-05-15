@@ -4,8 +4,8 @@ import { xMultiply } from './xMultiply.ts';
 
 /**
  * Dot product between two arrays.
- * @param A - first array.
- * @param B - second array.
+ * @param A - First array.
+ * @param B - Second array.
  */
 export function xDotProduct(A: NumberArray, B: NumberArray): number {
   const g = xMultiply(A, B);

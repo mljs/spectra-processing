@@ -44,8 +44,8 @@ export interface XYObjectBestPointsOptions {
  * Keep one per slot. There are 2 different slots, the smallest one will have the
  * new property `close` to true
  * @param points - array of all the points
- * @param options - options.
- * @returns copy of points with 'close' property.
+ * @param options - Options
+ * @returns - copy of points with 'close' property
  */
 export function xyObjectBestPoints(
   points: Point[],

@@ -21,7 +21,7 @@ export interface XYArrayAlignOptions {
 /**
  * Aligns data, can be used for spectra
  * @param data - data
- * @param options - options.
+ * @param options - Options
  */
 export function xyArrayAlign(
   data: DataXY[],

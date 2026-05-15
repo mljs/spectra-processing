@@ -6,9 +6,9 @@ import { xGetFromToIndex } from './xGetFromToIndex.ts';
 
 /**
  * Calculate the sum of the values
- * @param array - object that contains property x (an ordered increasing array) and y (an array).
- * @param options - options.
- * @returns sum value on the specified range.
+ * @param array - Object that contains property x (an ordered increasing array) and y (an array).
+ * @param options - Options.
+ * @returns XSum value on the specified range.
  */
 export function xSum(
   array: NumberArray,

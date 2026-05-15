@@ -9,7 +9,7 @@ import { matrixCheckRanges } from './matrixCheckRanges.ts';
  * @param subMatrix - matrix with equal or less size than matrix.
  * @param startRow - row index in matrix for the first row in subMatrix.
  * @param startColumn - column index in matrix for the first column in subMatrix.
- * @returns the modified `matrix`.
+ * @returns The modified `matrix`.
  */
 export function matrixSetSubMatrix(
   matrix: DoubleMatrix,

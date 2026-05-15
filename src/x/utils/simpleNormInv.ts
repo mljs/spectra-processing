@@ -13,9 +13,9 @@ interface SimpleNormInvOptions {
 
 /**
  * Applies a simple normalization inverse transformation to the input data.
- * @param data - the input array of numbers to be transformed.
- * @param options - optional parameters for the transformation.
- * @returns a new Float64Array containing the transformed data.
+ * @param data - The input array of numbers to be transformed.
+ * @param options - Optional parameters for the transformation.
+ * @returns A new Float64Array containing the transformed data.
  */
 export function simpleNormInv(
   data: NumberArray,
@@ -38,9 +38,9 @@ export function simpleNormInv(
 
 /**
  * Convenience wrapper for single number processing by simpleNormInv function.
- * @param data - the number to be normalized.
- * @param options - the options for the normalization process.
- * @returns the normalized number.
+ * @param data - The number to be normalized.
+ * @param options - The options for the normalization process.
+ * @returns The normalized number.
  */
 export function simpleNormInvNumber(
   data: number,

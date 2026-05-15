@@ -11,8 +11,8 @@ export interface XYObjectCheckOptions {
 /**
  * Throws an error if it's not an array of x,y objects.
  * Only checks the first element.
- * @param points - list of points.
- * @param options - additional checks.
+ * @param points - List of points.
+ * @param options - Additional checks.
  */
 export function xyObjectCheck(
   points?: Point[],

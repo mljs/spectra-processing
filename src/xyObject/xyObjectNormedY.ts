@@ -4,9 +4,9 @@ import { xNormed } from '../x/xNormed.ts';
 
 /**
  * Resize the Y values of the points to be normalized.
- * @param points - array of points {x,y}.
- * @param options - options.
- * @returns array of points {x,y} with normalized Y values.
+ * @param points - array of points {x,y}
+ * @param options
+ * @returns - array of points {x,y} with normalized Y values
  */
 export function xyObjectNormedY(
   points: Point[],

@@ -21,8 +21,8 @@ export interface SubmatrixBoundaries {
 
 /**
  * Checks if the specified submatrix boundaries are within the valid range of the given matrix.
- * @param matrix - the matrix to check the boundaries against.
- * @param boundaries - the boundaries of the submatrix.
+ * @param matrix - The matrix to check the boundaries against.
+ * @param boundaries - The boundaries of the submatrix.
  * @throws {RangeError} If any of the specified boundaries are out of the matrix's range.
  */
 export function matrixCheckRanges(

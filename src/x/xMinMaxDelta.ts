@@ -5,7 +5,7 @@ import { xCheck } from './xCheck.ts';
 /**
  * Return min and max values of an array.
  * @param array - array of number
- * @returns object with 2 properties, min and max.
+ * @returns - Object with 2 properties, min and max
  */
 export function xMinMaxDelta(array: NumberArray): {
   min: number;

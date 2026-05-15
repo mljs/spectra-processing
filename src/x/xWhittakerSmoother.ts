@@ -69,9 +69,9 @@ export const xWhitakerSmoother = xWhittakerSmoother;
 
 /**
  * Computes the baseline points for the given data using an iterative smoothing algorithm.
- * @param yData - the input data array.
- * @param options - the options for baseline computation.
- * @returns the computed baseline points.
+ * @param yData - The input data array.
+ * @param options - The options for baseline computation.
+ * @returns - The computed baseline points.
  */
 function whittakerByCholesky(
   yData: NumberArray,
@@ -132,10 +132,10 @@ function whittakerByCholesky(
 
 /**
  * Calculates the delta between the current and previous baseline.
- * @param baseline - the current baseline array.
- * @param prevBaseline - the previous baseline array.
- * @param n - the length of the arrays.
- * @returns the calculated delta value.
+ * @param baseline - The current baseline array.
+ * @param prevBaseline - The previous baseline array.
+ * @param n - The length of the arrays.
+ * @returns - The calculated delta value.
  */
 function calculateDelta(
   baseline: NumberArray,
@@ -153,7 +153,7 @@ function calculateDelta(
  * Retrieves the control points and weights for the given data, the weights are modified multiplication of controlPoints if it exists.
  * @param  y - The input data array.
  * @param  options - The options for control points and weights.
- * @returns the control points and modified weights.
+ * @returns - The control points and modified weights.
  */
 function getWeightsAndControlPoints(
   y: NumberArray,

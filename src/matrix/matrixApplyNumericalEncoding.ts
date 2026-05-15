@@ -4,9 +4,9 @@ import { matrixCreateEmpty } from './matrixCreateEmpty.ts';
 
 /**
  * Numerically encodes the strings in the matrix with an encoding dictionary.
- * @param matrixInitial - original matrix before encoding.
- * @param dictionary - dictionary against which to do the encoding.
- * @returns encoded matrix.
+ * @param matrixInitial - Original matrix before encoding.
+ * @param dictionary - Dictionary against which to do the encoding.
+ * @returns - Encoded matrix.
  */
 export function matrixApplyNumericalEncoding(
   matrixInitial: Array<Array<string | number>>,

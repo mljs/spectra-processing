@@ -56,7 +56,7 @@ export interface MatrixHistogramOptions {
  * Calculates a histogram of defined number of slots.
  * @param matrix - matrix [rows][cols].
  * @param options - options
- * @returns result of the histogram.
+ * @returns - Result of the histogram.
  */
 export function matrixHistogram(
   matrix: DoubleMatrix,

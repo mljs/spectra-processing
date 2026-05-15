@@ -1,11 +1,11 @@
 /**
  * Function that retrieves the getEquallySpacedData with the variant "slot".
- * @param x - x coordinates.
- * @param y - y coordinates.
- * @param from - start of the output x range.
- * @param to - end of the output x range.
- * @param numberOfPoints - number of output points.
- * @returns array of y values equally spaced with the variant "slot".
+ * @param x
+ * @param y
+ * @param from
+ * @param to
+ * @param numberOfPoints
+ * @returns Array of y's equally spaced with the variant "slot"
  */
 export default function equallySpacedSlot(
   /** x coordinates */

@@ -31,8 +31,8 @@ export interface XYMinYPointOptions {
 
 /**
  * Finds the min y value in a range and return a {x,y} point
- * @param data - object that contains property x (an ordered increasing array) and y (an array).
- * @param options - options.
+ * @param data - Object that contains property x (an ordered increasing array) and y (an array)
+ * @param options - Options
  */
 export function xyMinYPoint(
   data: DataXY,

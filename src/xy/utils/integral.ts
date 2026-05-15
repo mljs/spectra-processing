@@ -1,10 +1,10 @@
 /**
  * Function that calculates the integral of the line between two
  * x-coordinates, given the slope and intercept of the line.
- * @param x0 - first x coordinate.
- * @param x1 - second x coordinate.
- * @param slope - slope of the line.
- * @param intercept - y-intercept of the line.
+ * @param x0
+ * @param x1
+ * @param slope
+ * @param intercept
  * @returns integral value.
  */
 export default function integral(

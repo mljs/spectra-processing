@@ -1,8 +1,8 @@
 /**
  * Resolves all promises in an object recursively. The promise with be replaced by the resolved value.
  * The changes are therefore done in-place !
- * @param object - object to resolve.
- * @returns the resolved object.
+ * @param object
+ * @returns
  */
 export async function recursiveResolve(object: unknown) {
   if (typeof object !== 'object') return object;
