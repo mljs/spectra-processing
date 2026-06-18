@@ -159,9 +159,8 @@ function getWeightsAndControlPoints(
   y: NumberArray,
   options: WeightsAndControlPoints = {},
 ): { weights: NumberArray; controlPoints?: NumberArray } {
-  const { length } = y;
   const { controlPoints } = options;
-  const { weights = Float64Array.from({ length }).fill(1) } = options;
+  const { weights = Float64Array.from({ length: y.length }).fill(1) } = options;
 
   if (controlPoints && controlPoints.length !== y.length) {
     throw new RangeError('controlPoints should match the length with X');
