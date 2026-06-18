@@ -52,14 +52,14 @@ export function xMassCenterVectorSimilarity(
       const value2 = array2[index];
       similarity += similarityFct(value1, value2) * maxSimilarity;
       if (recenter) {
-        shiftSubTree(array1, depth, level, slot, value2 - value1);
+        shiftSubtree(array1, depth, level, slot, value2 - value1);
       }
     }
   }
   return similarity;
 }
 
-function shiftSubTree(
+function shiftSubtree(
   array: NumberArray,
   depth: number,
   level: number,
