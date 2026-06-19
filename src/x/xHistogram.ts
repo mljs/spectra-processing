@@ -59,9 +59,9 @@ export interface XHistogramOptions {
 
 /**
  * Calculates a histogram of defined number of slots
- * @param array - Array containing values
- * @param options - options
- * @returns - result of the histogram
+ * @param array - array containing values.
+ * @param options - options.
+ * @returns result of the histogram.
  */
 export function xHistogram(
   array: NumberArray,

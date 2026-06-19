@@ -28,9 +28,9 @@ export interface XBinningOptions {
 /**
  * Downsample an array by averaging consecutive non-overlapping points (binning).
  * Either specify a fixed `binSize` or a target `numberOfPoints`.
- * @param array - Input array.
- * @param options - Options.
- * @returns Downsampled array.
+ * @param array - input array.
+ * @param options - options.
+ * @returns downsampled array.
  */
 export function xBinning(
   array: NumberArray,

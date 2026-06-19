@@ -2,9 +2,9 @@ import { matrixClone } from './matrixClone.ts';
 
 /**
  * Numerically decodes the matrix using the dictionary.
- * @param matrixInitial
- * @param dictionary - dictionary against which to do the encoding
- * @returns - decoded matrix
+ * @param matrixInitial - original matrix to decode.
+ * @param dictionary - dictionary against which to do the encoding.
+ * @returns decoded matrix.
  */
 export function matrixNumericalDecoding(
   matrixInitial: number[][],

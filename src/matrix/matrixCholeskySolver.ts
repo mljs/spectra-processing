@@ -27,10 +27,10 @@ import type { NumberArray } from 'cheminfo-types';
 /**
  * Solves a system of linear equations using the Cholesky decomposition method.
  * It is a direct conversion to TS from {@link https://github.com/scijs/cholesky-solve}
- * @param nonZerosArray - The matrix in triplet form (array of arrays), where each sub-array contains three elements: row index, column index, and value.
- * @param dimension - The order of the matrix (number of rows/columns).
- * @param permutationEncoded - Optional permutation array. If provided, it will be used to permute the matrix.
- * @returns A function that takes a right-hand side vector `b` and returns the solution vector `x`, or `null` if the decomposition fails.
+ * @param nonZerosArray - the matrix in triplet form (array of arrays), where each sub-array contains three elements: row index, column index, and value.
+ * @param dimension - the order of the matrix (number of rows/columns).
+ * @param permutationEncoded - optional permutation array. If provided, it will be used to permute the matrix.
+ * @returns a function that takes a right-hand side vector `b` and returns the solution vector `x`, or `null` if the decomposition fails.
  */
 export function matrixCholeskySolver(
   nonZerosArray: NumberArray[],

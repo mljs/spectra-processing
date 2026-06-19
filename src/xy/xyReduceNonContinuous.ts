@@ -34,9 +34,9 @@ export interface XYReduceOptions {
  * display many spectra as SVG. This algorithm is designed for non-continuous data.
  * We are expecting peaks to be only positive and the x values to be ordered.
  * SHOULD NOT BE USED FOR DATA PROCESSING !!!
- * @param data - Object that contains property x (an ordered increasing array) and y (an array)
- * @param options - options
- * @returns Object with x and y arrays
+ * @param data - object that contains property x (an ordered increasing array) and y (an array).
+ * @param options - options.
+ * @returns object with x and y arrays.
  */
 export function xyReduceNonContinuous(
   data: DataXY,

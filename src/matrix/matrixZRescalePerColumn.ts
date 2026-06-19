@@ -19,7 +19,7 @@ export interface MatrixZRescalePerColumnOptions {
 /**
  * Rescale the matrix per column for which we get the min and max values.
  * @param matrix - matrix [rows][cols].
- * @param options - Options.
+ * @param options - options.
  */
 export function matrixZRescalePerColumn(
   matrix: DoubleMatrix,

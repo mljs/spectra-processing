@@ -12,9 +12,9 @@ export interface XHilbertTransformOptions {
 /**
  * Performs the Hilbert transform
  * @link https://en.wikipedia.org/wiki/Hilbert_transform
- * @param array - Array containing values
- * @param options
- * @returns A new vector with 90 degree shift regarding the phase of the original function
+ * @param array - array containing values.
+ * @param options - options.
+ * @returns a new vector with 90 degree shift regarding the phase of the original function.
  */
 
 export function xHilbertTransform(
@@ -38,8 +38,8 @@ export function xHilbertTransform(
 
 /**
  * Performs the discrete Hilbert transform using fast Fourier transform
- * @param array - Array containing values
- * @returns A new vector with 90 degree shift regarding the phase of the original function
+ * @param array - array containing values.
+ * @returns a new vector with 90 degree shift regarding the phase of the original function.
  * @see DOI: 10.1109/TAU.1970.1162139 "Discrete Hilbert transform"
  */
 function hilbertTransformWithFFT(array: NumberArray) {
@@ -80,10 +80,10 @@ function hilbertTransformWithFFT(array: NumberArray) {
 
 /**
  * Performs the discrete Hilbert transform
- * @param array - Array containing values
- * @param options
- * @param options.inClockwise
- * @returns A new vector with 90 degree shift regarding the phase of the original function
+ * @param array - array containing values.
+ * @param options - options.
+ * @param options.inClockwise - whether to apply clockwise rotation.
+ * @returns a new vector with 90 degree shift regarding the phase of the original function.
  */
 function hilbertTransform(
   array: NumberArray,
@@ -111,9 +111,9 @@ function hilbertTransform(
 
 /**
  * Performs resampling of an input array to the desired length employing linear interpolation.
- * @param array - Array containing values.
- * @param length - The length of the resulting array.
- * @returns It returns a new array of the desired length.
+ * @param array - array containing values.
+ * @param length - the length of the resulting array.
+ * @returns a new array of the desired length.
  * @link https://en.wikipedia.org/wiki/Sample-rate_conversion
  */
 function resampling(

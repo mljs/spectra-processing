@@ -7,9 +7,9 @@ import { xyCheck } from './xyCheck.ts';
  * This is useful for upsampling or resampling data to specific x positions.
  * Both the input data and target x values must be sorted in ascending order.
  * Uses a two-pointer approach with O(n + m) complexity.
- * @param data - Object that contains property x (an ordered increasing array) and y (an array)
- * @param xTarget - Target x positions where y values should be interpolated
- * @returns - Interpolated y values at target x positions
+ * @param data - object that contains property x (an ordered increasing array) and y (an array).
+ * @param xTarget - target x positions where y values should be interpolated.
+ * @returns interpolated y values at target x positions.
  */
 export function xyInterpolateLinear(
   data: DataXY,

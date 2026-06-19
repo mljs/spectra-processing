@@ -10,8 +10,8 @@ export interface XIsEquallySpacedOptions {
 
 /**
  * Check if the values are separated always by the same difference
- * @param array - Monotone growing array of number
- * @param options
+ * @param array - monotone growing array of number.
+ * @param options - options.
  */
 export function xIsEquallySpaced(
   array: NumberArray,

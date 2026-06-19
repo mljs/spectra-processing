@@ -7,8 +7,9 @@ import { xyCheck } from './xyCheck.ts';
 
 /**
  * Computes the weighted mean value of an array of values.
- * @param data - array of DataXY
- * @param options - options
+ * @param data - array of DataXY.
+ * @param options - options.
+ * @returns weighted mean x value (center of mass).
  */
 export function xyMassCenter(
   data: DataXY,

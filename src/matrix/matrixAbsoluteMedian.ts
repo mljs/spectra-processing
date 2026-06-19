@@ -4,7 +4,7 @@ import { xMedian } from '../x/index.ts';
 
 /**
  * Returns the median of the absolute matrix.
- * @param matrix
+ * @param matrix - input matrix.
  */
 export function matrixAbsoluteMedian(matrix: DoubleMatrix): number {
   const nbColumns = matrix[0].length;

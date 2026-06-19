@@ -1,3 +1,4 @@
+import type { DataXY } from 'cheminfo-types';
 import { expect, test } from 'vitest';
 
 import { xyBinning } from '../xyBinning.ts';
@@ -143,7 +144,7 @@ test('throws when x does not contain numbers', () => {
     y: [1, 2, 3],
   };
 
-  expect(() => xyBinning(data as any, { binSize: 2 })).toThrow(
+  expect(() => xyBinning(data as unknown as DataXY, { binSize: 2 })).toThrow(
     /input must contain numbers/,
   );
 });

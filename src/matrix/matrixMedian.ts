@@ -6,7 +6,7 @@ import { matrixToArray } from './matrixToArray.ts';
 
 /**
  * Returns the median of the matrix.
- * @param matrix
+ * @param matrix - input matrix.
  */
 export function matrixMedian(matrix: DoubleMatrix): number {
   return xMedian(matrixToArray(matrix));

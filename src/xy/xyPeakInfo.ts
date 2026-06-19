@@ -26,9 +26,9 @@ export interface XYPeakInfo {
  * ML.ArrayPoints.uniqueX
  * ML.ArrayPoints.sortX
  * ML.ArrayPoints.equallySpaced
- * @param data - Object that contains property x (an ordered increasing array) and y (an array)
- * @param options - options
- * @returns - Information about signal
+ * @param data - object that contains property x (an ordered increasing array) and y (an array).
+ * @param options - options.
+ * @returns information about signal.
  */
 export function xyPeakInfo(
   data: DataXY,

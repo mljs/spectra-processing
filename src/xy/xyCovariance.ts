@@ -12,9 +12,9 @@ export interface XYCovarianceOptions {
 
 /**
  * Finds the covariance of the points.
- * @param data
- * @param options
- * @returns the covariance
+ * @param data - data with x and y arrays.
+ * @param options - options.
+ * @returns the covariance.
  */
 export function xyCovariance(
   data: DataXY,

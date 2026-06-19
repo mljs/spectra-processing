@@ -33,7 +33,7 @@ export interface MatrixZRescaleOptions<
 /**
  * Rescale a matrix between min and max values.
  * @param matrix - matrix [rows][cols].
- * @param options - Options.
+ * @param options - options.
  */
 export function matrixZRescale<
   ArrayConstructorType extends DoubleArrayConstructor = Float64ArrayConstructor,
