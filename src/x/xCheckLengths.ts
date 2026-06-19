@@ -2,8 +2,8 @@ import type { NumberArray } from 'cheminfo-types';
 
 /**
  * Check that two arrays have the same length.
- * @param array1 - First array.
- * @param array2 - Second array.
+ * @param array1 - first array.
+ * @param array2 - second array.
  */
 export function xCheckLengths(array1: NumberArray, array2: NumberArray) {
   if (array1.length !== array2.length) {

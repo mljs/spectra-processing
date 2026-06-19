@@ -17,7 +17,7 @@ export interface XMedianAbsoluteDeviationResult {
 /**
  * This function calculates the median absolute deviation (MAD).
  * https://en.wikipedia.org/wiki/Median_absolute_deviation
- * @param array
+ * @param array - array of numbers.
  */
 export function xMedianAbsoluteDeviation(
   array: NumberArray,

@@ -4,9 +4,9 @@ import { isAnyArray } from 'is-any-array';
 /**
  * Verify that `data` is an object of x,y arrays.
  * Throws an error if it's not.
- * @param data
- * @param options
- * @param options.minLength
+ * @param data - data to check.
+ * @param options - options.
+ * @param options.minLength - minimum required length.
  */
 export function xyCheck(
   data: unknown,

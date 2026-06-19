@@ -16,10 +16,10 @@ export interface ReimPhaseCorrectionOptions {
 /**
  * Phase correction filter.
  * @param data - complex spectrum
- * @param phi0 - Angle in radians for zero order phase correction
- * @param phi1 - Angle in radians for first order phase correction
- * @param options
- * @returns - returns a new object {re:[], im:[]} unless inPlace=true
+ * @param phi0 - angle in radians for zero order phase correction.
+ * @param phi1 - angle in radians for first order phase correction.
+ * @param options - options.
+ * @returns a new object {re:[], im:[]} unless inPlace=true.
  */
 export function reimPhaseCorrection(
   data: DataReIm,

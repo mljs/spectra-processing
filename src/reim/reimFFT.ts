@@ -15,8 +15,8 @@ export interface ReimFFTOptions {
 }
 
 /**
- * ReimFFT.
- * @param data - complex spectrum
+ * Computes the FFT of a complex spectrum.
+ * @param data - complex spectrum.
  * @param options - options.
  * @returns FFT of complex spectrum.
  */

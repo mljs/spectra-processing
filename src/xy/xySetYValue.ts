@@ -7,15 +7,15 @@ import { xyCheck } from './xyCheck.ts';
 export interface XYSetYValueOptions {
   zones?: FromTo[];
 
-  /** data contains x and y values */
+  /** Value to assign to y within the specified zones. Defaults to `0`. */
   value?: number;
 }
 
 /**
  * Set a value (default 0) to specific zones.
- * @param data - Object that contains property x (an ordered increasing array) and y (an array)
- * @param options - options
- * @returns - Array of points
+ * @param data - object that contains property x (an ordered increasing array) and y (an array).
+ * @param options - options.
+ * @returns data with y values set to the given value in the specified zones.
  */
 export function xySetYValue(
   data: DataXY,

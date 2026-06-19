@@ -1,8 +1,8 @@
 /**
  * Generate all combinations of choosing k items from n items as an iterator.
  * Useful for large combination sets to avoid storing all combinations in memory.
- * @param n - Total number of items.
- * @param k - Number of items to choose.
+ * @param n - total number of items.
+ * @param k - number of items to choose.
  * @yields Each combination as an array of indices.
  */
 

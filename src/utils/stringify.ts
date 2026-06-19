@@ -4,10 +4,10 @@ import type { NumberArray } from 'cheminfo-types';
 
 /**
  * Stringify an object and convert all typed arrays to arrays
- * @param object
- * @param replacer
- * @param space
- * @returns
+ * @param object - object to stringify.
+ * @param replacer - optional replacer function.
+ * @param space - optional indentation.
+ * @returns JSON string.
  */
 export function stringify(
   object: any,

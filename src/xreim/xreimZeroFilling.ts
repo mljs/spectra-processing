@@ -5,7 +5,7 @@ import type { DataXReIm } from '../types/index.ts';
  * This function makes a zero filling to re and im part.
  * @param data - object of kind {x:[], re:[], im:[]}
  * @param totalLength - final number of points
- * @returns - data.
+ * @returns zero-filled DataXReIm object.
  */
 export function xreimZeroFilling(
   data: DataXReIm,

@@ -2,7 +2,8 @@ import type { DataXY, NumberArray } from 'cheminfo-types';
 
 /**
  * Order object of array, x has to be monotone. Ensure x is growing
- * @param data - Object of kind {x:[], y:[]}.
+ * @param data - object of kind {x:[], y:[]}.
+ * @returns data with x in ascending order (reversed in-place if descending).
  */
 export function xyGrowingX<DataType extends NumberArray = NumberArray>(
   data: DataXY<DataType>,

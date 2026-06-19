@@ -7,9 +7,9 @@ import { xyCheck } from './xyCheck.ts';
 
 /**
  * Find the closest minimum going down hill
- * @param data - Object that contains property x (an ordered increasing array) and y (an array)
- * @param options - options
- * @returns - An object with the x/y value
+ * @param data - object that contains property x (an ordered increasing array) and y (an array).
+ * @param options - options.
+ * @returns an object with the x/y value.
  */
 export function xyRealMaxYPoint(data: DataXY, options = {}): PointWithIndex {
   xyCheck(data);

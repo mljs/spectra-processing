@@ -16,9 +16,8 @@ export interface XDistributionStats extends XBoxPlotWithOutliers {
  * This ensure that the statistics are calculated in the same way in all the packages
  * If the array is empty it will throw an error
  * If the array has a length of 1, sd will be NaN (unbiased calculation of sd)
- * @param array - data
- * @param options
- * @returns - q1, median, q3, min, max
+ * @param array - data.
+ * @returns q1, median, q3, min, max.
  */
 export function xDistributionStats(array: NumberArray): XDistributionStats {
   return {

@@ -10,9 +10,9 @@ import { xyCheck } from './xyCheck.ts';
  * Finds all the min values
  * If the values are equal the middle
  * of the equal part will be the position of the signal!
- * @param data - Object that contains property X (an ordered increasing array) and y (an arraY)
- * @param options - Object with from and to properties
- * @returns - Array of points.
+ * @param data - object that contains property x (an ordered increasing array) and y (an array).
+ * @param options - options with from and to properties.
+ * @returns array of points.
  */
 export function xyMinimaY(
   data: DataXY,

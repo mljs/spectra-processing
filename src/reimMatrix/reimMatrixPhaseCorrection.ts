@@ -14,10 +14,10 @@ export interface ReimMatrixPhaseCorrectionOptions {
  * Apply phase correction to a complex matrix along rows or columns.
  * All rows must have the same length.
  * @param data - complex matrix with re and im arrays of Float64Array rows
- * @param phi0 - Angle in radians for zero order phase correction
- * @param phi1 - Angle in radians for first order phase correction
- * @param options - options including direction ('rows' or 'columns', default 'rows')
- * @returns - complex matrix with corrected rows or columns
+ * @param phi0 - angle in radians for zero order phase correction.
+ * @param phi1 - angle in radians for first order phase correction.
+ * @param options - options including direction ('rows' or 'columns', default 'rows').
+ * @returns complex matrix with corrected rows or columns.
  */
 export function reimMatrixPhaseCorrection(
   data: DataReImMatrix,

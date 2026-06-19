@@ -27,7 +27,7 @@ export interface MatrixZPivotRescaleOptions<
 /**
  * Rescale a matrix around 0 taking into account the absolute max value.
  * @param matrix - matrix [rows][cols].
- * @param options - Options.
+ * @param options - options.
  */
 export function matrixZPivotRescale<
   ArrayConstructorType extends NumberArrayConstructor = Float64ArrayConstructor,

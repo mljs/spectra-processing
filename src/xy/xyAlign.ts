@@ -30,9 +30,10 @@ export interface XYAlignResult {
  * Align data of two spectra by verifying wether x values are in a certain range (`delta`).
  * The two spectra should not have two consecutive x values which difference is
  * smaller than `delta` to achieve good results!
- * @param data1 - First spectrum data
- * @param data2 - Second spectrum data
- * @param options - Options
+ * @param data1 - first spectrum data.
+ * @param data2 - second spectrum data.
+ * @param options - options.
+ * @returns aligned x, y1, y2 arrays.
  */
 export function xyAlign(
   data1: DataXY,

@@ -16,7 +16,7 @@ export interface XYArrayMergeOptions {
  * Merge DataXY
  * We have an array of DataXY and the goal is to merge all the values that are the closest possible
  * @param data - data
- * @param options - Options
+ * @param options - options.
  */
 export function xyArrayMerge(
   data: DataXY[],

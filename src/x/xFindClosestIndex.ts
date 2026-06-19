@@ -10,10 +10,10 @@ export interface XFindClosestIndexOptions {
 
 /**
  * Returns the closest index of a `target`
- * @param array - array of numbers
- * @param target - target
- * @param options
- * @returns - closest index
+ * @param array - array of numbers.
+ * @param target - target value.
+ * @param options - options.
+ * @returns closest index.
  */
 export function xFindClosestIndex(
   array: NumberArray,

@@ -15,9 +15,9 @@ export interface XYIntegralOptions extends XYIntegrationOptions {
 
 /**
  * Generate a X / Y of the xyIntegral
- * @param data - Object that contains property x (an ordered increasing array) and y (an array)
- * @param options - Options
- * @returns - An object with the xyIntegration function
+ * @param data - object that contains property x (an ordered increasing array) and y (an array).
+ * @param options - options.
+ * @returns an object with the cumulative integral values.
  */
 export function xyIntegral(
   data: DataXY,
