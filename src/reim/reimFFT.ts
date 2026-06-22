@@ -4,6 +4,27 @@ import type { DataReIm } from '../types/index.ts';
 
 import { zeroShift } from './zeroShift.ts';
 
+// An FFT instance precomputes size-dependent twiddle factors and a bit-reversal
+// table; for a 64k transform that setup dominates the cost. Cache one instance
+// per size so repeated calls (e.g. transforming many spectra of equal length)
+// reuse it instead of rebuilding it on every transform.
+const MAX_FFT_CACHE_SIZE = 10;
+const fftCache = new Map<number, FFT>();
+
+function getFFT(size: number): FFT {
+  let fft = fftCache.get(size);
+  if (fft === undefined) {
+    // Bound the cache so transforming many different sizes cannot grow it
+    // without limit. Rather than track insertion order to evict a single
+    // entry, drop everything once full: distinct sizes are rare, so the common
+    // single-size workload never hits this and stays at full speed.
+    if (fftCache.size >= MAX_FFT_CACHE_SIZE) fftCache.clear();
+    fft = new FFT(size);
+    fftCache.set(size, fft);
+  }
+  return fft;
+}
+
 export interface ReimFFTOptions {
   inverse?: boolean;
   applyZeroShift?: boolean;
@@ -36,7 +57,7 @@ export function reimFFT(
     complexArray[i + 1] = im[i >>> 1];
   }
 
-  const fft = new FFT(size);
+  const fft = getFFT(size);
   let output = new Float64Array(csize);
   if (inverse) {
     if (applyZeroShift) complexArray = zeroShift(complexArray, true);
