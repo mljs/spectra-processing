@@ -1,6 +1,6 @@
 import type { NumberArray } from 'cheminfo-types';
-import FFT from 'fft.js';
 
+import { getFFT } from '../utils/fftCache.ts';
 import { isPowerOfTwo, nextPowerOfTwo } from '../utils/index.ts';
 
 import { xCheck } from './xCheck.ts';
@@ -44,7 +44,7 @@ export function xHilbertTransform(
  */
 function hilbertTransformWithFFT(array: NumberArray) {
   const length = array.length;
-  const fft = new FFT(length);
+  const fft = getFFT(length);
 
   // Single reusable buffer for FFT spectrum
   const spectrum = new Float64Array(length * 2);

@@ -1,99 +1,95 @@
 /* eslint-disable no-console */
+import FFT from 'fft.js';
+import { XSadd } from 'ml-xsadd';
+
 import { reimFFT } from '../src/reim/reimFFT.ts';
 import { reimArrayFFT } from '../src/reimArray/reimArrayFFT.ts';
+import type { DataReIm } from '../src/types/index.ts';
 
-const size = 2 ** 16;
-const count = 10; // number of spectra in the array benchmark
+const size = 2 ** 16; // 64k-point transform: FFT setup dominates the cost
+const count = 10; // number of spectra processed per round
+const targetMs = 5000;
 
-// Build input data
+// Deterministic, reproducible input so every section runs on identical data.
+const { random } = new XSadd(42);
 const spectra = Array.from({ length: count }, () => {
   const re = new Float64Array(size);
   const im = new Float64Array(size);
   for (let i = 0; i < size; i++) {
-    re[i] = Math.random();
-    im[i] = Math.random();
+    re[i] = random();
+    im[i] = random();
   }
   return { re, im };
 });
 
-// Warmup
-for (const s of spectra) reimFFT(s);
-for (const s of spectra) reimFFT(s, { inPlace: true });
-reimArrayFFT(spectra);
-reimArrayFFT(spectra, { inPlace: true });
+/**
+ * `reimFFT` as it was *before* the cache fix: a fresh `FFT` instance is built on
+ * every call. Kept here as the baseline to confirm the cached version is faster.
+ * @param data - complex spectrum.
+ * @returns FFT of the complex spectrum.
+ */
+function reimFFTNoCache(data: DataReIm): DataReIm<Float64Array> {
+  const { re, im } = data;
+  const length = re.length;
+  const csize = length << 1;
 
-const targetMs = 5000;
-
-// --- reimFFT (loop over each spectrum individually) ---
-{
-  let iterations = 0;
-  const start = performance.now();
-  console.time('reimFFT (loop)');
-  while (performance.now() - start < targetMs) {
-    for (const s of spectra) reimFFT(s);
-    iterations++;
+  const complexArray = new Float64Array(csize);
+  for (let i = 0; i < csize; i += 2) {
+    complexArray[i] = re[i >>> 1];
+    complexArray[i + 1] = im[i >>> 1];
   }
-  const elapsed = performance.now() - start;
-  console.timeEnd('reimFFT (loop)');
-  console.log(
-    `  ${iterations * count} total FFTs, ${count} spectra × ${iterations} rounds`,
-  );
-  console.log(`  ${(elapsed / (iterations * count)).toFixed(3)} ms per FFT`);
+
+  const fft = new FFT(length);
+  const output = new Float64Array(csize);
+  fft.transform(output, complexArray);
+
+  const newRe = new Float64Array(length);
+  const newIm = new Float64Array(length);
+  for (let i = 0; i < csize; i += 2) {
+    newRe[i >>> 1] = output[i];
+    newIm[i >>> 1] = output[i + 1];
+  }
+  return { re: newRe, im: newIm };
 }
 
+/**
+ * Run `task` repeatedly for `targetMs` and report the time per FFT. Each round
+ * performs `count` transforms.
+ * @param label - section name.
+ * @param task - one round of work (transforms all `count` spectra).
+ */
+function bench(label: string, task: () => void): void {
+  task(); // warmup
+  let rounds = 0;
+  const start = performance.now();
+  while (performance.now() - start < targetMs) {
+    task();
+    rounds++;
+  }
+  const elapsed = performance.now() - start;
+  const totalFFTs = rounds * count;
+  console.log(label);
+  console.log(
+    `  ${(elapsed / totalFFTs).toFixed(3)} ms per FFT  (${totalFFTs} FFTs over ${rounds} rounds)`,
+  );
+  console.log('');
+}
+
+console.log(`FFT size: ${size} (2^16), ${count} spectra per round`);
 console.log('');
 
-// --- reimFFT inPlace (loop over each spectrum individually) ---
-{
-  let iterations = 0;
-  const start = performance.now();
-  console.time('reimFFT inPlace (loop)');
-  while (performance.now() - start < targetMs) {
-    for (const s of spectra) reimFFT(s, { inPlace: true });
-    iterations++;
-  }
-  const elapsed = performance.now() - start;
-  console.timeEnd('reimFFT inPlace (loop)');
-  console.log(
-    `  ${iterations * count} total FFTs, ${count} spectra × ${iterations} rounds`,
-  );
-  console.log(`  ${(elapsed / (iterations * count)).toFixed(3)} ms per FFT`);
-}
+// Before the fix: new FFT instance per call.
+bench('reimFFT — before fix (new FFT per call)', () => {
+  for (const spectrum of spectra) reimFFTNoCache(spectrum);
+});
 
-console.log('');
+// After the fix: FFT instance cached per size and reused across calls.
+bench('reimFFT — after fix (cached FFT instance)', () => {
+  for (const spectrum of spectra) reimFFT(spectrum);
+});
 
-// --- reimArrayFFT (single call for the whole array) ---
-{
-  let iterations = 0;
-  const start = performance.now();
-  console.time('reimArrayFFT');
-  while (performance.now() - start < targetMs) {
-    reimArrayFFT(spectra);
-    iterations++;
-  }
-  const elapsed = performance.now() - start;
-  console.timeEnd('reimArrayFFT');
-  console.log(
-    `  ${iterations * count} total FFTs, ${count} spectra × ${iterations} rounds`,
-  );
-  console.log(`  ${(elapsed / (iterations * count)).toFixed(3)} ms per FFT`);
-}
-
-console.log('');
-
-// --- reimArrayFFT inPlace (single call for the whole array) ---
-{
-  let iterations = 0;
-  const start = performance.now();
-  console.time('reimArrayFFT inPlace');
-  while (performance.now() - start < targetMs) {
-    reimArrayFFT(spectra, { inPlace: true });
-    iterations++;
-  }
-  const elapsed = performance.now() - start;
-  console.timeEnd('reimArrayFFT inPlace');
-  console.log(
-    `  ${iterations * count} total FFTs, ${count} spectra × ${iterations} rounds`,
-  );
-  console.log(`  ${(elapsed / (iterations * count)).toFixed(3)} ms per FFT`);
-}
+// reimArrayFFT reuses a single FFT instance (and working buffers) for the whole
+// array in one call.
+bench('reimArrayFFT (single shared FFT instance)', () => {
+  reimArrayFFT(spectra);
+});

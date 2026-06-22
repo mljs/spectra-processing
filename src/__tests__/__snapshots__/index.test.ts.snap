@@ -181,6 +181,8 @@ exports[`existence of exported functions 1`] = `
   "matrixZRescale",
   "matrixZRescalePerColumn",
   "matrixTranspose",
+  "clearFFTCache",
+  "setFFTCacheMaxSize",
   "createNumberArray",
   "createDoubleArray",
   "createFromToArray",

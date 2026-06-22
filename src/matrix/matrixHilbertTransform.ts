@@ -1,5 +1,4 @@
-import FFT from 'fft.js';
-
+import { getFFT } from '../utils/fftCache.ts';
 import { isPowerOfTwo } from '../utils/index.ts';
 
 import { matrixCreateEmpty } from './matrixCreateEmpty.ts';
@@ -41,7 +40,7 @@ export function matrixHilbertTransform(
   }
 
   // Single FFT instance reused across all rows
-  const fft = new FFT(size);
+  const fft = getFFT(size);
 
   // Multiplier computed once — identical for every row of the same length
   const half = size >> 1;

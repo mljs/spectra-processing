@@ -1,6 +1,5 @@
-import FFT from 'fft.js';
-
 import type { DataReIm } from '../types/index.ts';
+import { getFFT } from '../utils/fftCache.ts';
 
 import { zeroShift } from './zeroShift.ts';
 
@@ -36,7 +35,7 @@ export function reimFFT(
     complexArray[i + 1] = im[i >>> 1];
   }
 
-  const fft = new FFT(size);
+  const fft = getFFT(size);
   let output = new Float64Array(csize);
   if (inverse) {
     if (applyZeroShift) complexArray = zeroShift(complexArray, true);
