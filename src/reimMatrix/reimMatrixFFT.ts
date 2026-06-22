@@ -1,7 +1,6 @@
-import FFT from 'fft.js';
-
 import { zeroShift } from '../reim/zeroShift.ts';
 import type { DataReImMatrix } from '../types/index.ts';
+import { getFFT } from '../utils/fftCache.ts';
 
 export interface ReimMatrixFFTOptions {
   inverse?: boolean;
@@ -44,7 +43,7 @@ export function reimMatrixFFT(
   }
 
   // Single FFT instance and working buffers reused across all rows
-  const fft = new FFT(size);
+  const fft = getFFT(size);
   const complexArray = new Float64Array(csize);
   const output = new Float64Array(csize);
 
