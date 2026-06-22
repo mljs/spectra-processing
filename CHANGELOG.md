@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.29.1](https://github.com/mljs/spectra-processing/compare/v14.29.0...v14.29.1) (2026-06-22)
+
+
+### Performance Improvements
+
+* **fft:** cache FFT instances ([#377](https://github.com/mljs/spectra-processing/issues/377)) ([9d84adf](https://github.com/mljs/spectra-processing/commit/9d84adf2a269921eea41485ceb1f11df3ee0c78f))
+
 ## [14.29.0](https://github.com/mljs/spectra-processing/compare/v14.28.1...v14.29.0) (2026-05-12)
 
 
