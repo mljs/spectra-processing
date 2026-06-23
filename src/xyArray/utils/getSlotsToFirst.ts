@@ -20,6 +20,7 @@ export interface Slot {
  * Computes slots aligned to the first spectrum's x values, adding slots for any x values not covered.
  * @param data - data.
  * @param options - options.
+ * @returns the slots, sorted by x value, with non-overlapping `[from, to)` ranges.
  */
 export function getSlotsToFirst(
   data: DataXY[],
@@ -42,10 +43,15 @@ export function getSlotsToFirst(
 
   const otherXs = xyArrayWeightedMerge(data.slice(1), options).x;
   let currentPosition = 0;
-  for (const slot of slots) {
+  // Only the first-spectrum slots drive this pass; slots created for uncovered
+  // x values are appended and merged in by the sort below, so we freeze the
+  // count instead of iterating an array we are mutating.
+  const firstSlotCount = slots.length;
+  for (let i = 0; i < firstSlotCount; i++) {
+    const slot = slots[i];
     while (
-      otherXs[currentPosition] < slot.to &&
-      currentPosition < otherXs.length
+      currentPosition < otherXs.length &&
+      otherXs[currentPosition] < slot.to
     ) {
       if (otherXs[currentPosition] < slot.from) {
         const currentDelta = deltaIsFunction
