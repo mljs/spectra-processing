@@ -16,6 +16,7 @@ export interface XYArrayAlignToFirstOptions {
  * If some x values are missing in the first spectrum we will add them
  * @param data - data
  * @param options - options
+ * @returns the common `x` axis and one aligned `y` array per input spectrum.
  */
 export function xyArrayAlignToFirst(
   data: DataXY[],
@@ -26,7 +27,10 @@ export function xyArrayAlignToFirst(
 } {
   const { delta = 1 } = options;
   const slots = getSlotsToFirst(data, { delta });
-  const x = Float64Array.from(slots.map((slot) => slot.value));
+  const x = new Float64Array(slots.length);
+  for (let i = 0; i < slots.length; i++) {
+    x[i] = slots[i].value;
+  }
   const ys = Array.from(data, () => new Float64Array(x.length));
 
   const positions = new Uint32Array(data.length);
