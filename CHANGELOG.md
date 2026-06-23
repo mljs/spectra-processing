@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.29.2](https://github.com/mljs/spectra-processing/compare/v14.29.1...v14.29.2) (2026-06-23)
+
+
+### Bug Fixes
+
+* fft cache has a default value of 1 ([bc9dff0](https://github.com/mljs/spectra-processing/commit/bc9dff068294e5d8ed541193ce29a2932496e4a6))
+
 ## [14.29.1](https://github.com/mljs/spectra-processing/compare/v14.29.0...v14.29.1) (2026-06-22)
 
 
