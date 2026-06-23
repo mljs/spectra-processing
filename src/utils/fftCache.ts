@@ -9,7 +9,7 @@ class FFTCache {
   #maxSize: number;
   readonly #instances = new Map<number, FFT>();
 
-  constructor(maxSize = 10) {
+  constructor(maxSize = 1) {
     this.#maxSize = maxSize;
   }
 
@@ -77,7 +77,7 @@ export function clearFFTCache(): void {
 
 /**
  * Sets the maximum number of distinct transform sizes kept in the shared FFT
- * cache (default 10). When the cache is full and a new size is requested, the
+ * cache (default 1). When the cache is full and a new size is requested, the
  * whole cache is dropped and rebuilt on demand. Lowering the limit below the
  * current number of cached sizes clears the cache immediately.
  * @param maxSize - maximum number of cached sizes; must be a positive integer.
