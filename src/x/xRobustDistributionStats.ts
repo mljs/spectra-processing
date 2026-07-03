@@ -39,9 +39,10 @@ export function xRobustDistributionStats(
     filteredArray = array;
   } else {
     filteredArray = new Float64Array(array.length - boxPlot.outliers.length);
+    const outliersSet = new Set(boxPlot.outliers);
     let j = 0;
     for (const element of array) {
-      if (element >= boxPlot.min && element <= boxPlot.max) {
+      if (!outliersSet.has(element)) {
         filteredArray[j++] = element;
       }
     }

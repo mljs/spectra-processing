@@ -128,3 +128,28 @@ test('typed array', () => {
     xRobustDistributionStats(data),
   );
 });
+
+test('more complex case with multiple outliers', () => {
+  const data = [
+    1050, 1052, 1052, 1052, 1053, 1055, 1055, 1055, 1055, 1056, 1056, 1056,
+    1056, 1056, 1056, 1056, 1056, 1056, 1056, 1057, 1057, 1057, 1057, 1057,
+    1057, 1057, 1057, 1057, 1057, 1058, 1058, 1058, 1059, 1065, 1072, 1074,
+  ];
+
+  expect(xRobustDistributionStats(data)).toStrictEqual({
+    min: 1050,
+    q1: 1055.75,
+    median: 1056,
+    q3: 1057,
+    max: 1074,
+    lowerWhisker: 1053.875,
+    upperWhisker: 1058.875,
+    minWhisker: 1055,
+    maxWhisker: 1058,
+    iqr: 1.25,
+    outliers: [1050, 1052, 1052, 1052, 1053, 1059, 1065, 1072, 1074],
+    mean: 1056.4444444444443,
+    sd: 0.8915558282417289,
+    nb: 27,
+  });
+});
