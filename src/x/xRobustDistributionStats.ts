@@ -47,10 +47,11 @@ export function xRobustDistributionStats(
     }
   }
 
+  const mean = xMean(filteredArray);
   return {
     ...boxPlot,
-    mean: xMean(filteredArray),
-    sd: xStandardDeviation(filteredArray),
+    mean,
+    sd: xStandardDeviation(filteredArray, { mean }),
     nb: filteredArray.length,
   };
 }
