@@ -1,5 +1,14 @@
 # Changelog
 
+## [14.29.2](https://github.com/mljs/spectra-processing/compare/v14.29.1...v14.29.2) (2026-07-03)
+
+
+### Bug Fixes
+
+* correct robust distribution stats ([fe2a451](https://github.com/mljs/spectra-processing/commit/fe2a4515a6a6586f0aacea7ef54ee606ebb34bb5))
+* fft cache has a default value of 1 ([bc9dff0](https://github.com/mljs/spectra-processing/commit/bc9dff068294e5d8ed541193ce29a2932496e4a6))
+* improve perf of distribution stats ([33ebe8e](https://github.com/mljs/spectra-processing/commit/33ebe8eb606630440feed3a35aecf2d6a95d0f09))
+
 ## [14.29.1](https://github.com/mljs/spectra-processing/compare/v14.29.0...v14.29.1) (2026-06-22)
 
 
