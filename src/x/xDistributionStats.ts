@@ -20,10 +20,11 @@ export interface XDistributionStats extends XBoxPlotWithOutliers {
  * @returns q1, median, q3, min, max.
  */
 export function xDistributionStats(array: NumberArray): XDistributionStats {
+  const mean = xMean(array);
   return {
     ...xBoxPlotWithOutliers(array),
-    mean: xMean(array),
-    sd: xStandardDeviation(array),
+    mean,
+    sd: xStandardDeviation(array, { mean }),
     nb: array.length,
   };
 }
