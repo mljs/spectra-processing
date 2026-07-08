@@ -92,17 +92,13 @@ export function boxPlotWithOutliersFromSorted(
   const lowerWhisker = boxPlot.q1 - 1.5 * iqr;
   const upperWhisker = boxPlot.q3 + 1.5 * iqr;
 
-  // non-outliers form a contiguous range [lowIndex, highIndex) in the sorted array
-  let lowIndex = 0;
-  while (lowIndex < sorted.length && sorted[lowIndex] < lowerWhisker) {
-    lowIndex++;
-  }
-  let highIndex = sorted.length;
-  while (highIndex > lowIndex && sorted[highIndex - 1] > upperWhisker) {
-    highIndex--;
-  }
+  const { lowIndex, highIndex } = getWhiskerBounds(
+    sorted,
+    lowerWhisker,
+    upperWhisker,
+  );
 
-  const outliers = [];
+  const outliers: number[] = [];
   for (let i = 0; i < lowIndex; i++) {
     outliers.push(sorted[i]);
   }
@@ -119,4 +115,37 @@ export function boxPlotWithOutliersFromSorted(
     iqr,
     outliers,
   };
+}
+
+export interface WhiskerBounds {
+  /** Index of the first non-outlier in the sorted array. */
+  lowIndex: number;
+  /** Index just past the last non-outlier in the sorted array. */
+  highIndex: number;
+}
+
+/**
+ * Locate the contiguous range `[lowIndex, highIndex)` of non-outliers in a sorted array.
+ * Because the array is sorted, outliers are exactly the prefix below `lowerWhisker` and
+ * the suffix above `upperWhisker`, so the scan only touches the outliers themselves.
+ * Internal helper: not re-exported from `x/index.ts`, so it stays out of the public API.
+ * @param sorted - sorted data.
+ * @param lowerWhisker - values strictly below are low outliers.
+ * @param upperWhisker - values strictly above are high outliers.
+ * @returns the non-outlier index range.
+ */
+export function getWhiskerBounds(
+  sorted: Float64Array,
+  lowerWhisker: number,
+  upperWhisker: number,
+): WhiskerBounds {
+  let lowIndex = 0;
+  while (lowIndex < sorted.length && sorted[lowIndex] < lowerWhisker) {
+    lowIndex++;
+  }
+  let highIndex = sorted.length;
+  while (highIndex > lowIndex && sorted[highIndex - 1] > upperWhisker) {
+    highIndex--;
+  }
+  return { lowIndex, highIndex };
 }

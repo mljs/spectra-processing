@@ -40,6 +40,25 @@ test('outliers', () => {
   });
 });
 
+test('low and high outliers', () => {
+  const array = [-100, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 100];
+  const result = xBoxPlotWithOutliers(array);
+
+  expect(result).toStrictEqual({
+    min: -100,
+    q1: 1.75,
+    median: 4.5,
+    q3: 7.25,
+    max: 100,
+    lowerWhisker: -6.5,
+    upperWhisker: 15.5,
+    minWhisker: 0,
+    maxWhisker: 9,
+    iqr: 5.5,
+    outliers: [-100, 100],
+  });
+});
+
 test('close values', () => {
   const array = [1.4029999999999998, 1.403];
   const result = xBoxPlotWithOutliers(array);

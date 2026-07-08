@@ -2,7 +2,10 @@ import type { NumberArray } from 'cheminfo-types';
 
 import { getSortedFloat64 } from './getSortedFloat64.ts';
 import type { XBoxPlotWithOutliers } from './xBoxPlotWithOutliers.ts';
-import { boxPlotWithOutliersFromSorted } from './xBoxPlotWithOutliers.ts';
+import {
+  boxPlotWithOutliersFromSorted,
+  getWhiskerBounds,
+} from './xBoxPlotWithOutliers.ts';
 import { xCheck } from './xCheck.ts';
 import { xMean } from './xMean.ts';
 import { xStandardDeviation } from './xStandardDeviation.ts';
@@ -41,14 +44,11 @@ export function xRobustDistributionStats(
 
   // non-outliers form a contiguous range in the sorted array, so we slice it
   // as a zero-copy view instead of allocating and filling a filtered array.
-  let lowIndex = 0;
-  while (lowIndex < sorted.length && sorted[lowIndex] < boxPlot.lowerWhisker) {
-    lowIndex++;
-  }
-  let highIndex = sorted.length;
-  while (highIndex > lowIndex && sorted[highIndex - 1] > boxPlot.upperWhisker) {
-    highIndex--;
-  }
+  const { lowIndex, highIndex } = getWhiskerBounds(
+    sorted,
+    boxPlot.lowerWhisker,
+    boxPlot.upperWhisker,
+  );
   const filteredArray = sorted.subarray(lowIndex, highIndex);
 
   const mean = xMean(filteredArray);
