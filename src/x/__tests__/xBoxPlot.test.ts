@@ -157,3 +157,9 @@ test('close values', () => {
     max: 1.403,
   });
 });
+
+test('throws on NaN', () => {
+  expect(() => xBoxPlot([1, 2, 3, 4, Number.NaN, 5])).toThrow(
+    'input must not contain NaN values',
+  );
+});

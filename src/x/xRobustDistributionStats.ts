@@ -1,7 +1,9 @@
 import type { NumberArray } from 'cheminfo-types';
 
+import { getSortedFloat64 } from './getSortedFloat64.ts';
 import type { XBoxPlotWithOutliers } from './xBoxPlotWithOutliers.ts';
-import { xBoxPlotWithOutliers } from './xBoxPlotWithOutliers.ts';
+import { boxPlotWithOutliersFromSorted } from './xBoxPlotWithOutliers.ts';
+import { xCheck } from './xCheck.ts';
 import { xMean } from './xMean.ts';
 import { xStandardDeviation } from './xStandardDeviation.ts';
 
@@ -23,29 +25,31 @@ export interface XRobustDistributionStats extends XBoxPlotWithOutliers {
 export function xRobustDistributionStats(
   array: NumberArray,
 ): XRobustDistributionStats {
-  const boxPlot = xBoxPlotWithOutliers(array);
-  let filteredArray: NumberArray;
+  xCheck(array);
+  const sorted = getSortedFloat64(array);
+
+  const boxPlot = boxPlotWithOutliersFromSorted(sorted);
 
   if (boxPlot.max - boxPlot.min <= Number.EPSILON) {
     return {
       ...boxPlot,
       mean: boxPlot.median,
-      sd: array.length === 1 ? Number.NaN : 0,
-      nb: array.length,
+      sd: sorted.length === 1 ? Number.NaN : 0,
+      nb: sorted.length,
     };
   }
 
-  if (boxPlot.outliers.length === 0) {
-    filteredArray = array;
-  } else {
-    filteredArray = new Float64Array(array.length - boxPlot.outliers.length);
-    let j = 0;
-    for (const element of array) {
-      if (element >= boxPlot.lowerWhisker && element <= boxPlot.upperWhisker) {
-        filteredArray[j++] = element;
-      }
-    }
+  // non-outliers form a contiguous range in the sorted array, so we slice it
+  // as a zero-copy view instead of allocating and filling a filtered array.
+  let lowIndex = 0;
+  while (lowIndex < sorted.length && sorted[lowIndex] < boxPlot.lowerWhisker) {
+    lowIndex++;
   }
+  let highIndex = sorted.length;
+  while (highIndex > lowIndex && sorted[highIndex - 1] > boxPlot.upperWhisker) {
+    highIndex--;
+  }
+  const filteredArray = sorted.subarray(lowIndex, highIndex);
 
   const mean = xMean(filteredArray);
   return {

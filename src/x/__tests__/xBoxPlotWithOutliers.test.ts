@@ -58,3 +58,11 @@ test('close values', () => {
     outliers: [],
   });
 });
+
+test('throws on NaN', () => {
+  const withNaN = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 100, Number.NaN];
+
+  expect(() => xBoxPlotWithOutliers(withNaN)).toThrow(
+    'input must not contain NaN values',
+  );
+});
