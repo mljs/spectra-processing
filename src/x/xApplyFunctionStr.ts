@@ -39,7 +39,7 @@ export function xApplyFunctionStr(
       )
       .replaceAll('Math.Math', 'Math')})`,
   );
-  const toReturn = Float64Array.from(array);
+  const toReturn = new Float64Array(array.length);
   for (let i = 0; i < array.length; i++) {
     toReturn[i] = fct(array[i]);
     if (Number.isNaN(toReturn[i])) {

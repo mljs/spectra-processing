@@ -20,4 +20,10 @@ test('xMaxAbsoluteValue', () => {
   expect(xMaxAbsoluteValue([3, 2, 1], { toIndex: 1 })).toBe(3);
   expect(xMaxAbsoluteValue([1, 2, 3], { fromIndex: 1, toIndex: 1 })).toBe(2);
   expect(xMaxAbsoluteValue([3, 2, 1], { fromIndex: 1, toIndex: 1 })).toBe(2);
+
+  // a negative largest-magnitude element must be absolutized, including at index 0
+  expect(xMaxAbsoluteValue([-5])).toBe(5);
+  expect(xMaxAbsoluteValue([-5, -3])).toBe(5);
+  expect(xMaxAbsoluteValue([-5, -3, -4])).toBe(5);
+  expect(xMaxAbsoluteValue([-5, 2, 3])).toBe(5);
 });
