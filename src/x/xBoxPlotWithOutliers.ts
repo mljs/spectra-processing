@@ -74,17 +74,41 @@ export function xBoxPlotWithOutliers(array: NumberArray): XBoxPlotWithOutliers {
 export function boxPlotWithOutliersFromSorted(
   sorted: Float64Array,
 ): XBoxPlotWithOutliers {
+  return boxPlotWithOutliersAndBounds(sorted).boxPlot;
+}
+
+export interface BoxPlotWithOutliersAndBounds {
+  /** The box plot with its outliers. */
+  boxPlot: XBoxPlotWithOutliers;
+  /** The non-outlier index range, so callers can slice without re-scanning. */
+  bounds: WhiskerBounds;
+}
+
+/**
+ * Same computation as {@link boxPlotWithOutliersFromSorted}, but also returns the
+ * non-outlier index range so callers that need the filtered values (mean, sd, …) can
+ * reuse the bounds instead of scanning the array a second time.
+ * Internal helper: not re-exported from `x/index.ts`, so it stays out of the public API.
+ * @param sorted - sorted data.
+ * @returns - the box plot and the non-outlier index range.
+ */
+export function boxPlotWithOutliersAndBounds(
+  sorted: Float64Array,
+): BoxPlotWithOutliersAndBounds {
   const boxPlot = boxPlotFromSorted(sorted);
 
   if (boxPlot.max - boxPlot.min <= Number.EPSILON) {
     return {
-      ...boxPlot,
-      lowerWhisker: boxPlot.min,
-      upperWhisker: boxPlot.max,
-      minWhisker: boxPlot.min,
-      maxWhisker: boxPlot.max,
-      iqr: 0,
-      outliers: [],
+      boxPlot: {
+        ...boxPlot,
+        lowerWhisker: boxPlot.min,
+        upperWhisker: boxPlot.max,
+        minWhisker: boxPlot.min,
+        maxWhisker: boxPlot.max,
+        iqr: 0,
+        outliers: [],
+      },
+      bounds: { lowIndex: 0, highIndex: sorted.length },
     };
   }
 
@@ -92,11 +116,8 @@ export function boxPlotWithOutliersFromSorted(
   const lowerWhisker = boxPlot.q1 - 1.5 * iqr;
   const upperWhisker = boxPlot.q3 + 1.5 * iqr;
 
-  const { lowIndex, highIndex } = getWhiskerBounds(
-    sorted,
-    lowerWhisker,
-    upperWhisker,
-  );
+  const bounds = getWhiskerBounds(sorted, lowerWhisker, upperWhisker);
+  const { lowIndex, highIndex } = bounds;
 
   const outliers: number[] = [];
   for (let i = 0; i < lowIndex; i++) {
@@ -107,13 +128,16 @@ export function boxPlotWithOutliersFromSorted(
   }
 
   return {
-    ...boxPlot,
-    lowerWhisker,
-    upperWhisker,
-    minWhisker: sorted[lowIndex],
-    maxWhisker: sorted[highIndex - 1],
-    iqr,
-    outliers,
+    boxPlot: {
+      ...boxPlot,
+      lowerWhisker,
+      upperWhisker,
+      minWhisker: sorted[lowIndex],
+      maxWhisker: sorted[highIndex - 1],
+      iqr,
+      outliers,
+    },
+    bounds,
   };
 }
 
