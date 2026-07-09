@@ -1029,6 +1029,11 @@ test('get noise level', () => {
   expect(noise.snr).toBeCloseTo(56.85, 1);
   expect(noiseFromMagnitude.snr).toBeCloseTo(40.2, 1);
 
+  // the refined negative noise level must be derived from the negative signal,
+  // so it is positive and of the same order as the positive level
+  expect(noise.negative).toBeGreaterThan(0);
+  expect(noise.negative / noise.positive).toBeCloseTo(1.67, 1);
+
   const noiseScaled = xNoiseSanPlot(data.re, {
     scaleFactor: 2,
   });

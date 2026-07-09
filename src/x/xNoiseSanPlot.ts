@@ -153,7 +153,8 @@ export function xNoiseSanPlot(
     if (cutOffSignalsIndexNeg > -1) {
       cloneSignNegative = signNegative.slice(cutOffSignalsIndexNeg);
       noiseLevelNegative =
-        cloneSignPositive[
+        -1 *
+        cloneSignNegative[
           Math.floor(cloneSignNegative.length * (1 - cutOffDist))
         ];
     }
