@@ -99,10 +99,6 @@ export function xyAlign(
         i++;
       }
     } else {
-      const weightedX =
-        (data1.x[i] * data1.y[i] + data2.x[j] * data2.y[j]) /
-        (data1.y[i] + data2.y[j]);
-
       switch (x) {
         case 'x1':
           result.x.push(data1.x[i]);
@@ -111,7 +107,10 @@ export function xyAlign(
           result.x.push(data2.x[j]);
           break;
         case 'weighted':
-          result.x.push(weightedX);
+          result.x.push(
+            (data1.x[i] * data1.y[i] + data2.x[j] * data2.y[j]) /
+              (data1.y[i] + data2.y[j]),
+          );
           break;
         default:
           throw new Error(`unknown x option value: ${String(x)}`);

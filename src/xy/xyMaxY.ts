@@ -42,7 +42,7 @@ export function xyMaxY(data: DataXY, options: XYMaxYOptions = {}): number {
   const { fromIndex, toIndex } = xGetFromToIndex(x, options);
 
   let currentxyMaxY = y[fromIndex];
-  for (let i = fromIndex; i <= toIndex; i++) {
+  for (let i = fromIndex + 1; i <= toIndex; i++) {
     if (y[i] > currentxyMaxY) currentxyMaxY = y[i];
   }
 

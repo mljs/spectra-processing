@@ -26,10 +26,7 @@ export function xyMedianY(
   for (let i = 0; i < y.length; i++) {
     const fromIndex = Math.max(0, i - halfWindow);
     const toIndex = Math.min(y.length, i + halfWindow + 1);
-    const window = ArrayBuffer.isView(y)
-      ? y.subarray(fromIndex, toIndex)
-      : y.slice(fromIndex, toIndex);
-    result[i] = xMedian(window, { exact: false });
+    result[i] = xMedian(y, { exact: false, fromIndex, toIndex });
   }
 
   return { x, y: result };
