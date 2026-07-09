@@ -32,10 +32,7 @@ export function xyMedianYAtXs(
     const centerIndex = xFindClosestIndex(x, xValues[i]);
     const fromIndex = Math.max(0, centerIndex - halfWindow);
     const toIndex = Math.min(y.length, centerIndex + halfWindow + 1);
-    const window = ArrayBuffer.isView(y)
-      ? y.subarray(fromIndex, toIndex)
-      : y.slice(fromIndex, toIndex);
-    result[i] = xMedian(window, { exact: false });
+    result[i] = xMedian(y, { exact: false, fromIndex, toIndex });
   }
 
   return { x: xValues, y: result };

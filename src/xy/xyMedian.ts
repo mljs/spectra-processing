@@ -31,6 +31,7 @@ export function xyMedian(data: DataXY): number {
     if (cumSumY > sumY / 2) {
       return x[i];
     } else if (cumSumY === sumY / 2) {
+      if (i === x.length - 1) return x[i];
       return 0.5 * (x[i] + x[i + 1]);
     }
   }

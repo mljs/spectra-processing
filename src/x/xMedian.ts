@@ -8,6 +8,18 @@ interface XMedianOptions {
    * @default false
    */
   exact?: boolean;
+
+  /**
+   * First index (inclusive) of the range to consider.
+   * @default 0
+   */
+  fromIndex?: number;
+
+  /**
+   * Last index (exclusive) of the range to consider.
+   * @default input.length
+   */
+  toIndex?: number;
 }
 
 /**
@@ -24,12 +36,16 @@ export function xMedian(
     throw new TypeError('input must be an array');
   }
 
-  if (input.length === 0) {
+  const {
+    exact = false,
+    fromIndex = 0,
+    toIndex = input.length,
+  } = options || {};
+  const array = input.slice(fromIndex, toIndex);
+
+  if (array.length === 0) {
     throw new TypeError('input must not be empty');
   }
-
-  const { exact = false } = options || {};
-  const array = input.slice();
 
   const middleIndex = calcMiddle(0, array.length - 1);
 

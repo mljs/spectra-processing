@@ -48,7 +48,7 @@ export function xyMaxYPoint(
   const { fromIndex, toIndex } = xGetFromToIndex(x, options);
 
   let current = { x: x[fromIndex], y: y[fromIndex], index: fromIndex };
-  for (let i = fromIndex; i <= toIndex; i++) {
+  for (let i = fromIndex + 1; i <= toIndex; i++) {
     if (y[i] > current.y) current = { x: x[i], y: y[i], index: i };
   }
 
