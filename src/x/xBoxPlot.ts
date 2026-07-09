@@ -1,5 +1,6 @@
 import type { NumberArray } from 'cheminfo-types';
 
+import { getSortedFloat64 } from './getSortedFloat64.ts';
 import { xCheck } from './xCheck.ts';
 
 export interface XBoxPlotOptions {
@@ -29,22 +30,30 @@ export function xBoxPlot(array: NumberArray): XBoxPlot {
 
   // duplicate the array to avoid modifying the original one
   // and sort typed array that is much faster than sorting a normal array
-  array = Float64Array.from(array);
-  array.sort();
+  const sorted = getSortedFloat64(array);
 
+  return boxPlotFromSorted(sorted);
+}
+
+/**
+ * Calculating the box plot of an already-sorted array, without copying or re-sorting.
+ * Internal helper: not re-exported from `x/index.ts`, so it stays out of the public API.
+ * @param array - sorted data.
+ * @returns q1, median, q3, min, max.
+ */
+export function boxPlotFromSorted(array: Float64Array): XBoxPlot {
+  const min = array[0];
+  const max = array.at(-1) as number;
   // need to deal with very close points otherwise it yields to incorrect results
-  if ((array.at(-1) as number) - array[0] <= Number.EPSILON) {
+  if (max - min <= Number.EPSILON) {
     // if one of the 2 numbers is an integer let's take this one
-    const shortTestNumber =
-      String(array[0]).length < String(array.at(-1)).length
-        ? array[0]
-        : (array.at(-1) as number);
+    const shortTestNumber = String(min).length < String(max).length ? min : max;
     return {
-      min: array[0],
+      min,
       q1: shortTestNumber,
       median: shortTestNumber,
       q3: shortTestNumber,
-      max: array.at(-1) as number,
+      max,
     };
   }
   const posQ1 = (array.length - 1) / 4;
@@ -56,7 +65,7 @@ export function xBoxPlot(array: NumberArray): XBoxPlot {
 
   const medianMinProportion = medianPos % 1;
   return {
-    min: array[0],
+    min,
     q1:
       q1MinProportion === 0
         ? array[posQ1]
@@ -72,6 +81,6 @@ export function xBoxPlot(array: NumberArray): XBoxPlot {
         ? array[posQ3]
         : array[posQ3 >> 0] * (1 - q3MinProportion) +
           array[(posQ3 >> 0) + 1] * q3MinProportion,
-    max: array.at(-1) as number,
+    max,
   };
 }

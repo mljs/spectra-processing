@@ -1,6 +1,8 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xBoxPlot } from './xBoxPlot.ts';
+import { getSortedFloat64 } from './getSortedFloat64.ts';
+import { boxPlotFromSorted } from './xBoxPlot.ts';
+import { xCheck } from './xCheck.ts';
 
 export interface XBoxPlotWithOutliers {
   /**
@@ -56,17 +58,57 @@ export interface XBoxPlotWithOutliers {
  * @returns - q1, median, q3, min, max, outliers
  */
 export function xBoxPlotWithOutliers(array: NumberArray): XBoxPlotWithOutliers {
-  const boxPlot = xBoxPlot(array);
+  xCheck(array);
+  const sorted = getSortedFloat64(array);
+  return boxPlotWithOutliersFromSorted(sorted);
+}
+
+/**
+ * Calculating the box plot with outliers of an already-sorted array, without copying
+ * or re-sorting. Because the array is sorted, the outliers are the low prefix and the
+ * high suffix, so they are reported in ascending order.
+ * Internal helper: not re-exported from `x/index.ts`, so it stays out of the public API.
+ * @param sorted - sorted data.
+ * @returns - q1, median, q3, min, max, outliers
+ */
+export function boxPlotWithOutliersFromSorted(
+  sorted: Float64Array,
+): XBoxPlotWithOutliers {
+  return boxPlotWithOutliersAndBounds(sorted).boxPlot;
+}
+
+export interface BoxPlotWithOutliersAndBounds {
+  /** The box plot with its outliers. */
+  boxPlot: XBoxPlotWithOutliers;
+  /** The non-outlier index range, so callers can slice without re-scanning. */
+  bounds: WhiskerBounds;
+}
+
+/**
+ * Same computation as {@link boxPlotWithOutliersFromSorted}, but also returns the
+ * non-outlier index range so callers that need the filtered values (mean, sd, …) can
+ * reuse the bounds instead of scanning the array a second time.
+ * Internal helper: not re-exported from `x/index.ts`, so it stays out of the public API.
+ * @param sorted - sorted data.
+ * @returns - the box plot and the non-outlier index range.
+ */
+export function boxPlotWithOutliersAndBounds(
+  sorted: Float64Array,
+): BoxPlotWithOutliersAndBounds {
+  const boxPlot = boxPlotFromSorted(sorted);
 
   if (boxPlot.max - boxPlot.min <= Number.EPSILON) {
     return {
-      ...boxPlot,
-      lowerWhisker: boxPlot.min,
-      upperWhisker: boxPlot.max,
-      minWhisker: boxPlot.min,
-      maxWhisker: boxPlot.max,
-      iqr: 0,
-      outliers: [],
+      boxPlot: {
+        ...boxPlot,
+        lowerWhisker: boxPlot.min,
+        upperWhisker: boxPlot.max,
+        minWhisker: boxPlot.min,
+        maxWhisker: boxPlot.max,
+        iqr: 0,
+        outliers: [],
+      },
+      bounds: { lowIndex: 0, highIndex: sorted.length },
     };
   }
 
@@ -74,27 +116,60 @@ export function xBoxPlotWithOutliers(array: NumberArray): XBoxPlotWithOutliers {
   const lowerWhisker = boxPlot.q1 - 1.5 * iqr;
   const upperWhisker = boxPlot.q3 + 1.5 * iqr;
 
-  const outliers = [];
-  let minWhisker = boxPlot.median;
-  let maxWhisker = boxPlot.median;
-  for (const value of array) {
-    if (value < lowerWhisker || value > upperWhisker) {
-      outliers.push(value);
-    } else {
-      if (value < minWhisker) minWhisker = value;
-      if (value > maxWhisker) maxWhisker = value;
-    }
+  const bounds = getWhiskerBounds(sorted, lowerWhisker, upperWhisker);
+  const { lowIndex, highIndex } = bounds;
+
+  const outliers: number[] = [];
+  for (let i = 0; i < lowIndex; i++) {
+    outliers.push(sorted[i]);
+  }
+  for (let i = highIndex; i < sorted.length; i++) {
+    outliers.push(sorted[i]);
   }
 
-  const info: XBoxPlotWithOutliers = {
-    ...boxPlot,
-    lowerWhisker,
-    upperWhisker,
-    minWhisker,
-    maxWhisker,
-    iqr,
-    outliers,
+  return {
+    boxPlot: {
+      ...boxPlot,
+      lowerWhisker,
+      upperWhisker,
+      minWhisker: sorted[lowIndex],
+      maxWhisker: sorted[highIndex - 1],
+      iqr,
+      outliers,
+    },
+    bounds,
   };
+}
 
-  return info;
+export interface WhiskerBounds {
+  /** Index of the first non-outlier in the sorted array. */
+  lowIndex: number;
+  /** Index just past the last non-outlier in the sorted array. */
+  highIndex: number;
+}
+
+/**
+ * Locate the contiguous range `[lowIndex, highIndex)` of non-outliers in a sorted array.
+ * Because the array is sorted, outliers are exactly the prefix below `lowerWhisker` and
+ * the suffix above `upperWhisker`, so the scan only touches the outliers themselves.
+ * Internal helper: not re-exported from `x/index.ts`, so it stays out of the public API.
+ * @param sorted - sorted data.
+ * @param lowerWhisker - values strictly below are low outliers.
+ * @param upperWhisker - values strictly above are high outliers.
+ * @returns the non-outlier index range.
+ */
+export function getWhiskerBounds(
+  sorted: Float64Array,
+  lowerWhisker: number,
+  upperWhisker: number,
+): WhiskerBounds {
+  let lowIndex = 0;
+  while (lowIndex < sorted.length && sorted[lowIndex] < lowerWhisker) {
+    lowIndex++;
+  }
+  let highIndex = sorted.length;
+  while (highIndex > lowIndex && sorted[highIndex - 1] > upperWhisker) {
+    highIndex--;
+  }
+  return { lowIndex, highIndex };
 }

@@ -6,8 +6,11 @@ export * from './xAdd.ts';
 export * from './xApplyFunctionStr.ts';
 export * from './xAutoCorrelation.ts';
 export * from './xBinning.ts';
-export * from './xBoxPlot.ts';
-export * from './xBoxPlotWithOutliers.ts';
+export { type XBoxPlot, type XBoxPlotOptions, xBoxPlot } from './xBoxPlot.ts';
+export {
+  type XBoxPlotWithOutliers,
+  xBoxPlotWithOutliers,
+} from './xBoxPlotWithOutliers.ts';
 export * from './xCheck.ts';
 export * from './xCheckLengths.ts';
 export * from './xCorrelation.ts';

@@ -153,3 +153,34 @@ test('more complex case with multiple outliers', () => {
     nb: 27,
   });
 });
+
+test('throws on NaN', () => {
+  expect(() =>
+    xRobustDistributionStats([1, 2, 3, 4, 5, 10, Number.NaN]),
+  ).toThrow('input must not contain NaN values');
+});
+
+test('Infinity is a genuine high outlier, not missing', () => {
+  expect(xRobustDistributionStats([1, 2, 3, 4, 5, Infinity])).toStrictEqual({
+    min: 1,
+    q1: 2.25,
+    median: 3.5,
+    q3: 4.75,
+    max: Infinity,
+    lowerWhisker: -1.5,
+    upperWhisker: 8.5,
+    minWhisker: 1,
+    maxWhisker: 5,
+    iqr: 2.5,
+    outliers: [Infinity],
+    mean: 3,
+    sd: 1.5811388300841898,
+    nb: 5,
+  });
+});
+
+test('throws when there is no finite value', () => {
+  expect(() => xRobustDistributionStats([Number.NaN, Number.NaN])).toThrow(
+    'input must not contain NaN values',
+  );
+});
