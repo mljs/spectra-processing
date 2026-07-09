@@ -1,6 +1,6 @@
 import type { NumberArray } from 'cheminfo-types';
 
-import { xMultiply } from './xMultiply.ts';
+import { xCheckLengths } from './xCheckLengths.ts';
 
 /**
  * Dot product between two arrays.
@@ -8,10 +8,10 @@ import { xMultiply } from './xMultiply.ts';
  * @param B - second array.
  */
 export function xDotProduct(A: NumberArray, B: NumberArray): number {
-  const g = xMultiply(A, B);
+  xCheckLengths(A, B);
   let result = 0;
   for (let i = 0; i < A.length; i++) {
-    result += g[i];
+    result += A[i] * B[i];
   }
   return result;
 }

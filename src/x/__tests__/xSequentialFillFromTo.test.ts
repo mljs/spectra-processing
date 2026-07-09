@@ -8,6 +8,12 @@ test('Default array type (Float64Array)', () => {
   expect(result).toStrictEqual(new Float64Array([0, 2, 4, 6, 8, 10]));
 });
 
+test('size of 1 returns from', () => {
+  const result = xSequentialFillFromTo({ from: 10, to: 20, size: 1 });
+
+  expect(result).toStrictEqual(new Float64Array([10]));
+});
+
 test('Int32Array', () => {
   const result = xSequentialFillFromTo(
     { from: 0, to: 10, size: 6 },

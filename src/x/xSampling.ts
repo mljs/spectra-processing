@@ -44,7 +44,7 @@ function downSampling(
   length: number,
 ): Float64Array<ArrayBuffer> {
   const returnArray = new Float64Array(length);
-  const delta = (array.length - 1) / (length - 1);
+  const delta = length === 1 ? 0 : (array.length - 1) / (length - 1);
 
   for (let i = 0; i < length; i++) {
     returnArray[i] = array[Math.round(i * delta)];

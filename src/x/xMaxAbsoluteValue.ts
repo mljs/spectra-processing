@@ -15,7 +15,7 @@ export function xMaxAbsoluteValue(
 ): number {
   xCheck(array);
   const { fromIndex, toIndex } = xGetFromToIndex(array, options);
-  let maxValue = array[fromIndex];
+  let maxValue = Math.abs(array[fromIndex]);
 
   for (let i = fromIndex + 1; i <= toIndex; i++) {
     if (array[i] >= 0) {

@@ -28,6 +28,6 @@ export function xSequentialFillFromTo<
   options: XSequentialFillFromToOptions<ArrayConstructorType> = {},
 ): NumberArrayType<ArrayConstructorType> {
   const { from, to, size } = parameters;
-  const step = (to - from) / (size - 1);
+  const step = size <= 1 ? 0 : (to - from) / (size - 1);
   return xSequentialFillFromStep({ from, step, size }, options);
 }
