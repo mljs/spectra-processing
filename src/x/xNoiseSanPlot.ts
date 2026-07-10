@@ -115,10 +115,7 @@ export function xNoiseSanPlot(
   }
 
   const signPositive = input.slice(0, lastPositiveValueIndex + 1);
-  const signNegative = input
-    .slice(firstNegativeValueIndex)
-    .map((e) => -e)
-    .toReversed();
+  const signNegative = createNegativeSign(input, firstNegativeValueIndex);
 
   const skyPoint = signPositive[0];
 
@@ -327,9 +324,19 @@ function scale(
  *           elements corresponding to `true` values will be excluded from processing.
  * @param options.scaleFactor
  * @param options.mask
+ * @param from
  * @returns A new Float64Array containing the processed data, scaled by the
  *          scaleFactor and sorted in descending order.
  */
+function createNegativeSign(array: Float64Array, from: number): Float64Array {
+  const length = array.length - from;
+  const result = new Float64Array(length);
+  for (let i = 0; i < length; i++) {
+    result[i] = -array[array.length - 1 - i];
+  }
+  return result;
+}
+
 function prepareData(
   array: NumberArray,
   options: { scaleFactor: number; mask?: NumberArray },
