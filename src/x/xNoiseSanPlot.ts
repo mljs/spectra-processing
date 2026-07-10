@@ -89,9 +89,6 @@ export function xNoiseSanPlot(
   } = options;
 
   const input = prepareData(array, { scaleFactor, mask });
-  const simpleNormInvValue = magnitudeMode
-    ? simpleNormInvMagnitude
-    : simpleNormInvRaw;
 
   if (fixOffset && !magnitudeMode) {
     const medianIndex = Math.floor(input.length / 2);
@@ -123,89 +120,18 @@ export function xNoiseSanPlot(
     .map((e) => -e)
     .toReversed();
 
-  const cutOffDistPositive =
-    cutOff || determineCutOff(signPositive, { magnitudeMode });
-  const cutOffDistNegative =
-    cutOff ||
-    determineCutOff(signNegative, {
-      magnitudeMode,
-    });
-
-  const pIndex = Math.floor(signPositive.length * cutOffDistPositive);
-  const initialNoiseLevelPositive = signPositive[pIndex];
-
   const skyPoint = signPositive[0];
 
-  let initialNoiseLevelNegative;
-  if (signNegative.length > 0) {
-    const nIndex = Math.floor(signNegative.length * cutOffDistNegative);
-    initialNoiseLevelNegative = signNegative[nIndex];
-  } else {
-    initialNoiseLevelNegative = 0;
-  }
-
-  let noiseLevelPositive = initialNoiseLevelPositive;
-  let noiseLevelNegative = initialNoiseLevelNegative;
-  let cloneSignPositive = signPositive.slice();
-  let cloneSignNegative = signNegative.slice();
-
-  let cutOffSignalsIndexPlus = 0;
-  let cutOffSignalsIndexNeg = 2;
-  if (refine) {
-    let cutOffSignals = noiseLevelPositive * factorStd;
-    cutOffSignalsIndexPlus = signPositive.findIndex((e) => e < cutOffSignals);
-
-    if (cutOffSignalsIndexPlus > -1) {
-      cloneSignPositive = signPositive.slice(cutOffSignalsIndexPlus);
-      noiseLevelPositive =
-        cloneSignPositive[
-          Math.floor(cloneSignPositive.length * cutOffDistPositive)
-        ];
-    }
-
-    cutOffSignals = noiseLevelNegative * factorStd;
-    cutOffSignalsIndexNeg = signNegative.findIndex((e) => e < cutOffSignals);
-
-    if (cutOffSignalsIndexNeg > -1) {
-      cloneSignNegative = signNegative.slice(cutOffSignalsIndexNeg);
-      noiseLevelNegative =
-        cloneSignNegative[
-          Math.floor(cloneSignNegative.length * cutOffDistNegative)
-        ];
-    }
-  }
-
-  if (refine && cutOffSignalsIndexPlus > -1) {
-    const effectiveCutOffDist =
-      (cutOffDistPositive * cloneSignPositive.length + cutOffSignalsIndexPlus) /
-      (cloneSignPositive.length + cutOffSignalsIndexPlus);
-    const refinedCorrectionFactor =
-      -1 * simpleNormInvValue(effectiveCutOffDist / 2);
-
-    noiseLevelPositive /= refinedCorrectionFactor;
-  } else {
-    const correctionFactorPositive = -simpleNormInvValue(
-      cutOffDistPositive / 2,
-    );
-    noiseLevelPositive /= correctionFactorPositive;
-  }
-
-  if (refine && cutOffSignalsIndexNeg > -1) {
-    const effectiveCutOffDist =
-      (cutOffDistNegative * cloneSignNegative.length + cutOffSignalsIndexNeg) /
-      (cloneSignNegative.length + cutOffSignalsIndexNeg);
-
-    const refinedCorrectionFactor =
-      -1 * simpleNormInvValue(effectiveCutOffDist / 2);
-    if (noiseLevelNegative !== 0) {
-      noiseLevelNegative /= refinedCorrectionFactor;
-    }
-  } else {
-    const correctionFactorNegative = -simpleNormInvValue(
-      cutOffDistNegative / 2,
-    );
-    noiseLevelNegative /= correctionFactorNegative;
-  }
+  const noiseLevelPositive = calculateNoiseLevel(signPositive, {
+    factorStd,
+    refine,
+    magnitudeMode,
+  });
+  const noiseLevelNegative = calculateNoiseLevel(signNegative, {
+    factorStd,
+    refine,
+    magnitudeMode,
+  });
 
   return {
     positive: noiseLevelPositive,
@@ -218,6 +144,53 @@ export function xNoiseSanPlot(
       },
     }),
   };
+  function calculateNoiseLevel(
+    sign: NumberArray,
+    options: {
+      factorStd: number;
+      refine: boolean;
+      magnitudeMode: boolean;
+    },
+  ): number {
+    const { factorStd, refine, magnitudeMode } = options;
+
+    if (sign.length === 0) return 0;
+
+    const simpleNormInvValue = magnitudeMode
+      ? simpleNormInvMagnitude
+      : simpleNormInvRaw;
+
+    const cutOffDist =
+      cutOff || determineCutOff(signPositive, { magnitudeMode });
+
+    let noiseLevel = sign[Math.floor(sign.length * cutOffDist)];
+    let cloneSign = sign.slice();
+    let cutOffSignalsIndex = -1;
+
+    if (refine) {
+      const cutOffSignals = noiseLevel * factorStd;
+      cutOffSignalsIndex = sign.findIndex((e) => e < cutOffSignals);
+
+      if (cutOffSignalsIndex > -1) {
+        cloneSign = sign.slice(cutOffSignalsIndex);
+        noiseLevel = cloneSign[Math.floor(cloneSign.length * cutOffDist)];
+      }
+    }
+
+    if (refine && cutOffSignalsIndex > -1) {
+      const effectiveCutOffDist =
+        (cutOffDist * cloneSign.length + cutOffSignalsIndex) /
+        (cloneSign.length + cutOffSignalsIndex);
+      const refinedCorrectionFactor =
+        -1 * simpleNormInvValue(effectiveCutOffDist / 2);
+      noiseLevel /= refinedCorrectionFactor;
+    } else {
+      const correctionFactor = -simpleNormInvValue(cutOffDist / 2);
+      noiseLevel /= correctionFactor;
+    }
+
+    return noiseLevel;
+  }
 }
 
 /**
