@@ -58,7 +58,6 @@ export function calculateAdaptiveWeights(
   }
 
   const absResiduals = xAbsolute(xSubtract(yData, baseline));
-
   const medAbsRes = xMedian(absResiduals);
   const mad = 1.4826 * medAbsRes;
   const threshold = mad > 0 ? factorStd * mad : 1;

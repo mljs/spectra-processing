@@ -8,9 +8,12 @@ import type {
   WeightsAndControlPoints,
 } from '../utils/index.ts';
 import { calculateAdaptiveWeights } from '../utils/index.ts';
+import { xyInterpolateLinear } from '../xy/xyInterpolateLinear.ts';
 
+import { getDownSampleData } from './utils/downsample.ts';
 import { xEnsureFloat64 } from './xEnsureFloat64.ts';
 import { xMultiply } from './xMultiply.ts';
+import { xSequentialFillFromTo } from './xSequentialFillFromTo.ts';
 
 export interface XWhittakerSmootherOptions extends CalculateAdaptiveWeightsOptions {
   /**
@@ -52,13 +55,48 @@ export function xWhittakerSmoother(
   yData: NumberArray,
   options: XWhittakerSmootherOptions = {},
 ) {
-  const { algorithm = 'thomas', ...restOptions } = options;
+  const { algorithm = 'thomas', lambda = 200 } = options;
 
-  if (algorithm === 'thomas') {
-    return whittakerByThomas(yData, restOptions);
+  const xData = xSequentialFillFromTo({
+    from: 0,
+    to: yData.length - 1,
+    size: yData.length,
+  });
+  const { xWork, yWork, optionsWork, shouldDownsample } = getDownSampleData(
+    xData,
+    xEnsureFloat64(yData),
+    options,
+  );
+
+  // If downsampled, rescale lambda to account for change in x spacing.
+  if (shouldDownsample) {
+    // estimate mean spacing
+    const spacing = (a: Float64Array) => {
+      if (a.length < 2) return 1;
+      let s = 0;
+      for (let i = 1; i < a.length; i++) s += Math.abs(a[i] - a[i - 1]);
+      return s / (a.length - 1);
+    };
+
+    const hData = 1;
+    const hWork = spacing(xWork);
+    if (hWork !== 0) {
+      // lambda scales approximately with h^3 between discrete and continuous forms
+      const scale = (hData / hWork) ** 3;
+      optionsWork.lambda = lambda * scale;
+    }
   }
 
-  return whittakerByCholesky(yData, restOptions);
+  const work =
+    algorithm === 'thomas'
+      ? whittakerByThomas(yWork, optionsWork)
+      : whittakerByCholesky(yWork, optionsWork);
+
+  if (shouldDownsample && xWork && xData) {
+    return xyInterpolateLinear({ x: xWork, y: work }, xData);
+  }
+
+  return work;
 }
 
 /**
