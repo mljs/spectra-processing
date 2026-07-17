@@ -19,6 +19,11 @@ export interface XNoiseSanPlotOptions {
    * @default: will be calculated from the data.
    */
   cutOff?: number;
+  /**
+   * if true the cutOff will be calculated from the positive distribution, if false it will be calculated from the negative distribution.
+   * @default true
+   */
+  cutOffFromPositive?: boolean;
 
   /**
    * true the noise level will be recalculated get out the signals using factorStd.
@@ -80,7 +85,7 @@ export function xNoiseSanPlot(
 ): XNoiseSanPlotResult {
   const {
     mask,
-    cutOff,
+    cutOffFromPositive = true,
     refine = true,
     magnitudeMode = false,
     scaleFactor = 1,
@@ -119,15 +124,24 @@ export function xNoiseSanPlot(
 
   const skyPoint = signPositive[0];
 
+  const cutOff =
+    options.cutOff ??
+    (cutOffFromPositive
+      ? determineCutOff(signPositive, { magnitudeMode })
+      : null);
+
   const noiseLevelPositive = calculateNoiseLevel(signPositive, {
     factorStd,
     refine,
     magnitudeMode,
+    cutOff,
   });
+
   const noiseLevelNegative = calculateNoiseLevel(signNegative, {
     factorStd,
     refine,
     magnitudeMode,
+    cutOff,
   });
 
   return {
@@ -141,57 +155,75 @@ export function xNoiseSanPlot(
       },
     }),
   };
-  function calculateNoiseLevel(
-    sign: NumberArray,
-    options: {
-      factorStd: number;
-      refine: boolean;
-      magnitudeMode: boolean;
-    },
-  ): number {
-    const { factorStd, refine, magnitudeMode } = options;
+}
 
-    if (sign.length === 0) return 0;
+function calculateNoiseLevel(
+  sign: NumberArray,
+  options: {
+    factorStd: number;
+    refine: boolean;
+    magnitudeMode: boolean;
+    cutOff: number | null;
+  },
+): number {
+  const { factorStd, refine, magnitudeMode, cutOff } = options;
 
-    const simpleNormInvValue = magnitudeMode
-      ? simpleNormInvMagnitude
-      : simpleNormInvRaw;
+  if (sign.length === 0) return 0;
 
-    const cutOffDist =
-      cutOff || determineCutOff(signPositive, { magnitudeMode });
+  const simpleNormInvValue = magnitudeMode
+    ? simpleNormInvMagnitude
+    : simpleNormInvRaw;
 
-    let noiseLevel = sign[Math.floor(sign.length * cutOffDist)];
-    let cloneSign = sign.slice();
-    let cutOffSignalsIndex = -1;
+  const cutOffDist = cutOff || determineCutOff(sign, { magnitudeMode });
 
-    if (refine) {
-      const cutOffSignals = noiseLevel * factorStd;
-      cutOffSignalsIndex = sign.findIndex((e) => e < cutOffSignals);
+  let noiseLevel = sign[Math.floor(sign.length * cutOffDist)];
+  let cloneSign = sign.slice();
+  let cutOffSignalsIndex = -1;
 
-      if (cutOffSignalsIndex > -1) {
-        cloneSign = sign.slice(cutOffSignalsIndex);
-        noiseLevel = cloneSign[Math.floor(cloneSign.length * cutOffDist)];
-      }
+  if (refine) {
+    const cutOffSignals = noiseLevel * factorStd;
+    cutOffSignalsIndex = sign.findIndex((e) => e < cutOffSignals);
+
+    if (cutOffSignalsIndex > -1) {
+      cloneSign = sign.slice(cutOffSignalsIndex);
+      noiseLevel = cloneSign[Math.floor(cloneSign.length * cutOffDist)];
     }
-
-    if (refine && cutOffSignalsIndex > -1) {
-      const effectiveCutOffDist =
-        (cutOffDist * cloneSign.length + cutOffSignalsIndex) /
-        (cloneSign.length + cutOffSignalsIndex);
-      const refinedCorrectionFactor =
-        -1 * simpleNormInvValue(effectiveCutOffDist / 2);
-      noiseLevel /= refinedCorrectionFactor;
-    } else {
-      const correctionFactor = -simpleNormInvValue(cutOffDist / 2);
-      noiseLevel /= correctionFactor;
-    }
-
-    return noiseLevel;
   }
+
+  if (refine && cutOffSignalsIndex > -1) {
+    const effectiveCutOffDist =
+      (cutOffDist * cloneSign.length + cutOffSignalsIndex) /
+      (cloneSign.length + cutOffSignalsIndex);
+    const refinedCorrectionFactor =
+      -1 * simpleNormInvValue(effectiveCutOffDist / 2);
+    noiseLevel /= refinedCorrectionFactor;
+  } else {
+    const correctionFactor = -simpleNormInvValue(cutOffDist / 2);
+    noiseLevel /= correctionFactor;
+  }
+
+  return noiseLevel;
 }
 
 /**
- * Determines the optimal cut-off point for a given array of positive numbers.
+ * Estimates where the "noise region" begins in a SAN-plot-style sorted
+ * intensity series (Sheberstov et al., Magn. Reson. Chem. 2020, 58, 466-472,
+ * https://doi.org/10.1002/mrc.4882).
+ *
+ * `signPositive` is expected to already be sorted by decreasing absolute
+ * magnitude (the paper's S+ or S- series). For each quantile fraction `i`
+ * (fraction of points at or beyond that position, counting from the tail),
+ * we invert the Gaussian (or Rayleigh, in magnitude mode) order-statistics
+ * relationship to get a local estimate of the noise standard deviation
+ * (sigma). This estimate is only expected to be stable/flat once we are
+ * fully inside the true noise region; in the signal and artifact regions
+ * it will be biased and noisy. We therefore scan candidate quantile windows
+ * and pick the one where the sigma estimates are most self-consistent
+ * (lowest variance) - a proxy for "where the noise region reliably starts".
+ * <<<<<<< Updated upstream
+ *
+ * =======
+ * >>>>>>> Stashed changes
  * @param signPositive - an array of positive numbers.
  * @param options - optional parameters to configure the cut-off determination.
  * @param options.magnitudeMode - if true, uses magnitude mode for normalization. Default is false.
@@ -201,6 +233,7 @@ export function xNoiseSanPlot(
  * @param options.considerList.to - the ending point of the range. Default is 0.9.
  * @returns the optimal cut-off point as a number.
  */
+
 function determineCutOff(
   signPositive: NumberArray,
   options: {
@@ -212,42 +245,69 @@ function determineCutOff(
     magnitudeMode = false,
     considerList = { from: 0.5, step: 0.1, to: 0.9 },
   } = options;
-  //generate a list of values for
-  const cutOff = [];
-  const indexMax = signPositive.length - 1;
-  const simpleNormInvValue = magnitudeMode
+
+  const inverseQuantileFn = magnitudeMode
     ? simpleNormInvMagnitude
     : simpleNormInvRaw;
-  for (let i = 0.01; i <= 0.99; i += 0.01) {
-    const index = Math.round(indexMax * i);
-    const value = -signPositive[index] / simpleNormInvValue(i / 2);
-    cutOff.push([i, value]);
+
+  const indexMax = signPositive.length - 1;
+
+  // For each quantile fraction, compute a local sigma estimate by inverting
+  // the theoretical relationship between order statistics and the assumed
+  // noise distribution (Gaussian or Rayleigh).
+  const sigmaEstimates: Array<[quantileFraction: number, sigma: number]> = [];
+  for (
+    let quantileFraction = 0.01;
+    quantileFraction <= 0.99;
+    quantileFraction += 0.01
+  ) {
+    const index = Math.round(indexMax * quantileFraction);
+    const sigma =
+      -signPositive[index] / inverseQuantileFn(quantileFraction / 2);
+    sigmaEstimates.push([quantileFraction, Math.abs(sigma)]);
   }
 
-  let minKi = Number.MAX_SAFE_INTEGER;
   const { from, to, step } = considerList;
-  const delta = step / 2;
-  let whereToCutStat = 0.5;
-  for (let i = from; i <= to; i += step) {
-    const floor = i - delta;
-    const top = i + delta;
-    const elementsOfCutOff = cutOff.filter((e) => e[0] < top && e[0] > floor);
-    let averageValue = 0;
-    for (const element of elementsOfCutOff) {
-      averageValue += Math.abs(element[1]);
-    }
-    let kiSqrt = 0;
-    for (const element of elementsOfCutOff) {
-      kiSqrt += (element[1] - averageValue) ** 2;
+  const halfWindow = step / 2;
+
+  let bestVariance = Number.MAX_SAFE_INTEGER;
+  let bestQuantileFraction = 0.5;
+
+  for (let windowCenter = from; windowCenter <= to; windowCenter += step) {
+    const windowFloor = windowCenter - halfWindow;
+    const windowTop = windowCenter + halfWindow;
+
+    let count = 0;
+    let sum = 0;
+
+    // First pass: compute mean
+    for (const [q, absSigma] of sigmaEstimates) {
+      if (q > windowFloor && q < windowTop) {
+        sum += absSigma;
+        count++;
+      }
     }
 
-    if (kiSqrt < minKi) {
-      minKi = kiSqrt;
-      whereToCutStat = i;
+    // Guard against empty windows.
+    if (count === 0) continue;
+
+    const meanSigma = sum / count;
+
+    // Second pass: compute variance
+    let variance = 0;
+    for (const [q, absSigma] of sigmaEstimates) {
+      if (q > windowFloor && q < windowTop) {
+        variance += (absSigma - meanSigma) ** 2;
+      }
+    }
+
+    if (variance < bestVariance) {
+      bestVariance = variance;
+      bestQuantileFraction = windowCenter;
     }
   }
 
-  return whereToCutStat;
+  return bestQuantileFraction;
 }
 
 /**
