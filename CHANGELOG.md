@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.29.4](https://github.com/mljs/spectra-processing/compare/v14.29.3...v14.29.4) (2026-07-20)
+
+
+### Bug Fixes
+
+* correct README ([#392](https://github.com/mljs/spectra-processing/issues/392)) ([2c37326](https://github.com/mljs/spectra-processing/commit/2c37326151384de441b4c202ee8568c8dcdfc05d))
+
 ## [14.29.2](https://github.com/mljs/spectra-processing/compare/v14.29.1...v14.29.2) (2026-07-03)
 
 
