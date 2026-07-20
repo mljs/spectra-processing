@@ -1,6 +1,6 @@
 import { xMaxValue } from '../x/index.ts';
 
-import { matrixCreateEmpty } from './matrixCreateEmpty.ts';
+import { matrixClone } from './matrixClone.ts';
 
 /**
  * Numerically encodes the strings in the matrix with an encoding dictionary.
@@ -12,11 +12,7 @@ export function matrixApplyNumericalEncoding(
   matrixInitial: Array<Array<string | number>>,
   dictionary: Record<string, number>,
 ): number[][] {
-  const matrix = matrixCreateEmpty({
-    nbRows: matrixInitial.length,
-    nbColumns: matrixInitial[0].length,
-    ArrayConstructor: Array,
-  });
+  const matrix = matrixClone(matrixInitial);
 
   const arrayOfValues: number[] = [];
   for (const key in dictionary) {
@@ -25,18 +21,19 @@ export function matrixApplyNumericalEncoding(
 
   let k = xMaxValue(arrayOfValues);
   for (const row of matrix) {
-    for (let j = 0; j < matrix[0].length; j++) {
-      if (typeof row[j] === 'string') {
-        if (row[j] in dictionary) {
-          row[j] = dictionary[row[j]];
+    for (let j = 0; j < row.length; j++) {
+      const value = row[j];
+      if (typeof value === 'string') {
+        if (value in dictionary) {
+          row[j] = dictionary[value];
         } else {
           k++;
-          dictionary[row[j]] = k;
+          dictionary[value] = k;
           row[j] = k;
         }
       }
     }
   }
 
-  return matrix;
+  return matrix as number[][];
 }
