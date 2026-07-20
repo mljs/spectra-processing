@@ -28,4 +28,17 @@ test('should return an array of numbers', () => {
   const nonNumbers = matrix.flat().filter((value) => typeof value !== 'number');
 
   expect(nonNumbers).toHaveLength(0);
+
+  // numeric columns are preserved and strings are mapped through the dictionary
+  expect(matrix).toStrictEqual([
+    [78, 198, 220, 147],
+    [81, 202, 200, 183],
+    [88, 221, 222, 177],
+    [78, 223, 210, 159],
+    [82, 222, 202, 177],
+    [86, 224, 218, 175],
+    [78, 223, 225, 175],
+    [76, 223, 226, 149],
+    [96, 200, 216, 192],
+  ]);
 });
