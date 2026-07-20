@@ -1,19 +1,5 @@
 # Changelog
 
-## [14.29.3](https://github.com/mljs/spectra-processing/compare/v14.29.2...v14.29.3) (2026-07-17)
-
-
-### Bug Fixes
-
-* correct xMaxAbsoluteValue sign and guard numeric edge cases ([#383](https://github.com/mljs/spectra-processing/issues/383)) ([1b2ddd0](https://github.com/mljs/spectra-processing/commit/1b2ddd054ba2868c98ca9a1eefc833eea176c4a1))
-* reject NaN and speed up box plot distribution stats ([#382](https://github.com/mljs/spectra-processing/issues/382)) ([289ff10](https://github.com/mljs/spectra-processing/commit/289ff105771d49a7887d4cf4ed8ea0a99dc9ea4c))
-* xNoiseSanPlot refined negative noise read from wrong array ([#386](https://github.com/mljs/spectra-processing/issues/386)) ([9ae3772](https://github.com/mljs/spectra-processing/commit/9ae377278ec7cd81757d0e2d15ddffd81494298f))
-
-
-### Performance Improvements
-
-* avoid extra array copies in xy median and scan helpers ([#385](https://github.com/mljs/spectra-processing/issues/385)) ([b068dcb](https://github.com/mljs/spectra-processing/commit/b068dcb39118c2bc4b78cf67f7e665ffa8eb7d88))
-
 ## [14.29.2](https://github.com/mljs/spectra-processing/compare/v14.29.1...v14.29.2) (2026-07-03)
 
 
