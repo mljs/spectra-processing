@@ -41,10 +41,9 @@ export function matrixZPivotRescale<
   const newMatrix = matrixCreateEmpty({ nbColumns, nbRows, ArrayConstructor });
 
   const currentMax = matrixMaxAbsoluteZ(matrix);
+  const factor = max / currentMax;
 
   for (let column = 0; column < nbColumns; column++) {
-    const factor = max / currentMax;
-
     for (let row = 0; row < nbRows; row++) {
       newMatrix[row][column] = matrix[row][column] * factor;
     }
