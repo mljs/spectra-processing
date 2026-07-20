@@ -255,10 +255,11 @@ function determineCutOff(
   // For each quantile fraction, compute a local sigma estimate by inverting
   // the theoretical relationship between order statistics and the assumed
   // noise distribution (Gaussian or Rayleigh).
+  const { from, to, step } = considerList;
   const sigmaEstimates: Array<[quantileFraction: number, sigma: number]> = [];
   for (
-    let quantileFraction = 0.01;
-    quantileFraction <= 0.99;
+    let quantileFraction = from - step / 2;
+    quantileFraction <= to + step / 2;
     quantileFraction += 0.01
   ) {
     const index = Math.round(indexMax * quantileFraction);
@@ -267,7 +268,6 @@ function determineCutOff(
     sigmaEstimates.push([quantileFraction, Math.abs(sigma)]);
   }
 
-  const { from, to, step } = considerList;
   const halfWindow = step / 2;
 
   let bestVariance = Number.MAX_SAFE_INTEGER;
