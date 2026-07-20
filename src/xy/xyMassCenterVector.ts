@@ -12,6 +12,9 @@ export interface XYMassCenterVectorOptions {
  * We will calculate a vector containing center of mass of DataXY as well as center of mass of both parts, etc.
  * This approach allows to efficiently represent spectra like XPS, NMR, etc. It should provide an extremely efficient
  * way to store and search similar spectra.
+ * @deprecated A center of mass averages positions, so a split lands between the peaks instead of on them, and
+ * every point is weighted by its own x value, which lets the noise of a long baseline drag the result.
+ * Use `xyEqualIntegrationVector`, that splits the spectrum in parts of equal integration.
  * @param data - object that contains property x (an ordered increasing array) and y (an array).
  * @param options - options.
  * @returns array of centers of mass.
