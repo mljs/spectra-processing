@@ -4,6 +4,7 @@ export * from './xyCovariance.ts';
 export * from './xyCumulativeDistributionStatistics.ts';
 export * from './xyEnsureFloat64.ts';
 export * from './xyEnsureGrowingX.ts';
+export * from './xyEqualIntegrationVector.ts';
 export * from './xyEquallySpaced.ts';
 export * from './xyExtract.ts';
 export * from './xyFilter.ts';

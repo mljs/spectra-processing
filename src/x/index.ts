@@ -18,6 +18,7 @@ export * from './xDistributionStats.ts';
 export * from './xDivide.ts';
 export * from './xDotProduct.ts';
 export * from './xEnsureFloat64.ts';
+export * from './xEqualIntegrationVectorSimilarity.ts';
 export * from './xFindClosestIndex.ts';
 export * from './xGetFromToIndex.ts';
 export * from './xGetTargetIndex.ts';
