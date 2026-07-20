@@ -18,7 +18,8 @@ They are sorted in various categories:
 - xyObject: functions that apply on an array of point `[{x,y}]`
 - xreim: functions that apply on an object `{x: [], re:[], im:[]}`
 - reim: functions that apply on an object `{re: [], im:[]}`
-- zone: functions that apply on a zone `{from,to}`
+- reimArray: functions that apply on an array of objects `{re: [], im:[]}`
+- reimMatrix: functions that apply on an object of matrices `{re, im}`
 - zones: functions that apply on an array of zone `[{from,to}]`
 
 The name of the functions start with the first argument on which they apply.
