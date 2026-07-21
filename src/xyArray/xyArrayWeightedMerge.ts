@@ -20,7 +20,7 @@ export interface XYArrayWeightedMergeOptions {
 export function xyArrayWeightedMerge(
   data: DataXY[],
   options: XYArrayWeightedMergeOptions = {},
-): DataXY {
+): DataXY<number[]> {
   let { delta = 1 } = options;
   if (typeof delta === 'number') {
     const deltaNumber = delta;
