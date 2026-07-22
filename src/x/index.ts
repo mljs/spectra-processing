@@ -27,6 +27,7 @@ export * from './xGetFromToIndex.ts';
 export * from './xGetTargetIndex.ts';
 export * from './xHilbertTransform.ts';
 export * from './xHistogram.ts';
+export * from './xIsArray.ts';
 export * from './xIsEquallySpaced.ts';
 export * from './xIsMonotonic.ts';
 export * from './xMassCenterVectorSimilarity.ts';

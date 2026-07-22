@@ -37,6 +37,7 @@ exports[`existence of exported functions 1`] = `
   "xGetTargetIndex",
   "xHilbertTransform",
   "xHistogram",
+  "xIsArray",
   "xIsEquallySpaced",
   "xIsMonotonic",
   "xMassCenterVectorSimilarity",
