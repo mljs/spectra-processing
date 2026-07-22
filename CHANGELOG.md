@@ -1,5 +1,17 @@
 # Changelog
 
+## [14.30.0](https://github.com/mljs/spectra-processing/compare/v14.29.4...v14.30.0) (2026-07-22)
+
+
+### Features
+
+* **x:** add `xIsArray` and improve types of `xCheck` ([#396](https://github.com/mljs/spectra-processing/issues/396)) ([6b0c1a1](https://github.com/mljs/spectra-processing/commit/6b0c1a1724f5416ab248de168587aafab9202036))
+
+
+### Bug Fixes
+
+* more precise return type for `xyArrayWeightedMerge` ([#394](https://github.com/mljs/spectra-processing/issues/394)) ([8b3a872](https://github.com/mljs/spectra-processing/commit/8b3a872d6cfc5c07e6b9a6fb8b6842b23aa90513))
+
 ## [14.29.4](https://github.com/mljs/spectra-processing/compare/v14.29.3...v14.29.4) (2026-07-20)
 
 
