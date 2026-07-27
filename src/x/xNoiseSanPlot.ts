@@ -71,8 +71,8 @@ export interface XNoiseSanPlotResult {
   snr: number;
   sanplot: Record<string, DataXY>;
   percentiles: {
-    positive: number[];
-    negative: number[];
+    positive: Record<number, number>;
+    negative: Record<number, number>;
   };
 }
 
@@ -380,19 +380,6 @@ function scale(
   return { x: xAxis, y: array };
 }
 
-/**
- * Prepares and processes the input data array based on the provided options.
- * @param array - the input array of numbers to be processed.
- * @param options - an object containing the following properties:
- *   - scaleFactor: A number by which to scale each element of the array.
- *   - mask: An optional array of the same length as the input array, where
- *           elements corresponding to `true` values will be excluded from processing.
- * @param options.scaleFactor
- * @param options.mask
- * @param from
- * @returns A new Float64Array containing the processed data, scaled by the
- *          scaleFactor and sorted in descending order.
- */
 function createNegativeSign(array: Float64Array, from: number): Float64Array {
   const length = array.length - from;
   const result = new Float64Array(length);
@@ -403,28 +390,54 @@ function createNegativeSign(array: Float64Array, from: number): Float64Array {
 }
 
 /**
- * The idea is to get the great
- * @param sorted
+ * Calculates intensity percentiles ranging from the 50th to the 99.5th percentile
+ * (in 0.5 increments) from a pre-sorted array.
+ * @param sorted - a pre-sorted array of numbers.
+ * @returns An object mapping percentile labels to their corresponding values.
  */
-function getPercentiles(sorted: NumberArray): number[] {
-  if (sorted.length === 0) return [];
-  const nbPercentiles = 100;
+function getPercentiles(sorted: NumberArray): Record<number, number> {
+  if (sorted.length === 0) return {};
 
-  const percentiles = new Array<number>(nbPercentiles);
+  const nbPercentiles = 100;
+  const result: Record<number, number> = {};
   const maxIndex = sorted.length - 1;
 
   for (let i = 0; i < nbPercentiles; i++) {
-    const percentile = (90 + (i * 10) / nbPercentiles) / 100;
+    const pLabel = 50 + (i * 50) / nbPercentiles;
+    const percentile = pLabel / 100;
     const index = maxIndex - Math.floor(percentile * maxIndex);
-    percentiles[i] = sorted[index];
+
+    result[pLabel] = sorted[index];
   }
 
-  return percentiles;
+  return result;
 }
 
+interface PrepareDataOptions {
+  /**
+   * A multiplier by which to scale each element of the array.
+   * Note: Scaling is only applied if this value is strictly greater than 1.
+   */
+  scaleFactor: number;
+
+  /**
+   * An optional array of the same length as the input array.
+   * Elements in the input array corresponding to truthy values in this mask
+   * will be excluded from the final processed output.
+   */
+  mask?: NumberArray;
+}
+
+/**
+ * Prepares and processes the input data array based on the provided options.
+ * @param array - The input array of numbers to be processed.
+ * @param options - The configuration options for processing the data.
+ * @returns A new Float64Array containing the processed data, scaled by the
+ *          scaleFactor and sorted in descending order.
+ */
 function prepareData(
   array: NumberArray,
-  options: { scaleFactor: number; mask?: NumberArray },
+  options: PrepareDataOptions,
 ): Float64Array<ArrayBuffer> {
   const { scaleFactor, mask } = options;
 
