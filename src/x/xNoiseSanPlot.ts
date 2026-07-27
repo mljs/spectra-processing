@@ -70,6 +70,10 @@ export interface XNoiseSanPlotResult {
   negative: number;
   snr: number;
   sanplot: Record<string, DataXY>;
+  percentiles: {
+    positive: number[];
+    negative: number[];
+  };
 }
 
 /**
@@ -154,6 +158,10 @@ export function xNoiseSanPlot(
         negative: { from: firstNegativeValueIndex, to: input.length },
       },
     }),
+    percentiles: {
+      positive: getPercentiles(signPositive),
+      negative: getPercentiles(signNegative),
+    },
   };
 }
 
@@ -194,6 +202,7 @@ function calculateNoiseLevel(
     const effectiveCutOffDist =
       (cutOffDist * cloneSign.length + cutOffSignalsIndex) /
       (cloneSign.length + cutOffSignalsIndex);
+
     const refinedCorrectionFactor =
       -1 * simpleNormInvValue(effectiveCutOffDist / 2);
     noiseLevel /= refinedCorrectionFactor;
@@ -220,10 +229,6 @@ function calculateNoiseLevel(
  * it will be biased and noisy. We therefore scan candidate quantile windows
  * and pick the one where the sigma estimates are most self-consistent
  * (lowest variance) - a proxy for "where the noise region reliably starts".
- * <<<<<<< Updated upstream
- *
- * =======
- * >>>>>>> Stashed changes
  * @param signPositive - an array of positive numbers.
  * @param options - optional parameters to configure the cut-off determination.
  * @param options.magnitudeMode - if true, uses magnitude mode for normalization. Default is false.
@@ -395,6 +400,26 @@ function createNegativeSign(array: Float64Array, from: number): Float64Array {
     result[i] = -array[array.length - 1 - i];
   }
   return result;
+}
+
+/**
+ * The idea is to get the great
+ * @param sorted
+ */
+function getPercentiles(sorted: NumberArray): number[] {
+  if (sorted.length === 0) return [];
+  const nbPercentiles = 100;
+
+  const percentiles = new Array<number>(nbPercentiles);
+  const maxIndex = sorted.length - 1;
+
+  for (let i = 0; i < nbPercentiles; i++) {
+    const percentile = (90 + (i * 10) / nbPercentiles) / 100;
+    const index = maxIndex - Math.floor(percentile * maxIndex);
+    percentiles[i] = sorted[index];
+  }
+
+  return percentiles;
 }
 
 function prepareData(
