@@ -71,8 +71,8 @@ export interface XNoiseSanPlotResult {
   snr: number;
   sanplot: Record<string, DataXY>;
   percentiles: {
-    positive: Record<number, number>;
-    negative: Record<number, number>;
+    positive: number[];
+    negative: number[];
   };
 }
 
@@ -257,28 +257,48 @@ function determineCutOff(
 
   const indexMax = signPositive.length - 1;
 
+  // Ensure the configurable scan range stays inside the valid quantile domain.
+  const { from, to, step } = considerList;
+  const safeFrom = Math.min(Math.max(from, 0.001), 0.999);
+  const safeTo = Math.min(Math.max(to, 0.001), 0.999);
+  const safeStep = Math.max(0.001, Math.min(0.999, step));
+  const normalizedFrom = Math.min(safeFrom, safeTo);
+  const normalizedTo = Math.max(safeFrom, safeTo);
+
   // For each quantile fraction, compute a local sigma estimate by inverting
   // the theoretical relationship between order statistics and the assumed
   // noise distribution (Gaussian or Rayleigh).
-  const { from, to, step } = considerList;
   const sigmaEstimates: Array<[quantileFraction: number, sigma: number]> = [];
+  const startQuantile = Math.max(0.001, normalizedFrom - safeStep / 2);
+  const endQuantile = Math.min(0.999, normalizedTo + safeStep / 2);
   for (
-    let quantileFraction = from - step / 2;
-    quantileFraction <= to + step / 2;
+    let quantileFraction = startQuantile;
+    quantileFraction <= endQuantile;
     quantileFraction += 0.01
   ) {
-    const index = Math.round(indexMax * quantileFraction);
+    const index = Math.max(
+      0,
+      Math.min(indexMax, Math.round(indexMax * quantileFraction)),
+    );
     const sigma =
       -signPositive[index] / inverseQuantileFn(quantileFraction / 2);
-    sigmaEstimates.push([quantileFraction, Math.abs(sigma)]);
+
+    // Skip non-finite sigma estimates
+    if (Number.isFinite(sigma)) {
+      sigmaEstimates.push([quantileFraction, Math.abs(sigma)]);
+    }
   }
 
-  const halfWindow = step / 2;
+  const halfWindow = safeStep / 2;
 
   let bestVariance = Number.MAX_SAFE_INTEGER;
   let bestQuantileFraction = 0.5;
 
-  for (let windowCenter = from; windowCenter <= to; windowCenter += step) {
+  for (
+    let windowCenter = normalizedFrom;
+    windowCenter <= normalizedTo;
+    windowCenter += safeStep
+  ) {
     const windowFloor = windowCenter - halfWindow;
     const windowTop = windowCenter + halfWindow;
 
@@ -390,24 +410,21 @@ function createNegativeSign(array: Float64Array, from: number): Float64Array {
 }
 
 /**
- * Calculates intensity percentiles ranging from the 50th to the 99.5th percentile
- * (in 0.5 increments) from a pre-sorted array.
+ * Calculates intensity percentiles ranging from the 0th to the 100th percentile
+ * (in 1 percentile increments) from a pre-sorted array.
  * @param sorted - a pre-sorted array of numbers.
- * @returns An object mapping percentile labels to their corresponding values.
+ * @returns An array where index `p` contains the `p`th percentile.
  */
-function getPercentiles(sorted: NumberArray): Record<number, number> {
-  if (sorted.length === 0) return {};
+function getPercentiles(sorted: NumberArray): number[] {
+  const result = new Array<number>(101).fill(0);
+  if (sorted.length === 0) return result;
 
-  const nbPercentiles = 100;
-  const result: Record<number, number> = {};
   const maxIndex = sorted.length - 1;
 
-  for (let i = 0; i < nbPercentiles; i++) {
-    const pLabel = 50 + (i * 50) / nbPercentiles;
-    const percentile = pLabel / 100;
-    const index = maxIndex - Math.floor(percentile * maxIndex);
-
-    result[pLabel] = sorted[index];
+  for (let percentile = 0; percentile <= 100; percentile++) {
+    const ratio = percentile / 100;
+    const index = maxIndex - Math.floor(ratio * maxIndex);
+    result[percentile] = sorted[index];
   }
 
   return result;
