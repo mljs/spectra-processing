@@ -63,6 +63,7 @@ test('Testing in conjunction with spectra-fitting', () => {
   });
 
   expect(fittedPeaks.peaks[0].x).toBeDeepCloseTo(10, 2);
+  //@ts-expect-error it is a gaussian shape
   expect(fittedPeaks.peaks[0].shape.fwhm).toBeDeepCloseTo(
     2 * Math.sqrt(2 * Math.log(2)),
     1,

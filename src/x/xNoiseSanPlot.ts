@@ -70,6 +70,10 @@ export interface XNoiseSanPlotResult {
   negative: number;
   snr: number;
   sanplot: Record<string, DataXY>;
+  percentiles: {
+    positive: number[];
+    negative: number[];
+  };
 }
 
 /**
@@ -154,6 +158,10 @@ export function xNoiseSanPlot(
         negative: { from: firstNegativeValueIndex, to: input.length },
       },
     }),
+    percentiles: {
+      positive: getPercentiles(signPositive),
+      negative: getPercentiles(signNegative),
+    },
   };
 }
 
@@ -194,6 +202,7 @@ function calculateNoiseLevel(
     const effectiveCutOffDist =
       (cutOffDist * cloneSign.length + cutOffSignalsIndex) /
       (cloneSign.length + cutOffSignalsIndex);
+
     const refinedCorrectionFactor =
       -1 * simpleNormInvValue(effectiveCutOffDist / 2);
     noiseLevel /= refinedCorrectionFactor;
@@ -220,10 +229,6 @@ function calculateNoiseLevel(
  * it will be biased and noisy. We therefore scan candidate quantile windows
  * and pick the one where the sigma estimates are most self-consistent
  * (lowest variance) - a proxy for "where the noise region reliably starts".
- * <<<<<<< Updated upstream
- *
- * =======
- * >>>>>>> Stashed changes
  * @param signPositive - an array of positive numbers.
  * @param options - optional parameters to configure the cut-off determination.
  * @param options.magnitudeMode - if true, uses magnitude mode for normalization. Default is false.
@@ -252,28 +257,48 @@ function determineCutOff(
 
   const indexMax = signPositive.length - 1;
 
+  // Ensure the configurable scan range stays inside the valid quantile domain.
+  const { from, to, step } = considerList;
+  const safeFrom = Math.min(Math.max(from, 0.001), 0.999);
+  const safeTo = Math.min(Math.max(to, 0.001), 0.999);
+  const safeStep = Math.max(0.001, Math.min(0.999, step));
+  const normalizedFrom = Math.min(safeFrom, safeTo);
+  const normalizedTo = Math.max(safeFrom, safeTo);
+
   // For each quantile fraction, compute a local sigma estimate by inverting
   // the theoretical relationship between order statistics and the assumed
   // noise distribution (Gaussian or Rayleigh).
   const sigmaEstimates: Array<[quantileFraction: number, sigma: number]> = [];
+  const startQuantile = Math.max(0.001, normalizedFrom - safeStep / 2);
+  const endQuantile = Math.min(0.999, normalizedTo + safeStep / 2);
   for (
-    let quantileFraction = 0.01;
-    quantileFraction <= 0.99;
+    let quantileFraction = startQuantile;
+    quantileFraction <= endQuantile;
     quantileFraction += 0.01
   ) {
-    const index = Math.round(indexMax * quantileFraction);
+    const index = Math.max(
+      0,
+      Math.min(indexMax, Math.round(indexMax * quantileFraction)),
+    );
     const sigma =
       -signPositive[index] / inverseQuantileFn(quantileFraction / 2);
-    sigmaEstimates.push([quantileFraction, Math.abs(sigma)]);
+
+    // Skip non-finite sigma estimates
+    if (Number.isFinite(sigma)) {
+      sigmaEstimates.push([quantileFraction, Math.abs(sigma)]);
+    }
   }
 
-  const { from, to, step } = considerList;
-  const halfWindow = step / 2;
+  const halfWindow = safeStep / 2;
 
   let bestVariance = Number.MAX_SAFE_INTEGER;
   let bestQuantileFraction = 0.5;
 
-  for (let windowCenter = from; windowCenter <= to; windowCenter += step) {
+  for (
+    let windowCenter = normalizedFrom;
+    windowCenter <= normalizedTo;
+    windowCenter += safeStep
+  ) {
     const windowFloor = windowCenter - halfWindow;
     const windowTop = windowCenter + halfWindow;
 
@@ -375,19 +400,6 @@ function scale(
   return { x: xAxis, y: array };
 }
 
-/**
- * Prepares and processes the input data array based on the provided options.
- * @param array - the input array of numbers to be processed.
- * @param options - an object containing the following properties:
- *   - scaleFactor: A number by which to scale each element of the array.
- *   - mask: An optional array of the same length as the input array, where
- *           elements corresponding to `true` values will be excluded from processing.
- * @param options.scaleFactor
- * @param options.mask
- * @param from
- * @returns A new Float64Array containing the processed data, scaled by the
- *          scaleFactor and sorted in descending order.
- */
 function createNegativeSign(array: Float64Array, from: number): Float64Array {
   const length = array.length - from;
   const result = new Float64Array(length);
@@ -397,9 +409,52 @@ function createNegativeSign(array: Float64Array, from: number): Float64Array {
   return result;
 }
 
+/**
+ * Calculates intensity percentiles ranging from the 0th to the 100th percentile
+ * (in 1 percentile increments) from a pre-sorted array.
+ * @param sorted - a pre-sorted array of numbers.
+ * @returns An array where index `p` contains the `p`th percentile.
+ */
+function getPercentiles(sorted: NumberArray): number[] {
+  const result = new Array<number>(101).fill(0);
+  if (sorted.length === 0) return result;
+
+  const maxIndex = sorted.length - 1;
+
+  for (let percentile = 0; percentile <= 100; percentile++) {
+    const ratio = percentile / 100;
+    const index = maxIndex - Math.floor(ratio * maxIndex);
+    result[percentile] = sorted[index];
+  }
+
+  return result;
+}
+
+interface PrepareDataOptions {
+  /**
+   * A multiplier by which to scale each element of the array.
+   * Note: Scaling is only applied if this value is strictly greater than 1.
+   */
+  scaleFactor: number;
+
+  /**
+   * An optional array of the same length as the input array.
+   * Elements in the input array corresponding to truthy values in this mask
+   * will be excluded from the final processed output.
+   */
+  mask?: NumberArray;
+}
+
+/**
+ * Prepares and processes the input data array based on the provided options.
+ * @param array - The input array of numbers to be processed.
+ * @param options - The configuration options for processing the data.
+ * @returns A new Float64Array containing the processed data, scaled by the
+ *          scaleFactor and sorted in descending order.
+ */
 function prepareData(
   array: NumberArray,
-  options: { scaleFactor: number; mask?: NumberArray },
+  options: PrepareDataOptions,
 ): Float64Array<ArrayBuffer> {
   const { scaleFactor, mask } = options;
 

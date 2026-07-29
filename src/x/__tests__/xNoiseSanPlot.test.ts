@@ -1055,4 +1055,13 @@ test('get noise level', () => {
 
   //the SNR should be less because the biggest peak is not present.
   expect(noiseWithoutBigPeaks.snr).toBeLessThan(noise.snr);
+
+  expect(Object.keys(noise.percentiles.positive)).toHaveLength(101);
+  expect(Object.keys(noise.percentiles.negative)).toHaveLength(101);
+  expect(noise.percentiles.positive[100]).toBeGreaterThan(
+    noise.percentiles.positive[99],
+  );
+  expect(noise.percentiles.negative[100]).toBeGreaterThan(
+    noise.percentiles.negative[99],
+  );
 });
