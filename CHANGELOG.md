@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.31.0](https://github.com/mljs/spectra-processing/compare/v14.30.0...v14.31.0) (2026-07-29)
+
+
+### Features
+
+* **xNoiseSanPlot:** add percentiles for each serie in the output([#397](https://github.com/mljs/spectra-processing/issues/397)) ([6110b7d](https://github.com/mljs/spectra-processing/commit/6110b7d7186bcd66856d5cd2373703ec43f28a2e))
+
 ## [14.30.0](https://github.com/mljs/spectra-processing/compare/v14.29.4...v14.30.0) (2026-07-22)
 
 
