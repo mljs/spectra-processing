@@ -16,6 +16,34 @@ test('reimMatrixPhaseCorrection: no correction when phi0 and phi1 are 0', () => 
   expect(Array.from(result.im[1])).toStrictEqual(Array.from(data.im[1]));
 });
 
+test('reimMatrixPhaseCorrection: returns min and max values for the corrected data', () => {
+  const data = {
+    re: [Float64Array.from([1, 2, 3])],
+    im: [Float64Array.from([0, 0, 0])],
+  };
+
+  const result = reimMatrixPhaseCorrection(data, 0, 0);
+
+  expect(result.minRe).toBe(1);
+  expect(result.maxRe).toBe(3);
+  expect(result.minIm).toBe(0);
+  expect(result.maxIm).toBe(0);
+});
+
+test('reimMatrixPhaseCorrection: tracks min and max for both components with phase rotation', () => {
+  const data = {
+    re: [Float64Array.from([1, 0, -1])],
+    im: [Float64Array.from([0, 1, 0])],
+  };
+
+  const result = reimMatrixPhaseCorrection(data, Math.PI / 2, 0);
+
+  expect(result.minRe).toBeLessThanOrEqual(result.maxRe);
+  expect(result.minIm).toBeLessThanOrEqual(result.maxIm);
+  expect(result.re[0]).toHaveLength(3);
+  expect(result.im[0]).toHaveLength(3);
+});
+
 test('reimMatrixPhaseCorrection: direction rows by default', () => {
   const data = {
     re: [Float64Array.from([1, 0, 0, 0])],

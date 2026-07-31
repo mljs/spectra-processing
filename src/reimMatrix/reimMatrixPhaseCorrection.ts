@@ -10,6 +10,13 @@ export interface ReimMatrixPhaseCorrectionOptions {
   direction?: 'rows' | 'columns';
 }
 
+export interface ReimMatrixPhaseCorrectionResult extends DataReImMatrix {
+  minRe: number;
+  maxRe: number;
+  minIm: number;
+  maxIm: number;
+}
+
 /**
  * Apply phase correction to a complex matrix along rows or columns.
  * All rows must have the same length.
@@ -24,7 +31,7 @@ export function reimMatrixPhaseCorrection(
   phi0 = 0,
   phi1 = 0,
   options: ReimMatrixPhaseCorrectionOptions = {},
-): DataReImMatrix {
+): ReimMatrixPhaseCorrectionResult {
   const { reverse = false, inPlace = false, direction = 'rows' } = options;
 
   phi0 = Number.isFinite(phi0) ? phi0 : 0;
@@ -33,7 +40,16 @@ export function reimMatrixPhaseCorrection(
   const { re, im } = data;
   const numRows = re.length;
 
-  if (numRows === 0) return { re: [], im: [] };
+  if (numRows === 0) {
+    return {
+      re: [],
+      im: [],
+      minRe: Number.NaN,
+      maxRe: Number.NaN,
+      minIm: Number.NaN,
+      maxIm: Number.NaN,
+    };
+  }
 
   const numColumns = re[0].length;
 
@@ -65,6 +81,11 @@ export function reimMatrixPhaseCorrection(
   const alpha = 2 * Math.sin(delta / 2) ** 2;
   const beta = Math.sin(delta);
 
+  let minRe = Number.POSITIVE_INFINITY;
+  let maxRe = Number.NEGATIVE_INFINITY;
+  let minIm = Number.POSITIVE_INFINITY;
+  let maxIm = Number.NEGATIVE_INFINITY;
+
   if (direction === 'rows') {
     for (let j = 0; j < numRows; j++) {
       let firstAngle = phi0;
@@ -81,6 +102,11 @@ export function reimMatrixPhaseCorrection(
 
         resultRe[j][i] = r * cosTheta - ii * sinTheta;
         resultIm[j][i] = ii * cosTheta + r * sinTheta;
+
+        if (resultRe[j][i] < minRe) minRe = resultRe[j][i];
+        if (resultRe[j][i] > maxRe) maxRe = resultRe[j][i];
+        if (resultIm[j][i] < minIm) minIm = resultIm[j][i];
+        if (resultIm[j][i] > maxIm) maxIm = resultIm[j][i];
 
         const newCosTheta = cosTheta - (alpha * cosTheta + beta * sinTheta);
         const newSinTheta = sinTheta - (alpha * sinTheta - beta * cosTheta);
@@ -106,6 +132,11 @@ export function reimMatrixPhaseCorrection(
         resultRe[row][col] = r * cosTheta - ii * sinTheta;
         resultIm[row][col] = ii * cosTheta + r * sinTheta;
 
+        if (resultRe[row][col] < minRe) minRe = resultRe[row][col];
+        if (resultRe[row][col] > maxRe) maxRe = resultRe[row][col];
+        if (resultIm[row][col] < minIm) minIm = resultIm[row][col];
+        if (resultIm[row][col] > maxIm) maxIm = resultIm[row][col];
+
         const newCosTheta = cosTheta - (alpha * cosTheta + beta * sinTheta);
         const newSinTheta = sinTheta - (alpha * sinTheta - beta * cosTheta);
 
@@ -115,5 +146,5 @@ export function reimMatrixPhaseCorrection(
     }
   }
 
-  return { re: resultRe, im: resultIm };
+  return { re: resultRe, im: resultIm, minRe, maxRe, minIm, maxIm };
 }
