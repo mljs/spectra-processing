@@ -125,6 +125,7 @@ exports[`existence of exported functions 1`] = `
   "xyRealMinYPoint",
   "xyReduceNonContinuous",
   "xyRolling",
+  "xyRollingCircle",
   "xyRollingCircleTransform",
   "xySetYValue",
   "xySortX",
