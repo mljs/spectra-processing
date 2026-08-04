@@ -1,5 +1,13 @@
 # Changelog
 
+## [14.32.0](https://github.com/mljs/spectra-processing/compare/v14.31.0...v14.32.0) (2026-08-04)
+
+
+### Features
+
+* add xyRollingCircle that provide the rolling circle transform + the points touching the curve ([4ad0d8d](https://github.com/mljs/spectra-processing/commit/4ad0d8d607a4ba6b787076b55171051bff509195))
+* **reimMatrix:** add min and max tracking for corrected data ([#399](https://github.com/mljs/spectra-processing/issues/399)) ([d7704c4](https://github.com/mljs/spectra-processing/commit/d7704c4f092e1f40cbe76cbaa7252cb252ff0f4c))
+
 ## [14.31.0](https://github.com/mljs/spectra-processing/compare/v14.30.0...v14.31.0) (2026-07-29)
 
 
