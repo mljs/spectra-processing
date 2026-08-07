@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.33.0](https://github.com/mljs/spectra-processing/compare/v14.32.0...v14.33.0) (2026-08-07)
+
+
+### Features
+
+* **xyMedianYAtXs:** add symmetric option to shrink the window at edges ([#402](https://github.com/mljs/spectra-processing/issues/402)) ([b8998ee](https://github.com/mljs/spectra-processing/commit/b8998ee4cc281c4662f4bf3d50745ea56324acc1))
+
 ## [14.32.0](https://github.com/mljs/spectra-processing/compare/v14.31.0...v14.32.0) (2026-08-04)
 
 
