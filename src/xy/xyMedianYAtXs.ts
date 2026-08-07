@@ -6,6 +6,12 @@ import { xMedian } from '../x/xMedian.ts';
 export interface XYMedianYAtXsOptions {
   /** Number of points in the sliding window. Must be odd. Defaults to `5`. */
   windowSize?: number;
+  /**
+   * If true, the window shrinks on both sides so that it stays centered on the
+   * closest index when points are missing on one side (near an edge).
+   * @default false
+   */
+  symmetric?: boolean;
 }
 
 /**
@@ -22,16 +28,24 @@ export function xyMedianYAtXs(
   xValues: NumberArray,
   options: XYMedianYAtXsOptions = {},
 ): DataXY {
-  const { windowSize = 5 } = options;
+  const { windowSize = 5, symmetric = false } = options;
   const { x, y } = data;
 
   const halfWindow = Math.floor(windowSize / 2);
+  const lastIndex = y.length - 1;
   const result = new Float64Array(xValues.length);
 
   for (let i = 0; i < xValues.length; i++) {
     const centerIndex = xFindClosestIndex(x, xValues[i]);
-    const fromIndex = Math.max(0, centerIndex - halfWindow);
-    const toIndex = Math.min(y.length, centerIndex + halfWindow + 1);
+    let currentHalfWindow = halfWindow;
+    if (symmetric) {
+      if (centerIndex < currentHalfWindow) currentHalfWindow = centerIndex;
+      if (lastIndex - centerIndex < currentHalfWindow) {
+        currentHalfWindow = lastIndex - centerIndex;
+      }
+    }
+    const fromIndex = Math.max(0, centerIndex - currentHalfWindow);
+    const toIndex = Math.min(y.length, centerIndex + currentHalfWindow + 1);
     result[i] = xMedian(y, { exact: false, fromIndex, toIndex });
   }
 
