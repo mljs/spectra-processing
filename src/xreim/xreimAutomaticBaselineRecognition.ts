@@ -1,5 +1,6 @@
 import type { DoubleArray } from 'cheminfo-types';
 
+import { xMean, xStandardDeviation } from '../index.ts';
 import type { DataXReIm } from '../types/index.ts';
 
 export interface AutomaticBaselineRecognitionOptions {
@@ -34,11 +35,6 @@ export interface AutomaticBaselineRecognitionOptions {
    * @default 're'
    */
   component?: 're' | 'im' | 'magnitude';
-
-  /**
-   * Deprecated alias for component.
-   */
-  mode?: 're' | 'im' | 'magnitude';
 }
 
 /**
@@ -47,7 +43,6 @@ export interface AutomaticBaselineRecognitionOptions {
  *
  * The output is a binary mask where 1 marks points belonging to the baseline
  * (signal-free regions) and 0 marks points associated with peaks or signal.
- *
  * @param data - object of kind {x:[], re:[], im:[]}
  * @param options - recognition options
  * @returns a binary mask as a Uint8Array
@@ -63,7 +58,6 @@ export function xreimAutomaticBaselineRecognition<
     thresholdFactor = 0.5,
     erosionRadius = 1,
     component,
-    mode,
   } = options;
 
   const length = data.x.length;
@@ -71,7 +65,7 @@ export function xreimAutomaticBaselineRecognition<
     throw new TypeError('length of x, re and im must be identical');
   }
 
-  const signal = getSignal(data, component ?? mode ?? 're');
+  const signal = getSignal(data, component ?? 're');
   const actualScale = resolveScale(length, scale);
   const derivative = computeCwtHaarDerivative(signal, actualScale);
   const power = new Float64Array(length);
@@ -153,9 +147,9 @@ function iterativeThreshold(values: Float64Array, factor: number): number {
   while (Math.abs(previousThreshold - threshold) > 1e-12) {
     const valuesBelow = new Float64Array(values.length);
     let count = 0;
-    for (let i = 0; i < values.length; i++) {
-      if (values[i] <= threshold) {
-        valuesBelow[count++] = values[i];
+    for (const value of values) {
+      if (value <= threshold) {
+        valuesBelow[count++] = value;
       }
     }
 
@@ -171,29 +165,9 @@ function iterativeThreshold(values: Float64Array, factor: number): number {
 }
 
 function getThreshold(values: DoubleArray, factor: number): number {
-  const mean = getMean(values);
-  const std = getStandardDeviation(values, mean);
+  const mean = xMean(values);
+  const std = xStandardDeviation(values, { mean });
   return mean + factor * std;
-}
-
-function getMean(values: DoubleArray): number {
-  let sum = 0;
-  for (let i = 0; i < values.length; i++) {
-    sum += values[i];
-  }
-  return values.length === 0 ? 0 : sum / values.length;
-}
-
-function getStandardDeviation(values: DoubleArray, mean: number): number {
-  if (values.length < 2) {
-    return 0;
-  }
-  let sumSquared = 0;
-  for (let i = 0; i < values.length; i++) {
-    const diff = values[i] - mean;
-    sumSquared += diff * diff;
-  }
-  return Math.sqrt(sumSquared / values.length);
 }
 
 function erodeMask(mask: Uint8Array, radius: number): Uint8Array {
