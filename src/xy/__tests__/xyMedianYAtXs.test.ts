@@ -50,6 +50,36 @@ test('window at edges is truncated', () => {
   expect(result.y).toStrictEqual(new Float64Array([5, 5]));
 });
 
+test('symmetric window shrinks at edges', () => {
+  const data = {
+    x: [1, 2, 3, 4, 5],
+    y: [10, 1, 5, 3, 8],
+  };
+
+  const result = xyMedianYAtXs(data, [1, 2, 3, 4, 5], {
+    windowSize: 5,
+    symmetric: true,
+  });
+
+  // index 0: window [10] -> 10
+  // index 1: window [10,1,5] -> 5
+  // index 2: window [10,1,5,3,8] -> 5
+  // index 3: window [5,3,8] -> 5
+  // index 4: window [8] -> 8
+  expect(result.y).toStrictEqual(new Float64Array([10, 5, 5, 5, 8]));
+});
+
+test('symmetric window keeps full size away from edges', () => {
+  const data = {
+    x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    y: [2, 8, 3, 100, 5, 6, 1, 9, 4, 7],
+  };
+
+  const result = xyMedianYAtXs(data, [3, 7], { symmetric: true });
+
+  expect(result.y).toStrictEqual(new Float64Array([5, 5]));
+});
+
 test('does not mutate original Float64Array y data', () => {
   const y = new Float64Array([10, 1, 5, 3, 8]);
   const yOriginal = new Float64Array(y);
