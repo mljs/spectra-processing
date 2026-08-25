@@ -136,6 +136,7 @@ exports[`existence of exported functions 1`] = `
   "xy2ToXY",
   "xreimSortX",
   "xreimZeroFilling",
+  "xreimAutomaticBaselineRecognition",
   "xyArrayAlign",
   "xyArrayAlignToFirst",
   "xyArrayMerge",
