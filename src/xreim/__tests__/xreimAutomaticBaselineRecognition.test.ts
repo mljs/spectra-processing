@@ -19,9 +19,11 @@ test('detects baseline regions around a Gaussian peak', () => {
   );
 
   const maskArray = Array.from(mask);
+
   expect(maskArray[0]).toBe(1);
   expect(maskArray[200]).toBe(1);
   expect(maskArray[100]).toBe(0);
-  expect(maskArray.some((value) => value === 1)).toBe(true);
-  expect(maskArray.some((value) => value === 0)).toBe(true);
+
+  expect(maskArray).toContain(1);
+  expect(maskArray).toContain(0);
 });
