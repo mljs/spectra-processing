@@ -43,3 +43,17 @@ test('with array', async () => {
     },
   });
 });
+
+test('null and undefined values', async () => {
+  const object = {
+    a: null,
+    b: undefined,
+    c: { d: null, e: Promise.resolve(1) },
+  };
+
+  await expect(recursiveResolve(object)).resolves.toStrictEqual({
+    a: null,
+    b: undefined,
+    c: { d: null, e: 1 },
+  });
+});
