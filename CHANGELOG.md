@@ -1,5 +1,18 @@
 # Changelog
 
+## [14.34.0](https://github.com/mljs/spectra-processing/compare/v14.33.0...v14.34.0) (2026-08-26)
+
+
+### Features
+
+* add recursiveResolveTasks ([#406](https://github.com/mljs/spectra-processing/issues/406)) ([5e50c4d](https://github.com/mljs/spectra-processing/commit/5e50c4d443a3917c9c23fb6ed76ab7b1e053f4aa))
+* add recursiveResolveTasks to run tasks with bounded concurrency ([5e50c4d](https://github.com/mljs/spectra-processing/commit/5e50c4d443a3917c9c23fb6ed76ab7b1e053f4aa))
+
+
+### Bug Fixes
+
+* **recursiveResolve:** skip null and undefined values ([5e50c4d](https://github.com/mljs/spectra-processing/commit/5e50c4d443a3917c9c23fb6ed76ab7b1e053f4aa))
+
 ## [14.33.0](https://github.com/mljs/spectra-processing/compare/v14.32.0...v14.33.0) (2026-08-07)
 
 
