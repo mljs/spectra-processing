@@ -9,6 +9,7 @@ export * from './getRescaler.ts';
 export * from './isPowerOfTwo.ts';
 export * from './nextPowerOfTwo.ts';
 export * from './recursiveResolve.ts';
+export * from './recursiveResolveTasks.ts';
 export * from './recursiveUntypeArrays.ts';
 export * from './stringify.ts';
 export * from './calculateAdaptiveWeights.ts';

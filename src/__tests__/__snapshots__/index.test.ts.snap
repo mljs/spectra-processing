@@ -198,6 +198,7 @@ exports[`existence of exported functions 1`] = `
   "isPowerOfTwo",
   "nextPowerOfTwo",
   "recursiveResolve",
+  "recursiveResolveTasks",
   "recursiveUntypeArrays",
   "stringify",
   "calculateAdaptiveWeights",
