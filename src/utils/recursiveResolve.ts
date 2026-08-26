@@ -15,12 +15,14 @@ export async function recursiveResolve(object: unknown) {
 function appendPromises(object: any, promises: Array<Promise<unknown>>) {
   if (typeof object !== 'object') return object;
   for (const key in object) {
-    if (typeof object[key].then === 'function') {
+    const value = object[key];
+    if (value === null || value === undefined) continue;
+    if (typeof value.then === 'function') {
       promises.push(
-        object[key].then((value: unknown) => (object[key] = value)),
+        value.then((resolved: unknown) => (object[key] = resolved)),
       );
-    } else if (typeof object[key] === 'object') {
-      appendPromises(object[key], promises);
+    } else if (typeof value === 'object') {
+      appendPromises(value, promises);
     }
   }
   return object;
