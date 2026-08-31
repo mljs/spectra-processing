@@ -192,6 +192,7 @@ exports[`existence of exported functions 1`] = `
   "createFromToArray",
   "createRandomArray",
   "createStepArray",
+  "erfc",
   "getCombinations",
   "getCombinationsIterator",
   "getRescaler",
