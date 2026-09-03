@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.34.2](https://github.com/mljs/spectra-processing/compare/v14.34.1...v14.34.2) (2026-09-03)
+
+
+### Performance Improvements
+
+* optimize getSlots ([#412](https://github.com/mljs/spectra-processing/issues/412)) ([d87a241](https://github.com/mljs/spectra-processing/commit/d87a241ba79544e9aa794cae35b6327baf77f7bc))
+
 ## [14.34.1](https://github.com/mljs/spectra-processing/compare/v14.34.0...v14.34.1) (2026-09-03)
 
 
