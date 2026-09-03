@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.34.1](https://github.com/mljs/spectra-processing/compare/v14.34.0...v14.34.1) (2026-09-03)
+
+
+### Bug Fixes
+
+* xIsMonotonic with 2 values could be wrong ([#409](https://github.com/mljs/spectra-processing/issues/409)) ([2967591](https://github.com/mljs/spectra-processing/commit/2967591ce7b9e4c37c9dc25949d8870caf9ac0b6))
+
 ## [14.34.0](https://github.com/mljs/spectra-processing/compare/v14.33.0...v14.34.0) (2026-08-26)
 
 
