@@ -28,10 +28,7 @@ export function getSlots(
   const { delta = 1 } = options;
   const deltaIsFunction = typeof delta === 'function';
 
-  const possibleXs = Float64Array.from(
-    data.flatMap((spectrum) => spectrum.x as number[]),
-  );
-  possibleXs.sort();
+  const possibleXs = sortedXs(data);
 
   if (possibleXs.length === 0) {
     throw new Error('can not process empty arrays');
@@ -64,4 +61,25 @@ export function getSlots(
     }
   }
   return slots;
+}
+
+/**
+ * Fast way of combining array using typed array and set
+ * @param data - The spectra.
+ * @returns Their x values, ascending.
+ */
+function sortedXs(data: DataXY[]): Float64Array {
+  let total = 0;
+  for (const spectrum of data) {
+    total += spectrum.x.length;
+  }
+
+  const possibleXs = new Float64Array(total);
+  let at = 0;
+  for (const spectrum of data) {
+    possibleXs.set(spectrum.x, at);
+    at += spectrum.x.length;
+  }
+  possibleXs.sort();
+  return possibleXs;
 }
