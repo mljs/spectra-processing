@@ -6,7 +6,7 @@ import type { NumberArray } from 'cheminfo-types';
  * @returns 1 if monotonic increasing, -1 if monotonic decreasing, 0 if not monotonic.
  */
 export function xIsMonotonic(array: NumberArray): -1 | 0 | 1 {
-  if (array.length <= 2) {
+  if (array.length < 2) {
     return 1;
   }
   if (array[0] === array[1]) {

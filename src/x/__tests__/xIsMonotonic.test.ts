@@ -55,3 +55,14 @@ test('xIsMonotonic constant series', () => {
 
   expect(xIsMonotonic(array)).toBe(1);
 });
+
+test('xIsMonotonic reads the direction of a pair', () => {
+  expect(xIsMonotonic([3, 5])).toBe(1);
+  expect(xIsMonotonic([5, 3])).toBe(-1);
+  expect(xIsMonotonic([5, 5])).toBe(1);
+});
+
+test('xIsMonotonic on fewer than two values', () => {
+  expect(xIsMonotonic([])).toBe(1);
+  expect(xIsMonotonic([5])).toBe(1);
+});
