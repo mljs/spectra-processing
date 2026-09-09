@@ -29,7 +29,11 @@ test('The y values must be present everywhere', () => {
   const result = xyArrayAlign(data, { delta: 0.15, requiredY: true });
 
   expect(result).toStrictEqual({
-    x: [3.025],
-    ys: [[1], [1], [2]],
+    x: Float64Array.from([3.025]),
+    ys: [
+      Float64Array.from([1]),
+      Float64Array.from([1]),
+      Float64Array.from([2]),
+    ],
   });
 });

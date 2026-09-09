@@ -1,6 +1,7 @@
 import type { DataXY, NumberArray } from 'cheminfo-types';
 
 import { xyJoinX } from '../xy/index.ts';
+import { xysFilter } from '../xys/index.ts';
 
 import { getSlots } from './utils/getSlots.ts';
 
@@ -53,21 +54,9 @@ export function xyArrayAlign(
     }
   }
 
-  if (requiredY) return filterRequiredY(x, ys);
+  if (requiredY) {
+    return xysFilter({ x, ys }, { requiredY: true });
+  }
 
   return { x, ys };
-}
-
-function filterRequiredY(x: Float64Array, ys: Float64Array[]) {
-  const newX: number[] = [];
-  const newYs: number[][] = Array.from(ys, () => []);
-  for (let i = 0; i < x.length; i++) {
-    if (ys.every((y) => y[i] !== 0)) {
-      newX.push(x[i]);
-      for (let j = 0; j < ys.length; j++) {
-        newYs[j].push(ys[j][i]);
-      }
-    }
-  }
-  return { x: newX, ys: newYs };
 }
