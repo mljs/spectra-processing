@@ -6,6 +6,7 @@ export { clearFFTCache, setFFTCacheMaxSize } from './fftCache.ts';
 export * from './getCombinations.ts';
 export * from './getCombinationsIterator.ts';
 export * from './getRescaler.ts';
+export * from './isLittleEndian.ts';
 export * from './isPowerOfTwo.ts';
 export * from './nextPowerOfTwo.ts';
 export * from './recursiveResolve.ts';
