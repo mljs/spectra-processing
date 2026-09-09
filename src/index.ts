@@ -12,6 +12,7 @@ export * from './xreim/index.ts';
 
 export * from './xyArray/index.ts';
 export * from './xyObject/index.ts';
+export * from './xys/index.ts';
 
 export * from './zones/index.ts';
 
