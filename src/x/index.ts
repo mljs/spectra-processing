@@ -20,6 +20,7 @@ export * from './xCumulative.ts';
 export * from './xDistributionStats.ts';
 export * from './xDivide.ts';
 export * from './xDotProduct.ts';
+export * from './xDoubleTypedArrayLength.ts';
 export * from './xEnsureFloat64.ts';
 export * from './xEqualIntegrationVectorSimilarity.ts';
 export * from './xFindClosestIndex.ts';

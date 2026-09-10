@@ -30,6 +30,7 @@ exports[`existence of exported functions 1`] = `
   "xDistributionStats",
   "xDivide",
   "xDotProduct",
+  "xDoubleTypedArrayLength",
   "xEnsureFloat64",
   "xEqualIntegrationVectorSimilarity",
   "xFindClosestIndex",
