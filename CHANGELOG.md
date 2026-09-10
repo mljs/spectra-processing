@@ -1,5 +1,23 @@
 # Changelog
 
+## [14.35.0](https://github.com/mljs/spectra-processing/compare/v14.34.2...v14.35.0) (2026-09-10)
+
+
+### Features
+
+* add isLittleEndian ([6890764](https://github.com/mljs/spectra-processing/commit/6890764bc4bf65c4d5bde6c6cd580a06efd7f4b5))
+* add xDoubleTypedArrayLength ([3b5f34d](https://github.com/mljs/spectra-processing/commit/3b5f34d2ecf1015d5b14d8387d090dd32182c028))
+* add xGetSortOrder and xGetApproximateSortOrder ([f087036](https://github.com/mljs/spectra-processing/commit/f087036e18f83b2dd1e8efd549a40b21fb5875b2))
+* add xyArrayAlignByIntensity ([5ebb471](https://github.com/mljs/spectra-processing/commit/5ebb47131233ecf4eb2296e7445b39e7743c6e44))
+* add xyArrayAlignByIntensity and xyArrayMergeByIntensity ([9c11817](https://github.com/mljs/spectra-processing/commit/9c118170a8705dbd9a8340d31f6750ea8450e196))
+* add xyArrayMaxY ([7c8ac24](https://github.com/mljs/spectra-processing/commit/7c8ac24d9ffc98b60bef9da924334dbe0d750f59))
+* add xysFilter ([01a1b16](https://github.com/mljs/spectra-processing/commit/01a1b163e0b2ac350558899d2b132bc3e158a347))
+
+
+### Performance Improvements
+
+* order xySortX and xyObjectSortX through xGetSortOrder ([9c744b6](https://github.com/mljs/spectra-processing/commit/9c744b69aa5a1a13b97928c4597c664a7b9bc601))
+
 ## [14.34.2](https://github.com/mljs/spectra-processing/compare/v14.34.1...v14.34.2) (2026-09-03)
 
 
