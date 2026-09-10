@@ -1,3 +1,4 @@
+import { XSadd } from 'ml-xsadd';
 import { expect, test } from 'vitest';
 
 import { xySortX } from '../xySortX.ts';
@@ -59,4 +60,22 @@ test('typed XY arrays', () => {
     ]),
     y: Float64Array.from([8, 9, 1, 7, 2, 0, 5, 10, 6]),
   });
+});
+
+// The short arrays above are ordered by a comparator, the long one by xGetSortOrder: both
+// have to give the same stable order, ties included.
+test('same stable order whatever the length', () => {
+  for (const length of [100, 1000]) {
+    const { random } = new XSadd(42);
+    const x = Array.from({ length }, () => Math.round(random() * 20));
+    const y = Array.from({ length }, (value, index) => index);
+    const expected = Array.from({ length }, (value, index) => index).toSorted(
+      (a, b) => x[a] - x[b],
+    );
+
+    const result = xySortX({ x, y });
+
+    expect(result.x).toStrictEqual(Float64Array.from(expected, (at) => x[at]));
+    expect(result.y).toStrictEqual(Float64Array.from(expected, (at) => y[at]));
+  }
 });
