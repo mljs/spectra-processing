@@ -28,7 +28,8 @@ export function xRemoveOutliersIQR(array: NumberArray): NumberArray {
   }
 
   const filteredArray = [];
-  for (const element of array) {
+  for (let i = 0; i < array.length; i++) {
+    const element = array[i];
     if (element >= lowerWhisker && element <= higherWhisker) {
       filteredArray.push(element);
     }

@@ -80,8 +80,8 @@ export function xNormed<ArrayType extends NumberArray = Float64Array>(
 
 function absoluteSum(input: NumberArray) {
   let sumValue = 0;
-  for (const value of input) {
-    sumValue += Math.abs(value);
+  for (let i = 0; i < input.length; i++) {
+    sumValue += Math.abs(input[i]);
   }
   return sumValue;
 }

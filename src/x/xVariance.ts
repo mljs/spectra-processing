@@ -31,8 +31,8 @@ export function xVariance(values: NumberArray, options: XVarianceOptions = {}) {
   const { unbiased = true, mean = xMean(values) } = options;
   let sqrError = 0;
 
-  for (const value of values) {
-    const x = value - mean;
+  for (let i = 0; i < values.length; i++) {
+    const x = values[i] - mean;
     sqrError += x * x;
   }
 

@@ -15,7 +15,8 @@ export function xMode(input: NumberArray): number {
   let count = 0;
   const counts: Record<number, number> = {};
 
-  for (const element of input) {
+  for (let i = 0; i < input.length; i++) {
+    const element = input[i];
     count = counts[element];
     if (count) {
       counts[element]++;

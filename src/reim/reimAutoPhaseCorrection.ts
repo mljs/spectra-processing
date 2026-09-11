@@ -339,7 +339,8 @@ function toRadians(degree: number): number {
 
 function getNegArea(data: DoubleArray): number {
   let area = 0;
-  for (const element of data) {
+  for (let i = 0; i < data.length; i++) {
+    const element = data[i];
     if (element < 0) area -= element;
   }
   return area;
