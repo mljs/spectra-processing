@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.35.1](https://github.com/mljs/spectra-processing/compare/v14.35.0...v14.35.1) (2026-09-11)
+
+
+### Performance Improvements
+
+* use for i with array of numbers ([#418](https://github.com/mljs/spectra-processing/issues/418)) ([4d0c22a](https://github.com/mljs/spectra-processing/commit/4d0c22a1971a6685ef16cf0f8ffcb6f50b55d7d0))
+
 ## [14.35.0](https://github.com/mljs/spectra-processing/compare/v14.34.2...v14.35.0) (2026-09-10)
 
 
