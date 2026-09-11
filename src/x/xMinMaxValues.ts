@@ -16,9 +16,10 @@ export function xMinMaxValues(array: NumberArray): {
   let min = array[0];
   let max = array[0];
 
-  for (const value of array) {
+  for (let i = 1; i < array.length; i++) {
+    const value = array[i];
     if (value < min) min = value;
-    if (value > max) max = value;
+    else if (value > max) max = value;
   }
 
   return { min, max };

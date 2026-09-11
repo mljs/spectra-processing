@@ -8,8 +8,9 @@ import type { NumberArray } from 'cheminfo-types';
  */
 export function xNorm(array: NumberArray): number {
   let result = 0;
-  for (const element of array) {
-    result += element ** 2;
+  for (let i = 0; i < array.length; i++) {
+    const element = array[i];
+    result += element * element;
   }
   return Math.sqrt(result);
 }

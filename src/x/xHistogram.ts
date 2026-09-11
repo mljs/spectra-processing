@@ -102,10 +102,10 @@ export function xHistogram(
         )
       : histogram.x;
 
-  for (const element of array) {
+  for (let i = 0; i < array.length; i++) {
     const index = Math.max(
       Math.min(
-        Math.floor((element - min - Number.EPSILON) / slotSize),
+        Math.floor((array[i] - min - Number.EPSILON) / slotSize),
         nbSlots - 1,
       ),
       0,

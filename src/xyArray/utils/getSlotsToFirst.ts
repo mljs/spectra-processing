@@ -32,7 +32,8 @@ export function getSlotsToFirst(
   const firstXs = data[0].x;
   const slots: Slot[] = [];
   // we first create the slots based on the first spectrum
-  for (const element of firstXs) {
+  for (let i = 0; i < firstXs.length; i++) {
+    const element = firstXs[i];
     const currentDelta = deltaIsFunction ? delta(element) : delta;
     slots.push({
       from: element - currentDelta,
