@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.35.2](https://github.com/mljs/spectra-processing/compare/v14.35.1...v14.35.2) (2026-11-18)
+
+
+### Bug Fixes
+
+* compute one PQN dilution per spectrum in matrixPQN ([dd3861a](https://github.com/mljs/spectra-processing/commit/dd3861adb212b2956aefed143d92700044ae4676))
+
 ## [14.35.1](https://github.com/mljs/spectra-processing/compare/v14.35.0...v14.35.1) (2026-09-11)
 
 
