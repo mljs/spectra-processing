@@ -11,19 +11,19 @@ type NumericKeys<T> = {
  * @param key - numeric property used for sorting (defaults to x).
  * @returns a new array sorted in ascending order.
  */
-export function xyObjectToSorted<
-  T extends { x: number },
-  K extends NumericKeys<T> = 'x',
->(points: readonly T[], key: K = 'x' as K): T[] {
+export function xyObjectToSorted<T extends { x: number }>(
+  points: readonly T[],
+  key: NumericKeys<T> = 'x' as NumericKeys<T>,
+): T[] {
   const { length } = points;
 
   if (length < RADIX_ORDER_MIN_LENGTH) {
-    return [...points].sort((a, b) => a[key] - b[key]);
+    return points.toSorted((a, b) => (a[key] as number) - (b[key] as number));
   }
 
   const values = new Float64Array(length);
   for (let i = 0; i < length; i++) {
-    values[i] = points[i][key];
+    values[i] = points[i][key] as number;
   }
 
   const order = xGetSortOrder(values);
