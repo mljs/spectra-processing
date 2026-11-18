@@ -10,4 +10,5 @@ export * from './xyObjectNormedY.ts';
 export * from './xyObjectSlotX.ts';
 export * from './xyObjectSortX.ts';
 export * from './xyObjectSumY.ts';
+export * from './xyObjectToSorted.ts';
 export * from './xyObjectToXY.ts';
