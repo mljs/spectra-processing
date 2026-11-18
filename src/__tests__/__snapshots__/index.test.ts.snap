@@ -160,6 +160,7 @@ exports[`existence of exported functions 1`] = `
   "xyObjectSlotX",
   "xyObjectSortX",
   "xyObjectSumY",
+  "xyObjectToSorted",
   "xyObjectToXY",
   "xysFilter",
   "zonesNormalize",
