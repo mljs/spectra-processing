@@ -1,6 +1,26 @@
-import { expect, test } from 'vitest';
+import { expect, expectTypeOf, test } from 'vitest';
 
 import { xyObjectToSorted } from '../xyObjectToSorted.ts';
+
+test('requires a numeric key on every point', () => {
+  interface Point {
+    x: number;
+    y: number;
+    label: string;
+    intensity?: number;
+  }
+  type MixedPoint = Point | { x: number; y: string; label: string };
+  const points: readonly Point[] = [{ x: 1, y: 2, label: 'peak' }];
+
+  expectTypeOf(xyObjectToSorted<Point>)
+    .parameter(1)
+    .toEqualTypeOf<'x' | 'y' | undefined>();
+  expectTypeOf(xyObjectToSorted<MixedPoint>)
+    .parameter(1)
+    .toEqualTypeOf<'x' | undefined>();
+  expectTypeOf(xyObjectToSorted(points, 'y')).toEqualTypeOf<Point[]>();
+  expectTypeOf(xyObjectToSorted(points, undefined)).toEqualTypeOf<Point[]>();
+});
 
 test('sorts by x by default without changing the input array', () => {
   const points = [
@@ -36,17 +56,62 @@ test('sorts by the selected numeric key', () => {
   ]);
 });
 
-test('uses the same ordering for long arrays without reordering the input', () => {
-  const points = Array.from({ length: 1000 }, (_, index) => ({
-    x: index,
-    intensity: (index * 37) % 53,
-  }));
-  const original = points.slice();
-  const expected = points.toSorted((a, b) => a.intensity - b.intensity);
+test.each([255, 256, 1000])(
+  'matches the numeric comparator without reordering the input (%i points)',
+  (length) => {
+    const points = Array.from({ length }, (_, index) => ({
+      x: index,
+      intensity: (index * 37) % 53,
+    }));
+    const original = points.slice();
+    const expected = points.toSorted((a, b) => a.intensity - b.intensity);
 
-  const sorted = xyObjectToSorted(points, 'intensity');
+    const sorted = xyObjectToSorted(points, 'intensity');
 
-  expect(sorted).toStrictEqual(expected);
-  expect(sorted).not.toBe(points);
-  expect(points).toStrictEqual(original);
+    expect(sorted).toStrictEqual(expected);
+    expect(sorted).not.toBe(points);
+    expect(points).toStrictEqual(original);
+  },
+);
+
+test.each([255, 256])(
+  'sorts NaNs last in input order (%i points)',
+  (length) => {
+    const negativeNaN = new Float64Array(
+      BigUint64Array.of(0xfff8_0000_0000_0000n).buffer,
+    )[0];
+    const values = [Number.NaN, 3, negativeNaN, 1, Infinity, -Infinity];
+    const points = Array.from({ length }, (_, x) => ({ x, y: values[x] ?? 2 }));
+
+    expect(xyObjectToSorted(points, 'y').map(({ x }) => x)).toStrictEqual([
+      5,
+      3,
+      ...points.slice(6).map(({ x }) => x),
+      1,
+      4,
+      0,
+      2,
+    ]);
+  },
+);
+
+test.each([255, 256])(
+  'keeps signed-zero ties in input order (%i points)',
+  (length) => {
+    const values = [0, -0, 0];
+    const points = Array.from({ length }, (_, y) => ({ x: values[y] ?? 1, y }));
+
+    expect(xyObjectToSorted(points).slice(0, 3)).toStrictEqual(
+      points.slice(0, 3),
+    );
+  },
+);
+
+test.each([255, 256])('rejects sparse input (%i points)', (length) => {
+  const points = new Array<{ x: number }>(length);
+  points[0] = { x: 1 };
+
+  expect(() => xyObjectToSorted(points)).toThrow(
+    new TypeError('points must be a dense array'),
+  );
 });
