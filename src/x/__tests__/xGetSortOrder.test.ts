@@ -95,6 +95,14 @@ test('NaN sorts last, like the native sort', () => {
   ]);
 });
 
+test('NaN sorts first when descending', () => {
+  const values = [3, Number.NaN, 1, 2];
+
+  expect(
+    apply(values, xGetSortOrder(values, { descending: true })),
+  ).toStrictEqual([Number.NaN, 3, 2, 1]);
+});
+
 test('matches the native sort on the 8 bit digit path', () => {
   const values = new Float64Array(5000);
   for (let i = 0; i < values.length; i++) {
