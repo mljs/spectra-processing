@@ -2,6 +2,20 @@ import { expect, expectTypeOf, test } from 'vitest';
 
 import { xyObjectToSorted } from '../xyObjectToSorted.ts';
 
+test('sorts objects without x when an explicit numeric key is supplied', () => {
+  const points = [{ y: 3 }, { y: 1 }, { y: 2 }];
+
+  expect(xyObjectToSorted(points, 'y')).toStrictEqual([
+    points[1],
+    points[2],
+    points[0],
+  ]);
+
+  expectTypeOf(xyObjectToSorted(points, 'y')).toEqualTypeOf<
+    Array<{ y: number }>
+  >();
+});
+
 test('requires a numeric key on every point', () => {
   interface Point {
     x: number;
