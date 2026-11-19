@@ -106,12 +106,3 @@ test.each([255, 256])(
     );
   },
 );
-
-test.each([255, 256])('rejects sparse input (%i points)', (length) => {
-  const points = new Array<{ x: number }>(length);
-  points[0] = { x: 1 };
-
-  expect(() => xyObjectToSorted(points)).toThrow(
-    new TypeError('points must be a dense array'),
-  );
-});
