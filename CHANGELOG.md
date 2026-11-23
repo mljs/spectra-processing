@@ -1,5 +1,21 @@
 # Changelog
 
+## [14.36.0](https://github.com/mljs/spectra-processing/compare/v14.35.1...v14.36.0) (2026-11-23)
+
+
+### Features
+
+* add generic xy object sorting ([1302a8d](https://github.com/mljs/spectra-processing/commit/1302a8df2dac4091840a9f910067f035c13ec97c))
+* add test for NaN sorting behavior in ascending order and remove undefined check ([be19fbb](https://github.com/mljs/spectra-processing/commit/be19fbb45e669bb1ae0d7a6a40809c8da37a9a27))
+
+
+### Bug Fixes
+
+* compute one PQN dilution per spectrum in matrixPQN ([dd3861a](https://github.com/mljs/spectra-processing/commit/dd3861adb212b2956aefed143d92700044ae4676))
+* make valid objects without x property ([afbc750](https://github.com/mljs/spectra-processing/commit/afbc7506239979703a2035b78c911aede80561e4))
+* preserve stable numeric sorting semantics ([f0cc8bd](https://github.com/mljs/spectra-processing/commit/f0cc8bd547ae2f63386211a282be5a42aaf86d12))
+* refresh export snapshot and sorter types ([bfe85f0](https://github.com/mljs/spectra-processing/commit/bfe85f033569fbbd3e4ac14625f796c945597957))
+
 ## [14.35.1](https://github.com/mljs/spectra-processing/compare/v14.35.0...v14.35.1) (2026-09-11)
 
 
