@@ -12,6 +12,7 @@ export * from './matrixCuthillMckee.ts';
 export * from './matrixGetSubMatrix.ts';
 export * from './matrixHilbertTransform.ts';
 export * from './matrixHistogram.ts';
+export * from './matrixIsZero.ts';
 export * from './matrixMaxAbsoluteZ.ts';
 export * from './matrixMedian.ts';
 export * from './matrixMinMaxAbsoluteZ.ts';

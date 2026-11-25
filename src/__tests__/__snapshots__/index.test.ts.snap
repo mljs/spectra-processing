@@ -180,6 +180,7 @@ exports[`existence of exported functions 1`] = `
   "matrixGetSubMatrix",
   "matrixHilbertTransform",
   "matrixHistogram",
+  "matrixIsZero",
   "matrixMaxAbsoluteZ",
   "matrixMedian",
   "matrixMinMaxAbsoluteZ",
